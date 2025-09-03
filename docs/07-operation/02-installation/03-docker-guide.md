@@ -85,7 +85,7 @@ tda:
   log-dir: /var/log/taos # all IDMP logs including IDMP server and AI server will be stored in this directory
   ai-server:
     url: http://localhost:8777 # AI server URL
-  server-url: http://localhost:6042 # public IDMP URL
+  server-url: http://192.168.1.100:6042 # public IDMP URL
   default-connection:
     enable: true
     auth-type: UserPassword # can be set to UserPassword or Token
@@ -114,12 +114,13 @@ tda:
         - WINDOW_CLOSE
 ```
 
-在 `tda.default-connection` 下，配置 TDengine TSDB-Enterprise 的连接信息，其中：
-- auth-type: 认证方式，支持 UserPassword 和 Token 两种方式，默认为方式 UserPassword
-- url: 为 TDengine TSDB-Enterprise 中 taosAdapter 组件的 IP 地址和端口号，端口号默认为 6041
-- username 和 password: 为 TDengine TSDB-Enterprise 的用户名和密码，默认为 root 和 taosdata
-
-在 `tda.analysis` 下，`envent.urls` 为 TDengine TSDB-Enterprise 访问 IDMP 服务的 WebSocket 地址。
+说明：
+- `tda.server-url`为 TDengine IDMP 服务的访问地址，可配置为域名或 IP 地址，如果配置为 localhost + port 的方式，则 TDengine IDMP 服务只能在本机访问。
+- 在 `tda.default-connection` 下，配置 TDengine TSDB-Enterprise 的连接信息，其中：
+  - auth-type: 认证方式，支持 UserPassword 和 Token 两种方式，默认为方式 UserPassword
+  - url: 为 TDengine TSDB-Enterprise 中 taosAdapter 组件的 IP 地址和端口号，端口号默认为 6041
+  - username 和 password: 为 TDengine TSDB-Enterprise 的用户名和密码，默认为 root 和 taosdata
+- 在 `tda.analysis` 下，`envent.urls` 为 TDengine TSDB-Enterprise 访问 IDMP 服务的 WebSocket 地址。
 
 ### 2. 启动 TDengine IDMP 容器
 

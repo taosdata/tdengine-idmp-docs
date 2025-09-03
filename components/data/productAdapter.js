@@ -6,7 +6,7 @@ export async function fetchPackagesFromProduct({
   pkgType, // "Server" or "Client"
   jsonPath
 } = {}) {
-  const remote = 'https://www.tdengine.com/wp-content/themes/tdengine/js/product-data.json';
+  const remote = 'https://www.taosdata.com/assets/pkg-js/product-data.json';
   // resolve jsonPath: absolute > site-root-relative > remote
   let url = jsonPath || remote;
   console.log('[adapter] fetch url=', url, 'opts=', { productName, version, platform, arch, pkgType, jsonPath });
