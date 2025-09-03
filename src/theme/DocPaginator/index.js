@@ -52,7 +52,7 @@ function FeedBack({editUrl}) {
           </span>
         )}
         <a
-          href="https://github.com/taosdata/tdengine-idmp-docs/issues/new/choose"
+          href="https://ask.taosdata.com/"
           target="_blank"
           rel="noopener"
         >
