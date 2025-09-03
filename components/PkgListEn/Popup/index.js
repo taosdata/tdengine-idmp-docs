@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./styles.module.css";
 import CloseSvg from "/img/close.svg";
 
-//邮箱正则验证
 function validateEmail(email) {
   var reg = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
   return reg.test(email);
@@ -15,7 +14,7 @@ export default class extends React.Component {
 
   closeBtn(val) {
     this.setState({ isShow: true })
-    this.props.pfn(val)//这个地方把值传递给了props的事件当中
+    this.props.pfn(val)
   }
 
   isShowSuccess() {
@@ -51,7 +50,7 @@ export default class extends React.Component {
 }
 
 
-// 订阅弹窗
+// download popup
 class SubScription extends React.Component {
   constructor(props) {
     super(props);
@@ -68,7 +67,7 @@ class SubScription extends React.Component {
       showMessageValidEmail: false,
       showMessageCheckbox: false,
       lang: 'en',
-      can_contact: false
+      can_contact: true
     }
   }
 
@@ -119,9 +118,7 @@ class SubScription extends React.Component {
 
     // set link generation url based on version requested
     let downloadUrl = "https://docs.tdengine.com/assets/globalscripts/generatelink_v3_download_center.php";
-    if (this.props.tdVersion == 2) {
-      downloadUrl = "https://docs.tdengine.com/assets/globalscripts/generatelink.php";
-    }
+
     const pkgField = this.props.pkg || this.props.pkgName || this.props.productName || '';
     let postData = {
       'firstName': this.state.firstName.value,
@@ -153,13 +150,9 @@ class SubScription extends React.Component {
     })
   }
 
-  handleCheckBox(event) {
-    if (this.state.can_contact) {
-      this.setState({ can_contact: false })
-    } else {
-      this.setState({ can_contact: true })
-    }
-  }
+  handleCheckbox = (event) => {
+    this.setState({ can_contact: event.target.checked });
+  };
 
   render() {
     return (
@@ -191,7 +184,7 @@ class SubScription extends React.Component {
           <input ref={el => this.state.company = el} className={styles.subscriptionInput} />
         </div>
         <div className={styles.popupCheckbox}>
-          <input type='checkbox' onChange={this.handleCheckBox.bind(this)} defaultChecked={this.state.can_contact} />
+          <input checked={this.state.can_contact} onChange={this.handleCheckbox} type='checkbox' />
           <label>I agree to receive communications from TDengine and allow TDengine to store & process my personal data.<span className={styles.formRequired}>*</span>
             <p className={styles.formRequired} style={{ display: this.state.showMessageCheckbox ? "block" : "none" }}>Please complete this required field.</p></label>
         </div>
