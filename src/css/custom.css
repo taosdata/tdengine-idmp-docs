@@ -21,8 +21,25 @@
   --white: #fefefe;
   --ifm-font-color-base: #141414;
   --docusaurus-highlighted-code-line-bg: rgb(178, 180, 186);
-  
-  --ifm-navbar-link-color: #333；
+  --ifm-navbar-link-color: #333;
+
+  --contrast: #141414;
+  --contrast-2: #595959;
+  --contrast-3: #AFAFAF;
+  --base: #F0F0F0;
+  --base-2: #F2F2F2;
+  --base-3: #FFFFFF;
+  --accent: #0041CE;
+  --accent-2: #6A85BD;
+  --accent-3: #00FFBA;
+  --accent-4: #F0A808;
+  --accent-5: #27EA66;
+  --accent-6: #FFFF00;
+  --accent-7: #FFD800;
+  --accent-8: #47CEFF;
+  --accent-9: #432EC0;
+  --accent-10: #0041CE;
+  --accent-11: #EB2828
 }
 
 /* 探迹集客，隐藏默认图标 */
@@ -302,7 +319,8 @@ header h1 {
 
 code {
   tab-size: 4;
-  font-size: 0.94em; /* 或 16px */
+  font-size: 0.94em;
+  /* 或 16px */
 }
 
 article img {
@@ -336,7 +354,8 @@ html[data-theme='dark'] .navbar__title,
 html[data-theme='dark'] .navbar__toggle,
 html[data-theme='dark'] .navbar .clean-btn[class*="toggleButton"],
 html[data-theme='dark'] .navbar__item {
-  color: #111 !important; /* 深色模式下字体为黑色 */
+  color: #111 !important;
+  /* 深色模式下字体为黑色 */
 }
 
 /* 主题切换按钮变为白色 */

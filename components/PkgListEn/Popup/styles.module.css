@@ -1,0 +1,152 @@
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgba(0, 0, 0, 0.6);
+  transition: z-index 0.4s, opacity 0.4s;
+  font-size: 16px
+}
+
+.popupContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: var(--base-3);
+  border-radius: 8px;
+}
+
+.popupTitle {
+  border-radius: 8px 8px 0 0;
+  /* webpackIgnore: true */
+  background-image: url("/img/banner.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  padding: 10px;
+}
+
+.closePopup {
+  height: 16px;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+  cursor: pointer
+}
+
+.closePopup svg {
+  width: 16px;
+  height: 16px
+}
+
+.popupTitleText {
+  font-size: 24px;
+  text-align: center;
+  padding-bottom: 16px
+}
+
+.popupContentContainer {
+  background-color: var(--base-3);
+  padding: 10px 20px 20px 20px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.popupContent {
+  margin-bottom: 10px
+}
+
+.messageContainer {
+  width: 470px;
+  padding: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: var(--base-3);
+  border-radius: 8px;
+}
+
+.successMsg {
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.buttonContainer {
+  text-align: center;
+}
+
+.btnPrimary {
+  background-color: var(--accent);
+  color: var(--base-3);
+  padding: 5px 15px;
+  border-radius: 24px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer
+}
+
+.formColumns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.formInputColumn {
+  width: 48%;
+}
+
+.formRequired {
+  color: var(--accent-11);
+}
+
+p.formRequired {
+  font-size: 14px;
+  line-height: 1.2em;
+  margin: 2px 0 0 0
+}
+
+.subscriptionInput {
+  outline: 0;
+  color: var(--contrast-2);
+  padding-left: 0.4em;
+  width: 100%;
+  height: 30px;
+  border: 1px solid var(--accent);
+  display: inline-block;
+  border-radius: 4px;
+  transition: border-left .2s;
+  vertical-align: top;
+}
+
+.subscriptionInput:focus {
+  border-left: 15px solid var(--accent);
+}
+
+.formField {
+  margin-bottom: 10px;
+}
+
+.popupCheckbox {
+  display: flex;
+  align-items: start;
+  column-gap: 0.4em;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.2em
+}
+
+.popupCheckbox input {
+  margin: 1px 0 0 0
+}
