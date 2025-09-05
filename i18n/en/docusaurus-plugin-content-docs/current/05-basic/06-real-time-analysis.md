@@ -20,19 +20,21 @@ The triggers supported by TDengine IDMP are described as follows:
 
 1. **Sliding Window:** Analysis is triggered at fixed intervals based on the event time of collected data. You can configure the slide duration.
 
-2. **Periodic Time Window:** Analysis runs periodically at a fixed interval based on TDengine's system time. You can also configure a time offset, which delays the analysis by a specified amount after the end of each period. For example, if you want generate a daily report at 2:00 AM, you can specify a 1-day period and a 2-hour offset. This trigger is functionally equivalent to a scheduled task in other systems.
+2. **Anomaly Detection**: By setting the sliding duration, you can specify how often anomaly detection is triggered. It is necessary to configure the target attribute or target attribute template to indicate which column the anomaly detection should be performed on. Additionally, you need to specify the algorithm used for anomaly detection, with support for configuring algorithm parameters. The parameter format is like `a=1,b=2,c=3`.
 
-3. **Data Input:** Analysis is triggered whenever new data is written to a specified attribute.
+3. **Periodic Time Window:** Analysis runs periodically at a fixed interval based on TDengine's system time. You can also configure a time offset, which delays the analysis by a specified amount after the end of each period. For example, if you want generate a daily report at 2:00 AM, you can specify a 1-day period and a 2-hour offset. This trigger is functionally equivalent to a scheduled task in other systems.
 
-4. **State Window:** Analysis is triggered when the value of a specified attribute changes. This trigger can be applied only to attributes of data type integer.
+4. **Data Input:** Analysis is triggered whenever new data is written to a specified attribute.
 
-5. **Event Window:** Analysis is triggered on an event for which you define a start condition and an end condition. Each condition is a computed expression based on an attribute. If the result of the expression is greater than 0, the condition is considered met; if less than 0, it is not met.
+5. **State Window:** Analysis is triggered when the value of a specified attribute changes. This trigger can be applied only to attributes of data type integer.
+
+6. **Event Window:** Analysis is triggered on an event for which you define a start condition and an end condition. Each condition is a computed expression based on an attribute. If the result of the expression is greater than 0, the condition is considered met; if less than 0, it is not met.
 
    For the start condition, you can optionally set a duration requirement to prevent false triggers caused by data jitter. If the condition is met but does not persist for the configured duration, the event will not be triggered.
 
-6. **Session Window:** Analysis is triggered when no new data has been written to any attribute of the element for a specified period of time.
+7. **Session Window:** Analysis is triggered when no new data has been written to any attribute of the element for a specified period of time.
 
-7. **Count Window:** Analysis is triggered when the number of new records for a specified attribute or set of attributes reaches a specified threshold. If you do not specify any attributes, the count includes new records across all attributes for the element.
+8. **Count Window:** Analysis is triggered when the number of new records for a specified attribute or set of attributes reaches a specified threshold. If you do not specify any attributes, the count includes new records across all attributes for the element.
 
 ## Event Generation
 
