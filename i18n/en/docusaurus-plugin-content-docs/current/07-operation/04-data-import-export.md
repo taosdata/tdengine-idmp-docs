@@ -123,9 +123,11 @@ After using the Asset Model import, you may quickly notice that when there are t
 ### Automatic Synchronization
 Once the CSV data import task is created, if new subtables are added in TSDB, they will be automatically synchronized to IDMP without manual intervention.  
 
-### Adding New Super Tables
-After the CSV data import task is created, if new super tables are added in TSDB, a new asset model must be added. Otherwise, metadata from the new super tables cannot be imported into IDMP, and the new data assets will not be visible in IDMP.  
-
 ### Monitoring Tasks
 Once a CSV data import task is created, you can view the task and previously created import tasks along with their statuses (failure reasons will be displayed if any). For import tasks that do not specify subtable names, automatic synchronization tasks will be created. These synchronization tasks can be stopped or started using the menu button on the right side of the task.  
 
+:::note
+
+After the CSV data import task is created, if new super tables are added in TSDB, a new asset model must be added. Otherwise, metadata from the new super tables cannot be imported into IDMP, and the new data assets will not be visible in IDMP.  
+
+:::
