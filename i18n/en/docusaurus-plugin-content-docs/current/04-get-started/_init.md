@@ -1,9 +1,13 @@
-import Tip from './_tip.md';
+Once TDengine TSDB-Enterprise and TDengine IDMP are running, you can access them in your web browser.
 
-Once TDengine TSDB-Enterprise and TDengine IDMP are running, you can access TDengine IDMP in your web browser at `http://localhost:6042`. Adjust this address accordingly if you have modified the port number or are running TDengine IDMP on a remote machine.
+- The default URL of TDengine TSDB Explorer is `http://localhost:6060`.
+- The default URL of TDengine IDMP is `http://localhost:6042`.
+
+Adjust this address accordingly if you have modified the port number or are running TDengine on a remote machine.
 
 ## Activate TDengine IDMP
 
+1. In a web browser, access TDengine IDMP. The default URL is `http://localhost:6042`.
 1. Under **Activate TDengine IDMP**, enter your email address and organization.
 1. Click **Get Code** and enter the code sent to your email address.
 1. Read the User Agreement and Privacy Policy and click **Activate**.
