@@ -24,7 +24,7 @@ As shown in the figure below, you can adjust the line style, line width, transpa
 
 When dealing with multi-series indicators, you can stack data to analyze certain cumulative quantities (enabling the fill option in line styles will enhance the effect). Take the analysis of electricity consumption in the following example: there are two series of values, namely residential electricity consumption and industrial electricity consumption. After enabling stacking, you can observe the changing trend of total electricity consumption.
 
-![Stach Seriesline](./images/trend-stack.png)
+![Stack Seriesline](./images/trend-stack.png)
 
 #### Labels
 
@@ -70,7 +70,7 @@ You can enable the display of statistical values such as maximum and minimum val
 
 To continuously enhance your user experience, we will keep adding practical configurations in subsequent product updates, allowing you to enjoy richer and more user-friendly analysis features.
 
-| Configuation  | Description                                                         |
+| Configuration  | Description                                                         |
 |------------|--------------------------------------------------------------|
 | Axis Scale  | The axis can be set to an exponential scale, allowing for linear observation of exponentially growing metrics.  |
 | Unit  | Select the display unit to unify the unit for showing metrics; for example, use "milliamperes" to display current.   |

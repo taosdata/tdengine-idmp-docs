@@ -24,19 +24,19 @@ You can configure whether to display the title and its font size.
 
 You can configure the value font size.
 
-![guage](./images/gauge-items.png)
+![gauge](./images/gauge-items.png)
 
 ### Limits
 
 By configuring boundary values, different zones can be divided on the dashboard, allowing for quick visual distinction of the current monitoring status.
 
-![guage](./images/gauge-limit.png)
+![gauge](./images/gauge-limit.png)
 
 ## Roadmap
 
 To continuously enhance your user experience, we will keep adding practical configurations in subsequent product updates, allowing you to enjoy richer and more user-friendly analysis features.
 
-| Configuation  | Description                                                         |
+| Configuration  | Description                                               |
 |------------|--------------------------------------------------------------|
-| Guage Theme  | You can configure richer styles, such as displaying it as a donut chart or a pie chart.   |
+| Gauge Theme  | You can configure richer styles, such as displaying it as a donut chart or a pie chart.   |
 | Max/Min | Set the maximum and minimum values    |

@@ -56,7 +56,7 @@ You can enable the display of statistical values such as maximum and minimum val
 
 To continuously enhance your user experience, we will keep adding practical configurations in subsequent product updates, allowing you to enjoy richer and more user-friendly analysis features.
 
-| Configuation  | Description                                                         |
+| Configuration  | Description                                                         |
 |------------|--------------------------------------------------------------|
 | Axis Scale  | The axis can be set to an exponential scale, allowing for linear observation of exponentially growing metrics.  |
 | Unit  | Select the display unit to unify the unit for showing metrics; for example, use "milliamperes" to display current.   |

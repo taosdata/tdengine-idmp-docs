@@ -43,7 +43,7 @@ Configure the timestamp formatting string, with the rules as follows.
 
 To continuously enhance your user experience, we will keep adding practical configurations in subsequent product updates, allowing you to enjoy richer and more user-friendly analysis features.
 
-| Configuation  | Description                                              |
+| Configuration  | Description                                              |
 |------------|-------------------------------------------------------------|
 | Statistical Row  | You can append a statistical row to display metrics such as the maximum value, minimum value, and average value of a specific indicator.   |
-| Value Formt  | Format the numerical values |
+| Value Format  | Format the numerical values |

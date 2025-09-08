@@ -1,15 +1,15 @@
-# 富文本
+# Richtext
 
-富文本可以自定义文字和背景等，往往用来装饰 Dashboard 的标题。
+Rich text supports customization of text, background, and more, and is often used to decorate dashboard titles.
 
-## 配置项
+## Configuration
 
-### 图形配置
+### Graph Configuration
 
-#### 背景颜色
+#### Background Color
 
-配置富文本面板的背景色。
+Configure the background color of the rich text panel.
 
-#### 背景图及其布局
+#### Background Image and Its Layout
 
-可上传背景图，布局可设置背景图通过缩放或者重复平铺来适应面板大小。
+You can upload a background image, and its layout can be set to adapt to the panel size by scaling or repeating tiling.

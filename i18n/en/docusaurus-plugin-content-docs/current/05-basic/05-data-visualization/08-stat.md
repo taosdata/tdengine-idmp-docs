@@ -32,7 +32,7 @@ You can set the display width of the panel, and the width is determined by the n
 
 To continuously enhance your user experience, we will keep adding practical configurations in subsequent product updates, allowing you to enjoy richer and more user-friendly analysis features.
 
-| Configuation  | Description                                              |
+| Configuration  | Description                                              |
 |------------|-------------------------------------------------------------|
 | Subtitle  | Add a subtitle to provide descriptive information.       |
 | Rate of Change  | The display of the rate of change can be configured.   |

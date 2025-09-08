@@ -24,7 +24,7 @@ When enabled, the place names and statistical values will be directly displayed 
 
 To continuously enhance your user experience, we will keep adding practical configurations in subsequent product updates, allowing you to enjoy richer and more user-friendly analysis features.
 
-| Configuation  | Description                                              |
+| Configuration  | Description                                              |
 |------------|-------------------------------------------------------------|
 | Map Controls | The map can be zoomed in/out, moved, and more.          |
 | Map Layers  | Multiple map layers can be overlaid          |
