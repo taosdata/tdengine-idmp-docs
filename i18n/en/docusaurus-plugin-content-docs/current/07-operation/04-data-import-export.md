@@ -82,6 +82,12 @@ After using the Asset Model import, you may quickly notice that when there are t
 11. The attribute template description and the following columns may all be left empty. If you specify a unit of measurement, it must already exist in IDMP.  
 12. **Important**: Comment lines must not be removed. If comment lines are deleted, CSV parsing will fail.  
 
+:::note
+
+The CSV configuration file uses the `UTF-8` encoding format and does not currently support the `UTF-8 with BOM` encoding.
+
+:::
+
 **CSV Configuration File Examples**  
 1. The element path is already defined in the super table. Here, TDengine TSDB’s commonly used smart meter is used as an example. In the structure of the smart meter super table (`meters`), the tag `location` is defined, which stores a `.`-separated path. This can be considered as the element path already existing in the super table. Each sub-table of `meters` corresponds to an element. Since there is no tag for the element name, the sub-table name is defined as the element name. In this case, the CSV configuration example is as follows:
    
