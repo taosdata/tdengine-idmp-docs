@@ -11,7 +11,7 @@ TDengine IDMP 提供了丰富的功能，本文档将带领您通过安装包完
 TDengine IDMP 支持多种安装、部署方式，在不同的操作系统和架构下，都能够体验其强大的功能带来的便利。对操作系统和架构的支持，详见[部署规划](../operation/planning)。
 
 TDengine IDMP 的运行还需要满足以下先决条件：
-* Python: 3.10-3.12 版本
+* Python: 3.12 版本
 * Java: 21 及以上版本
 * glibc: 2.25 及以上版本
 

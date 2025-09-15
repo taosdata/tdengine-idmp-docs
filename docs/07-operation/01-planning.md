@@ -23,7 +23,7 @@
 ## 基础依赖
 
 TDengine IDMP 的运行需要以下基础依赖：
-  * Python: 3.10-3.12 版本
+  * Python: 3.12 版本
   * Java: 21 及以上版本
   * glibc: 2.25 及以上版本
 
