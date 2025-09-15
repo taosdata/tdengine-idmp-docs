@@ -11,7 +11,7 @@ TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0+, 在安装 TDengine IDMP 
 
 除了 TDengine TSDB-Enterprise 以外，TDengine IDMP 的运行还需要满足以下先决条件：
 
-1. Python: 3.10-3.12 版本
+1. Python: 3.12 版本
 1. Java: 21 及以上版本
 1. glibc: 2.25 及以上版本
 
