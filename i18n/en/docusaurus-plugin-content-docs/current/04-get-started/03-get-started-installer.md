@@ -18,6 +18,7 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
 - Install Java 21 or later.
 - Install glibc 2.25 or later.
 - Install Python 3.12.
+- Setup SMTP email service (required when Internet access is not available).
 - On Debian and Ubuntu systems, install the `python3-venv` package.
 
 ## Install TDengine IDMP

@@ -26,9 +26,11 @@ TDengine IDMP currently supports the following operating systems and architectur
 
 The following dependencies are required to run TDengine IDMP:
 
-- Python 3.12
-- Java 21 or later
-- glibc 2.25 or later
+1. Python 3.12
+1. Java 21 or later    
+1. glibc 2.25 or later
+1. TDengine TSDB-Enterprise 3.3.7.0 or later
+1. SMTP email service (required when Internet access is not available)
 
 ## Network Ports
 
