@@ -9,11 +9,12 @@ import TabItem from '@theme/TabItem';
 TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0+, 在安装 TDengine IDMP 前，请确保您已安装并启动了 TDengine TSDB-Enterprise 服务。
 :::
 
-除了 TDengine TSDB-Enterprise 以外，TDengine IDMP 的运行还需要满足以下先决条件：
-
+TDengine IDMP 的运行需要以下基础依赖：
 1. Python: 3.12 版本
 1. Java: 21 及以上版本
 1. glibc: 2.25 及以上版本
+1. TDengine TSDB-Enterprise: 3.3.7.0 及以上版本
+1. 可用的 SMTP 邮件服务（当无法访问 Internet 时，需要在内网部署）
 
 ## 安装
 
