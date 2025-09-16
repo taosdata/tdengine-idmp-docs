@@ -6,7 +6,7 @@
 
 ## TDengine TSDB-Enterprise 简单导入 (Easy Import)
 
-TDengine TSDB-Enterprise 设计之初就考虑了静态标签与动态时序数据的区别，并且静态标签支持树状结构，层级之间用“."进行分割。不仅如此，TDengine 设计了超级表，为同一类型设备建立一个模板，即超级表，一个超级表有多个实例子表。这个设计与 IDMP 的树状建模、元素模板完全对应，因此如果在 TDengine TSDB-Enterprise 里已经有很好的数据建模，数据导入将极为简单。
+TDengine TSDB-Enterprise 设计之初就考虑了静态标签与动态时序数据的区别，并且静态标签支持树状结构，层级之间用“.”进行分割。不仅如此，TDengine 设计了超级表，为同一类型设备建立一个模板，即超级表，一个超级表有多个实例子表。这个设计与 IDMP 的树状建模、元素模板完全对应，因此如果在 TDengine TSDB-Enterprise 里已经有很好的数据建模，数据导入将极为简单。
 
 TSDB 里的一张超级表对应 IDMP 里一个元素模板，TSDB 里的一超级表的子表对应 IDMP 里某个元素模板的一个元素实例，子表名就是元素名，子表的标签值被映射为元素的静态属性（数据引用为 TDengine Tag），子表的时序数据被映射为元素的动态数据（数据引用为 TDengine Metric），子表的树状结构标签（比如地理位置标签 Location）直接作为元素的树状结构路径。有了这样的对应关系，将 TSDB 里的元数据导入到 IDMP 十分容易。
 
