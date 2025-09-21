@@ -66,7 +66,7 @@ In each advanced SQL query, you can choose one of the following two types of que
 1. **TDengine**: Query using the TDengine connection associated with the current element or element template.
 2. **Event**: Query events generated internally by the system.
 
-After entering a complete SQL query, you can click the "Verfiy" button to verify whether the current SQL is valid and executable. After successful validation, a green icon will appear next to the button indicating success. At this point, you can click on the two selection boxes below to make selections:
+After entering a complete SQL query, you can click the "Verify" button to verify whether the current SQL is valid and executable. After successful validation, a green icon will appear next to the button indicating success. At this point, you can click on the two selection boxes below to make selections:
 
 1. **Time Column**: If you want to use a specific column from the query results as the time column, you can select or deselect it.
 2. **Dimensions**: If you want to set some columns of the result as dimensions, you can select one or more columns as dimension columns.
