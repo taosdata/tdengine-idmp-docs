@@ -6,7 +6,7 @@ TDengine IDMP provides panels and dashboards for visualizing data. Every element
 
 Elements at different levels typically focus on different metrics depending on their position in the tree hierarchy. For example, a dashboard for the entire power company might focus on total power generation and overall cost, while a dashboard for a wind turbine might display the operational status and generation efficiency of a specific turbine.
 
-### Basic Panel Operations
+## Basic Panel Operations
 
 TDengine IDMP panels support the following types of visualization:
 
@@ -22,7 +22,7 @@ When viewing a panel, you can click the icons in the action bar to edit the pane
 
 Click the Edit (pencil) button to enter editing mode. The following section provides a more detailed explanation of panel editing operations.
 
-### Types of Data Displayed in Panels
+## Types of Data Displayed in Panels
 
 When creating a panel for an element, you can choose the following from the sidebar:
 
@@ -31,7 +31,7 @@ When creating a panel for an element, you can choose the following from the side
 
 The default option is **Element**. In the sidebar, double-click on an attribute to add it to the panel and visualize it.
 
-### Panel Metric Configuration
+## Panel Metric Configuration
 
 For each metric, you can configure the following options:
 
@@ -48,7 +48,7 @@ For all displayed metrics, you can also configure the following options in the t
 1. **Limit:** Maximum number of data points displayed for the metric.
 2. **Window:** Sliding window aggregation to the metric. You can set the interval and the window duration.
 
-### Panel Dimension Configuration
+## Panel Dimension Configuration
 
 In the sidebar, double-click on a dimension to select it. For each selected dimension, you can configure the following options:
 
@@ -57,6 +57,26 @@ In the sidebar, double-click on a dimension to select it. For each selected dime
 3. **Group By:** Aggregates data by dimension. Enabled by default.
 4. **Order By:** Sorting for the dimension. By default, no sorting is applied.
 
-### Panel Display Settings
+## Advanced Panel Configuration
+
+After enabling "Advanced", you can add multiple advanced SQL queries here and display the query results simultaneously in the same panel.
+
+In each advanced SQL query, you can choose one of the following two types of queries:
+
+1. **TDengine**: Query using the TDengine connection associated with the current element or element template.
+2. **Event**: Query events generated internally by the system.
+
+After entering a complete SQL query, you can click the "Verfiy" button to verify whether the current SQL is valid and executable. After successful validation, a green icon will appear next to the button indicating success. At this point, you can click on the two selection boxes below to make selections:
+
+1. **Time Column**: If you want to use a specific column from the query results as the time column, you can select or deselect it.
+2. **Dimensions**: If you want to set some columns of the result as dimensions, you can select one or more columns as dimension columns.
+
+Advanced queries also support the following three replacement parameters:
+
+1. **${FROM_TIME}**: Uses the start time value from the panel or dashboard time selector for replacement. You can enter "FROM" shortcut hint in the SQL editor and press Enter to input the complete parameter.
+2. **${TO_TIME}**: Uses the end time value from the panel or dashboard time selector for replacement. You can enter "TO" shortcut hint in the SQL editor and press Enter to input the complete parameter.
+3. **${Element#fullVirtualTable}**: Used in element templates, can pass in the complete virtual table of the element from the panel or dashboard element selector for replacement. You can enter "ELEMENT" shortcut hint in the SQL editor and press Enter to input the complete parameter.
+
+## Panel Display Settings
 
 While a panel is in edit mode, you can modify the display settings for the panel on the right sidebar. Any changes you make are immediately reflected in the main area for you to preview.
