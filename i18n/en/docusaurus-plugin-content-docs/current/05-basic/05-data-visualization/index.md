@@ -77,6 +77,8 @@ Advanced queries also support the following three replacement parameters:
 2. **${TO_TIME}**: Uses the end time value from the panel or dashboard time selector for replacement. You can enter "TO" shortcut hint in the SQL editor and press Enter to input the complete parameter.
 3. **${Element#fullVirtualTable}**: Used in element templates, can pass in the complete virtual table of the element from the panel or dashboard element selector for replacement. You can enter "ELEMENT" shortcut hint in the SQL editor and press Enter to input the complete parameter.
 
+Additionally, you can click the "Format" icon to format the current SQL query, and you can also enable or temporarily disable the current SQL.
+
 ## Panel Display Settings
 
 While a panel is in edit mode, you can modify the display settings for the panel on the right sidebar. Any changes you make are immediately reflected in the main area for you to preview.
