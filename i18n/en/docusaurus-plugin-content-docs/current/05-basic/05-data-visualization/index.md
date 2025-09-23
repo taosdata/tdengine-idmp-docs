@@ -53,9 +53,14 @@ For all displayed metrics, you can also configure the following options in the t
 In the sidebar, double-click on a dimension to select it. For each selected dimension, you can configure the following options:
 
 1. **Name**: Name displayed on the panel for the dimension. By default, it uses the attribute name.
-2. **Conditions**: Filter conditions applied to the dimension.
-3. **Group By**: Aggregates data by dimension. Enabled by default.
-4. **Order By**: Sorting for the dimension. By default, no sorting is applied.
+2. **Expression**: This indicates that dimensions can be used for calculations before being displayed as dimensions in the panel.
+3. **Conditions**: Filter conditions applied to the dimension.
+4. **Group By**: Aggregates data by dimension. Enabled by default.
+5. **Order By**: Sorting for the dimension. By default, no sorting is applied.
+
+:::note
+tbname as a special dimension, if the expression is empty, will only be used for grouping and sorting, and will not be returned to the panel dimensions.
+:::
 
 ## Advanced Panel Configuration
 
