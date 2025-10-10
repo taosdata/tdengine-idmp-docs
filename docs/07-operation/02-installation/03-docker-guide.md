@@ -15,18 +15,21 @@
 git clone https://github.com/taosdata/tdengine-idmp-deployment.git
 ```
 
-该仓库包含了 TDengine IDMP 与 TSDB 的 Docker Compose 配置文件。
+该仓库包含了 TDengine IDMP 与 TSDB 的 Docker Compose 配置文件。您可以选择使用统一管理脚本进行部署或者手动使用 Docker Compose 部署。
 
-### 2. 启动服务
+### 2. 使用统一管理脚本部署（推荐）
+
+#### 启动服务
 
 ```bash
 cd tdengine-idmp-deployment/docker
-docker compose up -d
+chmod +x idmp.sh
+./idmp.sh start
 ```
 
-执行上述命令会自动拉取所需镜像并以后台方式启动所有服务容器。
+执行上述命令会自动拉取所需镜像并以后台方式启动标准部署（TSDB Enterprise + IDMP）或 完整部署（TSDB Enterprise + IDMP + TDgpt）。
 
-### 3. 访问服务
+#### 访问服务
 
 默认情况下，TDengine IDMP 服务监听主机的 6042 端口。可通过以下地址访问管理界面：
 
@@ -37,12 +40,58 @@ docker compose up -d
 如需修改端口，请编辑 `docker-compose.yml` 文件中的 `ports` 配置项。
 :::
 
-### 4. 停止服务
+#### 停止服务
 
 执行以下命令，会停止并移除所有通过 Compose 启动的容器，但不会删除数据卷。
 
 ```bash
+./idmp.sh stop
+```
+
+### 3. 手动使用 Docker Compose 部署
+
+#### 配置环境变量
+
+```bash
+cd tdengine-idmp-deployment/docker
+export IDMP_URL="http://your-host-ip:6042"  # 请替换为实际 IP 地址
+```
+
+#### 选择部署方式
+
+**标准部署（TSDB Enterprise + IDMP）**
+
+```bash
+docker compose up -d
+```
+
+**完整部署（TSDB Enterprise + IDMP + TDgpt）**
+
+```bash
+docker compose -f docker-compose-tdgpt.yml up -d
+```
+
+#### 访问服务
+
+默认情况下，TDengine IDMP 服务监听主机的 6042 端口。可通过以下地址访问管理界面：
+
+- [http://localhost:6042](http://localhost:6042)
+- [http://ip:6042](http://ip:6042)
+
+:::tip
+如需修改端口，请编辑相应的 `docker-compose.yml` 文件中的 `ports` 配置项。
+:::
+
+#### 停止服务
+
+**停止标准部署**
+```bash
 docker compose down
+```
+
+**停止完整部署**
+```bash
+docker compose -f docker-compose-tdgpt.yml down
 ```
 
 如需清理数据，请添加 `-v` 参数：
@@ -51,7 +100,7 @@ docker compose down
 docker compose down -v
 ```
 
-## 部署 TDengine IDMP 服务
+## 单独部署 TDengine IDMP 服务
 
 :::warning
 TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0+
