@@ -49,7 +49,7 @@ TDengine IDMP 提供了 Docker 镜像，用户可以通过 Docker Compose 快速
     ./idmp.sh start
     ```
 
-    该命令会提示您选择部署模式：启动标准部署（TSDB Enterprise + IDMP）或 完整部署（TSDB Enterprise + IDMP + TDgpt），并自动拉取所需镜像（如本地不存在）。
+    该命令会提示您选择部署模式：启动标准部署（TSDB Enterprise + IDMP）或完整部署（TSDB Enterprise + IDMP + TDgpt），并自动拉取所需镜像（如本地不存在）。如果选择完整部署（即包含 TDgpt），您可以在 IDMP 中体验时序数据预测和异常检测等功能。
 
 至此，TDengine IDMP 服务已成功启动。您可以在浏览器输入以下地址访问：[http://ip:6042](http://ip:6042),
 请将 `ip` 替换为真实的主机 IP 地址，如果在本地运行，则可以直接访问 [http://localhost:6042](http://localhost:6042)。关于服务启动、停止更详细的操作指南，请您参考[使用 Docker 部署](../operation/installation/docker-guide)章节。

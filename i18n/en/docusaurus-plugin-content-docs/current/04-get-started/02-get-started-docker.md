@@ -37,7 +37,7 @@ TDengine IDMP is offered as a Docker Compose setup to make deployment easy. This
    ./idmp.sh start
    ```
    
-   This command will prompt you to select a deployment mode: start standard deployment (TSDB Enterprise + IDMP) or full deployment (TSDB Enterprise + IDMP + TDgpt), and automatically pull the required images (if not available locally).
+   This command will prompt you to select a deployment mode: start standard deployment (TSDB Enterprise + IDMP) or full deployment (TSDB Enterprise + IDMP + TDgpt), and automatically pull the required images (if not available locally). For full deployment, TDgpt includes AI/ML and other algorithms for performing time-series forecasting and anomaly detection within TDengine.
 
 <Init />
 
@@ -54,7 +54,7 @@ Once you’ve completed your evaluation, you can stop and remove the TDengine co
 This command will automatically detect the currently running service type and use the appropriate configuration file to stop the services.  
 The script provides an interactive prompt:
 
-- **Default behavior**: Data volumes are preserved to ensure no data is lost.
-- **Optional cleanup**: You can choose to remove data volumes if you want a completely clean environment.
+- **Keep data and logs**: Default, keep data volumes when stopping containers.
+- **Clear data and logs**: Delete data volumes when stopping containers, suitable for scenarios where you need to completely clean the environment.
 
 For more detailed instructions on starting and stopping the service, see [Docker Deployment](../07-operation/02-installation/03-docker-guide.md).

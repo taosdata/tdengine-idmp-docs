@@ -33,7 +33,7 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
   The script provides the following features:
 
   1. **Automatic environment detection**: Detects and uses the available Docker Compose command on your system.
-  2. **Interactive deployment selection**: Prompts you to select the deployment mode:
+  2. **Interactive deployment selection**: Prompts you to select the deployment mode
     - **Standard deployment**: TSDB Enterprise + IDMP, suitable for basic usage.
     - **Full deployment**: TSDB Enterprise + IDMP + TDgpt, includes AI analysis features.
   3. **Smart network configuration**: Automatically detects the host IP address and configures the access URL, or allows you to customize it.
@@ -59,8 +59,8 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
   This command will automatically detect the currently running service type and use the appropriate configuration file to stop the services.  
   The script provides an interactive prompt:
 
-  - **Default behavior**: Data volumes are preserved to ensure no data is lost.
-  - **Optional cleanup**: You can choose to remove data volumes if you want a completely clean environment.
+  - **Keep data and logs**: Default, keep data volumes when stopping containers.
+  - **Clear data and logs**: Delete data volumes when stopping containers, suitable for scenarios where you need to completely clean the environment.
 
 ### 3. Alternative: Manual Docker Compose deployment
 
@@ -68,7 +68,7 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
 
    ```bash
    cd tdengine-idmp-deployment/docker
-   export IDMP_URL="http://your-host-ip:6042"  # Replace with your actual IP address
+   export IDMP_URL="http://your-host-ip:6042"  # Replace with your actual IP address or configured DNS names
    ```
 
 #### Choose deployment mode
