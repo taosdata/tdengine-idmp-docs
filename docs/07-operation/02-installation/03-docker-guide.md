@@ -15,7 +15,9 @@
 git clone https://github.com/taosdata/tdengine-idmp-deployment.git
 ```
 
-该仓库包含了 TDengine IDMP 与 TSDB 的 Docker Compose 配置文件。您可以选择使用统一管理脚本进行部署或者手动使用 Docker Compose 部署。
+该仓库包含了 TDengine IDMP 与 TSDB 的 Docker Compose 配置文件。
+
+您可以选择使用统一管理脚本进行部署或者手动使用 Docker Compose 部署。
 
 ### 2. 使用统一管理脚本部署（推荐）
 
@@ -27,7 +29,14 @@ chmod +x idmp.sh
 ./idmp.sh start
 ```
 
-执行上述命令会自动拉取所需镜像并以后台方式启动标准部署（TSDB Enterprise + IDMP）或 完整部署（TSDB Enterprise + IDMP + TDgpt）。
+执行以上命令：
+
+1. **自动环境检测**：检测并使用系统中可用的 Docker Compose 命令
+2. **交互式部署选择**：提示您选择部署模式：
+   - **标准部署**：包含 TSDB Enterprise + IDMP，适合基本功能使用
+   - **完整部署**：包含 TSDB Enterprise + IDMP + TDgpt
+3. **智能网络配置**：自动检测主机 IP 地址并配置访问 URL，也可自定义访问地址
+4. **一键启动**：自动拉取所需镜像（如本地不存在）并以后台模式启动选定的服务
 
 #### 访问服务
 
@@ -37,16 +46,19 @@ chmod +x idmp.sh
 - [http://ip:6042](http://ip:6042)
 
 :::tip
-如需修改端口，请编辑 `docker-compose.yml` 文件中的 `ports` 配置项。
+如需修改端口，请编辑 `docker-compose.yml` 或者 `docker-compose-tdgpt.yml` 文件中的 `ports` 配置项。
 :::
 
 #### 停止服务
 
-执行以下命令，会停止并移除所有通过 Compose 启动的容器，但不会删除数据卷。
-
 ```bash
 ./idmp.sh stop
 ```
+
+该命令会自动检测当前运行的服务类型并使用相应的配置文件停止服务。脚本会提供交互式选择：
+
+- **默认行为**：保留数据卷，确保数据不会丢失
+- **可选清理**：选择清理数据卷，适用于需要完全清理环境的场景
 
 ### 3. 手动使用 Docker Compose 部署
 
@@ -79,7 +91,7 @@ docker compose -f docker-compose-tdgpt.yml up -d
 - [http://ip:6042](http://ip:6042)
 
 :::tip
-如需修改端口，请编辑相应的 `docker-compose.yml` 文件中的 `ports` 配置项。
+如需修改端口，请编辑相应的 `docker-compose.yml` 或者 `docker-compose-tdgpt.yml` 文件中的 `ports` 配置项。
 :::
 
 #### 停止服务
@@ -94,7 +106,7 @@ docker compose down
 docker compose -f docker-compose-tdgpt.yml down
 ```
 
-如需清理数据，请添加 `-v` 参数：
+如需清理数据，请添加 `-v` 参数，例如：
 
 ```bash
 docker compose down -v
