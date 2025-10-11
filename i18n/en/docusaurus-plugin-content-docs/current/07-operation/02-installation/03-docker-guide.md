@@ -178,14 +178,14 @@ TDengine IDMP requires TDengine TSDB-Enterprise 3.3.7.0 or later. If your enviro
            - WINDOW_CLOSE
    ```
 
-   Under the `tda.default-connection` section, set the TDengine TSDB-Enterprise connection as follows:
-   - auth-type: Authentication method. Supports UserPassword (default) and Token.
-   - url: The IP address and port of the taosAdapter component in TDengine TSDB-Enterprise. The default port is 6041.
-   - username and password: Credentials for accessing TDengine TSDB-Enterprise. Default values are root and taosdata.
+   * Under the `tda.default-connection` section, set the TDengine TSDB-Enterprise connection as follows:
+     - auth-type: Authentication method. Supports UserPassword (default) and Token.
+     - url: The IP address and port of the taosAdapter component in TDengine TSDB-Enterprise. The default port is 6041.
+     - username and password: Credentials for accessing TDengine TSDB-Enterprise. Default values are root and taosdata.
   
-   `enable-login-captcha-check` indicates whether captcha login is enabled. The default value is false, meaning it is not enabled. If you want to enable it, you can set it to true. It can also be enabled by setting the environment variable `ENABLE_LOGIN_CAPTCHA_CHECK` to true.
+   * `enable-login-captcha-check` indicates whether captcha login is enabled. The default value is false, meaning it is not enabled. If you want to enable it, you can set it to true. It can also be enabled by setting the environment variable `ENABLE_LOGIN_CAPTCHA_CHECK` to true.
 
-   Under `tda.analysis`, `event.urls` specifies the WebSocket address through which TDengine TSDB-Enterprise accesses the IDMP service.
+   * Under `tda.analysis`, `event.urls` specifies the WebSocket address through which TDengine TSDB-Enterprise accesses the IDMP service.
 
 3. Start the TDengine IDMP container
 
