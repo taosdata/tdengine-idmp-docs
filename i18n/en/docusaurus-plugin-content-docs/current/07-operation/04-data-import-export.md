@@ -98,7 +98,7 @@ The CSV configuration file uses the `UTF-8` encoding format and does not current
 |               |                  |                       |                |                       |                         |                           | phase                    | Phase                    | TDengineMetric   |                                 |        |          |              |             |               |                |
 |               |                  |                       |                |                       |                         |                           | groupid                  | Group ID                 | TDengineTag      |                                 |        |          |              |             |               |                |
 
-2. The element path needs to be constructed from multiple tag values. This situation is different from Example 1, where the value of the `location` tag is already a `.`-separated string. The element path needs to be composed of multiple tags, forming a combination like `${tag1}.${tag2}.${tag3}`. For example, in the super table `vm_processes`, the tags `location`, `rack_num`, and `slot_num` exist. When defining the element path, these three need to be combined, while using `vm_host` as the element name. The element template is defined as `VM Disk IO`. This template does not currently exist in the base library and will be automatically created based on the CSV configuration. The CSV configuration example is as follows:
+1. The element path needs to be constructed from multiple tag values. This situation is different from Example 1, where the value of the `location` tag is already a `.`-separated string. The element path needs to be composed of multiple tags, forming a combination like `${tag1}.${tag2}.${tag3}`. For example, in the super table `vm_processes`, the tags `location`, `rack_num`, and `slot_num` exist. When defining the element path, these three need to be combined, while using `vm_host` as the element name. The element template is defined as `VM Disk IO`. This template does not currently exist in the base library and will be automatically created based on the CSV configuration. The CSV configuration example is as follows:
 
 | Database Name | Super Table Name | Element Template Name | Sub Table Name | Sub Table Filter | Element Name Expression | Element Path Expression                          | Super Table Column Name | Attribute Template Name | Reference Type   | Attribute Template Description | Attribute Template Hidden | Attribute Template Excluded | Attribute Template Default UoM | Attribute Template Display UoM | Attribute Template Default Value | Attribute Template Display Digits |
 |---------------|------------------|-----------------------|----------------|-----------------------|-------------------------|-------------------------------------------------|--------------------------|--------------------------|------------------|---------------------------------|--------|----------|--------------|-------------|---------------|----------------|
@@ -137,3 +137,10 @@ Once a CSV data import task is created, you can view the task and previously cre
 After the CSV data import task is created, if new super tables are added in TSDB, a new asset model must be added. Otherwise, metadata from the new super tables cannot be imported into IDMP, and the new data assets will not be visible in IDMP.  
 
 :::
+
+
+<style>
+th {
+  white-space: nowrap;
+}
+</style>
