@@ -137,3 +137,10 @@ Once a CSV data import task is created, you can view the task and previously cre
 After the CSV data import task is created, if new super tables are added in TSDB, a new asset model must be added. Otherwise, metadata from the new super tables cannot be imported into IDMP, and the new data assets will not be visible in IDMP.  
 
 :::
+
+
+<style>
+th {
+  white-space: nowrap;
+}
+</style>
