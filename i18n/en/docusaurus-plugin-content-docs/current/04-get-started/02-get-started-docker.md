@@ -30,21 +30,14 @@ TDengine IDMP is offered as a Docker Compose setup to make deployment easy. This
    cd tdengine-idmp-deployment/docker
    ```
 
-1. Start Docker Compose:
+2. Use the unified management script to start TDengine IDMP:
 
-   - For a minimal installation, run the following command:
-
-      ```bash
-      docker compose up -d
-      ```
+   ```bash
+   chmod +x idmp.sh
+   ./idmp.sh start
+   ```
    
-   - To install TDengine TDgpt along with TDengine IDMP and TDengine TSDB-Enterprise, run the following command:
-
-      ```bash
-      docker compose -f docker-compose-tdgpt.yml up -d
-      ```
-      
-      TDengine TDgpt includes AI/ML and other algorithms for performing time-series forecasting and anomaly detection within TDengine.
+   This command will prompt you to select a deployment mode: start standard deployment (TSDB Enterprise + IDMP) or full deployment (TSDB Enterprise + IDMP + TDgpt), and automatically pull the required images (if not available locally). For full deployment, TDgpt includes AI/ML and other algorithms for performing time-series forecasting and anomaly detection within TDengine.
 
 <Init />
 
@@ -55,13 +48,13 @@ TDengine IDMP is offered as a Docker Compose setup to make deployment easy. This
 Once you’ve completed your evaluation, you can stop and remove the TDengine containers by running the following command:
 
 ```bash
-docker compose down
+./idmp.sh stop
 ```
 
-If you also wish to remove the volumes created by TDengine, use the following command instead:
+This command will automatically detect the currently running service type and use the appropriate configuration file to stop the services.  
+The script provides an interactive prompt:
 
-```bash
-docker compose down -v
-```
+- **Keep data and logs**: Default, keep data volumes when stopping containers.
+- **Clear data and logs**: Delete data volumes when stopping containers, suitable for scenarios where you need to completely clean the environment.
 
 For more detailed instructions on starting and stopping the service, see [Docker Deployment](../07-operation/02-installation/03-docker-guide.md).
