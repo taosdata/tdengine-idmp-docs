@@ -19,16 +19,16 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
    ```
 
    This repository includes the Docker Compose file to deploy TDengine IDMP and TDengine TSDB-Enterprise.
-   
+
    You can deploy the services using either the unified management script (recommended) or manual Docker Compose commands.
 
 ### 2. Recommended: Use the unified management script
 
-    ```bash
-    cd tdengine-idmp-deployment/docker
-    chmod +x idmp.sh
-    ./idmp.sh start
-    ```
+   ```bash
+   cd tdengine-idmp-deployment/docker
+   chmod +x idmp.sh
+   ./idmp.sh start
+   ```
 
   The script provides the following features:
 
@@ -52,9 +52,9 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
 
 #### Stop the service
 
-    ```bash
-    ./idmp.sh stop
-    ```
+   ```bash
+   ./idmp.sh stop
+   ```
 
   This command will automatically detect the currently running service type and use the appropriate configuration file to stop the services.  
   The script provides an interactive prompt:
@@ -66,22 +66,22 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
 
 #### Set environment variable
 
-    ```bash
-    cd tdengine-idmp-deployment/docker
-    export IDMP_URL="http://your-host-ip:6042"  # Replace with your actual IP address
-    ```
+   ```bash
+   cd tdengine-idmp-deployment/docker
+   export IDMP_URL="http://your-host-ip:6042"  # Replace with your actual IP address
+   ```
 
 #### Choose deployment mode
 
   **Standard deployment (TSDB Enterprise + IDMP):**
-    ```bash
-    docker compose up -d
-    ```
+   ```bash
+   docker compose up -d
+   ```
 
   **Full deployment (TSDB Enterprise + IDMP + TDgpt):**
-    ```bash
-    docker compose -f docker-compose-tdgpt.yml up -d
-    ```
+   ```bash
+   docker compose -f docker-compose-tdgpt.yml up -d
+   ```
 
 #### Access the service
 
@@ -102,7 +102,7 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
 
    ```bash
    docker compose down
-    or
+   # or
    docker compose -f docker-compose-tdgpt.yml down
    ```
 
@@ -110,7 +110,7 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
 
    ```bash
    docker compose down -v
-    or
+   # or
    docker compose -f docker-compose-tdgpt.yml down -v
    ```
 

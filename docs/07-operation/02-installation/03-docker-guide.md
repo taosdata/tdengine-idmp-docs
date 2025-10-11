@@ -108,8 +108,14 @@ docker compose -f docker-compose-tdgpt.yml down
 
 如需清理数据，请添加 `-v` 参数，例如：
 
+**清理标准部署数据**
 ```bash
 docker compose down -v
+```
+
+**停止完整部署数据**
+```bash
+docker compose -f docker-compose-tdgpt.yml down -v
 ```
 
 ## 单独部署 TDengine IDMP 服务
