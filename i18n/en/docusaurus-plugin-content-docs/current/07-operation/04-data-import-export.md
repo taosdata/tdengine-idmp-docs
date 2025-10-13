@@ -91,7 +91,7 @@ The CSV configuration file uses the `UTF-8` encoding format and does not current
 **CSV Configuration File Examples**  
 1. The element path is already defined in the super table. Here, TDengine TSDB’s commonly used smart meter is used as an example. In the structure of the smart meter super table (`meters`), the tag `location` is defined, which stores a `.`-separated path. This can be considered as the element path already existing in the super table. Each sub-table of `meters` corresponds to an element. Since there is no tag for the element name, the sub-table name is defined as the element name. In this case, the CSV configuration example is as follows:
 
-<div class="table-nowrap">
+:::table-nowrap
    
 | Database Name | Super Table Name | Element Template Name | Sub Table Name | Sub Table Filter | Element Name Expression | Element Path Expression   | Super Table Column Name | Attribute Template Name | Reference Type   | Attribute Template Description | Attribute Template Hidden | Attribute Template Excluded | Attribute Template Default UoM | Attribute Template Display UoM | Attribute Template Default Value | Attribute Template Display Digits |
 |---------------|------------------|-----------------------|----------------|-----------------------|-------------------------|---------------------------|--------------------------|--------------------------|------------------|---------------------------------|--------|----------|--------------|-------------|---------------|----------------|
@@ -100,9 +100,11 @@ The CSV configuration file uses the `UTF-8` encoding format and does not current
 |               |                  |                       |                |                       |                         |                           | phase                    | Phase                    | TDengineMetric   |                                 |        |          |              |             |               |                |
 |               |                  |                       |                |                       |                         |                           | groupid                  | Group ID                 | TDengineTag      |                                 |        |          |              |             |               |                |
 
+:::
+
 2. The element path needs to be constructed from multiple tag values. This situation is different from Example 1, where the value of the `location` tag is already a `.`-separated string. The element path needs to be composed of multiple tags, forming a combination like `${tag1}.${tag2}.${tag3}`. For example, in the super table `vm_processes`, the tags `location`, `rack_num`, and `slot_num` exist. When defining the element path, these three need to be combined, while using `vm_host` as the element name. The element template is defined as `VM Disk IO`. This template does not currently exist in the base library and will be automatically created based on the CSV configuration. The CSV configuration example is as follows:
 
-<div class="table-nowrap">
+:::table-nowrap
 
 | Database Name | Super Table Name | Element Template Name | Sub Table Name | Sub Table Filter | Element Name Expression | Element Path Expression                          | Super Table Column Name | Attribute Template Name | Reference Type   | Attribute Template Description | Attribute Template Hidden | Attribute Template Excluded | Attribute Template Default UoM | Attribute Template Display UoM | Attribute Template Default Value | Attribute Template Display Digits |
 |---------------|------------------|-----------------------|----------------|-----------------------|-------------------------|-------------------------------------------------|--------------------------|--------------------------|------------------|---------------------------------|--------|----------|--------------|-------------|---------------|----------------|
@@ -113,11 +115,11 @@ The CSV configuration file uses the `UTF-8` encoding format and does not current
 |               |                  |                       |                |                       |                         |                                                 | vm_host                  |                          | TDengineTag      |                                 |        |          |              |             |               |                |
 |               |                  |                       |                |                       |                         |                                                 | rack_num                 |                          | TDengineTag      |                                 |        |          |              |             |               |                |
 
-</div>
+:::
 
 3. When the sub-table does not contain any path-related information. In this case, there are two approaches: one is to modify the table structure by adding a new tag column to store the element path corresponding to the sub-table. After such modification, the element path can be specified using the above two methods. The other approach is to explicitly configure the element path in the CSV. Next, a single-column storage structure is used to demonstrate this configuration method. The super table name is `opc_stw`. The sub-tables under this super table correspond to four devices: `Inlet and Outlet Water Monitoring`, `Bioreactor North Group`, `Bioreactor South Group`, and `MBR Tank`. Among them, both `Bioreactor North Group` and `Bioreactor South Group` use the `Bioreactor` element template.
 
-<div class="table-nowrap">
+:::table-nowrap
 
 | Database Name | Super Table Name | Element Template Name | Sub Table Name | Sub Table Filter | Element Name Expression | Element Path Expression                                | Super Table Column Name | Attribute Template Name        | Reference Type   | Attribute Template Description | Attribute Template Hidden | Attribute Template Excluded | Attribute Template Default UoM | Attribute Template Display UoM | Attribute Template Default Value | Attribute Template Display Digits |
 |---------------|------------------|-----------------------|----------------|-----------------------|-------------------------|-------------------------------------------------------|--------------------------|-------------------------------|------------------|---------------------------------|--------|----------|--------------|-------------|---------------|----------------|
@@ -133,7 +135,7 @@ The CSV configuration file uses the `UTF-8` encoding format and does not current
 | db_stw        | opc_stw          | MBR Tank              | t_WastewaterDemo_WWTP_Bioreactor_MBRTank_MBRTank_Outlet_NH4             |                       | MBR Tank                  | `WastewaterDemo.WWTP.Bioreactor.MBRTank`             | val                      | MBR Tank Outlet NH4           | TDengineMetric   |                                 |        |          | milligram per liter         | milligram per liter        |               | 2              |
 |               |                  |                       | t_WastewaterDemo_WWTP_Bioreactor_MBRTank_MBRTank_Outlet_NO3             |                       | MBR Tank                  | `WastewaterDemo.WWTP.Bioreactor.MBRTank`             | val                      | MBR Tank Outlet NO3           | TDengineMetric   |                                 |        |          | milligram per liter         | milligram per liter        |               | 2              |
 
-</div>
+:::
 
 ### Automatic Synchronization
 Once the CSV data import task is created, if new subtables are added in TSDB, they will be automatically synchronized to IDMP without manual intervention.  
