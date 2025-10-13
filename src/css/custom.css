@@ -432,7 +432,6 @@ ul.theme-doc-sidebar-menu ul ul ul ul ul a:before {
   display: none
 }
 
-/* 禁止表格表头换行 */
 .table-nowrap th {
   white-space: nowrap;
 }
