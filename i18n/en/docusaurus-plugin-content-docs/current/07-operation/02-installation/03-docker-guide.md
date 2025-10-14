@@ -177,14 +177,14 @@ TDengine IDMP requires TDengine TSDB-Enterprise 3.3.7.0 or later. If your enviro
            - WINDOW_CLOSE
    ```
 
-   Under the `tda.default-connection` section, set the TDengine TSDB-Enterprise connection as follows:
-   - auth-type: Authentication method. Supports UserPassword (default) and Token.
-   - url: The IP address and port of the taosAdapter component in TDengine TSDB-Enterprise. The default port is 6041.
-   - username and password: Credentials for accessing TDengine TSDB-Enterprise. Default values are root and taosdata.
+   * Under the `tda.default-connection` section, set the TDengine TSDB-Enterprise connection as follows:
+     - auth-type: Authentication method. Supports UserPassword (default) and Token.
+     - url: The IP address and port of the taosAdapter component in TDengine TSDB-Enterprise. The default port is 6041.
+     - username and password: Credentials for accessing TDengine TSDB-Enterprise. Default values are root and taosdata.
+  
+   * Under `tda.analysis`, `event.urls` specifies the WebSocket address through which TDengine TSDB-Enterprise accesses the IDMP service.
 
-   Under `tda.analysis`, `event.urls` specifies the WebSocket address through which TDengine TSDB-Enterprise accesses the IDMP service.
-
-2. Start the TDengine IDMP container
+3. Start the TDengine IDMP container
 
    ```bash
    docker run -d \
@@ -201,11 +201,11 @@ TDengine IDMP requires TDengine TSDB-Enterprise 3.3.7.0 or later. If your enviro
 
    :::
 
-3. Access TDengine IDMP.
+4. Access TDengine IDMP.
 
    By default, the service listens on port 6042 of the host. To access the service, open `http://localhost:6042` or specify the IP address of the host.
 
-4. Stop and remove the container:
+5. Stop and remove the container:
 
    ```bash
    docker stop tdengine-idmp
