@@ -40,8 +40,8 @@ TDengine IDMP uses the following default ports. Please ensure these ports are no
 |---|---|---|
 | 6042 | HTTP | External Port: This port is used by the TDengine IDMP web interface and REST API for browser access and API communication. Please ensure that your firewall allows access to this port. |
 | 6038 | HTTP | Internal Port: This port is used by the TDengine IDMP internal H2 database service for accessing the H2 database web console. |
-| 6040 | HTTP | Internal Port: This port is used by the internal chat service API of TDengine IDMP for accessing the chat functionality. |
 | 6039 | TCP  | Internal Port: Listening port for TDengine IDMP's internal H2 database service, used to access the internal H2 database. |
+| 6040 | HTTP | Internal Port: This port is used by the internal chat service API of TDengine IDMP for accessing the chat functionality. |
 
 ## Installation Directory
 
