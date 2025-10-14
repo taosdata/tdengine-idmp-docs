@@ -151,7 +151,7 @@ tda:
   index-dir: /var/lib/taos/idmp/index # index directory
   log-dir: /var/log/taos # all IDMP logs including IDMP server and AI server will be stored in this directory
   ai-server:
-    url: http://localhost:8777 # AI server URL
+    url: http://localhost:6040 # AI server URL
   server-url: http://192.168.1.100:6042 # public IDMP URL
   default-connection:
     enable: true
