@@ -2,7 +2,7 @@
 
 ## Overview
 
-The import/export functionality enables migration and sharing of idmp data between different environments or systems, ensuring data consistency and integrity.
+The import/export functionality enables migration and sharing of IDMP data between different environments or systems, ensuring data consistency and integrity.
 
 ### Supported Resource Types
 
