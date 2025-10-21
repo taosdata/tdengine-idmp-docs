@@ -2,26 +2,35 @@
 
 ## 功能概述
 
-导入导出功能用于在不同环境或系统之间迁移和共享 IDMP 数据，确保数据的一致性和完整性。
+导入导出功能用于在不同环境或系统之间迁移和共享 TDengine IDMP 的数据和依赖的 TDengine TSDB 的数据，确保数据的一致性和完整性。目前的功能是只能全量导入和导出，可选择资源正在开发过程中，会在近期推出。
 
 ### 支持的资源类型
 
 - 元素 (Elements)
+- 面板 (Panels)
+- 分析（Analyses）
+- 仪表板 (Dashboards)
+- 通知规则 (Notify Rules)
 - 元素模板 (Element Templates)
 - 属性模板 (Attribute Templates)
+- 面板模板 (Panel Templates)
+- 分析模板（Analysis Templates）
+- 仪表板模板 (Dashboard Templates)
+- 通知规则模板 (Notify Rule Templates)
 - 事件模板 (Event Templates)
-- 通知规则 (Notify Rules)
-- 仪表板 (Dashboards)
-- 面板 (Panels)
 - 枚举集 (Enumeration Sets)
 - 分类 (Categories)
 - 计量单位 (UOM)
+
+### 主页面
+
+在整个页面右上角的头像的弹出菜单中，点击“管理后台”，进入到“管理后台”页面。然后点击“导入/导出”按钮，进入“导入/导出”主页面。
 
 ## 导出功能
 
 ### 访问路径
 
-管理后台 > 导入/导出 > 导出按钮
+点击“导入/导出”主页面的导出图标按钮打开导出页面。
 
 ### 操作步骤
 
@@ -140,6 +149,7 @@ graph TD
 
 ## 未来规划
 
-- 支持更多资源类型的选择性导出（元素模板、事件模板、分析模板、面板等）。
+- 支持资源按照选择来导出（元素模板、事件模板、分析模板、面板模板等）。
 - 支持冲突处理策略（覆盖、跳过、重命名）。
-- 支持新版本 TaosGen，增加数据回放功能。
+- 支持在导入页面可以选择部分导入。
+- 支持新版本 taosGen，增加数据回放功能。
