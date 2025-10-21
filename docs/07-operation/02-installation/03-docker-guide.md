@@ -173,7 +173,6 @@ tda:
     ttl: 604800 # user token expired in 604800 seconds or 7 days
   permission-cache:
     expire-time: 3600 # permission cache expired for 3600 seconds
-  enable-login-captcha-check: ${ENABLE_LOGIN_CAPTCHA_CHECK:false}
   analysis:
     event:
       urls: ws://192.168.1.100:6042 # The websocket URI for tdengine to access IDMP server.
