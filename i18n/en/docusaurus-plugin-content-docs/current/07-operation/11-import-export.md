@@ -147,4 +147,5 @@ The task list displays all import records.
 
 - Support selective export of more resource types (element templates, event templates, analysis templates, panels, etc.).
 - Support conflict handling strategies (overwrite, skip, rename).
+- Support selective import on the import page.
 - Support new version of TaosGen with data replay functionality.
