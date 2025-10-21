@@ -2,26 +2,33 @@
 
 ## Overview
 
-The import/export functionality enables migration and sharing of IDMP data between different environments or systems, ensuring data consistency and integrity.
+The import/export functionality is used to migrate and share TDengine IDMP data and dependent TDengine TSDB data between different environments or systems, ensuring data consistency and integrity. Currently, only full import and export are supported. Selective resource import/export is under development and will be released soon.
 
 ### Supported Resource Types
 
 - Elements
+- Panels
+- Analyses
+- Dashboards
+- Notify Rules
 - Element Templates
 - Attribute Templates
+- Panel Templates
+- Analysis Templates
+- Dashboard Templates
+- Notify Rule Templates
 - Event Templates
-- Notify Rules
-- Dashboards
-- Panels
 - Enumeration Sets
 - Categories
 - Unit of Measurement (UOM)
 
-## Export Function
+### Main Page
 
-### Access Path
+Click the "Admin Console" option in the dropdown menu under the avatar icon in the top-right corner of the page to enter the "Admin Console" page. Then click the "Import/Export" button to access the "Import/Export" main page.
 
-Admin Console > Import/Export > Export Button
+## Export Feature
+
+Click the export icon button on the "Import/Export" main page to open the export page.
 
 ### Operation Steps
 
@@ -67,11 +74,9 @@ export_timestamp.zip
 
 Learn more about [TaosGen Configuration](https://docs.tdengine.com/tdengine-reference/tools/taosgen/)
 
-## Import Function
+## Import Feature
 
-### Access Path
-
-Admin Console > Import/Export > Import Button
+Click the import icon button on the "Import/Export" main page to open the export page.
 
 ### Operation Steps
 
