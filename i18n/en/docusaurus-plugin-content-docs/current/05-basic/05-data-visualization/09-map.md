@@ -10,7 +10,13 @@ Maps are mainly used for visualizing geographical regional data and displaying s
 
 #### Map GeoJSON
 
-Upload the map file, which must be in GeoJSON format.
+Upload a map file, which must be in GeoJSON format. Expand "Graphic Configuration", click the map upload button, select and upload a map file in JSON format. The map will then be displayed in the central main area, and it supports zooming and panning.
+
+![upload map](./images/map-upload.png)
+
+Map data needs to be aggregated based on the region names in the map. The commonly used data configuration method is shown in the figure below: data is aggregated by address. If the address data cannot be directly matched with the region names in the map, an expression is required to process the address data.
+
+![map data](./images/map-data.png)
 
 #### Map Display
 
@@ -26,6 +32,6 @@ To continuously enhance your user experience, we will keep adding practical conf
 
 | Configuration  | Description                                              |
 |------------|-------------------------------------------------------------|
-| Map Controls | The map can be zoomed in/out, moved, and more.          |
+| Track Playback | Supports replaying the running trajectory within a specified time period.          |
 | Map Layers  | Multiple map layers can be overlaid          |
 | Map Online | It is possible to access online maps.          |
