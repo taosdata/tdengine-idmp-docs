@@ -26,7 +26,7 @@ IDMP 已经内置了质量、长度、时间、温度、体积、力、电流、
 
 ![formula with uom example 1](./formula_uom.png)
 
-再例如下面两个属性 Power 和 Power2，计量单位结果的单位是 W，公式ower + Power2` 结果的单位是 W， 公式 `Power2 + Power` 结果的单位是 kW。
+再例如下面两个属性 Power 和 Power2，计量单位结果的单位是 W，公式`Power + Power2` 结果的单位是 W， 公式 `Power2 + Power` 结果的单位是 kW。
 
 ![power add power2](./formula_add_power2.png)
 
