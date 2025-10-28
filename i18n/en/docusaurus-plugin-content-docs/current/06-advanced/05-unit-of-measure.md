@@ -12,7 +12,7 @@ TDengine IDMP comes with built-in units for mass, length, time, temperature, vol
 
 Unit of measurement management is available under **Libraries** in the main menu. The interface is intuitive and requires no further explanation.
 
-## Units of Measurement and Formula References
+## Units of Measurement in Formula References
 
 The expressions in [formula references](../basic/data-model#公式) can be quite complex. When attributes with configured units of measurement are involved in expression calculations, various scenarios may arise. Below are the handling rules for different situations. To simplify the explanation, we use uppercase letters to represent the quantities involved in calculations, such as A and B, which may represent either an attribute or an intermediate calculation result.
 
@@ -60,3 +60,9 @@ Expressions support comparison operators: `=`, `<>`, `>`, `<`, `>=`, `<=`; and b
 ### Functions
 
 If a function is used in an expression, the UOM of the function's result will match the UOM of the function's first parameter. For example, the result of the formula `SIN(A)` will have the same UOM as A.
+
+## Automatic Unit Conversion
+
+As mentioned above, when quantities with units of measurement participate in formula calculations, unit conversions are performed automatically based on the context. In addition to this, there are two other scenarios where automatic unit conversion occurs:
+1. When an attribute's default unit of measurement differs from its display unit of measurement, the attribute value is automatically displayed using the display unit.
+2. When the unit of measurement of a formula result differs from the attribute's unit of measurement, the formula result is automatically converted to match the attribute's unit of measurement for display. (Here, the attribute's unit of measurement refers to the unit used for displaying the attribute value).
