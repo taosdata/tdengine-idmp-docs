@@ -1,6 +1,6 @@
 # Scatter Chart
 
-The core value of a scatter plot lies in exploring and demonstrating the relationship between two variables. The main functions of a scatter plot include determining whether there is a correlation between two variables, the direction and intensity of the correlation, discovering outliers, and observing the distribution of data by observing the distribution pattern of points.
+The core value of a scatter plot lies in exploring and demonstrating the relationship between two variables. The main functions of a scatter plot include determining whether there is a correlation between two variables, the direction and intensity of the correlation, discovering outliers, and observing the distribution of data by observing the distribution pattern of points,conduct cluster analysis and regression analysis (linear regression, exponential regression, polynomial regression).
 
 ![Scatter Demo](./images/scatter-demo.png)
 
@@ -61,14 +61,12 @@ You can configure boundary values to mark the safe area and warning area of a me
 
 ![Limits](./images/scatter-limit.png)
 
-### Transform
+### Data Aggregation
 
-#### Data Aggregation
-
-Use dots of different colors to distinguish different categories or groups.
+Select data aggregation in data transformation and use dots of different colors to distinguish different categories or groups to achieve the effect of cluster analysis
 ![Data Aggregation](./images/scatter-aggregation.png)
 
-#### Regression Anallysis
+### Regression Anallysis
 
 Add a straight line or curve (such as a linear regression line) that best conforms to the trend of the data points in the graph to help more clearly display the overall trend of the variable relationship. Configurable functions include `Linear Regression`, `Exponential Regression`, and `Polynomial Regression`, among which the polynomial regression can be customized with the order of the polynomial.
 
