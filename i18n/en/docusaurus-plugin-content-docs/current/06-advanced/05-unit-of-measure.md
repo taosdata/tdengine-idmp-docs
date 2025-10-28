@@ -32,6 +32,10 @@ Another example: consider two attributes Power and Power2, with units W and kW r
 
 ![power add power2](./power_add_power2.jpg)
 
+:::tip
+When editing a formula reference for an attribute, you can preview the expression value or detect errors in advance by clicking the "Evaluate" button in the upper right corner of the expression editor.
+Clicking the "Evaluate" button has another benefit: the page remembers the unit of measurement of the expression evaluation result. If the attribute does not yet have a unit of measurement class and default unit configured, after closing the expression editor, the page will automatically set the unit from the last evaluation result as the attribute's default unit. This saves you the trouble of manually selecting the unit.
+:::
 
 ### Multiplication and Division Operations
 
@@ -66,3 +70,6 @@ If a function is used in an expression, the UOM of the function's result will ma
 As mentioned above, when quantities with units of measurement participate in formula calculations, unit conversions are performed automatically based on the context. In addition to this, there are two other scenarios where automatic unit conversion occurs:
 1. When an attribute's default unit of measurement differs from its display unit of measurement, the attribute value is automatically displayed using the display unit.
 2. When the unit of measurement of a formula result differs from the attribute's unit of measurement, the formula result is automatically converted to match the attribute's unit of measurement for display. (Here, the attribute's unit of measurement refers to the unit used for displaying the attribute value).
+
+If the unit of measurement of the formula result does not belong to the same unit of measurement class as the attribute's unit, automatic conversion is not possible. As shown below:
+![result convert error](./result_convert_error.png)
