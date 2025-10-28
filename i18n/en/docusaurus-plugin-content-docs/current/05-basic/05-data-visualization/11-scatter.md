@@ -66,11 +66,11 @@ You can configure boundary values to mark the safe area and warning area of a me
 Select data aggregation in data transformation and use dots of different colors to distinguish different categories or groups to achieve the effect of cluster analysis
 ![Data Aggregation](./images/scatter-aggregation.png)
 
-### Regression Anallysis
+### Regression Analysis
 
 Add a straight line or curve (such as a linear regression line) that best conforms to the trend of the data points in the graph to help more clearly display the overall trend of the variable relationship. Configurable functions include `Linear Regression`, `Exponential Regression`, and `Polynomial Regression`, among which the polynomial regression can be customized with the order of the polynomial.
 
-![Regression Anallysis](./images/scatter-analysis.png)
+![Regression Analysis](./images/scatter-analysis.png)
 
 ### Legend
 
