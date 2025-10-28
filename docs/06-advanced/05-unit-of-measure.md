@@ -22,13 +22,13 @@ IDMP 已经内置了质量、长度、时间、温度、体积、力、电流、
 3. 如果相加的两个量一个有计量单位一个没有，那么自动将没有计量单位的量转为与另一个量有相同计量单位的量，然后再计算。比如你可以将电流与一个没有单位的常量相加。
 
 #### 示例
-例如试图将电流和电压两个属性相加时报错: Operator "+" cannot be applied to values with different UOM class: "Electric Current" and "Electric Potential"。
+例如试图将电流和电压两个属性相加时会提示错误：“操作符'+'不能应用于不同的计量单位分类:'电流'和'电压'"。
 
-![formula with uom example 1](./formula-uom.jpg)
+![formula with uom example 1](./formula_uom.png)
 
 再例如下面两个属性 Power 和 Power2， 计量单位分别是 W 和 kW。 公式 `Power + Power2` 结果的单位是 W， 公式 `Power2 + Power` 结果的单位是 kW。
 
-![power add power2](./power_add_power2.jpg)
+![power add power2](./formula_add_power2.png)
 
 
 ### 乘除运算
