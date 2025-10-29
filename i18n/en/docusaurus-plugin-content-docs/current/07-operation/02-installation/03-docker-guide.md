@@ -147,7 +147,7 @@ TDengine IDMP requires TDengine TSDB-Enterprise 3.3.7.0 or later. If your enviro
      index-dir: /var/lib/taos/idmp/index # index directory
      log-dir: /var/log/taos # all IDMP logs including IDMP server and AI server will be stored in this directory
      ai-server:
-       url: http://localhost:8777 # AI server URL
+       url: http://localhost:6040 # AI server URL
      server-url: http://localhost:6042 # public IDMP URL
      default-connection:
        enable: true
