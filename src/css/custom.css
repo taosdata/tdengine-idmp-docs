@@ -432,6 +432,7 @@ ul.theme-doc-sidebar-menu ul ul ul ul ul a:before {
   display: none
 }
 
-.table-nowrap th {
+.table-nowrap th,
+.table-nowrap td {
   white-space: nowrap;
 }
