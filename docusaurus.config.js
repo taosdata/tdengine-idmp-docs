@@ -1,12 +1,6 @@
 // @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
-// There are various equivalent ways to declare your Docusaurus config.
-// See: https://docusaurus.io/docs/api/docusaurus-config
 
 import { themes as prismThemes } from 'prism-react-renderer';
-
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const getTitle = () => {
   const locale = process.env.DOCUSAURUS_CURRENT_LOCALE || 'zh-Hans';
@@ -30,22 +24,19 @@ const config = {
   title: getTitle(),
   tagline: '工业互联网全量设备的元数据可视化管理系统',
   favicon: '/favicon.ico',
-
   url: 'https://idmpdocs.taosdata.com',
+  // trailingSlash: true,
   baseUrl: '/',
   onBrokenAnchors: 'throw',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'throw',
-
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'zh-Hans',
     locales: ['en', 'zh-Hans'],
     localeConfigs: {
       'en': {
         label: 'English',
+        htmlLang: 'en-US'
       },
       'zh-Hans': {
         label: '简体中文',
@@ -60,12 +51,15 @@ const config = {
         docs: {
           routeBasePath: "/",
           sidebarPath: './sidebars.js',
-          // editUrl:
-          //   'https://github.com/taosdata/tdasset-docs/tree/main',
-          // editLocalizedFiles: true,
+          breadcrumbs: false,
         },
         googleTagManager: {
           containerId: getGTMID()
+        },
+        sitemap: {
+          lastmod: 'datetime',
+          changefreq: null,
+          priority: null
         },
         blog: false,
         theme: {
@@ -74,18 +68,14 @@ const config = {
       }),
     ],
   ],
-
-
-  // themes: ['@docusaurus/theme-mermaid'],
-  // // In order for Mermaid code blocks in Markdown to work,
-  // // you also need to enable the Remark plugin with this option
-  // markdown: {
-  //   mermaid: true,
-  // },
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: "light",
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
+      },
       docs: {
         sidebar: {
           hideable: true,
@@ -101,10 +91,6 @@ const config = {
       metadata: [
         // This would become <meta name="keywords" content="..."> in the generated HTML
         {
-          name: "keywords",
-          content: "TDengine IDMP, asset",
-        },
-        {
           name: "description",
           content: "TDengine Industrial Data Management Platform（TDengine IDMP）是一物联网、工业数据管理系统，它通过经典的树状结构组织传感器、设备采集的数据，实现数据的语境化、标准化、并提供实时分析、可视化、事件管理与报警等功能，旨在帮助企业从运营数据中挖掘出商业价值",
         },
@@ -113,17 +99,14 @@ const config = {
           content: "code-Fvrqff6sDg",
         },
       ],
-      colorMode: {
-        defaultMode: "light",
-        disableSwitch: false,
-        respectPrefersColorScheme: false, // not respect user's system preference
-      },
+
       navbar: {
         hideOnScroll: true,
-        title: "",
         logo: {
-          alt: "",
+          alt: "TDengine IDMP",
           src: "/img/tdengine-idmp.svg",
+          height: 64,
+          width: 224.25
         },
         items: [
           {
@@ -152,58 +135,7 @@ const config = {
             position: "right",
             className: "navbarSearchTemp"
           },
-          // {
-          //   type: "docsVersionDropdown", // 固定类型，用于启用版本选择
-          //   position: "right", // 下拉菜单位置（'left' 或 'right'，默认右对齐）
-          //   label: "version", // 自定义下拉菜单标签（默认值为 'Version'）
-          //   // dropdownActiveClassDisabled: true, // 可选：禁用下拉菜单项的激活状态
-          // },
-          // {
-          //   type: 'localeDropdown',
-          //   position: 'right',
-          //   dropdownItemsAfter: [
-          //     {
-          //       to: 'https://idmpdocs.taosdata.com/',
-          //       label: 'Help Us Translate',
-          //     },  
-          //   ],         
-          // },
-
-
         ],
-      },
-      footer: {
-        style: "dark",
-        links: [
-          // {
-          //   title: "Docs",
-          //   items: [
-          //     {
-          //       label: "Tutorial",
-          //       to: "/",
-          //     },
-          //   ],
-          // },
-          // {
-          //   title: "Community",
-          //   items: [
-          //     {
-          //       label: "Stack Overflow",
-          //       href: "https://stackoverflow.com/questions/tagged/tdengine",
-          //     },
-          //   ],
-          // },
-          // {
-          //   title: "More",
-          //   items: [
-          //     {
-          //       label: "GitHub",
-          //       href: "https://github.com/taosdata/TDasset",
-          //     },
-          //   ],
-          // },
-        ],
-        copyright: `Copyright © 2017-${new Date().getFullYear()} 涛思数据`,
       },
       prism: {
         theme: prismThemes.github,
@@ -228,4 +160,5 @@ const config = {
     "/fonts/css/ibm-plex.min.css"
   ]
 };
+
 export default config;
