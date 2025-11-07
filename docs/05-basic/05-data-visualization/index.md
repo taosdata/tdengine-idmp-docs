@@ -73,7 +73,7 @@ tbname 作为特殊的维度，如何表达式为空，只会作为分组和排�
 
 :::note
 
-1. 以上参数均支持自动补全，在 SQL 编辑器中，看到提示后，按回车即可自动补全
+1. 以上参数均支持自动补全：在 SQL 编辑器中，输入 `FROM_TIME` 可自动补全为 `${FROM_TIME}`，输入 `TO_TIME` 可自动补全为 `${TO_TIME}`，输入 `ELEMENT` 可自动补全为 `${Element#fullVirtualTable}`
 2. 参数 `${FROM_TIME}` 和 `${TO_TIME}` 在被替换时，会根据上下文，自动判断是否添加单引号，使用参数时，无需添加
 3. 参数 `${Element#fullVirtualTable}` 在被替换时，会根据上下文，自动判断是否添加反引号，使用参数时，无需添加
 
