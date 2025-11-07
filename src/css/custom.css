@@ -101,10 +101,6 @@ caption {
   align-items: center
 }
 
-.sidebarLogo_YnPk img.themedComponent_HNR2 {
-  height: 64px
-}
-
 .pagination-nav__label {
   font-size: var(--ifm-pagination-font-size)
 }
