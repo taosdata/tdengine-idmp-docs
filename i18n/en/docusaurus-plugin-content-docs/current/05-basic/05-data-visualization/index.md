@@ -84,7 +84,7 @@ Advanced queries also support the following three replacement parameters:
 
 :::note
 
-1. All of the above parameters support autocomplete — in the SQL editor, when you see the suggestion, press Enter to autocomplete.
+1. All of the above parameters support autocomplete: in the SQL editor, typing `FROM_TIME` will autocomplete to `${FROM_TIME}`, typing `TO_TIME` will autocomplete to `${TO_TIME}`, and typing `ELEMENT` will autocomplete to `${Element#fullVirtualTable}`.
 2. When `${FROM_TIME}` and `${TO_TIME}` are substituted, they will automatically determine whether to add single quotes based on context; you do not need to add quotes when using these parameters.
 3. When `${Element#fullVirtualTable}` is substituted, it will automatically determine whether to add backticks based on context; you do not need to add backticks when using this parameter.
 
