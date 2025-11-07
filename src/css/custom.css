@@ -5,8 +5,9 @@
  */
 
 /* You can override the default Infima variables here. */
+
 :root {
-  --ifm-color-primary: #2d7df0;
+  --ifm-color-primary: var(--accent);
   --ifm-color-primary-dark: #126dee;
   --ifm-color-primary-darker: #1066e2;
   --ifm-color-primary-darkest: #0d54ba;
@@ -14,14 +15,19 @@
   --ifm-color-primary-lighter: #5596f3;
   --ifm-color-primary-lightest: #7daef6;
   --ifm-color-secondary-dark: #d4d5d8;
-  --ifm-navbar-height: 100px;
+  --ifm-navbar-height: 80px;
+  --ifm-navbar-link-color: var(--contrast);
+  --ifm-navbar-link-hover-color: var(--accent);
   --ifm-font-family-base: "IBM Plex Sans", sans-serif;
   --ifm-font-family-monospace: "IBM Plex Mono", monospace;
+  --ifm-font-color-base: var(--contrast);
+  --ifm-h1-font-size: 2rem;
+  --ifm-h2-font-size: 1.75rem;
+  --ifm-h3-font-size: 1.5rem;
+  --ifm-h4-font-size: 1.25rem;
+  --ifm-heading-font-weight: 600;
   --ifm-navbar-item-padding-horizontal: 10px;
-  --white: #fefefe;
-  --ifm-font-color-base: #141414;
-  --docusaurus-highlighted-code-line-bg: rgb(178, 180, 186);
-  --ifm-navbar-link-color: #333;
+  --ifm-navbar-padding-vertical: 0;
 
   --contrast: #141414;
   --contrast-2: #595959;
@@ -42,126 +48,23 @@
   --accent-11: #EB2828
 }
 
-/* 探迹集客，隐藏默认图标 */
-.zSz_x {
-  display: none;
+.navbarSearchTemp {
+  display: none
 }
 
-.navbar::before {
-  content: "";
-  background-image: url('/img/banner.png');
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: cover;
-  z-index: -1;
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  transition: inherit;
+/*
+.markdown h1:first-child {
+  font-size: 2rem
 }
 
-.navbar-sidebar__brand {
-  background-image: url('/img/banner.png');
+.markdown>h2 {
+  font-size: 1.75rem
 }
 
-.navbar__link {
-  color: var(--ifm-navbar-link-color);
-  font-weight: 300;
-  font-size: 17.6px;
-  line-height: 60px;
-  letter-spacing: 0;
+.markdown>h3 {
+  font-size: 1.5rem
 }
-
-.navbar__link:hover {
-  color: #0041CE;
-  text-decoration: none;
-}
-
-.navbar__link--active {
-  color: #0041CE;
-  text-decoration: none;
-  border-bottom: 1px solid white;
-}
-
-.navbar__item--locale-dropdown,
-.navbar__item.dropdown {
-  display: none !important;
-}
-
-.breadcrumbs {
-  display: none !important;
-}
-
-/* For readability concerns, you should choose a lighter palette in dark mode. */
-[data-theme="dark"] {
-  --ifm-color-primary: #84b3f5;
-  --ifm-color-primary-dark: #619df2;
-  --ifm-color-primary-darker: #5093f1;
-  --ifm-color-primary-darkest: #1b72ec;
-  --ifm-color-primary-light: #a7c9f8;
-  --ifm-color-primary-lighter: #b8d3f9;
-  --ifm-color-primary-lightest: #edf4fe;
-  --ifm-font-color-base: white;
-}
-
-.docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.1);
-  display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
-}
-
-html[data-theme="dark"] .docusaurus-highlight-code-line {
-  background-color: rgba(0, 0, 0, 0.3);
-}
-
-[data-theme="light"] .DocSearch {
-  /* --docsearch-primary-color: var(--ifm-color-primary); */
-  /* --docsearch-text-color: var(--ifm-font-color-base); */
-  --docsearch-muted-color: var(--ifm-color-secondary-darkest);
-  --docsearch-container-background: rgba(94, 100, 112, 0.7);
-  /* Modal */
-  --docsearch-modal-background: var(--ifm-color-secondary-lighter);
-  /* Search box */
-  --docsearch-searchbox-background: var(--ifm-color-secondary);
-  --docsearch-searchbox-focus-background: var(--ifm-color-white);
-  /* Hit */
-  --docsearch-hit-color: var(--ifm-font-color-base);
-  --docsearch-hit-active-color: var(--ifm-color-white);
-  --docsearch-hit-background: var(--ifm-color-white);
-  /* Footer */
-  --docsearch-footer-background: var(--ifm-color-white);
-}
-
-[data-theme="dark"] .DocSearch {
-  --docsearch-text-color: var(--ifm-font-color-base);
-  --docsearch-muted-color: var(--ifm-color-secondary-darkest);
-  --docsearch-container-background: rgba(47, 55, 69, 0.7);
-  /* Modal */
-  --docsearch-modal-background: var(--ifm-background-color);
-  /* Search box */
-  --docsearch-searchbox-background: var(--ifm-background-color);
-  --docsearch-searchbox-focus-background: var(--ifm-color-black);
-  /* Hit */
-  --docsearch-hit-color: var(--ifm-font-color-base);
-  --docsearch-hit-active-color: var(--ifm-color-white);
-  --docsearch-hit-background: var(--ifm-color-emphasis-100);
-  /* Footer */
-  --docsearch-footer-background: var(--ifm-background-surface-color);
-  --docsearch-key-gradient: linear-gradient(-26.5deg,
-      var(--ifm-color-emphasis-200) 0%,
-      var(--ifm-color-emphasis-100) 100%);
-}
-
-body {
-  -webkit-font-smoothing: auto !important;
-}
-
-button.navbar__toggle {
-  color: white;
-}
+*/
 
 .markdown h1:first-child {
   --ifm-h1-font-size: 2.2rem !important;
@@ -201,52 +104,64 @@ button.navbar__toggle {
   line-height: 1.4;
 }
 
-.title_qBh7 {
-  --ifm-h1-font-size: 2.2rem;
-  margin-bottom: calc(var(--ifm-leading)*1.25);
-}
-
 header h1 {
   --ifm-h1-font-size: 2.2rem !important;
   margin-bottom: calc(var(--ifm-leading)*1.25);
 }
 
-@media (max-width: 996px) {
-  .navbar__toggle {
-    right: 10px;
-    float: right;
-    display: inherit;
-    position: absolute;
-  }
+code {
+  vertical-align: baseline;
+  tab-size: 4;
+  overflow-wrap: break-word;
+  white-space: pre-wrap
 }
 
-.navbar-sidebar {
-  left: 100%;
+article figure,
+article figcaption {
+  text-align: center
 }
 
-.navbar-sidebar--show .navbar-sidebar {
-  transform: translate3d(-100%, 0, 0) !important;
+article figure {
+  margin-left: 60px;
+  margin-right: 60px
 }
 
-/* .navbar-sidebar__items--show-secondary {
-  transform: translate3d( calc((var(--ifm-navbar-sidebar-width)) * -1), 0, 0 );
+caption {
+  caption-side: bottom
 }
-.navbar-sidebar .second-menu-button {
-  display: none;
+
+.navbar {
+  background-blend-mode: normal;
+  background-color: var(--accent);
+  /* webpackIgnore: true */
+  background-image: url("/img/banner.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover
 }
-.navbar-sidebar__items {
+
+.navbar__logo {
+  width: 100%;
+  height: 36px;
   display: flex;
-  height: calc(100% - var(--ifm-navbar-height));
-  transform: translateZ(0);
-  transition: transform var(--ifm-transition-fast) ease-in-out;
-} */
-
-.github {
-  color: #f0a808;
+  align-items: center
 }
 
-.github:hover {
-  color: #f0a808;
+.pagination-nav__label {
+  font-size: var(--ifm-pagination-font-size)
+}
+
+.package-list li {
+  align-items: center;
+  gap: 0.5rem;
+  /* 子弹与链接之间的间隔，保持一致 */
+  margin-bottom: 0.4rem;
+  padding-left: 0;
+}
+
+.menu,
+.navbar__link {
+  font-weight: var(--ifm-font-weight-normal)
 }
 
 .center-table {
@@ -255,124 +170,71 @@ header h1 {
   display: flex;
   align-items: center;
   flex-direction: column;
-  overflow-x: auto;
+  overflow-x: auto
 }
 
-@media (max-width:1270px) {
+.center-table th {
+  text-align: center
+}
+
+.center-table td {
+  text-align: center
+}
+
+.table-nowrap th,
+.table-nowrap td {
+  white-space: nowrap;
+}
+
+.DocSearch-Button {
+  margin: 16px 0 !important;
+  border-radius: 0.25rem !important;
+  width: 55%
+}
+
+.DocSearch-Button-Keys {
+  display: none !important
+}
+
+.DocSearch-Logo {
+  display: none !important
+}
+
+.Docsearch-Command-Tip {
+  font-size: 12px;
+  color: var(--docsearch-muted-color);
+  display: flex
+}
+
+.DocSearch-Commands-Key {
+  box-shadow: none !important;
+  background: none !important;
+  border: 0.5px solid !important
+}
+
+@media (max-width: 996px) {
+  article figure {
+    margin-left: 0;
+    margin-right: 0
+  }
+
   .center-table {
     width: 100%;
     text-align: center;
     display: flex;
     align-items: flex-start;
     flex-direction: column;
-    overflow-x: auto;
+    overflow-x: auto
   }
 
   .center-table a {
-    margin: 0 auto;
+    margin: 0 auto
   }
-}
 
-.center-table th {
-  text-align: center;
-}
-
-.center-table td {
-  text-align: center;
-}
-
-.DocSearch-Footer {
-  /* flex-direction: row; */
-}
-
-.DocSearch-Button {
-  margin: 16px 0 !important;
-  border-radius: 0.25rem !important;
-  width: 55%;
-}
-
-.DocSearch-Button-Keys {
-  display: none !important;
-}
-
-.DocSearch-Logo {
-  display: none !important;
-}
-
-.Docsearch-Command-Tip {
-  font-size: 12px;
-  color: var(--docsearch-muted-color);
-  display: flex;
-}
-
-.DocSearch-Commands-Key {
-  box-shadow: none !important;
-  background: none !important;
-  border: 0.5px solid !important;
-}
-
-@media (max-width: 768px) {
   .Docsearch-Command-Tip {
-    display: none;
+    display: none
   }
 }
-
-code {
-  tab-size: 4;
-  font-size: 0.94em;
-  /* 或 16px */
-}
-
-article img {
-  text-align: center;
-  padding-left: 60px;
-  padding-right: 60px;
-  width: 100%
-}
-
-article figure {
-  margin: 0
-}
-
-article figure img {
-  text-align: revert-layer;
-  padding-left: revert-layer;
-  padding-right: revert-layer;
-  width: revert-layer
-}
-
-@media (max-width: 996px) {
-  article img {
-    padding-left: 0;
-    padding-right: 0
-  }
-}
-
-html[data-theme='dark'] .navbar__link,
-html[data-theme='dark'] .navbar__items .navbar__item,
-html[data-theme='dark'] .navbar__title,
-html[data-theme='dark'] .navbar__toggle,
-html[data-theme='dark'] .navbar .clean-btn[class*="toggleButton"],
-html[data-theme='dark'] .navbar__item {
-  color: #111 !important;
-  /* 深色模式下字体为黑色 */
-}
-
-/* 主题切换按钮变为白色 */
-/* .navbar .clean-btn[class*="toggleButton"] {
-  color: white !important;
-} */
-
-/* 确保切换按钮图标在深色模式下也是白色 */
-/* html[data-theme='dark'] .navbar .clean-btn[class*="toggleButton"],
-html[data-theme='light'] .navbar .clean-btn[class*="toggleButton"] {
-  color: white !important;
-} */
-
-/* 悬停效果保持白色但透明度变化 */
-/* .navbar .clean-btn[class*="toggleButton"]:hover {
-  opacity: 0.8;
-} */
 
 body {
   counter-reset: section
@@ -401,6 +263,7 @@ ul.theme-doc-sidebar-menu ul ul ul ul li {
 ul.theme-doc-sidebar-menu a:before {
   counter-increment: section;
   content: counter(section) ".\00a0";
+  padding-right: 5px;
 }
 
 ul.theme-doc-sidebar-menu ul a:before {
@@ -426,13 +289,4 @@ ul.theme-doc-sidebar-menu ul ul ul ul a:before {
 ul.theme-doc-sidebar-menu ul ul ul ul ul a:before {
   counter-increment: detail3;
   content: counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(detail2) "." counter(detail3) "\00a0";
-}
-
-.navbarSearchTemp {
-  display: none
-}
-
-.table-nowrap th,
-.table-nowrap td {
-  white-space: nowrap;
 }
