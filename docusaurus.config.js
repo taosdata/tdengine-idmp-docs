@@ -104,9 +104,7 @@ const config = {
         hideOnScroll: true,
         logo: {
           alt: "TDengine IDMP",
-          src: "/img/tdengine-idmp.svg",
-          height: 64,
-          width: 224.25
+          src: "/img/tdengine-idmp.svg"
         },
         items: [
           {
