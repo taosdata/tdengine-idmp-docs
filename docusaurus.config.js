@@ -49,7 +49,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          routeBasePath: "/",
+          routeBasePath: '/',
           sidebarPath: './sidebars.js',
           breadcrumbs: false,
         },
@@ -72,7 +72,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       colorMode: {
-        defaultMode: "light",
+        defaultMode: 'light',
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },
@@ -83,55 +83,54 @@ const config = {
         }
       },
       algolia: {
-        appId: "FP08SIOFZ3",
-        apiKey: "89d4d983122a141b426e52fdca50e3a0",
-        indexName: "tdasset_index",
+        appId: 'FP08SIOFZ3',
+        apiKey: '89d4d983122a141b426e52fdca50e3a0',
+        indexName: 'tdasset_index',
         searchPagePath: false
       },
       metadata: [
-        // This would become <meta name="keywords" content="..."> in the generated HTML
         {
-          name: "description",
-          content: "TDengine Industrial Data Management Platform（TDengine IDMP）是一物联网、工业数据管理系统，它通过经典的树状结构组织传感器、设备采集的数据，实现数据的语境化、标准化、并提供实时分析、可视化、事件管理与报警等功能，旨在帮助企业从运营数据中挖掘出商业价值",
+          name: 'description',
+          content: 'TDengine Industrial Data Management Platform（TDengine IDMP）是一物联网、工业数据管理系统，它通过经典的树状结构组织传感器、设备采集的数据，实现数据的语境化、标准化、并提供实时分析、可视化、事件管理与报警等功能，旨在帮助企业从运营数据中挖掘出商业价值',
         },
         {
-          name: "baidu-site-verification",
-          content: "code-Fvrqff6sDg",
+          name: 'baidu-site-verification',
+          content: 'code-Fvrqff6sDg',
         },
       ],
 
       navbar: {
         hideOnScroll: true,
         logo: {
-          alt: "TDengine IDMP",
-          src: "/img/tdengine-idmp.svg"
+          alt: 'TDengine IDMP',
+          src: '/img/tdengine-idmp.svg'
         },
         items: [
           {
-            label: "TSDB 文档",
-            to: "/redirect?target=tsdb",
-            position: "right",
-            target: "_blank", // 新标签页打开
-            rel: "noopener noreferrer", // 安全性
+            label: 'TSDB 文档',
+            to: '/redirect?target=tsdb',
+            position: 'right',
+            target: '_blank', // 新标签页打开
+            rel: 'noopener noreferrer', // 安全性
           },
           {
-            label: "Cloud",
-            to: "/redirect?target=cloud",
-            position: "right",
-            target: "_blank",
-            rel: "noopener noreferrer",
+            label: 'Cloud',
+            to: '/redirect?target=cloud',
+            position: 'right',
+            target: '_blank',
+            rel: 'noopener noreferrer',
           },
           {
-            label: "联系我们",
-            to: "/redirect?target=contactus",
-            position: "right",
-            target: "_blank",
-            rel: "noopener noreferrer",
+            label: '联系我们',
+            to: '/redirect?target=contactus',
+            position: 'right',
+            target: '_blank',
+            rel: 'noopener noreferrer',
           },
           {
-            type: "search",
-            position: "right",
-            className: "navbarSearchTemp"
+            type: 'search',
+            position: 'right',
+            className: 'navbarSearchTemp'
           },
         ],
       },
@@ -155,7 +154,7 @@ const config = {
     ],
   ],
   stylesheets: [
-    "/fonts/css/ibm-plex.min.css"
+    '/fonts/css/ibm-plex.min.css'
   ]
 };
 
