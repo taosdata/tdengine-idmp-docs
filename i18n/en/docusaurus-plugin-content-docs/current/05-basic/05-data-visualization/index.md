@@ -78,9 +78,17 @@ After entering a complete SQL query, you can click the "Verify" button to verify
 
 Advanced queries also support the following three replacement parameters:
 
-1. **$\{FROM_TIME\}**: Uses the start time value from the panel or dashboard time selector for replacement. You can enter "FROM_TIME" shortcut hint in the SQL editor and press Enter to input the complete parameter.
-2. **$\{TO_TIME\}**: Uses the end time value from the panel or dashboard time selector for replacement. You can enter "TO_TIME" shortcut hint in the SQL editor and press Enter to input the complete parameter.
-3. **$\{Element#fullVirtualTable\}**: Used in element templates, can pass in the complete virtual table of the element from the panel or dashboard element selector for replacement. You can enter "ELEMENT" shortcut hint in the SQL editor and press Enter to input the complete parameter.
+1. `${FROM_TIME}`: Used in a panel or dashboard to substitute the start time from the time picker.
+2. `${TO_TIME}`: Used in a panel or dashboard to substitute the end time from the time picker.
+3. `${Element#fullVirtualTable}`: Used in element templates to substitute the full virtual table of the element passed into the panel or dashboard element selector.
+
+:::note
+
+1. All of the above parameters support autocomplete — in the SQL editor, when you see the suggestion, press Enter to autocomplete.
+2. When `${FROM_TIME}` and `${TO_TIME}` are substituted, they will automatically determine whether to add single quotes based on context; you do not need to add quotes when using these parameters.
+3. When `${Element#fullVirtualTable}` is substituted, it will automatically determine whether to add backticks based on context; you do not need to add backticks when using this parameter.
+
+:::
 
 Additionally, you can click the "Format" icon to format the current SQL query, and you can also enable or temporarily disable the current SQL.
 
