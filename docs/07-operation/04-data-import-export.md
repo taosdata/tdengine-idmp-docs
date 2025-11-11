@@ -1,7 +1,5 @@
 # 数据导入导出
 
-整个数据模型的导出功能还在开发中，预计将于 2025 年 9 月底发布。
-
 对于已经在使用 TDengine TSDB-Enterprise 的用户，IDMP 现在支持将 TDengine TSDB-Enterprise 的元数据导入，直接创建数据模型。它提供两种方式，下面做一介绍。
 
 ## TDengine TSDB-Enterprise 简单导入 (Easy Import)
