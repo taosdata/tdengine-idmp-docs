@@ -1,5 +1,4 @@
 ---
 title: Managing Security Policies
 ---
-
-Version control functionality will be released by the end of September 2025.
+TDengine IDMP's security policy feature allows users to define and manage the system's security rules to protect the security of data and operations.

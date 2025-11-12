@@ -36,9 +36,9 @@ TDengine IDMP 默认使用以下端口，请确保这些端口未被其他应用
 | 端口 | 协议 | 描述 |
 |---|---|---|
 | 6042 | HTTP | 外部端口，TDengine IDMP Web 页面 和 REST API 端口，用于浏览器访问页面和 API 接口，请确保防火墙开放对该端口的访问。|
-| 8082 | HTTP | 内部端口，TDengine IDMP 内部 H2 数据库服务 Web 页面端口，用于访问内部 H2 数据库。 |
-| 8777 | HTTP | 内部端口，TDengine IDMP 内部 chat 服务 API 端口，用于访问内部 chat 服务。 |
-| 9092 | TCP  | 内部端口，TDengine IDMP 内部 H2 数据库服务监听端口，用于访问内部 H2 数据库。 |
+| 6038 | HTTP | 内部端口，TDengine IDMP 内部 H2 数据库服务 Web 页面端口，用于访问内部 H2 数据库。 |
+| 6039 | TCP  | 内部端口，TDengine IDMP 内部 H2 数据库服务监听端口，用于访问内部 H2 数据库。 |
+| 6040 | HTTP | 内部端口，TDengine IDMP 内部 chat 服务 API 端口，用于访问内部 chat 服务。 |
 
 ## 安装目录
 
