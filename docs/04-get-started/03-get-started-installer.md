@@ -16,6 +16,7 @@ TDengine IDMP 的运行需要以下基础依赖：
 1. glibc: 2.25 及以上版本
 1. TDengine TSDB-Enterprise: 3.3.7.0 及以上版本
 1. 可用的 SMTP 邮件服务（当无法访问 Internet 时，需要在内网部署）
+1. 正确的时区，关于时区的设置，请参考操作系统的用户手册
 
 TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0 及以上版本。在安装 TDengine IDMP 前，请确保您已安装并启动了 TDengine TSDB-Enterprise 服务。如果尚未安装，请参考：[使用安装包快速体验 TDengine TSDB](https://docs.taosdata.com/get-started/package/)。如果您期望体验时序数据预测的功能，则需要安装 TDgpt, 请参考：[安装包部署 TDgpt](https://docs.taosdata.com/advanced/TDgpt/tutorial/#%E5%AE%89%E8%A3%85%E5%8C%85%E9%83%A8%E7%BD%B2-tdgpt).
 
