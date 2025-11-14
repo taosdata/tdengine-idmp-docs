@@ -45,7 +45,7 @@ TDengine IDMP 提供了 Docker 镜像，用户可以通过 Docker Compose 快速
 
     ```bash
     cd tdengine-idmp-deployment/docker
-    export TZ="Asia/Shanghai"
+    export TZ="Asia/Shanghai" # 请根据您所在的地区修改时区
     chmod +x idmp.sh
     ./idmp.sh start
     ```
