@@ -229,6 +229,64 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
    ```
 
 </TabItem>
+
+<TabItem label="Windows" value="windows">
+
+1. Download the installation package from the following link:
+
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.6.2" platform="Windows" arch="x64" pkgType="Server" />
+
+1. Double-click the downloaded `.exe` installation package and follow the installation wizard to complete the installation.
+
+1. The default installation path for TDengine IDMP is `C:\TDengine\idmp`.
+
+1. After installation, TDengine IDMP related services will be automatically registered as Windows services.
+
+   :::note
+   The Windows installation package requires administrator privileges. If you encounter permission issues, right-click the installation package and select "Run as administrator".
+   :::
+
+   :::info Dependencies
+   TDengine IDMP on Windows requires:
+   - Java 21 or higher, with the `java` command available in the system PATH environment variable
+   - Python 3.12
+   - To verify that Java is properly configured, run `java -version` in the command prompt
+   :::
+
+1. Configure the TDengine TSDB-Enterprise connection in TDengine IDMP:
+
+   1. Open the TDengine IDMP configuration file with a text editor. The default location is `C:\TDengine\idmp\config\application.yml`.
+   1. Under the `tda.default-connection` section, set the TDengine TSDB-Enterprise connection details as shown in the following example:
+
+      ```yaml
+      tda:
+        default-connection:
+          enable: true
+          auth-type: UserPassword
+          url: http://localhost:6041
+          username: root
+          password: taosdata
+      ```
+
+1. (Optional) Run the following command to test the connection to TDengine TSDB-Enterprise:
+
+   ```bash
+   curl --request POST \
+     --user root:taosdata \
+     --url http://localhost:6041/rest/sql \
+     --data 'show databases;'
+   ```
+   If the connection is successful, the list of databases in TDengine TSDB-Enterprise will be displayed.
+
+1. Start TDengine IDMP:
+
+   ```batch
+   C:\TDengine\idmp\bin\start-tdengine-idmp.bat
+   ```
+   
+   Or start the `tdengine-idmp`, `tdengine-idmp-h2`, and `tdengine-idmp-chat` services through Windows Service Manager.
+
+</TabItem>
 </Tabs>
 
 <Init />
@@ -237,10 +295,24 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
 
 ## Uninstall TDengine IDMP
 
-Once you’ve completed your evaluation, you can uninstall TDengine IDMP by running the following command:
+Once you’ve completed your evaluation, you can uninstall TDengine IDMP.
+
+<Tabs>
+<TabItem label="Linux/macOS" value="linux">
+
+Run the following command to uninstall TDengine IDMP:
 
 ```bash
 sudo rmidmp
 ```
+
+</TabItem>
+
+<TabItem label="Windows" value="windows">
+
+Double-click `C:\TDengine\idmp\unins000.exe` and follow the uninstallation wizard to complete the process.
+
+</TabItem>
+</Tabs>
 
 For more detailed instructions on starting and stopping the service, see [Local Deployment](../07-operation/02-installation/01-install-guide.md).
