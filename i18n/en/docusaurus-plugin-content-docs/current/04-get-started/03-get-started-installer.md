@@ -235,7 +235,7 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
 
 1. Download the installation package from the following link:
 
-   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.7.0" platform="Windows" arch="generic" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.7.0" platform="Windows" arch="x64" pkgType="Server" />
 
 1. Double-click the downloaded `.exe` installation package and follow the installation wizard to complete the installation.
 
