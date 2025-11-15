@@ -65,6 +65,25 @@ TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0 及以上版本。在安�
 3. TDengine IDMP 的默认安装路径为 `/usr/local/taos/idmp`。
 </TabItem>
 
+<TabItem label="Windows 安装" value="windows">
+1. 请点击以下链接获取最新版本的 Windows 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.7.0" platform="Windows" arch="x64" pkgType="Server" />
+2. 双击安装包，按照安装向导完成安装。
+3. TDengine IDMP 的默认安装路径为 `C:\TDengine\idmp`。
+4. 安装完成后，TDengine IDMP 相关服务将自动注册为 Windows 服务。
+
+:::note
+Windows 安装包运行需要管理员权限。如果遇到权限问题，请右键点击安装包，选择"以管理员身份运行"。
+:::
+
+:::info 依赖说明
+TDengine IDMP 在 Windows 上运行需要：
+- Java 21 或更高版本，并确保 `java` 命令在系统 PATH 环境变量中
+- Python 3.12 版本
+- 如需验证 Java 是否正确配置，可在命令提示符中执行 `java -version`
+:::
+</TabItem>
+
 </Tabs>
 
 如果安装过程中遇到错误，请参考安装过程的[常见错误及解决方案](../operation/installation/install-guide#常见错误)。
@@ -73,7 +92,11 @@ TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0 及以上版本。在安�
 
 以下步骤将演示如何启动 TDengine IDMP.
 
-1. 配置 TDengine TSDB-Enterprise 连接：用编辑器打开 TDengine IDMP 的配置文件，默认位于 `/usr/local/taos/idmp/config/application.yml`，在 `tda.default-connection` 下，配置 TDengine TSDB-Enterprise 的连接信息，示例如下：
+1. 配置 TDengine TSDB-Enterprise 连接：用编辑器打开 TDengine IDMP 的配置文件，默认位于：
+   - Linux/macOS: `/usr/local/taos/idmp/config/application.yml`
+   - Windows: `C:\TDengine\idmp\config\application.yml`
+   
+   在 `tda.default-connection` 下，配置 TDengine TSDB-Enterprise 的连接信息，示例如下：
     ```yaml
     tda:
       default-connection:
@@ -96,9 +119,21 @@ TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0 及以上版本。在安�
     ```
     如果连接成功，您将看到 TDengine TSDB-Enterprise 的数据库列表。
 1. 启动 TDengine IDMP 服务：
-    ```bash
-    svc-tdengine-idmp start
-    ```
+
+   <Tabs>
+   <TabItem label="Linux/macOS" value="linux">
+   ```bash
+   svc-tdengine-idmp start
+   ```
+   </TabItem>
+   
+   <TabItem label="Windows" value="windows">
+   ```batch
+   C:\TDengine\idmp\bin\start-tdengine-idmp.bat
+   ```
+   或者通过 Windows 服务管理器启动 `tdengine-idmp`、`tdengine-idmp-h2` 和 `tdengine-idmp-chat` 三个服务。
+   </TabItem>
+   </Tabs>
 
 至此，TDengine IDMP 服务已成功启动。您可以在浏览器输入以下地址访问：[http://ip:6042](http://ip:6042),
 请将 `ip` 替换为真实的主机 IP 地址，如果在本地运行，则可以直接访问 [http://localhost:6042](http://localhost:6042)。

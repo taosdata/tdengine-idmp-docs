@@ -38,7 +38,11 @@ IDMP 的正常运行，依赖指定版本的 Java 和 Python 环境。在安装�
 
 ## 配置
 
-TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0+. 在启动 TDengine IDMP 之前，请配置 TDengine TSDB-Enterprise 连接。用编辑器打开 TDengine IDMP 的配置文件，默认位于 `/usr/local/taos/idmp/config/application.yml`。在 `tda.default-connection` 下，配置 TDengine TSDB-Enterprise 的连接信息，示例如下：
+TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0+. 在启动 TDengine IDMP 之前，请配置 TDengine TSDB-Enterprise 连接。用编辑器打开 TDengine IDMP 的配置文件，默认位于 :
+    - Linux/macOS: `/usr/local/taos/idmp/config/application.yml`
+    - Windows: `C:\TDengine\idmp\config\application.yml`。
+
+在 `tda.default-connection` 下，配置 TDengine TSDB-Enterprise 的连接信息，示例如下：
 
 ```yaml
 tda:
@@ -123,6 +127,65 @@ sudo launchctl print system/com.taosdata.tdengine-idmp
 :::
 </TabItem>
 
+<TabItem label="Windows 系统" value="windows">
+安装完成后，TDengine IDMP 的三个服务会自动注册为 Windows 服务，但默认不会自动启动。您可以使用以下命令启动服务。
+
+**使用批处理脚本启动（推荐）：**
+
+```batch
+C:\TDengine\idmp\bin\start-tdengine-idmp.bat
+```
+
+**使用 Windows 服务管理器：**
+
+1. 按 `Win + R`，输入 `services.msc` 打开服务管理器
+2. 找到以下三个服务并依次启动：
+   - `tdengine-idmp-h2`
+   - `tdengine-idmp-chat`
+   - `tdengine-idmp`
+
+**使用 sc 命令：**
+
+```batch
+sc.exe start tdengine-idmp-h2
+sc.exe start tdengine-idmp-chat
+sc.exe start tdengine-idmp
+```
+
+**查看服务状态：**
+
+
+或使用 sc 命令：
+
+```batch
+sc.exe query tdengine-idmp-h2
+sc.exe query tdengine-idmp-chat
+sc.exe query tdengine-idmp
+```
+
+**停止服务：**
+
+```batch
+C:\TDengine\idmp\bin\stop-tdengine-idmp.bat
+```
+
+或使用 sc 命令：
+
+```batch
+sc.exe stop tdengine-idmp
+sc.exe stop tdengine-idmp-chat
+sc.exe stop tdengine-idmp-h2
+```
+
+:::info
+
+- 执行批处理脚本时需要管理员权限。如果遇到权限问题，请右键点击脚本文件，选择"以管理员身份运行"。
+- 服务的启动顺序很重要：必须先启动 `tdengine-idmp-h2` 和 `tdengine-idmp-chat`，最后启动 `tdengine-idmp`。
+- 如果服务异常，请查看 `C:\TDengine\log` 目录下的日志文件，或使用事件查看器查看 Windows 系统日志。
+
+:::
+</TabItem>
+
 </Tabs>
 
 TDengine IDMP 正常启动后，包括以下三个服务：
@@ -133,7 +196,10 @@ TDengine IDMP 正常启动后，包括以下三个服务：
 
 ## 卸载
 
-1. 在 Linux/macOS 系统，可以通过如下命令卸载 TDengine IDMP 服务：
+<Tabs>
+
+<TabItem label="Linux/macOS 系统" value="unix">
+可以通过如下命令卸载 TDengine IDMP 服务：
 
 ```bash
 rmidmp -e yes
@@ -145,14 +211,24 @@ rmidmp -e yes
 rmidmp -e no
 ```
 
-2. 在 Linux 系统，如果是通过 rpm 方式安装，请使用如下命令卸载：
+如果是通过 **rpm** 方式安装（Linux 系统），请使用如下命令卸载：
 
 ```bash
 rpm -e tdengine-idmp
 ```
 
-3. 在 Linux 系统，如果是通过 deb 方式安装，请使用如下命令卸载：
+如果是通过 **deb** 方式安装（Linux 系统），请使用如下命令卸载：
 
 ```bash
 dpkg -r tdengine-idmp
 ```
+</TabItem>
+
+<TabItem label="Windows 系统" value="windows">
+在 Windows 系统上卸载 TDengine IDMP：
+
+直接双击运行 `C:\TDengine\idmp\unins000.exe`，按照卸载向导完成卸载。
+
+</TabItem>
+
+</Tabs>
