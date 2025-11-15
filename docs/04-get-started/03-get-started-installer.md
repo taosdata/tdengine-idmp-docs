@@ -67,7 +67,7 @@ TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0 及以上版本。在安�
 
 <TabItem label="Windows 安装" value="windows">
 1. 请点击以下链接获取最新版本的 Windows 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
-   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.6.2" platform="Windows" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.7.0" platform="Windows" arch="generic" pkgType="Server" />
 2. 双击安装包，按照安装向导完成安装。
 3. TDengine IDMP 的默认安装路径为 `C:\TDengine\idmp`。
 4. 安装完成后，TDengine IDMP 相关服务将自动注册为 Windows 服务。
