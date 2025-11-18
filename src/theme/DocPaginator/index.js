@@ -4,7 +4,7 @@ import Translate, { translate } from "@docusaurus/Translate";
 import PaginatorNavLink from "@theme/PaginatorNavLink";
 import clsx from "clsx";
 import styles from "./styles.module.css";
-import Popup from "../Footer/components/popup";
+import Popup from "../Footer/zh/components/popup";
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 function getEditUrl(metadata, locale) {
