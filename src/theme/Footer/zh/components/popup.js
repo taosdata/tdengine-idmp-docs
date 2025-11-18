@@ -19,7 +19,7 @@ function validatePhone(phone) {
 function setCookie(name, value, daysToLive) {
     // var cookie = name + "=" + encodeURIComponent(value)+"; path=/";
     if (!value || typeof value === "undefined") {
-        cookie.remove(name, {domain: 'taosdata.com', path: "/"});
+        cookie.remove(name, { domain: 'taosdata.com', path: "/" });
         return;
         // cookie += "; max-age=" + 1;
     }
@@ -28,7 +28,7 @@ function setCookie(name, value, daysToLive) {
         date = new Date(Date.now() + daysToLive * 24 * 60 * 60 * 1000);
         // cookie += "; max-age=" + (daysToLive * 24 * 60 * 60);
     }
-    cookie.save(name, value, {domain: 'taosdata.com', path: "/", expires: date});
+    cookie.save(name, value, { domain: 'taosdata.com', path: "/", expires: date });
 }
 
 function getTSLOG() {
@@ -87,14 +87,14 @@ export default class extends React.Component {
     }
 
     closeBtn(val) {
-        this.setState({isShow: true});
+        this.setState({ isShow: true });
         this.props.pfn(val);//这个地方把值传递给了props的事件当中
     }
 
     isShowSuccess(successMsg, flag) {
-        this.setState({isShow: false});
-        this.setState({successMsg: successMsg});
-        this.setState({flag: flag});
+        this.setState({ isShow: false });
+        this.setState({ successMsg: successMsg });
+        this.setState({ flag: flag });
     }
 
     render() {
@@ -107,21 +107,21 @@ export default class extends React.Component {
                                 {this.props.data.title}
                             </div>
                             <div className={"close-popup"} onClick={this.closeBtn.bind(this, this.props.hidden)}>
-                                <img src={require("../../../../static/img/close.webp").default} alt="TDengine Database"></img>
+                                <img src="/img/close.webp" alt="TDengine Database"></img>
                             </div>
                         </div>
                         <div className={"popup-content"}>
-                            {this.props.data.src == 'weChat' ? <WeChat/> : null}
-                            {this.props.data.src == 'technical' ? <TechnicalExchange/> : null}
-                            {this.props.data.src == 'subScription' ? <SubScription isShowSuccess={this.isShowSuccess.bind(this)}/> : null}
-                            {this.props.data.src == 'contactSales' ? <ContactSales isShowSuccess={this.isShowSuccess.bind(this)}/> : null}
+                            {this.props.data.src == 'weChat' ? <WeChat /> : null}
+                            {this.props.data.src == 'technical' ? <TechnicalExchange /> : null}
+                            {this.props.data.src == 'subScription' ? <SubScription isShowSuccess={this.isShowSuccess.bind(this)} /> : null}
+                            {this.props.data.src == 'contactSales' ? <ContactSales isShowSuccess={this.isShowSuccess.bind(this)} /> : null}
                         </div>
                     </div>
                     <div className={this.state.isShow ? "display-is-none" : "display-is-block"}>
-                        <div style={{display: 'block', width: '90%', margin: '0 auto', padding: '1rem'}}>
+                        <div style={{ display: 'block', width: '90%', margin: '0 auto', padding: '1rem' }}>
                             <div className="success-img">
-                                {this.state.flag == "sub" ? <img src={require("../../../../static/img/subscribe-success.webp").default} alt="TDengine Database"></img> : ""}
-                                {this.state.flag == "sale" ? <img src={require("../../../../static/img/send-success.webp").default} alt="TDengine Database"></img> : ""}
+                                {this.state.flag == "sub" ? <img src="/img/subscribe-success.webp" alt="TDengine Database"></img> : ""}
+                                {this.state.flag == "sale" ? <img src="/img/send-success.webp" alt="TDengine Database"></img> : ""}
                             </div>
                             <div className="success-msg">{this.state.successMsg}</div>
                             <button className="btn btn-primary" onClick={this.closeBtn.bind(this, this.props.hidden)}>关闭</button>
@@ -141,7 +141,7 @@ class WeChat extends React.Component {
 
     render() {
         return (
-            <img src={require("../../../../static/img/tdengineqrcode_1.jpeg").default} alt="TDengine Database"></img>
+            <img src="/img/tdengineqrcode_1.jpeg" alt="TDengine Database"></img>
         )
     }
 }
@@ -155,8 +155,8 @@ class TechnicalExchange extends React.Component {
     render() {
         return (
             <div>
-                <span style={{color: "#6a85bd"}}>技术交流群加小T为好友，即可加入物联网大数据技术前沿群</span>
-                <img src={require("../../../../static/img/tdengine-new.jpeg").default} alt="TDengine Database"></img>
+                <span style={{ color: "#6a85bd" }}>技术交流群加小T为好友，即可加入物联网大数据技术前沿群</span>
+                <img src="/img/tdengine-new.jpeg" alt="TDengine Database"></img>
             </div>
         )
     }
@@ -178,19 +178,19 @@ class SubScription extends React.Component {
     subscribe() {
         let email = this.state.email.value;
         let timer = setTimeout(() => {
-            this.setState({message: ""});
-            this.setState({showMessage: false});
+            this.setState({ message: "" });
+            this.setState({ showMessage: false });
             timer = null;
         }, 2000);
         if (email == "") {
             this.state.email.focus();
-            this.setState({message: "请输入邮件地址"});
-            this.setState({showMessage: true});
+            this.setState({ message: "请输入邮件地址" });
+            this.setState({ showMessage: true });
             return false;
         } else if (!validateEmail(email)) {
             this.state.email.focus();
-            this.setState({message: "电子邮件不正确"});
-            this.setState({showMessage: true});
+            this.setState({ message: "电子邮件不正确" });
+            this.setState({ showMessage: true });
             return false;
         }
         let postData = {
@@ -217,11 +217,11 @@ class SubScription extends React.Component {
     render() {
         return (
             <div>
-                <div style={{display: 'block', width: '90%', margin: '0 auto', position: 'relative'}}>
+                <div style={{ display: 'block', width: '90%', margin: '0 auto', position: 'relative' }}>
                     <div className={this.state.showMessage ? "popalert" : "popalert popalert-hidden"}>
                         {this.state.message}
                     </div>
-                    <input ref={el => this.state.email = el} className="sub-scription-input" placeholder='请输入您的邮箱' required type="email"/>
+                    <input ref={el => this.state.email = el} className="sub-scription-input" placeholder='请输入您的邮箱' required type="email" />
                     <button className="btn btn-primary" onClick={this.subscribe.bind(this)}>提交</button>
                 </div>
             </div>
@@ -241,6 +241,9 @@ class ContactSales extends React.Component {
             cate: 1,
             msg: '',
             message: '',
+            csrf_token: '',
+            timestamp: 0,
+            request_sign: 0,
             showMessage: false,
             successMsg: "我们将在最快时间内与您取得联系！",
             flag: 'sale'
@@ -248,59 +251,62 @@ class ContactSales extends React.Component {
     }
 
     contactSales() {
-        let catemap = {1: "TDengine Enterprise", 5: "TDengine Cloud", 2: "渠道伙伴", 3: "集成 · 技术伙伴", 4: "OEM 伙伴"};
+        let catemap = { 1: "TDengine Enterprise", 5: "TDengine Cloud", 2: "渠道伙伴", 3: "集成 · 技术伙伴", 4: "OEM 伙伴" };
         let name = this.state.name.value;
         let cmp = this.state.cmp.value;
         let email = this.state.emailc.value;
         let msg = this.state.msg.value;
         let phone = this.state.phone.value;
         let cate = this.state.cate.value;
+        let csrf_token = this.state.csrf_token.value;
+        let timestamp = this.state.timestamp.value;
+        let signature = this.state.request_sign.value;
         let category = catemap[cate];
         let timer1 = setTimeout(() => {
-            this.setState({message: ""});
-            this.setState({showMessage: false});
+            this.setState({ message: "" });
+            this.setState({ showMessage: false });
             timer1 = null;
         }, 2000);
         if (name == "") {
             console.log('name', name);
             this.state.name.focus();
-            this.setState({message: "请输入您的名字"});
-            this.setState({showMessage: true});
+            this.setState({ message: "请输入你的名字" });
+            this.setState({ showMessage: true });
             return false;
         }
         if (cmp == "") {
             console.log('cmp', cmp);
             this.state.cmp.focus();
-            this.setState({message: "请输入公司名"});
-            this.setState({showMessage: true});
+            this.setState({ message: "请输入公司名" });
+            this.setState({ showMessage: true });
             return false;
         }
         if (email == "") {
             this.state.emailc.focus();
-            this.setState({message: "请输入邮件地址"});
-            this.setState({showMessage: true});
+            this.setState({ message: "请输入邮件地址" });
+            this.setState({ showMessage: true });
             return false;
         } else if (!validateEmail(email)) {
             this.state.emailc.focus();
-            this.setState({message: "电子邮件不正确"});
-            this.setState({showMessage: true});
+            this.setState({ message: "电子邮件不正确" });
+            this.setState({ showMessage: true });
             return false;
         }
         if (phone == "") {
             this.state.phone.focus();
-            this.setState({message: "请输入手机号码"});
-            this.setState({showMessage: true});
+            this.setState({ message: "请输入手机号码" });
+            this.setState({ showMessage: true });
             return false;
         } else if (!validatePhone(phone)) {
             this.state.phone.focus();
-            this.setState({message: "手机号码不正确"});
-            this.setState({showMessage: true});
+            this.setState({ message: "手机号码不正确" });
+            this.setState({ showMessage: true });
             return false;
         }
         if (msg == "") {
             this.state.msg.focus();
-            this.setState({message: "请留言"});
-            this.setState({showMessage: true});
+            this.setState({ message: "请留言" });
+            this.setState({ showMessage: true });
             return false;
         }
         let current_url = window.location.href;
@@ -324,7 +330,7 @@ class ContactSales extends React.Component {
         setCookie(TS_LOG, null);
 
         // 导入微伴线索公海并发送群消息
-        let json = {company: cmp, linkman: name, phone: phone, email: email, category: cate, message: msg};
+        let json = { company: cmp, linkman: name, phone: phone, email: email, category: cate, message: msg };
         fetch('https://www.tdengine.com:9617/market/addLead', {
             method: 'post',
             headers: {
@@ -352,6 +358,9 @@ class ContactSales extends React.Component {
             subject: '联系销售',
             message: message,
             category: cate,
+            csrf_token: csrf_token,
+            timestamp: timestamp,
+            signature: signature,
             successmsg: "成功联系销售",
             errormsg: "抱歉，暂时联系不到销售"
         };
@@ -376,17 +385,23 @@ class ContactSales extends React.Component {
     }
 
     render() {
+        if (!window.csrfToken) {
+            window.csrfToken = Math.random().toString(36).substring(2) + Date.now().toString(36);
+        }
+        // 生成时间戳和签名
+        const timestamp = Date.now();
+        const sign = (timestamp % 18) + 6;
         return (
-            <div style={{position: 'relative'}}>
+            <div style={{ position: 'relative' }}>
                 <div className={this.state.showMessage ? "popalert" : "popalert popalert-hidden"}>
                     {this.state.message}
                 </div>
-                <span style={{marginBottom: '0.5rem', display: 'block', color: '#6a85bd', fontSize: '16px'}}>请填写下面表单，我们的工作人员会与您联系。</span>
+                <span style={{ marginBottom: '0.5rem', display: 'block', color: '#6a85bd', fontSize: '16px' }}>请填写下面表单，我们的工作人员会与您联系。</span>
                 <div>
-                    <input ref={el => this.state.name = el} className="contract-sales name" placeholder='姓名' required/>
-                    <input ref={el => this.state.cmp = el} className="contract-sales company" placeholder='公司名'/>
-                    <input ref={el => this.state.emailc = el} className="contract-sales email" placeholder='邮箱' id='contact-sales-email-input' required/>
-                    <input ref={el => this.state.phone = el} className="contract-sales phone" placeholder='手机号'/>
+                    <input ref={el => this.state.name = el} className="contract-sales name" placeholder='姓名' required />
+                    <input ref={el => this.state.cmp = el} className="contract-sales company" placeholder='公司名' />
+                    <input ref={el => this.state.emailc = el} className="contract-sales email" placeholder='邮箱' id='contact-sales-email-input' required />
+                    <input ref={el => this.state.phone = el} className="contract-sales phone" placeholder='手机号' />
                     <select ref={el => this.state.cate = el} className="contract-sales cate">
                         <option defaultValue>TDengine Enterprise</option>
                         <option>TDengine Cloud</option>
@@ -395,6 +410,9 @@ class ContactSales extends React.Component {
                         <option>OEM 伙伴</option>
                     </select>
                     <textarea ref={el => this.state.msg = el} placeholder='留言...' className="message"></textarea>
+                    <input type='hidden' id='csrf_token' value={csrfToken} />
+                    <input type='hidden' id='timestamp' value={timestamp} />
+                    <input type='hidden' id='request_sign' value={sign} />
                     <button className='btn btn-primary' onClick={this.contactSales.bind(this)}>
                         提交
                     </button>
