@@ -30,7 +30,7 @@ function Footer() {
                 </a>
               </div>
             </div>
-            <p className={styles.footerBlurb}>TDengine™ is an AI-powered data platform designed for industrial applications, combining the high-performance time-series database TDengine TSDB and the AI-native data management platform TDengine IDMP. With TDengine TSDB handling data ingestion, storage, and processing, and TDengine IDMP providing contextualization, standardization, and AI-powered analytics, TDengine enables industrial enterprises to unlock the true value of their time-series data.</p>
+            <p className={styles.footerBlurb}>TDengine® is an AI-powered data platform designed for industrial applications, combining the high-performance time-series database TDengine TSDB and the AI-native data management platform TDengine IDMP. With TDengine TSDB handling data ingestion, storage, and processing, and TDengine IDMP providing contextualization, standardization, and AI-powered analytics, TDengine enables industrial enterprises to unlock the true value of their time-series data.</p>
             <p className={styles.footerBlurb}>© 2022–2025 TDengine</p>
           </div>
           <div className={styles.right}>
@@ -56,6 +56,7 @@ function Footer() {
               <a href="https://tdengine.com/media/">Newsroom</a>
               <a href="https://tdengine.com/security/">Security</a>
               <a href="https://tdengine.com/legal/">Legal</a>
+              <a href="https://tdengine.com/resellers/">Resellers</a>
               <a href="https://tdengine.com/partners/">Partners</a>
               <a href="https://tdengine.com/contact/">Contact Us</a>
             </div>
