@@ -1,6 +1,6 @@
 import React from "react";
-import {useDoc, useActivePluginAndVersion} from '@docusaurus/plugin-content-docs/client';
-import Translate, {translate} from "@docusaurus/Translate";
+import { useDoc, useActivePluginAndVersion } from '@docusaurus/plugin-content-docs/client';
+import Translate, { translate } from "@docusaurus/Translate";
 import PaginatorNavLink from "@theme/PaginatorNavLink";
 import clsx from "clsx";
 import styles from "./styles.module.css";
@@ -14,10 +14,10 @@ function getEditUrl(metadata, locale) {
   return `${repoRoot}/${source}`;
 }
 
-function FeedBack({editUrl}) {
+function FeedBack({ editUrl }) {
   const [showPopup, setShowPopup] = React.useState(false);
-  const [data, setData] = React.useState({title: "", str: ""});
-  const {i18n} = useDocusaurusContext();
+  const [data, setData] = React.useState({ title: "", str: "" });
+  const { i18n } = useDocusaurusContext();
   const locale = i18n.currentLocale;
 
   // 根据语言切换联系链接
@@ -28,7 +28,7 @@ function FeedBack({editUrl}) {
 
   function getServices(e) {
     e.preventDefault();
-    setData({title: translate({id: 'feedback.contactTitle', message: 'Contact TDengine'}), src: "contactSales"});
+    setData({ title: translate({ id: 'feedback.contactTitle', message: 'Contact TDengine' }), src: "contactSales" });
     setShowPopup(!showPopup);
   }
 
@@ -51,14 +51,18 @@ function FeedBack({editUrl}) {
             &nbsp;|&nbsp;
           </span>
         )}
-        <a
-          href="https://ask.taosdata.com/"
-          target="_blank"
-          rel="noopener"
-        >
-          <Translate id="feedback.reportIssue">反馈问题</Translate>
-        </a>
-        &nbsp;|&nbsp;
+        {locale !== "en" && (
+          <span>
+            <a
+              href="https://ask.taosdata.com/"
+              target="_blank"
+              rel="noopener"
+            >
+              <Translate id="feedback.reportIssue">反馈问题</Translate>
+            </a>
+            &nbsp;|&nbsp;
+          </span>
+        )}
         <a
           href={contactUrl}
           target="_blank"
@@ -78,9 +82,9 @@ function FeedBack({editUrl}) {
 }
 
 export default function DocPaginator(props) {
-  const {previous, next} = props;
-  const {metadata} = useDoc();
-  const {i18n} = useDocusaurusContext();
+  const { previous, next } = props;
+  const { metadata } = useDoc();
+  const { i18n } = useDocusaurusContext();
   const locale = i18n.currentLocale;
   const editUrl = getEditUrl(metadata, locale);
 
