@@ -100,33 +100,6 @@ Choose a notification contact point to receive notifications for analysis, alert
 
 Click "Confirm".
 
-### Import Process and Dependency Handling
-
-The system automatically processes resource dependencies in the following order:
-
-```mermaid
-graph TD
-    A[Upload File] --> B[Validate File Format]
-    B --> C[Parse Resource Dependencies]
-    C --> D[Import UOM Units]
-    C --> E[Import Enumeration Types]
-    C --> F[Import Categories]
-    D --> G[All Tasks Complete]
-    E --> G
-    F --> G
-    G --> H[Import Element Templates]
-    G --> I[Import Event Templates]
-    H --> J[All Tasks Complete]
-    I --> J
-    J --> K[Import Analysis Templates]
-    J --> L[Import Panel Templates]
-    K --> M[Import Dashboard Templates]
-    L --> M
-    M --> N[Import Elements and Attributes]
-    N --> P[Import Dashboards and Panels]
-    P --> Q[Complete]
-```
-
 ## Task Management
 
 ### Task List
