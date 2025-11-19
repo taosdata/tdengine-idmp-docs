@@ -18,7 +18,7 @@ IDMP is under active development. Upcoming features on the roadmap include:
 1. Single sign-on (SSO)
 1. System observability metrics
 1. Support for third-party visualization plugins
-1. Statistics and analysis panels fo events
+1. Statistics and analysis panels for events
 1. User groups
 1. Support for relational databases
 1. Support for third-party time-series databases
