@@ -283,7 +283,7 @@ const BottomLeft = () => (
     <div>© 2017-2025 涛思数据</div>
     <div> 京公网安备 11010502047618号</div>
     <div><a href="https://beian.miit.gov.cn/" target="_blank">京ICP备17069529号-1</a></div>
-    <div>新版时序数据库 TDengine v3.0</div>
+    <div>AI 原生的工业数据管理平台 TDengine IDMP</div>
   </div>
 );
 
