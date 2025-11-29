@@ -41,7 +41,9 @@ Do not start TDengine IDMP until you have configured the TDengine TSDB-Enterpris
 
 1. Configure the TDengine TSDB-Enterprise connection in TDengine IDMP:
 
-   1. Open the TDengine IDMP configuration file with a text editor. The default location is `/usr/local/taos/idmp/config/application.yml`.
+   1. Open the TDengine IDMP configuration file with a text editor. The default location is:
+      - Linux/macOS: `/usr/local/taos/idmp/config/application.yml`
+      - Windows: `C:\TDengine\idmp\config\application.yml`
 
    1. Under the `tda.default-connection` section, set the TDengine TSDB-Enterprise connection details as shown in the following example:
 
@@ -140,6 +142,38 @@ sudo launchctl print system/com.taosdata.tdengine-idmp
 :::
 
 </TabItem>
+
+<TabItem label="Windows" value="windows">
+
+Run the following command to start TDengine IDMP:
+
+```batch
+C:\TDengine\idmp\bin\start-tdengine-idmp.bat
+```
+
+You can also manage TDengine IDMP services through Windows Service Manager:
+
+1. Press `Win + R`, type `services.msc`, and press Enter to open Services
+2. Find the following services:
+   - `tdengine-idmp`
+   - `tdengine-idmp-h2`
+   - `tdengine-idmp-chat`
+3. Right-click on each service to Start, Stop, or Restart
+
+To stop TDengine IDMP, run:
+
+```batch
+C:\TDengine\idmp\bin\stop-tdengine-idmp.bat
+```
+
+:::info
+
+- Administrator privileges are required to run these commands.
+- If the services are not working properly, check the logs located in the `C:\TDengine\idmp\logs` directory for more information.
+
+:::
+
+</TabItem>
 </Tabs>
 
 Once TDengine IDMP starts successfully, it includes the following three services:
@@ -184,6 +218,17 @@ Run the following command to uninstall TDengine IDMP:
 rmidmp -e [yes | no]
 ```
 To retain data, log, and configuration files, specify `no`. To delete these files, specify `yes`.
+
+</TabItem>
+
+<TabItem label="Windows" value="windows">
+
+Double-click `C:\TDengine\idmp\unins000.exe` and follow the uninstallation wizard to complete the process.
+
+Alternatively, you can uninstall TDengine IDMP through **Control Panel** → **Programs** → **Programs and Features**:
+1. Find **TDengine IDMP** in the list
+2. Right-click and select **Uninstall**
+3. Follow the uninstallation wizard to complete the process
 
 </TabItem>
 </Tabs>

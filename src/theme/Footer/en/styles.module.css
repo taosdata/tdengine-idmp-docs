@@ -6,24 +6,23 @@
   font-weight: 400;
   font-family: "IBM Plex Sans", sans-serif;
   overflow: hidden;
-  color: white;
-  box-sizing: border-box;
-  background-color: rgb(20, 20, 20);
+  color: var(--base-3);
+  box-sizing: border-box
 }
 
 .footer a {
-  color: white;
+  color: var(--base-3);
   text-decoration: none;
 }
 
 .footer a:hover {
-  color: #24d65c;
+  color: var(--accent-8)
 }
 
 .inside {
   padding-top: 40px;
   padding-bottom: 40px;
-  background-color: rgb(20, 20, 20);
+  background-color: var(--contrast);
   z-index: 1;
   position: relative;
 }
@@ -106,8 +105,7 @@
 }
 
 .footerBlurb {
-  margin-bottom: 0;
-  color: white;
+  margin-bottom: 0
 }
 
 .logoImg {
@@ -178,7 +176,6 @@
 
 .headline {
   font-size: 18px;
-  color: white;
 }
 
 .socialBtn {
@@ -188,7 +185,6 @@
   column-gap: .5em;
   text-align: center;
   text-decoration: none;
-  color: white;
 }
 
 .icon {
@@ -211,12 +207,12 @@ a.langIcon {
   padding: 5px 10px;
   margin-top: 30px;
   border-radius: 32px;
-  background-color: white;
-  color: rgb(20, 20, 20);
+  background-color: var(--base-3);
+  color: var(--contrast);
   text-decoration: none;
 }
 
 a.langIcon:hover {
-  background-color: #24d65c;
-  color: white;
+  background-color: var(--accent-5);
+  color: var(--base-3);
 }

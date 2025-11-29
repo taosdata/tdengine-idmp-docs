@@ -33,11 +33,13 @@ TDengine IDMP is offered as a Docker Compose setup to make deployment easy. This
 2. Use the unified management script to start TDengine IDMP:
 
    ```bash
+   export TZ="UTC"
    chmod +x idmp.sh
    ./idmp.sh start
    ```
    
    This command will prompt you to select a deployment mode: start standard deployment (TSDB Enterprise + IDMP) or full deployment (TSDB Enterprise + IDMP + TDgpt), and automatically pull the required images (if not available locally). For full deployment, TDgpt includes AI/ML and other algorithms for performing time-series forecasting and anomaly detection within TDengine.
+   To ensure IDMP's features work correctly, please set the containers' timezone properly. In the command above, setting the environment variable `TZ` to `UTC` ensures all containers in the Docker Compose file use UTC time. UTC is a good default for server environments, but you can change it to your local timezone if necessary.
 
 <Init />
 
