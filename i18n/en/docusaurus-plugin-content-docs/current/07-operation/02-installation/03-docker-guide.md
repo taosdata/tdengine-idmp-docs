@@ -12,7 +12,7 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
 
 ## Install TDengine TSDB-Enterprise and TDengine IDMP
 
-### 1. Clone the repository:
+### 1. Clone the repository
 
    ```bash
    git clone https://github.com/taosdata/tdengine-idmp-deployment.git
@@ -43,8 +43,8 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
 
   By default, the TDengine IDMP service listens on port 6042 of the host. You can access the management interface using the following address:
 
-  - [http://localhost:6042](http://localhost:6042)
-  - [http://ip:6042](http://ip:6042)
+- [http://localhost:6042](http://localhost:6042)
+- [http://ip:6042](http://ip:6042)
 
   :::tip
   To change the port mapping, edit the `ports` configuration in the `docker-compose.yml` or `docker-compose-tdgpt.yml` file.
@@ -59,8 +59,8 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
   This command will automatically detect the currently running service type and use the appropriate configuration file to stop the services.  
   The script provides an interactive prompt:
 
-  - **Keep data and logs**: Default, keep data volumes when stopping containers.
-  - **Clear data and logs**: Delete data volumes when stopping containers, suitable for scenarios where you need to completely clean the environment.
+- **Keep data and logs**: Default, keep data volumes when stopping containers.
+- **Clear data and logs**: Delete data volumes when stopping containers, suitable for scenarios where you need to completely clean the environment.
 
 ### 3. Alternative: Manual Docker Compose deployment
 
@@ -74,11 +74,13 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
 #### Choose deployment mode
 
   **Standard deployment (TSDB Enterprise + IDMP):**
+
    ```bash
    docker compose up -d
    ```
 
   **Full deployment (TSDB Enterprise + IDMP + TDgpt):**
+
    ```bash
    docker compose -f docker-compose-tdgpt.yml up -d
    ```
@@ -87,8 +89,8 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
 
    By default, the TDengine IDMP service listens on port 6042 of the host. You can access the management interface using the following address:
 
-   - [http://localhost:6042](http://localhost:6042)
-   - [http://ip:6042](http://ip:6042)
+- [http://localhost:6042](http://localhost:6042)
+- [http://ip:6042](http://ip:6042)
 
    :::tip
 
@@ -113,6 +115,20 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
    # or
    docker compose -f docker-compose-tdgpt.yml down -v
    ```
+
+#### Upgrade IDMP Service Separately
+
+1. Stop the IDMP service separately:
+
+    ```bash
+    docker compose down tdengine-idmp
+    ```
+  
+2. Start the IDMP service and pull the latest image:
+
+    ```bash
+    docker compose up tdengine-idmp --pull always -d
+    ```
 
 ## Install TDengine IDMP
 
@@ -177,12 +193,12 @@ TDengine IDMP requires TDengine TSDB-Enterprise 3.3.7.0 or later. If your enviro
            - WINDOW_CLOSE
    ```
 
-   * Under the `tda.default-connection` section, set the TDengine TSDB-Enterprise connection as follows:
+   - Under the `tda.default-connection` section, set the TDengine TSDB-Enterprise connection as follows:
      - auth-type: Authentication method. Supports UserPassword (default) and Token.
      - url: The IP address and port of the taosAdapter component in TDengine TSDB-Enterprise. The default port is 6041.
      - username and password: Credentials for accessing TDengine TSDB-Enterprise. Default values are root and taosdata.
   
-   * Under `tda.analysis`, `event.urls` specifies the WebSocket address through which TDengine TSDB-Enterprise accesses the IDMP service.
+   - Under `tda.analysis`, `event.urls` specifies the WebSocket address through which TDengine TSDB-Enterprise accesses the IDMP service.
 
 3. Start the TDengine IDMP container
 

@@ -97,11 +97,13 @@ docker compose -f docker-compose-tdgpt.yml up -d
 #### 停止服务
 
 **停止标准部署**
+
 ```bash
 docker compose down
 ```
 
 **停止完整部署**
+
 ```bash
 docker compose -f docker-compose-tdgpt.yml down
 ```
@@ -109,14 +111,32 @@ docker compose -f docker-compose-tdgpt.yml down
 如需清理数据，请添加 `-v` 参数，例如：
 
 **清理标准部署数据**
+
 ```bash
 docker compose down -v
 ```
 
 **停止完整部署数据**
+
 ```bash
 docker compose -f docker-compose-tdgpt.yml down -v
 ```
+
+#### 单独升级 IDMP 服务
+
+1. 单独停止 IDMP 服务：
+
+    ```bash
+    docker compose down tdengine-idmp
+    ```
+  
+2. 启动 IDMP 服务并拉取最新镜像：
+
+    ```bash
+    docker compose up tdengine-idmp --pull always -d
+    ```
+
+#### 升级标准服务
 
 ## 单独部署 TDengine IDMP 服务
 
@@ -182,6 +202,7 @@ tda:
 ```
 
 说明：
+
 - `tda.server-url`为 TDengine IDMP 服务的访问地址，可配置为域名或 IP 地址，如果配置为 localhost + port 的方式，则 TDengine IDMP 服务只能在本机访问。
 - 在 `tda.default-connection` 下，配置 TDengine TSDB-Enterprise 的连接信息，其中：
   - auth-type: 认证方式，支持 UserPassword 和 Token 两种方式，默认为方式 UserPassword
@@ -201,6 +222,7 @@ docker run -d \
 ```
 
 说明：
+
 - `-p` 选项，用于将​​容器的端口映射到主机的端口​​，使得外部可以通过主机的端口访问容器内运行的服务。如需自定义端口，例如：将 TDengine IDMP 服务的端口 6042 映射至主机的 7042 端口，可按照以下方式，修改端口映射参数 `-p 7042:6042`。
 - `-v` 选项，用于挂载主机目录或卷到容器中，实现主机和容器之间的文件共享或持久化存储。在以上命令中，将主机当前目录下的 `application.yml` 文件挂载到容器内的 `/usr/local/taos/idmp/config/application.yml` 路径下。
 
