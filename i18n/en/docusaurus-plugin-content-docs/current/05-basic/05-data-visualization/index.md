@@ -29,7 +29,7 @@ When creating a panel for an element, you can choose the following from the side
 1. **Element:** You can select attributes of the current element or of its child elements to use as display metrics. The system only lists attributes whose data reference type is TDengine Metric, as only these represent time-series data that is meaningful to visualize.
 2. **Child Element Grouping:** You can select a child element template from the children of the current element, then choose which attribute of that template to aggregate. You can also select one or more dimension metrics for grouping.
 
-The default option is **Element**. In the sidebar, double-click on an attribute to add it to the panel and visualize it.
+The default selection is `Element`. In the left tree structure, select a specific metric or tag and double-click to add it. Alternatively, you can click the three dots to its right and select "Add to Metrics" or "Add to Dimensions".
 
 ## Panel Metric Configuration
 
