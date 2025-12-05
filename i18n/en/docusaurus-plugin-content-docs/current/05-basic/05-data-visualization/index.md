@@ -95,3 +95,7 @@ Additionally, you can click the "Format" icon to format the current SQL query, a
 ## Panel Display Settings
 
 While a panel is in edit mode, you can modify the display settings for the panel on the right sidebar. Any changes you make are immediately reflected in the main area for you to preview.
+
+## Panel Card or List View
+
+Panel lists are displayed in card view by default and can be switched to list view. Each panel can be viewed, edited, deleted, or converted to a template through the menu. If a panel does not contain child element attributes, it can be converted to a template.
