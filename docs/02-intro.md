@@ -86,6 +86,8 @@ TDengine IDMP 计划支持其他时序数据库，但与 TDengine TSDB-Enterpris
 
 劣势是支持的数据源种类还不够，目前仅仅支持 OPC-UA/OPC-DA, MQTT 等。
 
+为便于大家进一步从功能架构、模型设计、安全体系、AI 能力等多维度了解 TDengine 与国内外实时库的差异，我们严格基于公开资料与官方文档，对 PI System、亚控、紫金桥、麦杰、力控、中控、庚顿与 TDengine（TSDB+IDMP）进行了系统对比，详情请参考：[七家工业数据库横评：PI/亚控/紫金桥/麦杰/力控/中控/庚顿 vs TDengine](https://www.taosdata.com/tdengine/7-industrial-database-comparison-tdengine-vs-pi-system-yakong-zijinqiao-maijie-licong-zhongkong-gengdun)。
+
 **与通用的数据管理平台相比**，TDengine 具有如下优势：
 
 1. AI-Ready 的数据平台，具备“无问智推”以及“智能问数”的能力。
