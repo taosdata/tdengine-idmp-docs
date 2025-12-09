@@ -32,7 +32,7 @@ export default function PkgListV37(props) {
     setPkgValue({ pkgId: "", productName: "", pkgUrl: "" });
   }
 
-  console.log('[PkgListV37] popState=', popState, 'pkgValue=', pkgValue);
+  // console.log('[PkgListV37] popState=', popState, 'pkgValue=', pkgValue);
 
   return (
     <div id="server-packageList" className="package-list">

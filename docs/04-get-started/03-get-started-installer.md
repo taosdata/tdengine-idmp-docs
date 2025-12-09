@@ -8,7 +8,7 @@ TDengine IDMP 提供了丰富的功能，本文档将带领您通过安装包完
 
 ## 安装
 
-TDengine IDMP 支持多种安装、部署方式，在不同的操作系统和架构下，都能够体验其强大的功能带来的便利。对操作系统和架构的支持，详见[部署规划](../operation/planning)。
+TDengine IDMP 支持多种安装、部署方式，在不同的操作系统和架构下，都能够体验其强大的功能带来的便利。对操作系统和架构的支持，详见[部署规划](../../operation/planning/)。
 
 TDengine IDMP 的运行需要以下基础依赖：
 1. Python: 3.12 版本
@@ -86,7 +86,7 @@ TDengine IDMP 在 Windows 上运行需要：
 
 </Tabs>
 
-如果安装过程中遇到错误，请参考安装过程的[常见错误及解决方案](../operation/installation/install-guide#常见错误)。
+如果安装过程中遇到错误，请参考安装过程的[常见错误及解决方案](../../operation/installation/install-guide/#常见错误)。
 
 ## 启动
 
@@ -138,7 +138,7 @@ TDengine IDMP 在 Windows 上运行需要：
 至此，TDengine IDMP 服务已成功启动。您可以在浏览器输入以下地址访问：[http://ip:6042](http://ip:6042),
 请将 `ip` 替换为真实的主机 IP 地址，如果在本地运行，则可以直接访问 [http://localhost:6042](http://localhost:6042)。
 
-关于服务启动、停止更详细的操作指南，请您参考[使用安装包部署](../operation/installation/install-guide)章节。为了简化安装包的部署，您还可以使用我们提供的 Ansible Playbook 来完成安装和配置，具体步骤请参考[使用 Ansible Playbook 部署](../operation/installation/ansible-guide)章节。
+关于服务启动、停止更详细的操作指南，请您参考[使用安装包部署](../../operation/installation/install-guide/)章节。为了简化安装包的部署，您还可以使用我们提供的 Ansible Playbook 来完成安装和配置，具体步骤请参考[使用 Ansible Playbook 部署](../../operation/installation/ansible-guide/)章节。
 
 import Init from './_init.md'
 

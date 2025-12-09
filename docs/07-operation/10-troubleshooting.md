@@ -45,7 +45,7 @@
 
 ## 容器化部署方式
 
-如果您在通过[容器化部署方式](../get-started/get-started-docker)使用 TDengine IDMP 的过程中，遇到了问题，可以通过以下命令将日志文件从容器内复制到本地：
+如果您在通过[容器化部署方式](../../get-started/get-started-docker/)使用 TDengine IDMP 的过程中，遇到了问题，可以通过以下命令将日志文件从容器内复制到本地：
 
 ```bash
 docker cp tdengine-tsdb:/var/log/taos/taosdlog.*    ./

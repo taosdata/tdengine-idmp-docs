@@ -19,7 +19,7 @@ TDengine IDMP 的运行需要以下基础依赖：
 
 ## 安装
 
-请根据您的操作系统类型，选择合适的安装方式，安装 TDengine IDMP。详见[通过安装包快速体验](../../get-started/get-started-installer)。
+请根据您的操作系统类型，选择合适的安装方式，安装 TDengine IDMP。详见[通过安装包快速体验](../../../get-started/get-started-installer/)。
 
 ### 常见错误
 
