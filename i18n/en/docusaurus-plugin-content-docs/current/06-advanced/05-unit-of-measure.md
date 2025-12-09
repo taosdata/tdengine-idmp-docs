@@ -14,7 +14,7 @@ Unit of measurement management is available under **Libraries** in the main menu
 
 ## Units of Measurement in Formula References
 
-The expressions in [formula references](../basic/data-model#formula) can be quite complex. When attributes with configured units of measurement are involved in expression calculations, various scenarios may arise. Below are the handling rules for different situations. To simplify the explanation, we use uppercase letters to represent the quantities involved in calculations, such as A and B, which may represent either an attribute or an intermediate calculation result.
+The expressions in [formula references](../../basic/data-model/#formula) can be quite complex. When attributes with configured units of measurement are involved in expression calculations, various scenarios may arise. Below are the handling rules for different situations. To simplify the explanation, we use uppercase letters to represent the quantities involved in calculations, such as A and B, which may represent either an attribute or an intermediate calculation result.
 
 ### Addition and Subtraction Operations
 

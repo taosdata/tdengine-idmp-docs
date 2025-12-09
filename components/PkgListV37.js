@@ -12,7 +12,7 @@ export default function PkgListV37(props) {
     (async () => {
       console.log("[PkgListV37] fetch params", { productName, version, platform, arch, pkgType, jsonPath });
       const list = await fetchPackagesFromProduct({ productName, version, platform, arch, pkgType, jsonPath });
-      console.log("[PkgListV37] adapter returned", list?.length, list?.slice?.(0,5));
+      console.log("[PkgListV37] adapter returned", list?.length, list?.slice?.(0, 5));
       setPkgs(list || []);
     })();
   }, [productName, version, platform, arch, pkgType, jsonPath]);
@@ -21,7 +21,7 @@ export default function PkgListV37(props) {
     console.log("[PkgListV37] clicked pkg", pkg);
     setPopState({ hidden: false, selectedPkg: pkg });
     setPkgValue({
-      pkgId: pkg.id ,
+      pkgId: pkg.id,
       productName: productName,
       pkgUrl: pkg.url || pkg['download-url'] || pkg['download_url'] || ""
     });
@@ -32,7 +32,7 @@ export default function PkgListV37(props) {
     setPkgValue({ pkgId: "", productName: "", pkgUrl: "" });
   }
 
-  console.log('[PkgListV37] popState=', popState, 'pkgValue=', pkgValue);
+  //console.log('[PkgListV37] popState=', popState, 'pkgValue=', pkgValue);
 
   return (
     <div id="server-packageList" className="package-list">

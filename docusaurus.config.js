@@ -24,12 +24,19 @@ const config = {
   title: getTitle(),
   tagline: '工业互联网全量设备的元数据可视化管理系统',
   favicon: '/favicon.ico',
+  future: {
+    v4: true,
+    experimental_faster: true
+  },
   url: 'https://idmpdocs.taosdata.com',
-  // trailingSlash: true,
+  trailingSlash: true,
   baseUrl: '/',
   onBrokenAnchors: 'throw',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'throw',
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'throw'
+    }
+  },
   i18n: {
     defaultLocale: 'zh-Hans',
     locales: ['en', 'zh-Hans'],
@@ -50,7 +57,6 @@ const config = {
       ({
         docs: {
           routeBasePath: '/',
-          sidebarPath: './sidebars.js',
           breadcrumbs: false,
         },
         googleTagManager: {
