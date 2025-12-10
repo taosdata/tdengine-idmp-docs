@@ -186,6 +186,33 @@ caption {
   white-space: nowrap;
 }
 
+/* Ensure nowrap applies even against theme defaults inside Markdown tables */
+.markdown .table-nowrap table,
+.markdown .table-nowrap tr,
+.markdown .table-nowrap th,
+.markdown .table-nowrap td {
+  white-space: nowrap !important;
+}
+
+/* Prevent nested inline elements from re-wrapping inside nowrap tables */
+.table-nowrap a,
+.table-nowrap code,
+.table-nowrap span,
+.table-nowrap strong,
+.table-nowrap em {
+  white-space: nowrap;
+}
+
+/* Optional: when extremely long tokens exist, keep row height stable and allow horizontal scroll */
+.table-nowrap {
+  overflow-x: auto;
+}
+
+/* Optional: fixed layout makes column widths consistent; comment out if undesired */
+.table-nowrap table {
+  table-layout: fixed;
+}
+
 .DocSearch-Button {
   margin: 16px 0 !important;
   border-radius: 0.25rem !important;
