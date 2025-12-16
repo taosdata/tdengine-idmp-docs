@@ -38,13 +38,14 @@
 
 | 组件       | 日志文件路径                            |
 |-----------|---------------------------------------|
-| TDengine IDMP 日志 | /var/log/taos/tda.log          |
+| TDengine IDMP 日志 | /var/log/taos/tda.log |
 | TDengine IDMP 错误日志 | /var/log/taos/tda-error.log |
-| TDengine TSDB-Enterprise 日志 | /var/log/taos/taosdlog.*      |
+| TDengine IDMP AI 模块日志 | /var/log/taos/ai-default.log |
+| TDengine TSDB-Enterprise 日志 | /var/log/taos/taosdlog.* |
 
 ## 容器化部署方式
 
-如果您在通过[容器化部署方式](../get-started/get-started-docker)使用 TDengine IDMP 的过程中，遇到了问题，可以通过以下命令将日志文件从容器内复制到本地：
+如果您在通过[容器化部署方式](../../get-started/get-started-docker/)使用 TDengine IDMP 的过程中，遇到了问题，可以通过以下命令将日志文件从容器内复制到本地：
 
 ```bash
 docker cp tdengine-tsdb:/var/log/taos/taosdlog.*    ./

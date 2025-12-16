@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import { useLocation } from '@docusaurus/router';
+import Head from '@docusaurus/Head';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 const TOC_LINK_SELECTOR = '.table-of-contents__link';
 const ANCHOR_LINK_SELECTOR = 'a[href^="#"]';
@@ -60,5 +62,17 @@ export default function Root({ children }) {
     };
   }, [location.pathname]);
 
-  return <>{children}</>;
+  const {i18n} = useDocusaurusContext();
+  const locale = i18n?.currentLocale || i18n?.defaultLocale || 'zh-Hans';
+
+  return (
+    <>
+      {locale === 'zh-Hans' && (
+        <Head>
+          <script async src="https://hm.baidu.com/hm.js?36af43fc308ee9444604d82ec053c128"></script>
+        </Head>
+      )}
+      {children}
+    </>
+  );
 }

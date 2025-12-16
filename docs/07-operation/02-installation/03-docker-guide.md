@@ -17,16 +17,28 @@ git clone https://github.com/taosdata/tdengine-idmp-deployment.git
 
 该仓库包含了 TDengine IDMP 与 TSDB 的 Docker Compose 配置文件。
 
-### 2. 启动服务
+您可以选择使用统一管理脚本进行部署或者手动使用 Docker Compose 部署。
+
+### 2. 使用统一管理脚本部署（推荐）
+
+#### 启动服务
 
 ```bash
 cd tdengine-idmp-deployment/docker
-docker compose up -d
+chmod +x idmp.sh
+./idmp.sh start
 ```
 
-执行上述命令会自动拉取所需镜像并以后台方式启动所有服务容器。
+执行以上命令：
 
-### 3. 访问服务
+1. **自动环境检测**：检测并使用系统中可用的 Docker Compose 命令
+2. **交互式部署选择**：提示您选择部署模式
+   - **标准部署**：包含 TSDB Enterprise + IDMP，适合基本功能使用
+   - **完整部署**：包含 TSDB Enterprise + IDMP + TDgpt，适合需要时序数据预测和异常检测等功能的用户
+3. **智能网络配置**：自动检测主机 IP 地址并配置访问 URL，也可自定义访问地址
+4. **一键启动**：自动拉取所需镜像（如本地不存在）并以后台模式启动选定的服务
+
+#### 访问服务
 
 默认情况下，TDengine IDMP 服务监听主机的 6042 端口。可通过以下地址访问管理界面：
 
@@ -34,24 +46,97 @@ docker compose up -d
 - [http://ip:6042](http://ip:6042)
 
 :::tip
-如需修改端口，请编辑 `docker-compose.yml` 文件中的 `ports` 配置项。
+如需修改端口，请编辑 `docker-compose.yml` 或者 `docker-compose-tdgpt.yml` 文件中的 `ports` 配置项。
 :::
 
-### 4. 停止服务
+#### 停止服务
 
-执行以下命令，会停止并移除所有通过 Compose 启动的容器，但不会删除数据卷。
+```bash
+./idmp.sh stop
+```
+
+该命令会自动检测当前运行的服务类型，并使用相应的配置文件停止服务。停止过程中，脚本会以交互的方式，询问是否清除数据和日志等文件：
+
+- **保留数据**：默认行为，停止容器时保留数据卷 (volumes)
+- **清除数据**：停止容器时删除数据卷，适用于需要完全清理环境的场景
+
+### 3. 手动使用 Docker Compose 部署
+
+#### 配置环境变量
+
+```bash
+cd tdengine-idmp-deployment/docker
+export IDMP_URL="http://your-host-ip:6042"  # 请替换为实际 IP 地址或配置好的域名
+```
+
+#### 选择部署方式
+
+**标准部署（TSDB Enterprise + IDMP）**
+
+```bash
+docker compose up -d
+```
+
+**完整部署（TSDB Enterprise + IDMP + TDgpt）**
+
+```bash
+docker compose -f docker-compose-tdgpt.yml up -d
+```
+
+#### 访问服务
+
+默认情况下，TDengine IDMP 服务监听主机的 6042 端口。可通过以下地址访问管理界面：
+
+- [http://localhost:6042](http://localhost:6042)
+- [http://ip:6042](http://ip:6042)
+
+:::tip
+如需修改端口，请编辑相应的 `docker-compose.yml` 或者 `docker-compose-tdgpt.yml` 文件中的 `ports` 配置项。
+:::
+
+#### 停止服务
+
+**停止标准部署**
 
 ```bash
 docker compose down
 ```
 
-如需清理数据，请添加 `-v` 参数：
+**停止完整部署**
+
+```bash
+docker compose -f docker-compose-tdgpt.yml down
+```
+
+如需清理数据，请添加 `-v` 参数，例如：
+
+**清理标准部署数据**
 
 ```bash
 docker compose down -v
 ```
 
-## 部署 TDengine IDMP 服务
+**停止完整部署数据**
+
+```bash
+docker compose -f docker-compose-tdgpt.yml down -v
+```
+
+#### 单独升级 IDMP 服务
+
+1. 单独停止 IDMP 服务：
+
+    ```bash
+    docker compose down tdengine-idmp
+    ```
+  
+2. 启动 IDMP 服务并拉取最新镜像：
+
+    ```bash
+    docker compose up tdengine-idmp --pull always -d
+    ```
+
+## 单独部署 TDengine IDMP 服务
 
 :::warning
 TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0+
@@ -84,8 +169,8 @@ tda:
   index-dir: /var/lib/taos/idmp/index # index directory
   log-dir: /var/log/taos # all IDMP logs including IDMP server and AI server will be stored in this directory
   ai-server:
-    url: http://localhost:8777 # AI server URL
-  server-url: http://localhost:6042 # public IDMP URL
+    url: http://localhost:6040 # AI server URL
+  server-url: http://192.168.1.100:6042 # public IDMP URL
   default-connection:
     enable: true
     auth-type: UserPassword # can be set to UserPassword or Token
@@ -114,12 +199,15 @@ tda:
         - WINDOW_CLOSE
 ```
 
-在 `tda.default-connection` 下，配置 TDengine TSDB-Enterprise 的连接信息，其中：
-- auth-type: 认证方式，支持 UserPassword 和 Token 两种方式，默认为方式 UserPassword
-- url: 为 TDengine TSDB-Enterprise 中 taosAdapter 组件的 IP 地址和端口号，端口号默认为 6041
-- username 和 password: 为 TDengine TSDB-Enterprise 的用户名和密码，默认为 root 和 taosdata
+说明：
 
-在 `tda.analysis` 下，`envent.urls` 为 TDengine TSDB-Enterprise 访问 IDMP 服务的 WebSocket 地址。
+- `tda.server-url`为 TDengine IDMP 服务的访问地址，可配置为域名或 IP 地址，如果配置为 localhost + port 的方式，则 TDengine IDMP 服务只能在本机访问。
+- 在 `tda.default-connection` 下，配置 TDengine TSDB-Enterprise 的连接信息，其中：
+  - auth-type: 认证方式，支持 UserPassword 和 Token 两种方式，默认为方式 UserPassword
+  - url: 为 TDengine TSDB-Enterprise 中 taosAdapter 组件的 IP 地址和端口号，端口号默认为 6041
+  - username 和 password: 为 TDengine TSDB-Enterprise 的用户名和密码，默认为 root 和 taosdata
+- `enable-login-captcha-check` 表示是否启用验证码登录，默认为 `false` 即不启用，若想要开启可以设置为 `true`，也可以通过设置环境变量 `ENABLE_LOGIN_CAPTCHA_CHECK` 为 `true` 来开启。
+- 在 `tda.analysis` 下，`envent.urls` 为 TDengine TSDB-Enterprise 访问 IDMP 服务的 WebSocket 地址。
 
 ### 2. 启动 TDengine IDMP 容器
 
@@ -132,6 +220,7 @@ docker run -d \
 ```
 
 说明：
+
 - `-p` 选项，用于将​​容器的端口映射到主机的端口​​，使得外部可以通过主机的端口访问容器内运行的服务。如需自定义端口，例如：将 TDengine IDMP 服务的端口 6042 映射至主机的 7042 端口，可按照以下方式，修改端口映射参数 `-p 7042:6042`。
 - `-v` 选项，用于挂载主机目录或卷到容器中，实现主机和容器之间的文件共享或持久化存储。在以上命令中，将主机当前目录下的 `application.yml` 文件挂载到容器内的 `/usr/local/taos/idmp/config/application.yml` 路径下。
 
@@ -150,3 +239,34 @@ docker rm tdengine-idmp
 ```
 
 停止后数据不会保留，如需持久化数据请挂载数据卷。
+
+## 常见问题排查
+
+### 1. 容器 `tdengine-idmp` 状态为 `unhealthy`，或者 IDMP 页面中显示 `Python Server not available.` 错误
+
+这种情况需要排查 `tdengine-idmp` 的 Python 应用是否正常，请按照以下命令逐步排查：
+
+```bash
+# 进入 docker 容器
+docker exec -it tdengine-idmp bash
+
+# 查看 Python 进程
+ps -ef | grep python
+
+# 如果进程不存在，可以查看 log 文件中是否包含错误信息
+cd /var/log/taos && cat ai-default.log | more
+
+# 如果 log 文件不存在，或者查找错误困难，可以执行下方命令进行测试
+export IDMP_DATA_PATH=/var/lib/taos/idmp && export IDMP_LOG_PATH=/var/log/taos && export SENTENCE_MODEL_PATH=/usr/local/taos/idmp/chat/sentence-transformer && export MODEL_FORMAT=onnx && python /usr/local/taos/idmp/chat/src/server.py
+```
+
+以上过程，如果 log 文件中包含错误信息，或者最后一条命令执行报错，建议联系 TDengine 团队。联系时请提供 log 文件与命令行报错截图，log 文件的获取方式参考以下命令：
+
+```bash
+# 容器外部执行（不要忽略末尾点号，代表当前目录）
+docker cp tdengine-idmp:/var/log/taos/ai-default.log .
+```
+
+### 2. IDMP 页面中显示 `AI 服务不可用` 错误
+
+首先，可以在 `管理后台 -> 连接` 页面点击进入 AI 连接的详情页面，查看是否内置密钥过期。如果过期，请尽快设置有效的密钥或新建连接；如果未过期，请按照 `常见问题1` 进行排查；如果仍未发现问题，建议联系 TDengine 团队。

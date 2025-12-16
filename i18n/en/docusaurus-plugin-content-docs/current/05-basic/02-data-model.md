@@ -1,5 +1,6 @@
 ---
 title: Data Modeling
+toc_max_heading_level: 4
 ---
 
 The first step in using TDengine IDMP to manage data is to build an asset model for your data. When your data is stored in a database consisting of two-dimensional tables, the relationships between these tables are not always perceivable. The purpose of data modeling is to help you define and visualize the relationships among these tables, making it easier to manage, locate, and analyze your data.
@@ -44,6 +45,61 @@ To define an attribute, hover over an existing element in the sidebar and click 
 
 Click the New Attribute (+) icon at the top right of the main area to create an attribute for the selected element. You can specify the name, categories, data type, default value, and description of the attribute, as well as custom properties. For numeric data types, you can also set limits and time-series forecasting options. All attributes can be set as constants, hidden, or excluded as needed.
 
+Properties can be configured with a default unit of measure and a display unit of measure. The default unit of measure is the unit of the collected quantity itself, and the display unit of measure is the unit used for presentation on the page. If the default unit of measure and the display unit of measure are inconsistent, automatic conversion will be performed when displaying the property value. For example, if the default unit is meter and the display unit is kilometer, and the property value is 1000, it will be displayed as 1 km. Both the default unit of measure and the display unit of measure must belong to the same unit of measure category (UOM Class). 
+
 Most importantly, attributes can be configured with a data reference. The reference can point to a TDengine metric or TDengine tag, indicating that the attribute is mapped to a specific column or tag value in a table within TDengine TSDB-Enterprise. The value of the attribute is then retrieved from the data source at access time.
 
+The data reference for attributes also supports calculation formulas and string builders, making data references more flexible to support data standardization. A calculation formula means the attribute is calculated based on the values of other attributes. For example, the power attribute of a smart meter is obtained by multiplying the current attribute by the voltage attribute. We only need to configure the calculation expression. A string builder specifies a rule for generating a string, constructing a new string based on several input strings.
+
+In the future, the data reference for attributes will not only be able to reference data from TDengine TSDB-Enterprise but also from other time-series databases or relational databases.
 After you create an attribute, you can modify, delete, copy, and paste it.
+
+## Configuring Data References
+
+This section details how to configure data references for attributes. All data references are set via a string. Click the input box under the data reference type on the attribute editing page to open the data reference editing popup.
+
+#### TDengine Metrics and TDengine Tags
+A TDengine metric references a specific column of a table in TDengine TSDB-Enterprise; a TDengine tag references the tag value of a table in TDengine TSDB-Enterprise. They are set in the following format:
+```
+Connection Name/Database Name/Table Name/Column Name (or Tag Name)
+```
+For example:
+```
+TDengine/idmp_sample_utility/em-17/location
+```
+Here, `TDengine` is the connection name, `idmp_sample_utility` is the database name, `em-17` is the table name, and `location` is the tag name.
+
+#### Formula
+A formula reference is set using an expression. It is ultimately converted into a TDengine SQL expression and executed by TDengine TSDB. A formula reference expression is a combination of attributes, operators, replacement parameters, constants, and functions. The attributes it references must be of a numerical type, and its output must also be numerical. For example:
+```
+log(current) * voltage +10 + TIME
+```
+The image below shows a configuration example for a formula reference expression:
+
+![Formula Expression Configuration](/docs-img/basic/formula-setting-en.png)
+
+:::note
+1.  Currently, the only available replacement parameter for formula reference expressions is `TIME`, which will be replaced by the number of milliseconds corresponding to the current local time.
+2.  Currently, the attributes referenced by a formula expression can only be those of the current element. To reference an attribute `A` from a non-local element, the recommended strategy is to add a new attribute `A'` to the current element, making `A'` reference the same external data as `A`.
+:::
+:::info
+On the expression editing interface, you can click "Evaluate" at any time to test the current expression. IDMP will perform a validity check on the expression. If the check passes, it will further attempt to compute it. If a computation exception occurs, the corresponding SQL statement and SQL exception will be thrown. You can adjust the expression based on the exception information.
+:::
+
+#### String Builder
+The setting for a string builder reference is similar to that of a formula reference—it is also an expression, but its output is a string. Its input can be any attribute of the current element, not just numerical-type attributes. Commonly used string manipulation functions include:
+1.  `CONCAT` for concatenating strings.
+2.  `SUBSTR` for extracting substrings.
+3.  `CAST` for converting non-string type columns to string type.
+
+String builders also have a richer set of available replacement parameters. In addition to time-related parameters, there are name-related parameters, such as: the current element name, the current attribute name, and the template name used by the current element.
+
+:::note
+You cannot use the plus sign (`+`) to concatenate strings. To concatenate strings, please use the `CONCAT` function on the right side of the formula editor interface. Each parameter of the `CONCAT` function must also be of string type. To concatenate a numerical-type attribute into a string, please convert it first using the `CAST` function, for example: `CONCAT(Address, '-', CAST(Voltage as varchar))`.
+:::
+
+The image below shows a configuration example for a string builder reference:
+```
+CONCAT('Current voltage of ',LOWER(${Template#name}),' ',${attributes['Device ID']},' is ', cast(${attributes['Voltage']} as varchar), 'V')
+```
+![String Builder Expression Configuration](/docs-img/basic/string-builder-en.png)

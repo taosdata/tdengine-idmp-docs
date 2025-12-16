@@ -23,10 +23,12 @@
 ## 基础依赖
 
 TDengine IDMP 的运行需要以下基础依赖：
-
-Python: 3.10-3.12 版本
-Java: 21 及以上版本
-glibc: 2.25 及以上版本
+1. Python: 3.12 版本
+1. Java: 21 及以上版本
+1. glibc: 2.25 及以上版本
+1. TDengine TSDB-Enterprise: 3.3.7.0 及以上版本
+1. 可用的 SMTP 邮件服务（当无法访问 Internet 时，需要在内网部署）
+1. 正确的时区，关于时区的设置，请参考操作系统的用户手册
 
 ## 端口占用
 
@@ -35,9 +37,9 @@ TDengine IDMP 默认使用以下端口，请确保这些端口未被其他应用
 | 端口 | 协议 | 描述 |
 |---|---|---|
 | 6042 | HTTP | 外部端口，TDengine IDMP Web 页面 和 REST API 端口，用于浏览器访问页面和 API 接口，请确保防火墙开放对该端口的访问。|
-| 8082 | HTTP | 内部端口，TDengine IDMP 内部 H2 数据库服务 Web 页面端口，用于访问内部 H2 数据库。 |
-| 8777 | HTTP | 内部端口，TDengine IDMP 内部 chat 服务 API 端口，用于访问内部 chat 服务。 |
-| 9092 | TCP  | 内部端口，TDengine IDMP 内部 H2 数据库服务监听端口，用于访问内部 H2 数据库。 |
+| 6038 | HTTP | 内部端口，TDengine IDMP 内部 H2 数据库服务 Web 页面端口，用于访问内部 H2 数据库。 |
+| 6039 | TCP  | 内部端口，TDengine IDMP 内部 H2 数据库服务监听端口，用于访问内部 H2 数据库。 |
+| 6040 | HTTP | 内部端口，TDengine IDMP 内部 chat 服务 API 端口，用于访问内部 chat 服务。 |
 
 ## 安装目录
 

@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 import Init from './_init.md';
 import Getstarted from './_get_started.md';
 
-TDengine IDMP is offered as a Docker image, and a Docker Compose setup is also provided to make deployment easy. This Docker Compose setup installs TDengine TSDB-Enterprise along with TDengine IDMP and automatically establishes a connection between them.
+TDengine IDMP is offered as a Docker Compose setup to make deployment easy. This installs TDengine TSDB-Enterprise along with TDengine IDMP and automatically establishes a connection between them.
 
 ## Prerequisites
 
@@ -24,20 +24,22 @@ TDengine IDMP is offered as a Docker image, and a Docker Compose setup is also p
    git clone https://github.com/taosdata/tdengine-idmp-deployment.git
    ```
 
-2. Start Docker Compose:
+1. Open the `docker` directory within the cloned repository:
 
    ```bash
    cd tdengine-idmp-deployment/docker
-   docker compose up -d
    ```
 
-   This command will automatically pull the required images and start both the TDengine IDMP service and TDengine TSDB-Enterprise service in detached mode.
+2. Use the unified management script to start TDengine IDMP:
 
-   :::note
-
-   By default, the TDengine IDMP service runs on port 6042 of the host. To change the port mapping, edit the ports configuration in the `docker-compose.yml` file.
-
-   :::
+   ```bash
+   export TZ="UTC"
+   chmod +x idmp.sh
+   ./idmp.sh start
+   ```
+   
+   This command will prompt you to select a deployment mode: start standard deployment (TSDB Enterprise + IDMP) or full deployment (TSDB Enterprise + IDMP + TDgpt), and automatically pull the required images (if not available locally). For full deployment, TDgpt includes AI/ML and other algorithms for performing time-series forecasting and anomaly detection within TDengine.
+   To ensure IDMP's features work correctly, please set the containers' timezone properly. In the command above, setting the environment variable `TZ` to `UTC` ensures all containers in the Docker Compose file use UTC time. UTC is a good default for server environments, but you can change it to your local timezone if necessary.
 
 <Init />
 
@@ -48,13 +50,13 @@ TDengine IDMP is offered as a Docker image, and a Docker Compose setup is also p
 Once you’ve completed your evaluation, you can stop and remove the TDengine containers by running the following command:
 
 ```bash
-docker compose down
+./idmp.sh stop
 ```
 
-If you also wish to remove the volumes created by TDengine, use the following command.
+This command will automatically detect the currently running service type and use the appropriate configuration file to stop the services.  
+The script provides an interactive prompt:
 
-```bash
-docker compose down -v
-```
+- **Keep data and logs**: Default, keep data volumes when stopping containers.
+- **Clear data and logs**: Delete data volumes when stopping containers, suitable for scenarios where you need to completely clean the environment.
 
 For more detailed instructions on starting and stopping the service, see [Docker Deployment](../07-operation/02-installation/03-docker-guide.md).

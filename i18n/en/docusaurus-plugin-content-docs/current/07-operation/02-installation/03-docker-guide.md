@@ -12,7 +12,7 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
 
 ## Install TDengine TSDB-Enterprise and TDengine IDMP
 
-1. Clone the repository:
+### 1. Clone the repository
 
    ```bash
    git clone https://github.com/taosdata/tdengine-idmp-deployment.git
@@ -20,41 +20,115 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
 
    This repository includes the Docker Compose file to deploy TDengine IDMP and TDengine TSDB-Enterprise.
 
-2. Start the service
+   You can deploy the services using either the unified management script (recommended) or manual Docker Compose commands.
+
+### 2. Recommended: Use the unified management script
 
    ```bash
    cd tdengine-idmp-deployment/docker
+   chmod +x idmp.sh
+   ./idmp.sh start
+   ```
+
+  The script provides the following features:
+
+  1. **Automatic environment detection**: Detects and uses the available Docker Compose command on your system.
+  2. **Interactive deployment selection**: Prompts you to select the deployment mode
+    - **Standard deployment**: TSDB Enterprise + IDMP, suitable for basic usage.
+    - **Full deployment**: TSDB Enterprise + IDMP + TDgpt, includes AI analysis features.
+  3. **Smart network configuration**: Automatically detects the host IP address and configures the access URL, or allows you to customize it.
+  4. **One-click startup**: Automatically pulls required images (if not available locally) and starts the selected services in the background.
+
+#### Access the service
+
+  By default, the TDengine IDMP service listens on port 6042 of the host. You can access the management interface using the following address:
+
+- [http://localhost:6042](http://localhost:6042)
+- [http://ip:6042](http://ip:6042)
+
+  :::tip
+  To change the port mapping, edit the `ports` configuration in the `docker-compose.yml` or `docker-compose-tdgpt.yml` file.
+  :::
+
+#### Stop the service
+
+   ```bash
+   ./idmp.sh stop
+   ```
+
+  This command will automatically detect the currently running service type and use the appropriate configuration file to stop the services.  
+  The script provides an interactive prompt:
+
+- **Keep data and logs**: Default, keep data volumes when stopping containers.
+- **Clear data and logs**: Delete data volumes when stopping containers, suitable for scenarios where you need to completely clean the environment.
+
+### 3. Alternative: Manual Docker Compose deployment
+
+#### Set environment variable
+
+   ```bash
+   cd tdengine-idmp-deployment/docker
+   export IDMP_URL="http://your-host-ip:6042"  # Replace with your actual IP address or configured DNS names
+   ```
+
+#### Choose deployment mode
+
+  **Standard deployment (TSDB Enterprise + IDMP):**
+
+   ```bash
    docker compose up -d
    ```
 
-   Executing the above command will automatically pull the required images and start all service containers in the background.
+  **Full deployment (TSDB Enterprise + IDMP + TDgpt):**
 
-3. Access the service
+   ```bash
+   docker compose -f docker-compose-tdgpt.yml up -d
+   ```
+
+#### Access the service
 
    By default, the TDengine IDMP service listens on port 6042 of the host. You can access the management interface using the following address:
 
-   - [http://localhost:6042](http://localhost:6042)
-   - [http://ip:6042](http://ip:6042)
+- [http://localhost:6042](http://localhost:6042)
+- [http://ip:6042](http://ip:6042)
 
    :::tip
 
-   To change the port mapping, edit the ports configuration in the `docker-compose.yml` file.
+   To change the port mapping, edit the ports configuration in the `docker-compose.yml` or `docker-compose-tdgpt.yml` file.
 
    :::
 
-4. Stop the service
+#### Stop the service
 
    This command will stop and remove all containers started by Docker Compose, but it will not delete the data volumes.
 
    ```bash
    docker compose down
+   # or
+   docker compose -f docker-compose-tdgpt.yml down
    ```
 
    To delete data volumes, add `-v`.
 
    ```bash
    docker compose down -v
+   # or
+   docker compose -f docker-compose-tdgpt.yml down -v
    ```
+
+#### Upgrade IDMP Service Separately
+
+1. Stop the IDMP service separately:
+
+    ```bash
+    docker compose down tdengine-idmp
+    ```
+  
+2. Start the IDMP service and pull the latest image:
+
+    ```bash
+    docker compose up tdengine-idmp --pull always -d
+    ```
 
 ## Install TDengine IDMP
 
@@ -89,7 +163,7 @@ TDengine IDMP requires TDengine TSDB-Enterprise 3.3.7.0 or later. If your enviro
      index-dir: /var/lib/taos/idmp/index # index directory
      log-dir: /var/log/taos # all IDMP logs including IDMP server and AI server will be stored in this directory
      ai-server:
-       url: http://localhost:8777 # AI server URL
+       url: http://localhost:6040 # AI server URL
      server-url: http://localhost:6042 # public IDMP URL
      default-connection:
        enable: true
@@ -119,14 +193,14 @@ TDengine IDMP requires TDengine TSDB-Enterprise 3.3.7.0 or later. If your enviro
            - WINDOW_CLOSE
    ```
 
-   Under the `tda.default-connection` section, set the TDengine TSDB-Enterprise connection as follows:
-   - auth-type: Authentication method. Supports UserPassword (default) and Token.
-   - url: The IP address and port of the taosAdapter component in TDengine TSDB-Enterprise. The default port is 6041.
-   - username and password: Credentials for accessing TDengine TSDB-Enterprise. Default values are root and taosdata.
+   - Under the `tda.default-connection` section, set the TDengine TSDB-Enterprise connection as follows:
+     - auth-type: Authentication method. Supports UserPassword (default) and Token.
+     - url: The IP address and port of the taosAdapter component in TDengine TSDB-Enterprise. The default port is 6041.
+     - username and password: Credentials for accessing TDengine TSDB-Enterprise. Default values are root and taosdata.
+  
+   - Under `tda.analysis`, `event.urls` specifies the WebSocket address through which TDengine TSDB-Enterprise accesses the IDMP service.
 
-   Under `tda.analysis`, `event.urls` specifies the WebSocket address through which TDengine TSDB-Enterprise accesses the IDMP service.
-
-2. Start the TDengine IDMP container
+3. Start the TDengine IDMP container
 
    ```bash
    docker run -d \
@@ -143,11 +217,11 @@ TDengine IDMP requires TDengine TSDB-Enterprise 3.3.7.0 or later. If your enviro
 
    :::
 
-3. Access TDengine IDMP.
+4. Access TDengine IDMP.
 
    By default, the service listens on port 6042 of the host. To access the service, open `http://localhost:6042` or specify the IP address of the host.
 
-4. Stop and remove the container:
+5. Stop and remove the container:
 
    ```bash
    docker stop tdengine-idmp
@@ -155,3 +229,34 @@ TDengine IDMP requires TDengine TSDB-Enterprise 3.3.7.0 or later. If your enviro
    ```
 
    Data will not be retained after stopping the service. To persist data, mount a data volume.
+
+## Troubleshooting
+
+### 1. The container `tdengine-idmp` is in an `unhealthy` state, or the IDMP page displays the error `Python Server not available`.
+
+In this case, you need to check whether the Python application in `tdengine-idmp` is functioning properly. Follow the commands below to troubleshoot step by step:
+
+```bash
+# Enter the docker container
+docker exec -it tdengine-idmp bash
+
+# Check Python processes
+ps -ef | grep python
+
+# If the process does not exist, check the log file for error messages
+cd /var/log/taos && cat ai-default.log | more
+
+# If the log file does not exist or it is difficult to find errors, execute the following command for testing
+export IDMP_DATA_PATH=/var/lib/taos/idmp && export IDMP_LOG_PATH=/var/log/taos && export SENTENCE_MODEL_PATH=/usr/local/taos/idmp/chat/sentence-transformer && export MODEL_FORMAT=onnx && python /usr/local/taos/idmp/chat/src/server.py
+```
+
+If the log file contains error messages or the last command execution results in an error, it is recommended to contact the TDengine team. When contacting them, please provide the log file and screenshots of command-line errors. To obtain the log file, refer to the following command:
+
+```bash
+# Execute outside the container (do not ignore the dot at the end, which represents the current directory)
+docker cp tdengine-idmp:/var/log/taos/ai-default.log .
+```
+
+### 2. The IDMP page displays the error `AI service unavailable`
+
+First, you can navigate to the AI connection details page by clicking on the connection in the `Admin Console -> Connections` page to check whether the built-in key has expired. If it has expired, please set a valid key or create a new connection as soon as possible; if it has not expired, follow the troubleshooting steps in `Issue 1`; if no errors are found, it is recommended to contact the TDengine team.

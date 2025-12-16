@@ -4,7 +4,7 @@ sidebar_label: Documentation Home
 slug: /
 ---
 
-TDengine Industrial Data Management Platform (IDMP) is an AI-native platform for IoT and industrial data management. It organizes sensor and device-collected data using a classic tree-like hierarchical structure, establishes a data catalog, and provides contextualized and standardized data processing. Additionally, it offers real-time analytics, visualization, event management, and alerting capabilities.
+TDengine® Industrial Data Management Platform (IDMP) is an AI-native platform for IoT and industrial data management. It organizes sensor and device-collected data using a classic tree-like hierarchical structure, establishes a data catalog, and provides contextualized and standardized data processing. Additionally, it offers real-time analytics, visualization, event management, and alerting capabilities.
 
 This document is the TDengine IDMP user manual, which introduces the basic concepts, core functionalities, advanced features, operations and maintenance, and best practices of TDengine IDMP. A quick-start section is also provided to help you experience the product within minutes.
 

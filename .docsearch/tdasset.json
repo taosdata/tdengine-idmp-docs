@@ -2,39 +2,16 @@
   "index_name": "tdasset_index",
   "start_urls": [
     {
-      "url": "https://idmpdocs.tdengine.com/",
-      "custom_fields": {
-        "language": "zh-Hans",
-        "docusaurus_tag": "docs-default-current"
-      }
-    },
-    {
-      "url": "https://idmpdocs.tdengine.com/en/",
-      "custom_fields": {
-        "language": "en",
-        "docusaurus_tag": "docs-default-current"
-      }
-    },
-    {
       "url": "https://idmpdocs.taosdata.com/",
       "custom_fields": {
         "language": "zh-Hans",
-        "docusaurus_tag": "docs-default-current"
-      }
-    },
-    {
-      "url": "https://idmpdocs.taosdata.com/en/",
-      "custom_fields": {
-        "language": "en",
         "docusaurus_tag": "docs-default-current"
       }
     }
   ],
   "sitemap_urls": [
     "https://idmpdocs.tdengine.com/sitemap.xml",
-    "https://idmpdocs.tdengine.com/en/sitemap.xml",
-    "https://idmpdocs.taosdata.com/sitemap.xml",
-    "https://idmpdocs.taosdata.com/en/sitemap.xml"
+    "https://idmpdocs.taosdata.com/sitemap.xml"
   ],
   "stop_urls": [],
   "selectors": {
