@@ -181,7 +181,7 @@ tda:
   server-url: ${IDMP_URL:http://localhost:6042} # public IDMP URL
   default-connection:
     enable: true
-    auth-type: UserPassword # can be set to UerPassword or Token
+    auth-type: UserPassword # can be set to UserPassword or Token
     url: ${TSDB_URL:http://localhost:6041}
     username: root
     password: taosdata
@@ -202,7 +202,7 @@ tda:
   analysis:
     event:
       urls: ${TDA_ANALYSIS_EVENT_URLS:ws://localhost:6042} # The websocket URI for tdengine to access IDMP server.
-      event-types: # The event types for IDMP to used
+      event-types: # The event types for IDMP to use
         - WINDOW_OPEN
         - WINDOW_CLOSE
 ```
