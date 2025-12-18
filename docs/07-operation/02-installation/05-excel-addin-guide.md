@@ -79,7 +79,7 @@ curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/in
 :::warning 注意事项
 
 - 安装过程中 Excel 会被强制关闭，请提前保存所有工作内容
-- 如果使用自定义证书域名，需将 `https://localhost:6034` 替换为「证书绑定域名:端口号」
+- 如果使用自定义证书域名，需将 `https://localhost:6034` 替换为「证书绑定域名：端口号」
 - 例如：`https://idmp.tdengine.net:6034`
 
 :::
@@ -101,7 +101,7 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 
 - 必须以管理员身份运行 PowerShell
 - 安装过程中 Excel 会被强制关闭，请提前保存所有工作内容
-- 如果使用自定义证书域名，需将 `https://localhost:6034` 替换为「证书绑定域名:端口号」
+- 如果使用自定义证书域名，需将 `https://localhost:6034` 替换为「证书绑定域名：端口号」
 - 例如：`https://idmp.tdengine.net:6034`
 
 :::
@@ -129,3 +129,5 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 - 卸载过程同样会强制关闭 Excel，请提前保存工作内容
 - Windows 平台卸载同样需要管理员权限
 - 卸载完成后，Excel Add-in 相关功能将完全移除
+
+:::
