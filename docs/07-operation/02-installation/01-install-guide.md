@@ -59,6 +59,12 @@ tda:
 - url: 为 TDengine TSDB-Enterprise 中 taosAdapter 组件的 IP 地址和端口号，端口号默认为 6041
 - username 和 password: 为 TDengine TSDB-Enterprise 的用户名和密码，默认为 root 和 taosdata
 
+:::info 完整配置参考
+
+如需查看完整的 IDMP 配置文件说明，请参考：[TDengine IDMP 配置文件参考](/operation/installation/config-reference/)
+
+:::
+
 完成以上配置后，就可以启动 TDengine IDMP 服务了。
 
 ## 启动
