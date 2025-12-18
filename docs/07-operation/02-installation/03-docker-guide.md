@@ -202,7 +202,7 @@ tda:
   analysis:
     event:
       urls: ${TDA_ANALYSIS_EVENT_URLS:ws://localhost:6042} # The websocket URI for tdengine to access IDMP server.
-      event-types: # The event types for IDMP to used
+      event-types: # The event types for IDMP to use
         - WINDOW_OPEN
         - WINDOW_CLOSE
 ```
