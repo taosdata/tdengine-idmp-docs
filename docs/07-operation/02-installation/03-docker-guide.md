@@ -181,7 +181,7 @@ tda:
   server-url: ${IDMP_URL:http://localhost:6042} # public IDMP URL
   default-connection:
     enable: true
-    auth-type: UserPassword # can be set to UerPassword or Token
+    auth-type: UserPassword # can be set to UserPassword or Token
     url: ${TSDB_URL:http://localhost:6041}
     username: root
     password: taosdata
