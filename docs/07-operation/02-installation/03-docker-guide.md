@@ -40,10 +40,10 @@ chmod +x idmp.sh
 
 #### 访问服务
 
-默认情况下，TDengine IDMP 服务监听主机的 6042 端口。可通过以下地址访问管理界面：
+默认情况下，TDengine IDMP 服务监听主机的以下端口：
 
-- [http://localhost:6042](http://localhost:6042)
-- [http://ip:6042](http://ip:6042)
+- **HTTP 访问**：[http://localhost:6042](http://localhost:6042) 或 [http://ip:6042](http://ip:6042)
+- **HTTPS 访问**：[https://localhost:6034](https://localhost:6034) 或 [https://ip:6034](https://ip:6034)
 
 :::tip
 如需修改端口，请编辑 `docker-compose.yml` 或者 `docker-compose-tdgpt.yml` 文件中的 `ports` 配置项。
@@ -85,10 +85,10 @@ docker compose -f docker-compose-tdgpt.yml up -d
 
 #### 访问服务
 
-默认情况下，TDengine IDMP 服务监听主机的 6042 端口。可通过以下地址访问管理界面：
+默认情况下，TDengine IDMP 服务监听主机的以下端口：
 
-- [http://localhost:6042](http://localhost:6042)
-- [http://ip:6042](http://ip:6042)
+- **HTTP 访问**：[http://localhost:6042](http://localhost:6042) 或 [http://ip:6042](http://ip:6042)
+- **HTTPS 访问**：[https://localhost:6034](https://localhost:6034) 或 [https://ip:6034](https://ip:6034)
 
 :::tip
 如需修改端口，请编辑相应的 `docker-compose.yml` 或者 `docker-compose-tdgpt.yml` 文件中的 `ports` 配置项。
@@ -158,23 +158,31 @@ TDengine IDMP 的配置文件 `application.yml` 的示例如下：
 quarkus:
   http:
     port: 6042 # IDMP server port
+    ssl-port: 6034
+    insecure-requests: enabled
+    ssl:
+      enabled: true
+      certificate:
+        files: /usr/local/taos/idmp/config/certbundle.pem
+        key-files: /usr/local/taos/idmp/config/privkey.pem
   log:
     level: INFO # set the log level for IDMP
     file:
       rotation:
         max-file-size: 300M  # max file size for log rotation
         max-backup-index: "15" # max backup index for log rotation
+  profile: prod
 tda:
   data-dir: /var/lib/taos/idmp  # data directory
   index-dir: /var/lib/taos/idmp/index # index directory
   log-dir: /var/log/taos # all IDMP logs including IDMP server and AI server will be stored in this directory
   ai-server:
     url: http://localhost:6040 # AI server URL
-  server-url: http://192.168.1.100:6042 # public IDMP URL
+  server-url: ${IDMP_URL:http://localhost:6042} # public IDMP URL
   default-connection:
     enable: true
     auth-type: UserPassword # can be set to UserPassword or Token
-    url: http://192.168.1.100:6041
+    url: ${TSDB_URL:http://localhost:6041}
     username: root
     password: taosdata
   default-tdengine-db-name: idmp # default database used for IDMP in each TDengine connection
@@ -193,7 +201,7 @@ tda:
     expire-time: 3600 # permission cache expired for 3600 seconds
   analysis:
     event:
-      urls: ws://192.168.1.100:6042 # The websocket URI for tdengine to access IDMP server.
+      urls: ${TDA_ANALYSIS_EVENT_URLS:ws://localhost:6042} # The websocket URI for tdengine to access IDMP server.
       event-types: # The event types for IDMP to use
         - WINDOW_OPEN
         - WINDOW_CLOSE
@@ -207,13 +215,20 @@ tda:
   - url: 为 TDengine TSDB-Enterprise 中 taosAdapter 组件的 IP 地址和端口号，端口号默认为 6041
   - username 和 password: 为 TDengine TSDB-Enterprise 的用户名和密码，默认为 root 和 taosdata
 - `enable-login-captcha-check` 表示是否启用验证码登录，默认为 `false` 即不启用，若想要开启可以设置为 `true`，也可以通过设置环境变量 `ENABLE_LOGIN_CAPTCHA_CHECK` 为 `true` 来开启。
-- 在 `tda.analysis` 下，`envent.urls` 为 TDengine TSDB-Enterprise 访问 IDMP 服务的 WebSocket 地址。
+- 在 `tda.analysis` 下，`event.urls` 为 TDengine TSDB-Enterprise 访问 IDMP 服务的 WebSocket 地址。
+
+:::info 完整配置参考
+
+如需查看完整的 IDMP 配置文件说明，请参考：[TDengine IDMP 配置文件参考](/operation/installation/config-reference/)
+
+:::
 
 ### 2. 启动 TDengine IDMP 容器
 
 ```bash
 docker run -d \
   -p 6042:6042 \
+  -p 6034:6034 \
   -v ./application.yml:/usr/local/taos/idmp/config/application.yml \
   --name tdengine-idmp \
   tdengine/idmp-ee
@@ -226,10 +241,10 @@ docker run -d \
 
 ### 3. 访问 TDengine IDMP 服务
 
-默认情况下，服务监听主机的 6042 端口。可在浏览器访问：
+默认情况下，TDengine IDMP 服务监听主机的以下端口：
 
-- [http://localhost:6042](http://localhost:6042)
-- 或在其他设备通过 [http://ip:6042](http://ip:6042) 访问
+- **HTTP 访问**：[http://localhost:6042](http://localhost:6042) 或 [http://ip:6042](http://ip:6042)
+- **HTTPS 访问**：[https://localhost:6034](https://localhost:6034) 或 [https://ip:6034](https://ip:6034)
 
 ### 4. 停止并移除容器
 
