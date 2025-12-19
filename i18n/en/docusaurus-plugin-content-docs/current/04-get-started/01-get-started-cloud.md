@@ -3,11 +3,11 @@ title: Get Started with TDengine Cloud
 sidebar_label: TDengine Cloud
 ---
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 import Getstarted from './_get_started.md';
 
-TDengine IDMP is offered as a fully managed cloud service in TDengine Cloud. You can create a TDengine Cloud account for free and test TDengine services without entering payment information.
+TDengine Cloud is a fully managed cloud service for industrial big data. It delivers all features of TDengine IDMP as a cloud-native solution in Amazon Web Services (AWS).
+
+You can register for a TDengine Cloud account for free and automatically obtain $250 in credit to test TDengine IDMP for yourself.
 
 ## Create a TDengine Cloud Account
 
@@ -20,7 +20,7 @@ To create a TDengine Cloud account, perform the following steps:
 
 ## Enter Account Information
 
-1. On the page displayed, enter your name, phone number, and password.
+1. On the page displayed, enter your name and password.
 
    :::note
    
@@ -30,12 +30,15 @@ To create a TDengine Cloud account, perform the following steps:
    
    :::
 
+1. (Optional) Enter your phone number and job title.
+
 1. (Optional) Select a profile picture for your account. JPG and PNG files under 1 MB are supported.
+
 1. Click **Continue**.
 
 ## Create an Instance
 
-1. In the dialog box displayed, select **IDMP** as your instance type and click **OK**.
+1. In the dialog box displayed, select **IDMP** to create a TDengine IDMP instance.
 
    Note that a TDengine TSDB-Enterprise instance will also be created during this process.
 
