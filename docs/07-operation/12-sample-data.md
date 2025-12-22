@@ -274,7 +274,7 @@ java -jar tda-generator-command.jar -f init.json -c
   - name: 超级表名称；
   - start_timestamp: 数据写入起始时间戳，null 表示以 4 天前时间开始；
   - time_step: 数据时间步进，单位毫秒；
-  - non_stop_mode: no 固定数量数据生成，写满 `insert_rows` 后停止。 yes 持续数据生成（实时模拟）；
+  - non_stop_mode: no 固定数量数据生成，写满 insert_rows 后停止；yes 持续数据生成（实时模拟）；
   - insert_rows: 需要写入的数据总行数；
   - batch_insert_num: 每批次写入数据行数；
   - insert_interval: 每批次写入间隔时间，单位毫秒，0 表示无间隔；
