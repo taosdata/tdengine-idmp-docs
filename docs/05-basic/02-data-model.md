@@ -77,7 +77,7 @@ IDMP 还提供元素拷贝、粘贴的功能，便于您创建类型相近的元
 TDengine 指标引用 TDengine TSDB-Enterprise 里一张表的某一列；TDengine 标签引用 TDengine TSDB-Enterprise 里一张表的标签值。它们的设置格式是：
 
 ```text
-连接名/数据库名/表名/列名(或标签名)
+连接名/数据库名/表名/列名（或标签名）
 ```
 
 例如： 
@@ -122,7 +122,7 @@ log(current) * voltage +10 + TIME
 下图是一个字符串生成器引用的设置示例：
 
 ```text
-CONCAT(${Template#name},'设备',${attributes['设备ID']},'当前电压是', cast(${attributes['电压']} as varchar), 'V')
+CONCAT(${Template#name},'设备',${attributes['设备 ID']},'当前电压是', cast(${attributes['电压']} as varchar), 'V')
 ```
 
 ![字符串生成器表达式配置](/docs-img/basic/string-builder.png)
