@@ -75,20 +75,26 @@ IDMP 还提供元素拷贝、粘贴的功能，便于您创建类型相近的元
 
 #### TDengine 指标和 TDengine 标签
 TDengine 指标引用 TDengine TSDB-Enterprise 里一张表的某一列；TDengine 标签引用 TDengine TSDB-Enterprise 里一张表的标签值。它们的设置格式是：
-```
+
+```text
 连接名/数据库名/表名/列名(或标签名)
 ```
+
 例如： 
-```
+
+```text
 TDengine/idmp_sample_utility/em-17/location
 ```
+
 其中 TDengine 是连接名，idmp_sample_utility 是数据库名，em-17 是表名，location 是标签名。
 
 #### 公式
 公式引用的设置是一个表达式。它最终会被转换成 TDengine 的 SQL 表达式通过 TDengien TSDB 执行。公式引用表达式是属性、操作符、替换参数、常量和函数的组合。它引用的属性的类型必须是数值类型，它的输出也必须是数值。例如：
-```
+
+```text
 log(current) * voltage +10 + TIME
 ```
+
 下图是公式引用表达式的配置示例：
 
 ![公式表达式配置](/docs-img/basic/formula-setting.png)
@@ -114,7 +120,9 @@ log(current) * voltage +10 + TIME
 :::
 
 下图是一个字符串生成器引用的设置示例：
-```
+
+```text
 CONCAT(${Template#name},'设备',${attributes['设备ID']},'当前电压是', cast(${attributes['电压']} as varchar), 'V')
 ```
+
 ![字符串生成器表达式配置](/docs-img/basic/string-builder.png)
