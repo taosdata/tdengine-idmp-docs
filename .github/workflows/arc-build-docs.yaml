@@ -1,0 +1,103 @@
+name: IDMP docs Workflow
+
+on:
+  push:
+    branches:
+      - 'test/yangliang/arc'
+    paths:
+      - '.github/workflows/idmp-docs.yml'
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Enter your branch here"
+        required: true
+        default: 'main'
+jobs:
+  build:
+    runs-on: tdengine-idmp-docs-build
+
+    env:
+      NODE_VERSION: '24'
+      PNPM_VERSION: '10'
+      PYTHON_VERSION: '3.10'
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          repository: taosdata/tdengine-idmp-docs
+          path: tdengine-idmp-docs
+          ref: ${{ github.event.inputs.branch }}
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+          run_install: false 
+
+      - name: Set Env
+        run: |
+          echo "VERSION=latest" >> $GITHUB_ENV
+          echo "DOCS_TYPE=tdasset" >> $GITHUB_ENV
+
+      - name: generate version config
+        run: |
+          cd tdengine-idmp-docs;python3 .github/scripts/generate_version.py \
+            $(git tag | egrep "v(.*)$" | xargs echo -n) > \
+            test_versions.json
+          cat test_versions.json
+
+      - name: Build Docs
+        run: |
+          cd tdengine-idmp-docs
+          pnpm install
+          pnpm run build
+          
+      - name: Create Dockerfile
+        run: |
+          cd tdengine-idmp-docs
+          cat > Dockerfile << 'EOF'
+          # 使用官方的Nginx镜像作为基础
+          FROM nginx:alpine
+          
+          # 将当前目录下的build文件夹复制到Nginx的默认静态文件目录
+          COPY build/ /usr/share/nginx/html/
+          
+          # 暴露80端口
+          EXPOSE 80
+          
+          # Nginx容器启动时自动运行nginx
+          CMD ["nginx", "-g", "daemon off;"]
+          EOF
+
+      - name: Verify Dockerfile
+        run: cd tdengine-idmp-docs && cat Dockerfile
+
+      - name: build docker image
+        run: |
+          cd tdengine-idmp-docs
+          pwd
+          ls -l
+          CLEAN_BRANCH=$(echo ${{ github.event.inputs.branch }} | sed 's/[^a-zA-Z0-9.-]/-/g' | tr '[:upper:]' '[:lower:]')
+          docker -H docker-dind.default:2375 build . -t 192.168.1.42/library/tdengine-idmp-docs:idmp-docs$CLEAN_BRANCH
+          docker -H docker-dind.default:2375 push 192.168.1.42/library/tdengine-idmp-docs:idmp-docs$CLEAN_BRANCH
+
+  deploy:
+    runs-on: tdengine-idmp-docs-deploy
+    needs: build
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          repository: taosdata/platform-group
+          path: platform-group
+          ref: "test/yangliang/arc"
+          
+      - name: deploy project to dev env
+        run: |
+          cd platform-group/helm/idmp-docs
+          ls -l
+          cat Chart.yaml values.yaml 
+          ls -l templates
+          cat templates/deployment.yaml templates/ingress.yaml templates/service.yaml
+          CLEAN_BRANCH=$(echo ${{ github.event.inputs.branch }} | sed 's/[^a-zA-Z0-9.-]/-/g' | tr '[:upper:]' '[:lower:]')
+          /home/runner/k8stool/helm upgrade --namespace td-dev --set name=idmp-docs$CLEAN_BRANCH --set image=192.168.1.42/library/tdengine-idmp-docs:idmp-docs$CLEAN_BRANCH idmp-docs$CLEAN_BRANCH ./ --kubeconfig /home/runner/k8stool/config
