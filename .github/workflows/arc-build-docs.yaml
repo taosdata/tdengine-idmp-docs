@@ -5,13 +5,18 @@ on:
     branches:
       - 'test/yangliang/arc'
     paths:
-      - '.github/workflows/idmp-docs.yml'
+      - '.github/workflows/arc-build-docs.yaml'
   workflow_dispatch:
     inputs:
       branch:
         description: "Enter your branch here"
         required: true
         default: 'main'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.actor }}-${{ github.event_name }}-${{ github.ref }}-tdengine-idmp-docs-build
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: tdengine-idmp-docs-build
