@@ -1,0 +1,27 @@
+name: Destroy IDMP docs Deployment
+
+on:
+  pull_request:
+    branches:
+      - 'test/yangliang/arc'
+    paths:
+      - '.github/workflows/arc-build-docs.yaml'
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Enter your branch here"
+        required: true
+        default: 'main'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.actor }}-${{ github.event_name }}-${{ github.ref }}-tdengine-idmp-docs-build
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: tdengine-idmp-docs-deploy
+    steps:
+      - name: destroy deployment
+        run: |
+          CLEAN_BRANCH=$(echo ${{ github.event.inputs.branch }} | sed 's/[^a-zA-Z0-9.-]/-/g' | tr '[:upper:]' '[:lower:]')
+          /home/runner/k8stool/helm td-dev uninstall idmp-docs$CLEAN_BRANCH --kubeconfig /home/runner/k8stool/config
