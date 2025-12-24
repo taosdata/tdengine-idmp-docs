@@ -84,8 +84,8 @@ jobs:
           pwd
           ls -l
           CLEAN_BRANCH=$(echo ${{ github.event.inputs.branch || github.ref_name }} | sed 's/[^a-zA-Z0-9.-]/-/g' | tr '[:upper:]' '[:lower:]')
-          docker -H docker-dind.default:2375 build . -t 192.168.1.42/library/tdengine-idmp-docs:idmp-docs$CLEAN_BRANCH
-          docker -H docker-dind.default:2375 push 192.168.1.42/library/tdengine-idmp-docs:idmp-docs$CLEAN_BRANCH
+          docker -H docker-dind.default:2375 build . -t ${{ var.LOCAL_DOCKER_REGISTRY_URL }}/library/tdengine-idmp-docs:idmp-docs$CLEAN_BRANCH
+          docker -H docker-dind.default:2375 push ${{ var.LOCAL_DOCKER_REGISTRY_URL }}/library/tdengine-idmp-docs:idmp-docs$CLEAN_BRANCH
 
   deploy:
     runs-on: tdengine-idmp-docs-deploy
@@ -114,5 +114,5 @@ jobs:
           ls -l templates
           cat templates/deployment.yaml templates/ingress.yaml templates/service.yaml
           CLEAN_BRANCH=$(echo ${{ github.event.inputs.branch || github.ref_name }} | sed 's/[^a-zA-Z0-9.-]/-/g' | tr '[:upper:]' '[:lower:]')
-          /home/runner/k8stool/helm upgrade --install --namespace td-dev --set name=idmp-docs$CLEAN_BRANCH --set image=192.168.1.42/library/tdengine-idmp-docs:idmp-docs$CLEAN_BRANCH idmp-docs$CLEAN_BRANCH ./ --kubeconfig /home/runner/k8stool/config
-          echo "Visit TDasset$CLEAN_BRANCH.kube.tdengine.net to check deployment"
+          /home/runner/k8stool/helm upgrade --install --namespace td-dev --set name=idmp-docs$CLEAN_BRANCH --set image=${{ var.LOCAL_DOCKER_REGISTRY_URL }}/library/tdengine-idmp-docs:idmp-docs$CLEAN_BRANCH idmp-docs$CLEAN_BRANCH ./ --kubeconfig /home/runner/k8stool/config
+          echo "Visit idmp-docs$CLEAN_BRANCH.kube.tdengine.net to check deployment"
