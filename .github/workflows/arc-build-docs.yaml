@@ -90,12 +90,20 @@ jobs:
     runs-on: tdengine-idmp-docs-deploy
     needs: build
     steps:
+      - name: Generate GitHub App Token
+        id: app-token
+        uses: tibdex/github-app-token@v1
+        with:
+          app_id: ${{ vars.TAOSDATA_BOT_ID }}
+          private_key: ${{ secrets.TAOSDATA_BOT_KEY }}
+            
       - name: Checkout Code
         uses: actions/checkout@v4
         with:
           repository: taosdata/platform-group
           path: platform-group
           ref: "test/yangliang/arc"
+          github-token: ${{ steps.app-token.outputs.token }}
           
       - name: deploy project to dev env
         run: |
