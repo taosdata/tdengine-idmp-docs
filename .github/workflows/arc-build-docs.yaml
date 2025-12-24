@@ -84,8 +84,8 @@ jobs:
           pwd
           ls -l
           CLEAN_BRANCH=$(echo ${{ github.event.inputs.branch || github.ref_name }} | sed 's/[^a-zA-Z0-9.-]/-/g' | tr '[:upper:]' '[:lower:]')
-          docker -H docker-dind.default:2375 build . -t ${{ var.LOCAL_DOCKER_REGISTRY_URL }}/library/tdengine-idmp-docs:idmp-docs$CLEAN_BRANCH
-          docker -H docker-dind.default:2375 push ${{ var.LOCAL_DOCKER_REGISTRY_URL }}/library/tdengine-idmp-docs:idmp-docs$CLEAN_BRANCH
+          docker -H docker-dind.default:2375 build . -t ${{ vars.LOCAL_DOCKER_REGISTRY_URL }}/library/tdengine-idmp-docs:idmp-docs$CLEAN_BRANCH
+          docker -H docker-dind.default:2375 push ${{ vars.LOCAL_DOCKER_REGISTRY_URL }}/library/tdengine-idmp-docs:idmp-docs$CLEAN_BRANCH
 
   deploy:
     runs-on: tdengine-idmp-docs-deploy
