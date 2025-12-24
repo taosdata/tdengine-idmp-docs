@@ -24,13 +24,14 @@ export default function PkgListV37(props) {
     setPkgValue({
       pkgId: pkg.id,
       productName: productName,
+      version: version,
       pkgUrl: pkg.url || pkg['download-url'] || pkg['download_url'] || ""
     });
   }
 
   function closePopup() {
     setPopState({ hidden: true, selectedPkg: null });
-    setPkgValue({ pkgId: "", productName: "", pkgUrl: "" });
+    setPkgValue({ pkgId: "", productName: "", version: "", pkgUrl: "" });
   }
 
   // console.log('[PkgListV37] popState=', popState, 'pkgValue=', pkgValue);
@@ -40,6 +41,7 @@ export default function PkgListV37(props) {
       <Popupv37
         hidden={popState.hidden}
         productName={productName}
+        version={version}
         path={popState.selectedPkg ? (popState.selectedPkg.url || popState.selectedPkg['download-url'] || popState.selectedPkg['download_url']) : pkgValue.pkgUrl}
         lang={(typeof navigator !== 'undefined' && navigator.language) ? navigator.language.split('-')[0] : 'en'}
         pfn={closePopup}

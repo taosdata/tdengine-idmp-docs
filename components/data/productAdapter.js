@@ -7,12 +7,9 @@ export async function fetchPackagesFromProduct({
   jsonPath,
   lang = "zh"
 } = {}) {
-  let remote;
-  if (lang === "en") {
-    remote = 'https://tdengine.com/wp-content/themes/tdengine/js/product-data.json';
-  } else {
-    remote = 'https://www.taosdata.com/assets/pkg-js/product-data.json';
-  }
+  const REMOTE_URL_EN = 'https://tdengine.com/wp-content/themes/tdengine/js/product-data.json';
+  const REMOTE_URL_ZH = 'https://www.taosdata.com/assets/pkg-js/product-data.json';
+  const remote = lang === 'en' ? REMOTE_URL_EN : REMOTE_URL_ZH;
   // resolve jsonPath: absolute > site-root-relative > remote
   let url = jsonPath || remote;
   console.log('[adapter] fetch url=', url, 'opts=', { productName, version, platform, arch, pkgType, jsonPath });
