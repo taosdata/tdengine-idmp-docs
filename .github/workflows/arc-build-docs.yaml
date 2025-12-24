@@ -115,3 +115,4 @@ jobs:
           cat templates/deployment.yaml templates/ingress.yaml templates/service.yaml
           CLEAN_BRANCH=$(echo ${{ github.event.inputs.branch || github.ref_name }} | sed 's/[^a-zA-Z0-9.-]/-/g' | tr '[:upper:]' '[:lower:]')
           /home/runner/k8stool/helm upgrade --install --namespace td-dev --set name=idmp-docs$CLEAN_BRANCH --set image=192.168.1.42/library/tdengine-idmp-docs:idmp-docs$CLEAN_BRANCH idmp-docs$CLEAN_BRANCH ./ --kubeconfig /home/runner/k8stool/config
+          echo "Visit TDasset$CLEAN_BRANCH.kube.tdengine.net to check deployment"
