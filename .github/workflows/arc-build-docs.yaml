@@ -103,7 +103,7 @@ jobs:
           repository: taosdata/platform-group
           path: platform-group
           ref: "test/yangliang/arc"
-          github-token: ${{ steps.app-token.outputs.token }}
+          token: ${{ steps.app-token.outputs.token }}
           
       - name: deploy project to dev env
         run: |
