@@ -4,6 +4,7 @@ import { fetchPackagesFromProduct } from "../data/productAdapter";
 
 export default function PkgListV37(props) {
   const { productName, version, platform, arch, pkgType, jsonPath } = props;
+  const lang = "en";
   const [pkgs, setPkgs] = useState([]);
   const [popState, setPopState] = useState({ hidden: true, selectedPkg: null });
   const [pkgValue, setPkgValue] = useState({ pkgId: "", productName: "", pkgUrl: "" });
@@ -11,7 +12,7 @@ export default function PkgListV37(props) {
   useEffect(() => {
     (async () => {
       console.log("[PkgListV37] fetch params", { productName, version, platform, arch, pkgType, jsonPath });
-      const list = await fetchPackagesFromProduct({ productName, version, platform, arch, pkgType, jsonPath });
+      const list = await fetchPackagesFromProduct({ productName, version, platform, arch, pkgType, jsonPath, lang });
       console.log("[PkgListV37] adapter returned", list?.length, list?.slice?.(0, 5));
       setPkgs(list || []);
     })();
