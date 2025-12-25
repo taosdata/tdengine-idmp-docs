@@ -84,7 +84,7 @@ You can also enable or disable logging separately:
   ```bash
   # Enable logging
   curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s enable-logging-only --force-close
-  # Enable logging
+  # Disable logging
   curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s disable-logging-only --force-close
   ```
 
@@ -117,7 +117,7 @@ You can also enable or disable logging separately:
   ```bash
   # Enable logging
   powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action EnableLogging -ForceCloseExcel"
-  # Diasble logging
+  # Disable logging
   powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action DisableLogging -ForceCloseExcel"
   ```
 
