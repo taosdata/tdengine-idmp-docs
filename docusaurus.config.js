@@ -1,6 +1,6 @@
 // @ts-check
 
-import { themes as prismThemes } from 'prism-react-renderer';
+import tdengineTheme from './src/prism/tdengine-theme';
 
 const getTitle = () => {
   const locale = process.env.DOCUSAURUS_CURRENT_LOCALE || 'zh-Hans';
@@ -141,8 +141,13 @@ const config = {
         ],
       },
       prism: {
-        theme: prismThemes.github,
-        darkTheme: prismThemes.dracula,
+        theme: tdengineTheme,
+        additionalLanguages: [
+          'bash',
+          'batch',
+          'ini',
+          'powershell'
+        ]
       },
       zoom: {
         selector: '.markdown :not(em) > img, img[data-zoom]',

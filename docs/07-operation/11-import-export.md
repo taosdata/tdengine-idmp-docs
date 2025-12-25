@@ -40,7 +40,7 @@
 
 导出的 ZIP 文件包含：
 
-```
+```text
 export_时间戳.zip
 ├── metadata.json         # 元数据文件，包含所有资源定义
 └── taosgen.yaml          # TaosGen 配置文件（数据引用配置，可选）

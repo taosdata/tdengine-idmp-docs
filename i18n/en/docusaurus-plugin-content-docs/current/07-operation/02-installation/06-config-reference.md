@@ -42,7 +42,7 @@ quarkus:
 
 If using the built-in test certificate, you need to configure domain name resolution. Add the following mapping to the client's hosts file:
 
-```
+```text
 192.168.1.100  idmp.tdengine.net  # Replace with your actual server IP
 ```
 
