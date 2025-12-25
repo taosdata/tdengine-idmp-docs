@@ -69,12 +69,23 @@ IDMP 安装包内置了一个有效期为 3 个月的测试证书：
 在终端中执行以下命令进行安装：
 
 ```bash
-curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s install --force-close --url https://localhost:6034
+curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s install --force-close --url https://localhost:6034 --enable-logging
 ```
 
 **参数说明：**
 - `--force-close`：安装过程中会强制关闭 Excel 应用程序，请提前保存工作内容
 - `--url`：指定 IDMP HTTPS 服务地址，**请替换为实际的服务地址**
+- `--enable-logging`: 启用安装和插件运行日志，便于排查问题。日志文件保存路径如下：
+`~/Library/Containers/com.microsoft.Excel/Data/tdengine_eai.log`
+
+你也可以单独开启或关闭日志功能：
+
+  ```bash
+  # 启用日志
+  curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s enable-logging-only --force-close
+  # 关闭日志
+  curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s disable-logging-only --force-close
+  ```
 
 :::warning 注意事项
 
@@ -89,13 +100,24 @@ curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/in
 以**管理员身份**打开 PowerShell，执行以下命令：
 
 ```powershell
-powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action Install -ForceCloseExcel -Url 'https://localhost:6034'"
+powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action Install -ForceCloseExcel -Url 'https://localhost:6034' -EnableLogging"
 ```
 
 **参数说明：**
 - `-Action Install`：执行安装操作
 - `-ForceCloseExcel`：强制关闭 Excel 应用程序
 - `-Url`：指定 IDMP HTTPS 服务地址，**请替换为实际的服务地址**
+- `-EnableLogging`: 启用安装和插件运行日志，便于排查问题。日志文件保存路径如下：
+`C:\Users\<你的用户名>\AppData\Roaming\Microsoft\AddIns\VueOfficeAddin\Logs\tdengine_eai.log`
+
+你也可以单独开启或关闭日志功能：
+
+  ```bash
+  # 启用日志
+  powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action EnableLogging -ForceCloseExcel"
+  # 关闭日志
+  powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action DisableLogging -ForceCloseExcel"
+  ```
 
 :::warning 注意事项
 

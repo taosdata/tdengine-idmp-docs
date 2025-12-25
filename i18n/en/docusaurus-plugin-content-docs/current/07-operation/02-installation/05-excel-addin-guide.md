@@ -69,12 +69,24 @@ For complete IDMP configuration file documentation, please refer to: [TDengine I
 Execute the following command in the terminal to install:
 
 ```bash
-curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s install --force-close --url https://localhost:6034
+curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s install --force-close --url https://localhost:6034 --enable-logging
 ```
 
 **Parameter Description:**
 - `--force-close`: Excel application will be forcibly closed during installation, please save your work content in advance
 - `--url`: Specify IDMP HTTPS service address, **please replace with your actual service address**
+- `--enable-logging`: Enables installation and add-in operation logging to help troubleshoot issues.  
+  Log file save path:  
+`~/Library/Containers/com.microsoft.Excel/Data/tdengine_eai.log`
+
+You can also enable or disable logging separately:
+
+  ```bash
+  # Enable logging
+  curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s enable-logging-only --force-close
+  # Disable logging
+  curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s disable-logging-only --force-close
+  ```
 
 :::warning Important Notes
 
@@ -89,13 +101,25 @@ curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/in
 Open PowerShell **as Administrator** and execute the following command:
 
 ```powershell
-powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action Install -ForceCloseExcel -Url 'https://localhost:6034'"
+powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action Install -ForceCloseExcel -Url 'https://localhost:6034' -EnableLogging"
 ```
 
 **Parameter Description:**
 - `-Action Install`: Execute installation operation
 - `-ForceCloseExcel`: Forcibly close Excel application
 - `-Url`: Specify IDMP HTTPS service address, **please replace with your actual service address**
+- `-EnableLogging`: Enables installation and add-in operation logging to help troubleshoot issues.  
+  Log file save path:
+`C:\Users\<YourUsername>\AppData\Roaming\Microsoft\AddIns\VueOfficeAddin\Logs\tdengine_eai.log`
+
+You can also enable or disable logging separately:
+
+  ```bash
+  # Enable logging
+  powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action EnableLogging -ForceCloseExcel"
+  # Disable logging
+  powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action DisableLogging -ForceCloseExcel"
+  ```
 
 :::warning Important Notes
 
