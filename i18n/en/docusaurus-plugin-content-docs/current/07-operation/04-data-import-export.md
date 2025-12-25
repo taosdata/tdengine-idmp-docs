@@ -76,7 +76,7 @@ After using the Asset Model import, you may quickly notice that when there are t
 5. If a subtable name is specified, only that subtable will be processed. If a subtable filter rule is set, only the subtables that match the rule will be processed. If neither subtable name nor subtable filter rule is set, all subtables will be processed.  
 6. **Note**: The element name expression cannot contain commas. The first line of each data chunk must not have an empty element name expression. You can use tag-based strings, e.g., `prefix_${tbname}_suffix`, `prefix_${device_name_tag}`.  
 7. The element path expression cannot be empty. It can be any string or a combination of tags, e.g., `Location.${location_tag}`. If the tag value contains a period `.`, it will automatically form a hierarchy. For example, `Beijing.Chaoyang` will create *Beijing* as the parent element of *Chaoyang*.  
-8. Super table column names cannot be empty.  
+8. Super table column names cannot be empty. Element Template Categories support setting comma-separated strings. If a category does not exist, it will be created automatically. The same applies to Attribute Template Categories.
 9. Attribute template names may be empty. If left empty, the super table column will automatically map to an attribute template of the same name. If it does not exist, it will be created automatically. If an attribute template name is provided but does not exist, it will also be created automatically.  
 10. Reference type currently only supports `TDengineMetric` and `TDengineTag`. This field cannot be empty.  
 11. The attribute template description and the following columns may all be left empty. If you specify a unit of measurement, it must already exist in IDMP.  
