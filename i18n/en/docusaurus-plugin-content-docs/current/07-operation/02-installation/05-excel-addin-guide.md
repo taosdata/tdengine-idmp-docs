@@ -2,6 +2,9 @@
 title: Excel Add-in Deployment
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # TDengine Excel Add-in
 
 This document provides detailed instructions for installing and uninstalling the TDengine Excel Add-in component.
@@ -64,7 +67,8 @@ For complete IDMP configuration file documentation, please refer to: [TDengine I
 
 ## Installation Guide
 
-### macOS Platform Installation
+<Tabs>
+  <TabItem label="macOS" value="macOS">
 
 Execute the following command in the terminal to install:
 
@@ -76,15 +80,17 @@ curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/in
 - `--force-close`: Excel application will be forcibly closed during installation, please save your work content in advance
 - `--url`: Specify IDMP HTTPS service address, **please replace with your actual service address**
 - `--enable-logging`: Enables installation and add-in operation logging to help troubleshoot issues.  
-  Log file save path:  
-`~/Library/Containers/com.microsoft.Excel/Data/tdengine_eai.log`
+  Log file save path:  `~/Library/Containers/com.microsoft.Excel/Data/tdengine_eai.log`
 
 You can also enable or disable logging separately:
 
+- **Enable logging:**
   ```bash
-  # Enable logging
   curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s enable-logging-only --force-close
-  # Disable logging
+  ```
+
+- **Disable logging:**
+  ```bash
   curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s disable-logging-only --force-close
   ```
 
@@ -96,7 +102,8 @@ You can also enable or disable logging separately:
 
 :::
 
-### Windows Platform Installation
+  </TabItem>
+  <TabItem label="Windows" value="Windows">
 
 Open PowerShell **as Administrator** and execute the following command:
 
@@ -114,10 +121,13 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 
 You can also enable or disable logging separately:
 
+- **Enable logging:**
   ```bash
-  # Enable logging
   powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action EnableLogging -ForceCloseExcel"
-  # Disable logging
+  ```
+
+- **Disable logging:**
+  ```bash
   powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action DisableLogging -ForceCloseExcel"
   ```
 
@@ -130,9 +140,13 @@ You can also enable or disable logging separately:
 
 :::
 
+  </TabItem>
+</Tabs>
+
 ## Uninstallation Guide
 
-### macOS Platform Uninstallation
+<Tabs>
+  <TabItem label="macOS" value="macOS">
 
 Execute the following command in the terminal to uninstall:
 
@@ -140,7 +154,15 @@ Execute the following command in the terminal to uninstall:
 curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s uninstall --force-close
 ```
 
-### Windows Platform Uninstallation
+:::info Uninstallation Notes
+
+- The uninstallation process will also forcibly close Excel, please save your work content in advance
+- After uninstallation is complete, all Excel Add-in related functions will be completely removed
+
+:::
+
+  </TabItem>
+  <TabItem label="Windows" value="Windows">
 
 Open PowerShell **as Administrator** and execute the following command:
 
@@ -155,3 +177,6 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 - After uninstallation is complete, all Excel Add-in related functions will be completely removed
 
 :::
+
+  </TabItem>
+</Tabs>
