@@ -3,7 +3,7 @@ import TabItem from '@theme/TabItem';
 
 # 通过 Docker 快速体验
 
-TDengine IDMP 提供了丰富的功能，本文档将带领您通过 Docker Compose 的方式启动 TDengine IDMP 服务。如果您不熟悉 Docker，请参考[通过安装包快速体验](./get-started-installer)。在导入示例场景数据后，即可轻松体验元素浏览、AI 面板生成和 AI 分析等功能。
+TDengine IDMP 提供了丰富的功能，本文档将带领您通过 Docker Compose 的方式启动 TDengine IDMP 服务。如果您不熟悉 Docker，请参考[通过安装包快速体验](../get-started-installer/)。在导入示例场景数据后，即可轻松体验元素浏览、AI 面板生成和 AI 分析等功能。
 
 ## 启动
 
@@ -53,7 +53,7 @@ TDengine IDMP 提供了 Docker 镜像，用户可以通过 Docker Compose 快速
     该命令会提示您选择部署模式：启动标准部署（TSDB Enterprise + IDMP）或完整部署（TSDB Enterprise + IDMP + TDgpt），并自动拉取所需镜像（如本地不存在）。如果选择完整部署（即包含 TDgpt），您可以在 IDMP 中体验时序数据预测和异常检测等功能。为了能够正常使用 IDMP 的各项功能，请为容器设置正确的时区。在以上命令中，我们以环境变量 `TZ` 为 `Asia/Shanghai`（北京时间）为例，请您根据实际情况进行修改，以确保 Docker Compose 文件中的所有容器使用正确的时区。
 
 至此，TDengine IDMP 服务已成功启动。您可以在浏览器输入以下地址访问：[http://ip:6042](http://ip:6042),
-请将 `ip` 替换为真实的主机 IP 地址，如果在本地运行，则可以直接访问 [http://localhost:6042](http://localhost:6042)。关于服务启动、停止更详细的操作指南，请您参考[使用 Docker 部署](../operation/installation/docker-guide)章节。
+请将 `ip` 替换为真实的主机 IP 地址，如果在本地运行，则可以直接访问 [http://localhost:6042](http://localhost:6042)。关于服务启动、停止更详细的操作指南，请您参考[使用 Docker 部署](../../operation/installation/docker-guide/)章节。
 
 
 import Init from './_init.md'

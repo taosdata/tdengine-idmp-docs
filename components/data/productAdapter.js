@@ -4,9 +4,12 @@ export async function fetchPackagesFromProduct({
   platform,
   arch,
   pkgType, // "Server" or "Client"
-  jsonPath
+  jsonPath,
+  lang = "zh"
 } = {}) {
-  const remote = 'https://www.taosdata.com/assets/pkg-js/product-data.json';
+  const REMOTE_URL_EN = 'https://tdengine.com/wp-content/themes/tdengine/js/product-data.json';
+  const REMOTE_URL_ZH = 'https://www.taosdata.com/assets/pkg-js/product-data.json';
+  const remote = lang === 'en' ? REMOTE_URL_EN : REMOTE_URL_ZH;
   // resolve jsonPath: absolute > site-root-relative > remote
   let url = jsonPath || remote;
   console.log('[adapter] fetch url=', url, 'opts=', { productName, version, platform, arch, pkgType, jsonPath });
@@ -62,7 +65,7 @@ export async function fetchPackagesFromProduct({
         // 单一 token：原有优先精确再模糊的匹配
         const key = tokens[0];
         product = products.find(p => ((p.name || '').toLowerCase() === key))
-               || products.find(p => ((p.name || '').toLowerCase().includes(key)));
+          || products.find(p => ((p.name || '').toLowerCase().includes(key)));
       }
     }
 

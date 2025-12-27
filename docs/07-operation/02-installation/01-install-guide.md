@@ -19,7 +19,7 @@ TDengine IDMP 的运行需要以下基础依赖：
 
 ## 安装
 
-请根据您的操作系统类型，选择合适的安装方式，安装 TDengine IDMP。详见[通过安装包快速体验](../../get-started/get-started-installer)。
+请根据您的操作系统类型，选择合适的安装方式，安装 TDengine IDMP。详见[通过安装包快速体验](../../../get-started/get-started-installer/)。
 
 ### 常见错误
 
@@ -58,6 +58,12 @@ tda:
 - auth-type: 认证方式，支持 UserPassword 和 Token 两种方式，默认为方式 UserPassword
 - url: 为 TDengine TSDB-Enterprise 中 taosAdapter 组件的 IP 地址和端口号，端口号默认为 6041
 - username 和 password: 为 TDengine TSDB-Enterprise 的用户名和密码，默认为 root 和 taosdata
+
+:::info 完整配置参考
+
+如需查看完整的 IDMP 配置文件说明，请参考：[TDengine IDMP 配置文件参考](/operation/installation/config-reference/)
+
+:::
 
 完成以上配置后，就可以启动 TDengine IDMP 服务了。
 

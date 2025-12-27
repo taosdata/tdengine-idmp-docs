@@ -63,6 +63,12 @@ Do not start TDengine IDMP until you have configured the TDengine TSDB-Enterpris
       
       - **password:** Enter the password for the TDengine TSDB-Enterprise user.
 
+   :::info Complete Configuration Reference
+
+   For complete IDMP configuration file documentation, please refer to: [TDengine IDMP Configuration File Reference](/operation/installation/config-reference/)
+
+   :::
+
 1. (Optional) Run the following command to test the connection to TDengine TSDB-Enterprise:
 
    ```bash

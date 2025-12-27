@@ -60,20 +60,26 @@ This section details how to configure data references for attributes. All data r
 
 #### TDengine Metrics and TDengine Tags
 A TDengine metric references a specific column of a table in TDengine TSDB-Enterprise; a TDengine tag references the tag value of a table in TDengine TSDB-Enterprise. They are set in the following format:
-```
+
+```text
 Connection Name/Database Name/Table Name/Column Name (or Tag Name)
 ```
+
 For example:
-```
+
+```text
 TDengine/idmp_sample_utility/em-17/location
 ```
+
 Here, `TDengine` is the connection name, `idmp_sample_utility` is the database name, `em-17` is the table name, and `location` is the tag name.
 
 #### Formula
 A formula reference is set using an expression. It is ultimately converted into a TDengine SQL expression and executed by TDengine TSDB. A formula reference expression is a combination of attributes, operators, replacement parameters, constants, and functions. The attributes it references must be of a numerical type, and its output must also be numerical. For example:
-```
+
+```text
 log(current) * voltage +10 + TIME
 ```
+
 The image below shows a configuration example for a formula reference expression:
 
 ![Formula Expression Configuration](/docs-img/basic/formula-setting-en.png)
@@ -99,7 +105,9 @@ You cannot use the plus sign (`+`) to concatenate strings. To concatenate string
 :::
 
 The image below shows a configuration example for a string builder reference:
-```
+
+```text
 CONCAT('Current voltage of ',LOWER(${Template#name}),' ',${attributes['Device ID']},' is ', cast(${attributes['Voltage']} as varchar), 'V')
 ```
+
 ![String Builder Expression Configuration](/docs-img/basic/string-builder-en.png)

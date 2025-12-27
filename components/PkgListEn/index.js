@@ -4,6 +4,7 @@ import { fetchPackagesFromProduct } from "../data/productAdapter";
 
 export default function PkgListV37(props) {
   const { productName, version, platform, arch, pkgType, jsonPath } = props;
+  const lang = "en";
   const [pkgs, setPkgs] = useState([]);
   const [popState, setPopState] = useState({ hidden: true, selectedPkg: null });
   const [pkgValue, setPkgValue] = useState({ pkgId: "", productName: "", pkgUrl: "" });
@@ -11,7 +12,7 @@ export default function PkgListV37(props) {
   useEffect(() => {
     (async () => {
       console.log("[PkgListV37] fetch params", { productName, version, platform, arch, pkgType, jsonPath });
-      const list = await fetchPackagesFromProduct({ productName, version, platform, arch, pkgType, jsonPath });
+      const list = await fetchPackagesFromProduct({ productName, version, platform, arch, pkgType, jsonPath, lang });
       console.log("[PkgListV37] adapter returned", list?.length, list?.slice?.(0, 5));
       setPkgs(list || []);
     })();
@@ -23,22 +24,24 @@ export default function PkgListV37(props) {
     setPkgValue({
       pkgId: pkg.id,
       productName: productName,
+      version: version,
       pkgUrl: pkg.url || pkg['download-url'] || pkg['download_url'] || ""
     });
   }
 
   function closePopup() {
     setPopState({ hidden: true, selectedPkg: null });
-    setPkgValue({ pkgId: "", productName: "", pkgUrl: "" });
+    setPkgValue({ pkgId: "", productName: "", version: "", pkgUrl: "" });
   }
 
-  console.log('[PkgListV37] popState=', popState, 'pkgValue=', pkgValue);
+  // console.log('[PkgListV37] popState=', popState, 'pkgValue=', pkgValue);
 
   return (
     <div id="server-packageList" className="package-list">
       <Popupv37
         hidden={popState.hidden}
         productName={productName}
+        version={version}
         path={popState.selectedPkg ? (popState.selectedPkg.url || popState.selectedPkg['download-url'] || popState.selectedPkg['download_url']) : pkgValue.pkgUrl}
         lang={(typeof navigator !== 'undefined' && navigator.language) ? navigator.language.split('-')[0] : 'en'}
         pfn={closePopup}

@@ -40,7 +40,7 @@ Click the export icon button on the "Import/Export" main page to open the export
 
 The exported ZIP file contains:
 
-```
+```text
 export_timestamp.zip
 ├── metadata.json         # Metadata file containing all resource definitions
 └── taosgen.yaml          # TaosGen configuration file (data reference config, optional)

@@ -36,6 +36,11 @@ The triggers supported by TDengine IDMP are described as follows:
 
 8. **Count Window:** Analysis is triggered when the number of new records for a specified attribute or set of attributes reaches a specified threshold. If you do not specify any attributes, the count includes new records across all attributes for the element.
 
+After selecting the trigger method, you can also configure:
+
+1. **Pre-filter**: Filter data before triggering analysis, only data that meets the conditions will trigger the calculation.
+2. **Recalculate History**: Whether to recalculate historical data starting from a specified time, and whether recalculation should be executed first.
+
 ## Event Generation
 
 You can choose whether to generate an event when an analysis is triggered and executed. You can also specify the severity level of the event and whether it requires acknowledgment. For more information, see [Event Management](./07-event-management.md).
@@ -74,7 +79,7 @@ If the analysis generates an event, you can click select an attribute from the E
 
 ## Notes
 
-If the computation is performed on child elements, the system aggregates data from all child elements that meet the specified conditions. 
+If the computation is performed on child elements, the system aggregates data from all child elements that meet the specified conditions.
 
 1. If time window aggregation has not been selected, the aggregation is performed on a snapshot of the qualifying child elements at the trigger time. For example, you might calculate the maximum or average power output of all wind turbines at a specific moment.
 2. If time window aggregation has been selected, the aggregation is applied to data from the qualifying child elements over a defined time window. For example, you might calculate the average power output over the past 10 minutes for all wind turbines.
