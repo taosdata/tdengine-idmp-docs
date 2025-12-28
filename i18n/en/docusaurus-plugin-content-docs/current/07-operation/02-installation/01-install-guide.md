@@ -21,7 +21,7 @@ Select your operating system to display the appropriate installation procedure.
 
 :::tip
 
-Your machine must be connected to the internet when you install TDengine IDMP. Dependencies are downloaded and installed during the TDengine IDMP installation process. 
+Your machine must be connected to the internet when you install TDengine IDMP. Dependencies are downloaded and installed during the TDengine IDMP installation process.
 
 :::
 
@@ -56,11 +56,11 @@ Do not start TDengine IDMP until you have configured the TDengine TSDB-Enterpris
           username: <username>
           password: <password>
       ```
-      
+
       - **url:** Specify the URL and port number of your taosAdapter instance.
-      
+
       - **username:** Enter a TDengine TSDB-Enterprise user.
-      
+
       - **password:** Enter the password for the TDengine TSDB-Enterprise user.
 
    :::info Complete Configuration Reference
@@ -87,6 +87,7 @@ Do not start TDengine IDMP until you have configured the TDengine TSDB-Enterpris
 <TabItem label="Linux" value="linux">
 
 Run the following command to start TDengine IDMP:
+
 ```bash
 sudo svc-tdengine-idmp start
 ```
@@ -197,6 +198,7 @@ Run the following command to uninstall TDengine IDMP:
 ```bash
 rmidmp -e [yes | no]
 ```
+
 To retain data, log, and configuration files, specify `no`. To delete these files, specify `yes`.
 
 </TabItem>
@@ -223,6 +225,7 @@ Run the following command to uninstall TDengine IDMP:
 ```bash
 rmidmp -e [yes | no]
 ```
+
 To retain data, log, and configuration files, specify `no`. To delete these files, specify `yes`.
 
 </TabItem>
@@ -232,6 +235,7 @@ To retain data, log, and configuration files, specify `no`. To delete these file
 Double-click `C:\TDengine\idmp\unins000.exe` and follow the uninstallation wizard to complete the process.
 
 Alternatively, you can uninstall TDengine IDMP through **Control Panel** → **Programs** → **Programs and Features**:
+
 1. Find **TDengine IDMP** in the list
 2. Right-click and select **Uninstall**
 3. Follow the uninstallation wizard to complete the process

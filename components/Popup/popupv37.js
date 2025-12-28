@@ -13,16 +13,16 @@ export default class extends React.Component {
     super(props);
     this.state = {
       isShow: true,
-      sucessMsg: '',
+      successMsg: '',
     }
   }
   closeBtn(val) {
     this.setState({ isShow: true })
     this.props.pfn(val)//这个地方把值传递给了props的事件当中
   }
-  isShowSuccess(sucessMsg) {
+  isShowSuccess(successMsg) {
     this.setState({ isShow: false })
-    this.setState({ sucessMsg: sucessMsg })
+    this.setState({ successMsg: successMsg })
   }
   render() {
     return (
@@ -46,8 +46,8 @@ export default class extends React.Component {
             </div>
           </div>
           <div className={this.state.isShow ? "display-is-none" : "display-is-block"}>
-            <div style={{ diaplay: 'block', width: '90%', margin: '0 auto', padding: '1rem' }}>
-              <div className="success-msg">{this.state.sucessMsg}</div>
+            <div style={{ display: 'block', width: '90%', margin: '0 auto', padding: '1rem' }}>
+              <div className="success-msg">{this.state.successMsg}</div>
               <button className="btn btn-primary" onClick={this.closeBtn.bind(this, this.props.hidden)}>关闭</button>
             </div>
           </div>
@@ -68,7 +68,7 @@ class SubScription extends React.Component {
       email_value: cookie.load('email') ? cookie.load('email') : '',
       message: '',
       showMessage: false,
-      sucessMsg: "已成功把下载链接发送到您的邮箱，请查收。",
+      successMsg: "已成功把下载链接发送到您的邮箱，请查收。",
       lang: 'cn',
       can_contact: true,
       show_notice: false
@@ -120,7 +120,7 @@ class SubScription extends React.Component {
       return response.json()
     }).then((data) => {
       if (data[0].status == 'Success') {
-        this.props.isShowSuccess(this.state.sucessMsg);
+        this.props.isShowSuccess(this.state.successMsg);
       }
     }).catch(function (error) {
       console.log(error)
@@ -138,7 +138,7 @@ class SubScription extends React.Component {
   render() {
     return (
       <div>
-        <div style={{ diaplay: 'block', width: '90%', margin: '0 auto', position: 'relative' }}>
+        <div style={{ display: 'block', width: '90%', margin: '0 auto', position: 'relative' }}>
           <div className={this.state.showMessage ? "popalert" : "popalert popalert-hidden"}>
             {this.state.message}
           </div>

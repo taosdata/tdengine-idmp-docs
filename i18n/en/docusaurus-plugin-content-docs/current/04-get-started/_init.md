@@ -20,7 +20,7 @@ Please replace `ip` in above URL with the actual IP address of your machine. Whe
 
    :::note
 
-   - Your password must be 8 to 20 characters long. 
+   - Your password must be 8 to 20 characters long.
    - Your password must contain each of the following character types: letters, digits, and special characters.
    - The following special characters are supported: `. ~ ! @ # $ ^ & *`
 

@@ -41,7 +41,7 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
 
    :::tip
 
-   Your machine must be connected to the internet when you install TDengine IDMP. Dependencies are downloaded and installed during the TDengine IDMP installation process. 
+   Your machine must be connected to the internet when you install TDengine IDMP. Dependencies are downloaded and installed during the TDengine IDMP installation process.
 
    :::
 
@@ -68,6 +68,7 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
      --url http://localhost:6041/rest/sql \
      --data 'show databases;'
    ```
+
    If the connection is successful, the list of databases in TDengine TSDB-Enterprise will be displayed.
 
 1. Start TDengine IDMP.
@@ -92,7 +93,7 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
 
    :::tip
 
-   Your machine must be connected to the internet when you install TDengine IDMP. Dependencies are downloaded and installed during the TDengine IDMP installation process. 
+   Your machine must be connected to the internet when you install TDengine IDMP. Dependencies are downloaded and installed during the TDengine IDMP installation process.
 
    :::
 
@@ -119,6 +120,7 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
      --url http://localhost:6041/rest/sql \
      --data 'show databases;'
    ```
+
    If the connection is successful, the list of databases in TDengine TSDB-Enterprise will be displayed.
 
 1. Start TDengine IDMP.
@@ -143,7 +145,7 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
 
    :::tip
 
-   Your machine must be connected to the internet when you install TDengine IDMP. Dependencies are downloaded and installed during the TDengine IDMP installation process. 
+   Your machine must be connected to the internet when you install TDengine IDMP. Dependencies are downloaded and installed during the TDengine IDMP installation process.
 
    :::
 
@@ -170,6 +172,7 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
      --url http://localhost:6041/rest/sql \
      --data 'show databases;'
    ```
+
    If the connection is successful, the list of databases in TDengine TSDB-Enterprise will be displayed.
 
 1. Start TDengine IDMP.
@@ -194,7 +197,7 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
 
    :::tip
 
-   Your machine must be connected to the internet when you install TDengine IDMP. Dependencies are downloaded and installed during the TDengine IDMP installation process. 
+   Your machine must be connected to the internet when you install TDengine IDMP. Dependencies are downloaded and installed during the TDengine IDMP installation process.
 
    :::
 
@@ -221,6 +224,7 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
      --url http://localhost:6041/rest/sql \
      --data 'show databases;'
    ```
+
    If the connection is successful, the list of databases in TDengine TSDB-Enterprise will be displayed.
 
 1. Start TDengine IDMP.
@@ -277,6 +281,7 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
      --url http://localhost:6041/rest/sql \
      --data 'show databases;'
    ```
+
    If the connection is successful, the list of databases in TDengine TSDB-Enterprise will be displayed.
 
 1. Start TDengine IDMP:
@@ -284,7 +289,7 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
    ```batch
    C:\TDengine\idmp\bin\start-tdengine-idmp.bat
    ```
-   
+
    Or start the `tdengine-idmp`, `tdengine-idmp-h2`, and `tdengine-idmp-chat` services through Windows Service Manager.
 
 </TabItem>

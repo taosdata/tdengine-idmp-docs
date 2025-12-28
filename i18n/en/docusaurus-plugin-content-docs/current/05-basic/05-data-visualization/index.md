@@ -40,13 +40,13 @@ For each metric, you can configure the following options:
 3. **Function**: Aggregation function when a time window is set or dimension-based grouping is applied. The default value is `AVG`.
 4. **Conditions**: Filter conditions applied to the raw data to refine which data points are visualized.
 5. **Time Shift**: Offset for the timestamps of the metric. This is used to compare trends across different time periods. For example, setting it to `-1d` means the panel will show data from the same time one day earlier.
-6. **Prediction:**: Time-series forecasting for the selected metric.
-7. **Order By:**: Sorting for the metric. By default, no sorting is applied.
+6. **Prediction:** : Time-series forecasting for the selected metric.
+7. **Order By:** : Sorting for the metric. By default, no sorting is applied.
 
 For all displayed metrics, you can also configure the following options in the top-right corner of the metric list:
 
-1. **Limit:**: Maximum number of data points displayed for the metric.
-2. **Window:**: Sliding window aggregation to the metric. You can set the interval and the window duration.
+1. **Limit:** : Maximum number of data points displayed for the metric.
+2. **Window:** : Sliding window aggregation to the metric. You can set the interval and the window duration.
 
 ## Panel Dimension Configuration
 

@@ -4,18 +4,20 @@ English | [简体中文](README-CN.md)
 
 ## Table of Contents
 
-1. [Introduction](#1-introduction)
-2. [Installation](#2-installation)
+- [TDengine IDMP Documentation](#tdengine-idmp-documentation)
+  - [Table of Contents](#table-of-contents)
+  - [1. Introduction](#1-introduction)
+  - [2. Installation](#2-installation)
     - [2.1 Install Prerequisite Tools](#21-install-prerequisite-tools)
     - [2.2 Install Project Dependencies](#22-install-project-dependencies)
-3. [Local Development and Production Deployment](#3-local-development-and-production-deployment)
-    - [3.1 Start Chinese and English Preview](#31-start-chinese-and-english-preview)
+  - [3. Local Development and Production Deployment](#3-local-development-and-production-deployment)
+    - [3.1 Start Preview](#31-start-preview)
     - [3.2 Production Build](#32-production-build)
     - [3.3 Production Deployment](#33-production-deployment)
-4. [Directory Structure](#4-directory-structure)
-5. [Contribution](#5-contribution)
-6. [Community Support](#6-community-support)
-7. [License](#7-license)
+  - [4. Directory Structure](#4-directory-structure)
+  - [5. Contribution](#5-contribution)
+  - [6. Community Support](#6-community-support)
+  - [7. License](#7-license)
 
 ---
 

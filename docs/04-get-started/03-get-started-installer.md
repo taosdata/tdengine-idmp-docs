@@ -11,6 +11,7 @@ TDengine IDMP 提供了丰富的功能，本文档将带领您通过安装包完
 TDengine IDMP 支持多种安装、部署方式，在不同的操作系统和架构下，都能够体验其强大的功能带来的便利。对操作系统和架构的支持，详见[部署规划](../../operation/planning/)。
 
 TDengine IDMP 的运行需要以下基础依赖：
+
 1. Python: 3.12 版本
 1. Java: 21 及以上版本
 1. glibc: 2.25 及以上版本
@@ -78,6 +79,7 @@ Windows 安装包运行需要管理员权限。如果遇到权限问题，请右
 
 :::info 依赖说明
 TDengine IDMP 在 Windows 上运行需要：
+
 - Java 21 或更高版本，并确保 `java` 命令在系统 PATH 环境变量中
 - Python 3.12 版本
 - 如需验证 Java 是否正确配置，可在命令提示符中执行 `java -version`
@@ -95,8 +97,9 @@ TDengine IDMP 在 Windows 上运行需要：
 1. 配置 TDengine TSDB-Enterprise 连接：用编辑器打开 TDengine IDMP 的配置文件，默认位于：
    - Linux/macOS: `/usr/local/taos/idmp/config/application.yml`
    - Windows: `C:\TDengine\idmp\config\application.yml`
-   
+
    在 `tda.default-connection` 下，配置 TDengine TSDB-Enterprise 的连接信息，示例如下：
+
     ```yaml
     tda:
       default-connection:
@@ -106,17 +109,20 @@ TDengine IDMP 在 Windows 上运行需要：
         username: root
         password: taosdata
     ```
+
     其中：
-    * auth-type: 认证方式，支持 UserPassword 和 Token 两种方式，默认为方式 UserPassword
-    * url: 为 TDengine TSDB-Enterprise 中 taosAdapter 组件的 IP 地址和端口号，端口号默认为 6041
-    * username 和 password: 为 TDengine TSDB-Enterprise 的用户名和密码，默认为 root 和 taosdata
+    - auth-type: 认证方式，支持 UserPassword 和 Token 两种方式，默认为方式 UserPassword
+    - url: 为 TDengine TSDB-Enterprise 中 taosAdapter 组件的 IP 地址和端口号，端口号默认为 6041
+    - username 和 password: 为 TDengine TSDB-Enterprise 的用户名和密码，默认为 root 和 taosdata
 1. 测试 TDengine TSDB-Enterprise 连接：在终端中，可以使用 `curl` 命令测试 TDengine TSDB-Enterprise 连接的连通性，示例如下：
+
     ```bash
     curl --request POST \
       --user root:taosdata \
       --url http://192.168.1.100:6041/rest/sql \
       --data 'show databases;'
     ```
+
     如果连接成功，您将看到 TDengine TSDB-Enterprise 的数据库列表。
 1. 启动 TDengine IDMP 服务：
 
@@ -126,7 +132,7 @@ TDengine IDMP 在 Windows 上运行需要：
    svc-tdengine-idmp start
    ```
    </TabItem>
-   
+
    <TabItem label="Windows" value="windows">
    ```batch
    C:\TDengine\idmp\bin\start-tdengine-idmp.bat
