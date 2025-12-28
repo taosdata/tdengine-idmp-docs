@@ -14,4 +14,3 @@ TDengine IDMP uses a four-part versioning scheme in the format MAJOR.MINOR.PATCH
 Visit the [TDengine Download Center](https://tdengine.com/downloads/) to obtain the latest installation packages.
 
 <DocCardList />
-

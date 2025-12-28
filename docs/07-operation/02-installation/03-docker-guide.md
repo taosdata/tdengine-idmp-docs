@@ -71,13 +71,13 @@ export IDMP_URL="http://your-host-ip:6042"  # 请替换为实际 IP 地址或配
 
 #### 选择部署方式
 
-**标准部署（TSDB Enterprise + IDMP）**
+**标准部署（TSDB Enterprise + IDMP）：**
 
 ```bash
 docker compose up -d
 ```
 
-**完整部署（TSDB Enterprise + IDMP + TDgpt）**
+**完整部署（TSDB Enterprise + IDMP + TDgpt）：**
 
 ```bash
 docker compose -f docker-compose-tdgpt.yml up -d
@@ -96,13 +96,13 @@ docker compose -f docker-compose-tdgpt.yml up -d
 
 #### 停止服务
 
-**停止标准部署**
+**停止标准部署：**
 
 ```bash
 docker compose down
 ```
 
-**停止完整部署**
+**停止完整部署：**
 
 ```bash
 docker compose -f docker-compose-tdgpt.yml down
@@ -110,13 +110,13 @@ docker compose -f docker-compose-tdgpt.yml down
 
 如需清理数据，请添加 `-v` 参数，例如：
 
-**清理标准部署数据**
+**清理标准部署数据：**
 
 ```bash
 docker compose down -v
 ```
 
-**停止完整部署数据**
+**停止完整部署数据：**
 
 ```bash
 docker compose -f docker-compose-tdgpt.yml down -v

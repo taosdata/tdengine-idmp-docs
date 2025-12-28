@@ -12,4 +12,3 @@ TDengine IDMP 版本号采用四位版本号，由 `MAJOR.MINOR.PATCH.HOTFIX` �
 import DocCardList from '@theme/DocCardList';
 
 <DocCardList />
-

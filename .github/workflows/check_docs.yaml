@@ -34,7 +34,7 @@ jobs:
       - name: Check Typos
         uses: crate-ci/typos@v1.31.1
         with:
-          files: ./docs
+          files: ./**/*.md
           config: .github/workflows/typos.toml
 
       - name: Check Typos for i18n
@@ -46,7 +46,7 @@ jobs:
       - name: Check with AutoCorrect
         uses: huacnlee/autocorrect-action@v2
         with:
-          args: --lint ./ docs/ i18n/en/docusaurus-plugin-content-docs/current/
+          args: --lint ./**/*.md
 
       - name: Report ReviewDog
         if: always()

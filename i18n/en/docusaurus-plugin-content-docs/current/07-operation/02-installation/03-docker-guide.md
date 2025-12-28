@@ -256,7 +256,7 @@ IDMP supports HTTPS with default port 6034. The built-in test certificate is bou
 
 ## Troubleshooting
 
-### 1. The container `tdengine-idmp` is in an `unhealthy` state, or the IDMP page displays the error `Python Server not available`.
+### 1. The container `tdengine-idmp` is in an `unhealthy` state, or the IDMP page displays the error `Python Server not available`
 
 In this case, you need to check whether the Python application in `tdengine-idmp` is functioning properly. Follow the commands below to troubleshoot step by step:
 
