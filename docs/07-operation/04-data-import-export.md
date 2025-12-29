@@ -138,7 +138,7 @@ CSV 配置文件使用`UTF-8`编码格式，暂时不支持`UTF-8 with BOM`编�
 |            |            |              |              | `t_污水处理Demo_污水处理厂_生化处理区_A2O生化池_生化池南组_好氧池明渠出水口瞬时流量` |              | 生化池南组         |                  | `污水处理Demo.污水处理厂.生化处理区.A2O生化池`   | val        | 好氧池明渠出水口瞬时流量 | TDengineMetric |              |              |                  |                  | 毫克每升             | 毫克每升             |                | 2                    |
 | db_stw     | opc_stw    | `MBR膜池`      |              | `t_污水处理Demo_污水处理厂_生化处理区_MBR 膜池及配套_MBR膜池_膜池出水_NH4` |              | `MBR膜池`           |                  | `污水处理Demo.污水处理厂.生化处理区.MBR膜池及配套` | val        | 膜池出水_NH4         | TDengineMetric |              |              |                  |                  | 毫克每升             | 毫克每升             |                | 2                    |
 |            |            |              |              | `t_污水处理Demo_污水处理厂_生化处理区_MBR膜池及配套_MBR 膜池_膜池出水_NO3` |              | `MBR膜池`           |                  | `污水处理Demo.污水处理厂.生化处理区.MBR膜池及配套` | val        | 膜池出水_NO3         | TDengineMetric |              |              |                  |                  | 毫克每升             | 毫克每升             |                | 2                    |
-   
+
 </div>
 <!-- autocorrect-enable -->
 
