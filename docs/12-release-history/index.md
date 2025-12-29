@@ -9,6 +9,7 @@ TDengine IDMP 版本号采用四位版本号，由 `MAJOR.MINOR.PATCH.HOTFIX` �
 
 欢迎到[下载中心](https://www.taosdata.com/download-center)下载安装包。
 
-import DocCardList from '@theme/DocCardList';
 
-<DocCardList />
+import SortedDocCardList from "/components/SortedDocCardList";
+
+<SortedDocCardList />
