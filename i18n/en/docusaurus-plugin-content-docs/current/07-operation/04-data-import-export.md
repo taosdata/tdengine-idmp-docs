@@ -89,6 +89,7 @@ The CSV configuration file uses the `UTF-8` encoding format and does not current
 :::
 
 **CSV Configuration File Examples**  
+
 1. The element path is already defined in the super table. Here, TDengine TSDB’s commonly used smart meter is used as an example. In the structure of the smart meter super table (`meters`), the tag `location` is defined, which stores a `.`-separated path. This can be considered as the element path already existing in the super table. Each sub-table of `meters` corresponds to an element. Since there is no tag for the element name, the sub-table name is defined as the element name. In this case, the CSV configuration example is as follows:
 
 <div className="table-nowrap">
@@ -138,9 +139,11 @@ The CSV configuration file uses the `UTF-8` encoding format and does not current
 </div>
 
 ### Automatic Synchronization
+
 Once the CSV data import task is created, if new subtables are added in TSDB, they will be automatically synchronized to IDMP without manual intervention.  
 
 ### Monitoring Tasks
+
 Once a CSV data import task is created, you can view the task and previously created import tasks along with their statuses (failure reasons will be displayed if any). For import tasks that do not specify subtable names, automatic synchronization tasks will be created. These synchronization tasks can be stopped or started using the menu button on the right side of the task.  
 
 :::note

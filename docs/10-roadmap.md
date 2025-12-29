@@ -9,7 +9,7 @@ IDMP 还在积极的开发中，今后还将覆盖的功能包括：
 5. 支持组态
 6. 提供 Excel 插件，类似 DataLink
 7. 支持内部表
-8. 更多类型的面板 (Candle stick, Heatmap, Histogram, FlameGraph) 
+8. 更多类型的面板 (Candle stick, Heatmap, Histogram, FlameGraph)
 9. 支持面板、报表下钻
 10. Panel/Dashboard 能嵌入到第三方应用
 11. 对外提供 SDK，让其无障碍访问整个数据资产
@@ -20,4 +20,3 @@ IDMP 还在积极的开发中，今后还将覆盖的功能包括：
 16. 支持用户组
 17. 支持关系库
 18. 支持第三方时序库
-

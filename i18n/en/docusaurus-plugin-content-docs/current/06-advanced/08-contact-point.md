@@ -3,11 +3,12 @@
 The [Event Management](../05-basic/07-event-management.md) documentation details how the system triggers notifications when events meet specific conditions, sending alerts to predefined users or channels. Currently, the system supports two notification methods: email and Feishu.
 
 ## Configuring Contact Points
+
 Click the avatar icon in the top-right corner, select "Admin Console" to access settings, then navigate to "System Configuration" → "Notification Contact Point" to view the current list of contact points. The system creates a default contact point with the administrator's email. Click the "+" button to add more contact points.
 
 ### Email Notifications
 
-Email notifications send alerts to specified email addresses when events are triggered. 
+Email notifications send alerts to specified email addresses when events are triggered.
 Configuration steps:
 
 1. Click the "+" button
@@ -26,8 +27,7 @@ Feishu notifications send alerts to specified Feishu groups when events are trig
 :::warning Tip
 Before adding a Feishu contact point, you need to first create a custom bot in Feishu, add the bot to your group chat, and obtain the bot's Webhook address.
 
-Please refer to [Feishu Documentation - Custom bot usage guide
-](https://open.feishu.cn/document/client-docs/bot-v3/add-custom-bot?lang=en-US).
+Please refer to [Feishu Documentation - Custom bot usage guide](https://open.feishu.cn/document/client-docs/bot-v3/add-custom-bot?lang=en-US).
 :::
 
 Configuration steps for Feishu notifications:

@@ -186,10 +186,12 @@ JSON Pointer requires escaping of two special characters:
 
 1. **Review Provider Documentation**: Carefully read the OAuth provider's user info API documentation
 2. **Actual Testing**: Use Postman or curl to call the user info API and examine the actual returned data structure
+
    ```bash
    curl -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
         https://api.provider.com/user
    ```
+
 3. **Build Incrementally**: Configure simple fields first, then handle complex nesting after successful testing
 4. **Use Online Tools**: JSON Pointer online testing tools can be used to validate expressions
 5. **Note Array Indexing**: Array indices start from 0, use `/array/0` to access the first element

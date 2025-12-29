@@ -16,7 +16,6 @@ In the Admin Console, click `Connections` to view the list of existing connectio
 
 TDengine connections are used for business data management. After creating a connection, you can import data from it into the IDMP platform for management. It supports two authentication methods: username/password or token. In the form, for the `Explorer Address` field, please enter the Explorer address corresponding to the current TDengine connection, which is usually `http://[host]:6060`.
 
-
 ## AI Connection
 
 AI connections are used for AI chat and question recommendation. IDMP comes with a built-in connection that has a 3-day trial period. Please update the key or add other available connections before the expiration date to avoid affecting AI-related functionalities.
@@ -36,9 +35,9 @@ if __name__ == "__main__":
   """
   Test the LLM interface
   
-  base_url：Service url
-  api_key：API key
-  model：Model name
+  base_url: Service url
+  api_key: API key
+  model: Model name
   """
   openai_client = OpenAI(
       base_url="[Service url]",

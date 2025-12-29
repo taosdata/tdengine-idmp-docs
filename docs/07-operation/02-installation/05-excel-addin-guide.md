@@ -2,6 +2,9 @@
 title: Excel Add-in 部署
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # TDengine Excel Add-in
 
 本文档详细介绍 TDengine Excel Add-in 组件的安装和卸载步骤。
@@ -34,6 +37,7 @@ quarkus:
 #### 内置测试证书
 
 IDMP 安装包内置了一个有效期为 3 个月的测试证书：
+
 - **证书绑定域名**：`idmp.tdengine.net`
 - **适用场景**：功能演示、测试等场景
 - **限制**：**不建议生产环境使用**
@@ -47,6 +51,7 @@ IDMP 安装包内置了一个有效期为 3 个月的测试证书：
 ```
 
 **hosts 文件位置**：
+
 - **Linux/macOS**: `/etc/hosts`
 - **Windows**: `C:\Windows\System32\drivers\etc\hosts`
 
@@ -64,17 +69,35 @@ IDMP 安装包内置了一个有效期为 3 个月的测试证书：
 
 ## 安装指南
 
-### macOS 平台安装
+<Tabs>
+  <TabItem label="macOS 系统" value="macOS">
 
 在终端中执行以下命令进行安装：
 
 ```bash
-curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s install --force-close --url https://localhost:6034
+curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s install --force-close --url https://localhost:6034 --enable-logging
 ```
 
 **参数说明：**
+
 - `--force-close`：安装过程中会强制关闭 Excel 应用程序，请提前保存工作内容
 - `--url`：指定 IDMP HTTPS 服务地址，**请替换为实际的服务地址**
+- `--enable-logging`: 启用安装和插件运行日志，便于排查问题。
+  日志文件保存路径： `~/Library/Containers/com.microsoft.Excel/Data/tdengine_eai.log`
+
+你也可以单独开启或关闭日志功能：
+
+- **启用日志：**
+
+  ```bash
+  curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s enable-logging-only --force-close
+  ```
+
+- **关闭日志：**
+
+  ```bash
+  curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s disable-logging-only --force-close
+  ```
 
 :::warning 注意事项
 
@@ -84,18 +107,37 @@ curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/in
 
 :::
 
-### Windows 平台安装
+  </TabItem>
+  <TabItem label="Windows 系统" value="Windows">
 
 以**管理员身份**打开 PowerShell，执行以下命令：
 
 ```powershell
-powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action Install -ForceCloseExcel -Url 'https://localhost:6034'"
+powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action Install -ForceCloseExcel -Url 'https://localhost:6034' -EnableLogging"
 ```
 
 **参数说明：**
+
 - `-Action Install`：执行安装操作
 - `-ForceCloseExcel`：强制关闭 Excel 应用程序
 - `-Url`：指定 IDMP HTTPS 服务地址，**请替换为实际的服务地址**
+- `-EnableLogging`: 启用安装和插件运行日志，便于排查问题。
+  日志文件保存路径： `C:\Users\<你的用户名>\AppData\Roaming\Microsoft\AddIns\VueOfficeAddin\Logs\tdengine_eai.log`
+
+你也可以单独开启或关闭日志功能：
+
+- **启用日志（Windows）：**
+
+  ```bash
+  powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action EnableLogging -ForceCloseExcel"
+  ```
+
+- **关闭日志（Windows）：**
+
+  ```bash
+  # 关闭日志
+  powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action DisableLogging -ForceCloseExcel"
+  ```
 
 :::warning 注意事项
 
@@ -106,9 +148,13 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 
 :::
 
+  </TabItem>
+</Tabs>
+
 ## 卸载指南
 
-### macOS 平台卸载
+<Tabs>
+  <TabItem label="macOS 系统" value="macOS">
 
 在终端中执行以下命令进行卸载：
 
@@ -116,7 +162,15 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s uninstall --force-close
 ```
 
-### Windows 平台卸载
+:::info 卸载说明
+
+- 卸载过程同样会强制关闭 Excel，请提前保存工作内容
+- 卸载完成后，Excel Add-in 相关功能将完全移除
+
+:::
+
+  </TabItem>
+  <TabItem label="Windows 系统" value="Windows">
 
 以**管理员身份**打开 PowerShell，执行以下命令：
 
@@ -131,3 +185,6 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 - 卸载完成后，Excel Add-in 相关功能将完全移除
 
 :::
+
+  </TabItem>
+</Tabs>

@@ -70,13 +70,13 @@ Inside the TDasset Docker container:
 
 ##### 2.1.3.1 Generate sample data
 
-```
+```bash
 java -jar tda-generator-command.jar -f init.json
 ```
 
 ##### 2.1.3.2 Clean up sample data
 
-```
+```bash
 java -jar tda-generator-command.jar -f init.json -c
 
 ```
@@ -94,7 +94,7 @@ The JSON file is the single source of truth for sample data generation.
 
 ### 3.1 Overall Structure
 
-```
+```json
 {
   "info": {},
   "TDasset": {},
@@ -110,7 +110,7 @@ The JSON file is the single source of truth for sample data generation.
 
 Used only for display in the IDMP UI.
 
-```
+```json
 {
   "id": "smart_meters",
   "name": "Smart Meters",
@@ -128,7 +128,7 @@ Used only for display in the IDMP UI.
 
 Effective only in command-line mode.
 
-```
+```json
 {
   "db": {
     "host": "127.0.0.1",
@@ -145,7 +145,7 @@ Effective only in command-line mode.
 
 ### 3.4 databases — Database Definition
 
-```
+```json
 {
   "db": {
     "host": "127.0.0.1",
@@ -171,7 +171,7 @@ Effective only in command-line mode.
 
 ### 3.5 databases - Database Definition
 
-```
+```json
 {
   "name": "idmp_sample_utility",
   "drop": "yes",
@@ -196,7 +196,7 @@ Effective only in command-line mode.
 
 #### 3.6.1 Super Table Template (Leaf Nodes)
 
-```
+```json
 {
   "name": "Smart Meter",
   "leaf": true,
@@ -287,20 +287,20 @@ Effective only in command-line mode.
   - batch_insert_num: Rows per batch
   - insert_interval: Interval between batches (ms; 0 = no delay)
   - metrics: List of metric attributes
-    - name: Metric name；
-    - title: Metric title；
-    - description: Metric description；
-    - type: Metric data type, supports Float, Double, Int, BigInt, Varchar, and other TDengine supported data types；
-    - tdType: Data type, metric indicates metric, tag indicates tag；
-    - uomClass: Unit category；
-    - uom: Unit name；
-    - displayDigits: Number of decimal places displayed；
-    - fun: Data generation function, supports basic math functions and random() function, x represents the time variable；
+    - name: Metric name.
+    - title: Metric title.
+    - description: Metric description.
+    - type: Metric data type, supports Float, Double, Int, BigInt, Varchar, and other TDengine supported data types.
+    - tdType: Data type, metric indicates metric, tag indicates tag.
+    - uomClass: Unit category.
+    - uom: Unit name.
+    - displayDigits: Number of decimal places displayed.
+    - fun: Data generation function, supports basic math functions and random() function, x represents the time variable.
   - tags: List of tag attributes (similar to metrics)
 
 #### 3.6.2 Path Template (Non-Leaf Nodes)
 
-```
+```json
 {
   "name": "location-#LEVEL-#ID",
   "level": 3,
@@ -318,7 +318,7 @@ Effective only in command-line mode.
 
 #### 3.7 tree_root - Element Tree Root Node
 
-```
+```json
 {
   "tag_name": "location",
   "value": "Public Utility",
@@ -330,7 +330,7 @@ Effective only in command-line mode.
 
 #### 3.8 trees - Element Tree and Child Table Generation (Core)
 
-```
+```json
 {
   "template": "location-1-smart_meters",
   "values": "Beijing",

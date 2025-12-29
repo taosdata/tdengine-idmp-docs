@@ -40,20 +40,17 @@ TDengine IDMP can be widely applied across IoT, industrial, and other domains, i
 
    - Power and Energy: Managing the real-time performance of generator units, grid loads, and renewable energy sources such as wind and solar power.
 
-
 2. **Equipment Health and Predictive Maintenance**
 
    - Predict equipment failures by analyzing sensor data (e.g., vibration, current, temperature), preventing unexpected downtime.
 
    - Lifecycle management of critical assets in industries such as aviation, power generation, and rail transportation.
 
-
 3. **Energy Management and Sustainability**
 
    - Monitor consumption of resources such as water, electricity, and gas in real time to identify energy-saving opportunities (e.g., building energy efficiency, factory carbon footprint).
 
    - Support carbon emission tracking to help enterprises achieve their ESG goals.
-
 
 4. **Infrastructure and Smart Cities**
 
@@ -63,13 +60,11 @@ TDengine IDMP can be widely applied across IoT, industrial, and other domains, i
 
    - Transportation Infrastructure: Real-time monitoring and maintenance of tunnels, bridges, high-speed rail, subways, airports, and other critical facilities.
 
-
 5. **Life Sciences and Pharmaceuticals**
 
    - Monitoring of biopharmaceutical production processes, such as fermentation, cell culture, purification, and downstream workflows.
 
    - Batch production monitoring under strict regulatory environments (e.g., GMP) to ensure manufacturing parameters meet compliance standards.
-
 
 6. **Data Centers and IT Operations**
 
@@ -78,7 +73,6 @@ TDengine IDMP can be widely applied across IoT, industrial, and other domains, i
    - Environmental and energy monitoring within data centers.
 
    - Real-time performance monitoring of various internet services.
-
 
 TDengine IDMP serves a wide range of industries including smart manufacturing, power generation, electric grids, oil and petrochemicals, automotive, mining, renewable energy, pharmaceuticals, and IT infrastructure.
 
