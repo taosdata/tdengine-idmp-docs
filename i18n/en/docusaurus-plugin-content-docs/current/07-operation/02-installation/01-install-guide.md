@@ -250,24 +250,24 @@ TDengine IDMP recommends using the official installation script for upgrades. Th
 - **Automatic Upgrade Detection**: The installation script will automatically determine whether it is an upgrade installation.
 - **Data and Configuration Protection**: In upgrade mode, the installation script will not overwrite or modify the following directories and their contents:
 
-    <Tabs>
-    <TabItem label="Linux/macOS" value="unix">
+<Tabs>
+<TabItem label="Linux/macOS" value="unix">
 
-    - `data/idmp`: User data directory
-    - `idmp/venv`: Python virtual environment
-    - `idmp/config`: Configuration directory
-    - `logs`: Log directory
+- `data/idmp`: User data directory
+- `idmp/venv`: Python virtual environment
+- `idmp/config`: Configuration directory
+- `logs`: Log directory
 
-    </TabItem>
-    <TabItem label="Windows" value="windows">
+</TabItem>
+<TabItem label="Windows" value="windows">
 
-    - `data\idmp`: User data directory
-    - `idmp\venv`: Python virtual environment
-    - `idmp\config`: Configuration directory
-    - `logs`: Log directory
+- `data\idmp`: User data directory
+- `idmp\venv`: Python virtual environment
+- `idmp\config`: Configuration directory
+- `logs`: Log directory
 
-    </TabItem>
-    </Tabs>
+</TabItem>
+</Tabs>
 
 - **Program Files Only Updated**: During an upgrade, only core program files and dependencies are updated, ensuring new features are available while user data and configuration remain unchanged.
 - **First-Time Installation**: If this is a first-time installation, all directories and files will be fully initialized.
