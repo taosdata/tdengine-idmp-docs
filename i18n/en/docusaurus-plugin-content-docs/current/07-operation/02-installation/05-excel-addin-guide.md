@@ -37,6 +37,7 @@ quarkus:
 #### Built-in Test Certificate
 
 IDMP installation package includes a built-in test certificate valid for 3 months:
+
 - **Certificate domain binding**: `idmp.tdengine.net`
 - **Applicable scenarios**: Function demonstration, testing, etc.
 - **Limitations**: **Not recommended for production environments**
@@ -50,6 +51,7 @@ If using the built-in test certificate, you need to add domain name resolution i
 ```
 
 **Hosts file locations**:
+
 - **Linux/macOS**: `/etc/hosts`
 - **Windows**: `C:\Windows\System32\drivers\etc\hosts`
 
@@ -77,6 +79,7 @@ curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/in
 ```
 
 **Parameter Description:**
+
 - `--force-close`: Excel application will be forcibly closed during installation, please save your work content in advance
 - `--url`: Specify IDMP HTTPS service address, **please replace with your actual service address**
 - `--enable-logging`: Enables installation and add-in operation logging to help troubleshoot issues.  
@@ -85,11 +88,13 @@ curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/in
 You can also enable or disable logging separately:
 
 - **Enable logging:**
+
   ```bash
   curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s enable-logging-only --force-close
   ```
 
 - **Disable logging:**
+
   ```bash
   curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s disable-logging-only --force-close
   ```
@@ -112,6 +117,7 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 ```
 
 **Parameter Description:**
+
 - `-Action Install`: Execute installation operation
 - `-ForceCloseExcel`: Forcibly close Excel application
 - `-Url`: Specify IDMP HTTPS service address, **please replace with your actual service address**
@@ -122,11 +128,13 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 You can also enable or disable logging separately:
 
 - **Enable logging:**
+
   ```bash
   powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action EnableLogging -ForceCloseExcel"
   ```
 
 - **Disable logging:**
+
   ```bash
   powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action DisableLogging -ForceCloseExcel"
   ```

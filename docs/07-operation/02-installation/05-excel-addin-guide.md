@@ -37,6 +37,7 @@ quarkus:
 #### 内置测试证书
 
 IDMP 安装包内置了一个有效期为 3 个月的测试证书：
+
 - **证书绑定域名**：`idmp.tdengine.net`
 - **适用场景**：功能演示、测试等场景
 - **限制**：**不建议生产环境使用**
@@ -50,6 +51,7 @@ IDMP 安装包内置了一个有效期为 3 个月的测试证书：
 ```
 
 **hosts 文件位置**：
+
 - **Linux/macOS**: `/etc/hosts`
 - **Windows**: `C:\Windows\System32\drivers\etc\hosts`
 
@@ -77,6 +79,7 @@ curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/in
 ```
 
 **参数说明：**
+
 - `--force-close`：安装过程中会强制关闭 Excel 应用程序，请提前保存工作内容
 - `--url`：指定 IDMP HTTPS 服务地址，**请替换为实际的服务地址**
 - `--enable-logging`: 启用安装和插件运行日志，便于排查问题。
@@ -85,11 +88,13 @@ curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/in
 你也可以单独开启或关闭日志功能：
 
 - **启用日志：**
+
   ```bash
   curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s enable-logging-only --force-close
   ```
 
 - **关闭日志：**
+
   ```bash
   curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s disable-logging-only --force-close
   ```
@@ -102,7 +107,6 @@ curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/in
 
 :::
 
-
   </TabItem>
   <TabItem label="Windows 系统" value="Windows">
 
@@ -113,6 +117,7 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 ```
 
 **参数说明：**
+
 - `-Action Install`：执行安装操作
 - `-ForceCloseExcel`：强制关闭 Excel 应用程序
 - `-Url`：指定 IDMP HTTPS 服务地址，**请替换为实际的服务地址**
@@ -122,11 +127,13 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 你也可以单独开启或关闭日志功能：
 
 - **启用日志（Windows）：**
+
   ```bash
   powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action EnableLogging -ForceCloseExcel"
   ```
 
 - **关闭日志（Windows）：**
+
   ```bash
   # 关闭日志
   powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action DisableLogging -ForceCloseExcel"

@@ -10,6 +10,7 @@ TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0+, 在安装 TDengine IDMP 
 :::
 
 TDengine IDMP 的运行需要以下基础依赖：
+
 1. Python: 3.12 版本
 1. Java: 21 及以上版本
 1. glibc: 2.25 及以上版本
@@ -28,7 +29,7 @@ IDMP 的正常运行，依赖指定版本的 Java 和 Python 环境。在安装�
 1. 安装过程中，如果遇到以下错误 "Java Version 21+ is required, but not found at: ...", 应该如何解决？
     - Java 没有安装，请安装 Java 21 或更高版本。
     - Java 已安装，但安装程序没有找到，可以通过创建软链接的方式来解决，例如：`ln -s /path/to/your-java-executable /usr/local/bin/java`.
-2. 安装过程中，如果遇到以下错误 "Java Version 21+ is required, but version X is found at: ...", 应该如何解决？ 
+2. 安装过程中，如果遇到以下错误 "Java Version 21+ is required, but version X is found at: ...", 应该如何解决？
     - Java 版本过低，请安装 Java 21 或更高版本。
     - 满足要求的 Java 已安装，但安装程序没有找到，可以通过创建软链接的方式来解决，例如：`ln -s /path/to/your-java-executable /usr/local/bin/java`, 如果系统中存在多个 Java 版本，请注意 PATH 的优先级。在以上报错信息中，会打印 PATH 的搜索路径，请您确保满足要求的 Java 可执行文件在 PATH 中的优先级最高。
 3. 安装过程中，如果遇到以下错误 "Failed to install TDengine IDMP dependencies from /usr/local/taos/idmp/chat/requirements.txt", 应该如何解决？
@@ -55,6 +56,7 @@ tda:
 ```
 
 其中：
+
 - auth-type: 认证方式，支持 UserPassword 和 Token 两种方式，默认为方式 UserPassword
 - url: 为 TDengine TSDB-Enterprise 中 taosAdapter 组件的 IP 地址和端口号，端口号默认为 6041
 - username 和 password: 为 TDengine TSDB-Enterprise 的用户名和密码，默认为 root 和 taosdata
@@ -160,7 +162,6 @@ sc.exe start tdengine-idmp
 
 **查看服务状态：**
 
-
 或使用 sc 命令：
 
 ```batch
@@ -228,6 +229,7 @@ rpm -e tdengine-idmp
 ```bash
 dpkg -r tdengine-idmp
 ```
+
 </TabItem>
 
 <TabItem label="Windows 系统" value="windows">
