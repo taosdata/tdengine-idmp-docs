@@ -50,7 +50,7 @@ For formulas in the form of A/B or A*B:
 For example, suppose attribute A has unit centimeters (cm), attribute B has unit square meters (m2), and attribute C has unit cubic meters (m3). These involve 3 unit of measurement classes: length, area, and volume. For the formula `A*B-C`, A will first be converted to a value in meters, then multiplied by B to get a result in cubic meters, and finally subtracted from C. As shown below:
 ![formula A * B -C](./formula_abcd.png)
 
-Another example: multiplying electric potential by power results in a meaningless unit that doesn't exist in the system.
+Another example: multiplying electric potential by power results in a meaningless unit that doesn't exist in the system, which will trigger an error.
 
 ### Comparison and Bitwise Operations
 
