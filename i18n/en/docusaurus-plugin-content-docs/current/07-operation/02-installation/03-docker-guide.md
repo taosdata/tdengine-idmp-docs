@@ -24,6 +24,23 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
 
 ### 2. Recommended: Use the unified management script
 
+#### Config
+
+  If configuration adjustments are required, you can open the docker-compose.yml file in the docker directory to make modifications. This section describes the base path configuration for gateway reverse proxy.
+
+  ```yml
+  environment:
+        TZ: "${TZ:-UTC}"
+        TSDB_URL: "http://tdengine-tsdb:6041"
+        TDA_REST_BASE_PATH: "${TDA_REST_BASE_PATH:-}"
+  ```
+  
+  1. **TZ:** The time zone can be modified by setting the TZ environment variable if needed.
+  2. **TSDB_URL:** The address of TDengine taosadapter.
+  3. **TDA_REST_BASE_PATH:** To configure the base path for gateway reverse proxy, specify the path by setting the TDA_REST_BASE_PATH environment variable first. Meanwhile, the gateway side shall configure rules to strip this base path from the request path before forwarding the request to the backend service.
+
+#### Start the service   
+
    ```bash
    cd tdengine-idmp-deployment/docker
    chmod +x idmp.sh

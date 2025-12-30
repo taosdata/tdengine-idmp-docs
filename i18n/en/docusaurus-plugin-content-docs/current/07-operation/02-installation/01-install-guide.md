@@ -49,6 +49,7 @@ Do not start TDengine IDMP until you have configured the TDengine TSDB-Enterpris
 
       ```yaml
       tda:
+        rest-base-path: ${TDA_REST_BASE_PATH:}
         default-connection:
           enable: true
           auth-type: UserPassword
@@ -56,6 +57,8 @@ Do not start TDengine IDMP until you have configured the TDengine TSDB-Enterpris
           username: <username>
           password: <password>
       ```
+
+      - **rest-base-path:** If you need to configure the base path for gateway reverse proxy, you shall first specify the path by setting the TDA_REST_BASE_PATH environment variable. Meanwhile, the gateway side needs to configure rules to strip this base path from the request path before forwarding the request to the backend services.
 
       - **url:** Specify the URL and port number of your taosAdapter instance.
 
