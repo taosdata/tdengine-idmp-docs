@@ -1,6 +1,9 @@
 // @ts-check
 
 import tdengineTheme from './src/prism/tdengine-theme';
+/**
+ * @type {import('@docusaurus/plugin-content-docs').SidebarItemsGenerator}
+ */
 
 const getTitle = () => {
   const locale = process.env.DOCUSAURUS_CURRENT_LOCALE || 'zh-Hans';
@@ -18,6 +21,68 @@ const getGTMID = () => {
   return 'GTM-MLW247PH';
 };
 
+const customSidebarItemsGenerator = async ({
+  defaultSidebarItemsGenerator,
+  ...args
+}) => {
+  const sidebarItems = await defaultSidebarItemsGenerator(args);
+  console.log(JSON.stringify(sidebarItems, null, 2));
+  function sortReleaseHistory(items) {
+    // 拆分出版本号文档和其它文档
+    const versionItems = items.filter(
+      (item) => item.id && item.id.match(/(\d+\.\d+\.\d+\.\d+)$/)
+    );
+    const otherItems = items.filter(
+      (item) => !(item.id && item.id.match(/(\d+\.\d+\.\d+\.\d+)$/))
+    );
+
+    // 打印提取到的版本号
+    versionItems.forEach(item => {
+      const match = item.id.match(/(\d+\.\d+\.\d+\.\d+)$/);
+      const verArr = match ? match[1].split('.').map(Number) : [];
+      console.log('id:', item.id, 'verArr:', verArr);
+    });
+
+    // 数字排序
+    versionItems.sort((a, b) => {
+      const getVer = (item) => {
+        const match = item.id.match(/(\d+\.\d+\.\d+\.\d+)$/);
+        return match ? match[1].split('.').map(Number) : [];
+      };
+      const aVer = getVer(a);
+      const bVer = getVer(b);
+      for (let i = 0; i < Math.max(aVer.length, bVer.length); i++) {
+        const diff = (aVer[i] || 0) - (bVer[i] || 0);
+        if (diff !== 0) return diff;
+      }
+      return 0;
+    });
+
+    // 排序后打印
+    console.log('排序后:', versionItems.map(i => i.id));
+
+    // 新版本在前
+    versionItems.reverse();
+    return [...otherItems, ...versionItems];
+  }
+
+  function deepSort(items) {
+    return items.map(item => {
+      if (
+        item.type === 'category' &&
+        (item.label === '发布历史' || item.label === 'release-history') &&
+        item.items
+      ) {
+        item.items = sortReleaseHistory(item.items);
+      } else if (item.items) {
+        item.items = deepSort(item.items);
+      }
+      return item;
+    });
+  }
+
+  return deepSort(sidebarItems);
+};
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -58,6 +123,8 @@ const config = {
         docs: {
           routeBasePath: '/',
           breadcrumbs: false,
+          sidebarPath: require.resolve('./sidebars.js'), 
+          sidebarItemsGenerator: customSidebarItemsGenerator, // ← 加上这行
         },
         googleTagManager: {
           containerId: getGTMID()
