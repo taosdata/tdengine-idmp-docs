@@ -26,19 +26,20 @@ const customSidebarItemsGenerator = async ({
   defaultSidebarItemsGenerator,
   ...args
 }) => {
-  const sidebarItems = await defaultSidebarItemsGenerator(args);
   function sortReleaseHistory(items) {
+    // Debug logs for version extraction and sorting
+    // To enable debug logs, set DEBUG_RELEASE_SORT = true
+    const DEBUG_RELEASE_SORT = false;
+    
     // Split version docs and other docs
     const versionItems = items.filter(
       (item) => item.id && item.id.match(/(\d+\.\d+\.\d+\.\d+)$/)
     );
+    
     const otherItems = items.filter(
       (item) => !(item.id && item.id.match(/(\d+\.\d+\.\d+\.\d+)$/))
     );
 
-    // Debug logs for version extraction and sorting
-    // To enable debug logs, set DEBUG_RELEASE_SORT = true
-    const DEBUG_RELEASE_SORT = false;
     if (DEBUG_RELEASE_SORT) {
       versionItems.forEach(item => {
         const match = item.id.match(/(\d+\.\d+\.\d+\.\d+)$/);
@@ -87,6 +88,7 @@ const customSidebarItemsGenerator = async ({
     });
   }
 
+  const sidebarItems = await defaultSidebarItemsGenerator(args);
   return deepSort(sidebarItems);
 };
 
