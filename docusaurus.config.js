@@ -26,9 +26,8 @@ const customSidebarItemsGenerator = async ({
   ...args
 }) => {
   const sidebarItems = await defaultSidebarItemsGenerator(args);
-  console.log(JSON.stringify(sidebarItems, null, 2));
   function sortReleaseHistory(items) {
-    // 拆分出版本号文档和其它文档
+    // Split version docs and other docs
     const versionItems = items.filter(
       (item) => item.id && item.id.match(/(\d+\.\d+\.\d+\.\d+)$/)
     );
@@ -36,14 +35,18 @@ const customSidebarItemsGenerator = async ({
       (item) => !(item.id && item.id.match(/(\d+\.\d+\.\d+\.\d+)$/))
     );
 
-    // 打印提取到的版本号
-    versionItems.forEach(item => {
-      const match = item.id.match(/(\d+\.\d+\.\d+\.\d+)$/);
-      const verArr = match ? match[1].split('.').map(Number) : [];
-      console.log('id:', item.id, 'verArr:', verArr);
-    });
+    // Debug logs for version extraction and sorting
+    // To enable debug logs, set DEBUG_RELEASE_SORT = true
+    const DEBUG_RELEASE_SORT = false;
+    if (DEBUG_RELEASE_SORT) {
+      versionItems.forEach(item => {
+        const match = item.id.match(/(\d+\.\d+\.\d+\.\d+)$/);
+        const verArr = match ? match[1].split('.').map(Number) : [];
+        console.log('id:', item.id, 'verArr:', verArr);
+      });
+    }
 
-    // 数字排序
+    // Numeric sort
     versionItems.sort((a, b) => {
       const getVer = (item) => {
         const match = item.id.match(/(\d+\.\d+\.\d+\.\d+)$/);
@@ -58,10 +61,12 @@ const customSidebarItemsGenerator = async ({
       return 0;
     });
 
-    // 排序后打印
-    console.log('排序后:', versionItems.map(i => i.id));
+    // Debug log for sorted result
+    // if (DEBUG_RELEASE_SORT) {
+    //   console.log('Sorted:', versionItems.map(i => i.id));
+    // }
 
-    // 新版本在前
+    // Newest version first
     versionItems.reverse();
     return [...otherItems, ...versionItems];
   }
@@ -70,7 +75,7 @@ const customSidebarItemsGenerator = async ({
     return items.map(item => {
       if (
         item.type === 'category' &&
-        (item.label === '发布历史' || item.label === 'release-history') &&
+        (item.label === '发布历史' || item.label === 'Release History') &&
         item.items
       ) {
         item.items = sortReleaseHistory(item.items);
