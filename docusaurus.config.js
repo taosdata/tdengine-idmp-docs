@@ -1,9 +1,7 @@
 // @ts-check
 
 import tdengineTheme from './src/prism/tdengine-theme';
-/**
- * @type {import('@docusaurus/plugin-content-docs').SidebarItemsGenerator}
- */
+
 
 const getTitle = () => {
   const locale = process.env.DOCUSAURUS_CURRENT_LOCALE || 'zh-Hans';
@@ -21,6 +19,9 @@ const getGTMID = () => {
   return 'GTM-MLW247PH';
 };
 
+/**
+ * @type {import('@docusaurus/plugin-content-docs').SidebarItemsGenerator}
+ */
 const customSidebarItemsGenerator = async ({
   defaultSidebarItemsGenerator,
   ...args
@@ -62,9 +63,9 @@ const customSidebarItemsGenerator = async ({
     });
 
     // Debug log for sorted result
-    // if (DEBUG_RELEASE_SORT) {
-    //   console.log('Sorted:', versionItems.map(i => i.id));
-    // }
+    if (DEBUG_RELEASE_SORT) {
+      console.log('Sorted:', versionItems.map(i => i.id));
+    }
 
     // Newest version first
     versionItems.reverse();
@@ -128,8 +129,8 @@ const config = {
         docs: {
           routeBasePath: '/',
           breadcrumbs: false,
-          sidebarPath: require.resolve('./sidebars.js'), 
-          sidebarItemsGenerator: customSidebarItemsGenerator, // ← 加上这行
+          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarItemsGenerator: customSidebarItemsGenerator,
         },
         googleTagManager: {
           containerId: getGTMID()
