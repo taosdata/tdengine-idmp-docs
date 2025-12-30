@@ -20,8 +20,8 @@ function sortVersions(items) {
 }
 
 export default function SortedDocCardList() {
-  const items = useCurrentSidebarCategory().items;
-  const sortedItems = sortVersions(items);
+  const { items } = useCurrentSidebarCategory();
+  const sortedItems = React.useMemo(() => sortVersions(items), [items]);
 
   return <DocCardList items={sortedItems} />;
 }
