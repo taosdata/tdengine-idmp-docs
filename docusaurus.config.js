@@ -2,6 +2,7 @@
 
 import tdengineTheme from './src/prism/tdengine-theme';
 
+
 const getTitle = () => {
   const locale = process.env.DOCUSAURUS_CURRENT_LOCALE || 'zh-Hans';
   if (locale === 'en') {
@@ -18,6 +19,78 @@ const getGTMID = () => {
   return 'GTM-MLW247PH';
 };
 
+/**
+ * @type {import('@docusaurus/plugin-content-docs').SidebarItemsGenerator}
+ */
+const customSidebarItemsGenerator = async ({
+  defaultSidebarItemsGenerator,
+  ...args
+}) => {
+  function sortReleaseHistory(items) {
+    // Debug logs for version extraction and sorting
+    // To enable debug logs, set DEBUG_RELEASE_SORT = true
+    const DEBUG_RELEASE_SORT = false;
+    
+    // Split version docs and other docs
+    const versionItems = items.filter(
+      (item) => item.id && item.id.match(/(\d+\.\d+\.\d+\.\d+)$/)
+    );
+    
+    const otherItems = items.filter(
+      (item) => !(item.id && item.id.match(/(\d+\.\d+\.\d+\.\d+)$/))
+    );
+
+    if (DEBUG_RELEASE_SORT) {
+      versionItems.forEach(item => {
+        const match = item.id.match(/(\d+\.\d+\.\d+\.\d+)$/);
+        const verArr = match ? match[1].split('.').map(Number) : [];
+        console.log('id:', item.id, 'verArr:', verArr);
+      });
+    }
+
+    // Numeric sort
+    versionItems.sort((a, b) => {
+      const getVer = (item) => {
+        const match = item.id.match(/(\d+\.\d+\.\d+\.\d+)$/);
+        return match ? match[1].split('.').map(Number) : [];
+      };
+      const aVer = getVer(a);
+      const bVer = getVer(b);
+      for (let i = 0; i < Math.max(aVer.length, bVer.length); i++) {
+        const diff = (aVer[i] || 0) - (bVer[i] || 0);
+        if (diff !== 0) return diff;
+      }
+      return 0;
+    });
+
+    // Debug log for sorted result
+    if (DEBUG_RELEASE_SORT) {
+      console.log('Sorted:', versionItems.map(i => i.id));
+    }
+
+    // Newest version first
+    versionItems.reverse();
+    return [...otherItems, ...versionItems];
+  }
+
+  function deepSort(items) {
+    return items.map(item => {
+      if (
+        item.type === 'category' &&
+        (item.label === '发布历史' || item.label === 'Release History') &&
+        item.items
+      ) {
+        return { ...item, items: sortReleaseHistory(item.items) };
+      } else if (item.items) {
+        return { ...item, items: deepSort(item.items) };
+      }
+      return item;
+    });
+  }
+
+  const sidebarItems = await defaultSidebarItemsGenerator(args);
+  return deepSort(sidebarItems);
+};
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -58,6 +131,8 @@ const config = {
         docs: {
           routeBasePath: '/',
           breadcrumbs: false,
+          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarItemsGenerator: customSidebarItemsGenerator,
         },
         googleTagManager: {
           containerId: getGTMID()
