@@ -57,6 +57,7 @@ tda:
 ```
 
 其中：
+
 - rest-base-path：若需配置网关反向代理的基础路径（base path），需先通过设置 `TDA_REST_BASE_PATH` 环境变量指定该路径，同时网关侧需配置规则，将请求路径中的该基础路径剔除后再转发至后端服务。
 - auth-type: 认证方式，支持 UserPassword 和 Token 两种方式，默认为方式 UserPassword。
 - url: 为 TDengine TSDB-Enterprise 中 taosAdapter 组件的 IP 地址和端口号，端口号默认为 6041。
