@@ -79,9 +79,9 @@ const customSidebarItemsGenerator = async ({
         (item.label === '发布历史' || item.label === 'Release History') &&
         item.items
       ) {
-        item.items = sortReleaseHistory(item.items);
+        return { ...item, items: sortReleaseHistory(item.items) };
       } else if (item.items) {
-        item.items = deepSort(item.items);
+        return { ...item, items: deepSort(item.items) };
       }
       return item;
     });
