@@ -65,9 +65,9 @@ Do not start TDengine IDMP until you have configured the TDengine TSDB-Enterpris
 
    :::info Complete Configuration Reference
 
-   - For complete IDMP configuration file documentation, please refer to: [TDengine IDMP Configuration File Reference](/operation/installation/config-reference/)
+   - For complete IDMP configuration file documentation, please refer to: [TDengine IDMP Configuration File Reference](/operation/installation/config-reference/).
    - If you need to configure the base path for gateway reverse proxy, you shall first specify the path by setting the TDA_REST_BASE_PATH environment variable. Meanwhile, the gateway side needs to configure rules to strip this base path from the request path before forwarding the request to the backend services.
-   
+
    :::
 
 1. (Optional) Run the following command to test the connection to TDengine TSDB-Enterprise:
