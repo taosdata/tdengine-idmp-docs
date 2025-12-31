@@ -186,5 +186,5 @@ After clicking the "Evaluate" button, the system will remember the unit of measu
 - [Basic Data Model](../05-basic/02-data-model.md)
 - [Unit of Measure](./05-unit-of-measure.md)
 - [Metric Management](./06-composite-metric.md)
-- [Data Visualization](../../05-basic/05-data-visualization)
+- [Data Visualization](../05-basic/05-data-visualization/index.md)
 - [TDengine Function Documentation](https://docs.tdengine.com/tdengine-reference/sql-manual/functions/)
