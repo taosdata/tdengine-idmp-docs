@@ -60,23 +60,9 @@ For a complete list of functions and usage, please refer to [TDengine Function D
 
 The core feature of formula reference expressions is **automatic unit of measure inference and conversion**. The system can automatically infer the unit of measure for results based on operations and perform unit conversion when necessary.
 
-#### Unit of Measure Handling for Addition and Subtraction
-
-For formulas in the form of `A + B` or `A - B`:
-
-1. **Different UOM Classes**: If A and B belong to different UOM classes, an error will be reported
-2. **Same UOM Class, Different UOM**: The unit of the second quantity will be converted to match the first quantity's unit
-3. **One with UOM, One without**: The quantity without a unit will automatically be converted to have the same unit as the other quantity
-
-#### Unit of Measure Handling for Multiplication and Division
-
-For formulas in the form of `A * B` or `A / B`:
-
-1. **Base Unit Conversion**: A and B are converted to their respective UOM class base units before calculation
-2. **Result Unit Inference**: The result's UOM class is derived from the combination of base units
-3. **Undefined UOM Class**: If the result's UOM class from multiplication/division is not defined in the system, an error will be shown when editing the formula
-
----
+:::tip
+For detailed unit of measure inference, please refer to [Unit of Measure](./05-unit-of-measure.md).
+:::
 
 ## String Builder Expressions
 
@@ -98,22 +84,6 @@ String builder expressions are used for text processing and transformation, **wi
 
 ---
 
-## Expression Comparison
-
-| Feature | Formula Reference Expression | String Builder Expression |
-| ------- | ---------------------------- | ------------------------- |
-| Numerical Operations | ✓ | ✗ |
-| UOM Support | ✓ Automatic inference and conversion | ✗ |
-| Arithmetic Operations | ✓ | ✓ (Partial) |
-| Comparison Operations | ✓ | ✗ |
-| Mathematical Functions | ✓ | ✓ (Partial) |
-| Time Functions | ✓ | ✓ (Partial) |
-| String Operations | Partial | ✓ |
-| Conditional Judgment | ✓ | ✓ |
-| Output Type | Numeric + UOM | Text |
-
----
-
 ## Expression Dialog Operations
 
 The system provides a visual expression editing dialog to help users write and validate expressions.
@@ -131,11 +101,11 @@ The expression dialog can be opened in the following scenarios:
 The expression dialog contains the following main areas:
 
 | Area | Description |
-| ---- | ----------- |
+| ------ | ----------- |
 | **Attributes** | Displays available attributes in the current context (such as metrics, tags, other attributes, and substitution parameters), which can be clicked to insert into the expression |
-| **Expression Editor** | Used to input and edit expression content, supports attribute highlighting and quick hint insertion |
+| <nobr>**Expression Editor**</nobr> | Used to input and edit expression content, supports attribute highlighting and quick hint insertion |
 | **Functions** | Displays available function categories and function names, which can be clicked to insert into the expression |
-| **Evaluation Result Area** | Displays the expression evaluation result or error message; for formula reference expressions, shows the inferred unit of measure |
+| <nobr>**Evaluation Result Area**</nobr> | Displays the expression evaluation result or error message; for formula reference expressions, shows the inferred unit of measure |
 
 ### Operation Steps
 
@@ -175,9 +145,10 @@ After clicking the "Evaluate" button, the system will remember the unit of measu
 
 ## Common Errors and Solutions
 
-| Error Type | Error Message | Solution |
-| ---------- | ------------- | -------- |
-| UOM Conversion Not Found | `UOM class based on base unit combination: *** does not exist in the system` | Please contact the administrator to add the corresponding UOM class. |
+| Error Type | Example | Error Message | Solution |
+| ---------- | ------- | ------------- | -------- |
+| UOM Conversion Not Supported | <nobr>Voltage + Current</nobr> | `Operator "+" cannot be applied to different UOM classes` | Please modify the expression itself. |
+| UOM Class Not Found | <nobr>Voltage * Voltage</nobr> | `UOM class based on base unit combination: *** does not exist in the system. Please contact the administrator to add the corresponding UOM class.` | Please contact the administrator to add the corresponding UOM class. |
 
 ---
 
