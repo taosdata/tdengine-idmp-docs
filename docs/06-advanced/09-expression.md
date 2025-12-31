@@ -53,7 +53,7 @@ description: 介绍系统中的表达式类型和使用方法
 - **时序数据特有函数**：`CSUM`、`DIFF`、`IRATE`、`INTERP` 等
 
 :::tip
-完整的函数列表和用法请参考 [TDengine 函数文档](https://docs.taosdata.com/taos-sql/function/)。
+完整的函数列表和用法请参考 [TDengine 函数文档](https://docs.taosdata.com/reference/taos-sql/function/)。
 :::
 
 ### 计量单位自动推导和转换
@@ -186,5 +186,5 @@ description: 介绍系统中的表达式类型和使用方法
 - [基础数据模型](../05-basic/02-data-model.md)
 - [计量单位](./05-unit-of-measure.md)
 - [指标管理](./06-composite-metric.md)
-- [数据可视化](../05-basic/05-data-visualization)
+- [数据可视化](../../05-basic/05-data-visualization)
 - [TDengine 函数文档](https://docs.taosdata.com/reference/taos-sql/function/)

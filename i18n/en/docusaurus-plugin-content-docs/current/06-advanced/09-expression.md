@@ -53,7 +53,7 @@ Formula reference expressions support the following built-in function types:
 - **Time Series Specific Functions**: `CSUM`, `DIFF`, `IRATE`, `INTERP`, etc.
 
 :::tip
-For a complete list of functions and usage, please refer to [TDengine Function Documentation](https://docs.taosdata.com/taos-sql/function/).
+For a complete list of functions and usage, please refer to [TDengine Function Documentation](https://docs.tdengine.com/tdengine-reference/sql-manual/functions/).
 :::
 
 ### Automatic Unit of Measure Inference and Conversion
@@ -186,5 +186,5 @@ After clicking the "Evaluate" button, the system will remember the unit of measu
 - [Basic Data Model](../05-basic/02-data-model.md)
 - [Unit of Measure](./05-unit-of-measure.md)
 - [Metric Management](./06-composite-metric.md)
-- [Data Visualization](../05-basic/05-data-visualization)
+- [Data Visualization](../../05-basic/05-data-visualization)
 - [TDengine Function Documentation](https://docs.tdengine.com/tdengine-reference/sql-manual/functions/)
