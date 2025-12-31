@@ -21,21 +21,6 @@ git clone https://github.com/taosdata/tdengine-idmp-deployment.git
 
 ### 2. 使用统一管理脚本部署（推荐）
 
-#### 修改配置
-
-如需要进行配置调整，可以打开 docker 目录下的 docker-compose.yml 进行修改。这里介绍下关于网关反向代理的基础路径配置。
-
-```yml
-environment:
-      TZ: "${TZ:-UTC}"
-      TSDB_URL: "http://tdengine-tsdb:6041"
-      TDA_REST_BASE_PATH: "${TDA_REST_BASE_PATH:-}"
-```
-
-- TZ: 如果需要修改时区可以通过设置 TZ 环境变量进行修改。
-- TSDB_URL: TDengine taosadapter 的地址。
-- TDA_REST_BASE_PATH: 若需配置网关反向代理的基础路径（base path），需先通过设置 `TDA_REST_BASE_PATH` 环境变量指定该路径，同时网关侧需配置规则，将请求路径中的该基础路径剔除后再转发至后端服务。
-
 #### 启动服务
 
 ```bash
@@ -61,7 +46,8 @@ chmod +x idmp.sh
 - **HTTPS 访问**：[https://localhost:6034](https://localhost:6034) 或 [https://ip:6034](https://ip:6034)
 
 :::tip
-如需修改端口，请编辑 `docker-compose.yml` 或者 `docker-compose-tdgpt.yml` 文件中的 `ports` 配置项。
+- 如需修改端口，请编辑 `docker-compose.yml` 或者 `docker-compose-tdgpt.yml` 文件中的 `ports` 配置项。
+- 若需配置网关反向代理的基础路径（base path），需先通过设置 `TDA_REST_BASE_PATH` 环境变量指定该路径，同时网关侧需配置规则，将请求路径中的该基础路径剔除后再转发至后端服务。
 :::
 
 #### 停止服务
