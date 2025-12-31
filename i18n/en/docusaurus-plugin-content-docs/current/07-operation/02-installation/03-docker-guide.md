@@ -50,13 +50,12 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
 
 IDMP supports HTTPS with default port 6034. The built-in test certificate is bound to the domain `idmp.tdengine.net`. If using the built-in test certificate, please configure the appropriate domain name resolution.
 
-  :::tip
+:::tip
 
-  - To change the port mapping, edit the `ports` configuration in the `docker-compose.yml` or `docker-compose-tdgpt.yml` file.
-  
-  - To configure the base path for gateway reverse proxy, specify the path by setting the TDA_REST_BASE_PATH environment variable first. Meanwhile, the gateway side shall configure rules to strip this base path from the request path before forwarding the request to the backend service.
+- To change the port mapping, edit the `ports` configuration in the `docker-compose.yml` or `docker-compose-tdgpt.yml` file.
+- To configure the base path for gateway reverse proxy, specify the path by setting the TDA_REST_BASE_PATH environment variable first. Meanwhile, the gateway side shall configure rules to strip this base path from the request path before forwarding the request to the backend service.
 
-  :::
+:::
 
 #### Stop the service
 
