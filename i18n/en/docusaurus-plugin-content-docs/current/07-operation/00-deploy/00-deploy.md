@@ -1,6 +1,6 @@
 # Deployment Architecture
 
-This article introduces three typical deployment forms of TDengine IDMP: **Single Instance Deployment**, **Simplified High Availability (HA) Deployment**, and **Complex High Availability (HA) Deployment**. It covers general descriptions, specific introductions, component descriptions, port descriptions, and deployment recommendations.
+This article introduces three typical deployment forms of TDengine IDMP: **Single Instance Deployment**, **Simplified High Availability (HA) Deployment**, and **Complex High Availability (HA) Deployment**. It covers general descriptions, specific introductions, component descriptions, and deployment recommendations.
 
 ---
 
@@ -27,7 +27,7 @@ The single instance deployment aims for "fast delivery and low complexity," typi
 
 **Link Overview:**
 
-- Web Browser → (Through Firewall) → **TDengine IDMP (6042)**
+- Web Browser → **TDengine IDMP (6042)**
 - taosX agent → (Through Firewall) → **TDengine TSDB (6055)**
 - **TDengine IDMP → TDengine TSDB (6041)**
 
@@ -48,7 +48,7 @@ The simplified HA deployment aims for a "production-ready minimum closed loop." 
 
 **Link Overview:**
 
-- Web Browser → (Through Firewall) → **API Gateway** → **TDengine IDMP (6042)**
+- Web Browser → **API Gateway** → **TDengine IDMP (6042)**
 - taosX agent → (Through Firewall) → **TDengine TSDB (6055)**
 - **TDengine IDMP ↔ TDengine TSDB (6041)**
 - IDMP Dependencies (Simplified): **Redis / MySQL / Distributed File System**
@@ -70,7 +70,7 @@ The complex HA deployment is designed for medium-to-large production environment
 
 **Link Overview:**
 
-- Web Browser → (Through Firewall) → **API Gateway** → **TDengine IDMP (Multi-instance)**
+- Web Browser → **API Gateway** → **TDengine IDMP (Multi-instance)**
 - taosX agent → (Through Firewall) → **TDengine TSDB (6055)**
 - **TDengine IDMP → TDengine TSDB (6041)**
 - IDMP External Dependencies (Full): **Redis, MySQL, Distributed File System, Elastic Logstash Search, Kafka/RabbitMQ, Consul/Apollo**, etc.
@@ -101,26 +101,15 @@ The complex HA deployment is designed for medium-to-large production environment
 
 ### 3.2 External Dependency Components
 
-- **Redis**: Cache and short-term state (also commonly used for distributed locks, counters, etc.).
-- **MySQL**: Relational metadata (users and permissions, configurations, task definitions, business meta-information, etc.).
-- **Distributed File System**: File/object persistence (metadata, uploaded graphics, import/export files, uploaded documents, equipment documents, etc.).
-- **Elastic Search**: Centralized index management and search.
-- **Kafka/RabbitMQ**: Asynchronous messaging and event bus (decoupling, peak shaving, task orchestration, notifications).
-- **Consul/Apollo**: Service governance/configuration center (service discovery, dynamic configuration, configuration version management).
+- **Redis**: Cache and transient state (also used for distributed locks, counters, etc.). Replaced by internal cache and lockers in single-instance deployments.
+- **MySQL**: Relational metadata (user permissions, configurations, task definitions, metadata relationships, etc.). Replaced by H2 database in single-instance deployments.
+- **Distributed File System**: File/object persistence (metadata, uploaded graphics, import/export files, device documents, etc.). Uses the local file system directly in single-instance deployments.
+- **Elastic Search**: Centralized indexing and search. Replaced by internal Lucene in single-instance and simple high-availability (HA) deployments.
+- **Kafka/RabbitMQ**: Asynchronous messaging and event bus (decoupling, peak shaving, task orchestration, notifications). Replaced by internal message queues in single-instance mode.
 
 ---
 
-## 4. Port Description
-
-Actual ports depend on deployment configuration and versions; the following are typical access relationships shown in the diagrams:
-
-- **6042**: Access port from Web/Gateway → **TDengine IDMP** (API/Management entry).
-- **6041**: Internal websocket interaction port for **TDengine IDMP → TDengine TSDB**.
-- **6055**: Data writing port for **taosX agent → TDengine TSDB**.
-
----
-
-## 5. Deployment Recommendations
+## 4. Deployment Recommendations
 
 1. **Use Single Instance for PoC/Demo, HA for Production**  
    Single instance deployment is suitable for rapid verification; production environments should prioritize "Simplified HA Deployment" and evolve to "Complex HA Deployment" as needed.

@@ -1,6 +1,6 @@
 # 部署架构
 
-本文按三种典型形态介绍 TDengine IDMP 部署：**单实例部署**、**高可用最简部署**、**高可用最复杂部署**。内容包含总体说明、具体介绍、组件说明、端口说明与部署建议。
+本文按三种典型形态介绍 TDengine IDMP 部署：**单实例部署**、**高可用最简部署**、**高可用最复杂部署**。内容包含总体说明、具体介绍、组件说明与部署建议。
 
 ---
 
@@ -27,7 +27,7 @@ TDengine IDMP 的部署通常由以下部分组成：
 
 **链路概览：**
 
-- Web Browser →（穿越 Firewall）→ **TDengine IDMP（6042）**
+- Web Browser → **TDengine IDMP（6042）**
 - taosX agent →（穿越 Firewall）→ **TDengine TSDB（6055）**
 - **TDengine IDMP → TDengine TSDB（6041）**
 
@@ -48,7 +48,7 @@ TDengine IDMP 的部署通常由以下部分组成：
 
 **链路概览：**
 
-- Web Browser →（穿越 Firewall）→ **API Gateway** → **TDengine IDMP（6042）**
+- Web Browser → **API Gateway** → **TDengine IDMP（6042）**
 - taosX agent →（穿越 Firewall）→ **TDengine TSDB（6055）**
 - **TDengine IDMP ↔ TDengine TSDB（6041）**
 - IDMP 依赖（最简展示）：**Redis / MySQL / Distributed File System**
@@ -70,7 +70,7 @@ TDengine IDMP 的部署通常由以下部分组成：
 
 **链路概览：**
 
-- Web Browser →（穿越 Firewall）→ **API Gateway** → **TDengine IDMP（多实例）**
+- Web Browser → **API Gateway** → **TDengine IDMP（多实例）**
 - taosX agent →（穿越 Firewall）→ **TDengine TSDB（6055）**
 - **TDengine IDMP → TDengine TSDB（6041）**
 - IDMP 外部依赖（完整展示）：**Redis、MySQL、Distributed File System、Elastic Logdash Search、Kafka/RabbitMQ、Consule/Apollo** 等
@@ -87,7 +87,7 @@ TDengine IDMP 的部署通常由以下部分组成：
 
 ### 3.1 API Gateway
 
-**定位：**外部访问与内部服务之间的统一入口与治理层。
+**定位：** 外部访问与内部服务之间的统一入口与治理层。
 
 **典型职责：**
 
@@ -101,26 +101,16 @@ TDengine IDMP 的部署通常由以下部分组成：
 
 ### 3.2 外部依赖组件
 
-- **Redis**：缓存与短期状态（也常用于分布式锁、计数器等）。
-- **MySQL**：关系型元数据（用户与权限、配置、任务定义、业务元信息等）。
-- **Distributed File System**：文件/对象持久化（元数据、上传图元、导入导出文件、上传文件、设备文档等）。
-- **Elastic Search**：集中索引管理和搜索。
-- **Kafka/RabbitMQ**：异步消息与事件总线（解耦、削峰、任务编排、通知）。
-- **Consule/Apollo**：服务治理/配置中心（服务发现、动态配置、配置版本管理）。
+- **Redis**：缓存与短期状态（也常用于分布式锁、计数器等）。单实例部署下使用内部缓存和内部锁来替代。
+- **MySQL**：关系型元数据（用户与权限、配置、任务定义、元数据关系等）。单实例部署下使用 H2 数据库来替换。
+- **Distributed File System**：文件/对象持久化（元数据、上传图元、导入导出文件、上传文件、设备文档等）。单实例部署直接使用本地文件系统。
+- **Elastic Search**：集中索引管理和搜索。单实例和高可用最简部署的情况下使用内部 Lucene 来替换。
+- **Kafka/RabbitMQ**：异步消息与事件总线（解耦、削峰、任务编排、通知）。单实例部署使用内部的消息队里来替换，另外在高可用最简部署的情况下使用 Redis 的消息队列来替换。
+- **Consule/Apollo**：服务治理/配置中心（服务发现、动态配置、配置版本管理）。单实例和高可用最简部署的情况使用内部服务配置来替换。
 
 ---
 
-## 4. 端口说明
-
-实际端口以部署配置与版本为准；下列为图示中表达的典型访问关系：
-
-- **6042**：Web/网关 → **TDengine IDMP** 的访问端口（API/管理入口）。
-- **6041**：**TDengine IDMP → TDengine TSDB** 的内部交互 websocket 端口。
-- **6055**：**taosX agent → TDengine TSDB** 的数据写入端口。
-
----
-
-## 5. 部署建议
+## 4. 部署建议
 
 1. **PoC/演示选单实例，生产建议高可用部署**  
    单实例部署适合快速验证；生产环境优先选择"高可用最简部署"并视需求演进到"高可用最复杂部署"。
