@@ -46,7 +46,10 @@ chmod +x idmp.sh
 - **HTTPS 访问**：[https://localhost:6034](https://localhost:6034) 或 [https://ip:6034](https://ip:6034)
 
 :::tip
-如需修改端口，请编辑 `docker-compose.yml` 或者 `docker-compose-tdgpt.yml` 文件中的 `ports` 配置项。
+
+- 如需修改端口，请编辑 `docker-compose.yml` 或者 `docker-compose-tdgpt.yml` 文件中的 `ports` 配置项。
+- 若需配置网关反向代理的基础路径（base path），需先通过设置 `TDA_REST_BASE_PATH` 环境变量指定该路径，同时网关侧需配置规则，将请求路径中的该基础路径剔除后再转发至后端服务。
+
 :::
 
 #### 停止服务
