@@ -125,4 +125,4 @@ The complex HA deployment is designed for medium-to-large production environment
    Redis/MySQL/DFS should be configured with backups and high availability; once MQ/Configuration Center/Search are enabled, they should be included in monitoring, alerting, and capacity planning.
 
 5. **Unified Observability**  
-   It is recommended to collect logs and metrics uniformly for the gateway, IDMP, TSDB, and key dependencies, and establish alerting and tracing
+   It is recommended to collect logs and metrics uniformly for the gateway, IDMP, TSDB, and key dependencies, and establish alerting and tracing links to avoid difficulties in troubleshooting.
