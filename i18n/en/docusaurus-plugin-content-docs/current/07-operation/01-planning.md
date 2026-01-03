@@ -40,7 +40,7 @@ When the data point scale is large, it is recommended to plan resources separate
 2. **Network Bandwidth**: 10Gbps internal network is recommended for large-scale scenarios to ensure data collection and query throughput.
 3. **Reserve Expansion Space**: It is recommended to plan resources at 1.5 times the expected peak data points to allow for business growth.
 
-> **Note**: The above configurations are reference suggestions. Actual resource requirements are also affected by factors such as modeling approach and business characteristics. Please adjust according to actual business scenarios. For TDengine TSDB's resource planning, please refer to [TDengine System Requirements](https://docs.tdengine.com/operations-and-maintenance/system-requirements/)。
+> **Note**: The above configurations are reference suggestions. Actual resource requirements are also affected by factors such as modeling approach and business characteristics. Please adjust according to actual business scenarios. For TDengine TSDB's resource planning, please refer to [TDengine System Requirements](https://docs.tdengine.com/operations-and-maintenance/system-requirements/).
 
 ## Supported Operating Systems
 
