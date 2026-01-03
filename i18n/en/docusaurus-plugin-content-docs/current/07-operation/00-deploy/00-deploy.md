@@ -73,7 +73,7 @@ The complex HA deployment is designed for medium-to-large production environment
 - Web Browser → **API Gateway** → **TDengine IDMP (Multi-instance)**
 - taosX agent → (Through Firewall) → **TDengine TSDB (6055)**
 - **TDengine IDMP → TDengine TSDB (6041)**
-- IDMP External Dependencies (Full): **Redis, MySQL, Distributed File System, Elastic Logstash Search, Kafka/RabbitMQ, Consul/Apollo**, etc.
+- IDMP External Dependencies (Full): **Redis, MySQL, Distributed File System, Elasticsearch, Kafka, Apollo**, etc.
 
 **Features:**
 
@@ -103,9 +103,10 @@ The complex HA deployment is designed for medium-to-large production environment
 
 - **Redis**: Cache and transient state (also used for distributed locks, counters, etc.). Replaced by internal cache and lockers in single-instance deployments.
 - **MySQL**: Relational metadata (user permissions, configurations, task definitions, metadata relationships, etc.). Replaced by H2 database in single-instance deployments.
-- **Distributed File System**: File/object persistence (metadata, uploaded graphics, import/export files, device documents, etc.). Uses the local file system directly in single-instance deployments.
-- **Elastic Search**: Centralized indexing and search. Replaced by internal Lucene in single-instance and simple high-availability (HA) deployments.
-- **Kafka/RabbitMQ**: Asynchronous messaging and event bus (decoupling, peak shaving, task orchestration, notifications). Replaced by internal message queues in single-instance mode.
+- **Distributed File System**: File/object persistence (metadata, uploaded graphics, import/export files, device documents, etc.), such as NFS or Ceph FS. Uses the local file system directly in single-instance deployments.
+- **Elasticsearch**: Centralized indexing and search. Replaced by internal Lucene in single-instance and simple high-availability (HA) deployments.
+- **Kafka**: Asynchronous messaging and event bus (decoupling, peak shaving, task orchestration, notifications). Replaced by internal message queues in single-instance deployments.
+- **Apollo**: Configuration center. Replaced by internal configuration in single-instance and simple high-availability (HA) deployments.
 
 ---
 

@@ -73,7 +73,7 @@ TDengine IDMP 的部署通常由以下部分组成：
 - Web Browser → **API Gateway** → **TDengine IDMP（多实例）**
 - taosX agent →（穿越 Firewall）→ **TDengine TSDB（6055）**
 - **TDengine IDMP → TDengine TSDB（6041）**
-- IDMP 外部依赖（完整展示）：**Redis、MySQL、Distributed File System、Elastic Logdash Search、Kafka/RabbitMQ、Consule/Apollo** 等
+- IDMP 外部依赖（完整展示）：**Redis、MySQL、Distributed File System、Elasticsearch、Kafka、Apollo** 等
 
 **特点：**
 
@@ -103,10 +103,10 @@ TDengine IDMP 的部署通常由以下部分组成：
 
 - **Redis**：缓存与短期状态（也常用于分布式锁、计数器等）。单实例部署下使用内部缓存和内部锁来替代。
 - **MySQL**：关系型元数据（用户与权限、配置、任务定义、元数据关系等）。单实例部署下使用 H2 数据库来替换。
-- **Distributed File System**：文件/对象持久化（元数据、上传图元、导入导出文件、上传文件、设备文档等）。单实例部署直接使用本地文件系统。
-- **Elastic Search**：集中索引管理和搜索。单实例和高可用最简部署的情况下使用内部 Lucene 来替换。
-- **Kafka/RabbitMQ**：异步消息与事件总线（解耦、削峰、任务编排、通知）。单实例部署使用内部的消息队里来替换，另外在高可用最简部署的情况下使用 Redis 的消息队列来替换。
-- **Consule/Apollo**：服务治理/配置中心（服务发现、动态配置、配置版本管理）。单实例和高可用最简部署的情况使用内部服务配置来替换。
+- **Distributed File System**：文件/对象持久化（元数据、上传图元、导入导出文件、上传文件、设备文档等），比如 NFS 或者 Ceph FS。单实例部署直接使用本地文件系统。
+- **Elasticsearch**：集中索引管理和搜索。单实例和高可用最简部署的情况下使用内部 Lucene 来替换。
+- **Kafka**：异步消息与事件总线（解耦、削峰、任务编排、通知）。单实例部署使用内部的消息队里来替换，另外在高可用最简部署的情况下使用 Redis 的消息队列来替换。
+- **Apollo**：配置中心（动态配置、配置版本管理）。单实例和高可用最简部署的情况使用内部服务配置来替换。
 
 ---
 
