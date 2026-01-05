@@ -17,7 +17,7 @@ TDengine Excel Add-in 是一个 Microsoft Excel 插件，它使您能够从 TDen
 | 时间位置 | 输出数据时间列的配置 | 1. 不显示时间<br/>2. 时间在左侧<br/>3. 时间在顶部（点击切换） |
 
 
-**当前值示例** 
+**当前值示例**
 
 要查看 Current 测点的当前值，为当前值功能设置以下输入：
 
@@ -44,7 +44,7 @@ alt="excel-add-in-current-value" data-zoom style={{width: "680px", display: "blo
 | 输出单元格 | 数据输出到 Excel cell 的起始单元格 | 1. 点击 Excel 中的单元格自动绑定<br/>2. 手动输入符合 Excel cell 的位置字符，如 `Sheet1!A1` |
 | 时间位置 | 输出数据时间列的配置 | 1. 不显示时间<br/>2. 时间在左侧<br/>3. 时间在顶部（点击切换） |
 
-**历史值示例** 
+**历史值示例**
 
 要查看 Current 测点的历史值，为历史值功能设置以下输入：
 
@@ -74,7 +74,7 @@ alt="excel-add-in-archive-value" data-zoom style={{width: "680px", display: "blo
 | 输出单元格 | 数据输出到 Excel cell 的起始单元格 | 1. 点击 Excel 中的单元格自动绑定<br/>2. 手动输入符合 Excel cell 的位置字符，如 `Sheet1!A1` |
 | 时间位置 | 输出数据时间列的配置 | 1. 不显示时间<br/>2. 时间在左侧<br/>3. 时间在顶部（点击切换） |
 
-**原始数据示例** 
+**原始数据示例**
 
 要查看 Current 测点的原始数据值，为原始数据值功能设置以下输入：
 
@@ -102,7 +102,7 @@ alt="excel-add-in-raw-data" data-zoom style={{width: "680px", display: "block"}}
 | 输出单元格 | 数据输出到 Excel cell 的起始单元格 | 1. 点击 Excel 中的单元格自动绑定<br/>2. 手动输入符合 Excel cell 的位置字符，如 `Sheet1!A1` |
 | 时间位置 | 输出数据时间列的配置 | 1. 不显示时间<br/>2. 时间在左侧<br/>3. 时间在顶部（点击切换） |
 
-**采样数据示例** 
+**采样数据示例**
 
 要查看 Current 测点的采样数据值，为采样数据值功能设置以下输入：
 
@@ -131,7 +131,7 @@ alt="excel-add-in-sampled-data" data-zoom style={{width: "680px", display: "bloc
 | 输出单元格 | 数据输出到 Excel cell 的起始单元格 | 1. 点击 Excel 中的单元格自动绑定<br/>2. 手动输入符合 Excel cell 的位置字符，如 `Sheet1!A1` |
 | 时间位置 | 输出数据时间列的配置 | 1. 不显示时间<br/>2. 时间在左侧<br/>3. 时间在顶部（点击切换） |
 
-**时间点数据示例** 
+**时间点数据示例**
 
 要查看 Current 测点的时间点数据值，为时间点数据值功能设置以下输入：
 
@@ -151,7 +151,7 @@ alt="excel-add-in-timed-data" data-zoom style={{width: "680px", display: "block"
 
 #### 3.1 计算数据 (Calculated Data)
 
-**功能描述**：获取用 TDEngine 聚合函数处理后的时序数据
+**功能描述**：获取用 TDengine 聚合函数处理后的时序数据
 
 | 项目 | 描述 | 操作 |
 |------|------|------|
@@ -163,7 +163,7 @@ alt="excel-add-in-timed-data" data-zoom style={{width: "680px", display: "block"
 | 输出单元格 | 数据输出到 Excel cell 的起始单元格 | 1. 点击 Excel 中的单元格自动绑定<br/>2. 手动输入符合 Excel cell 的位置字符，如 `Sheet1!A1` |
 | 时间选项 | 输出数据时间选项的配置 | 多选框：<br/>1. 显示开始时间<br/>2. 显示结束时间<br/>3. 显示最大/最小时间 |
 
-**计算数据示例** 
+**计算数据示例**
 
 要查看 Current 测点的计算数据值，为计算数据值功能设置以下输入：
 
@@ -182,7 +182,7 @@ alt="excel-add-in-calculated-data" data-zoom style={{width: "680px", display: "b
 
 #### 3.2 时间过滤 (Time Filtered)
 
-**功能描述**：返回指定时间范围内，满足条件(expression 指定）的时间总长
+**功能描述**：返回指定时间范围内，满足条件（expression 指定）的时间总长
 
 | 项目 | 描述 | 操作 |
 |------|------|------|
@@ -194,7 +194,7 @@ alt="excel-add-in-calculated-data" data-zoom style={{width: "680px", display: "b
 | 输出单元格 | 数据输出到 Excel cell 的起始单元格 | 1. 点击 Excel 中的单元格自动绑定<br/>2. 手动输入符合 Excel cell 的位置字符，如 `Sheet1!A1` |
 | 时间位置 | 输出数据时间列的配置 | 1. 不显示时间<br/>2. 时间在左侧<br/>3. 时间在顶部（点击切换） |
 
-**时间过滤示例** 
+**时间过滤示例**
 
 要查看 Current 测点的时间过滤值，为时间过滤值功能设置以下输入：
 
@@ -219,7 +219,7 @@ alt="excel-add-in-time-filter" data-zoom style={{width: "680px", display: "block
 
 **功能描述**：返回指定搜索条件的事件
 
-**事件浏览器示例** 
+**事件浏览器示例**
 
 要查看事件，为事件浏览器值功能设置以下输入：
 
@@ -239,7 +239,7 @@ alt="excel-add-in-event-explorer" data-zoom style={{width: "680px", display: "bl
 
 **功能描述**：返回指定搜索条件的属性
 
-**属性过滤示例** 
+**属性过滤示例**
 
 要查看属性过滤，为属性过滤功能设置以下输入：
 
@@ -258,7 +258,7 @@ alt="excel-add-in-attribute-filter" data-zoom style={{width: "680px", display: "
 
 **功能描述**：返回指定搜索条件的元素
 
-**资产过滤示例** 
+**资产过滤示例**
 
 要查看资产，为资产过滤功能设置以下输入：
 
@@ -277,7 +277,7 @@ alt="excel-add-in-asset-filter" data-zoom style={{width: "680px", display: "bloc
 
 **功能描述**：查询某个属性的属性
 
-**资产过滤示例** 
+**属性示例**
 
 要查看属性的属性，为属性功能设置以下输入：
 
@@ -310,6 +310,6 @@ alt="excel-add-in-properties" data-zoom style={{width: "200px", display: "block"
 | 数字格式 | 输出到 Excel 数字列的格式。格式字符串可以是 Excel 格式窗口中的任何有效数字格式代码 |
 | 最大事件浏览器搜索数 | 事件浏览器返回最大结果数 |
 | 最大属性/资产过滤数 | 属性过滤/资产过滤返回最大结果数 |
-| 自动更新-间隔 | 启用"应用"功能时数据刷新频率 |
+| 自动更新 - 间隔 | 启用"应用"功能时数据刷新频率 |
 
 
