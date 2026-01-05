@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Popupv37 from "./Popup/popupv37";
-import { fetchPackagesFromProduct } from "./data/productAdapter";
+import Popupv37 from "../PopupZh";
+import { fetchPackagesFromProduct } from "../data/productAdapter";
 
 export default function PkgListV37(props) {
   const { productName, version, platform, arch, pkgType, jsonPath } = props;

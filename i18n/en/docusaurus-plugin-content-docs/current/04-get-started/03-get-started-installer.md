@@ -5,7 +5,7 @@ sidebar_label: Local Install
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import PkgListV37 from "/components/PkgListEn/";
+import PkgListV37 from "/src/components/PkgListEn/";
 import Init from './_init.md';
 import Getstarted from './_get_started.md';
 
