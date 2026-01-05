@@ -48,7 +48,7 @@ TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0 及以上版本。在安�
 
 1.从列表中下载获得最新 `.deb` 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
 
-    <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.10.2" platform="Linux-Ubuntu" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.10.2" platform="Linux-Ubuntu" arch="x64" pkgType="Server" />
 
 1. 执行以下命令，安装 deb 包：
 
