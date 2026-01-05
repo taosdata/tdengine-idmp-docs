@@ -25,15 +25,20 @@ TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0 及以上版本。在安�
 <TabItem label="Linux - tar.gz 安装" value="tar">
 
 1. 请点击以下链接获取最新版本的 `tar.gz` 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
+
     <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.10.2" platform="Linux-Generic" arch="x64" pkgType="Server" />
+
 2. 执行以下命令，解压并安装：
+
     ```bash
     tar zxvf tdengine-idmp-enterprise-1.0.10.2-linux-generic.tar.gz
     cd tdengine-idmp-enterprise-1.0.10.2
     ./install.sh
     ```
+
 3. TDengine IDMP 的默认安装路径为 `/usr/local/taos/idmp`, 安装成功后，可以看到终端展示 "TDengine IDMP has been installed successfully!"。
 4. 可以通过以下命令查看更多安装选项：
+
     ```bash
     ./install.sh -h
     ```
@@ -42,29 +47,39 @@ TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0 及以上版本。在安�
 <TabItem label="Debian/Ubuntu - deb 安装" value="deb">
 
 1.从列表中下载获得最新 `.deb` 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
+
     <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.10.2" platform="Linux-Ubuntu" arch="x64" pkgType="Server" />
+
 1. 执行以下命令，安装 deb 包：
+
     ```bash
     dpkg -i tdengine-idmp-enterprise-1.0.10.2-linux-generic.deb
     ```
+
 2. TDengine IDMP 的默认安装路径为 `/usr/local/taos/idmp`, 安装成功后，可以看到终端展示 "TDengine IDMP has been installed successfully!"。
 
 </TabItem>
 <TabItem label="CentOS/RHEL - rpm 安装" value="rpm">
 
 1. 请点击以下链接获取最新版本的`.rpm` 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
+
    <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.10.2" platform="Linux-Red Hat" arch="x64" pkgType="Server" />
+
 2. 执行以下命令，安装 rpm 包：
+
     ```bash
     rpm -ivh --nodeps tdengine-idmp-enterprise-1.0.10.2-linux-generic.rpm
     ```
+
 3. TDengine IDMP 的默认安装路径为 `/usr/local/taos/idmp`, 安装成功后，可以看到终端展示 "TDengine IDMP has been installed successfully!"。
 
 </TabItem>
 <TabItem label="macOS 安装" value="macos">
 
 1. 请点击以下链接获取最新版本的 `macOS` 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
+
    <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.10.2" platform="macOS" arch="x64" pkgType="Server" />
+
 2. 双击安装包，按照提示完成安装。
 3. TDengine IDMP 的默认安装路径为 `/usr/local/taos/idmp`。
 
@@ -72,7 +87,9 @@ TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0 及以上版本。在安�
 <TabItem label="Windows 安装" value="windows">
 
 1. 请点击以下链接获取最新版本的 Windows 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
+
    <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.10.2" platform="Windows" arch="x64" pkgType="Server" />
+
 2. 双击安装包，按照安装向导完成安装。
 3. TDengine IDMP 的默认安装路径为 `C:\TDengine\idmp`。
 4. 安装完成后，TDengine IDMP 相关服务将自动注册为 Windows 服务。
@@ -99,25 +116,28 @@ TDengine IDMP 在 Windows 上运行需要：
 以下步骤将演示如何启动 TDengine IDMP.
 
 1. 配置 TDengine TSDB-Enterprise 连接：用编辑器打开 TDengine IDMP 的配置文件，默认位于：
+
    - Linux/macOS: `/usr/local/taos/idmp/config/application.yml`
    - Windows: `C:\TDengine\idmp\config\application.yml`
 
    在 `tda.default-connection` 下，配置 TDengine TSDB-Enterprise 的连接信息，示例如下：
 
-    ```yaml
-    tda:
-      default-connection:
-        enable: true
-        auth-type: UserPassword # can be set to UserPassword or Token
-        url: http://192.168.1.100:6041
-        username: root
-        password: taosdata
-    ```
+   ```yaml
+   tda:
+     default-connection:
+       enable: true
+       auth-type: UserPassword # can be set to UserPassword or Token
+       url: http://192.168.1.100:6041
+       username: root
+       password: taosdata
+   ```
 
-    其中：
-    - auth-type: 认证方式，支持 UserPassword 和 Token 两种方式，默认为方式 UserPassword
-    - url: 为 TDengine TSDB-Enterprise 中 taosAdapter 组件的 IP 地址和端口号，端口号默认为 6041
-    - username 和 password: 为 TDengine TSDB-Enterprise 的用户名和密码，默认为 root 和 taosdata
+   其中：
+
+   - auth-type: 认证方式，支持 UserPassword 和 Token 两种方式，默认为方式 UserPassword
+   - url: 为 TDengine TSDB-Enterprise 中 taosAdapter 组件的 IP 地址和端口号，端口号默认为 6041
+   - username 和 password: 为 TDengine TSDB-Enterprise 的用户名和密码，默认为 root 和 taosdata
+
 1. 测试 TDengine TSDB-Enterprise 连接：在终端中，可以使用 `curl` 命令测试 TDengine TSDB-Enterprise 连接的连通性，示例如下：
 
     ```bash
@@ -132,16 +152,20 @@ TDengine IDMP 在 Windows 上运行需要：
 
    <Tabs>
    <TabItem label="Linux/macOS" value="linux">
+
    ```bash
    svc-tdengine-idmp start
    ```
-   </TabItem>
 
+   </TabItem>
    <TabItem label="Windows" value="windows">
+
    ```batch
    C:\TDengine\idmp\bin\start-tdengine-idmp.bat
    ```
+
    或者通过 Windows 服务管理器启动 `tdengine-idmp`、`tdengine-idmp-h2` 和 `tdengine-idmp-chat` 三个服务。
+
    </TabItem>
    </Tabs>
 
