@@ -26,9 +26,8 @@ TDengine Excel Add-in 是一个 Microsoft Excel 插件，它使您能够从 TDen
 | 时间在左侧 | 选择 |
 
 当前功能输出结果：
-<img
-src="/docs-img/excel-add-in/current-value.png"
-alt="excel-add-in-current-value" data-zoom style={{width: "680px", display: "block"}} />
+
+![excel-add-in-current-value](/docs-img/excel-add-in/current-value.png)
 
 #### 1.2 历史值 (Archive Value)
 
@@ -55,9 +54,8 @@ alt="excel-add-in-current-value" data-zoom style={{width: "680px", display: "blo
 | 时间在左侧 | 选择 |
 
 当前功能输出结果：
-<img
-src="/docs-img/excel-add-in/archive-value.png"
-alt="excel-add-in-archive-value" data-zoom style={{width: "680px", display: "block"}} />
+
+![excel-add-in-archive-value](/docs-img/excel-add-in/archive-value.png)
 
 ### 2. 多值查询 (Multiple Value)
 
@@ -83,9 +81,8 @@ alt="excel-add-in-archive-value" data-zoom style={{width: "680px", display: "blo
 | 时间在左侧 | 选择 |
 
 当前功能输出结果：
-<img
-src="/docs-img/excel-add-in/raw-data.png"
-alt="excel-add-in-raw-data" data-zoom style={{width: "680px", display: "block"}} />
+
+![excel-add-in-raw-data](/docs-img/excel-add-in/raw-data.png)
 
 #### 2.2 采样数据 (Sampled Data)
 
@@ -112,9 +109,8 @@ alt="excel-add-in-raw-data" data-zoom style={{width: "680px", display: "block"}}
 | 时间在左侧 | 选择 |
 
 当前功能输出结果：
-<img
-src="/docs-img/excel-add-in/sampled-data.png"
-alt="excel-add-in-sampled-data" data-zoom style={{width: "680px", display: "block"}} />
+
+![excel-add-in-sampled-data](/docs-img/excel-add-in/sampled-data.png)
 
 #### 2.3 时间点数据 (Timed Data)
 
@@ -141,9 +137,8 @@ alt="excel-add-in-sampled-data" data-zoom style={{width: "680px", display: "bloc
 | 时间在左侧 | 选择 |
 
 当前功能输出结果：
-<img
-src="/docs-img/excel-add-in/timed-data.png"
-alt="excel-add-in-timed-data" data-zoom style={{width: "680px", display: "block"}} />
+
+![excel-add-in-timed-data](/docs-img/excel-add-in/timed-data.png)
 
 ### 3. 计算功能 (Calculation)
 
@@ -174,9 +169,8 @@ alt="excel-add-in-timed-data" data-zoom style={{width: "680px", display: "block"
 | 显示开始时间、显示结束时间、显示最大/最小时间 | 选择 |
 
 当前功能输出结果：
-<img
-src="/docs-img/excel-add-in/calculated-data.png"
-alt="excel-add-in-calculated-data" data-zoom style={{width: "680px", display: "block"}} />
+
+![excel-add-in-calculated-data](/docs-img/excel-add-in/calculated-data.png)
 
 #### 3.2 时间过滤 (Time Filtered)
 
@@ -207,9 +201,8 @@ alt="excel-add-in-calculated-data" data-zoom style={{width: "680px", display: "b
 | 显示开始时间、显示结束时间 | 选择 |
 
 当前功能输出结果：
-<img
-src="/docs-img/excel-add-in/time-filter.png"
-alt="excel-add-in-time-filter" data-zoom style={{width: "680px", display: "block"}} />
+
+![excel-add-in-time-filter](/docs-img/excel-add-in/time-filter.png)
 
 ### 4. 事件分析 (Events)
 
@@ -227,9 +220,8 @@ alt="excel-add-in-time-filter" data-zoom style={{width: "680px", display: "block
 | 显示的列 | 全选 |
 
 当前功能输出结果：
-<img
-src="/docs-img/excel-add-in/event-explorer.png"
-alt="excel-add-in-event-explorer" data-zoom style={{width: "680px", display: "block"}} />
+
+![excel-add-in-event-explorer](/docs-img/excel-add-in/event-explorer.png)
 
 ### 5. 过滤 (Search)
 
@@ -248,9 +240,8 @@ alt="excel-add-in-event-explorer" data-zoom style={{width: "680px", display: "bl
 | 显示的列 | 全选 |
 
 当前功能输出结果：
-<img
-src="/docs-img/excel-add-in/attribute-filter.png"
-alt="excel-add-in-attribute-filter" data-zoom style={{width: "680px", display: "block"}} />
+
+![excel-add-in-attribute-filter](/docs-img/excel-add-in/attribute-filter.png)
 
 #### 5.2 资产过滤 (Asset Filter)
 
@@ -267,9 +258,8 @@ alt="excel-add-in-attribute-filter" data-zoom style={{width: "680px", display: "
 | 显示的列 | 全选 |
 
 当前功能输出结果：
-<img
-src="/docs-img/excel-add-in/asset-filter.png"
-alt="excel-add-in-asset-filter" data-zoom style={{width: "680px", display: "block"}} />
+
+![excel-add-in-asset-filter](/docs-img/excel-add-in/asset-filter.png)
 
 ### 6. 属性 (Properties)
 
@@ -285,9 +275,8 @@ alt="excel-add-in-asset-filter" data-zoom style={{width: "680px", display: "bloc
 | 属性 | 描述 |
 
 当前功能输出结果：
-<img
-src="/docs-img/excel-add-in/properties.png"
-alt="excel-add-in-properties" data-zoom style={{width: "200px", display: "block"}} />
+
+![excel-add-in-properties](/docs-img/excel-add-in/properties.png)
 
 ### 7. 数据更新 (Update)
 
