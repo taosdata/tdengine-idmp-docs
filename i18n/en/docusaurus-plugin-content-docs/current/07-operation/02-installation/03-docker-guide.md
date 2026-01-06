@@ -53,7 +53,7 @@ IDMP supports HTTPS with default port 6034. The built-in test certificate is bou
 :::tip
 
 - To change the port mapping, edit the `ports` configuration in the `docker-compose.yml` or `docker-compose-tdgpt.yml` file.
-- To configure the base path for the gateway reverse proxy, you first need to explicitly specify this base path by setting the TDA_REST_BASE_PATH environment variable. Meanwhile, the gateway side needs to complete two configurations: 1. Configure the routing forwarding rule pointing to http://&lt;target address&gt;/idmp_config; 2. Configure the path rewriting rule to ensure that the aforementioned base path contained in the request URL is removed before forwarding the request to the backend service.
+- To configure the base path for the gateway reverse proxy, you first need to explicitly specify this base path by setting the `TDA_REST_BASE_PATH` environment variable. Meanwhile, the gateway side needs to complete two configurations: 1. Configure the routing forwarding rule pointing to http://&lt;target address&gt;/idmp_config; 2. Configure the path rewriting rule to ensure that the aforementioned base path contained in the request URL is removed before forwarding the request to the backend service.
 :::
 
 #### Stop the service
