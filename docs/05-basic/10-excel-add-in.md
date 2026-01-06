@@ -310,5 +310,3 @@ alt="excel-add-in-properties" data-zoom style={{width: "200px", display: "block"
 | 最大事件浏览器搜索数 | 事件浏览器返回最大结果数 |
 | 最大属性/资产过滤数 | 属性过滤/资产过滤返回最大结果数 |
 | 自动更新 - 间隔 | 启用"应用"功能时数据刷新频率 |
-
-
