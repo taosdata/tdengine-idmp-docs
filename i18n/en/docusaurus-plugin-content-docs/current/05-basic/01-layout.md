@@ -10,7 +10,7 @@ The TDengine IDMP GUI consists of the following parts:
 
 1. Main Menu: Located at the top of the page and includes **AI Chat**, **Explorer**, **Dashboards**, **Events**, and **Libraries**.
 2. Sidebar: Located on the left of the page and displays nodes that can be expanded or collapsed.
-3. Path Bar: Located below the main menu and shows the selected object. For many objects, it also shows the corresponding menus. Like elements, it shows the associated attributes, panels, analysis, events, and notifications..
+3. Path Bar: Located below the main menu and shows the selected object. For many objects, it also shows the corresponding menus. Like elements, it shows the associated attributes, panels, analysis, events, and notifications.
 4. Action Bar: Located below the path bar and includes icons for common actions.
 5. Main Area: Located below the action bar and displays content that you can view or edit.
 6. Info Bar: Located at the bottom of the page and shows the TDengine IDMP and configuration data versions.
