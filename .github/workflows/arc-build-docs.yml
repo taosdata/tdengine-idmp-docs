@@ -1,11 +1,9 @@
-name: IDMP docs Workflow
+name: ARC IDMP docs Workflow
 
 on:
   push:
     branches:
-      - 'test/yangliang/arc'
-    paths:
-      - '.github/workflows/arc-build-docs.yaml'
+      - '*-deploy'
   workflow_dispatch:
     inputs:
       branch:
