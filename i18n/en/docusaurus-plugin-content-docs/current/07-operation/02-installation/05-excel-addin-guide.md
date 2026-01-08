@@ -75,7 +75,7 @@ For complete IDMP configuration file documentation, please refer to: [TDengine I
 Execute the following command in the terminal to install:
 
 ```bash
-curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s install --force-close --url https://localhost:6034 --enable-logging
+curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s install --force-close --url https://idmp.tdengine.net:6034 --enable-logging
 ```
 
 **Parameter Description:**
@@ -102,8 +102,7 @@ You can also enable or disable logging separately:
 :::warning Important Notes
 
 - Excel will be forcibly closed during installation, please save all your work content in advance
-- If using a custom certificate domain, replace `https://localhost:6034` with "certificate bound domain:port"
-- For example: `https://idmp.tdengine.net:6034`
+- If using a custom certificate domain, replace `https://idmp.tdengine.net:6034` with "certificate bound domain:port"
 
 :::
 
@@ -113,7 +112,7 @@ You can also enable or disable logging separately:
 Open PowerShell **as Administrator** and execute the following command:
 
 ```powershell
-powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action Install -ForceCloseExcel -Url 'https://localhost:6034' -EnableLogging"
+powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action Install -ForceCloseExcel -Url 'https://idmp.tdengine.net:6034' -EnableLogging"
 ```
 
 **Parameter Description:**
@@ -143,8 +142,7 @@ You can also enable or disable logging separately:
 
 - Must run PowerShell as Administrator
 - Excel will be forcibly closed during installation, please save all your work content in advance
-- If using a custom certificate domain, replace `https://localhost:6034` with "certificate bound domain:port"
-- For example: `https://idmp.tdengine.net:6034`
+- If using a custom certificate domain, replace `https://idmp.tdengine.net:6034` with "certificate bound domain:port"
 
 :::
 
