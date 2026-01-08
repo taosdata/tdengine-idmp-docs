@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Popupv37 from "./Popup/";
+import Popupv37 from "../PopupEn/";
 import { fetchPackagesFromProduct } from "../data/productAdapter";
 
 export default function PkgListV37(props) {

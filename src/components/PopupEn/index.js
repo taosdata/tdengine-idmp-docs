@@ -117,7 +117,7 @@ class SubScription extends React.Component {
     }
 
     // set link generation url based on version requested
-    let downloadUrl = "https://docs.tdengine.com/assets/globalscripts/generatelink_v3_download_center.php";
+    let downloadUrl = "https://tdengine.com/assets/globalscripts/generatelink_v3_download_center.php";
 
     const pkgField = this.props.pkg || this.props.pkgName || this.props.productName || '';
     let postData = {

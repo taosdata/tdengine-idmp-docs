@@ -28,8 +28,6 @@ For formulas in the form of A + B or A - B:
 
 For instance, attempting to add two attributes, electric current and electric potential, will result in an error: Operator "+" cannot be applied to values with different UOM class: "Electric Current" and "Electric Potential".
 
-![formula with uom example 1](./formula-uom.jpg)
-
 Another example: consider two attributes Power and Power2, with units W and kW respectively. The formula `Power + Power2` yields a result in W, while the formula `Power2 + Power` yields a result in kW.
 
 ![power add power2](./power_add_power2.jpg)
@@ -52,9 +50,7 @@ For formulas in the form of A/B or A*B:
 For example, suppose attribute A has unit centimeters (cm), attribute B has unit square meters (m2), and attribute C has unit cubic meters (m3). These involve 3 unit of measurement classes: length, area, and volume. For the formula `A*B-C`, A will first be converted to a value in meters, then multiplied by B to get a result in cubic meters, and finally subtracted from C. As shown below:
 ![formula A * B -C](./formula_abcd.png)
 
-Another example: multiplying electric potential by power results in a meaningless unit that doesn't exist in the system, which will trigger an error as shown below:
-
-![uom not defined](./uom_not_defined.png)
+Another example: multiplying electric potential by power results in a meaningless unit that doesn't exist in the system, which will trigger an error.
 
 ### Comparison and Bitwise Operations
 
@@ -77,5 +73,4 @@ As mentioned above, when quantities with units of measurement participate in for
 1. When an attribute's default unit of measurement differs from its display unit of measurement, the attribute value is automatically displayed using the display unit.
 2. When the unit of measurement of a formula result differs from the attribute's unit of measurement, the formula result is automatically converted to match the attribute's display unit of measurement.
 
-If the unit of measurement of the formula result does not belong to the same unit of measurement class as the attribute's unit, automatic conversion is not possible. As shown below:
-![result convert error](./result_convert_error.png)
+If the unit of measurement of the formula result does not belong to the same unit of measurement class as the attribute's unit, automatic conversion is not possible.

@@ -10,7 +10,7 @@ This document describes how to install TDengine IDMP on your local machine.
 ## Prerequisites
 
 - Ensure that your local machine meets the minimum requirements for TDengine IDMP. For details, see [Planning Your Deployment](../01-planning.md).
-- Install TDengine TSDB-Enterprise version 3.3.7.0 or higher. For instructions, see [Deploy TDengine TSDB-Enterprise Enterprise](https://docs.tdengine.com/get-started/deploy-enterprise-edition/).
+- Install TDengine TSDB-Enterprise version 3.3.7.0 or higher. For instructions, see [Deploy TDengine TSDB-Enterprise Enterprise](https://docs.tdengine.com/operations-and-maintenance/deploy-your-cluster/).
 - Install Java 21 or later.
 - Install glibc 2.25 or later.
 - On Debian and Ubuntu systems, install the `python3-venv` package.
@@ -65,7 +65,8 @@ Do not start TDengine IDMP until you have configured the TDengine TSDB-Enterpris
 
    :::info Complete Configuration Reference
 
-   For complete IDMP configuration file documentation, please refer to: [TDengine IDMP Configuration File Reference](/operation/installation/config-reference/)
+   - For complete IDMP configuration file documentation, please refer to: [TDengine IDMP Configuration File Reference](/operation/installation/config-reference/).
+   - To configure the base path for the gateway reverse proxy, you first need to explicitly specify this base path by setting the `TDA_REST_BASE_PATH` environment variable. Meanwhile, the gateway side needs to complete two configurations: 1. Configure the routing forwarding rule pointing to http://&lt;target address&gt;/idmp_config; 2. Configure the path rewriting rule to ensure that the aforementioned base path contained in the request URL is removed before forwarding the request to the backend service.
 
    :::
 
