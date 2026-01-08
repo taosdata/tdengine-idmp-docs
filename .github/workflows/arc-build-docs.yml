@@ -108,5 +108,5 @@ jobs:
         run: |
           cd platform-group/helm/idmp-docs
           CLEAN_BRANCH=$(echo ${{ github.event.inputs.branch || github.ref_name }} | sed 's/[^a-zA-Z0-9.-]/-/g' | tr '[:upper:]' '[:lower:]')
-          /home/runner/k8stool/helm upgrade --install --namespace td-dev --set name=idmp-docs$CLEAN_BRANCH --set image=${{ vars.LOCAL_DOCKER_REGISTRY_URL }}/library/tdengine-idmp-docs:idmp-docs$CLEAN_BRANCH idmp-docs$CLEAN_BRANCH ./ --kubeconfig /home/runner/k8stool/config
-          echo "Visit idmp-docs$CLEAN_BRANCH.kube.tdengine.net to check deployment"
+          /home/runner/k8stool/helm upgrade --install --namespace td-dev --set name=idmp-docs-$CLEAN_BRANCH --set image=${{ vars.LOCAL_DOCKER_REGISTRY_URL }}/library/tdengine-idmp-docs:idmp-docs-$CLEAN_BRANCH idmp-docs-$CLEAN_BRANCH ./ --kubeconfig /home/runner/k8stool/config
+          echo "Visit idmp-docs-$CLEAN_BRANCH.kube.tdengine.net to check deployment"
