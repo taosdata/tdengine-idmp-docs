@@ -111,3 +111,7 @@ While a panel is in edit mode, you can modify the display settings for the panel
 ## Panel Card or List View
 
 Panel lists are displayed in card view by default and can be switched to list view. Each panel can be viewed, edited, deleted, or converted to a template through the menu. If a panel does not contain child element attributes, it can be converted to a template.
+
+## Sharing Panels
+
+Panels support sharing functionality. On the panel view page, click the share icon in the top-right corner, set the sharing duration, and generate a unique sharing link. Through this link, other users can access and view the panel, and it can also be embedded in third-party application pages.
