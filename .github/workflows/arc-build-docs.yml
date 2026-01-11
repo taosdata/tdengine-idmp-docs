@@ -99,7 +99,7 @@ jobs:
           echo "Visit idmp-docs-$CLEAN_BRANCH.kube.tdengine.net to check deployment"
 
       - name: Send Feishu Message to CI Info Group
-        if: failure()
+        if: success()
         run: |
           function post_to_feishu() {
             local text="$1"
@@ -115,6 +115,27 @@ jobs:
           }
 
           PR_INFO="Visit idmp-docs-$CLEAN_BRANCH.kube.tdengine.net to check deployment\n
+          Workflow：https://github.com/taosdata/tdengine-idmp-docs/actions/runs/${{ github.run_id }}\n"
+
+          post_to_feishu "$PR_INFO @${{ github.actor }}"
+
+      - name: Send Feishu Message to CI Info Group
+        if: failure()
+        run: |
+          function post_to_feishu() {
+            local text="$1"
+            curl -X POST -H "Content-Type: application/json" \
+            -d @- https://open.feishu.cn/open-apis/bot/v2/hook/7d20c281-d937-4a24-9880-e5bb5900b817 <<EOF
+            {
+                "msg_type": "text",
+                "content": {
+                "text": "$text"
+                }
+            }
+          EOF
+          }
+
+          PR_INFO="pipeline failed deployment\n
           Workflow：https://github.com/taosdata/tdengine-idmp-docs/actions/runs/${{ github.run_id }}\n"
 
           post_to_feishu "$PR_INFO @${{ github.actor }}"
