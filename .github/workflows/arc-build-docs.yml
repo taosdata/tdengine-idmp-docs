@@ -103,6 +103,7 @@ jobs:
         run: |
           function post_to_feishu() {
             local text="$1"
+            local BRANCH="$2"
             curl -X POST -H "Content-Type: application/json" \
             -d @- https://open.feishu.cn/open-apis/bot/v2/hook/7d20c281-d937-4a24-9880-e5bb5900b817 <<EOF
             {
@@ -114,10 +115,11 @@ jobs:
           EOF
           }
 
-          PR_INFO="Visit idmp-docs-$CLEAN_BRANCH.kube.tdengine.net to check deployment\n
+          PR_INFO="Visit idmp-docs-$BRANCH.kube.tdengine.net to check deployment\n
           Workflow：https://github.com/taosdata/tdengine-idmp-docs/actions/runs/${{ github.run_id }}\n"
 
-          post_to_feishu "$PR_INFO @${{ github.actor }}"
+          CLEAN_BRANCH=$(echo ${{ github.event.inputs.branch || inputs.branch_name || github.ref_name }} | sed 's/[^a-zA-Z0-9.-]/-/g' | tr '[:upper:]' '[:lower:]')
+          post_to_feishu "$PR_INFO @${{ github.actor }}" $CLEAN_BRANCH
 
       - name: Send Feishu Message to CI Info Group
         if: failure()
