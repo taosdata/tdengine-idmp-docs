@@ -97,13 +97,14 @@ jobs:
           CLEAN_BRANCH=$(echo ${{ github.event.inputs.branch || inputs.branch_name || github.ref_name }} | sed 's/[^a-zA-Z0-9.-]/-/g' | tr '[:upper:]' '[:lower:]')
           /home/runner/k8stool/helm upgrade --install --namespace td-dev --set name=idmp-docs-$CLEAN_BRANCH --set image=${{ vars.LOCAL_DOCKER_REGISTRY_URL }}/library/tdengine-idmp-docs:idmp-docs-$CLEAN_BRANCH idmp-docs-$CLEAN_BRANCH ./ --kubeconfig /home/runner/k8stool/config
           echo "Visit idmp-docs-$CLEAN_BRANCH.kube.tdengine.net to check deployment"
+          URL=idmp-docs-$CLEAN_BRANCH.kube.tdengine.net
+          echo "URL=$URL" >> $GITHUB_ENV
 
       - name: Send Feishu Message to CI Info Group
         if: success()
         run: |
           function post_to_feishu() {
             local text="$1"
-            local BRANCH="$2"
             curl -X POST -H "Content-Type: application/json" \
             -d @- https://open.feishu.cn/open-apis/bot/v2/hook/7d20c281-d937-4a24-9880-e5bb5900b817 <<EOF
             {
@@ -115,11 +116,10 @@ jobs:
           EOF
           }
 
-          PR_INFO="Visit idmp-docs-$BRANCH.kube.tdengine.net to check deployment\n
-          Workflow：https://github.com/taosdata/tdengine-idmp-docs/actions/runs/${{ github.run_id }}\n"
-
-          CLEAN_BRANCH=$(echo ${{ github.event.inputs.branch || inputs.branch_name || github.ref_name }} | sed 's/[^a-zA-Z0-9.-]/-/g' | tr '[:upper:]' '[:lower:]')
-          post_to_feishu "$PR_INFO @${{ github.actor }}" $CLEAN_BRANCH
+          REPO_NAME=$(basename $GITHUB_REPOSITORY)
+          PR_INFO="Visit $URL to check deployment\n
+          Workflow：https://github.com/taosdata/$REPO_NAME/actions/runs/${{ github.run_id }}\n"
+          post_to_feishu "$PR_INFO @${{ github.actor }}"
 
       - name: Send Feishu Message to CI Info Group
         if: failure()
@@ -137,7 +137,7 @@ jobs:
           EOF
           }
 
+          REPO_NAME=$(basename $GITHUB_REPOSITORY)
           PR_INFO="pipeline failed deployment\n
-          Workflow：https://github.com/taosdata/tdengine-idmp-docs/actions/runs/${{ github.run_id }}\n"
-
+          Workflow：https://github.com/taosdata/$REPO_NAME/actions/runs/${{ github.run_id }}\n"
           post_to_feishu "$PR_INFO @${{ github.actor }}"
