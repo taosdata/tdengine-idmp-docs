@@ -27,11 +27,13 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          repository: taosdata/tdengine-idmp-docs
-          path: tdengine-idmp-docs
-          ref: ${{ github.event.inputs.branch || github.ref_name }}
+        run: |
+          BRANCH=${{ github.event.inputs.branch || inputs.branch_name || github.ref_name }}
+          cp -r /public/source_codes/tdengine-idmp-docs .
+          cd tdengine-idmp-docs
+          git pull
+          git checkout $BRANCH
+
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -81,7 +83,7 @@ jobs:
           cd tdengine-idmp-docs
           pwd
           ls -l
-          CLEAN_BRANCH=$(echo ${{ github.event.inputs.branch || github.ref_name }} | sed 's/[^a-zA-Z0-9.-]/-/g' | tr '[:upper:]' '[:lower:]')
+          CLEAN_BRANCH=$(echo ${{ github.event.inputs.branch || inputs.branch_name || github.ref_name }} | sed 's/[^a-zA-Z0-9.-]/-/g' | tr '[:upper:]' '[:lower:]')
           docker -H docker-dind.default:2375 build . -t ${{ vars.LOCAL_DOCKER_REGISTRY_URL }}/library/tdengine-idmp-docs:idmp-docs$CLEAN_BRANCH
           docker -H docker-dind.default:2375 push ${{ vars.LOCAL_DOCKER_REGISTRY_URL }}/library/tdengine-idmp-docs:idmp-docs$CLEAN_BRANCH
 
@@ -89,24 +91,9 @@ jobs:
     runs-on: tdengine-idmp-docs-deploy
     needs: build
     steps:
-      - name: Generate GitHub App Token
-        id: app-token
-        uses: tibdex/github-app-token@v1
-        with:
-          app_id: ${{ vars.TAOSDATA_BOT_ID }}
-          private_key: ${{ secrets.TAOSDATA_BOT_KEY }}
-            
-      - name: Checkout Code
-        uses: actions/checkout@v4
-        with:
-          repository: taosdata/platform-group
-          path: platform-group
-          ref: "test/yangliang/arc"
-          token: ${{ steps.app-token.outputs.token }}
-          
       - name: deploy project to dev env
         run: |
-          cd platform-group/helm/idmp-docs
-          CLEAN_BRANCH=$(echo ${{ github.event.inputs.branch || github.ref_name }} | sed 's/[^a-zA-Z0-9.-]/-/g' | tr '[:upper:]' '[:lower:]')
+          cd /public/platform-group/helm/idmp-docs
+          CLEAN_BRANCH=$(echo ${{ github.event.inputs.branch || inputs.branch_name || github.ref_name }} | sed 's/[^a-zA-Z0-9.-]/-/g' | tr '[:upper:]' '[:lower:]')
           /home/runner/k8stool/helm upgrade --install --namespace td-dev --set name=idmp-docs-$CLEAN_BRANCH --set image=${{ vars.LOCAL_DOCKER_REGISTRY_URL }}/library/tdengine-idmp-docs:idmp-docs-$CLEAN_BRANCH idmp-docs-$CLEAN_BRANCH ./ --kubeconfig /home/runner/k8stool/config
           echo "Visit idmp-docs-$CLEAN_BRANCH.kube.tdengine.net to check deployment"
