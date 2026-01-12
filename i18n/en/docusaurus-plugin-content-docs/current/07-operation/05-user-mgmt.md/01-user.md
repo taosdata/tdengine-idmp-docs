@@ -1,5 +1,5 @@
 ---
-title: Managing Users and Permissions
+title: Users, Roles and Permissions
 ---
 
 ## Users

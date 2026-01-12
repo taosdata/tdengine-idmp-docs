@@ -1,4 +1,4 @@
-# OAuth Single Sign-On Configuration Guide
+# OAuth Single Sign-On
 
 ## Overview
 

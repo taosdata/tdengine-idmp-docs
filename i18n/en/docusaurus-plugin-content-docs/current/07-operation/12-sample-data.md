@@ -1,4 +1,4 @@
-# Sample Data Usage Documentation
+# Sample Data
 
 This document describes the **purpose, usage, and configuration** of the Sample Data feature. It helps users quickly understand and correctly use the tool to generate, run, and clean up sample data.
 
@@ -353,7 +353,7 @@ Effective only in command-line mode.
 - values: Assign values to naming keywords; supports ranges like em[1,5] → em1 to em5
 - children: Child node list
 
-4. Usage Recommendations
+1. Usage Recommendations
 
 - One JSON file per sample scenario
 - Use consistent prefixes for template names
