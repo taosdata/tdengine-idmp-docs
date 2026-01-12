@@ -1,3 +1,5 @@
+import GatewayBasePathConfig from './common/_gateway-base-path.md'
+
 # 使用 Docker 部署
 
 本指南介绍如何使用 Docker/Docker Compose 的方式，实现 TDengine IDMP 和 TDengine TSDB-Enterprise 服务的搭建。
@@ -48,7 +50,7 @@ chmod +x idmp.sh
 :::tip
 
 - 如需修改端口，请编辑 `docker-compose.yml` 或者 `docker-compose-tdgpt.yml` 文件中的 `ports` 配置项。
-- 如需为网关反向代理配置基础路径（base path），需先通过设置 `TDA_REST_BASE_PATH` 环境变量明确指定该基础路径；同时网关侧需完成两项配置：1. 配置指向 http://&lt;目标地址&gt;/idmp_config 的路由转发规则；2. 配置路径改写规则，确保在将请求转发至后端服务前，剔除请求 URL 中包含的上述基础路径。
+- <GatewayBasePathConfig />
 
 :::
 
