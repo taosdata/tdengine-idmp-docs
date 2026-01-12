@@ -1,24 +1,10 @@
----
-title: Product Roadmap
----
+# Product Roadmap
 
-IDMP is under active development. Upcoming features on the roadmap include:
+TDengine IDMP is under active development. The 2026 annual roadmap is shown in the table below.
 
-1. Referencing objects (images, videos, and other files)
-1. Data quality monitoring
-1. Loading data from CSV file or by manual input
-1. Version control for configuration information
-1. SCADA-style graphic configuration in panels
-1. Excel plugin (similar to DataLink)
-1. Internal tables
-1. More panel types: candlestick charts, heatmaps, histograms, and flame graphs
-1. Drill-down in panels and reports
-1. Embedding IDMP panels and dashboards in third-party applications
-1. SDK for easy access to all data assets
-1. Single sign-on (SSO)
-1. System observability metrics
-1. Support for third-party visualization plugins
-1. Statistics and analysis panels for events
-1. User groups
-1. Support for relational databases
-1. Support for third-party time-series databases
+| Quarter | Features |
+|---------|----------|
+| 2026Q1 | <ol><li>Root cause analysis support</li><li>Manual input or CSV upload for collected data</li><li>Event statistics analysis panel</li><li>More panel types (Status History, Candlestick, Heatmap, Histogram, FlameGraph)</li></ol> |
+| 2026Q2 | <ol><li>Panel and dashboard drill-up and drill-down</li><li>Dashboard components and linked panels</li><li>Configuration version control</li><li>Internal tables support</li><li>Sub-events support</li></ol> |
+| 2026Q3 | <ol><li>Panel and dashboard theme selection and customization</li><li>Data quality monitoring</li><li>Third-party chart plugins</li><li>More configurable options for panel legends, series, and axes</li></ol> |
+| 2026Q4 | <ol><li>System observability metrics</li><li>User groups support</li><li>Relational database support</li><li>Third-party time-series database support</li></ol> |
