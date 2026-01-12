@@ -75,7 +75,7 @@ IDMP 安装包内置了一个有效期为 3 个月的测试证书：
 在终端中执行以下命令进行安装：
 
 ```bash
-curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s install --force-close --url https://localhost:6034 --enable-logging
+curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s install --force-close --url https://idmp.tdengine.net:6034 --enable-logging
 ```
 
 **参数说明：**
@@ -102,8 +102,7 @@ curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/in
 :::warning 注意事项
 
 - 安装过程中 Excel 会被强制关闭，请提前保存所有工作内容
-- 如果使用自定义证书域名，需将 `https://localhost:6034` 替换为「证书绑定域名：端口号」
-- 例如：`https://idmp.tdengine.net:6034`
+- 如果使用自定义证书域名，需将 `https://idmp.tdengine.net:6034` 替换为「证书绑定域名：端口号」
 
 :::
 
@@ -113,7 +112,7 @@ curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/in
 以**管理员身份**打开 PowerShell，执行以下命令：
 
 ```powershell
-powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action Install -ForceCloseExcel -Url 'https://localhost:6034' -EnableLogging"
+powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action Install -ForceCloseExcel -Url 'https://idmp.tdengine.net:6034' -EnableLogging"
 ```
 
 **参数说明：**
@@ -143,8 +142,7 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 
 - 必须以管理员身份运行 PowerShell
 - 安装过程中 Excel 会被强制关闭，请提前保存所有工作内容
-- 如果使用自定义证书域名，需将 `https://localhost:6034` 替换为「证书绑定域名：端口号」
-- 例如：`https://idmp.tdengine.net:6034`
+- 如果使用自定义证书域名，需将 `https://idmp.tdengine.net:6034` 替换为「证书绑定域名：端口号」
 
 :::
 

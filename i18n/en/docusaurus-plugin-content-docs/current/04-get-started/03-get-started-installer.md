@@ -5,7 +5,7 @@ sidebar_label: Local Install
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import PkgListV37 from "/components/PkgListEn/";
+import PkgListV37 from "/src/components/PkgListEn/";
 import Init from './_init.md';
 import Getstarted from './_get_started.md';
 
@@ -29,13 +29,13 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
 
 1. Download the installation package from the following link:
 
-   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.10.3" platform="Linux-Generic" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.10.6" platform="Linux-Generic" arch="x64" pkgType="Server" />
 
 1. Run the following commands to install TDengine IDMP:
 
    ```bash
-   tar -zxvf tdengine-idmp-enterprise-1.0.10.3-linux-generic.tar.gz && \
-   cd tdengine-idmp-enterprise-1.0.10.3 && \
+   tar -zxvf tdengine-idmp-enterprise-1.0.10.6-linux-generic.tar.gz && \
+   cd tdengine-idmp-enterprise-1.0.10.6 && \
    sudo ./install.sh
    ```
 
@@ -83,12 +83,12 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
 
 1. Download the installation package from the following link:
 
-   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.10.3" platform="Linux-Red Hat" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.10.6" platform="Linux-Red Hat" arch="x64" pkgType="Server" />
 
 1. Run the following command to install TDengine IDMP:
 
    ```bash
-   sudo rpm -ivh --nodeps tdengine-idmp-enterprise-1.0.10.3-linux-generic.rpm
+   sudo rpm -ivh --nodeps tdengine-idmp-enterprise-1.0.10.6-linux-generic.rpm
    ```
 
    :::tip
@@ -135,12 +135,12 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
 
 1. Download the installation package from the following link:
 
-   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.10.3" platform="Linux-Ubuntu" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.10.6" platform="Linux-Ubuntu" arch="x64" pkgType="Server" />
 
 1. Run the following command to install TDengine IDMP:
 
    ```bash
-   sudo dpkg -i tdengine-idmp-enterprise-1.0.10.3-linux-generic.deb
+   sudo dpkg -i tdengine-idmp-enterprise-1.0.10.6-linux-generic.deb
    ```
 
    :::tip
@@ -187,12 +187,12 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
 
 1. Download the installation package from the following link:
 
-   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.10.3" platform="macOS" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.10.6" platform="macOS" arch="x64" pkgType="Server" />
 
 1. Run the following command to install TDengine IDMP:
 
    ```bash
-   sudo installer -pkg tdengine-idmp-enterprise-1.0.10.3-macos-generic.pkg -target /
+   sudo installer -pkg tdengine-idmp-enterprise-1.0.10.6-macos-generic.pkg -target /
    ```
 
    :::tip
@@ -239,7 +239,7 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
 
 1. Download the installation package from the following link:
 
-   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.10.3" platform="Windows" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.10.6" platform="Windows" arch="x64" pkgType="Server" />
 
 1. Double-click the downloaded `.exe` installation package and follow the installation wizard to complete the installation.
 
