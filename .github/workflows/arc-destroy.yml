@@ -23,4 +23,4 @@ jobs:
       - name: destroy deployment
         run: |
           CLEAN_BRANCH=$(echo ${{ github.event.pull_request.head.ref || github.head_ref }} | sed 's/[^a-zA-Z0-9.-]/-/g' | tr '[:upper:]' '[:lower:]')
-          /home/runner/k8stool/helm td-dev uninstall idmp-docs$CLEAN_BRANCH --kubeconfig /home/runner/k8stool/config
+          /home/runner/k8stool/helm td-dev uninstall idmp-docs-$CLEAN_BRANCH --kubeconfig /home/runner/k8stool/config
