@@ -6,7 +6,7 @@ title: Concepts
 
 TDengine IDMP organizes data using a hierarchical tree structure, where each node in the tree is called an **element**. An element can represent a tangible physical device (such as a car), a subsystem of that device (such as a car's braking system), or even a single sensor on the car. An element can also represent a logical entity, such as a factory, a corporation, or a city.
 
-An element may contain the following items: 
+An element may contain the following items:
 
 - Child elements
 - Parent elements

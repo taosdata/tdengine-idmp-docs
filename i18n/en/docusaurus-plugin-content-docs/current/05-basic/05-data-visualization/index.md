@@ -35,18 +35,18 @@ The default selection is `Element`. In the left tree structure, select a specifi
 
 For each metric, you can configure the following options:
 
-1. **Name**: Name displayed on the panel for the metric. The attribute name is used by default.
-2. **Expression**: Expression applied to the selected attribute or across multiple attributes.
-3. **Function**: Aggregation function when a time window is set or dimension-based grouping is applied. The default value is `AVG`.
+1. **Name**: Name displayed on the panel for the metric. By default, the attribute name is used.
+2. **Expression**: Supports expression calculations on the selected attribute, or allows selecting multiple attributes for calculation.
+3. **UOM**: Sets the display unit for the metric. It can be adjusted to other units within the same measurement category.
 4. **Conditions**: Filter conditions applied to the raw data to refine which data points are visualized.
 5. **Time Shift**: Offset for the timestamps of the metric. This is used to compare trends across different time periods. For example, setting it to `-1d` means the panel will show data from the same time one day earlier.
-6. **Prediction:**: Time-series forecasting for the selected metric.
-7. **Order By:**: Sorting for the metric. By default, no sorting is applied.
+6. **Prediction** : Time-series forecasting for the selected metric.
+7. **Order By** : Sorting for the metric. By default, no sorting is applied.
 
 For all displayed metrics, you can also configure the following options in the top-right corner of the metric list:
 
-1. **Limit:**: Maximum number of data points displayed for the metric.
-2. **Window:**: Sliding window aggregation to the metric. You can set the interval and the window duration.
+1. **Limit** : Maximum number of data points displayed for the metric.
+2. **Window** : Sliding window aggregation to the metric. You can set the interval and the window duration.
 
 ## Panel Dimension Configuration
 
@@ -60,6 +60,18 @@ In the sidebar, double-click on a dimension to select it. For each selected dime
 
 :::note
 tbname as a special dimension, if the expression is empty, will only be used for grouping and sorting, and will not be returned to the panel dimensions.
+:::
+
+## Operations on Panel Metrics or Dimensions
+
+In the metric or dimension list, each item supports the following operations:
+
+1. **Delete**: Removes the current metric or dimension. This action cannot be undone, so please proceed with caution.
+2. **Up**: Moves the metric or dimension up, changing its display order in the chart.
+3. **Down**: Moves the metric or dimension down, changing its display order in the chart.
+
+:::tip
+Adjusting the display order of metrics or dimensions can optimize the data presentation on the panel, highlighting the most important data.
 :::
 
 ## Advanced Panel Configuration

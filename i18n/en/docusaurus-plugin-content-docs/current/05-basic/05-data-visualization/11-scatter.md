@@ -20,7 +20,6 @@ As shown in the following figure, the size and transparency of the points in the
 
 ![Symbol Size And Opacity Demo](./images/scatter-style.png)
 
-
 #### Special Point
 
 As shown in the following figure, you can select an indicator to display a special mark for the maximum and minimum values, and mark it with a custom color.

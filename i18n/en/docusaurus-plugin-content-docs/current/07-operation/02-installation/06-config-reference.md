@@ -5,6 +5,7 @@ title: Configuration File Reference
 # TDengine IDMP Configuration File Reference
 
 The TDengine IDMP configuration file is `application.yml`, located at:
+
 - **Linux/macOS**: `/usr/local/taos/idmp/config/application.yml`
 - **Windows**: `C:\TDengine\idmp\config\application.yml`
 
@@ -34,6 +35,7 @@ quarkus:
 #### HTTPS Configuration Instructions
 
 **Built-in Test Certificate**:
+
 - The installation package includes a built-in test certificate valid for 3 months
 - The test certificate is bound to the domain: `idmp.tdengine.net`
 - This certificate is only suitable for function demonstration, testing and other scenarios, **not recommended for production environments**
@@ -42,11 +44,12 @@ quarkus:
 
 If using the built-in test certificate, you need to configure domain name resolution. Add the following mapping to the client's hosts file:
 
-```
+```text
 192.168.1.100  idmp.tdengine.net  # Replace with your actual server IP
 ```
 
 **Hosts file locations**:
+
 - **Linux/macOS**: `/etc/hosts`
 - **Windows**: `C:\Windows\System32\drivers\etc\hosts`
 

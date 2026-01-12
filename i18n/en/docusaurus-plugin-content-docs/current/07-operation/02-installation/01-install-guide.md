@@ -10,7 +10,7 @@ This document describes how to install TDengine IDMP on your local machine.
 ## Prerequisites
 
 - Ensure that your local machine meets the minimum requirements for TDengine IDMP. For details, see [Planning Your Deployment](../01-planning.md).
-- Install TDengine TSDB-Enterprise version 3.3.7.0 or higher. For instructions, see [Deploy TDengine TSDB-Enterprise Enterprise](https://docs.tdengine.com/get-started/deploy-enterprise-edition/).
+- Install TDengine TSDB-Enterprise version 3.3.7.0 or higher. For instructions, see [Deploy TDengine TSDB-Enterprise Enterprise](https://docs.tdengine.com/operations-and-maintenance/deploy-your-cluster/).
 - Install Java 21 or later.
 - Install glibc 2.25 or later.
 - On Debian and Ubuntu systems, install the `python3-venv` package.
@@ -21,7 +21,7 @@ Select your operating system to display the appropriate installation procedure.
 
 :::tip
 
-Your machine must be connected to the internet when you install TDengine IDMP. Dependencies are downloaded and installed during the TDengine IDMP installation process. 
+Your machine must be connected to the internet when you install TDengine IDMP. Dependencies are downloaded and installed during the TDengine IDMP installation process.
 
 :::
 
@@ -56,16 +56,17 @@ Do not start TDengine IDMP until you have configured the TDengine TSDB-Enterpris
           username: <username>
           password: <password>
       ```
-      
+
       - **url:** Specify the URL and port number of your taosAdapter instance.
-      
+
       - **username:** Enter a TDengine TSDB-Enterprise user.
-      
+
       - **password:** Enter the password for the TDengine TSDB-Enterprise user.
 
    :::info Complete Configuration Reference
 
-   For complete IDMP configuration file documentation, please refer to: [TDengine IDMP Configuration File Reference](/operation/installation/config-reference/)
+   - For complete IDMP configuration file documentation, please refer to: [TDengine IDMP Configuration File Reference](/operation/installation/config-reference/).
+   - To configure the base path for the gateway reverse proxy, you first need to explicitly specify this base path by setting the `TDA_REST_BASE_PATH` environment variable. Meanwhile, the gateway side needs to complete two configurations: 1. Configure the routing forwarding rule pointing to http://&lt;target address&gt;/idmp_config; 2. Configure the path rewriting rule to ensure that the aforementioned base path contained in the request URL is removed before forwarding the request to the backend service.
 
    :::
 
@@ -87,6 +88,7 @@ Do not start TDengine IDMP until you have configured the TDengine TSDB-Enterpris
 <TabItem label="Linux" value="linux">
 
 Run the following command to start TDengine IDMP:
+
 ```bash
 sudo svc-tdengine-idmp start
 ```
@@ -197,6 +199,7 @@ Run the following command to uninstall TDengine IDMP:
 ```bash
 rmidmp -e [yes | no]
 ```
+
 To retain data, log, and configuration files, specify `no`. To delete these files, specify `yes`.
 
 </TabItem>
@@ -223,6 +226,7 @@ Run the following command to uninstall TDengine IDMP:
 ```bash
 rmidmp -e [yes | no]
 ```
+
 To retain data, log, and configuration files, specify `no`. To delete these files, specify `yes`.
 
 </TabItem>
@@ -232,9 +236,43 @@ To retain data, log, and configuration files, specify `no`. To delete these file
 Double-click `C:\TDengine\idmp\unins000.exe` and follow the uninstallation wizard to complete the process.
 
 Alternatively, you can uninstall TDengine IDMP through **Control Panel** → **Programs** → **Programs and Features**:
+
 1. Find **TDengine IDMP** in the list
 2. Right-click and select **Uninstall**
 3. Follow the uninstallation wizard to complete the process
 
 </TabItem>
 </Tabs>
+
+## Upgrade Instructions
+
+TDengine IDMP recommends using the official installation script for upgrades. The script will automatically detect the existing installation environment and select the appropriate upgrade mode to ensure the safety of your data and configuration files. Details are as follows:
+
+- **Automatic Upgrade Detection**: The installation script will automatically determine whether it is an upgrade installation.
+- **Data and Configuration Protection**: In upgrade mode, the installation script will not overwrite or modify the following directories and their contents:
+
+<Tabs>
+<TabItem label="Linux/macOS" value="unix">
+
+- `data/idmp`: User data directory
+- `idmp/venv`: Python virtual environment
+- `idmp/config`: Configuration directory
+- `logs`: Log directory
+
+</TabItem>
+<TabItem label="Windows" value="windows">
+
+- `data\idmp`: User data directory
+- `idmp\venv`: Python virtual environment
+- `idmp\config`: Configuration directory
+- `logs`: Log directory
+
+</TabItem>
+</Tabs>
+
+- **Program Files Only Updated**: During an upgrade, only core program files and dependencies are updated, ensuring new features are available while user data and configuration remain unchanged.
+- **First-Time Installation**: If this is a first-time installation, all directories and files will be fully initialized.
+
+:::info
+It is strongly recommended to use the official installation script for upgrades. If you wish to manually back up your data and configuration, you can do so before upgrading. After the upgrade, check the service status and logs to ensure the upgrade was successful.
+:::

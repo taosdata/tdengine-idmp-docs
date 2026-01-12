@@ -5,6 +5,7 @@ title: 配置文件参考
 # TDengine IDMP 配置文件参考
 
 TDengine IDMP 的配置文件为 `application.yml`，默认位置：
+
 - **Linux/macOS**: `/usr/local/taos/idmp/config/application.yml`
 - **Windows**: `C:\TDengine\idmp\config\application.yml`
 
@@ -34,6 +35,7 @@ quarkus:
 #### HTTPS 配置说明
 
 **内置测试证书**：
+
 - 安装包内置了一个有效期为 3 个月的测试证书
 - 测试证书绑定的域名为：`idmp.tdengine.net`
 - 该证书仅适用于功能演示、测试等场景，**不建议生产环境使用**
@@ -42,11 +44,12 @@ quarkus:
 
 如果使用内置的测试证书，需要配置域名解析。在客户端的 hosts 文件中添加以下映射：
 
-```
+```text
 192.168.1.100  idmp.tdengine.net  # 请替换为实际的服务器 IP
 ```
 
 **hosts 文件位置**：
+
 - **Linux/macOS**: `/etc/hosts`
 - **Windows**: `C:\Windows\System32\drivers\etc\hosts`
 

@@ -10,6 +10,7 @@ TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0+, 在安装 TDengine IDMP 
 :::
 
 TDengine IDMP 的运行需要以下基础依赖：
+
 1. Python: 3.12 版本
 1. Java: 21 及以上版本
 1. glibc: 2.25 及以上版本
@@ -28,7 +29,7 @@ IDMP 的正常运行，依赖指定版本的 Java 和 Python 环境。在安装�
 1. 安装过程中，如果遇到以下错误 "Java Version 21+ is required, but not found at: ...", 应该如何解决？
     - Java 没有安装，请安装 Java 21 或更高版本。
     - Java 已安装，但安装程序没有找到，可以通过创建软链接的方式来解决，例如：`ln -s /path/to/your-java-executable /usr/local/bin/java`.
-2. 安装过程中，如果遇到以下错误 "Java Version 21+ is required, but version X is found at: ...", 应该如何解决？ 
+2. 安装过程中，如果遇到以下错误 "Java Version 21+ is required, but version X is found at: ...", 应该如何解决？
     - Java 版本过低，请安装 Java 21 或更高版本。
     - 满足要求的 Java 已安装，但安装程序没有找到，可以通过创建软链接的方式来解决，例如：`ln -s /path/to/your-java-executable /usr/local/bin/java`, 如果系统中存在多个 Java 版本，请注意 PATH 的优先级。在以上报错信息中，会打印 PATH 的搜索路径，请您确保满足要求的 Java 可执行文件在 PATH 中的优先级最高。
 3. 安装过程中，如果遇到以下错误 "Failed to install TDengine IDMP dependencies from /usr/local/taos/idmp/chat/requirements.txt", 应该如何解决？
@@ -55,13 +56,15 @@ tda:
 ```
 
 其中：
-- auth-type: 认证方式，支持 UserPassword 和 Token 两种方式，默认为方式 UserPassword
-- url: 为 TDengine TSDB-Enterprise 中 taosAdapter 组件的 IP 地址和端口号，端口号默认为 6041
-- username 和 password: 为 TDengine TSDB-Enterprise 的用户名和密码，默认为 root 和 taosdata
+
+- auth-type: 认证方式，支持 UserPassword 和 Token 两种方式，默认为方式 UserPassword。
+- url: 为 TDengine TSDB-Enterprise 中 taosAdapter 组件的 IP 地址和端口号，端口号默认为 6041。
+- username 和 password: 为 TDengine TSDB-Enterprise 的用户名和密码，默认为 root 和 taosdata。
 
 :::info 完整配置参考
 
-如需查看完整的 IDMP 配置文件说明，请参考：[TDengine IDMP 配置文件参考](/operation/installation/config-reference/)
+- 如需查看完整的 IDMP 配置文件说明，请参考：[TDengine IDMP 配置文件参考](/operation/installation/config-reference/)
+- 如需为网关反向代理配置基础路径（base path），需先通过设置 `TDA_REST_BASE_PATH` 环境变量明确指定该基础路径；同时网关侧需完成两项配置：1. 配置指向 http://&lt;目标地址&gt;/idmp_config 的路由转发规则；2. 配置路径改写规则，确保在将请求转发至后端服务前，剔除请求 URL 中包含的上述基础路径。
 
 :::
 
@@ -160,7 +163,6 @@ sc.exe start tdengine-idmp
 
 **查看服务状态：**
 
-
 或使用 sc 命令：
 
 ```batch
@@ -228,6 +230,7 @@ rpm -e tdengine-idmp
 ```bash
 dpkg -r tdengine-idmp
 ```
+
 </TabItem>
 
 <TabItem label="Windows 系统" value="windows">
@@ -238,3 +241,36 @@ dpkg -r tdengine-idmp
 </TabItem>
 
 </Tabs>
+
+## 升级说明
+
+TDengine IDMP 推荐使用安装脚本进行升级。安装脚本会自动检测现有安装环境，并根据实际情况选择升级模式，确保用户数据和配置文件安全。具体说明如下：
+
+- **升级模式自动检测**：安装脚本会自动判断是否为升级安装。
+- **数据与配置保护**：在升级模式下，安装脚本不会覆盖或修改以下目录及其内容：
+
+<Tabs>
+<TabItem label="Linux/macOS" value="unix">
+
+- `data/idmp`：用户数据目录
+- `idmp/venv`：Python 虚拟环境
+- `idmp/config`：配置文件目录
+- `logs`：日志目录
+
+</TabItem>
+<TabItem label="Windows" value="windows">
+
+- `data\idmp`：用户数据目录
+- `idmp\venv`：Python 虚拟环境
+- `idmp\config`：配置文件目录
+- `logs`：日志目录
+
+</TabItem>
+</Tabs>
+
+- **仅更新程序文件**：升级时仅更新核心程序文件和依赖，确保新版本功能可用，用户数据和配置保持不变。
+- **首次安装**：如果是首次安装，则会完整初始化所有目录和文件。
+
+:::info
+建议始终通过官方安装脚本进行升级操作。如需手动备份数据和配置，可在升级前备份上述目录。升级完成后，建议检查服务状态和日志，确保升级成功。
+:::
