@@ -1,8 +1,6 @@
 ---
-title: Backing Up and Restoring Data
+title: Backing Up and Recovery Data
 ---
-
-# Data Backup and Recovery
 
 TDengine IDMP's backup and restore feature allows users to periodically back up data and configurations to prevent data loss or damage. Users can restore to a specific backup point as needed.
 
@@ -22,10 +20,10 @@ Click the "Admin Console" option in the dropdown menu under the avatar icon in t
 - The data backup viewing page will display backup configuration information, current backup status (e.g., "Backing Up", "Stopped"), as well as details of the generated backup files.
 - The data backup page is equipped with Start and Stop buttons on the right side, enabling users to start or stop backup tasks at any time.
 
-## Data Restoration
+## Data Recovery
 
 1. Stop the IDMP service process to avoid data read-write conflicts during the restoration process.
-1. Refer to the config\application.yml configuration file in the installation directory to locate the path of the data storage directory, and back up this directory (to prevent loss of original data caused by exceptions during the restoration operation).
+1. Refer to the `config/application.yml` configuration file in the installation directory to locate the path of the data storage directory, and back up this directory (to prevent loss of original data caused by exceptions during the restoration operation).
 1. Enter the data backup storage directory, search for and verify the target backup file to be restored (check the file creation time, integrity checksum and other information to ensure the backup file is valid and meets the restoration requirements).
 1. Extract the verified target backup file to the data directory located in Step 2 (confirm the read and write permissions of the directory before extraction to ensure the operation can be executed).
 1. Restart the IDMP service process to make the restored data take effect.
