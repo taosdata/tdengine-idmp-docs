@@ -23,6 +23,7 @@ Click the "Admin Console" option in the dropdown menu under the avatar icon in t
 - The data backup page is equipped with Start and Stop buttons on the right side, enabling users to start or stop backup tasks at any time.
 
 ## Data Restoration
+
 1. Stop the IDMP service process to avoid data read-write conflicts during the restoration process.
 1. Refer to the config\application.yml configuration file in the installation directory to locate the path of the data storage directory, and back up this directory (to prevent loss of original data caused by exceptions during the restoration operation).
 1. Enter the data backup storage directory, search for and verify the target backup file to be restored (check the file creation time, integrity checksum and other information to ensure the backup file is valid and meets the restoration requirements).
