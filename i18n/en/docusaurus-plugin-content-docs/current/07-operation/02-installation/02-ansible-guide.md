@@ -2,6 +2,8 @@
 title: Ansible Deployment
 ---
 
+import GatewayBasePathConfig from './common/_gateway-base-path.md'
+
 Ansible is an open-source automation tool used for configuration management, application deployment, and cloud orchestration. This guide explains how to use Ansible to automate the deployment of TDengine IDMP. With this toolset, you can easily install and configure TDengine IDMP across multiple servers.
 
 ## Prerequisites
@@ -18,7 +20,8 @@ Install Ansible as described in the [official documentation](https://docs.ansibl
 
 :::info
 
-Security Tip: This deployment approach uses ansible-vault to manage sensitive information, ensuring that credentials and other confidential data are securely stored in version control.
+- Security Tip: This deployment approach uses ansible-vault to manage sensitive information, ensuring that credentials and other confidential data are securely stored in version control.
+- <GatewayBasePathConfig />
 
 :::
 

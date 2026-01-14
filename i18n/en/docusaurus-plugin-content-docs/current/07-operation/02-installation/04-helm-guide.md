@@ -2,6 +2,8 @@
 title: Helm Deployment
 ---
 
+import GatewayBasePathConfig from './common/_gateway-base-path.md'
+
 Helm is a package manager for Kubernetes that simplifies the deployment, configuration, and management of Kubernetes applications. This guide introduces how to deploy the TDengine IDMP service on Kubernetes using a Helm Chart.
 
 ## Prerequisites
@@ -32,7 +34,8 @@ cd tdengine-idmp-deployment/helm
 
 :::info
 
-To install TDengine TSDB-Enterprise, refer to the following document: [Deploy TDengine with Helm](https://docs.tdengine.com/operations-and-maintenance/deploy-your-cluster/kubernetes-deployment/#deploy-tdengine-with-helm)
+- To install TDengine TSDB-Enterprise, refer to the following document: [Deploy TDengine with Helm](https://docs.tdengine.com/operations-and-maintenance/deploy-your-cluster/kubernetes-deployment/#deploy-tdengine-with-helm)
+- <GatewayBasePathConfig />
 
 :::
 
