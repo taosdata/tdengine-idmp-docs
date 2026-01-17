@@ -8,6 +8,7 @@ import GatewayBasePathConfig from './common/_gateway-base-path.md'
 
 1. 本文适用 Docker 20.10 以上版本
 1. 本文适用 Docker Compose v1.29.2 以上版本
+1. 所需 Docker 内存大于等于 10GB
 
 ## 部署 TDengine TSDB-Enterprise 和 TDengine IDMP 服务
 
