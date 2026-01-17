@@ -19,6 +19,7 @@ As shown in the figure below, after clicking the button in the Prediction column
 3. Future Data Duration: It determines the number of records in the prediction results (future data duration / sampling interval).
 4. Historical Data Duration: It determines the number of sample records used by the algorithm.
 5. Confidence Level: Confidence interval range of predicted data, with the value range adjusted to (0, 1].
+6. Covariates: Optional. Allows you to select other metrics in the current panel to be used as covariates in the prediction calculation. Currently, this is only supported by the moirai prediction algorithm.
 
 ![forecasting algorithm](./images/forecast-algo.png)
 
