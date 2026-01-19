@@ -144,8 +144,8 @@ import os
 # Configure Bearer authorization (JWT): Authorization
 configuration = idmp_sdk.Configuration(
   # The base URL of the API server, please replace it with your own server address
-  host = "http://localhost:6042",
-  access_token = os.environ["BEARER_TOKEN"]
+  host="http://localhost:6042",
+  access_token=os.environ["BEARER_TOKEN"]
 )
 
 
