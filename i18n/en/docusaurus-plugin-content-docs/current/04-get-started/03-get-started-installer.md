@@ -13,7 +13,7 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
 
 ## Prerequisites
 
-- Ensure that your local machine meets the minimum requirements for TDengine IDMP. For details, see [Planning Your Deployment](../07-operation/01-planning.md).
+- Ensure that your local machine meets the minimum requirements for TDengine IDMP. For details, see [Planning Your Deployment](../../operation/planning/).
 - Install TDengine TSDB-Enterprise version 3.3.7.0 or higher. For instructions, see [Deploy TDengine TSDB-Enterprise](https://docs.tdengine.com/get-started/deploy-enterprise-edition/).
 - Install Java 21 or later.
 - Install glibc 2.25 or later.
