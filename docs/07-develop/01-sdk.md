@@ -15,7 +15,7 @@ TDengine IDMP SDK 使您可以以编程的方式无障碍访问整个数据资�
 
 ### 引入 SDK
 
-如果您的开发环境已经有 maven， 建议先将 idmp-sdk 安装到本地 maven 仓库， 以便在项目中引用。
+如果您的开发环境已经有 maven，建议先将 idmp-sdk 安装到本地 maven 仓库，以便在项目中引用。
 ```bash
 cd idmp-java-sdk
 mvn install -DskipTests
