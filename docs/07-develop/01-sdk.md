@@ -125,7 +125,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 
 ### 示例二
 
-假如认证 token 已经设置到了环境变量， 获取 UOM Class 列表的示例。
+假如认证 token 已经设置到了环境变量，获取 UOM Class 列表的示例。
 
 ```python
 import idmp_sdk
