@@ -110,8 +110,10 @@ with idmp_sdk.ApiClient(configuration) as api_client:
   # Create an instance of the API class
   api_instance = idmp_sdk.UserResourceApi(api_client)
   # Create LoginReqDTO, please replace username and password with your own info
-  req_dto = idmp_sdk.LoginReqDTO(login_name=os.environ["IDMP_USERNAME"],
-                                            password=os.environ["IDMP_PASSWORD"])
+  req_dto = idmp_sdk.LoginReqDTO(
+      login_name=os.environ["IDMP_USERNAME"],
+      password=os.environ["IDMP_PASSWORD"]
+  )
   try:
     # Create analysis from prompt
     api_response = api_instance.api_v1_users_login_post(req_dto)
