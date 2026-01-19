@@ -2,7 +2,7 @@
 
 ## 简介
 
-TDengine IDMP SDK 使您可以以编程的方式无障碍访问整个数据资产。在[TDengine 下载中心](https://www.taosdata.com/download-cente)可以下载 SDK 的压缩包。
+TDengine IDMP SDK 使您可以以编程的方式无障碍访问整个数据资产。在[TDengine 下载中心](https://www.taosdata.com/download-center)可以下载 SDK 的压缩包。
 这个压缩包默认包含了 Java 和 Python 两种语言的 SDK，您可以根据需要使用 [OpenAPI Generator](https://openapi-generator.tech/) 生成其它语言的 SDK。
 
 ## 目录和文件说明
