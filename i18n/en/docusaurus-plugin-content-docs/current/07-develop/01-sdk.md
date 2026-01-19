@@ -14,7 +14,7 @@ TDengine IDMP SDK allows you to programmatically access the entire data assets w
 
 ### Introducing the SDK
 
-If your development environment already has Maven, it is recommended to install idmp-sdk into the local Maven repository first for reference in the project. 
+If your development environment already has Maven, it is recommended to install idmp-sdk into the local Maven repository first for reference in the project.
 
 ```bash
 cd idmp-java-sdk
@@ -86,6 +86,7 @@ public class ElementApiTest {
 ## Python SDK Usage Guide
 
 ### Installing the SDK
+
 You can install the Python SDK using pip. First, enter the `idmp-python-sdk` directory, then run the following command:
 
 ```bash

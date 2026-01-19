@@ -86,6 +86,7 @@ public class ElementApiTest {
 ## Python SDK 使用说明
 
 ### 安装 SDK
+
 您可以使用 pip 安装 Python SDK。首先，进入 `idmp-python-sdk` 目录，然后运行以下命令：
 
 ```bash
