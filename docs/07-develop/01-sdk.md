@@ -1,11 +1,10 @@
 # TDengine IDMP SDK 使用说明
 
-## 简介
-
-TDengine IDMP SDK 使您可以以编程的方式无障碍访问整个数据资产。在[TDengine 下载中心](https://www.taosdata.com/download-center)可以下载 SDK 的压缩包。
+TDengine IDMP SDK 使您可以以编程的方式无障碍访问整个数据资产。
+在[TDengine 下载中心](https://www.taosdata.com/download-center)可以下载 SDK 的压缩包。
 这个压缩包默认包含了 Java 和 Python 两种语言的 SDK，您可以根据需要使用 [OpenAPI Generator](https://openapi-generator.tech/) 生成其它语言的 SDK。
 
-## 目录和文件说明
+## SDK 压缩包目录和文件说明
 
 - idmp-v1.x.x.x.json：IDMP SDK 的 OpenAPI 规范文件，您可以使用它生成其它语言的 SDK。
 - idmp-java-sdk: 包含 Java 语言的 TDengine IDMP SDK 源码和编译后的 JAR 包。
@@ -16,12 +15,14 @@ TDengine IDMP SDK 使您可以以编程的方式无障碍访问整个数据资�
 ### 引入 SDK
 
 如果您的开发环境已经有 maven，建议先将 idmp-sdk 安装到本地 maven 仓库，以便在项目中引用。
+
 ```bash
 cd idmp-java-sdk
 mvn install -DskipTests
 ```
 
 在您的项目的 `pom.xml` 文件中添加以下依赖：
+
 ```xml
 <dependency>
   <groupId>com.taosdata</groupId>
@@ -29,6 +30,7 @@ mvn install -DskipTests
   <version>{version}</version>
 </dependency>
 ```
+
 将 `{version}` 替换为实际的版本号，例如 `1.0.13.0`。
 
 ### 示例程序
@@ -85,9 +87,11 @@ public class ElementApiTest {
 
 ### 安装 SDK
 您可以使用 pip 安装 Python SDK。首先，进入 `idmp-python-sdk` 目录，然后运行以下命令：
+
 ```bash
 pip install .
 ```
+
 ### 示例一
 
 登录并获取 Token 的示例。
@@ -165,15 +169,19 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 ## 生成 SDK 的方法
 
 下载 OpenAPI Generator CLI 工具：
+
 ```bash
  wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.6.0/openapi-generator-cli-7.6.0.jar -O openapi-generator-cli.jar
 ```
+
 使用以下命令生成 Java SDK：
+
 ```bash
 java -jar openapi-generator-cli.jar generate -i idmp-v1.x.x.x.json -g java -o idmp-java-sdk --library feign --additional-properties=groupId=com.taosdata,artifactId=idmp-sdk,version=1.0.0 --skip-validate-spec
 ```
 
 使用以下命令生成 Python SDK：
+
 ```bash
 java -jar openapi-generator-cli.jar generate -i idmp-v1.x.x.x.json -g python -o idmp-python-sdk --library urllib3 --additional-properties=packageName=idmp_sdk --skip-validate-spec
 ```

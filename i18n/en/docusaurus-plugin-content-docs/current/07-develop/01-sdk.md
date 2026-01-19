@@ -14,13 +14,15 @@ TDengine IDMP SDK allows you to programmatically access the entire data assets w
 
 ### Introducing the SDK
 
-If your development environment already has Maven, it is recommended to install idmp-sdk into the local Maven repository first for reference in the project.
+If your development environment already has Maven, it is recommended to install idmp-sdk into the local Maven repository first for reference in the project. 
+
 ```bash
 cd idmp-java-sdk
 mvn install -DskipTests
 ```
 
 Add the following dependency to your project's `pom.xml` file:
+
 ```xml
 <dependency>
   <groupId>com.taosdata</groupId>
@@ -28,6 +30,7 @@ Add the following dependency to your project's `pom.xml` file:
   <version>{version}</version>
 </dependency>
 ```
+
 Replace `{version}` with the actual version number, such as `1.0.13.0`.
 
 ### Sample Program
@@ -84,6 +87,7 @@ public class ElementApiTest {
 
 ### Installing the SDK
 You can install the Python SDK using pip. First, enter the `idmp-python-sdk` directory, then run the following command:
+
 ```bash
 pip install .
 ```
@@ -165,15 +169,19 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 ## How to Generate SDK
 
 Download the OpenAPI Generator CLI tool:
+
 ```bash
  wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.6.0/openapi-generator-cli-7.6.0.jar -O openapi-generator-cli.jar
 ```
+
 Use the following command to generate Java SDK:
+
 ```bash
 java -jar openapi-generator-cli.jar generate -i idmp-v1.x.x.x.json -g java -o idmp-java-sdk --library feign --additional-properties=groupId=com.taosdata,artifactId=idmp-sdk,version=1.0.0 --skip-validate-spec
 ```
 
 Use the following command to generate Python SDK:
+
 ```bash
 java -jar openapi-generator-cli.jar generate -i idmp-v1.x.x.x.json -g python -o idmp-python-sdk --library urllib3 --additional-properties=packageName=idmp_sdk --skip-validate-spec
 ```
