@@ -170,7 +170,7 @@ Download the OpenAPI Generator CLI tool:
 ```
 Use the following command to generate Java SDK:
 ```bash
-java -jar openapi-generator-cli.jar generate  -i idmp-v1.x.x.x.json -g java -o idmp-java-sdk --library feign --additional-properties=groupId=com.taosdata,artifactId=idmp-sdk,version=1.0.0  --skip-validate-spec
+java -jar openapi-generator-cli.jar generate -i idmp-v1.x.x.x.json -g java -o idmp-java-sdk --library feign --additional-properties=groupId=com.taosdata,artifactId=idmp-sdk,version=1.0.0 --skip-validate-spec
 ```
 
 Use the following command to generate Python SDK:
