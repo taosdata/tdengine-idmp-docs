@@ -31,7 +31,7 @@ mvn install -DskipTests
 </dependency>
 ```
 
-将 `{version}` 替换为实际的版本号，例如 `1.0.13.0`。
+将 `{version}` 替换为实际的版本号，例如 `1.0.11.0`。
 
 ### 示例程序
 
@@ -187,4 +187,4 @@ java -jar openapi-generator-cli.jar generate -i idmp-v1.x.x.x.json -g java -o id
 java -jar openapi-generator-cli.jar generate -i idmp-v1.x.x.x.json -g python -o idmp-python-sdk --library urllib3 --additional-properties=packageName=idmp_sdk --skip-validate-spec
 ```
 
-对于其它语言，��参数替换为对应语言的名称即可，将 --library 参数替换为对应语言的库名称。另外不同语言有不同的附加参数，可通过--additional-properties 指定，具体请参考-properties 指定 ，具体请参考 [OpenAPI Generator 文档](https://openapi-generator.tech/docs/generators) 点击对应语言名称查看详情。
+对于其它语言，将 -g 参数替换为对应语言的名称即可，将 --library 参数替换为对应语言的库名称。另外不同语言有不同的附加参数，可通过--additional-properties 指定，具体请参考-properties 指定 ，具体请参考 [OpenAPI Generator 文档](https://openapi-generator.tech/docs/generators) 点击对应语言名称查看详情。

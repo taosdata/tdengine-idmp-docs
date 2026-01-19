@@ -31,7 +31,7 @@ Add the following dependency to your project's `pom.xml` file:
 </dependency>
 ```
 
-Replace `{version}` with the actual version number, such as `1.0.13.0`.
+Replace `{version}` with the actual version number, such as `1.0.11.0`.
 
 ### Sample Program
 
