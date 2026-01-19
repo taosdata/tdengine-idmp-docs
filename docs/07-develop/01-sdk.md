@@ -90,7 +90,7 @@ pip install .
 ```
 ### 示例一
 
-登录并获取 Token的示例。
+登录并获取 Token 的示例。
 
 ```python
 from pprint import pprint
