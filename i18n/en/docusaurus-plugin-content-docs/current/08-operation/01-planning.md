@@ -6,9 +6,9 @@ title: Planning Your Deployment
 
 To ensure stable operation, installing TDengine IDMP requires at least the following hardware specifications:
 
-- CPU: 2 cores
-- Memory: 4 GB
-- Disk: 10 GB of available space
+- CPU: 4 cores
+- Memory: 8 GB
+- Disk: 50 GB of available space
 
 ## Resource Planning by Element Scale
 
