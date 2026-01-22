@@ -102,34 +102,32 @@ Mapping rules must be a valid JSON object containing the following required fiel
 }
 ```
 
-### JSON Pointer Expression Syntax
+### JSONPath Expression Syntax
 
-The system uses the **JSON Pointer** standard (RFC 6901) to extract fields from user information responses.
+The system uses the **JSONPath** standard (based on Jayway JSONPath implementation) to extract fields from user information responses.
 
 #### Basic Syntax
 
-JSON Pointer uses forward slash `/` as a separator to represent object hierarchy:
+JSONPath uses `$` to represent the root object, and uses dot notation `.` or bracket notation `[]` to access object properties and array elements:
 
-| Expression        | Description                                          | Example           |
-| ----------------- | ---------------------------------------------------- | ----------------- |
-| `/field`          | Extract field from root object                       | `/name`           |
-| `/object/field`   | Extract field from nested object                     | `/user/email`     |
-| `/array/0`        | Extract first element of array (index starts from 0) | `/emails/0`       |
-| `/array/0/field`  | Extract field from array element                     | `/emails/0/value` |
-| `` (empty string) | Represents entire document                           | ``                |
+| Expression         | Description                           | Example             |
+| ------------------ | ------------------------------------- | ------------------- |
+| `$.field`          | Extract field from root object        | `$.name`            |
+| `$.object.field`   | Extract field from nested object      | `$.user.email`      |
+| `$.array[0].field` | Extract field from array element      | `$.emails[0].value` |
+| `$['field']`       | Access field using bracket notation   | `$['user-name']`    |
+| `$.array[*].field` | Extract field from all array elements | `$.users[*].name`   |
 
-#### Special Character Escaping
+#### Special Character Handling
 
-JSON Pointer requires escaping of two special characters:
-
-- `~0` represents literal character `~`
-- `~1` represents literal character `/`
+When field names contain special characters (such as spaces, dots, hyphens, etc.), it's recommended to use bracket notation:
 
 **Examples**:
 
-- For field name `a/b`, use `/a~1b`
-- For field name `m~n`, use `/m~0n`
-- For field name `c~d/e`, use `/c~0d~1e`
+- For field name `user-name`, use `$['user-name']`
+- For field name `user.name`, use `$['user.name']`
+- For field name `first name`, use `$['first name']`
+- For nested field `email` in `data.user-info`, use `$.data['user-info'].email`
 
 ### Configuration Examples
 
@@ -149,12 +147,12 @@ JSON Pointer requires escaping of two special characters:
 
 ```json
 {
-  "name": "/username",
-  "email": "/email"
+  "name": "$.username",
+  "email": "$.email"
 }
 ```
 
-**Explanation**: Directly extract `username` and `email` fields from root object
+**Explanation**: Use `$.` prefix to directly extract `username` and `email` fields from root object
 
 #### Example 2: Nested Object Extraction
 
@@ -175,12 +173,12 @@ JSON Pointer requires escaping of two special characters:
 
 ```json
 {
-  "name": "/user_info/display_name",
-  "email": "/user_info/contact/email"
+  "name": "$.user_info.display_name",
+  "email": "$.user_info.contact.email"
 }
 ```
 
-**Explanation**: Use `/` to separate each object layer, accessing nested fields level by level
+**Explanation**: Use dot notation `.` to separate each object layer, accessing nested fields level by level
 
 #### Debugging Recommendations
 

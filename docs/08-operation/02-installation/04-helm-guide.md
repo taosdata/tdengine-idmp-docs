@@ -1,6 +1,8 @@
+import GatewayBasePathConfig from './common/_gateway-base-path.md'
+
 # 使用 Helm 部署
 
-Helm 是 Kubernetes 的包管理工具，用于简化 Kubernetes 应用程序的部署、配置和管理。本指南介如何在 Kubernetes 上通过 Helm Chart 部署 TDengine IDMP 服务。
+Helm 是 Kubernetes 的包管理工具，用于简化 Kubernetes 应用程序的部署、配置和管理。本指南介绍如何在 Kubernetes 上通过 Helm Chart 部署 TDengine IDMP 服务。
 
 ## 前置条件
 
@@ -30,8 +32,8 @@ cd tdengine-idmp-deployment/helm
 
 :::info
 
-> 如需部署 TDengine TSDB-Enterprise 服务，请参考官方文档：  
-> [使用 Helm 部署 TDengine 集群](https://docs.taosdata.com/operation/deployment/#%E4%BD%BF%E7%94%A8-helm-%E9%83%A8%E7%BD%B2-tdengine-%E9%9B%86%E7%BE%A4)
+- 如需部署 TDengine TSDB-Enterprise 服务，请参考官方文档：[使用 Helm 部署 TDengine 集群](https://docs.taosdata.com/operation/deployment/#%E4%BD%BF%E7%94%A8-helm-%E9%83%A8%E7%BD%B2-tdengine-%E9%9B%86%E7%BE%A4)。
+- <GatewayBasePathConfig />
 
 :::
 

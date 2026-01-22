@@ -101,32 +101,32 @@
 }
 ```
 
-### JSON Pointer 表达式语法
+### JSONPath 表达式语法
 
-系统使用 **JSON Pointer** 标准（RFC 6901）从用户信息响应中提取字段。
+系统使用 **JSONPath** 标准（基于 Jayway JSONPath 实现）从用户信息响应中提取字段。
 
 #### 基本语法
 
-JSON Pointer 使用斜杠 `/` 作为分隔符来表示对象层级：
+JSONPath 使用 `$` 表示根对象，使用点号 `.` 或方括号 `[]` 来访问对象属性和数组元素：
 
-| 表达式           | 说明               | 示例              |
-| ---------------- | ------------------ | ----------------- |
-| `/field`         | 提取根对象的字段   | `/name`           |
-| `/object/field`  | 提取嵌套对象的字段 | `/user/email`     |
-| `/array/0/field` | 提取数组元素的字段 | `/emails/0/value` |
+| 表达式             | 说明               | 示例                |
+| ------------------ | ------------------ | ------------------- |
+| `$.field`          | 提取根对象的字段   | `$.name`            |
+| `$.object.field`   | 提取嵌套对象的字段 | `$.user.email`      |
+| `$.array[0].field` | 提取数组元素的字段 | `$.emails[0].value` |
+| `$['field']`       | 使用方括号访问字段 | `$['user-name']`    |
+| `$.array[*].field` | 提取数组所有元素   | `$.users[*].name`   |
 
-#### 特殊字符转义
+#### 特殊字符处理
 
-JSON Pointer 中有两个特殊字符需要转义：
-
-- `~0` 表示字面字符 `~`
-- `~1` 表示字面字符 `/`
+当字段名包含特殊字符（如空格、点号、中划线等）时，建议使用方括号表示法：
 
 **示例**：
 
-- 字段名为 `a/b` 时，使用 `/a~1b`
-- 字段名为 `m~n` 时，使用 `/m~0n`
-- 字段名为 `c~d/e` 时，使用 `/c~0d~1e`
+- 字段名为 `user-name` 时，使用 `$['user-name']`
+- 字段名为 `user.name` 时，使用 `$['user.name']`
+- 字段名为 `first name` 时，使用 `$['first name']`
+- 嵌套字段 `data.user-info` 中的 `email`，使用 `$.data['user-info'].email`
 
 ### 配置示例
 
@@ -146,12 +146,12 @@ JSON Pointer 中有两个特殊字符需要转义：
 
 ```json
 {
-  "name": "/username",
-  "email": "/email"
+  "name": "$.username",
+  "email": "$.email"
 }
 ```
 
-**说明**: 直接从根对象提取 `username` 和 `email` 字段
+**说明**: 使用 `$.` 开头直接从根对象提取 `username` 和 `email` 字段
 
 #### 示例 2：嵌套对象提取
 
@@ -173,13 +173,13 @@ JSON Pointer 中有两个特殊字符需要转义：
 
 ```json
 {
-  "name": "/user_info/display_name",
-  "email": "/user_info/contact/email",
-  "phone": "/user_info/contact/mobile"
+  "name": "$.user_info.display_name",
+  "email": "$.user_info.contact.email",
+  "phone": "$.user_info.contact.mobile"
 }
 ```
 
-**说明**: 使用 `/` 分隔每一层对象，逐层访问嵌套字段
+**说明**: 使用点号 `.` 分隔每一层对象，逐层访问嵌套字段
 
 #### 调试建议
 
