@@ -188,3 +188,7 @@ java -jar openapi-generator-cli.jar generate -i idmp-v1.x.x.x.json -g python -o 
 ```
 
 对于其它语言，将 -g 参数替换为对应语言的名称即可，将 --library 参数替换为对应语言的库名称。另外不同语言有不同的附加参数，可通过--additional-properties 指定，具体请参考-properties 指定 ，具体请参考 [OpenAPI Generator 文档](https://openapi-generator.tech/docs/generators) 点击对应语言名称查看详情。
+
+## 云服务使用 SDK
+
+如果您使用的是 [IDMP 的云服务版](https://idmp.taosdata.com/), 则不能使用上述登录方式。因为云服务的登录认证流程和企业版有所不同，云服务的前端代码封装了比较复杂的登录逻辑。建议您先通过浏览器登录云服务， 然后从浏览器的开发者工具从请求标头 “Authorization” 获取认证 token， 最后将 token 设置到环境变量中即可。
