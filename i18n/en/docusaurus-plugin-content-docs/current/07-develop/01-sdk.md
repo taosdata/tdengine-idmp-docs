@@ -188,3 +188,7 @@ java -jar openapi-generator-cli.jar generate -i idmp-v1.x.x.x.json -g python -o 
 ```
 
 For other languages, simply replace the `-g` parameter with the corresponding language name, and the --library parameter with the corresponding library name. Additionally, different languages have different additional parameters, which can be specified via --additional-properties. For details, please refer to the [OpenAPI Generator Documentation](https://openapi-generator.tech/docs/generators) and click on the corresponding language name for more information.
+
+## Using SDK with Cloud Service
+
+If you are using the [cloud version of IDMP](https://cloud.tdengine.com/), the login method described above cannot be used. Since the login authentication process for the cloud service differs from the enterprise version, the front-end code of the cloud service encapsulates more complex login logic. It is recommended to first log in to the cloud service through a browser, then obtain the authentication token from the "Authorization" request header in the browser's developer tools, and finally set the token in environment variables.
