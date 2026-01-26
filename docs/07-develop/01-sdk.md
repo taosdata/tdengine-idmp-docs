@@ -175,7 +175,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 
 1. 请求 URL 的 host 部分，对于不同的 IDMP 实例这个 URL 是不同的。例如： [ttps://ta9d8d6dc67d8a.idmp.taosdata.com]
 2. 请求标头 "Access-token" 的值， 这个是云服务认证用的 token。这个 Token 特别长，就不在这里举例。
-3. 请求标头 “Authorization” 的值，这个的 idmp 认证用的 token。例如：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqaW0rb2lsQHRkZW5naW5lLmNvbSIsImVtYWlsIjoiamltK29pbEB0ZGVuZ2luZS5jb20iLCJqdGkiOiIxIiwiaWF0IjoxNzY5NDA4Mzk0LCJleHAiOjE3NzAwMTMxOTR9.qqRd29OysCfytJD1QFJNWqhiy1scZD-NXelofs8ytss
+3. 请求标头 “Authorization” 的值，这个是 idmp 认证用的 token。例如：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqaW0rb2lsQHRkZW5naW5lLmNvbSIsImVtYWlsIjoiamltK29pbEB0ZGVuZ2luZS5jb20iLCJqdGkiOiIxIiwiaWF0IjoxNzY5NDA4Mzk0LCJleHAiOjE3NzAwMTMxOTR9.qqRd29OysCfytJD1QFJNWqhiy1scZD-NXelofs8ytss
 
 然后将这 3 个值分别设置到环境变量中。假如：
 
