@@ -12,9 +12,14 @@ TDengine IDMP SDK allows you to programmatically access the entire data assets w
 
 ## Java SDK Usage Guide
 
-### Introducing the SDK
+### 前提条件
 
-If your development environment already has Maven, it is recommended to install idmp-sdk into the local Maven repository first for reference in the project.
+1. 安装最新 Java 稳定版。（至少 Java 11）
+2. 安装 Maven 命令行工具。
+
+### Install the SDK
+
+Install idmp-sdk into the local Maven repository first for reference in the project.
 
 ```bash
 cd idmp-java-sdk
@@ -84,6 +89,10 @@ public class ElementApiTest {
 ```
 
 ## Python SDK Usage Guide
+
+### 前提条件
+
+安装 Python 开发环境。（python >= 3.10）
 
 ### Installing the SDK
 
@@ -167,18 +176,20 @@ with idmp_sdk.ApiClient(configuration) as api_client:
     print("Exception when calling UomResourceApi->api_v1_uomclasses_get: %s\n" % e)
 ```
 
-## Cloud Service SDK Usage Notes
+## 云服务使用 SDK
 
-If you are using the [IDMP Cloud Service Edition](https://idmp.tdengine.com/), you cannot use the login method described above. Because the login authentication process for the cloud service differs from the enterprise edition, the cloud service frontend code encapsulates more complex login logic. It is recommended that you first log in to the cloud service through a browser, then find any XHR request from the Network tab of the browser's developer tools, and copy the following three pieces of data:
+如果您使用的是 [IDMP 的云服务版](https://idmp.taosdata.com/), 则不能使用上述登录方式。因为云服务的登录认证流程和企业版有所不同，云服务的前端代码封装了比较复杂的登录逻辑。建议您先通过浏览器登录云服务， 然后从浏览器的开发者工具的网络标签页找到任意一个对后端 API 的请求，例如：/api/v1/permissions/menus 这个请求（如果过滤不出这个请求可以刷新页面再过滤），复制以下三项数据：
 
-1. The host part of the request URL, which differs for different IDMP instances. For example: [https://ta9d8d6dc67d8a.idmp.tdengine.com]
-2. The value of the request header "Access-token", which is the token used for cloud service authentication. This Token is extremely long, so an example won't be given here.
-3. The value of the request header "Authorization", which is the token used for IDMP authentication. For example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqaW0rb2lsQHRkZW5naW5lLmNvbSIsImVtYWlsIjoiamltK29pbEB0ZGVuZ2luZS5jb20iLCJqdGkiOiIxIiwiaWF0IjoxNzY5NDA4Mzk0LCJleHAiOjE3NzAwMTMxOTR9.qqRd29OysCfytJD1QFJNWqhiy1scZD-NXelofs8ytss
+1. 请求 URL 的 host 部分，对于不同的 IDMP 实例这个 URL 的 host 部分是不同的。它的格式是 [https://<实例ID>.idmp.taosdata.com]。
+2. 请求标头 "Access-token" 的值， 这个是云服务认证用的 token。
+3. 请求标头 “Authorization” 的值，这个的 idmp 认证用的 token。注意需要去掉前缀 "Bearer "。
+
+然后将这 3 个值分别设置到环境变量中。假如：
 
 Then set these 3 values into environment variables respectively. For example:
 
 ```sh
-export CLOUD_HOST=https://ta9d8d6dc67d8a.idmp.tdengine.com
+export CLOUD_HOST=https://your-instance-id.idmp.tdengine.com
 export CLOUD_TOKEN='your-access-token-value'
 export BEARER_TOKEN='your-authorization-token-value'
 ```
