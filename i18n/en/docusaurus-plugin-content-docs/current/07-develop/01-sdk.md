@@ -179,8 +179,8 @@ Then set these 3 values into environment variables respectively. For example:
 
 ```sh
 export CLOUD_HOST=https://ta9d8d6dc67d8a.idmp.tdengine.com
-export CLOUD_TOKEN=${Access-token value}
-export BEARER_TOKEN=${Authorization Token value}
+export CLOUD_TOKEN='your-access-token-value'
+export BEARER_TOKEN='your-authorization-token-value'
 ```
 
 Finally, if you are using the Python client, you can create an API Client according to the following example:
