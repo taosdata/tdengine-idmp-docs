@@ -180,7 +180,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 
 If you are using the [IDMP Cloud Service Edition](https://idmp.tdengine.com/), you cannot use the login method described above. Because the login authentication process for the cloud service differs from the enterprise edition, the cloud service frontend code encapsulates more complex login logic. It is recommended that you first log in to the cloud service through a browser, then find any request to the backend API from the Network tab of the browser's developer tools, for example: /api/v1/permissions/menus this request (if you can't filter out this request, you can refresh the page and filter again), copy the following three pieces of data:
 
-1. The host part of the request URL, which differs for different IDMP instances. Its format is [https://<instance ID>.idmp.tdengine.com].
+1. The host part of the request URL, which differs for different IDMP instances. Its format is `https://<instance ID>.idmp.tdengine.com`.
 2. The value of the request header "Access-token", which is the token used for cloud service authentication.
 3. The value of the request header "Authorization", which is the token used for IDMP authentication. Note that you need to remove the prefix "Bearer ".
 

@@ -182,7 +182,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 
 如果您使用的是 [IDMP 的云服务版](https://idmp.taosdata.com/), 则不能使用上述登录方式。因为云服务的登录认证流程和企业版有所不同，云服务的前端代码封装了比较复杂的登录逻辑。建议您先通过浏览器登录云服务， 然后从浏览器的开发者工具的网络标签页找到任意一个对后端 API 的请求，例如：/api/v1/permissions/menus 这个请求（如果过滤不出这个请求可以刷新页面再过滤），复制以下三项数据：
 
-1. 请求 URL 的 host 部分，对于不同的 IDMP 实例这个 URL 的 host 部分是不同的。它的格式是 [https://<实例ID>.idmp.taosdata.com]。
+1. 请求 URL 的 host 部分，对于不同的 IDMP 实例这个 URL 的 host 部分是不同的。它的格式是 `https://<实例ID>.idmp.taosdata.com`
 2. 请求标头 "Access-token" 的值， 这个是云服务认证用的 token。
 3. 请求标头 “Authorization” 的值，这个的 idmp 认证用的 token。注意需要去掉前缀 "Bearer "。
 
