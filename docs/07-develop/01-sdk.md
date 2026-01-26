@@ -180,9 +180,10 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 然后将这 3 个值分别设置到环境变量中。假如：
 
 ```sh
+# 请将尖括号及其中内容替换为实际获取到的 token 值
 export CLOUD_HOST=https://ta9d8d6dc67d8a.idmp.taosdata.com
-export CLOUD_TOKEN=${Access-token 的值}
-export BEARER_TOKEN=${Authorization Token 的值}
+export CLOUD_TOKEN='<Access-token 的值>'
+export BEARER_TOKEN='<Authorization Token 的值>'
 ```
 
 最后，如果您使用的是 Python 客户端则可以按照下面的示例创建 API Client：
