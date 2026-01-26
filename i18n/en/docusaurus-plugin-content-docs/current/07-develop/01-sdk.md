@@ -183,7 +183,7 @@ export CLOUD_TOKEN=${Access-token value}
 export BEARER_TOKEN=${Authorization Token value}
 ```
 
-You have set the obtained token into an environment variable named BEARER_TOKEN. For the Python client, you can initialize the API Client as follows:
+Finally, if you are using the Python client, you can create an API Client according to the following example:
 
 ```python
 import idmp_sdk

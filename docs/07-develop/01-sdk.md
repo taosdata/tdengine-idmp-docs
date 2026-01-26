@@ -185,7 +185,7 @@ export CLOUD_TOKEN=${Access-token 的值}
 export BEARER_TOKEN=${Authorization Token 的值}
 ```
 
-您把获取到的 token 设置到了名为 BEARER_TOKEN 的环境变量，对应 Python 客户端则可以按照如下示例初始化 API Client：
+最后，如果您使用的是 Python 客户端则可以按照下面的示例创建 API Client：
 
 ```python
 import idmp_sdk
