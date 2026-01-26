@@ -171,7 +171,21 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 
 ## 云服务使用 SDK 注意事项
 
-如果您使用的是 [IDMP 的云服务版](https://idmp.taosdata.com/), 则不能使用上述登录方式。因为云服务的登录认证流程和企业版有所不同，云服务的前端代码封装了比较复杂的登录逻辑。建议您先通过浏览器登录云服务， 然后从浏览器的开发者工具从请求标头 “Authorization” 获取认证 token， 最后将 token 设置到环境变量中即可。假如您把获取到的 token 设置到了名为 BEARER_TOKEN 的环境变量，对应 Python 客户端则可以按照如下示例初始化 API Client：
+如果您使用的是 [IDMP 的云服务版](https://idmp.taosdata.com/), 则不能使用上述登录方式。因为云服务的登录认证流程和企业版有所不同，云服务的前端代码封装了比较复杂的登录逻辑。建议您先通过浏览器登录云服务， 然后从浏览器的开发者工具的网络标签页找到任意一个 XHR 请求， 复制以下三项数据：
+
+1. 请求 URL 的 host 部分，对于不同的 IDMP 实例这个 URL 是不同的。例如： https://ta9d8d6dc67d8a.idmp.taosdata.com
+2. 请求标头 "Access-token" 的值， 这个是云服务认证用的 token。
+3. 请求标头 “Authorization” 的值，这个的 idmp 认证用的 token。例如：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqaW0rb2lsQHRkZW5naW5lLmNvbSIsImVtYWlsIjoiamltK29pbEB0ZGVuZ2luZS5jb20iLCJqdGkiOiIxIiwiaWF0IjoxNzY5NDA4Mzk0LCJleHAiOjE3NzAwMTMxOTR9.qqRd29OysCfytJD1QFJNWqhiy1scZD-NXelofs8ytss
+
+然后将这 3 个值分别设置到环境变量中。假如：
+
+```sh
+export CLOUD_HOST=https://ta9d8d6dc67d8a.idmp.taosdata.com
+export CLOUD_TOKEN=${Access-token 的值}
+export BEARER_TOKEN=${Authorization Token 的值}
+```
+
+您把获取到的 token 设置到了名为 BEARER_TOKEN 的环境变量，对应 Python 客户端则可以按照如下示例初始化 API Client：
 
 ```python
 import idmp_sdk
@@ -179,20 +193,20 @@ from idmp_sdk.rest import ApiException
 from pprint import pprint
 import os
 
+
 configuration = idmp_sdk.Configuration(
-  host="https://idmp.taosdata.com/",
-  access_token=os.environ["BEARER_TOKEN"]
+  host=os.environ['CLOUD_HOST'],
+  access_token= os.environ['BEARER_TOKEN']
 )
 
 with idmp_sdk.ApiClient(configuration) as api_client:
-  api_instance = idmp_sdk.UomResourceApi(api_client)
+  api_client.set_default_header("Access-token", os.environ['CLOUD_TOKEN'])
+  api_instance = idmp_sdk.CategoryResourceApi(api_client)
   try:
-    # Create analysis from prompt
-    api_response = api_instance.api_v1_uomclasses_get()
-    print("The response of UomResourceApi->api_v1_uomclasses_get:\n")
+    api_response = api_instance.api_v1_categories_get(idmp_sdk.CategoryType.ANALYSIS, system_only=False)
     pprint(api_response)
   except ApiException as e:
-    print("Exception when calling UomResourceApi->api_v1_uomclasses_get: %s\n" % e)
+    print("Exception when calling CategoryResourceApi->api_v1_categories_get: %s\n" % e)
 ```
 
 其它语言客户端使用方法类似。
