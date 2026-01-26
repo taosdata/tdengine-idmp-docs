@@ -167,23 +167,23 @@ with idmp_sdk.ApiClient(configuration) as api_client:
     print("Exception when calling UomResourceApi->api_v1_uomclasses_get: %s\n" % e)
 ```
 
-## 云服务使用 SDK 注意事项
+## Cloud Service SDK Usage Notes
 
-如果您使用的是 [IDMP 的云服务版](https://idmp.tdengine.com/), 则不能使用上述登录方式。因为云服务的登录认证流程和企业版有所不同，云服务的前端代码封装了比较复杂的登录逻辑。建议您先通过浏览器登录云服务， 然后从浏览器的开发者工具的网络标签页找到任意一个 XHR 请求， 复制以下三项数据：
+If you are using the [IDMP Cloud Service Edition](https://idmp.tdengine.com/), you cannot use the login method described above. Because the login authentication process for the cloud service differs from the enterprise edition, the cloud service frontend code encapsulates more complex login logic. It is recommended that you first log in to the cloud service through a browser, then find any XHR request from the Network tab of the browser's developer tools, and copy the following three pieces of data:
 
-1. 请求 URL 的 host 部分，对于不同的 IDMP 实例这个 URL 是不同的。例如： https://ta9d8d6dc67d8a.idmp.tdengine.com
-2. 请求标头 "Access-token" 的值， 这个是云服务认证用的 token。
-3. 请求标头 “Authorization” 的值，这个的 idmp 认证用的 token。例如：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqaW0rb2lsQHRkZW5naW5lLmNvbSIsImVtYWlsIjoiamltK29pbEB0ZGVuZ2luZS5jb20iLCJqdGkiOiIxIiwiaWF0IjoxNzY5NDA4Mzk0LCJleHAiOjE3NzAwMTMxOTR9.qqRd29OysCfytJD1QFJNWqhiy1scZD-NXelofs8ytss
+1. The host part of the request URL, which differs for different IDMP instances. For example: https://ta9d8d6dc67d8a.idmp.tdengine.com
+2. The value of the request header "Access-token", which is the token used for cloud service authentication.This Token is extremely long, so an example won't be given here.
+3. The value of the request header "Authorization", which is the token used for IDMP authentication. For example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqaW0rb2lsQHRkZW5naW5lLmNvbSIsImVtYWlsIjoiamltK29pbEB0ZGVuZ2luZS5jb20iLCJqdGkiOiIxIiwiaWF0IjoxNzY5NDA4Mzk0LCJleHAiOjE3NzAwMTMxOTR9.qqRd29OysCfytJD1QFJNWqhiy1scZD-NXelofs8ytss
 
-然后将这 3 个值分别设置到环境变量中。假如：
+Then set these 3 values into environment variables respectively. For example:
 
 ```sh
 export CLOUD_HOST=https://ta9d8d6dc67d8a.idmp.tdengine.com
-export CLOUD_TOKEN=${Access-token 的值}
-export BEARER_TOKEN=${Authorization Token 的值}
+export CLOUD_TOKEN=${Access-token value}
+export BEARER_TOKEN=${Authorization Token value}
 ```
 
-您把获取到的 token 设置到了名为 BEARER_TOKEN 的环境变量，对应 Python 客户端则可以按照如下示例初始化 API Client：
+You have set the obtained token into an environment variable named BEARER_TOKEN. For the Python client, you can initialize the API Client as follows:
 
 ```python
 import idmp_sdk
@@ -207,7 +207,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
     print("Exception when calling CategoryResourceApi->api_v1_categories_get: %s\n" % e)
 ```
 
-其它语言客户端使用方法类似。
+The usage for clients in other languages is similar.
 
 ## How to Generate SDK
 
