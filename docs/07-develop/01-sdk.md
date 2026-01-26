@@ -167,6 +167,36 @@ with idmp_sdk.ApiClient(configuration) as api_client:
     print("Exception when calling UomResourceApi->api_v1_uomclasses_get: %s\n" % e)
 ```
 
+对于其它语言，将 -g 参数替换为对应语言的名称即可，将 --library 参数替换为对应语言的库名称。另外不同语言有不同的附加参数，可通过--additional-properties 指定，具体请参考-properties 指定 ，具体请参考 [OpenAPI Generator 文档](https://openapi-generator.tech/docs/generators) 点击对应语言名称查看详情。
+
+## 云服务使用 SDK 注意事项
+
+如果您使用的是 [IDMP 的云服务版](https://idmp.taosdata.com/), 则不能使用上述登录方式。因为云服务的登录认证流程和企业版有所不同，云服务的前端代码封装了比较复杂的登录逻辑。建议您先通过浏览器登录云服务， 然后从浏览器的开发者工具从请求标头 “Authorization” 获取认证 token， 最后将 token 设置到环境变量中即可。假如您把获取到的 token 设置到了名为 BEARER_TOKEN 的环境变量，对应 Python 客户端则可以按照如下示例初始化 API Client：
+
+```python
+import idmp_sdk
+from idmp_sdk.rest import ApiException
+from pprint import pprint
+import os
+
+configuration = idmp_sdk.Configuration(
+  host="https://idmp.taosdata.com/",
+  access_token=os.environ["BEARER_TOKEN"]
+)
+
+with idmp_sdk.ApiClient(configuration) as api_client:
+  api_instance = idmp_sdk.UomResourceApi(api_client)
+  try:
+    # Create analysis from prompt
+    api_response = api_instance.api_v1_uomclasses_get()
+    print("The response of UomResourceApi->api_v1_uomclasses_get:\n")
+    pprint(api_response)
+  except ApiException as e:
+    print("Exception when calling UomResourceApi->api_v1_uomclasses_get: %s\n" % e)
+```
+
+其它语言客户端使用方法类似。
+
 ## 生成 SDK 的方法
 
 下载 OpenAPI Generator CLI 工具：
@@ -186,9 +216,3 @@ java -jar openapi-generator-cli.jar generate -i idmp-v1.x.x.x.json -g java -o id
 ```bash
 java -jar openapi-generator-cli.jar generate -i idmp-v1.x.x.x.json -g python -o idmp-python-sdk --library urllib3 --additional-properties=packageName=idmp_sdk --skip-validate-spec
 ```
-
-对于其它语言，将 -g 参数替换为对应语言的名称即可，将 --library 参数替换为对应语言的库名称。另外不同语言有不同的附加参数，可通过--additional-properties 指定，具体请参考-properties 指定 ，具体请参考 [OpenAPI Generator 文档](https://openapi-generator.tech/docs/generators) 点击对应语言名称查看详情。
-
-## 云服务使用 SDK
-
-如果您使用的是 [IDMP 的云服务版](https://idmp.taosdata.com/), 则不能使用上述登录方式。因为云服务的登录认证流程和企业版有所不同，云服务的前端代码封装了比较复杂的登录逻辑。建议您先通过浏览器登录云服务， 然后从浏览器的开发者工具从请求标头 “Authorization” 获取认证 token， 最后将 token 设置到环境变量中即可。
