@@ -172,7 +172,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 If you are using the [IDMP Cloud Service Edition](https://idmp.tdengine.com/), you cannot use the login method described above. Because the login authentication process for the cloud service differs from the enterprise edition, the cloud service frontend code encapsulates more complex login logic. It is recommended that you first log in to the cloud service through a browser, then find any XHR request from the Network tab of the browser's developer tools, and copy the following three pieces of data:
 
 1. The host part of the request URL, which differs for different IDMP instances. For example: [https://ta9d8d6dc67d8a.idmp.tdengine.com]
-2. The value of the request header "Access-token", which is the token used for cloud service authentication.This Token is extremely long, so an example won't be given here.
+2. The value of the request header "Access-token", which is the token used for cloud service authentication. This Token is extremely long, so an example won't be given here.
 3. The value of the request header "Authorization", which is the token used for IDMP authentication. For example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJqaW0rb2lsQHRkZW5naW5lLmNvbSIsImVtYWlsIjoiamltK29pbEB0ZGVuZ2luZS5jb20iLCJqdGkiOiIxIiwiaWF0IjoxNzY5NDA4Mzk0LCJleHAiOjE3NzAwMTMxOTR9.qqRd29OysCfytJD1QFJNWqhiy1scZD-NXelofs8ytss
 
 Then set these 3 values into environment variables respectively. For example:
