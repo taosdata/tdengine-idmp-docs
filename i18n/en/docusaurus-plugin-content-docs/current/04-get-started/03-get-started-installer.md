@@ -321,4 +321,4 @@ Double-click `C:\TDengine\idmp\unins000.exe` and follow the uninstallation wizar
 </TabItem>
 </Tabs>
 
-For more detailed instructions on starting and stopping the service, see [Local Deployment](../08-operation/02-installation/01-install-guide.md).
+For more detailed instructions on starting and stopping the service, see [Local Deployment](../../operation/installation/install-guide).
