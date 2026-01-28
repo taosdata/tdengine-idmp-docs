@@ -188,7 +188,7 @@ const config = {
         },
         items: [
           {
-            label: 'AI Chat',
+            label: 'AI 问答',
             to: '/redirect?target=chat',
             position: 'right',
             target: '_blank', // 新标签页打开
