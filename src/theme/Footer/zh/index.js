@@ -245,13 +245,18 @@ class TopRight extends React.Component {
           </div>
           <script src="https://inbound.tungee.com/im/bundle.js?deployId=65a78934bd591762738300b4" name="TGTouchCS"></script>*/}
           
-          <div id="bd-aichat-btn">
+          <div className={styles.fixAichat} id="bd-aichat-btn">
             <img decoding="async" src="/img/aichat.png" alt="TDengine AI Chat" />
             <div className={styles.tipRight}>
-              <div className={styles.rightTitle}><a href="https://chat.taosdata.com">点击使用 AI 问答</a></div>
+              <div className={styles.rightTitle}>
+                <a href="https://chat.taosdata.com" target="_blank" rel="noopener noreferrer">
+                  点击使用 AI 问答
+                </a>
+              </div>
               <div style={{ color: "#333844" }}>TDengine 的智能助手</div>
             </div>
           </div>
+
           <div className={styles.fixWechat} id="bd-wechat-btn">
             <img decoding="async" className={styles.wechatLogo} src="/img/fixlogo2.png" />
             <div className={styles.tipRight}>
