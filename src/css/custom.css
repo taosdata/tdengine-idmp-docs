@@ -140,6 +140,11 @@ caption {
   background-size: cover
 }
 
+/* Hide ChatAI-中文 in English version */
+.navbar__items--right .navbar__item[href="/en/redirect/?target=chat"] {
+  display: none !important;
+}
+
 .navbar__logo {
   width: 100%;
   height: 36px;
