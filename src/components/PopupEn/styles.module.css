@@ -33,11 +33,17 @@
 }
 
 .closePopup {
+  display: flex;
+  justify-content: flex-end;
   height: 16px;
+}
+
+.closePopupButton {
+  background: transparent;
+  border: none;
   margin: 0;
   padding: 0;
-  text-align: right;
-  cursor: pointer
+  cursor: pointer;
 }
 
 .closePopup svg {
