@@ -2,6 +2,10 @@
 
 TDengine Excel Add-in is a Microsoft Excel add-in that enables you to retrieve information from TDengine servers directly into worksheets. Combined with Microsoft Excel's calculation, charting, and formatting capabilities, TDengine Excel Add-in provides powerful tools for collecting, monitoring, analyzing, and reporting TDengine data.
 
+## Before You Start
+### Cell Reference
+Click on the input type component in the add-in, then click on an Excel Cell. The component will display the Cell address and retrieve the actual content in the Cell as a query parameter for data. Whether Cell range is supported is consistent with the component parameters; see the "Operation" column in the table under the feature description.
+
 ## Features Overview
 
 ### 1. Single Value Query
@@ -12,7 +16,7 @@ TDengine Excel Add-in is a Microsoft Excel add-in that enables you to retrieve i
 
 | Item | Description | Operation |
 |------|------|------|
-| Data Items | Attributes of elements, one or more can be selected | 1. Enter keywords in the input box to search and select the required data item<br/>2. Click the search icon to open advanced search conditions, fill in and confirm |
+| Data Items | Attributes of elements, one or more can be selected | 1. Enter keywords in the input box to search and select the required data item<br/>2. Click the search icon to open advanced search conditions, fill in and confirm <br/>3. Address reference: Click on the data item first, then select an Excel cell. Supports address range. The component will display the cell address and parse the content in the cell. Valid content is element path `/Utilities/California/Los Angeles County/Los Angeles/em-1`, which gets all attributes under the element path; attribute path `/Utilities/California/Los Angeles County/Los Angeles/em-1 \| Current` gets an individual attribute |
 | Output Cell | The starting cell in Excel where data will be output | 1. Click a cell in Excel to auto-bind<br/>2. Manually enter the Excel cell position, e.g., `Sheet1!A1` |
 | Time Position | Configuration for the time column in output data | 1. Do not display time<br/>2. Time at left<br/>3. Time on top (click to switch) |
 
@@ -35,10 +39,10 @@ Current function output result:
 
 | Item | Description | Operation |
 |------|------|------|
-| Data Items | Attributes of elements, one or more can be selected | 1. Enter keywords in the input box to search and select the required data item<br/>2. Click the search icon to open advanced search conditions, fill in and confirm |
-| Fill Type | Query interpolation, TDengine fill clause fill type (default previous non-null value) | Supported types (dropdown selection):<br/>1. Previous non-null value<br/>2. Fill with custom value<br/>3. Fill with null<br/>4. Linear fill<br/>5. Next non-null value |
-| Fill Custom Value | The specific value to fill | Only displayed when fill type is selected as "Fill with custom value" |
-| Time Stamp | The specific time to query data | Time selection box:<br/>1. Yesterday at midnight<br/>2. Today at midnight<br/>3. Current time<br/>Or select a specific point in time |
+| Data Items | Attributes of elements, one or more can be selected | 1. Enter keywords in the input box to search and select the required data item<br/>2. Click the search icon to open advanced search conditions, fill in and confirm <br/>3. Address reference: Click on the data item first, then select an Excel cell. Supports address range. The component will display the cell address and parse the content in the cell. Valid content is element path `/Utilities/California/Los Angeles County/Los Angeles/em-1`, which gets all attributes under the element path; attribute path `/Utilities/California/Los Angeles County/Los Angeles/em-1 \| Current` gets an individual attribute ||
+| Fill Type | Query interpolation, TDengine fill clause fill type (default previous non-null value) | Supported types (dropdown selection):<br/>1. Previous non-null value<br/>2. Fill with custom value<br/>3. Fill with null<br/>4. Linear fill<br/>5. Next non-null value <br/>Supports single Cell reference |
+| Fill Custom Value | The specific value to fill | Only displayed when fill type is selected as "Fill with custom value" <br/>Supports single Cell reference |
+| Time Stamp | The specific time to query data | Time selection box:<br/>1. Yesterday at midnight<br/>2. Today at midnight<br/>3. Current time<br/>Or select a specific point in time <br/>Supports single Cell reference |
 | Output Cell | The starting cell in Excel where data will be output | 1. Click a cell in Excel to auto-bind<br/>2. Manually enter the Excel cell position, e.g., `Sheet1!A1` |
 | Time Position | Configuration for the time column in output data | 1. Do not display time<br/>2. Time at left<br/>3. Time on top (click to switch) |
 
@@ -65,8 +69,8 @@ Current function output result:
 
 | Item | Description | Operation |
 |------|------|------|
-| Data Items | Attributes of elements, one or more can be selected | 1. Enter keywords in the input box to search and select the required data item<br/>2. Click the search icon to open advanced search conditions, fill in and confirm |
-| Time Range | The specific time to query data | Time selection box:<br/>1. Yesterday's data<br/>2. Today's data<br/>3. Past one day's data<br/>Or select a specific time range |
+| Data Items | Attributes of elements, one or more can be selected | 1. Enter keywords in the input box to search and select the required data item<br/>2. Click the search icon to open advanced search conditions, fill in and confirm <br/>3. Address reference: Click on the data item first, then select an Excel cell. Supports address range. The component will display the cell address and parse the content in the cell. Valid content is element path `/Utilities/California/Los Angeles County/Los Angeles/em-1`, which gets all attributes under the element path; attribute path `/Utilities/California/Los Angeles County/Los Angeles/em-1 \| Current` gets an individual attribute |
+| Start Time/End Time | The specific time to query data | Time selection box:<br/>1. Yesterday's data<br/>2. Today's data<br/>3. Past one day's data<br/>Or select a specific time range <br/>Supports single Cell reference |
 | Output Cell | The starting cell in Excel where data will be output | 1. Click a cell in Excel to auto-bind<br/>2. Manually enter the Excel cell position, e.g., `Sheet1!A1` |
 | Time Position | Configuration for the time column in output data | 1. Do not display time<br/>2. Time at left<br/>3. Time on top (click to switch) |
 
@@ -90,10 +94,10 @@ Current function output result:
 
 | Item | Description | Operation |
 |------|------|------|
-| Data Items | Attributes of elements, one or more can be selected | 1. Enter keywords in the input box to search and select the required data item<br/>2. Click the search icon to open advanced search conditions, fill in and confirm |
-| Time Interval | The time interval for fetching data | Default value is hour |
-| Filter Expression | Filter conditions for the data | Input box (attribute names require backticks, e.g., `` `current` > 5 ``) |
-| Time Range | The specific time to query data | Time selection box:<br/>1. Yesterday hourly data<br/>2. Today hourly data<br/>3. Last 24 hours data<br/>4. Last week data<br/>5. Current month hourly data<br/>Or select a specific time range |
+| Data Items | Attributes of elements, one or more can be selected | 1. Enter keywords in the input box to search and select the required data item<br/>2. Click the search icon to open advanced search conditions, fill in and confirm <br/>3. Address reference: Click on the data item first, then select an Excel cell. Supports address range. The component will display the cell address and parse the content in the cell. Valid content is element path `/Utilities/California/Los Angeles County/Los Angeles/em-1`, which gets all attributes under the element path; attribute path `/Utilities/California/Los Angeles County/Los Angeles/em-1 \| Current` gets an individual attribute |
+| Time Interval | The time interval for fetching data | Default value is hour <br/>Supports single Cell reference |
+| Filter Expression | Filter conditions for the data | Input box (attribute names require backticks, e.g., `` `current` > 5 ``) <br/>Supports single Cell reference |
+|  Start Time/End Time  | The specific time to query data | Time selection box:<br/>1. Yesterday hourly data<br/>2. Today hourly data<br/>3. Last 24 hours data<br/>4. Last week data<br/>5. Current month hourly data<br/>Or select a specific time range <br/>Supports single Cell reference |
 | Output Cell | The starting cell in Excel where data will be output | 1. Click a cell in Excel to auto-bind<br/>2. Manually enter the Excel cell position, e.g., `Sheet1!A1` |
 | Time Position | Configuration for the time column in output data | 1. Do not display time<br/>2. Time at left<br/>3. Time on top (click to switch) |
 
@@ -118,10 +122,10 @@ Current function output result:
 
 | Item | Description | Operation |
 |------|------|------|
-| Data Items | Attributes of elements, one or more can be selected | 1. Enter keywords in the input box to search and select the required data item<br/>2. Click the search icon to open advanced search conditions, fill in and confirm |
-| Fill Type | Query interpolation, TDengine fill clause fill type (default previous non-null value) | Supported types (dropdown selection):<br/>1. Previous non-null value<br/>2. Fill with custom value<br/>3. Fill with null<br/>4. Linear fill<br/>5. Next non-null value |
-| Fill Custom Value | The specific value to fill | Only displayed when fill type is selected as "Fill with custom value" |
-| Time Stamp | The specific time to query data | Input box: can enter multiple time points |
+| Data Items | Attributes of elements, one or more can be selected | 1. Enter keywords in the input box to search and select the required data item<br/>2. Click the search icon to open advanced search conditions, fill in and confirm <br/>3. Address reference: Click on the data item first, then select an Excel cell. Supports address range. The component will display the cell address and parse the content in the cell. Valid content is element path `/Utilities/California/Los Angeles County/Los Angeles/em-1`, which gets all attributes under the element path; attribute path `/Utilities/California/Los Angeles County/Los Angeles/em-1 \| Current` gets an individual attribute |
+| Fill Type | Query interpolation, TDengine fill clause fill type (default previous non-null value) | Supported types (dropdown selection):<br/>1. Previous non-null value<br/>2. Fill with custom value<br/>3. Fill with null<br/>4. Linear fill<br/>5. Next non-null value <br/>Supports single Cell reference |
+| Fill Custom Value | The specific value to fill | Only displayed when fill type is selected as "Fill with custom value" <br/>Supports single Cell reference |
+| Time Stamp | The specific time to query data | Input box: can enter multiple time points <br/>Supports single Cell reference |
 | Output Cell | The starting cell in Excel where data will be output | 1. Click a cell in Excel to auto-bind<br/>2. Manually enter the Excel cell position, e.g., `Sheet1!A1` |
 | Time Position | Configuration for the time column in output data | 1. Do not display time<br/>2. Time at left<br/>3. Time on top (click to switch) |
 
@@ -148,11 +152,11 @@ Current function output result:
 
 | Item | Description | Operation |
 |------|------|------|
-| Data Items | Attributes of elements, one or more can be selected | 1. Enter keywords in the input box to search and select the required data item<br/>2. Click the search icon to open advanced search conditions, fill in and confirm |
-| Time Interval | The time interval for fetching data | Default value is hour |
-| Filter Expression | Filter conditions for the data | Input box (attribute names require backticks, e.g., `` `current` > 5 ``) |
-| Time Range | The specific time to query data | Time selection box:<br/>1. Yesterday hourly data<br/>2. Today hourly data<br/>3. Last 24 hours data<br/>4. Last week data<br/>5. Current month hourly data<br/>Or select a specific time range |
-| Aggregate Function | Aggregate processing of data | Dropdown select the specific TDengine aggregate function name |
+| Data Items | Attributes of elements, one or more can be selected | 1. Enter keywords in the input box to search and select the required data item<br/>2. Click the search icon to open advanced search conditions, fill in and confirm <br/>3. Address reference: Click on the data item first, then select an Excel cell. Supports address range. The component will display the cell address and parse the content in the cell. Valid content is element path `/Utilities/California/Los Angeles County/Los Angeles/em-1`, which gets all attributes under the element path; attribute path `/Utilities/California/Los Angeles County/Los Angeles/em-1 \| Current` gets an individual attribute |
+| Time Interval | The time interval for fetching data | Default value is hour <br/>Supports single Cell reference |
+| Filter Expression | Filter conditions for the data | Input box (attribute names require backticks, e.g., `` `current` > 5 ``) <br/>Supports single Cell reference |
+|  Start Time/End Time | The specific time to query data | Time selection box:<br/>1. Yesterday hourly data<br/>2. Today hourly data<br/>3. Last 24 hours data<br/>4. Last week data<br/>5. Current month hourly data<br/>Or select a specific time range <br/>Supports single Cell reference |
+| Aggregate Function | Aggregate processing of data | Dropdown select the specific TDengine aggregate function name <br/>Supports single Cell reference |
 | Output Cell | The starting cell in Excel where data will be output | 1. Click a cell in Excel to auto-bind<br/>2. Manually enter the Excel cell position, e.g., `Sheet1!A1` |
 | Time Options | Configuration for time options in output data | Checkboxes:<br/>1. Display start time<br/>2. Display end time<br/>3. Display max/min time |
 
@@ -178,11 +182,11 @@ Current function output result:
 
 | Item | Description | Operation |
 |------|------|------|
-| Data Items | Attributes of elements, one or more can be selected | 1. Enter keywords in the input box to search and select the required data item<br/>2. Click the search icon to open advanced search conditions, fill in and confirm |
-| Time Interval | The time interval for fetching data | Default value is hour |
-| Expression | Start condition START WITH, end condition END WITH | Input box (attribute names require backticks, e.g., `` `current` > 5 ``) |
-| Time Range | The specific time to query data | Time selection box:<br/>1. Yesterday hourly data<br/>2. Today hourly data<br/>3. Last 24 hours data<br/>4. Last week data<br/>5. Current month hourly data<br/>Or select a specific time range |
-| Time Unit | Time unit conversion for output | Default is seconds, dropdown select |
+| Data Items | Attributes of elements, one or more can be selected | 1. Enter keywords in the input box to search and select the required data item<br/>2. Click the search icon to open advanced search conditions, fill in and confirm <br/>3. Address reference: Click on the data item first, then select an Excel cell. Supports address range. The component will display the cell address and parse the content in the cell. Valid content is element path `/Utilities/California/Los Angeles County/Los Angeles/em-1`, which gets all attributes under the element path; attribute path `/Utilities/California/Los Angeles County/Los Angeles/em-1 \| Current` gets an individual attribute |
+| Time Interval | The time interval for fetching data | Default value is hour <br/>Supports single Cell reference |
+| Expression | Start condition START WITH, end condition END WITH | Input box (attribute names require backticks, e.g., `` `current` > 5 ``) <br/>Supports single Cell reference |
+|  Start Time/End Time | The specific time to query data | Time selection box:<br/>1. Yesterday hourly data<br/>2. Today hourly data<br/>3. Last 24 hours data<br/>4. Last week data<br/>5. Current month hourly data<br/>Or select a specific time range <br/>Supports single Cell reference |
+| Time Unit | Time unit conversion for output | Default is seconds, dropdown select <br/>Supports single Cell reference |
 | Output Cell | The starting cell in Excel where data will be output | 1. Click a cell in Excel to auto-bind<br/>2. Manually enter the Excel cell position, e.g., `Sheet1!A1` |
 | Time Position | Configuration for the time column in output data | 1. Do not display time<br/>2. Time at left<br/>3. Time on top (click to switch) |
 
