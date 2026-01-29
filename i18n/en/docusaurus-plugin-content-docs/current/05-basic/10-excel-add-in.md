@@ -5,7 +5,8 @@ TDengine Excel Add-in is a Microsoft Excel add-in that enables you to retrieve i
 ## Before You Start
 
 ### Cell Reference
-Click on the input type component in the add-in, then click on an Excel Cell. The component will display the Cell address and retrieve the actual content in the Cell as a query parameter for data. Whether Cell range is supported is consistent with the component parameters; see the "Operation" column in the table under the feature description.
+
+Click an input field in the add-in, then click an Excel Cell. The input field will then show the cell's address, and the add-in will use the content of that cell as a query parameter. Whether a cell range is supported depends on the specific parameter; see the "Operation" column in the tables below for details.
 
 ## Features Overview
 
