@@ -3,6 +3,7 @@
 TDengine Excel Add-in 是一个 Microsoft Excel 插件，它使您能够从 TDengine 服务器直接检索信息到工作表中。结合 Microsoft Excel 的计算、图形化和格式化功能，TDengine Excel Add-in 为收集、监视、分析和报告 TDengine 数据提供了强大的工具。
 
 ## 写在前面
+
 ### Cell 引用
 点击加载项中输入类型组件上，再点击 Excel Cell，组件回填展示 Cell 地址，获取 Cell 中实际内容作为数据的查询参数。是否支持 Cell 范围同组件参数一致，具体查看功能描述下表格的操作列
 
@@ -96,7 +97,7 @@ TDengine Excel Add-in 是一个 Microsoft Excel 插件，它使您能够从 TDen
 | 项目 | 描述 | 操作 |
 |------|------|------|
 | 数据项 | 元素的属性，可选择一个或多个 | 1. 在输入框输入关键词搜索，选择需要的数据项<br/>2. 点击搜索图标，弹出高级搜索条件，填写后确认<br/>3. 地址引用：先点击数据项，再选择 Excel 单元格，支持地址范围，组件回填展示单元格地址，解析单元格中的内容。有效内容是元素路径`/Utilities/California/Los Angeles County/Los Angeles/em-1`，获取元素路径下的所有属性，属性路径`/Utilities/California/Los Angeles County/Los Angeles/em-1 \| Current`，获取单独的属性 |
-| 时间间隔 | 拉取数据的时间间隔 | 默认值为小时 <br/>支持单个 Cell 引用 ||
+| 时间间隔 | 拉取数据的时间间隔 | 默认值为小时 <br/>支持单个 Cell 引用 |
 | 过滤表达式 | 数据的过滤条件 | 输入框（属性名称需增加反引号，如 `` `current` > 5 ``） <br/>支持单个 Cell 引用 |
 | 开始时间 | 查询数据的开始具体时间 | 时间选择框：<br/>1. 昨日逐时数据<br/>2. 今日逐时数据<br/>3. 最近 24 小时数据<br/>4. 最近一周数据<br/>5. 本月逐时数据<br/>或选择具体时间范围 <br/>支持单个 Cell 引用 |
 | 结束时间 | 查询数据的结束具体时间 | 时间选择框：<br/>1. 昨日逐时数据<br/>2. 今日逐时数据<br/>3. 最近 24 小时数据<br/>4. 最近一周数据<br/>5. 本月逐时数据<br/>或选择具体时间范围 <br/>支持单个 Cell 引用 |
