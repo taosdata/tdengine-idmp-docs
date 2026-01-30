@@ -24,12 +24,61 @@ Events that have occurred but have not been closed are considered active. While 
 
 ## Event Notification Messages
 
-When an event occurs, the system can automatically send a message to the designated contact based on its severity level and the configured notification rules. If the event is open, requires acknowledgment, and is not acknowledged within the specified resend interval, the system will resend the notification. If an escalation contact is defined in the notification rule, and the event is still open and unacknowledged after the configured escalation interval, the system will send a message to the escalation contact.
+Based on the configured notification rule, the system automatically sends notification messages to the specified contact point. The process is as follows:
+
+- **Initial Notification**: When an event occurs, the system determines whether to send a notification message based on the notification rule and notification interval.
+- **Resend Mechanism**: If the event requires acknowledgment and is not acknowledged within the "resend interval" and the event remains open, the system will resend the notification message at regular intervals.
+- **Escalation Mechanism**: If an escalation contact point is configured in the notification rule and the event remains unacknowledged and open within the "escalation interval", the system will send a message to the escalation contact.
+- **Notification Termination**: Once the event is acknowledged, the system no longer sends any notification messages.
 
 ## Notification Rules
 
-All events in an element share a single notification rule. In the notification rule, you can specify the contact point, resend interval, escalation contact, and escalation interval. The message body is a text template, but the system comes with predefined content and supports placeholder variables for dynamic substitution.
+All events for an element share a single notification rule that defines the notification behavior when events occur.
 
-Every event is associated with an event template. Whether a notification is sent depends on the severity level configured in the event template. A notification is only sent if the event’s severity level is equal to or higher than the threshold defined for the device. This prevents notification overload and allows events from the same template to have different severity levels.
+**Notification Rule Configuration Parameters**:
 
-A child element automatically inherits the notification rule of their parent element notification rule at the time when the child element is created. However, you can modify the rule afterward, and the new notification rule will apply to that element and all its descendants.
+| Parameter                | Description                                                                                                             |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
+| Contact Point            | The method for receiving notifications (email, Feishu, Webhook, etc.)                                                   |
+| Resend Interval          | The time interval for resending notifications for unacknowledged active events                                          |
+| Escalation Contact Point | An additional contact point to send notifications to if the event remains unacknowledged within the escalation interval |
+| Escalation Interval      | The time threshold for triggering escalation notifications                                                              |
+| Maximum Resend Count     | The maximum number of times a single event can be resent                                                                |
+| Message Template         | The text content of the notification message, supporting variable substitution                                          |
+
+**Inheritance Mechanism**: Child elements automatically inherit the notification rule from their parent element at the time of creation. After modification, the new notification rule will apply to that element and all its descendants.
+
+## Event Templates
+
+Every event must be associated with an event template. Each event template contains basic configurations such as severity level, as well as parameters that control notification frequency and acknowledgment mechanisms.
+
+### Core Functionality
+
+- **Event Marking**: The severity level is used to mark the event's priority level, facilitating event classification and analysis.
+- **Notification Frequency Control**: The "minimum notification interval" parameter prevents excessively frequent notifications. For example, if set to 20 minutes, even if an analysis triggers an event every minute, the system will only send a notification once every 20 minutes.
+- **Template Inheritance**: Supports inheritance relationships between base templates and sub-templates, where sub-templates can inherit configurations from parent templates.
+
+### Event Template Configuration Parameters
+
+When creating or editing an event template, you need to configure the following parameters:
+
+| Parameter                     | Description                                                                                                                                                                                                                    | Example                              |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ |
+| Name                          | The unique identifier of the event template, used to identify the template in the system                                                                                                                                       | test-event-template                  |
+| Category                      | The category of the event template, used to organize and manage templates. You can choose "Base Template" or a custom category                                                                                                 | Base Template                        |
+| Base Template Only            | Indicates whether this template is used only as a base template and cannot be used to create events directly. "Yes" means the template serves as a base for other templates, "No" means it can be used directly                | No                                   |
+| Severity Level                | The priority level mark for events, including: Critical, Major, Minor, Warning, Normal                                                                                                                                         | Critical                             |
+| Event Naming Pattern          | Defines the rules for generating event names, which can include variables and fixed text for automatic event name generation                                                                                                   | -                                    |
+| Allow Extension               | Whether other templates can extend from this template. "Yes" means other templates can inherit this template's configuration                                                                                                   | Yes                                  |
+| Allow Acknowledgment          | Whether events require manual acknowledgment. When set to "Yes", unacknowledged events will continue to send notifications at the resend interval until acknowledged, closed, or the maximum resend count is reached           | Yes                                  |
+| Reason Code                   | The reason classification for events, which must be defined in advance in "Libraries/Enumerations"                                                                                                                             | Circuit Fault                        |
+| Reason Code Value             | Specific subdivisions of the reason code, providing more detailed reason descriptions                                                                                                                                          | Voltage / Overvoltage                |
+| Minimum Notification Interval | The minimum time interval between consecutive notifications for events from the same analysis. Notifications will only be sent if the time since the last notification exceeds this interval, preventing notification overload | 20 minutes                           |
+| Description                   | Detailed information about the event template, explaining its purpose and usage scenarios                                                                                                                                      | Used to detect overvoltage anomalies |
+
+### Configuration Guidelines
+
+- **Allow ACK**: When "Allow ACK" is enabled, unacknowledged active events will continue to send notifications at the intervals specified in the notification rule until they are acknowledged, closed, or the maximum resend count is reached.
+- **Notification Interval Control**: The "minimum notification interval" parameter helps prevent excessive notifications from the same analysis. For example, after setting it to 20 minutes, even if an analysis triggers events every minute, notifications will only be sent once per 20 minutes.
+- **Reason Code**: Proper use of reason codes and reason code values helps classify and count events, facilitating subsequent root cause analysis and problem tracking.
+- **Template Extension**: When "Allow Extension" is enabled, you can create sub-templates based on this template. Sub-templates will inherit part of the parent template's configuration, making it easier to manage similar types of events.
