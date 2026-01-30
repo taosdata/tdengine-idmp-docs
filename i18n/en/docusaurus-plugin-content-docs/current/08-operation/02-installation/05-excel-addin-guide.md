@@ -66,6 +66,7 @@ For complete IDMP configuration file documentation, please refer to: [TDengine I
 1. **Administrator Privileges**: Windows platform requires administrator privileges to execute installation commands
 2. **Excel Version**: Supports Excel 2016 and above (Windows/macOS)
 3. **Network Connection**: Requires access to download installation scripts and connect to IDMP service
+4. **(Windows only)** You must install Node 22.3 or later to enable logging.
 
 ## Installation Guide
 
@@ -122,7 +123,7 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 - `-Url`: Specify IDMP HTTPS service address, **please replace with your actual service address**
 - `-EnableLogging`: Enables installation and add-in operation logging to help troubleshoot issues.  
   Log file save path:
-`C:\Users\<YourUsername>\AppData\Roaming\Microsoft\AddIns\VueOfficeAddin\Logs\tdengine_eai.log`
+  `C:\Users\<YourUsername>\AppData\Roaming\Microsoft\AddIns\VueOfficeAddin\Logs\tdengine_eai.log`
 
 You can also enable or disable logging separately:
 
