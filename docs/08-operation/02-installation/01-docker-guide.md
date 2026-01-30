@@ -261,9 +261,9 @@ docker rm tdengine-idmp
 
 停止后数据不会保留，如需持久化数据请挂载数据卷。
 
-## 常见问题排查
+## 常见错误
 
-### 1. 容器 `tdengine-idmp` 状态为 `unhealthy`，或者 IDMP 页面中显示 `Python Server not available.` 错误
+### 1. 容器 `tdengine-idmp` 状态为 `unhealthy`，或者 IDMP 页面中显示 `Python Server unhealthy.` 等错误
 
 这种情况需要排查 `tdengine-idmp` 的 Python 应用是否正常，请按照以下命令逐步排查：
 
@@ -275,19 +275,19 @@ docker exec -it tdengine-idmp bash
 ps -ef | grep python
 
 # 如果进程不存在，可以查看 log 文件中是否包含错误信息
-cd /var/log/taos && cat ai-default.log | more
+cd /var/log/taos && cat idmp-ai.log | more
 
 # 如果 log 文件不存在，或者查找错误困难，可以执行下方命令进行测试
-export IDMP_DATA_PATH=/var/lib/taos/idmp && export IDMP_LOG_PATH=/var/log/taos && export SENTENCE_MODEL_PATH=/usr/local/taos/idmp/chat/sentence-transformer && export MODEL_FORMAT=onnx && python /usr/local/taos/idmp/chat/src/server.py
+export IDMP_DATA_PATH=/var/lib/taos/idmp && export IDMP_LOG_PATH=/var/log/taos && export SENTENCE_MODEL_PATH=/usr/local/taos/idmp/ai-server/static/sentence-transformer && export PPOCR_PATH=/usr/local/taos/idmp/ai-server/static/ppocr-v5 && export MODEL_FORMAT=onnx && python /usr/local/taos/idmp/ai-server/run.py
 ```
 
 以上过程，如果 log 文件中包含错误信息，或者最后一条命令执行报错，建议联系 TDengine 团队。联系时请提供 log 文件与命令行报错截图，log 文件的获取方式参考以下命令：
 
 ```bash
 # 容器外部执行（不要忽略末尾点号，代表当前目录）
-docker cp tdengine-idmp:/var/log/taos/ai-default.log .
+docker cp tdengine-idmp:/var/log/taos/idmp-ai.log .
 ```
 
-### 2. IDMP 页面中显示 `AI 服务不可用` 错误
+### 2. IDMP 页面中显示 `AI service is unhealthy` 等错误
 
 首先，可以在 `管理后台 -> 连接` 页面点击进入 AI 连接的详情页面，查看是否内置密钥过期。如果过期，请尽快设置有效的密钥或新建连接；如果未过期，请按照 `常见问题1` 进行排查；如果仍未发现问题，建议联系 TDengine 团队。
