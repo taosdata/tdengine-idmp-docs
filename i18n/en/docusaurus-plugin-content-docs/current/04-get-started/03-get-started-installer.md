@@ -34,8 +34,8 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
 1. Run the following commands to install TDengine IDMP:
 
    ```bash
-   tar -zxvf tdengine-idmp-enterprise-1.0.12.0-linux-generic.tar.gz && \
-   cd tdengine-idmp-enterprise-1.0.12.0 && \
+   tar -zxvf tdengine-idmp-enterprise-1.0.12.1-linux-generic.tar.gz && \
+   cd tdengine-idmp-enterprise-1.0.12.1 && \
    sudo ./install.sh
    ```
 
@@ -88,7 +88,7 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
 1. Run the following command to install TDengine IDMP:
 
    ```bash
-   sudo rpm -ivh --nodeps tdengine-idmp-enterprise-1.0.12.0-linux-generic.rpm
+   sudo rpm -ivh --nodeps tdengine-idmp-enterprise-1.0.12.1-linux-generic.rpm
    ```
 
    :::tip
@@ -140,7 +140,7 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
 1. Run the following command to install TDengine IDMP:
 
    ```bash
-   sudo dpkg -i tdengine-idmp-enterprise-1.0.12.0-linux-generic.deb
+   sudo dpkg -i tdengine-idmp-enterprise-1.0.12.1-linux-generic.deb
    ```
 
    :::tip
@@ -192,7 +192,7 @@ You can install TDengine IDMP locally on a Linux or macOS machine. In this docum
 1. Run the following command to install TDengine IDMP:
 
    ```bash
-   sudo installer -pkg tdengine-idmp-enterprise-1.0.12.0-macos-generic.pkg -target /
+   sudo installer -pkg tdengine-idmp-enterprise-1.0.12.1-macos-generic.pkg -target /
    ```
 
    :::tip
