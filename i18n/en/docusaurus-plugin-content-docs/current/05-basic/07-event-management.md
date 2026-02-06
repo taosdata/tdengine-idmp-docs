@@ -26,7 +26,7 @@ Events that have occurred but have not been closed are considered active. While 
 
 Based on the configured notification rule, the system automatically sends notification messages to the specified contact point. The process is as follows:
 
-- **Initial Notification**: When an event occurs, the system determines whether to send a notification message based on the notification rule and notification interval.
+- **Initial Notification**: When an event occurs, the system determines whether to send a notification message based on the notification rule and the notification interval defined within it.
 - **Resend Mechanism**: If the event requires acknowledgment and is not acknowledged within the "resend interval" and the event remains open, the system will resend the notification message at regular intervals.
 - **Escalation Mechanism**: If an escalation contact point is configured in the notification rule and the event remains unacknowledged and open within the "escalation interval", the system will send a message to the escalation contact.
 - **Notification Termination**: Once the event is acknowledged, the system no longer sends any notification messages.
@@ -39,7 +39,7 @@ All events for an element share a single notification rule that defines the noti
 
 | Parameter                | Description                                                                                                             |
 | ------------------------ | ----------------------------------------------------------------------------------------------------------------------- |
-| Contact Point            | The method for receiving notifications (email, Feishu, Webhook, etc.)                                                   |
+| Contact Point            | The method for receiving notifications (email, Feishu)                                                                  |
 | Resend Interval          | The time interval for resending notifications for unacknowledged active events                                          |
 | Escalation Contact Point | An additional contact point to send notifications to if the event remains unacknowledged within the escalation interval |
 | Escalation Interval      | The time threshold for triggering escalation notifications                                                              |
