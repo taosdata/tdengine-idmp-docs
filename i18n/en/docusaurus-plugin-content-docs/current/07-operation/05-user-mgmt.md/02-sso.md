@@ -51,7 +51,7 @@ This document provides detailed instructions on configuring OAuth 2.0 Single Sig
 ### 8. Redirect URL
 
 - **Required**: Yes
-- **Type**: URL string, must start with `http://` or `https://`
+- **Type**: URL string, must start with `http://` or `https://`, for example: http://localhost:6042/login/back.
 - **Purpose**: After OAuth authorization is complete, the provider will redirect users back to your application at this URL
 
 ### 9. Scope
