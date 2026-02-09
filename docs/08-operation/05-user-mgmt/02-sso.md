@@ -51,7 +51,7 @@
 ### 8. 重定向 URL (Redirect URL)
 
 - **必填**: 是
-- **类型**: URL 字符串，必须与在 OAuth 提供商处注册的回调 URL 完全一致，以 `http://` 或 `https://` 开头，例如：http://localhost:6042/login/back。
+- **类型**: URL 字符串，必须与在 OAuth 提供商处注册的回调 URL 完全一致，以 `http://` 或 `https://` 开头，例如：`http://localhost:6042/login/back`。
 - **用途**: OAuth 授权完成后，提供商将用户重定向回您的应用的 URL。
 
 ### 9. 权限范围 (Scope)
