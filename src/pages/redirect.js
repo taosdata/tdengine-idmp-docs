@@ -19,6 +19,9 @@ const urlMappings = {
     en: 'https://tdengine.com/contact/',
     'zh-Hans': 'https://www.taosdata.com/contactus',
   },
+  chat: {
+    'zh-Hans': 'https://chat.taosdata.com/',
+  },
 };
 
 function getQueryParam(search, key) {

@@ -88,17 +88,19 @@ After entering a complete SQL query, you can click the "Verify" button to verify
 1. **Time Column**: If you want to use a specific column from the query results as the time column, you can select or deselect it.
 2. **Dimensions**: If you want to set some columns of the result as dimensions, you can select one or more columns as dimension columns.
 
-Advanced queries also support the following three replacement parameters:
+Advanced queries also support the following four replacement parameters:
 
 1. `${FROM_TIME}`: Used in a panel or dashboard to substitute the start time from the time picker.
 2. `${TO_TIME}`: Used in a panel or dashboard to substitute the end time from the time picker.
 3. `${Element#fullVirtualTable}`: Used in element templates to substitute the full virtual table of the element passed into the panel or dashboard element selector.
+4. `${Element#name}`: Used in a panel or dashboard to substitute the name of the current element.
 
 :::note
 
 1. All of the above parameters support autocomplete: in the SQL editor, typing `FROM_TIME` will autocomplete to `${FROM_TIME}`, typing `TO_TIME` will autocomplete to `${TO_TIME}`, and typing `ELEMENT` will autocomplete to `${Element#fullVirtualTable}`.
 2. When `${FROM_TIME}` and `${TO_TIME}` are substituted, they will automatically determine whether to add single quotes based on context; you do not need to add quotes when using these parameters.
 3. When `${Element#fullVirtualTable}` is substituted, it will automatically determine whether to add backticks based on context; you do not need to add backticks when using this parameter.
+4. The `${Element#name}` parameter will be replaced with a string; when using this parameter, you need to add single quotes.
 
 :::
 
@@ -111,3 +113,7 @@ While a panel is in edit mode, you can modify the display settings for the panel
 ## Panel Card or List View
 
 Panel lists are displayed in card view by default and can be switched to list view. Each panel can be viewed, edited, deleted, or converted to a template through the menu. If a panel does not contain child element attributes, it can be converted to a template.
+
+## Sharing Panels
+
+Panels support sharing functionality. On the panel view page, click the share icon in the top-right corner, set the sharing duration, and generate a unique sharing link. Through this link, other users can access and view the panel, and it can also be embedded in third-party application pages.

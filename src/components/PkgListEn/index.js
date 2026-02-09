@@ -1,63 +1,98 @@
-import React, { useState, useEffect } from "react";
-import Popupv37 from "../PopupEn/";
-import { fetchPackagesFromProduct } from "../data/productAdapter";
+import { useEffect, useMemo, useState } from "react";
+import Popup from "../PopupEn";
+import styles from "./styles.module.css";
 
-export default function PkgListV37(props) {
-  const { productName, version, platform, arch, pkgType, jsonPath } = props;
-  const lang = "en";
-  const [pkgs, setPkgs] = useState([]);
-  const [popState, setPopState] = useState({ hidden: true, selectedPkg: null });
-  const [pkgValue, setPkgValue] = useState({ pkgId: "", productName: "", pkgUrl: "" });
+const REMOTE_URL = "https://tdengine.com/wp-content/themes/tdengine/js/product-data.json";
+const PHP_ENDPOINT = "https://tdengine.com/assets/globalscripts/generatelink_v3_download_center.php";
 
-  useEffect(() => {
-    (async () => {
-      console.log("[PkgListV37] fetch params", { productName, version, platform, arch, pkgType, jsonPath });
-      const list = await fetchPackagesFromProduct({ productName, version, platform, arch, pkgType, jsonPath, lang });
-      console.log("[PkgListV37] adapter returned", list?.length, list?.slice?.(0, 5));
-      setPkgs(list || []);
-    })();
-  }, [productName, version, platform, arch, pkgType, jsonPath]);
+export default function PkgList({
+    productName,
+    version: versionProp,
+    platform
+}) {
+    const [data, setData] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
+    const [selectedPackage, setSelectedPackage] = useState(null);
 
-  function openPopupFor(pkg) {
-    console.log("[PkgListV37] clicked pkg", pkg);
-    setPopState({ hidden: false, selectedPkg: pkg });
-    setPkgValue({
-      pkgId: pkg.id,
-      productName: productName,
-      version: version,
-      pkgUrl: pkg.url || pkg['download-url'] || pkg['download_url'] || ""
-    });
-  }
+    useEffect(() => {
+        fetch(REMOTE_URL)
+            .then((r) => r.json())
+            .then(setData)
+            .catch((e) => {
+                console.error(e);
+                setData([]);
+            });
+    }, []);
 
-  function closePopup() {
-    setPopState({ hidden: true, selectedPkg: null });
-    setPkgValue({ pkgId: "", productName: "", version: "", pkgUrl: "" });
-  }
+    const pkgs = useMemo(() => {
+        const product = data.find((p) => p?.name === productName);
+        const pkgVersion = versionProp || product?.filters?.versions[0];
+        const all = product?.versions || [];
+        const matchedVersions = all.filter(
+            (v) =>
+                v?.version === pkgVersion &&
+                v?.platform === platform
+        );
+        const seen = new Set();
+        return matchedVersions.filter((v) => {
+            const url = v?.["download-url"];
+            if (seen.has(url)) return false;
+            seen.add(url);
+            return true;
+        });
+    }, [data, productName, versionProp, platform]);
 
-  // console.log('[PkgListV37] popState=', popState, 'pkgValue=', pkgValue);
+    const openPopup = (pkg) => {
+        setSelectedPackage({
+            downloadLink: pkg["download-url"],
+            productName: productName,
+            version: pkg.version
+        });
+        setIsOpen(true);
+    };
 
-  return (
-    <div id="server-packageList" className="package-list">
-      <Popupv37
-        hidden={popState.hidden}
-        productName={productName}
-        version={version}
-        path={popState.selectedPkg ? (popState.selectedPkg.url || popState.selectedPkg['download-url'] || popState.selectedPkg['download_url']) : pkgValue.pkgUrl}
-        lang={(typeof navigator !== 'undefined' && navigator.language) ? navigator.language.split('-')[0] : 'en'}
-        pfn={closePopup}
-      />
-      <ul>
-        {pkgs.map((pkg) => (
-          <li key={pkg.id || pkg.url}>
-            <a
-              href={pkg.url || "#!"}
-              onClick={(e) => { e.preventDefault(); openPopupFor(pkg); }}
-            >
-              {pkg.name} {pkg.size ? `(${pkg.size})` : null}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+    const closePopup = () => {
+        setIsOpen(false);
+        setSelectedPackage(null);
+    };
+
+    const handlePopupSubmit = async (formValues) => {
+        const fd = new FormData();
+        Object.entries({
+            email: formValues.email,
+            firstName: formValues.firstName,
+            lastName: formValues.lastName,
+            phone: formValues.phone || "",
+            company: formValues.company,
+            path: selectedPackage.downloadLink,
+            pkg: selectedPackage.productName,
+            version: selectedPackage.version
+        }).forEach(([k, v]) => fd.append(k, v ?? ""));
+
+        const res = await fetch(PHP_ENDPOINT, {
+            method: "POST",
+            body: fd,
+        });
+
+        const data = await res.json();
+
+        if (data[0]?.status !== "Success") {
+            throw new Error(data?.[0]?.message || "Submission failed");
+        }
+
+        return data;
+    };
+
+    return (
+        <>
+            <ul>
+                {pkgs.map((p, idx) => (
+                    <li key={p['download-url']} >
+                        <button className={styles.packageItem} onClick={() => openPopup(p)}>{p.name} ({p.size})</button>
+                    </li>
+                ))}
+            </ul>
+            {isOpen && (<Popup onClose={closePopup} onSubmit={handlePopupSubmit} />)}
+        </>
+    );
 }
