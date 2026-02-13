@@ -12,9 +12,14 @@ TDengine IDMP SDK 使您可以以编程的方式无障碍访问整个数据资�
 
 ## Java SDK 使用说明
 
-### 引入 SDK
+### 前提条件
 
-如果您的开发环境已经有 maven，建议先将 idmp-sdk 安装到本地 maven 仓库，以便在项目中引用。
+1. 安装最新 Java 稳定版。（至少 Java 11）
+2. 安装 Maven 命令行工具。
+
+### 安装 SDK
+
+先将 idmp-sdk 安装到本地 maven 仓库，以便在项目中引用。
 
 ```bash
 cd idmp-java-sdk
@@ -84,6 +89,10 @@ public class ElementApiTest {
 ```
 
 ## Python SDK 使用说明
+
+### 前提条件
+
+安装 Python 开发环境。（python >= 3.10）
 
 ### 安装 SDK
 
@@ -167,6 +176,50 @@ with idmp_sdk.ApiClient(configuration) as api_client:
     print("Exception when calling UomResourceApi->api_v1_uomclasses_get: %s\n" % e)
 ```
 
+对于其它语言，将 -g 参数替换为对应语言的名称即可，将 --library 参数替换为对应语言的库名称。另外不同语言有不同的附加参数，可通过--additional-properties 指定，具体请参考-properties 指定 ，具体请参考 [OpenAPI Generator 文档](https://openapi-generator.tech/docs/generators) 点击对应语言名称查看详情。
+
+## 云服务使用 SDK
+
+如果您使用的是 [IDMP 的云服务版](https://idmp.taosdata.com/), 则不能使用上述登录方式。因为云服务的登录认证流程和企业版有所不同，云服务的前端代码封装了比较复杂的登录逻辑。建议您先通过浏览器登录云服务， 然后从浏览器的开发者工具的网络标签页找到任意一个对后端 API 的请求，例如：/api/v1/permissions/menus 这个请求（如果过滤不出这个请求可以刷新页面再过滤），复制以下三项数据：
+
+1. 请求 URL 的 host 部分，对于不同的 IDMP 实例这个 URL 的 host 部分是不同的。它的格式是 `https://<实例ID>.idmp.taosdata.com`
+2. 请求标头 "Access-token" 的值， 这个是云服务认证用的 token。
+3. 请求标头 “Authorization” 的值，这个的 idmp 认证用的 token。注意需要去掉前缀 "Bearer "。
+
+然后将这 3 个值分别设置到环境变量中。假如：
+
+```sh
+export CLOUD_HOST=https://<实例ID>.idmp.taosdata.com
+export CLOUD_TOKEN=<Access-token 的值>
+export BEARER_TOKEN=<Authorization Token 的值>
+```
+
+最后，如果您使用的是 Python 客户端则可以按照下面的示例创建 API Client：
+
+```python
+import idmp_sdk
+from idmp_sdk.rest import ApiException
+from pprint import pprint
+import os
+
+
+configuration = idmp_sdk.Configuration(
+  host=os.environ['CLOUD_HOST'],
+  access_token= os.environ['BEARER_TOKEN']
+)
+
+with idmp_sdk.ApiClient(configuration) as api_client:
+  api_client.set_default_header("Access-token", os.environ['CLOUD_TOKEN'])
+  api_instance = idmp_sdk.CategoryResourceApi(api_client)
+  try:
+    api_response = api_instance.api_v1_categories_get(idmp_sdk.CategoryType.ANALYSIS, system_only=False)
+    pprint(api_response)
+  except ApiException as e:
+    print("Exception when calling CategoryResourceApi->api_v1_categories_get: %s\n" % e)
+```
+
+其它语言客户端使用方法类似。
+
 ## 生成 SDK 的方法
 
 下载 OpenAPI Generator CLI 工具：
@@ -186,5 +239,3 @@ java -jar openapi-generator-cli.jar generate -i idmp-v1.x.x.x.json -g java -o id
 ```bash
 java -jar openapi-generator-cli.jar generate -i idmp-v1.x.x.x.json -g python -o idmp-python-sdk --library urllib3 --additional-properties=packageName=idmp_sdk --skip-validate-spec
 ```
-
-对于其它语言，将 -g 参数替换为对应语言的名称即可，将 --library 参数替换为对应语言的库名称。另外不同语言有不同的附加参数，可通过--additional-properties 指定，具体请参考-properties 指定 ，具体请参考 [OpenAPI Generator 文档](https://openapi-generator.tech/docs/generators) 点击对应语言名称查看详情。

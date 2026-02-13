@@ -263,7 +263,7 @@ IDMP supports HTTPS with default port 6034. The built-in test certificate is bou
 
 ## Troubleshooting
 
-### 1. The container `tdengine-idmp` is in an `unhealthy` state, or the IDMP page displays the error `Python Server not available`
+### 1. The container `tdengine-idmp` is in an `unhealthy` state, or the IDMP page displays the error `Python Server unhealthy`
 
 In this case, you need to check whether the Python application in `tdengine-idmp` is functioning properly. Follow the commands below to troubleshoot step by step:
 
@@ -275,19 +275,19 @@ docker exec -it tdengine-idmp bash
 ps -ef | grep python
 
 # If the process does not exist, check the log file for error messages
-cd /var/log/taos && cat ai-default.log | more
+cd /var/log/taos && cat idmp-ai.log | more
 
 # If the log file does not exist or it is difficult to find errors, execute the following command for testing
-export IDMP_DATA_PATH=/var/lib/taos/idmp && export IDMP_LOG_PATH=/var/log/taos && export SENTENCE_MODEL_PATH=/usr/local/taos/idmp/chat/sentence-transformer && export MODEL_FORMAT=onnx && python /usr/local/taos/idmp/chat/src/server.py
+export IDMP_DATA_PATH=/var/lib/taos/idmp && export IDMP_LOG_PATH=/var/log/taos && export SENTENCE_MODEL_PATH=/usr/local/taos/idmp/ai-server/static/sentence-transformer && export PPOCR_PATH=/usr/local/taos/idmp/ai-server/static/ppocr-v5 && export MODEL_FORMAT=onnx && python /usr/local/taos/idmp/ai-server/run.py
 ```
 
 If the log file contains error messages or the last command execution results in an error, it is recommended to contact the TDengine team. When contacting them, please provide the log file and screenshots of command-line errors. To obtain the log file, refer to the following command:
 
 ```bash
 # Execute outside the container (do not ignore the dot at the end, which represents the current directory)
-docker cp tdengine-idmp:/var/log/taos/ai-default.log .
+docker cp tdengine-idmp:/var/log/taos/idmp-ai.log .
 ```
 
-### 2. The IDMP page displays the error `AI service unavailable`
+### 2. The IDMP page displays the error `AI service is unhealthy`
 
 First, you can navigate to the AI connection details page by clicking on the connection in the `Admin Console -> Connections` page to check whether the built-in key has expired. If it has expired, please set a valid key or create a new connection as soon as possible; if it has not expired, follow the troubleshooting steps in `Issue 1`; if no errors are found, it is recommended to contact the TDengine team.
