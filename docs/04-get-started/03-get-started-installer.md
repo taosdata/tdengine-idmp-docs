@@ -31,6 +31,7 @@ TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0 及以上版本。在安�
     ```bash
     tar zxvf tdengine-idmp-enterprise-1.0.12.5-linux-generic.tar.gz
     cd tdengine-idmp-enterprise-1.0.12.5
+    <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.12.5" platform="Linux-Generic" arch="x64" pkgType="Server" />
     ./install.sh
     ```
 
