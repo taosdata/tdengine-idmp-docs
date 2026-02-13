@@ -20,8 +20,8 @@ The entire editing screen consists of several major parts:
 1. **Canvas**: The canvas is the central drawing area where symbols are dragged and dropped for editing and drawing. The canvas has various properties, such as background color, grid, ruler, etc., all of which can be personalized.
 2. **Symbols**: These are the basic units of the canvas, the fundamental elements of graphical expression. Various devices and components on the diagram are symbols. Symbols have various properties, such as color, background color, size, displayed text, progress, value, state, etc.
 3. **Toolbox**: The top toolbox provides drawing tools such as pen, pencil, magnifier, eagle eye map (thumbnail), line start point, line end point, line width, view scale, auto anchor point, disable anchor point, etc.
-4. **Graphic Element Library**: There are basic graphic libraries and industry graphic libraries, and users are allowed to upload their own drawn graphics.
-5. **Configuration**: Configure the canvas and each graphic element on the canvas, such as color, background color, font, events, animations, etc., to modify their display and interactive behavior.
+4. **Symbol Library**: There are basic graphic libraries and industry graphic libraries, and users are allowed to upload their own drawn graphics.
+5. **Configuration**: Configure the canvas and each symbol on the canvas, such as color, background color, font, events, animations, etc., to modify their display and interactive behavior.
 
 This document only provides a brief introduction to the basic concepts and basic operations. More details need to be discovered through extensive use.
 
@@ -35,12 +35,12 @@ Designing the canvas involves the following steps:
 
 1. Set the properties of the canvas, including layout, color, background color, grid, etc.
    ![Canvas Properties](./images/canvas-03.png)
-2. Select symbols from the graphic element library and drag them onto the canvas.
+2. Select symbols from the symbol library and drag them onto the canvas.
 3. Edit and configure symbols, including:
    - Configure text, color, background color, etc. for symbols
-   - Configure events for symbols, setting event types (such as click, graphic element value change), event actions (such as setting graphic element properties, playing animations), and trigger conditions (such as threshold judgments) to enable data-driven display effects of symbols
+   - Configure events for symbols, setting event types (such as click, symbol value change), event actions (such as setting symbol properties, playing animations), and trigger conditions (such as threshold judgments) to enable data-driven display effects of symbols
    - Add animation effects to symbols. The system has built-in animations such as up and down jumping, left and right jumping, heartbeat, rotation, etc., and you can customize animations.
-   - Configure graphic element properties, including value, progress, progress color, state, etc., and bind them to IDMP element properties so that collected data can drive the display of symbols in real time.
+   - Configure symbol properties, including value, progress, progress color, state, etc., and bind them to IDMP element properties so that collected data can drive the display of symbols in real time.
 
 4. Connect related symbols with lines, and configure line types and line animations.
 5. During the editing process, you can preview, and after editing, save it.
@@ -50,7 +50,7 @@ These steps do not need to be performed in a fixed order and can be rearranged.
 
 ## Symbol
 
-Symbols are the basic units that make up the monitoring screen, just like Lego blocks. Each device icon and closed shape is a graphic element. By combining different symbols, you can build a complete industrial monitoring system.
+Symbols are the basic units that make up the monitoring screen, just like Lego blocks. Each device icon and closed shape is a symbol. By combining different symbols, you can build a complete industrial monitoring system.
 
 ### Appearance Settings
 
@@ -213,7 +213,7 @@ After selecting a line, you can set the appearance style of the line in the prop
 - Opacity: 0-1
 - Anchor point color, anchor point radius (≥0)
 - Shadow color, shadow blur, shadow X offset, shadow Y offset
-- Variable width color, border width (≥0)
+- Border color, border width (≥0)
 
 ### Line Animations
 
@@ -231,9 +231,9 @@ Anchor points are the "magic buckles" that keep device connections intact, ensur
 
 ### Adding/Removing Anchor Points (A)
 
-Anchor points can be added/removed on both elements and lines.
+Anchor points can be added/removed on both symbols and lines.
 
-Press the keyboard shortcut "A", hover the mouse over an element, and click the left mouse button to add an anchor point.
+Press the keyboard shortcut "A", hover the mouse over a symbol, and click the left mouse button to add an anchor point.
 
 Press the keyboard shortcut "A", hover the mouse over an anchor point, and click the left mouse button to delete the anchor point.
 
@@ -332,7 +332,7 @@ The IDMP system already includes a basic symbol library and some industry-specif
 
 ### System Symbol Library
 
-IDMP built-in symbol library meets the basic needs of most industries. There are three formats: native code (JS), Alibaba font (iconfont), images (svg, gif), and the video tag supports MP4, WebM, and Ogg formats.
+IDMP's built-in symbol library meets the basic needs of most industries, offering symbols in three formats: native code (JS), Alibaba font (iconfont), and images (svg, gif). Additionally, the canvas supports video playback for MP4, WebM, and Ogg formats.
 
 ### Private Symbol Library
 
