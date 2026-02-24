@@ -12,9 +12,14 @@ TDengine IDMP SDK allows you to programmatically access the entire data assets w
 
 ## Java SDK Usage Guide
 
-### Introducing the SDK
+### Prerequisites
 
-If your development environment already has Maven, it is recommended to install idmp-sdk into the local Maven repository first for reference in the project.
+1. Install the latest stable version of Java. (At least Java 11)
+2. Install the Maven command-line tool.
+
+### Install the SDK
+
+Install idmp-sdk into the local Maven repository first for reference in the project.
 
 ```bash
 cd idmp-java-sdk
@@ -84,6 +89,10 @@ public class ElementApiTest {
 ```
 
 ## Python SDK Usage Guide
+
+### Prerequisites
+
+Install the Python development environment. (python>=3.10 is required)
 
 ### Installing the SDK
 
@@ -166,6 +175,48 @@ with idmp_sdk.ApiClient(configuration) as api_client:
   except ApiException as e:
     print("Exception when calling UomResourceApi->api_v1_uomclasses_get: %s\n" % e)
 ```
+
+## Cloud Service SDK Usage
+
+If you are using the [IDMP Cloud Service Edition](https://idmp.tdengine.com/), you cannot use the login method described above. Because the login authentication process for the cloud service differs from the enterprise edition, the cloud service frontend code encapsulates more complex login logic. It is recommended that you first log in to the cloud service through a browser, then find any request to the backend API from the Network tab of the browser's developer tools, for example: /api/v1/permissions/menus this request (if you can't filter out this request, you can refresh the page and filter again), copy the following three pieces of data:
+
+1. The host part of the request URL, which differs for different IDMP instances. Its format is `https://<instance ID>.idmp.tdengine.com`.
+2. The value of the request header "Access-token", which is the token used for cloud service authentication.
+3. The value of the request header "Authorization", which is the token used for IDMP authentication. Note that you need to remove the prefix "Bearer ".
+
+Then set these 3 values into environment variables respectively. For example:
+
+```sh
+export CLOUD_HOST=https://your-instance-id.idmp.tdengine.com
+export CLOUD_TOKEN='your-access-token-value'
+export BEARER_TOKEN='your-authorization-token-value'
+```
+
+Finally, if you are using the Python client, you can create an API Client according to the following example:
+
+```python
+import idmp_sdk
+from idmp_sdk.rest import ApiException
+from pprint import pprint
+import os
+
+
+configuration = idmp_sdk.Configuration(
+  host=os.environ['CLOUD_HOST'],
+  access_token= os.environ['BEARER_TOKEN']
+)
+
+with idmp_sdk.ApiClient(configuration) as api_client:
+  api_client.set_default_header("Access-token", os.environ['CLOUD_TOKEN'])
+  api_instance = idmp_sdk.CategoryResourceApi(api_client)
+  try:
+    api_response = api_instance.api_v1_categories_get(idmp_sdk.CategoryType.ANALYSIS, system_only=False)
+    pprint(api_response)
+  except ApiException as e:
+    print("Exception when calling CategoryResourceApi->api_v1_categories_get: %s\n" % e)
+```
+
+The usage for clients in other languages is similar.
 
 ## How to Generate SDK
 

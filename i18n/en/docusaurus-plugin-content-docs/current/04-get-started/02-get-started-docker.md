@@ -59,4 +59,4 @@ The script provides an interactive prompt:
 - **Keep data and logs**: Default, keep data volumes when stopping containers.
 - **Clear data and logs**: Delete data volumes when stopping containers, suitable for scenarios where you need to completely clean the environment.
 
-For more detailed instructions on starting and stopping the service, see [Docker Deployment](../08-operation/02-installation/03-docker-guide.md).
+For more detailed instructions on starting and stopping the service, see [Docker Deployment](../../operation/installation/docker-guide).

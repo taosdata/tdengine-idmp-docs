@@ -38,20 +38,24 @@ Please follow the steps below to collect logs from TDengine IDMP and TDengine TS
 
 If you deployed TDengine IDMP via local installation, log files can be found in the following locations:
 
-| Component      | Location                           |
-|-----------|---------------------------------------|
-| TDengine IDMP logs | /var/log/taos/tda.log          |
-| TDengine IDMP error logs | /var/log/taos/tda-error.log |
-| TDengine TSDB-Enterprise logs | /var/log/taos/taosdlog.*      |
+| Component                     | Location                        |
+| ----------------------------- | ------------------------------- |
+| TDengine IDMP logs            | /var/log/taos/tda.log           |
+| TDengine IDMP error logs      | /var/log/taos/tda-error.log     |
+| TDengine IDMP AI logs         | /var/log/taos/idmp-ai.log       |
+| TDengine IDMP AI error logs   | /var/log/taos/idmp-ai-error.log |
+| TDengine TSDB-Enterprise logs | /var/log/taos/taosdlog.\*       |
 
 ## Containerized Deployment
 
 If you deployed TDengine IDMP using Docker, you can copy the log files from the container to your local machine using the following commands:
 
 ```bash
-docker cp tdengine-tsdb:/var/log/taos/taosdlog.*    ./
-docker cp tdengine-idmp:/var/log/taos/tda.log       ./
+docker cp tdengine-tsdb:/var/log/taos/taosdlog.* ./
+docker cp tdengine-idmp:/var/log/taos/tda.log ./
 docker cp tdengine-idmp:/var/log/taos/tda-error.log ./
+docker cp tdengine-idmp:/var/log/taos/idmp-ai.log ./
+docker cp tdengine-idmp:/var/log/taos/idmp-ai-error.log ./
 ```
 
 ## Submit an Issue
