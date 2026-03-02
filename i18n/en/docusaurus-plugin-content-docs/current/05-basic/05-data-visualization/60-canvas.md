@@ -344,10 +344,6 @@ Symbol library management can configure whether to display the symbol library, a
 
 ![Symbol Library Management](./images/canvas-16.png)
 
-## Excellent Cases
+## Examples
 
-![Case 1](./images/canvas-17.png)
-
-![Case 2](./images/canvas-18.png)
-
-![Case 3](./images/canvas-19.png)
+![Chemical manufacturing](../../assets/chemical-panel.png)
