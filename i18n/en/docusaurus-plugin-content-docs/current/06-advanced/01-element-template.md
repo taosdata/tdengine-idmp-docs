@@ -27,8 +27,9 @@ When you create a new element template, the general element template is created 
 When you create templates, it is important not to hardcode values like data references, element names, ad event names. Instead, you can dynamically generate them based on the actual element being created. TDengine IDMP provides a set of placeholder variables to use in your templates, including but not limited to:
 
 - Template name: `${Template#name}`
-- Element name: `${ElementName}`
-- Analysis name: `${AnalysisName}`
+- Element name: `${Element#name}`
+- Attribute name: `${Attribute#name}`
+- Attribute value: `${attributes["AttrName"]#value}`
 - Start time: `${startTime}`
 - End time: `${endTime}`
 
@@ -88,10 +89,12 @@ To achieve this, we use a custom placeholder keyword representing the subtable n
 5. Repeat step 2 to create the `Voltage` attribute template.
 6. For the `Model` attribute template, set the data reference type to **TDengine Tag**. All other configurations are the same as in step 2.
 
-The element template and its associated attribute templates have been successfully created. When you create a new element based on the `Smart Meters` template, the system displays a prompt asking for `kEYWORD1`, with the input field showing the hint `Subtable name from smeter supertable in smdb database`. If you enter a subtable that exists in TDengine TSDB-Enterprise, such as `smeter-1`, the element is automatically created with the name `DEV-smeter-1`. If you check its three attributes, their data reference configurations are as follows:
+The element template and its associated attribute templates have been successfully created. When you create a new element based on the `Smart Meters` template, the system displays a prompt asking for `KEYWORD1`, with the input field showing the hint `Subtable name from smeter supertable in smdb database`. If you enter a subtable that exists in TDengine TSDB-Enterprise, such as `smeter-1`, the element is automatically created with the name `DEV-smeter-1`. If you check its three attributes, their data reference configurations are as follows:
 
-- Current: `connections['TDengine']/databases['smdb']/smeter-1/columns[current]`
-- Voltage: `connections['TDengine']/databases['smdb']/smeter-1/columns[voltage]`
-- Model: `connections['TDengine']/databases['smdb']/smeter-1/columns[model]`
+- Current: TDengine/smdb/smeter-1/current
+- Voltage: TDengine/smdb/smeter-1/voltage
+- Model: TDengine/smdb/smeter-1/model
+
+7. For the **TDengine Metric** data reference type, if the data quality corresponding to the metric also exists in the TSDB database, you can configure the data quality column. For example, if the data quality column for `current` is `quality` in the same table, then after configuring `quality`, the data reference for Current becomes: TDengine/smdb/smeter-1/current:quality
 
 The custom placeholder mechanism provided by TDengine IDMP is highly flexible and powerful, making it easy automatically and efficiently to map data from TDengine TSDB-Enterprise into TDengine IDMP in bulk.
