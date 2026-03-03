@@ -24,7 +24,7 @@ When you create a new element template, the general element template is created 
 
 ## Placeholder Variables
 
-When you create templates, it is important not to hardcode values like data references, element names, ad event names. Instead, you can dynamically generate them based on the actual element being created. TDengine IDMP provides a set of placeholder variables to use in your templates, including but not limited to:
+When you create templates, it is important not to hardcode values like data references, element names, and event names. Instead, you can dynamically generate them based on the actual element being created. TDengine IDMP provides a set of placeholder variables to use in your templates, including but not limited to:
 
 - Template name: `${Template#name}`
 - Element name: `${Element#name}`
