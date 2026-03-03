@@ -29,7 +29,7 @@ When you create templates, it is important not to hardcode values like data refe
 - Template name: `${Template#name}`
 - Element name: `${Element#name}`
 - Attribute name: `${Attribute#name}`
-- Attribute value: `${attributes["AttrName"]#value}`
+- Attribute value: `${attributes["AttrName"]#value}`, e.g., `${attributes["DeviceID"]#value}` represents the value of attribute DeviceID
 - Start time: `${startTime}`
 - End time: `${endTime}`
 
