@@ -55,6 +55,6 @@
 - 电压：TDengine/smdb/smeter-1/voltage
 - 型号：TDengine/smdb/smeter-1/model
 
-4. 对于引用类型 `TDengine 指标`，如果指标对应的数据质量也存在了 TSDB 数据库，那么还可以配置数据质量列。假设 current 对应的数据质量列为 quality, 那么配置了 quality 之后，电流的数据引用设置就变成了：TDengine/smdb/smeter-1/current:quality
+4. 对于引用类型 `TDengine 指标`，如果指标对应的数据质量也存在了 TSDB 数据库，那么还可以配置数据质量列。假设 `current` 对应的数据质量列为 `quality`，那么配置了 `quality` 之后，电流的数据引用设置就变成了：TDengine/smdb/smeter-1/current:quality
 
 IDMP 提供的自定义可替换字符串十分灵活强大，便于您批量的、自动的将 TSDB 里的数据映射到 IDMP。TDengine 链接的资产模型的自动导入，就是利用`KEYWORD`来实现的。
