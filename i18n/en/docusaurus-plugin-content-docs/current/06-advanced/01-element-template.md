@@ -95,6 +95,6 @@ The element template and its associated attribute templates have been successful
 - Voltage: TDengine/smdb/smeter-1/voltage
 - Model: TDengine/smdb/smeter-1/model
 
-7. For the **TDengine Metric** data reference type, if the data quality corresponding to the metric also exists in the TSDB database, you can configure the data quality column. For example, if the data quality column for `current` is `quality` in the same table, then after configuring `quality`, the data reference for Current becomes: TDengine/smdb/smeter-1/current:quality
+For the **TDengine Metric** data reference type, if the data quality corresponding to the metric also exists in the TSDB database, you can configure the data quality column. For example, if the data quality column for `current` is `quality` in the same table, then after configuring `quality`, the data reference for Current becomes: TDengine/smdb/smeter-1/current:quality
 
 The custom placeholder mechanism provided by TDengine IDMP is highly flexible and powerful, making it easy automatically and efficiently to map data from TDengine TSDB-Enterprise into TDengine IDMP in bulk.
