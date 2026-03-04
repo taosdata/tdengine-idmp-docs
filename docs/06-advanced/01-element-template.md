@@ -13,7 +13,7 @@
 - 模板名：`${Template#name}`
 - 元素名：`${Element#name}`
 - 属性名：`${Attribute#name}`
-- 属性值：`${attributes["AttrName"]，如`， 如 `${attributes["DeviceID"]#value}` 表示属性 DeviceID 的值
+- 属性值：`${attributes["AttrName"]#value`， 如 `${attributes["DeviceID"]#value}` 表示属性 DeviceID 的值
 - 开始时间：`${startTime}`
 - 结束时间：`${endTime}`
 
