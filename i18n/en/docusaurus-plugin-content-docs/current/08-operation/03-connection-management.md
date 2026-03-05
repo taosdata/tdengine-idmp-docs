@@ -34,6 +34,8 @@ TDengine IDMP includes a default connection to the OpenAI API with a 3-day trial
 
    Do not click **Done** until you have saved your key. You cannot view the key again, and if you lose it, you will be required to create a new one.
 
+   For more information about OpenAI API keys, see the [OpenAI documentation](https://developers.openai.com/api/reference/overview).
+
    :::
 
 Next, add your new key to TDengine IDMP.
