@@ -49,7 +49,7 @@ Next, add your new key to TDengine IDMP.
 
 TDengine IDMP now uses the API key from your OpenAI account.
 
-## Advanced Options
+### Advanced Options
 
 When editing a connection form and selecting the type as `AI`, you can refer to the following instructions:
 
