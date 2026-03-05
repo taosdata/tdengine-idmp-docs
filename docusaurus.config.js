@@ -30,12 +30,12 @@ const customSidebarItemsGenerator = async ({
     // Debug logs for version extraction and sorting
     // To enable debug logs, set DEBUG_RELEASE_SORT = true
     const DEBUG_RELEASE_SORT = false;
-    
+
     // Split version docs and other docs
     const versionItems = items.filter(
       (item) => item.id && item.id.match(/(\d+\.\d+\.\d+\.\d+)$/)
     );
-    
+
     const otherItems = items.filter(
       (item) => !(item.id && item.id.match(/(\d+\.\d+\.\d+\.\d+)$/))
     );
@@ -116,10 +116,15 @@ const config = {
     localeConfigs: {
       'en': {
         label: 'English',
-        htmlLang: 'en-US'
+        htmlLang: 'en-US',
+        baseUrl: '/',
+        url: 'https://idmpdocs.tdengine.com'
       },
       'zh-Hans': {
         label: '简体中文',
+        htmlLang: 'zh-CN',
+        baseUrl: '/',
+        url: 'https://idmpdocs.taosdata.com'
       },
     },
   },
