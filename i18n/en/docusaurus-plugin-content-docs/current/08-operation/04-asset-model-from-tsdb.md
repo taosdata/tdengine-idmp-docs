@@ -172,12 +172,13 @@ From the above, it can be seen that using the **Import from OPC** feature requir
 4. After selecting a database, you can choose a **Parent Element**. The parent element represents the root node of the subtree when building the element tree from the sub-table data under the selected database.
 5. After selecting the database, the table below will load the **super table information** in that database. By default, all super tables are selected, indicating that data from all super tables will be processed. If you want to ignore the sub-tables under a specific super table, simply uncheck that super table.  
    Each super table requires configuration of its **Path Column**, **Data Column**, and **Quality Column**:
-   - **Path Column**: Specifies which tag column value in the sub-table will be used as the basis for parsing the element and attribute corresponding to that sub-table.
-   - **Data Column**: The column used as the data reference for the generated attribute.
-   - **Quality Column**: The column used as the quality reference for the attribute data reference.
+   1. **Path Column**: Specifies which tag column value in the sub-table will be used as the basis for parsing the element and attribute corresponding to that sub-table.
+   2. **Data Column**: The column used as the data reference for the generated attribute.
+   3. **Quality Column**: The column used as the quality reference for the attribute data reference.
 6. A super table can also configure a **Path Level**, which indicates how many levels of the sub-table path value should be ignored during processing.  
    For example, if the Path Start Level is set to **1** and the sub-table path column value is `Site1.tank02.temperature`, processing will start directly from `tank02.temperature`, ignoring `Site1`.  
-   If the remaining path length is less than **2** after applying the Path Start Level, that sub-table will be ignored.  
+   If the remaining path length is less than **2** after applying the Path Start Level, that sub-table will be ignored.
+
    For example, `Site1.tank02.temperature` has a length of **3** levels (split by `.`). If the Path Start Level is set to **2**, the remaining path becomes `temperature`, whose length is less than 2, so this sub-table will be ignored and not processed.
 7. Click **`Finish`**, and the system will create a **data model task**.
 
@@ -188,6 +189,6 @@ After the import task creates the elements, you can add similar elements to the 
 
 :::
 
-**Automatic Synchronization:** After the asset model is created, if new sub-tables are added in TSDB, they will automatically be synchronized to **IDMP** without manual intervention.
+**Automatic Synchronization:** After the asset model is created, if new sub-tables are added in TSDB, they will automatically be synchronized to IDMP without manual intervention.
 
-**New Super Tables:** After the asset model is created, if new super tables are added in TSDB, a new asset model must be created. Otherwise, the metadata of the new super tables cannot be synchronized to **IDMP**, and the new data assets will not be visible in IDMP.
+**New Super Tables:** After the asset model is created, if new super tables are added in TSDB, a new asset model must be created. Otherwise, the metadata of the new super tables cannot be synchronized to IDMP, and the new data assets will not be visible in IDMP.
