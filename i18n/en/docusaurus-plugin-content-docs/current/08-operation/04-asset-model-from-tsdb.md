@@ -175,7 +175,7 @@ From the above, it can be seen that using the **Import From OPC** feature requir
    - **Path Column**: Specifies which tag column value in the sub-table will be used as the basis for parsing the element and attribute corresponding to that sub-table.
    - **Data Column**: The column used as the data reference for the generated attribute.
    - **Quality Column**: The column used as the quality reference for the attribute data reference.
-6. A super table can also configure a **Path  Level**, which indicates how many levels of the sub-table path value should be ignored during processing.  
+6. A super table can also configure a **Path Level**, which indicates how many levels of the sub-table path value should be ignored during processing.  
    For example, if the Path Start Level is set to **1** and the sub-table path column value is `Site1.tank02.temperature`, processing will start directly from `tank02.temperature`, ignoring `Site1`.  
    If the remaining path length is less than **2** after applying the Path Start Level, that sub-table will be ignored.  
    For example, `Site1.tank02.temperature` has a length of **3** levels (split by `.`). If the Path Start Level is set to **2**, the remaining path becomes `temperature`, whose length is less than 2, so this sub-table will be ignored and not processed.
