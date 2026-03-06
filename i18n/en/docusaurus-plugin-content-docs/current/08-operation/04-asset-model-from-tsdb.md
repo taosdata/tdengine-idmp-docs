@@ -151,3 +151,43 @@ The CSV configuration file uses `UTF-8` encoding format and does not currently s
 After the CSV data import task is created, if new super tables are added in TSDB, new asset models need to be added, otherwise the metadata in the new super tables cannot be imported to IDMP, and the new data assets cannot be presented in IDMP.
 
 :::
+
+## Import From OPC
+
+For OPC UA data collection, the data is usually stored in **TDengine TSDB** using a **single-column model**. If the configuration method described above is used, it would become extremely complex. In the single-column model, the point data of a device may exist under one or more **super tables**. Therefore, when building the data model in **IDMP**, it is necessary to associate all sub-tables belonging to the same device together. This can be achieved very easily by using the **Import From OPC** feature.
+
+From the above, it can be seen that using the **Import From OPC** feature requires the data to meet certain conditions. Specifically, the requirements are as follows:
+
+1. The data must be stored using a **single-column model**.
+2. The super table must contain a column that represents the **element and attribute information** to which the current sub-table belongs.  
+   Example: if the value of the sub-table path column is `Site1.tank02.temperature`, it indicates that the data stored in this sub-table belongs to the attribute `temperature` of element `tank02` under element `Site1`.  
+   If another sub-table has a path column value of `Site1.tank02.pressure`, then the corresponding element is still `tank02`, but the attribute is `pressure`.
+
+## Steps
+
+1. In the **Admin Console**, create a connection to **TDengine TSDB**.
+2. In the connection list page, click the TSDB connection, then click **Import From OPC**.
+3. In the dropdown box at the top of the page, the databases under this connection will be displayed. After selecting the database to process, multiple database configurations can be submitted in a single task.  
+   Note that the **Ignore** option must be unchecked, as all databases are ignored by default.
+4. After selecting a database, you can choose a **Parent Element**. The parent element represents the root node of the subtree when building the element tree from the sub-table data under the selected database.
+5. After selecting the database, the table below will load the **super table information** in that database. By default, all super tables are selected, indicating that data from all super tables will be processed. If you want to ignore the sub-tables under a specific super table, simply uncheck that super table.  
+   Each super table requires configuration of its **Path Column**, **Data Column**, and **Quality Column**:
+   - **Path Column**: Specifies which tag column value in the sub-table will be used as the basis for parsing the element and attribute corresponding to that sub-table.
+   - **Data Column**: The column used as the data reference for the generated attribute.
+   - **Quality Column**: The column used as the quality reference for the attribute data reference.
+6. A super table can also configure a **Path  Level**, which indicates how many levels of the sub-table path value should be ignored during processing.  
+   For example, if the Path Start Level is set to **1** and the sub-table path column value is `Site1.tank02.temperature`, processing will start directly from `tank02.temperature`, ignoring `Site1`.  
+   If the remaining path length is less than **2** after applying the Path Start Level, that sub-table will be ignored.  
+   For example, `Site1.tank02.temperature` has a length of **3** levels (split by `.`). If the Path Start Level is set to **2**, the remaining path becomes `temperature`, whose length is less than 2, so this sub-table will be ignored and not processed.
+7. Click **`Finish`**, and the system will create a **data model task**.
+
+:::note
+
+Currently, elements generated through **`Import From OPC`** do **not have element templates**. This may make it cumbersome to create analyses, dashboards, and other configurations for similar devices later.  
+After the import task creates the elements, you can add similar elements to the same element template on the **Element List** page. Specifically, go to the **Element Browser**, click **Search**, enter the search conditions, and in the returned element list page select multiple elements and choose **`Add to Template`**. This will add the selected elements to the same element template, making it easier to create analyses and dashboards later.
+
+:::
+
+**Automatic Synchronization:** After the asset model is created, if new sub-tables are added in TSDB, they will automatically be synchronized to **IDMP** without manual intervention.
+
+**New Super Tables:** After the asset model is created, if new super tables are added in TSDB, a new asset model must be created. Otherwise, the metadata of the new super tables cannot be synchronized to **IDMP**, and the new data assets will not be visible in IDMP.
