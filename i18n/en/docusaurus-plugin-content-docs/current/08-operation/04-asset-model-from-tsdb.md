@@ -152,11 +152,11 @@ After the CSV data import task is created, if new super tables are added in TSDB
 
 :::
 
-## Import From OPC
+## Import from OPC
 
-For OPC UA data collection, the data is usually stored in **TDengine TSDB** using a **single-column model**. If the configuration method described above is used, it would become extremely complex. In the single-column model, the point data of a device may exist under one or more **super tables**. Therefore, when building the data model in **IDMP**, it is necessary to associate all sub-tables belonging to the same device together. This can be achieved very easily by using the **Import From OPC** feature.
+For OPC UA data collection, the data is usually stored in **TDengine TSDB** using a **single-column model**. If the configuration method described above is used, it would become extremely complex. In the single-column model, the point data of a device may exist under one or more **super tables**. Therefore, when building the data model in **IDMP**, it is necessary to associate all sub-tables belonging to the same device together. This can be achieved very easily by using the **Import from OPC** feature.
 
-From the above, it can be seen that using the **Import From OPC** feature requires the data to meet certain conditions. Specifically, the requirements are as follows:
+From the above, it can be seen that using the **Import from OPC** feature requires the data to meet certain conditions. Specifically, the requirements are as follows:
 
 1. The data must be stored using a **single-column model**.
 2. The super table must contain a column that represents the **element and attribute information** to which the current sub-table belongs.  
