@@ -24,13 +24,13 @@ It is disabled by default. When enabled, it aligns multiple metric segments by t
 
 ### Normalization
 
-It is disabled by default. When enabled after "Align by Start Time" is turned on, it normalizes the duration of different events based on the average value. The original collection duration is adjusted, allowing data from events of different durations to be compared on the same time dimension.
+It is disabled by default. It can be enabled after "Align by Start Time" is turned on. Once enabled, it normalizes the duration of different events based on the average value. The original collection duration is adjusted, allowing data from events of different durations to be compared on the same time dimension.
 
 ![normalization](./images/event-trend-normalization.png)
 
 ### Envelope
 
-It is disabled by default. When enabled after "Normalization" is turned on, it displays an envelope in the Event Trend Chart to show the range and trend of the metrics.
+It is disabled by default. It can be enabled after "Normalization" is turned on. Once enabled, it displays an envelope in the Event Trend Chart to show the range and trend of the metrics.
 
 As shown in the figure, first set the envelope range, and after confirmation, the envelope will be displayed. 0 represents the minimum value, and 100 represents the maximum value.
 ![envelope settings](./images/event-trend-envelop-setting.png)
