@@ -12,7 +12,7 @@ In the System Configuration section, you can configure the following:
    - **User Invitation**: The super administrator invites new users by entering their email addresses.
    - **Event Notification**: When an event is triggered, an alert is sent to the specified email address.
 
-   Therefore, a working SMTP server must be configured. By default, the SMTP server is set to TDengine's email server. 
+Therefore, a working SMTP server must be configured. By default, the SMTP server is set to TDengine's email server.
 
 ## Setting Up a Local Mail Service on an Intranet
 
@@ -33,12 +33,15 @@ docker pull mailhog/mailhog:v1.0.1
 #### 2. Start the MailHog container
 
 ```bash
-docker run -itd -p 1025:1025 -p 8025:8025 --name mailhog mailhog/mailhog:v1.0.1
+docker run -d -p 1025:1025 -p 8025:8025 --name mailhog mailhog/mailhog:v1.0.1
 ```
 
 **Parameter notes:**
+
 - `-p 1025:1025`: Maps the SMTP port
+  
 - `-p 8025:8025`: Maps the web UI port
+  
 - `--name mailhog`: Container name
 
 #### 3. Verify the container is running
@@ -53,13 +56,35 @@ docker logs mailhog
 
 Once running, open `http://<server-IP>:8025` in a browser to access the MailHog web UI.
 
+### Docker Compose (Optional)
+
+For more complex setups or when deploying alongside other services, you can use Docker Compose:
+
+```yaml
+version: '3'
+services:
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    container_name: mailhog
+    ports:
+      - "1025:1025"  # SMTP port
+      - "8025:8025"  # Web UI port
+    restart: unless-stopped
+```
+
+Then start it with:
+
+```bash
+docker compose up -d
+```
+
 ### Configuring MailHog in IDMP
 
 During first-time activation, if IDMP cannot reach the internet, a mail server configuration dialog will appear. Enter the following settings:
 
 | Parameter | Value |
 |-----------|-------|
-| Host | If MailHog is running as a standalone Docker container, use the host machine IP. If MailHog and IDMP share the same Docker Compose network, use the Docker bridge network IP (check with `docker inspect mailhog`; typically `172.17.0.x`) |
+| Host | If MailHog is running as a standalone Docker container, use the host machine IP. If MailHog and IDMP share the same Docker Compose network, use the MailHog service/container name (for example, `mailhog`) as the host value instead of a hard-coded IP address. |
 | Port | `1025` |
 | Username / Password | Any value (MailHog disables authentication by default) |
 | Enable TLS / Enable Auth | Uncheck both |
@@ -85,22 +110,25 @@ After activation, verify that the mail server settings were saved correctly:
 
 ### Troubleshooting
 
-**IDMP cannot connect to MailHog**
+#### IDMP cannot connect to MailHog
+
 - Confirm the container is running: `docker ps | grep mailhog`
 - Check port mappings: `docker port mailhog`
 - Test connectivity to port 1025 from inside the IDMP container
 
-**No email received in MailHog after requesting a verification code**
+#### No email received in MailHog after requesting a verification code
+
 - Verify the MailHog web UI is accessible
 - Check container logs: `docker logs mailhog`
 - Confirm the SMTP settings in IDMP are saved correctly
 
-**Email records lost after container restart**
+#### Email records lost after container restart
 
 MailHog does not persist emails by default. To retain email history, mount a volume:
 
 ```bash
 docker run -itd -p 1025:1025 -p 8025:8025 \
   -v mailhog-data:/maildir \
+  -e MH_STORAGE=maildir -e MH_MAILDIR_PATH=/maildir \
   --name mailhog mailhog/mailhog:v1.0.1
 ```

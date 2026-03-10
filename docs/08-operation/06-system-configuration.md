@@ -31,12 +31,15 @@ docker pull mailhog/mailhog:v1.0.1
 #### 2. 运行 MailHog 容器
 
 ```bash
-docker run -itd -p 1025:1025 -p 8025:8025 --name mailhog mailhog/mailhog:v1.0.1
+docker run -d -p 1025:1025 -p 8025:8025 --name mailhog mailhog/mailhog:v1.0.1
 ```
 
 **参数说明：**
+
 - `-p 1025:1025`：SMTP 端口映射
+  
 - `-p 8025:8025`：Web 管理界面端口映射
+  
 - `--name mailhog`：容器名称
 
 #### 3. 验证运行状态
@@ -68,10 +71,10 @@ services:
 ```
 
 运行命令：
-```bash
-docker-compose up -d
-```
 
+```bash
+docker compose up -d
+```
 
 ### 在 IDMP 中配置 MailHog
 
@@ -79,7 +82,7 @@ docker-compose up -d
 
 | 参数 | 说明 |
 |------|------|
-| 主机 | 若 MailHog 独立通过 Docker 部署，填写宿主机 IP；若 MailHog 与 IDMP 同属一个 Docker Compose 网络，填写 Docker 桥接网络 IP（可通过 `docker inspect mailhog` 查看，通常为 `172.17.0.x`） |
+| 主机 | 若 MailHog 独立通过 Docker 部署，填写宿主机 IP；若 MailHog 与 IDMP 同属一个 Docker Compose 网络，填写 MailHog 的服务名（如 `mailhog`）作为主机地址 |
 | 端口 | `1025` |
 | 用户名 / 密码 | 随意填写（MailHog 默认禁用认证） |
 | 启用 TLS / 启用认证 | 取消勾选 |
@@ -105,22 +108,25 @@ docker-compose up -d
 
 ### 常见问题
 
-**IDMP 无法连接到 MailHog**
+#### IDMP 无法连接到 MailHog
+
 - 确认容器正在运行：`docker ps | grep mailhog`
 - 检查端口映射：`docker port mailhog`
 - 从 IDMP 容器内部测试能否访问 MailHog 的 1025 端口
 
-**点击获取验证码后，MailHog 未收到邮件**
+#### 点击获取验证码后，MailHog 未收到邮件
+
 - 检查 MailHog Web 界面是否可正常访问
 - 查看容器日志：`docker logs mailhog`
 - 确认 IDMP 中邮件服务器配置已正确保存
 
-**容器重启后邮件记录丢失**
+#### 容器重启后邮件记录丢失
 
-MailHog 默认不持久化存储邮件，如需保留历史记录，可挂载卷：
+MailHog 默认不持久化存储邮件，如需保留历史记录，可挂载卷并配置 MailHog 使用 maildir 存储：
 
 ```bash
-docker run -itd -p 1025:1025 -p 8025:8025 \
-  -v mailhog-data:/maildir \
-  --name mailhog mailhog/mailhog:v1.0.1
+    docker run -d -p 1025:1025 -p 8025:8025 \
+    -e MH_STORAGE=maildir -e MH_MAILDIR_PATH=/maildir \
+    -v mailhog-data:/maildir \
+    --name mailhog mailhog/mailhog:v1.0.1
 ```
