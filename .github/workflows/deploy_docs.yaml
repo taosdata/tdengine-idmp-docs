@@ -38,23 +38,16 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Install AzCopy
-      run: |
-        wget -q https://aka.ms/downloadazcopy-v10-linux -O azcopy.tar.gz
-        tar -xf azcopy.tar.gz --strip-components=1
-        sudo cp ./azcopy /usr/local/bin/
-        azcopy --version
-
     - name: Sync Docs to Azure Blob Storage
       uses: azure/cli@v2
       with:
         azcliversion: ${{ env.AZ_CLI_VERSION }}
         inlineScript: |
-          az storage blob sync \
+          az storage blob upload-batch \
             --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-            --container '$web' \
+            --destination '$web' \
             --source build-artifacts/build \
-            --delete-destination true \
+            --overwrite \
             --auth-mode key
           echo "Synced docs to Azure Blob Storage"
 
