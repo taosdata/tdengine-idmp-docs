@@ -10,13 +10,12 @@
 
 在创建模板的过程中，无论是数据引用、元素名、事件名等，都不能是固定字符串，而应该基于实际创建的实例动态生成。为提供足够的灵活性和自动化，IDMP 提供了很多替换字符串，比如：
 
-```text
-- 模板名：${Template#name}
-- 元素名：${Element#name}
-- 属性名：${Attribute#name}
-- 开始时间：${startTime}
-- 结束时间：${endTime}
-```
+- 模板名：`${Template#name}`
+- 元素名：`${Element#name}`
+- 属性名：`${Attribute#name}`
+- 属性值：`${attributes["AttrName"]#value`， 如 `${attributes["DeviceID"]#value}` 表示属性 DeviceID 的值
+- 开始时间：`${startTime}`
+- 结束时间：`${endTime}`
 
 还有很多。但您不用去了解到底有哪些，因为在任何输入的地方，IDMP 都会把在该处您能用的合法替换字符串提供给您让您选择，而且具有可读性，不用翻看用户手册。
 
@@ -52,10 +51,10 @@
 3. 模仿第二步，完成属性模板`电压`的配置。对于`型号`属性，数据引用类型选择`TDengine 标签`，其它与第二步完全一致。
 这样就创建好了元素模板以及它所属的属性模板。当基于`智能电表`模板创建一个元素时，系统会弹框，要求输入 `KEYWORD1`，输入框里提示`请输入数据库 smdb 里超级表 SMeter 的子表名`。这个时候，输入一个 TSDB 里存在的子表名，比如`smeter-1`，那么这个元素就自动创建出来，它的元素名字是`DEV-smeter-1`，查看它的三个属性，应该有以下的三个数据引用设置：
 
-```text
-- 电流：connections['TDengine']/databases['smdb']/smeter-1/columns[current]
-- 电压：connections['TDengine']/databases['smdb']/smeter-1/columns[voltage]
-- 型号：connections['TDengine']/databases['smdb']/smeter-1/columns[model]
-```
+- 电流：TDengine/smdb/smeter-1/current
+- 电压：TDengine/smdb/smeter-1/voltage
+- 型号：TDengine/smdb/smeter-1/model
+
+4. 对于引用类型 `TDengine 指标`，如果指标对应的数据质量也存在了 TSDB 数据库，那么还可以配置数据质量列。假设 `current` 对应的数据质量列为 `quality`，那么配置了 `quality` 之后，电流的数据引用设置就变成了：TDengine/smdb/smeter-1/current:quality
 
 IDMP 提供的自定义可替换字符串十分灵活强大，便于您批量的、自动的将 TSDB 里的数据映射到 IDMP。TDengine 链接的资产模型的自动导入，就是利用`KEYWORD`来实现的。
