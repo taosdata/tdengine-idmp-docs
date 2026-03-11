@@ -38,6 +38,17 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+    - name: Clean Azure Blob Storage
+      uses: azure/cli@v2
+      with:
+        azcliversion: ${{ env.AZ_CLI_VERSION }}
+        inlineScript: |
+          az storage blob delete-batch \
+            --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
+            --source '$web' \
+            --auth-mode key
+          echo "Cleaned Azure Blob Storage \$web container"
+
     - name: Upload Docs to Azure Blob Storage
       uses: azure/cli@v2
       with:
@@ -49,7 +60,7 @@ jobs:
             --source build-artifacts/build \
             --overwrite \
             --auth-mode key
-          echo "Uploaded EN docs to Azure Blob Storage"
+          echo "Uploaded docs to Azure Blob Storage"
 
     - name: Purge Azure CDN Endpoint
       uses: azure/cli@v2

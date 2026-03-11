@@ -60,6 +60,7 @@ jobs:
         run: |
           pnpm install
           pnpm run build
+          mv build-en build/en
           
       - name: Upload Build Artifact
         # Skip upload when called by PR workflows
