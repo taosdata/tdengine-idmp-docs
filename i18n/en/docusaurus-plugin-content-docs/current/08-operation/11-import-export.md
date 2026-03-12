@@ -2,7 +2,7 @@
 
 ## Overview
 
-The import/export functionality is used to migrate and share TDengine IDMP data and dependent TDengine TSDB data between different environments or systems, ensuring data consistency and integrity. Currently, only full import and export are supported. Selective resource import/export is under development and will be released soon.
+The import/export functionality is used to migrate and share TDengine IDMP data and dependent TDengine TSDB data between different environments or systems, ensuring data consistency and integrity. Selective export is supported for element templates, event templates, categories, and units of measurement (UOM), with dependent resources automatically resolved and included.
 
 ### Supported Resource Types
 
@@ -37,7 +37,7 @@ Click the export icon button on the "Import/Export" main page to open the export
    - **Element Templates**: Select specific element templates to export
    - **Event Templates**: Select specific event templates to export
    - **Categories**: Select specific categories to export
-   - **Units of Measurement (UOM)**: Select specific UOM classes to export
+   - **Unit of Measurement (UOM)**: Select specific UOM classes to export
 3. **Confirm Export**: Click the "Confirm" button to automatically download a ZIP archive.
 
 ### Smart Dependency Resolution
@@ -49,7 +49,7 @@ The export feature automatically resolves and includes dependent resources to en
   - Base event templates are automatically included when derived event templates are selected
 
 - **Category Dependencies**:
-  - Categories referenced by elements, element templates, panels, dashboards, analyses, and event templates are automatically included
+  - Categories referenced by various exported resources (e.g., elements, templates, panels, analyses) are automatically included
 
 - **UOM Dependencies**:
   - When exporting elements or element templates with attributes that use specific units of measurement, the corresponding UOM classes are automatically included
