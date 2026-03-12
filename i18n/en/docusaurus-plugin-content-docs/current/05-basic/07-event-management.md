@@ -18,6 +18,10 @@ An event can also have attributes, which are used to record specific values at t
 
 From the event detail page, or by clicking the three-dot menu on the right side of the event list and selecting **Trend Chart Analysis**, you can automatically add the event-related attributes to a trend chart, with the start and end times clearly marked. You can also add other time-series data to the chart, making it easier to observe trend changes before and after the event and analyze the possible causes of the event.
 
+## Root Cause Analysis
+
+Open the event details page, click the "Root Cause Analysis" button in the top-right corner to initiate the generation of a root cause analysis. Based on the key data of the current event, the AI will generate a structured, easy-to-understand, and business-insightful exclusive analysis report to assist users in swiftly identifying the root cause of the event and reducing operational and maintenance costs.
+
 ## Active Events
 
 Events that have occurred but have not been closed are considered active. While an event is active, you can acknowledge it, view its trend chart, and analyze its root cause. The event list indicates whether an event is still active. Once an event is closed, the system no longer sends any notification messages related to it.
