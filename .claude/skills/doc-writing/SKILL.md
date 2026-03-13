@@ -60,6 +60,7 @@ Ask the user for:
 
 - Chinese docs: `docs/`
 - English docs: `i18n/en/docusaurus-plugin-content-docs/current/`
+- Internal docs (CI excluded): `.claude/` - Documentation here is excluded from all CI checks
 
 ## Workflow
 
@@ -89,6 +90,10 @@ Project uses these tools in CI:
 - markdownlint-cli / markdownlint-cli2 - Markdown format validation
 - typos - Spell checking
 - AutoCorrect - Chinese formatting
+
+**CI Exclusions**:
+- All checks skip `.claude/**` directory (configured in workflow and `.autocorrectrc`)
+- Internal documentation can use any format without affecting CI
 
 **Build Validation** (`.github/workflows/build_docs.yaml`):
 - Docusaurus build test - Ensures docs can be built successfully
@@ -144,6 +149,43 @@ ReferenceError: METHOD_NAME is not defined
 ```
 
 If you see these errors, find the variable in plain text/tables and add `\` before `{`.
+
+## Image File Validation (CRITICAL)
+
+When adding or modifying image references in documentation, ALWAYS verify the image file exists.
+
+### Image Reference Rules
+
+**MUST check before adding**:
+1. Verify image file exists at the referenced path
+2. Check both Chinese (`docs/`) and English (`i18n/en/`) versions if applicable
+3. Ensure image path is relative to the markdown file location
+
+**Common image patterns**:
+```markdown
+![Alt text](./images/screenshot.png)
+![Alt text](../images/diagram.png)
+![Alt text](/static/img/logo.png)
+```
+
+**Validation steps**:
+1. Extract image path from markdown: `![text](path)`
+2. Resolve relative path based on markdown file location
+3. Use Read tool to verify file exists
+4. If missing, warn user: "Image file not found: {path}. Please add the image or remove the reference."
+
+**Example check**:
+```markdown
+Document: docs/06-data-visualization/15-state-history.md
+Reference: ![Example](./images/state-history-demo.png)
+Check path: docs/06-data-visualization/images/state-history-demo.png
+```
+
+### When to skip image checks
+
+- Image URLs (starting with `http://` or `https://`)
+- Placeholder images marked with comments: `<!-- ![Placeholder](./image.png) -->`
+- Images in code blocks or inline code
 
 ## Common Errors
 
@@ -515,6 +557,7 @@ SDK = "SDK"
 - [ ] **强调符号后有空格**（重要！自定义规则）
 - [ ] **MDX 变量已正确转义**（表格和普通文本中的 `{变量}` 改为 `\{变量\}`）
 - [ ] **代码块中的变量未转义**（保持 `{变量}` 原样）
+- [ ] **图片文件已验证存在**（所有 `![](path)` 引用的图片文件都已检查）
 
 ---
 

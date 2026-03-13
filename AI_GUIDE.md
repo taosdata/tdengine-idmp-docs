@@ -11,23 +11,23 @@
 
 ### 文档编写 (doc-writing)
 
-**位置:** `.agent/skills/doc-writing/` 或 `.claude/skills/doc-writing/`
+**位置：** `.agent/skills/doc-writing/` 或 `.claude/skills/doc-writing/`
 
-**用途:** 编写符合项目规范的 Markdown 文档
+**用途：** 编写符合项目规范的 Markdown 文档
 
-**使用方式:**
+**使用方式：**
 
 - Claude Code: 使用 `/doc-writing` 命令
 - 其他 AI: 读取 `.agent/skills/doc-writing/SKILL.md` 作为上下文
 
-**主要规范:**
+**主要规范：**
 
 - 代码块使用 ``` 反引号，必须指定语言
 - 链接使用 `[文本](url)` 格式，禁止尖括号
 - 粗体标点后必须有空格：`**参数:** 说明`
 - 中英文之间加空格
 
-**本地检查:**
+**本地检查：**
 
 ```bash
 bash .agent/skills/doc-writing/scripts/check-local.sh

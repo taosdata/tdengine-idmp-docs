@@ -84,7 +84,7 @@ one_hour_ago_ms = now_ms - 3600 * 1000
 ```java
 // TODO: 补充实际方法名
 // LatestValueDTO latest = metricApi.apiV1MetricsIdLatestGet("metric-id-123");
-// System.out.println("最新值: " + latest.getValue() + " @ " + latest.getTimestamp());
+// System.out.println("最新值：" + latest.getValue() + " @ " + latest.getTimestamp());
 ```
 
 </TabItem>
@@ -93,7 +93,7 @@ one_hour_ago_ms = now_ms - 3600 * 1000
 ```python
 # TODO: 补充实际方法名
 # latest = metric_api.apiV1MetricsIdLatestGet("metric-id-123")
-# print(f"最新值: {latest.value} @ {latest.timestamp}")
+# print(f"最新值：{latest.value} @ {latest.timestamp}")
 ```
 
 </TabItem>

@@ -41,7 +41,7 @@ public class QueryElementsExample {
             PageOfBasicElementDTO result = elementApi.apiV1ElementsGet(params);
 
             for (BasicElementDTO elem : result.getData()) {
-                System.out.printf("ID: %-30s 名称: %s%n", elem.getId(), elem.getName());
+                System.out.printf("ID: %-30s 名称：%s%n", elem.getId(), elem.getName());
             }
 
             if (result.getData().size() < pageSize) break;  // 最后一页
@@ -88,7 +88,7 @@ def list_all_elements(api_client, page_size=100):
             page_size=page_size
         )
         for elem in result.data:
-            print(f"ID: {elem.id:<30} 名称: {elem.name}")
+            print(f"ID: {elem.id:<30} 名称：{elem.name}")
 
         if len(result.data) < page_size:
             break  # 最后一页

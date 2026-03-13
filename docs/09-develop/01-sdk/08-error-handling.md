@@ -16,9 +16,9 @@ import org.openapitools.client.ApiException;
 try {
     ElementDTO element = elementApi.apiV1ElementsIdGet("nonexistent-id");
 } catch (ApiException e) {
-    System.err.println("HTTP 状态码: " + e.getCode());
-    System.err.println("错误消息: " + e.getMessage());
-    System.err.println("响应体: " + e.getResponseBody());
+    System.err.println("HTTP 状态码：" + e.getCode());
+    System.err.println("错误消息：" + e.getMessage());
+    System.err.println("响应体：" + e.getResponseBody());
 }
 ```
 
@@ -31,9 +31,9 @@ from idmp_sdk.rest import ApiException
 try:
     element = element_api.api_v1_elements_id_get("nonexistent-id")
 except ApiException as e:
-    print(f"HTTP 状态码: {e.status}")
-    print(f"错误原因: {e.reason}")
-    print(f"响应体: {e.body}")
+    print(f"HTTP 状态码：{e.status}")
+    print(f"错误原因：{e.reason}")
+    print(f"响应体：{e.body}")
 ```
 
 </TabItem>

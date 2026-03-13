@@ -141,7 +141,7 @@ CHECK_FAILED=0
 echo "=========================================="
 echo "1/4 运行 Markdown Lint (基础)..."
 echo "=========================================="
-if markdownlint -c .github/workflows/markdown_config.json ./ 2>/dev/null; then
+if markdownlint -c .github/workflows/markdown_config.json --ignore .claude ./ 2>/dev/null; then
     echo -e "${GREEN}✓ Markdown Lint (基础) 通过${NC}"
 else
     echo -e "${YELLOW}⚠ Markdown Lint (基础) 发现问题${NC}"
@@ -166,11 +166,11 @@ echo ""
 echo "=========================================="
 echo "3/4 运行拼写检查 (typos)..."
 echo "=========================================="
-if typos --config .github/workflows/typos.toml ./**/*.md 2>/dev/null; then
+if typos --config .github/workflows/typos.toml --exclude .claude ./**/*.md 2>/dev/null; then
     echo -e "${GREEN}✓ 拼写检查通过${NC}"
 else
     echo -e "${YELLOW}⚠ 拼写检查发现问题${NC}"
-    typos --config .github/workflows/typos.toml ./**/*.md || true
+    typos --config .github/workflows/typos.toml --exclude .claude ./**/*.md || true
     CHECK_FAILED=1
 fi
 
@@ -188,6 +188,7 @@ echo ""
 echo "=========================================="
 echo "4/4 运行中文排版检查 (AutoCorrect)..."
 echo "=========================================="
+# AutoCorrect 会自动读取 .autocorrectrc 配置文件，其中已排除 .claude 目录
 if autocorrect --lint ./**/*.md 2>/dev/null | grep -q "0 error"; then
     echo -e "${GREEN}✓ 中文排版检查通过${NC}"
 else
