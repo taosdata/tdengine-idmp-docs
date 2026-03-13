@@ -47,7 +47,7 @@ jobs:
       - name: Check with AutoCorrect
         uses: huacnlee/autocorrect-action@v2
         with:
-          args: --lint ./**/*.md --exclude .claude
+          args: --lint ./**/*.md
 
       # - name: Report ReviewDog
       #   if: always()
