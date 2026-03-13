@@ -19,7 +19,7 @@ SDK objects map one-to-one with IDMP product concepts. Understanding this mappin
 
 IDMP data follows this hierarchy:
 
-```
+```bash
 Element
   └─ Attribute
        └─ Time-series data (Metric)

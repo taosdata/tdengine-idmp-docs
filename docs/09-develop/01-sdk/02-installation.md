@@ -24,14 +24,14 @@ import TabItem from '@theme/TabItem';
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
 
-**第一步：将 SDK 安装到本地 Maven 仓库**
+### 第一步：将 SDK 安装到本地 Maven 仓库
 
 ```bash
 cd idmp-java-sdk
 mvn install -DskipTests
 ```
 
-**第二步：在项目 `pom.xml` 中添加依赖**
+### 第二步：在项目 `pom.xml` 中添加依赖
 
 ```xml
 <dependency>
@@ -55,11 +55,13 @@ pip install .
 
 :::tip
 建议在虚拟环境中安装，避免与其他项目的依赖冲突：
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install .
 ```
+
 :::
 
 </TabItem>

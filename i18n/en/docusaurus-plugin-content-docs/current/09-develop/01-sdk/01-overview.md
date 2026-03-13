@@ -30,7 +30,7 @@ Typical use cases include:
 
 Download the SDK package from the [TDengine Download Center](https://tdengine.com/downloads/). The package structure is:
 
-```
+```bash
 idmp-sdk-{SDK_VERSION}/
   ├── idmp-v{SDK_VERSION}.json    # OpenAPI specification — use to generate SDKs for other languages
   ├── idmp-java-sdk/              # Java SDK source code and compiled JAR
@@ -41,14 +41,14 @@ idmp-sdk-{SDK_VERSION}/
 
 If you need a language other than Java or Python, use OpenAPI Generator to generate from the spec file.
 
-**Step 1: Download OpenAPI Generator CLI**
+### Step 1: Download OpenAPI Generator CLI
 
 ```bash
 wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.6.0/openapi-generator-cli-7.6.0.jar \
      -O openapi-generator-cli.jar
 ```
 
-**Step 2: Generate the SDK**
+### Step 2: Generate the SDK
 
 ```bash
 # Example: generate a Go SDK

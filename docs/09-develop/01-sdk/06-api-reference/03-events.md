@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
 
 支持按时间范围、状态、严重程度等条件过滤。
 
-**参数**
+### 参数
 
 | 名称 | 类型 | 必填 | 说明 |
 |---|---|---|---|
@@ -32,7 +32,7 @@ import TabItem from '@theme/TabItem';
 | pageNum | integer | 否 | 页码 |
 | pageSize | integer | 否 | 每页条数 |
 
-**示例**
+### 示例
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">

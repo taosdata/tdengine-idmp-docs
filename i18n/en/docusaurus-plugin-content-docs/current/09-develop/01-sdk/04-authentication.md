@@ -62,7 +62,7 @@ The cloud service requires two tokens simultaneously: `Authorization` (Bearer To
 |---|---|
 | Request URL host | Format: `https://<instance-id>.idmp.taosdata.com` |
 | `Access-token` request header | Cloud-specific authentication token |
-| `Authorization` request header | Bearer Token — remove the `Bearer ` prefix |
+| `Authorization` request header | Bearer Token — remove the `Bearer` prefix |
 
 5. Set them as environment variables:
 

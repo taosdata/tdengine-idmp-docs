@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
 
 Query data points within a time range, with optional aggregation.
 
-**Parameters**
+### Parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -32,7 +32,7 @@ Query data points within a time range, with optional aggregation.
 
 **Returns** `MetricDataDTO`
 
-**Example**
+### Example
 
 <Tabs groupId="language">
 <TabItem value="python" label="Python">

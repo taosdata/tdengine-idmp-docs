@@ -68,7 +68,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 |---|---|
 | 请求 URL 的 host | 格式为 `https://<实例ID>.idmp.taosdata.com` |
 | 请求头 `Access-token` | 云服务专用认证令牌 |
-| 请求头 `Authorization` | Bearer Token，去掉 `Bearer ` 前缀后使用 |
+| 请求头 `Authorization` | Bearer Token，去掉 `Bearer` 前缀后使用 |
 
 5. 将三项值设置为环境变量：
 

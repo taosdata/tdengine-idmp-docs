@@ -18,7 +18,7 @@ import TabItem from '@theme/TabItem';
 
 ## List Events
 
-**Parameters**
+### Parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -30,7 +30,7 @@ import TabItem from '@theme/TabItem';
 | pageNum | integer | No | Page number |
 | pageSize | integer | No | Items per page |
 
-**Example**
+### Example
 
 <Tabs groupId="language">
 <TabItem value="python" label="Python">

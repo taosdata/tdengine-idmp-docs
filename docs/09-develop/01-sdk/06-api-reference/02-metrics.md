@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
 
 查询指定时间范围内的指标数据，支持聚合计算。
 
-**参数**
+### 参数
 
 | 名称 | 类型 | 必填 | 说明 |
 |---|---|---|---|
@@ -32,7 +32,7 @@ import TabItem from '@theme/TabItem';
 
 **返回值** `MetricDataDTO`
 
-**示例**
+### 示例
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -76,7 +76,7 @@ one_hour_ago_ms = now_ms - 3600 * 1000
 
 返回指标的最新一条数据，适用于实时监控场景。
 
-**示例**
+### 示例
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">

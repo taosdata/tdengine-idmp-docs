@@ -21,7 +21,7 @@ import TabItem from '@theme/TabItem';
 
 分页返回当前用户有权访问的元素列表，支持按名称、父元素等条件过滤。
 
-**参数**
+### 参数
 
 | 名称 | 类型 | 必填 | 默认值 | 说明 |
 |---|---|---|---|---|
@@ -30,9 +30,9 @@ import TabItem from '@theme/TabItem';
 | parentId | string | 否 | — | 按父元素 ID 过滤 |
 | name | string | 否 | — | 按元素名称模糊搜索 |
 
-**返回值** `PageOfBasicElementDTO`
+**返回值**: `PageOfBasicElementDTO`
 
-**示例**
+### 示例
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -64,7 +64,7 @@ for elem in result.data:
 
 ## apiV1ElementsIdGet — 查询单个元素
 
-**参数**
+### 参数
 
 | 名称 | 类型 | 必填 | 说明 |
 |---|---|---|---|
@@ -74,7 +74,7 @@ for elem in result.data:
 
 **异常** `ApiException(404)` — 元素不存在
 
-**示例**
+### 示例
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">

@@ -21,7 +21,7 @@ import TabItem from '@theme/TabItem';
 
 Returns a paginated list of elements accessible to the current user, with optional filters.
 
-**Parameters**
+### Parameters
 
 | Name | Type | Required | Default | Description |
 |---|---|---|---|---|
@@ -32,7 +32,7 @@ Returns a paginated list of elements accessible to the current user, with option
 
 **Returns** `PageOfBasicElementDTO`
 
-**Example**
+### Example
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -64,7 +64,7 @@ for elem in result.data:
 
 ## apiV1ElementsIdGet — Get Element
 
-**Parameters**
+### Parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
@@ -74,7 +74,7 @@ for elem in result.data:
 
 **Raises** `ApiException(404)` if the element does not exist.
 
-**Example**
+### Example
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">

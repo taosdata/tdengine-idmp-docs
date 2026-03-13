@@ -24,7 +24,7 @@ import TabItem from '@theme/TabItem';
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
 
-**Step 1: Install to local Maven repository**
+### Step 1: Install to local Maven repository
 
 ```bash
 cd idmp-java-sdk
@@ -55,11 +55,13 @@ pip install .
 
 :::tip
 Install inside a virtual environment to avoid dependency conflicts:
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install .
 ```
+
 :::
 
 </TabItem>

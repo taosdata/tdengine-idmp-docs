@@ -7,15 +7,19 @@ SDK version history following [Keep a Changelog](https://keepachangelog.com) for
 ## [{SDK_VERSION}] — {RELEASE_DATE}
 
 ### Added
+
 - {Feature description}
 
 ### Changed
+
 - {Behavior or API change}
 
 ### Fixed
+
 - {Bug fix description}
 
 ### Breaking Changes
+
 - {If any, list all breaking changes with migration notes}
 
 ---
@@ -23,9 +27,11 @@ SDK version history following [Keep a Changelog](https://keepachangelog.com) for
 ## [{PREV_SDK_VERSION}] — {PREV_RELEASE_DATE}
 
 ### Added
+
 - {Feature description}
 
 ### Fixed
+
 - {Bug fix description}
 
 ---
