@@ -29,12 +29,13 @@ jobs:
         run: sudo npm install -g markdownlint-cli
 
       - name: Run Markdown Lint
-        run: markdownlint -c .github/workflows/markdown_config.json ./
+        run: markdownlint -c .github/workflows/markdown_config.json --ignore .claude ./
 
       - name: Check Typos
         uses: crate-ci/typos@v1.31.1
         with:
           files: ./**/*.md
+          exclude: .claude/**
           config: .github/workflows/typos.toml
 
       - name: Check Typos for i18n
@@ -46,7 +47,7 @@ jobs:
       - name: Check with AutoCorrect
         uses: huacnlee/autocorrect-action@v2
         with:
-          args: --lint ./**/*.md
+          args: --lint ./**/*.md --exclude .claude
 
       # - name: Report ReviewDog
       #   if: always()
@@ -61,7 +62,9 @@ jobs:
         uses: DavidAnson/markdownlint-cli2-action@v20
         with:
           config: '.github/workflows/.markdownlint-cli2.jsonc'
-          globs: '**/*.md'
+          globs: |
+            **/*.md
+            !.claude/**
       
 
   build:
