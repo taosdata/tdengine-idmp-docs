@@ -10,10 +10,10 @@ import TabItem from '@theme/TabItem';
 | 方法 | HTTP | 说明 |
 |---|---|---|
 | `apiV1ElementsGet` | GET /api/v1/elements | 分页查询元素列表 |
-| `apiV1ElementsIdGet` | GET /api/v1/elements/{id} | 按 ID 查询单个元素 |
+| `apiV1ElementsIdGet` | GET /api/v1/elements/\{id\} | 按 ID 查询单个元素 |
 | `apiV1ElementsPost` | POST /api/v1/elements | 创建元素 |
-| `apiV1ElementsIdPut` | PUT /api/v1/elements/{id} | 更新元素 |
-| `apiV1ElementsIdDelete` | DELETE /api/v1/elements/{id} | 删除元素 |
+| `apiV1ElementsIdPut` | PUT /api/v1/elements/\{id\} | 更新元素 |
+| `apiV1ElementsIdDelete` | DELETE /api/v1/elements/\{id\} | 删除元素 |
 
 ---
 
@@ -26,7 +26,7 @@ import TabItem from '@theme/TabItem';
 | 名称 | 类型 | 必填 | 默认值 | 说明 |
 |---|---|---|---|---|
 | pageNum | integer | 否 | 1 | 页码，从 1 开始 |
-| pageSize | integer | 否 | 20 | 每页条数，最大 {MAX_PAGE_SIZE} |
+| pageSize | integer | 否 | 20 | 每页条数，最大 \{MAX_PAGE_SIZE\} |
 | parentId | string | 否 | — | 按父元素 ID 过滤 |
 | name | string | 否 | — | 按元素名称模糊搜索 |
 

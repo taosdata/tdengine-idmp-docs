@@ -9,10 +9,10 @@ import TabItem from '@theme/TabItem';
 
 | 方法 | HTTP | 说明 |
 |---|---|---|
-| {METHOD_NAME} | GET /api/v1/metrics | {DESCRIPTION} |
-| {METHOD_NAME} | GET /api/v1/metrics/{id}/history | 查询指标历史数据 |
-| {METHOD_NAME} | GET /api/v1/metrics/{id}/latest | 查询指标最新值 |
-| {METHOD_NAME} | POST /api/v1/metrics/{id}/data | 写入指标数据 |
+| apiV1MetricsGet | GET /api/v1/metrics | 查询指标列表 |
+| apiV1MetricsIdHistoryGet | GET /api/v1/metrics/\{id\}/history | 查询指标历史数据 |
+| apiV1MetricsIdLatestGet | GET /api/v1/metrics/\{id\}/latest | 查询指标最新值 |
+| apiV1MetricsIdDataPost | POST /api/v1/metrics/\{id\}/data | 写入指标数据 |
 
 ---
 
@@ -58,7 +58,7 @@ now_ms = int(time.time() * 1000)
 one_hour_ago_ms = now_ms - 3600 * 1000
 
 # TODO: 补充实际方法名和参数
-# result = metric_api.{METHOD_NAME}(
+# result = metric_api.apiV1MetricsIdHistoryGet(
 #     id="metric-id-123",
 #     from_ts=one_hour_ago_ms,
 #     to_ts=now_ms,
@@ -83,7 +83,7 @@ one_hour_ago_ms = now_ms - 3600 * 1000
 
 ```java
 // TODO: 补充实际方法名
-// LatestValueDTO latest = metricApi.{METHOD_NAME}("metric-id-123");
+// LatestValueDTO latest = metricApi.apiV1MetricsIdLatestGet("metric-id-123");
 // System.out.println("最新值: " + latest.getValue() + " @ " + latest.getTimestamp());
 ```
 
@@ -92,7 +92,7 @@ one_hour_ago_ms = now_ms - 3600 * 1000
 
 ```python
 # TODO: 补充实际方法名
-# latest = metric_api.{METHOD_NAME}("metric-id-123")
+# latest = metric_api.apiV1MetricsIdLatestGet("metric-id-123")
 # print(f"最新值: {latest.value} @ {latest.timestamp}")
 ```
 

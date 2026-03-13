@@ -107,7 +107,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 
 | Deployment | Token Lifetime | How to Refresh |
 |---|---|---|
-| Enterprise | {TOKEN_TTL} (see server config) | Call the login API again |
+| Enterprise | \{TOKEN_TTL\} (see server config) | Call the login API again |
 | Cloud Service | Controlled by browser session | Log in via browser again and copy the new token |
 
 :::tip

@@ -18,7 +18,7 @@ As shown in the figure, you can perform editing operations on the dashboard. On 
 
 The time range selector is located in the upper right corner of the dashboard. You can select different time ranges to view data for the corresponding time periods. The time range selection only affects panels with dynamically changing time ranges. If a panel is configured with a fixed time range, it is not affected by the dashboard's time range selector.
 
-The basic information form on the right side of the dashboard allows you to enter the dashboard name and description. You can set notification rules to periodically send dashboard snapshots to specified users. For detailed configuration methods, please refer to the [Dashboard and Panel Notifications](06-advanced/10-dashboard-notification.md) section.
+The basic information form on the right side of the dashboard allows you to enter the dashboard name and description. You can set notification rules to periodically send dashboard snapshots to specified users. For detailed configuration methods, please refer to the [Dashboard and Panel Notifications](../08-advanced/10-dashboard-notification.md) section.
 
 ## Save a Dashboard
 

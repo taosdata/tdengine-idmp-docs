@@ -115,7 +115,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 
 | 部署方式 | Token 有效期 | 刷新方式 |
 |---|---|---|
-| 企业版 | {TOKEN_TTL}（请参阅服务端配置） | 重新调用登录接口获取新 Token |
+| 企业版 | \{TOKEN_TTL\}（请参阅服务端配置） | 重新调用登录接口获取新 Token |
 | 云服务版 | 由浏览器会话控制 | 重新通过浏览器登录后从开发者工具获取 |
 
 :::tip

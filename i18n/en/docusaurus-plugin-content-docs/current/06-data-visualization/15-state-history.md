@@ -2,7 +2,7 @@
 
 A state history chart displays the historical state distribution of metrics in a dense grid format. It divides the time axis into equal-length time cells, each colored to represent the state within that time period. It is ideal for **identifying periodic patterns, detecting anomalous time periods, and comparing historical state patterns across multiple metrics**.
 
-![State History Demo](./images/state-history-demo.png)
+<!-- ![State History Demo](./images/state-history-demo.png) -->
 
 ## Configuration
 
@@ -12,7 +12,7 @@ A state history chart displays the historical state distribution of metrics in a
 
 You can set a main title and subtitle for the panel, displayed at the top, to describe the chart's subject matter.
 
-![State History Title](./images/state-history-title.png)
+<!-- ![State History Title](./images/state-history-title.png) -->
 
 ### Value Mapping
 
@@ -24,7 +24,7 @@ Each mapping rule consists of:
 2. **Display Text**: The label shown inside the cell when the condition is matched (e.g., `Normal`, `Fault`, `Warning`).
 3. **Color**: The fill color of the cell when matched. Semantic colors are recommended (e.g., green for normal, red for fault).
 
-![State History Value Mapping](./images/state-history-mapping.png)
+<!-- ![State History Value Mapping](./images/state-history-mapping.png) -->
 
 :::tip
 Proper value mapping significantly improves the readability of state history charts. For example, for an equipment operating status metric, map `1` to green "Running", `0` to red "Stopped", and `-1` to yellow "Under Maintenance".

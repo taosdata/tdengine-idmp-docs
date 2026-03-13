@@ -9,10 +9,10 @@ import TabItem from '@theme/TabItem';
 
 | 方法 | HTTP | 说明 |
 |---|---|---|
-| {METHOD_NAME} | GET /api/v1/events | 分页查询事件列表 |
-| {METHOD_NAME} | GET /api/v1/events/{id} | 查询单个事件 |
-| {METHOD_NAME} | PUT /api/v1/events/{id}/acknowledge | 确认事件 |
-| {METHOD_NAME} | PUT /api/v1/events/{id}/resolve | 解决事件 |
+| apiV1EventsGet | GET /api/v1/events | 分页查询事件列表 |
+| apiV1EventsIdGet | GET /api/v1/events/\{id\} | 查询单个事件 |
+| apiV1EventsIdAcknowledgePut | PUT /api/v1/events/\{id\}/acknowledge | 确认事件 |
+| apiV1EventsIdResolvePut | PUT /api/v1/events/\{id\}/resolve | 解决事件 |
 
 ---
 
@@ -45,7 +45,7 @@ import TabItem from '@theme/TabItem';
 //     .from(System.currentTimeMillis() - 86400_000L)
 //     .status("active")
 //     .severity("critical");
-// PageOfEventDTO events = eventApi.{METHOD_NAME}(params);
+// PageOfEventDTO events = eventApi.apiV1EventsGet(params);
 ```
 
 </TabItem>
@@ -57,7 +57,7 @@ import time
 event_api = idmp_sdk.EventResourceApi(api_client)
 
 # TODO: 补充实际方法名
-# events = event_api.{METHOD_NAME}(
+# events = event_api.apiV1EventsGet(
 #     from_ts=int(time.time() * 1000) - 86400 * 1000,
 #     status="active",
 #     severity="critical"

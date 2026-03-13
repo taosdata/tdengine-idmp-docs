@@ -4,38 +4,38 @@ SDK version history following [Keep a Changelog](https://keepachangelog.com) for
 
 ---
 
-## [{SDK_VERSION}] — {RELEASE_DATE}
+## [\{SDK_VERSION\}] — \{RELEASE_DATE\}
 
 ### Added
 
-- {Feature description}
+- \{Feature description\}
 
 ### Changed
 
-- {Behavior or API change}
+- \{Behavior or API change\}
 
 ### Fixed
 
-- {Bug fix description}
+- \{Bug fix description\}
 
 ### Breaking Changes
 
-- {If any, list all breaking changes with migration notes}
+- \{If any, list all breaking changes with migration notes\}
 
 ---
 
-## [{PREV_SDK_VERSION}] — {PREV_RELEASE_DATE}
+## [\{PREV_SDK_VERSION\}] — \{PREV_RELEASE_DATE\}
 
 ### Added
 
-- {Feature description}
+- \{Feature description\}
 
 ### Fixed
 
-- {Bug fix description}
+- \{Bug fix description\}
 
 ---
 
 :::tip Version Compatibility
-For the IDMP server version supported by each SDK version, see [Overview — Compatibility Matrix](../01-overview.md#compatibility-matrix).
+For the IDMP server version supported by each SDK version, see [Overview — Compatibility Matrix](./01-overview.md#compatibility-matrix).
 :::

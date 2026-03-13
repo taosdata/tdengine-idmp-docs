@@ -10,10 +10,10 @@ import TabItem from '@theme/TabItem';
 | Method | HTTP | Description |
 |---|---|---|
 | `apiV1ElementsGet` | GET /api/v1/elements | List elements (paginated) |
-| `apiV1ElementsIdGet` | GET /api/v1/elements/{id} | Get a single element by ID |
+| `apiV1ElementsIdGet` | GET /api/v1/elements/\{id\} | Get a single element by ID |
 | `apiV1ElementsPost` | POST /api/v1/elements | Create an element |
-| `apiV1ElementsIdPut` | PUT /api/v1/elements/{id} | Update an element |
-| `apiV1ElementsIdDelete` | DELETE /api/v1/elements/{id} | Delete an element |
+| `apiV1ElementsIdPut` | PUT /api/v1/elements/\{id\} | Update an element |
+| `apiV1ElementsIdDelete` | DELETE /api/v1/elements/\{id\} | Delete an element |
 
 ---
 
@@ -26,7 +26,7 @@ Returns a paginated list of elements accessible to the current user, with option
 | Name | Type | Required | Default | Description |
 |---|---|---|---|---|
 | pageNum | integer | No | 1 | Page number, starting at 1 |
-| pageSize | integer | No | 20 | Items per page, max {MAX_PAGE_SIZE} |
+| pageSize | integer | No | 20 | Items per page, max \{MAX_PAGE_SIZE\} |
 | parentId | string | No | — | Filter by parent element ID |
 | name | string | No | — | Fuzzy search by element name |
 

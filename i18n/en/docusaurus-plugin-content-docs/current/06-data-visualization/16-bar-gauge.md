@@ -2,7 +2,7 @@
 
 A bar gauge displays the current value of a metric as a filled bar, showing where it sits within its defined range. It is ideal for **real-time monitoring of one or more metrics, and quickly determining whether a metric is approaching or exceeding a threshold**. Compared to circular gauges, bar gauges can display more metrics within the same panel space.
 
-![Bar Gauge Demo](./images/bar-gauge-demo.png)
+<!-- ![Bar Gauge Demo](./images/bar-gauge-demo.png) -->
 
 ## Configuration
 
@@ -19,7 +19,7 @@ The bar gauge supports two layout orientations:
 - **Horizontal**: Bars extend in the horizontal direction, with labels on the left. Suitable for displaying multiple metrics.
 - **Vertical**: Bars extend in the vertical direction, with labels at the bottom. Suitable for emphasizing the magnitude of a single metric.
 
-![Bar Gauge Layout](./images/bar-gauge-layout.png)
+<!-- ![Bar Gauge Layout](./images/bar-gauge-layout.png) -->
 
 #### Value Display
 
@@ -41,7 +41,7 @@ Controls how the metric name is shown:
 - **Auto**: The system automatically calculates the size of each bar based on the panel dimensions and the number of metrics.
 - **Manual**: Manually specify the width (horizontal layout) or height (vertical layout) of each bar in pixels.
 
-![Bar Gauge Size](./images/bar-gauge-size.png)
+<!-- ![Bar Gauge Size](./images/bar-gauge-size.png) -->
 
 #### Value Range
 
@@ -62,7 +62,7 @@ Each threshold consists of:
 It is recommended to configure at least two thresholds. For example: set below 80% as green (Normal), 80%–95% as yellow (Warning), and above 95% as red (Critical), so that the bar color intuitively reflects the equipment operating status.
 :::
 
-![Bar Gauge Threshold](./images/bar-gauge-threshold.png)
+<!-- ![Bar Gauge Threshold](./images/bar-gauge-threshold.png) -->
 
 ### Notification Rules
 

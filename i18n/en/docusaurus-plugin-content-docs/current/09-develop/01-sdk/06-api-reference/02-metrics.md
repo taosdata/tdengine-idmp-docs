@@ -9,10 +9,10 @@ import TabItem from '@theme/TabItem';
 
 | Method | HTTP | Description |
 |---|---|---|
-| {METHOD_NAME} | GET /api/v1/metrics | List metrics |
-| {METHOD_NAME} | GET /api/v1/metrics/{id}/history | Query historical data |
-| {METHOD_NAME} | GET /api/v1/metrics/{id}/latest | Get latest value |
-| {METHOD_NAME} | POST /api/v1/metrics/{id}/data | Write data points |
+| apiV1MetricsIdHistoryGet | GET /api/v1/metrics | List metrics |
+| apiV1MetricsIdHistoryGet | GET /api/v1/metrics/\{id\}/history | Query historical data |
+| apiV1MetricsIdHistoryGet | GET /api/v1/metrics/\{id\}/latest | Get latest value |
+| apiV1MetricsIdHistoryGet | POST /api/v1/metrics/\{id\}/data | Write data points |
 
 ---
 
@@ -46,7 +46,7 @@ now_ms = int(time.time() * 1000)
 one_hour_ago_ms = now_ms - 3600 * 1000
 
 # TODO: fill in actual method name from OpenAPI spec
-# result = metric_api.{METHOD_NAME}(
+# result = metric_api.apiV1MetricsIdHistoryGet(
 #     id="metric-id-123",
 #     from_ts=one_hour_ago_ms,
 #     to_ts=now_ms,
@@ -66,5 +66,5 @@ one_hour_ago_ms = now_ms - 3600 * 1000
 </Tabs>
 
 :::note
-Method names marked `{METHOD_NAME}` need to be filled in from the OpenAPI spec (`idmp-v{SDK_VERSION}.json`).
+Method names marked `apiV1MetricsIdHistoryGet` need to be filled in from the OpenAPI spec (`idmp-v\{SDK_VERSION\}.json`).
 :::

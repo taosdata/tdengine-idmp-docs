@@ -9,10 +9,10 @@ import TabItem from '@theme/TabItem';
 
 | Method | HTTP | Description |
 |---|---|---|
-| {METHOD_NAME} | GET /api/v1/events | List events (paginated) |
-| {METHOD_NAME} | GET /api/v1/events/{id} | Get a single event |
-| {METHOD_NAME} | PUT /api/v1/events/{id}/acknowledge | Acknowledge an event |
-| {METHOD_NAME} | PUT /api/v1/events/{id}/resolve | Resolve an event |
+| apiV1EventsGet | GET /api/v1/events | List events (paginated) |
+| apiV1EventsIdGet | GET /api/v1/events/\{id\} | Get a single event |
+| apiV1EventsIdAcknowledgePut | PUT /api/v1/events/\{id\}/acknowledge | Acknowledge an event |
+| apiV1EventsIdResolvePut | PUT /api/v1/events/\{id\}/resolve | Resolve an event |
 
 ---
 
@@ -41,7 +41,7 @@ import time
 event_api = idmp_sdk.EventResourceApi(api_client)
 
 # TODO: fill in actual method name
-# events = event_api.{METHOD_NAME}(
+# events = event_api.apiV1EventsGet(
 #     from_ts=int(time.time() * 1000) - 86400 * 1000,  # last 24h
 #     status="active",
 #     severity="critical"
