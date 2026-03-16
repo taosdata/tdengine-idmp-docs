@@ -5,6 +5,8 @@
 
 # Production
 /build
+/build-zh
+/build-en
 
 # Generated files
 .docusaurus
