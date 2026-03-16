@@ -2,19 +2,19 @@
 
 ## 功能概述
 
-导入导出功能用于在不同环境或系统之间迁移和共享 TDengine IDMP 的数据和依赖的 TDengine TSDB 的数据，确保数据的一致性和完整性。导出时支持选择性导出元素模板、事件模板、分类和计量单位（UOM），同时会自动解析并包含这些资源所依赖的关联资源。
+导入导出功能用于在不同环境或系统之间迁移和共享 TDengine IDMP 的数据和依赖的 TDengine TSDB 的数据，确保数据的一致性和完整性。导出时支持选择性导出元素模板、事件模板、分类和计量单位 (UOM)，同时会自动解析并包含这些资源所依赖的关联资源。
 
 ### 支持的资源类型
 
 - 元素 (Elements)
 - 面板 (Panels)
-- 分析（Analyses）
+- 分析 (Analyses)
 - 仪表板 (Dashboards)
 - 通知规则 (Notify Rules)
 - 元素模板 (Element Templates)
 - 属性模板 (Attribute Templates)
 - 面板模板 (Panel Templates)
-- 分析模板（Analysis Templates）
+- 分析模板 (Analysis Templates)
 - 仪表板模板 (Dashboard Templates)
 - 通知规则模板 (Notify Rule Templates)
 - 事件模板 (Event Templates)

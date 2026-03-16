@@ -2,7 +2,7 @@
 
 ## Overview
 
-The import/export functionality is used to migrate and share TDengine IDMP data and dependent TDengine TSDB data between different environments or systems, ensuring data consistency and integrity. Selective export is supported for element templates, event templates, categories, and units of measurement (UOM), with dependent resources automatically resolved and included.
+The import/export functionality is used to migrate and share TDengine IDMP data and dependent TDengine TSDB data between different environments or systems, ensuring data consistency and integrity. Selective export is supported for element templates, event templates, categories, and Unit of Measurement (UOM), with dependent resources automatically resolved and included.
 
 ### Supported Resource Types
 
