@@ -22,7 +22,7 @@ Enterprise asset management often involves multiple organizational models, and d
 In TDengine IDMP, an element can belong to multiple hierarchies through element referencing, making it easier to manage from different perspectives. In the case of wind power, you could construct a tree containing both perspectives:
 
 ![data-model-03](../assets/data-model-03.png)
-Although elements such as turbines are repeated in the tree, element references are used to reduce duplicate data and ensure consistency. For more information, see [Element References](../06-advanced/07-element-reference.md).
+Although elements such as turbines are repeated in the tree, element references are used to reduce duplicate data and ensure consistency. For more information, see [Element References](../08-advanced/07-element-reference.md).
 
 ## Creating Elements
 

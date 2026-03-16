@@ -20,7 +20,7 @@ An element may contain the following items:
 
 Except for the root node, every element in TDengine IDMP has at least one parent element. In a wind power scenario, for example, a wind farm can consist of multiple turbines, with each turbine having subsystems such as the rotor system, drivetrain, and power generation system. In this case, the wind farm would be the root node, each turbine would be a child element of the wind farm, and each subsystem would be a child element of its turbine.
 
-Note that element may have more than one parent. For more information, see [Element References](/06-advanced/07-element-reference.md).
+Note that element may have more than one parent. For more information, see [Element References](/08-advanced/07-element-reference.md).
 
 ## Attributes
 
