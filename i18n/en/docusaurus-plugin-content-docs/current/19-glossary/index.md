@@ -100,6 +100,12 @@ Piping and Instrumentation Diagram. A detailed schematic diagram used in the pro
 
 A single visualization component — a chart, gauge, table, or status display — that presents data from one or more element attributes. IDMP supports a wide range of panel types including trend charts, bar charts, pie charts, gauge charts, scatter charts, stat displays, state history charts, tables, event lists, and map charts. Panels are the building blocks of all visualization in IDMP and can be created manually or generated automatically by the AI engine.
 
+## Physics-based Model
+
+A mathematical model built from the fundamental physical laws governing a system — mass balances, energy balances, thermodynamic equations, fluid dynamics, reaction kinetics, or structural mechanics — rather than derived solely from observed data. Also called a mechanistic model, first-principles model, or white-box model. Because a physics-based model encodes domain knowledge about how a process actually works, it can extrapolate to operating conditions not seen in historical data and produces interpretable results that engineers can validate against known physics.
+
+Physics-based models are widely used in process industries for design, simulation, real-time optimization, and fault diagnosis. In modern industrial AI workflows, they are often combined with data-driven models in a hybrid (grey-box) approach: the physics model captures the known structure of the process while the data-driven component corrects for uncertainties, unmeasured disturbances, and model mismatch. TDengine IDMP supports hybrid modeling workflows by providing the time-series infrastructure and asset context that data-driven components require — physics model outputs and data-driven corrections can both be stored as computed attributes and analyzed alongside live sensor data.
+
 ## PLC
 
 Programmable Logic Controller. A ruggedized industrial computer used to automate discrete control processes — operating machinery, assembly lines, or any application requiring reliable, real-time control logic. PLCs read inputs from sensors and switches, execute a control program, and drive outputs to actuators and motors. Each PLC typically exposes many individual measurement points (tags), often using a single-column data model where each measurement is stored as a separate series. In TDengine IDMP, multiple PLC measurements for the same device need to be assembled under a single element — since the single-column model does not automatically group them — using the supertable-to-element mapping workflow.
