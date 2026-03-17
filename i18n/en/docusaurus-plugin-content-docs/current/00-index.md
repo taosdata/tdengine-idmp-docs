@@ -6,7 +6,7 @@ slug: /
 
 # TDengine IDMP User Manual
 
-TDengine IDMP (Industrial Data Management Platform) is an AI-native industrial data management platform designed for managing, contextualizing, standardizing, visualizing, analyzing, and deriving intelligence from industrial data collected from sensors, devices and equipments. 
+TDengine IDMP (Industrial Data Management Platform) is an AI-native industrial data management platform designed for managing, contextualizing, standardizing, visualizing, analyzing, and deriving intelligence from industrial data collected from sensors, devices and equipment. 
 
 This manual is the complete user guide for TDengine IDMP, covering everything from core concepts to system administration. The reading guidance below will help you find the most effective path for your role.
 
