@@ -5,7 +5,7 @@ sidebar_label: Event Detail
 
 Clicking an event name — in either the global events view or an element's Events tab — opens the event detail page. The detail page has two tabs: **General** and **Attributes**. The action toolbar differs between tabs.
 
-## 6.4.1 General Tab
+## 6.3.1 General Tab
 
 The General tab displays all standard event fields and provides the following toolbar controls:
 
@@ -53,7 +53,7 @@ A free-text notes area where operators can add comments to the event — for exa
 
 A log of all notifications sent for this event. Each entry shows the contact point name, the delivery timestamp, and whether delivery succeeded.
 
-## 6.4.2 Attributes Tab
+## 6.3.2 Attributes Tab
 
 The Attributes tab shows the event's custom attributes — the named values recorded when the event was created by the analysis.
 

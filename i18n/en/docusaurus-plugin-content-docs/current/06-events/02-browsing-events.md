@@ -5,7 +5,7 @@ sidebar_label: Browsing Events
 
 Events can be browsed from two places: the **global Events view** in the main navigation, which shows all events across the entire system, and the **Events tab** on each individual element, which shows only the events for that element and optionally its descendants. Both views share the same layout, controls, and filtering options.
 
-## 6.3.1 The Global Events View
+## 6.2.1 The Global Events View
 
 Click **Events** in the top navigation bar to open the system-wide events list. This view shows all events across all elements that the current user has permission to access.
 
@@ -60,7 +60,7 @@ Hover over any event row to reveal the **⋮** (more) menu on the right. Click i
 | **Trend Chart Analysis** | Open a trend chart for the event's time range on its associated element |
 | **Delete** | Delete the event record |
 
-## 6.3.2 Element-Level Events
+## 6.2.2 Element-Level Events
 
 Each element has its own **Events** tab showing only the events associated with that element. Navigate to any element in the asset tree and click the **Events** tab.
 
@@ -78,6 +78,6 @@ The element-level events tab has the same filters, columns, and row actions as t
 | **Generate test event data** | Create a test event on this element for development and validation purposes |
 | **Notification Rule** | Open the notification rule configuration for this element — see [Alerts and Notifications](./05-alerts-and-notifications.md) |
 
-## 6.3.3 Saved Event Filters
+## 6.2.3 Saved Event Filters
 
 **Event Filters** are created by performing an event search and saving the search result under a name. After running a search — using any combination of the available filter controls — save the current search result as a named filter. The saved filter then appears in the **Event Filters** section of the left sidebar. Clicking it re-runs the same search and restores that result instantly.

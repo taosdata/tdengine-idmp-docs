@@ -5,7 +5,7 @@ sidebar_label: Alerts and Notifications
 
 When an analysis generates an event, TDengine IDMP can automatically send a notification to configured contact points — email addresses, webhooks, messaging platforms, or other channels. This chapter describes how to set up contact points, configure notification rules on elements, and understand how the notification system behaves.
 
-## 6.5.1 Contact Points
+## 6.4.1 Contact Points
 
 A **contact point** is a delivery channel for notifications. Contact points are configured system-wide and then referenced by notification rules on individual elements.
 
@@ -28,7 +28,7 @@ To create a new contact point, click **+** and fill in the name, type, address, 
 Contact points are shared across the system. The same contact point can be referenced by notification rules on many different elements. Create one contact point per recipient or channel, then reuse it wherever needed.
 :::
 
-## 6.5.2 Notification Rules
+## 6.4.2 Notification Rules
 
 A **notification rule** defines how and to whom notifications are sent when an event occurs on a specific element. Each element has exactly one notification rule, shared by all events generated on that element.
 
@@ -50,7 +50,7 @@ Click **Edit** in the dialog to modify the settings. The configurable parameters
 
 The dialog also has a **Preview Message** button to see how the rendered message looks, and a **Send Message** button to manually dispatch a notification immediately.
 
-## 6.5.3 Notification Behavior
+## 6.4.3 Notification Behavior
 
 Understanding the notification lifecycle helps you configure the right resend and escalation settings.
 
@@ -81,7 +81,7 @@ When an event is generated, IDMP shows an in-app **New Event Notification** pop-
 
 Every notification attempt — successful or failed — is logged in the **Notification Record** section of the event detail page. This log includes the contact point name, timestamp, and delivery status, providing a complete audit trail of who was notified and when.
 
-## 6.5.4 Notification Rule Template
+## 6.4.4 Notification Rule Template
 
 When elements of the same type all require the same notification setup, you can define a **notification rule template** on the [element template](../03-data-modeling/01-elements.md#316-element-templates) rather than configuring each element individually.
 

@@ -5,7 +5,7 @@ sidebar_label: Acknowledgment
 
 Acknowledgment is the act of a human operator confirming that they have reviewed an event. It serves as an explicit record that the event was seen and acted upon, and it stops the automatic re-notification cycle for that event.
 
-## 6.6.1 How Acknowledgment Works
+## 6.5.1 How Acknowledgment Works
 
 Whether a specific event requires acknowledgment is determined by the **Allow Acknowledgment** setting in the event template. If this setting is enabled, events created from that template will have an **Unacknowledged** status when first generated.
 
@@ -21,7 +21,7 @@ Once acknowledged:
 - The acknowledgment indicator updates in the event list
 - Re-notifications stop immediately — no further alerts are sent for this event regardless of whether it remains active
 
-## 6.6.2 How to Acknowledge an Event
+## 6.5.2 How to Acknowledge an Event
 
 There are two ways to acknowledge an event:
 
@@ -33,7 +33,7 @@ Click the **Acknowledge** action icon on the event row. The status updates immed
 
 Open the event by clicking its name, then click the **Ack** icon in the toolbar on the General tab.
 
-## 6.6.3 Finding Unacknowledged Events
+## 6.5.3 Finding Unacknowledged Events
 
 The **Events** item in the main navigation bar displays a badge showing the total number of unacknowledged events in the system. This gives every logged-in user an at-a-glance count of outstanding events that still require attention, visible from any page in IDMP.
 
@@ -41,7 +41,7 @@ The global events view and the element-level events tab both provide an **Unackn
 
 Unacknowledged events can also be found through saved event filters — create and save a filter with the Unacknowledged toggle enabled, then pin it as a favorite for one-click access.
 
-## 6.6.4 Acknowledgment and Notification Interaction
+## 6.5.4 Acknowledgment and Notification Interaction
 
 Acknowledgment and notification are tightly linked. The key behaviors to understand:
 

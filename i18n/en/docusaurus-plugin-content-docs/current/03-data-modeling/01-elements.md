@@ -1,6 +1,6 @@
 ---
-title: Elements (Assets)
-sidebar_label: Elements (Assets)
+title: Elements
+sidebar_label: Elements
 ---
 
 In TDengine IDMP, every physical or logical asset in your industrial environment — a factory, a production line, a machine, or a sensor — is represented as an **element**. Elements are the foundational building blocks of your asset model, giving raw time-series data a structured home and meaningful context.
@@ -210,7 +210,7 @@ Once a template is created, its detail page shows the following tabs. Each tab m
 
 This example shows how KEYWORD substitution strings work in practice. Suppose your TDengine database `smdb` contains a supertable `SMeter` with two metric columns (`current`, `voltage`) and one tag column (`model`). The supertable has child tables named `smeter-1`, `smeter-2`, and so on. You want to create one IDMP element per child table, with each element automatically bound to its corresponding table.
 
-### Step 1 — Create the element template
+#### Step 1 — Create the element template
 
 Create a new element template named `Smart Meter`. In the **Element Naming Pattern** field, type `DEV-`, then click **+** and select **KEYWORD**. The system prompts you for a help text — enter something like `Child table name in supertable SMeter (e.g., smeter-1)`. The naming pattern becomes:
 
@@ -218,7 +218,7 @@ Create a new element template named `Smart Meter`. In the **Element Naming Patte
 DEV-${KEYWORD1}
 ```
 
-### Step 2 — Create attribute templates
+#### Step 2 — Create attribute templates
 
 Create three attribute templates on the `Smart Meter` template:
 
@@ -230,7 +230,7 @@ Create three attribute templates on the `Smart Meter` template:
 
 For each attribute, set the **Data Reference Type** to **TDengine Metric** or **TDengine Tag**, then open the Data Reference Setting dialog. Select the TDengine connection and database `smdb`. In the **Table Name Pattern** field, click **+** and select `KEYWORD1`. Enter the column name (`current`, `voltage`, or `model`). Click **Check** with a sample child table name to verify the binding.
 
-### Step 3 — Create elements from the template
+#### Step 3 — Create elements from the template
 
 When you create a new element using the `Smart Meter` template, IDMP prompts you to enter a value for `KEYWORD1`, displaying the help text you defined. Enter a child table name — for example, `smeter-1`. IDMP automatically:
 

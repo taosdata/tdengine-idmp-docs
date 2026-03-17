@@ -52,12 +52,12 @@ In addition to these standard fields, an event can carry **custom attributes** �
 
 ## What's Covered in This Chapter
 
-- **[Event Templates](./02-event-templates.md)** — Creating and managing event templates in Libraries
-- **[Browsing Events](./03-browsing-events.md)** — The global events view, element-level events, and filtering
-- **[Event Detail](./04-event-detail.md)** — Fields, attributes, annotations, and notification history
-- **[Alerts and Notifications](./05-alerts-and-notifications.md)** — Contact points, notification rules, and notification behavior
-- **[Acknowledgment](./06-acknowledgment.md)** — Acknowledging events and the acknowledgment workflow
-- **[Trend Analysis](./07-trend-analysis.md)** — Analyzing events with trend charts
+- **[Event Templates](./01-event-templates.md)** — Creating and managing event templates in Libraries
+- **[Browsing Events](./02-browsing-events.md)** — The global events view, element-level events, and filtering
+- **[Event Detail](./03-event-detail.md)** — Fields, attributes, annotations, and notification history
+- **[Alerts and Notifications](./04-alerts-and-notifications.md)** — Contact points, notification rules, and notification behavior
+- **[Acknowledgment](./05-acknowledgment.md)** — Acknowledging events and the acknowledgment workflow
+- **[Trend Analysis](./06-trend-analysis.md)** — Analyzing events with trend charts
 
 import DocCardList from '@theme/DocCardList';
 

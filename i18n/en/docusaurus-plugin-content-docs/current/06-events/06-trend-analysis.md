@@ -5,7 +5,7 @@ sidebar_label: Trend Analysis
 
 When an event occurs, understanding the data behavior around that event is essential for investigation. TDengine IDMP provides a direct path from any event to a trend chart pre-configured with the event's time range.
 
-## 6.7.1 Opening a Trend Chart from an Event
+## 6.6.1 Opening a Trend Chart from an Event
 
 You can open a trend chart for any event in two ways:
 
@@ -17,7 +17,7 @@ Hover over an event row to reveal the **⋮** menu, then click **Trend Chart Ana
 
 On the General tab, click the **Trend Chart Analysis** icon in the toolbar to open the same view.
 
-## 6.7.2 Working with the Event Trend Chart
+## 6.6.2 Working with the Event Trend Chart
 
 The trend chart opened from an event shows the element's time-series attributes over the event's time window, with the event's start and end times marked on the chart.
 
