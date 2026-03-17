@@ -25,7 +25,7 @@ For values that need context against a scale or range, use the Gauge Chart or Ba
 
 ### Edit Mode Toolbar
 
-In addition to the [common edit mode controls](../01-panels.md#panel-edit-mode), the Stat Value adds:
+In addition to the [common edit mode controls](../01-panels.md#424-panel-edit-mode), the Stat Value adds:
 
 | Control | Description |
 |---|---|

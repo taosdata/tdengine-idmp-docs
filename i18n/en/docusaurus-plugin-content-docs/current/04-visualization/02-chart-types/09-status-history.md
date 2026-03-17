@@ -21,7 +21,7 @@ For a continuous band showing every state transition in detail, use the State Ti
 
 ### Edit Mode Toolbar
 
-In addition to the [common edit mode controls](../01-panels.md#panel-edit-mode), the Status History adds:
+In addition to the [common edit mode controls](../01-panels.md#424-panel-edit-mode), the Status History adds:
 
 | Control | Description |
 |---|---|

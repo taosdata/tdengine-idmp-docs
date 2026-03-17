@@ -257,7 +257,7 @@ Click **Save** in the dialog to apply the expression, or **Cancel** to discard c
 
 ## 3.2.8 Attribute Templates {#attribute-templates}
 
-An **attribute template** defines a standard attribute — including its name, data type, unit of measure, and data reference binding — as part of an [element template](./01-elements.md#element-templates). When an element is created from the template, all of its attribute templates are instantiated automatically, with substitution strings resolved to the actual values for that element.
+An **attribute template** defines a standard attribute — including its name, data type, unit of measure, and data reference binding — as part of an [element template](./01-elements.md#316-element-templates). When an element is created from the template, all of its attribute templates are instantiated automatically, with substitution strings resolved to the actual values for that element.
 
 ### Creating an Attribute Template
 

@@ -3,7 +3,7 @@ title: Analysis Templates
 sidebar_label: Analysis Templates
 ---
 
-An **analysis template** defines a reusable analysis rule — trigger, calculations, and event generation — as part of an [element template](../03-data-modeling/01-elements.md#element-templates). When an element is created from the template, all of its analysis templates are automatically instantiated, giving the new element a fully configured set of monitoring rules without any manual setup.
+An **analysis template** defines a reusable analysis rule — trigger, calculations, and event generation — as part of an [element template](../03-data-modeling/01-elements.md#316-element-templates). When an element is created from the template, all of its analysis templates are automatically instantiated, giving the new element a fully configured set of monitoring rules without any manual setup.
 
 ## The Analysis Template Tab
 

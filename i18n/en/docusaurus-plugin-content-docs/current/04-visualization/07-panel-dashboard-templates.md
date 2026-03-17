@@ -3,7 +3,7 @@ title: Panel and Dashboard Templates
 sidebar_label: Panel and Dashboard Templates
 ---
 
-Panel templates and dashboard templates are sub-templates within an [element template](../03-data-modeling/01-elements.md#element-templates). They define the standard visualizations that are automatically created for every element of a given asset class — so that when an element is instantiated from the template, its panels and dashboards are ready to use without any manual configuration.
+Panel templates and dashboard templates are sub-templates within an [element template](../03-data-modeling/01-elements.md#316-element-templates). They define the standard visualizations that are automatically created for every element of a given asset class — so that when an element is instantiated from the template, its panels and dashboards are ready to use without any manual configuration.
 
 ## Panel Templates
 

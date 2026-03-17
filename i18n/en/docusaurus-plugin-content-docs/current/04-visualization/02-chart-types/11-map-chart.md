@@ -25,7 +25,7 @@ For time-series trend analysis, use the Trend Chart. For non-geographic comparis
 
 ### Edit Mode Toolbar
 
-In addition to the [common edit mode controls](../01-panels.md#panel-edit-mode), the Map Chart adds:
+In addition to the [common edit mode controls](../01-panels.md#424-panel-edit-mode), the Map Chart adds:
 
 | Control | Description |
 |---|---|

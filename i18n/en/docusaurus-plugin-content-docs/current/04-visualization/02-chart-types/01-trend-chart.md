@@ -28,7 +28,7 @@ For discrete state signals (on/off, running/stopped), use the State Timeline ins
 
 ### View Mode Toolbar
 
-In addition to the [common view mode controls](../01-panels.md#panel-view-mode), the Trend Chart adds:
+In addition to the [common view mode controls](../01-panels.md#423-panel-view-mode), the Trend Chart adds:
 
 | Control | Description |
 |---|---|
@@ -39,7 +39,7 @@ In addition to the [common view mode controls](../01-panels.md#panel-view-mode),
 
 ### Edit Mode Toolbar
 
-In addition to the [common edit mode controls](../01-panels.md#panel-edit-mode), the Trend Chart adds:
+In addition to the [common edit mode controls](../01-panels.md#424-panel-edit-mode), the Trend Chart adds:
 
 | Control | Description |
 |---|---|
