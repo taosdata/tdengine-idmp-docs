@@ -102,9 +102,7 @@ A single visualization component — a chart, gauge, table, or status display �
 
 ## Physics-based Model
 
-A mathematical model built from fundamental physical laws — mass balances, energy balances, thermodynamics, fluid dynamics, or reaction kinetics — rather than derived solely from observed data. Also called a mechanistic model, first-principles model, or white-box model. Physics-based models encode domain knowledge about how a process works, allowing them to extrapolate to conditions not seen in historical data and produce interpretable results.
-
-In modern industrial AI, they are commonly combined with data-driven models in a hybrid (grey-box) approach: the physics model handles the known process structure while the data-driven component corrects for uncertainties and model mismatch. TDengine IDMP supports this by storing physics model outputs as computed attributes, analyzed alongside live sensor data.
+A mathematical model built from fundamental physical laws — mass balances, energy balances, thermodynamics, fluid dynamics, or reaction kinetics — rather than derived solely from observed data. Also called a mechanistic model, first-principles model, or white-box model. Physics-based models encode domain knowledge about how a process works, allowing them to extrapolate to conditions not seen in historical data and produce interpretable results. In modern industrial AI, they are commonly combined with data-driven models in a hybrid (grey-box) approach — the physics model handles the known process structure while the data-driven component corrects for uncertainties and model mismatch — and TDengine IDMP supports this by storing physics model outputs as computed attributes, analyzed alongside live sensor data.
 
 ## PLC
 
