@@ -102,9 +102,9 @@ A single visualization component — a chart, gauge, table, or status display �
 
 ## Physics-based Model
 
-A mathematical model built from the fundamental physical laws governing a system — mass balances, energy balances, thermodynamic equations, fluid dynamics, reaction kinetics, or structural mechanics — rather than derived solely from observed data. Also called a mechanistic model, first-principles model, or white-box model. Because a physics-based model encodes domain knowledge about how a process actually works, it can extrapolate to operating conditions not seen in historical data and produces interpretable results that engineers can validate against known physics.
+A mathematical model built from fundamental physical laws — mass balances, energy balances, thermodynamics, fluid dynamics, or reaction kinetics — rather than derived solely from observed data. Also called a mechanistic model, first-principles model, or white-box model. Physics-based models encode domain knowledge about how a process works, allowing them to extrapolate to conditions not seen in historical data and produce interpretable results.
 
-Physics-based models are widely used in process industries for design, simulation, real-time optimization, and fault diagnosis. In modern industrial AI workflows, they are often combined with data-driven models in a hybrid (grey-box) approach: the physics model captures the known structure of the process while the data-driven component corrects for uncertainties, unmeasured disturbances, and model mismatch. TDengine IDMP supports hybrid modeling workflows by providing the time-series infrastructure and asset context that data-driven components require — physics model outputs and data-driven corrections can both be stored as computed attributes and analyzed alongside live sensor data.
+In modern industrial AI, they are commonly combined with data-driven models in a hybrid (grey-box) approach: the physics model handles the known process structure while the data-driven component corrects for uncertainties and model mismatch. TDengine IDMP supports this by storing physics model outputs as computed attributes, analyzed alongside live sensor data.
 
 ## PLC
 
