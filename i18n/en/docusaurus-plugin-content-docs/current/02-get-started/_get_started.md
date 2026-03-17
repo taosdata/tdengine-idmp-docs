@@ -21,11 +21,11 @@ The following sections use the data from the Utilities scenario to demonstrate t
 
 ## 2.x.7 Explore the IDMP User Interface
 
-**UI Tour Guide**
+### UI Tour Guide
 
 The Tour Guide opens automatically on your first login. Click **Next** to step through an overview of the IDMP user interface. You can close it at any time by clicking **X**. To restart the tour later, click your profile in the top right and select **Tour Guide**.
 
-**View Element Information**
+### View Element Information
 
 After the tour, the **Explorer** page is displayed.
 
@@ -36,7 +36,7 @@ After the tour, the **Explorer** page is displayed.
 
 ![View element attributes](../assets/get-started-01.png)
 
-**Try AI-Generated Panels**
+### Try AI-Generated Panels
 
 1. Select the element **Utilities** > **California** > **San Diego County** > **Chula Vista** > **em-10**.
 2. From the path bar, select **Panels**. Five AI-recommended panels are displayed. Click **+ More Suggestions** to generate additional options.
@@ -48,7 +48,7 @@ After the tour, the **Explorer** page is displayed.
 
 ![AI-generated panels](../assets/get-started-02.png)
 
-**Try AI-Powered Analysis**
+### Try AI-Powered Analysis
 
 1. Select the element **Utilities** > **California** > **San Diego County** > **Chula Vista** > **em-10**.
 2. From the path bar, select **Analyses**. Three AI-recommended questions are displayed.

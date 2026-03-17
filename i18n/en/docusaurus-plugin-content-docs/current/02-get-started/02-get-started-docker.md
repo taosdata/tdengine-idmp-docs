@@ -44,4 +44,3 @@ Set the `TZ` environment variable to match your environment. `UTC` is a good def
 <Init />
 
 Your TDengine IDMP instance is now ready to use. Continue to [Section 2.4](./04-experiencing-idmp.md) to load sample data and explore IDMP features.
-

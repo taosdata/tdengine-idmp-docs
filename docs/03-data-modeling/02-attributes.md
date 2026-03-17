@@ -17,31 +17,36 @@ sidebar_label: 属性
 
 **数据引用类型**决定了属性值的来源。共有四种类型：
 
-**1. TDengine 指标**
+### TDengine 指标
 
 引用 TDengine TSDB 表中的指标列（时序测量列）。属性值随新数据写入而实时更新。适用于随时间变化的值，如温度、压力、流量、电流、电压等。
 
 数据引用设置的格式为：
+
 ```text
 连接名/数据库名/表名/列名
 ```
+
 示例：`TDengine/idmp_sample_utility/em-12/current`
 
-**2. TDengine 标签**
+### TDengine 标签
 
 引用 TDengine TSDB 表中的标签值。标签是附加在表上的静态元数据字段（如设备 ID、位置或安装楼层）。适用于值来源于 TSDB 标签而非时序列的属性。
 
 格式与 TDengine 指标相同：
+
 ```text
 连接名/数据库名/表名/标签名
 ```
+
 示例：`TDengine/idmp_sample_utility/em-17/location`
 
-**3. 公式**
+### 公式
 
 计算型属性，其值由引用同一元素其他属性的表达式推导得出。表达式会被转换为 TDengine SQL 表达式，并在 TDengine TSDB 上执行。输出必须为数值类型。
 
 示例表达式：
+
 ```text
 log(current) * voltage + 10
 ```
@@ -52,7 +57,7 @@ log(current) * voltage + 10
 公式属性只能引用同一元素的属性。如需使用其他元素的值，请在当前元素上新增一个属性，使其指向相同的数据源。
 :::
 
-**4. 字符串构建器**
+### 字符串构建器
 
 与公式类似，但输出为字符串。输入可以是当前元素的任意属性（不限于数值类型）。常用函数包括：
 
@@ -63,8 +68,8 @@ log(current) * voltage + 10
 除 `TIME` 外，字符串构建器还支持更多替换参数，例如当前元素名、当前属性名和模板名。
 
 示例表达式：
-```text
-CONCAT(${Template#name}, 'Device', ${attributes['Device ID']}, ' voltage is ', CAST(${attributes['Voltage']} AS varchar), 'V')
+
+```text, 'Device', ${attributes['Device ID']}, ' voltage is ', CAST(${attributes['Voltage']} AS varchar), 'V')
 ```
 
 :::note
@@ -75,7 +80,7 @@ CONCAT(${Template#name}, 'Device', ${attributes['Device ID']}, ' voltage is ', C
 
 每个属性都具有以下可配置特性：
 
-**基础字段**
+### 基础字段
 
 | 特性 | 说明 |
 |---|---|
@@ -92,7 +97,7 @@ CONCAT(${Template#name}, 'Device', ${attributes['Device ID']}, ' voltage is ', C
 | **数据引用设置** | 指向 TDengine TSDB 数据源的路径，格式为 `数据库/表名/列名` |
 | **路径** | 属性在资产模型中的完整路径（只读，自动生成） |
 
-**极限值配置**
+### 极限值配置
 
 为属性定义运行阈值。每个极限值有名称和数值：
 
@@ -108,7 +113,7 @@ CONCAT(${Template#name}, 'Device', ${attributes['Device ID']}, ' voltage is ', C
 
 每个极限值还有一个可选的**属性**字段——您可以将极限值关联到另一个属性而非固定数值，从而实现基于实时状态动态变化的极限值。
 
-**预测配置**
+### 预测配置
 
 为该属性配置基于 AI 的预测：
 
@@ -118,11 +123,11 @@ CONCAT(${Template#name}, 'Device', ${attributes['Device ID']}, ' voltage is ', C
 | **外部** | 通过已配置的端点连接外部预测服务 |
 | **无** | 不启用预测（默认） |
 
-**附加特性**
+### 附加特性
 
 用于存储属性自定义元数据的自由键值对（如仪表标签、校准日期、传感器型号）。点击 **+** 添加新条目。
 
-**配置标志**
+### 配置标志
 
 | 标志 | 说明 |
 |---|---|
@@ -163,12 +168,14 @@ CONCAT(${Template#name}, 'Device', ${attributes['Device ID']}, ' voltage is ', C
 
 编辑属性有两种方式：
 
-**方式一：从属性详情视图编辑**
+### 方式一：从属性详情视图编辑
+
 1. 点击列表中的属性名称，打开其详情视图。
 2. 点击工具栏中的**编辑**图标（铅笔）。
 3. 修改所需字段后点击**保存**。
 
-**方式二：从属性列表的 ⋮ 菜单编辑**
+### 方式二：从属性列表的 ⋮ 菜单编辑
+
 1. 在属性列表中，点击属性行上的 **⋮** 菜单。
 2. 选择**编辑**。
 3. 修改所需字段后点击**保存**。
@@ -177,12 +184,14 @@ CONCAT(${Template#name}, 'Device', ${attributes['Device ID']}, ' voltage is ', C
 
 删除属性有两种方式：
 
-**方式一：从属性详情视图删除**
+### 方式一：从属性详情视图删除
+
 1. 点击属性名称，打开其详情视图。
 2. 点击右上角工具栏中的**删除**图标（垃圾桶）。
 3. 确认删除。
 
-**方式二：从属性列表的 ⋮ 菜单删除**
+### 方式二：从属性列表的 ⋮ 菜单删除
+
 1. 在属性列表中，点击属性行上的 **⋮** 菜单。
 2. 选择**删除**并确认。
 

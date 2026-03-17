@@ -57,4 +57,3 @@ Each row in the table has the following columns:
 | **Event Attribute** | *(Visible only when event generation is enabled in section 4)* An event attribute to capture the computed value at the moment the event fires |
 
 Use the **+** button at the bottom of the table to add additional output rows. Each row is an independent expression — you can compute multiple metrics in a single analysis and write them to different attributes.
-

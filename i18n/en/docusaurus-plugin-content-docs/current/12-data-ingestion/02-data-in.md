@@ -17,7 +17,7 @@ The toolbar provides controls to start, stop, delete, import, and export tasks, 
 
 Click **+** to create a new task. Configure the following sections:
 
-**General Information**
+### General Information
 
 | Field | Description |
 |---|---|
@@ -25,15 +25,15 @@ Click **+** to create a new task. Configure the following sections:
 | **Type** | The data source protocol (see task types below) |
 | **Target** (required) | The destination TDengine database. Click **+ Create Database** to create a new one. |
 
-**Connection Configuration**
+### Connection Configuration
 
 Configuration fields vary by task type. Two common examples are shown below.
 
-**Example: OPC-UA**
+### Example: OPC-UA
 
 OPC-UA (OPC Unified Architecture) is a widely used industrial protocol for connecting PLCs, sensors, and SCADA systems.
 
-*Connection Configuration*
+#### Connection Configuration
 
 | Field | Description |
 |---|---|
@@ -46,13 +46,13 @@ OPC-UA (OPC Unified Architecture) is a widely used industrial protocol for conne
 | **Connect Timeout** | Connection timeout in seconds (default: 10) |
 | **Request Timeout** | Request timeout in seconds (default: 10) |
 
-*Authentication*
+#### Authentication
 
 Choose **Anonymous**, **Username** (username and password), or **Certificates** (client certificate files).
 
 Click **Check Connection** to verify before proceeding.
 
-*Data Sets*
+#### Data Sets
 
 | Field | Description |
 |---|---|
@@ -65,7 +65,7 @@ Click **Check Connection** to verify before proceeding.
 | **Value Column Name** | Column name for the value (default: `val`) |
 | **Timestamp** | Timestamp source (default: `original_ts`) |
 
-*Collect*
+#### Collect
 
 | Field | Description |
 |---|---|
@@ -73,11 +73,11 @@ Click **Check Connection** to verify before proceeding.
 | **Point Update Mode** | How point metadata updates are handled |
 | **Point Update Interval** | Interval in seconds to check for point changes (default: 600) |
 
-**Example: SparkplugB (MQTT)**
+### Example: SparkplugB (MQTT)
 
 SparkplugB is an MQTT-based protocol widely used in IIoT deployments.
 
-*Connection Configuration*
+#### Connection Configuration
 
 | Field | Description |
 |---|---|

@@ -6,16 +6,16 @@ This guide covers everything you need to know to contribute to the TDengine IDMP
 
 The documentation uses Docusaurus with two locales:
 
-```
-docs/                                                      # Chinese (default locale, zh-Hans)
-i18n/en/docusaurus-plugin-content-docs/current/           # English
+```text
+docs/                                             # Chinese (default locale, zh-Hans)
+i18n/en/docusaurus-plugin-content-docs/current/   # English
 ```
 
 Both trees mirror each other exactly — same filenames, same directory structure, same numbering. When you add a file in `docs/`, add the corresponding English file in `i18n/en/`.
 
 Static assets (images shared across the site) live in:
 
-```
+```text
 static/docs-img/      # Served at /docs-img/ as absolute paths
 ```
 
@@ -25,7 +25,7 @@ static/docs-img/      # Served at /docs-img/ as absolute paths
 
 Each chapter is a numbered directory:
 
-```
+```text
 docs/
   01-introduction.md          ← single-file chapter
   02-get-started/
@@ -81,7 +81,7 @@ Do **not** create a separate `01-overview.md` file. Overview content belongs in 
 
 Store images alongside the chapter that owns them:
 
-```
+```text
 docs/04-visualization/images/trend-demo.png
 docs/05-canvas/images/canvas-01.png
 docs/14-administration/images/single_deploy.png
@@ -89,7 +89,7 @@ docs/14-administration/images/single_deploy.png
 
 For images shared across chapters, use `static/docs-img/`:
 
-```
+```text
 static/docs-img/basic/ui-main.png   →   referenced as /docs-img/basic/ui-main.png
 ```
 
@@ -279,6 +279,7 @@ Before pushing, run the local check script:
 This runs markdownlint, typos, and AutoCorrect locally. Fix all issues before opening a PR.
 
 The CI pipeline runs:
+
 - `markdownlint-cli2` — markdown format validation
 - `typos` — spell checking
 - `AutoCorrect` — Chinese typography
@@ -315,7 +316,7 @@ The most common documentation mistake is using terminology that doesn't match th
 
 **Example prompt — verify Chinese UI terms:**
 
-```
+```text
 Open the IDMP application at localhost:6042, switch the UI to Chinese,
 then navigate to the element browser. Tell me the exact text on each
 context tab (the tabs that appear when you select an element).
@@ -323,7 +324,7 @@ context tab (the tabs that appear when you select an element).
 
 **Example prompt — check a specific feature:**
 
-```
+```text
 In the IDMP UI at localhost:6042, go to the Analyses tab for any element
 and tell me: what is the exact text of the "Ask AI" button? What placeholder
 text appears in the AI input field?
@@ -335,7 +336,7 @@ Claude will navigate the app, read the exact UI text, and report back. Use this 
 
 Once terminology is verified, ask Claude to draft the page:
 
-```
+```text
 Based on what you just saw in the UI, write a Chinese documentation page
 for the Analyses tab. Follow the doc-writing skill rules: ATX headings,
 no numbered headings, bold+colon+space, Chinese-English spacing.
@@ -356,7 +357,7 @@ Claude will write the page, apply all format rules, and save it directly to the 
 
 **Audit an existing page against the current UI:**
 
-```
+```text
 Read docs/08-ai-powered-insights/03-ai-panel-insights.md, then open
 localhost:6042 and navigate to the panel insights feature. Check whether
 the terminology in the doc matches the actual UI text. List any mismatches.
@@ -364,7 +365,7 @@ the terminology in the doc matches the actual UI text. List any mismatches.
 
 **Write both Chinese and English versions:**
 
-```
+```text
 Write the Chinese version first in docs/12-data-ingestion/05-new-connector.md,
 then write the English version in i18n/en/docusaurus-plugin-content-docs/
 current/12-data-ingestion/05-new-connector.md. The English is NOT a direct
@@ -373,7 +374,7 @@ translation — adapt it naturally. Follow all doc-writing format rules.
 
 **Check image paths after adding new images:**
 
-```
+```text
 I added new screenshots to docs/03-data-modeling/images/. Check that all
 image references in docs/03-data-modeling/ resolve to existing files.
 ```

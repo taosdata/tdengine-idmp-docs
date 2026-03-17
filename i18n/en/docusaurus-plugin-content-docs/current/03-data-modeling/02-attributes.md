@@ -15,31 +15,36 @@ Attributes give context to raw data. Instead of querying a database column by it
 
 The **Data Reference Type** determines where an attribute's value comes from. There are four types:
 
-**1. TDengine Metric**
+### 1. TDengine Metric
 
 References a metric column (a time-series measurement column) in a TDengine TSDB table. The attribute value is read in real time as new data is ingested. Use this type for any value that changes over time — temperature, pressure, flow rate, current, voltage, and so on.
 
 The Data Reference Setting format is:
+
 ```text
 ConnectionName/DatabaseName/TableName/ColumnName
 ```
+
 Example: `TDengine/idmp_sample_utility/em-12/current`
 
-**2. TDengine Tag**
+### 2. TDengine Tag
 
 References a tag value in a TDengine TSDB table. Tags are static metadata fields attached to a table (such as device ID, location, or installation floor). Use this type for attributes whose values come from TSDB tags rather than time-series columns.
 
 The format is the same as TDengine Metric:
+
 ```text
 ConnectionName/DatabaseName/TableName/TagName
 ```
+
 Example: `TDengine/idmp_sample_utility/em-17/location`
 
-**3. Formula**
+### 3. Formula
 
 A calculated attribute whose value is derived from an expression referencing other attributes of the same element. The expression is converted to a TDengine SQL expression and executed against TDengine TSDB. The output must be numeric.
 
 Example expression:
+
 ```text
 log(current) * voltage + 10
 ```
@@ -50,7 +55,7 @@ The special replacement parameter `TIME` is available — it is substituted with
 Formula attributes can only reference attributes of the same element. To use a value from another element, add a new attribute to the current element that maps to the same data source.
 :::
 
-**4. String Builder**
+### 4. String Builder
 
 Similar to Formula but the output is a string. The input can be any attribute of the current element (not limited to numeric types). Common functions include:
 
@@ -61,6 +66,7 @@ Similar to Formula but the output is a string. The input can be any attribute of
 Replacement parameters beyond `TIME` are also available, such as the current element name, current attribute name, and the template name.
 
 Example expression:
+
 ```text
 CONCAT(${Template#name}, 'Device', ${attributes['Device ID']}, ' voltage is ', CAST(${attributes['Voltage']} AS varchar), 'V')
 ```
@@ -73,7 +79,7 @@ Use `CONCAT()` to join strings — the `+` operator cannot be used for string co
 
 Every attribute has the following configurable properties:
 
-**Basic fields**
+### Basic fields
 
 | Property | Description |
 |---|---|
@@ -90,7 +96,7 @@ Every attribute has the following configurable properties:
 | **Data Reference Setting** | The path to the TDengine TSDB data source in the format `database/table/column` |
 | **Path** | The full path of the attribute within the asset model (read-only, auto-generated) |
 
-**Limits Configuration**
+### Limits Configuration
 
 Define operational thresholds for the attribute. Each limit has a name and a numeric value:
 
@@ -106,7 +112,7 @@ Define operational thresholds for the attribute. Each limit has a name and a num
 
 Each limit entry also has an optional **Attribute** field — you can link a limit to another attribute rather than a fixed value, allowing dynamic limits that change based on real-time conditions.
 
-**Forecast Configuration**
+### Forecast Configuration
 
 Configure AI-based forecasting for this attribute:
 
@@ -116,11 +122,11 @@ Configure AI-based forecasting for this attribute:
 | **External** | Connect to an external forecasting service via a configured endpoint |
 | **None** | No forecasting (default) |
 
-**Additional Properties**
+### Additional Properties
 
 Free-form key-value pairs for storing any custom metadata specific to the attribute (e.g., instrument tag, calibration date, sensor model). Click **+** to add a new entry.
 
-**Configuration flags**
+### Configuration flags
 
 | Flag | Description |
 |---|---|
@@ -161,12 +167,14 @@ To add a new attribute to an element:
 
 There are two ways to edit an attribute:
 
-**Method 1: From the attribute detail view**
+### Method 1: From the attribute detail view
+
 1. Click the attribute name in the list to open its detail view.
 2. Click the **Edit** icon (pencil) in the toolbar.
 3. Modify the desired fields and click **Save**.
 
-**Method 2: From the attributes list ⋮ menu**
+### Method 2: From the attributes list ⋮ menu
+
 1. In the Attributes list, click the **⋮** menu on the attribute row.
 2. Select **Edit**.
 3. Modify the desired fields and click **Save**.
@@ -175,12 +183,14 @@ There are two ways to edit an attribute:
 
 There are two ways to delete an attribute:
 
-**Method 1: From the attribute detail view**
+### Method 1: From the attribute detail view
+
 1. Open the attribute detail view by clicking the attribute name.
 2. Click the **Delete** icon (trash) in the top-right toolbar.
 3. Confirm the deletion.
 
-**Method 2: From the attributes list ⋮ menu**
+### Method 2: From the attributes list ⋮ menu
+
 1. In the Attributes list, click the **⋮** menu on the attribute row.
 2. Select **Delete** and confirm.
 
@@ -218,7 +228,9 @@ The Expression Editor is a shared UI component used wherever expressions are con
 
 The dialog has three panels:
 
-**Attribute panel (left)** — Browse and insert the element's attributes into the expression. Attributes are organized into groups:
+### Attribute panel (left)
+
+Browse and insert the element's attributes into the expression. Attributes are organized into groups:
 
 | Group | Contents |
 |---|---|
@@ -229,13 +241,17 @@ The dialog has three panels:
 
 A **Filter** field at the top lets you search by name. Click an attribute or parameter to insert it at the cursor position in the expression.
 
-**Expression editor (center)** — A code editor where you write the expression. An operator shortcut bar at the top provides one-click insertion of common operators:
+### Expression editor (center)
+
+A code editor where you write the expression. An operator shortcut bar at the top provides one-click insertion of common operators:
 
 ```text
 +  -  *  /  =  <  >  >=  <=  !=  <>  &  |
 ```
 
-**Function panel (right)** — Browse and insert functions by category. A **Filter** field lets you search by function name. Click a function name to insert it at the cursor position.
+### Function panel (right)
+
+Browse and insert functions by category. A **Filter** field lets you search by function name. Click a function name to insert it at the cursor position.
 
 ### Function Categories
 

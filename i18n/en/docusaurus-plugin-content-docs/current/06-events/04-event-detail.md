@@ -41,15 +41,15 @@ The General tab displays all standard event fields and provides the following to
 
 Three collapsible sections appear below the fields:
 
-**Properties**
+### Properties
 
 Additional system-level properties of the event record.
 
-**Annotation**
+### Annotation
 
 A free-text notes area where operators can add comments to the event — for example, investigation findings or corrective actions taken. See [Annotations](../11-collaboration/02-annotations.md) for details.
 
-**Notification Record**
+### Notification Record
 
 A log of all notifications sent for this event. Each entry shows the contact point name, the delivery timestamp, and whether delivery succeeded.
 

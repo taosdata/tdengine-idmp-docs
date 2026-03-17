@@ -12,6 +12,7 @@ Different data sources often use different names for the same physical measureme
 IDMP solves this through the **data reference** mechanism: no matter what the underlying column is named in TDengine TSDB, you define a single standard attribute name on the element — for example, `IndoorTemperature` — and map it to whichever column in whichever table holds the actual data. All users, dashboards, and analyses then refer to `IndoorTemperature` regardless of the source system's naming.
 
 This means you can:
+
 - Rename poorly named or abbreviated source fields into clear engineering names
 - Apply a consistent naming convention across all assets of the same type
 - Change the underlying data source without affecting any dashboards or analyses that reference the attribute
@@ -21,10 +22,12 @@ This means you can:
 When data from different sources uses different representations of the same measurement, IDMP allows you to transform it through **Formula** and **String Builder** data references.
 
 **Formula attributes** let you compute a derived value from other attributes. For example:
+
 - One data source records active power directly; another records current and voltage separately. Create a Formula attribute `ActivePower = current × voltage` to produce a consistent power value regardless of source.
 - Convert between scales: `TemperatureCelsius = (TemperatureFahrenheit - 32) × 5 / 9`
 
 **String Builder attributes** let you construct standardized string values from multiple source fields. For example, build a standard location description from separate city and building fields:
+
 ```text
 CONCAT(${attributes['City']}, '-', ${attributes['Building']}, '-Floor', CAST(${attributes['Floor']} AS varchar))
 ```
@@ -48,13 +51,16 @@ This mechanism standardizes the user-facing presentation of data even when diffe
 
 Templates are the most powerful tool for ensuring consistent structure across similar assets. IDMP provides templates at multiple levels:
 
-**Element templates**
+### Element templates
+
 Define a standard asset structure for each asset class (e.g., Pump, Meter, Boiler). An element template pre-configures the full set of standard attributes — with their names, data types, units, limits, and descriptions — that every asset of that class should have. When a new element is created from a template, all standard attributes are added automatically.
 
-**Attribute templates**
+### Attribute templates
+
 Individual attribute definitions can be saved to the template library and reused across multiple elements or element templates. This ensures that common attributes (e.g., `ActivePower`, `OperatingStatus`) are defined consistently everywhere they appear.
 
-**Other template types**
+### Other template types
+
 IDMP also provides templates for analyses, panels, dashboards, events, and notifications — ensuring that operational logic and visualizations are standardized across the same asset class, not just the data model.
 
 See [Chapter 13 — Libraries](../13-libraries/index.md) for details on creating and managing templates.

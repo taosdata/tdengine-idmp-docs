@@ -26,23 +26,28 @@ When you select an element in the asset tree, the **General** tab displays the f
 
 Below the main fields, the General tab contains the following expandable sections:
 
-**Related Documents**
+### Related Documents
+
 Upload files — such as user manuals, engineering handbooks, P&ID drawings, calibration reports, or any domain-specific reference material — and attach them directly to the element. These documents are indexed and made available to TDengine IDMP's AI engine. When a user asks questions about an element through AI Chat, the AI can draw on these documents to provide more accurate, context-aware answers. For example, attaching a pump's operation manual allows the AI to answer questions about its expected operating range, maintenance intervals, and alarm thresholds.
 
 To add a document: expand **Related Documents** and click **+ Add Document**.
 
-**Annotation**
+### Annotation
+
 Add free-text notes to the element. Annotations are useful for recording observations, maintenance history, or operational context that does not fit into structured attribute fields.
 
 To add an annotation: expand **Annotation** and click **+ New Annotation**. See [Annotations](../11-collaboration/02-annotations.md) for details.
 
-**Parents**
+### Parents
+
 Shows all parent elements in the asset hierarchy. An element can appear in multiple hierarchies simultaneously (for example, a pump may belong to both a geographic hierarchy and a functional equipment hierarchy). The Parents section lists each parent with its full path.
 
-**Security** *(coming soon)*
+### Security *(coming soon)*
+
 Role-based access control for this element. This feature is not yet implemented.
 
-**Version** *(coming soon)*
+### Version *(coming soon)*
+
 Version history and audit trail for changes to this element's configuration. This feature is not yet implemented.
 
 ## 3.1.2 Asset Tree and Child Elements
@@ -71,12 +76,14 @@ An element can also appear in more than one hierarchy at the same time — for e
 
 New elements are always created as children of an existing parent element. There are three ways to do this:
 
-**Method 1: From the asset tree hover menu**
+### Method 1: From the asset tree hover menu
+
 1. In the asset tree, hover over the parent element to reveal the **⋮** icon next to its name.
 2. Click **⋮** and select **New Child Element**.
 3. Fill in the element details and click **Save**.
 
-**Method 2: From the Child Elements tab toolbar**
+### Method 2: From the Child Elements tab toolbar
+
 1. Select the parent element in the asset tree.
 2. Click the **Child Elements** tab in the element detail pane.
 3. Click the **+** icon in the toolbar (top right of the Child Elements tab).
@@ -105,17 +112,20 @@ Changing the parent element of an existing element will relocate it — and all 
 
 There are several ways to delete an element:
 
-**Method 1: From the General tab toolbar**
+### Method 1: From the General tab toolbar
+
 1. Select the element in the asset tree.
 2. Click the **Delete** icon (trash icon) in the top-right corner of the General tab.
 3. Confirm the deletion in the dialog box.
 
-**Method 2: From the parent's Child Elements tab**
+### Method 2: From the parent's Child Elements tab
+
 1. Navigate to the parent element and click the **Child Elements** tab.
 2. In the child elements list, click the **⋮** (three-dot) menu on the row of the element you want to delete.
 3. Select **Delete** and confirm.
 
-**Method 3: From the asset tree context menu**
+### Method 3: From the asset tree context menu
+
 1. Hover over the element in the asset tree to reveal the **⋮** menu.
 2. Select **Delete** and confirm.
 
@@ -200,7 +210,7 @@ Once a template is created, its detail page shows the following tabs. Each tab m
 
 This example shows how KEYWORD substitution strings work in practice. Suppose your TDengine database `smdb` contains a supertable `SMeter` with two metric columns (`current`, `voltage`) and one tag column (`model`). The supertable has child tables named `smeter-1`, `smeter-2`, and so on. You want to create one IDMP element per child table, with each element automatically bound to its corresponding table.
 
-**Step 1 — Create the element template**
+### Step 1 — Create the element template
 
 Create a new element template named `Smart Meter`. In the **Element Naming Pattern** field, type `DEV-`, then click **+** and select **KEYWORD**. The system prompts you for a help text — enter something like `Child table name in supertable SMeter (e.g., smeter-1)`. The naming pattern becomes:
 
@@ -208,7 +218,7 @@ Create a new element template named `Smart Meter`. In the **Element Naming Patte
 DEV-${KEYWORD1}
 ```
 
-**Step 2 — Create attribute templates**
+### Step 2 — Create attribute templates
 
 Create three attribute templates on the `Smart Meter` template:
 
@@ -220,7 +230,7 @@ Create three attribute templates on the `Smart Meter` template:
 
 For each attribute, set the **Data Reference Type** to **TDengine Metric** or **TDengine Tag**, then open the Data Reference Setting dialog. Select the TDengine connection and database `smdb`. In the **Table Name Pattern** field, click **+** and select `KEYWORD1`. Enter the column name (`current`, `voltage`, or `model`). Click **Check** with a sample child table name to verify the binding.
 
-**Step 3 — Create elements from the template**
+### Step 3 — Create elements from the template
 
 When you create a new element using the `Smart Meter` template, IDMP prompts you to enter a value for `KEYWORD1`, displaying the help text you defined. Enter a child table name — for example, `smeter-1`. IDMP automatically:
 
@@ -248,7 +258,7 @@ The **Parents** section in an element's General tab lists all current references
 
 IDMP defines three reference types that control what happens when an element or its parent is deleted.
 
-**Strong Reference**
+### Strong Reference
 
 The default reference type. An element with at least one strong reference always exists somewhere in the asset tree. Deleting it from one location only removes that reference — the element continues to exist wherever its other strong references are.
 
@@ -256,7 +266,7 @@ The default reference type. An element with at least one strong reference always
 
 In the diagram above, Wind Turbine-1 has strong references under both Wind Turbines and Site A. Deleting Wind Turbine-1 from under Site A removes only that reference — Wind Turbine-1 still exists under Wind Turbines.
 
-**Composition Reference**
+### Composition Reference
 
 Used when an element is physically part of its parent — for example, a motor that is a component of a wind turbine. A composition reference is a stronger bond: if the parent element is deleted, the child is completely deleted from all locations, regardless of any other references it may have.
 
@@ -266,7 +276,7 @@ In the diagram above, Motor-A has a composition reference under Wind Turbine-1 a
 
 An element can have at most one composition reference.
 
-**Weak Reference**
+### Weak Reference
 
 Used when you want an element to appear in an additional hierarchy without affecting its lifecycle. Weak references are informational — deleting a weak reference has no effect on the element or its other references.
 

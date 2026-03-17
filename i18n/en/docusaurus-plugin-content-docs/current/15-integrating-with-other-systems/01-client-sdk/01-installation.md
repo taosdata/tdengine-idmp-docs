@@ -34,7 +34,7 @@ cd idmp-java-sdk
 mvn install -DskipTests
 ```
 
-**Step 2 — Add the dependency to your project's `pom.xml`:**
+### Step 2 — Add the dependency to your project's `pom.xml`
 
 ```xml
 <dependency>
