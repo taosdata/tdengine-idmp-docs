@@ -3,6 +3,8 @@ title: 规划
 sidebar_label: 规划
 ---
 
+# 14.2 规划
+
 ## 硬件要求
 
 运行 TDengine IDMP 的最低硬件要求如下：

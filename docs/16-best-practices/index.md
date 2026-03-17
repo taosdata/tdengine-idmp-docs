@@ -5,6 +5,8 @@ sidebar_label: 最佳实践
 
 import DocCardList from '@theme/DocCardList';
 
+# 16. 最佳实践
+
 IDMP 提供了强大的数据建模能力，让数据标准化、情景化，从而可以更好地利用 AI 技术，从数据中挖掘出业务价值，但数据建模本身是一个很难用 AI 完成的事情。
 
 为最大程度减少建模的成本，TDengine 推荐在数据源侧做好最基础的数据治理工作。有几条建议：

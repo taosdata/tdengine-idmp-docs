@@ -3,7 +3,7 @@ title: 产品简介
 sidebar_label: 产品简介
 ---
 
-# 第一章 产品简介
+# 1. 产品简介
 
 ## 1.1 什么是 TDengine IDMP
 

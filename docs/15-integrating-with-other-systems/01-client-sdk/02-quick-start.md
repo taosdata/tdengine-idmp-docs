@@ -10,6 +10,8 @@ sidebar_label: 快速开始
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+# 15.1.2 快速开始
+
 ## 目标
 
 完成本页后，您将能够：

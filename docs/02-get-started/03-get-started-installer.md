@@ -9,6 +9,8 @@ import PkgListV37 from "/src/components/PkgListZh";
 import Init from './_init.md';
 import Getstarted from './_get_started.md';
 
+# 2.3 安装包快速上手
+
 TDengine IDMP 支持在 Linux、macOS 或 Windows 机器上进行本地安装。
 
 ## 2.3.1 系统要求

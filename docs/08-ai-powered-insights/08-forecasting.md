@@ -3,6 +3,8 @@ title: 预测
 sidebar_label: 预测
 ---
 
+# 8.8 预测
+
 :::note
 预测需要与 IDMP 一同安装 **TDgpt 模块**，无需大语言模型连接。
 :::

@@ -3,6 +3,8 @@ title: 将 Excel 连接到 IDMP
 sidebar_label: 将 Excel 连接到 IDMP
 ---
 
+# 10.2 将 Excel 连接到 IDMP
+
 安装 Excel 插件后，您需要在 Excel 中打开它并登录到 IDMP 实例，然后才能检索数据。
 
 ## 打开插件

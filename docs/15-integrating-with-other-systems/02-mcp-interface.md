@@ -3,6 +3,8 @@ title: MCP 接口
 sidebar_label: MCP 接口
 ---
 
+# 15.2 MCP 接口
+
 :::note 即将推出
 TDengine IDMP MCP（模型上下文协议）接口正在积极开发中，将在未来版本中提供。届时将同步发布相关文档。
 :::

@@ -6,6 +6,8 @@ sidebar_label: 安装
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+# 15.1.1 安装
+
 ## 前置条件
 
 <Tabs groupId="language">

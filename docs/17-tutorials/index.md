@@ -3,6 +3,8 @@ title: 教程
 sidebar_label: 教程
 ---
 
+# 17. 教程
+
 以下教程涵盖了 TDengine IDMP 在不同行业场景下的典型应用，每篇文章均提供完整的部署方案或分步实现指引，帮助您快速了解如何将 IDMP 应用于实际生产环境。
 
 - [TDengine IDMP 助力智慧海上油田监控](https://www.taosdata.com/idmp-application-scenarios/34633.html) — 海上油田监控场景下的完整部署方案

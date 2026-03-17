@@ -8,6 +8,8 @@ import TabItem from '@theme/TabItem';
 import Init from './_init.md';
 import Getstarted from './_get_started.md';
 
+# 2.2 Docker 快速上手
+
 TDengine IDMP 提供 Docker Compose 部署方式，可简化本地部署流程。该方式将同时安装 TDengine TSDB-Enterprise 与 TDengine IDMP，并自动建立两者之间的连接。
 
 ## 2.2.1 环境要求

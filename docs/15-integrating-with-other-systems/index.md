@@ -5,6 +5,8 @@ sidebar_label: 与其他系统集成
 
 import DocCardList from '@theme/DocCardList';
 
+# 15. 与其他系统集成
+
 TDengine IDMP 被设计为**开放的工业数据平台**。Web UI 中所有可用的功能都可以通过文档完善的 REST API 以编程方式访问，SDK 则将该 API 封装为原生的 Java 和 Python 库。
 
 ## 为什么开放性在 AI 时代至关重要

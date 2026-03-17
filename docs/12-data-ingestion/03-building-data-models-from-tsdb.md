@@ -3,6 +3,8 @@ title: 从 TDengine TSDB 构建数据模型
 sidebar_label: 从 TDengine TSDB 构建数据模型
 ---
 
+# 12.3 从 TDengine TSDB 构建数据模型
+
 对于已在使用 TDengine TSDB 的用户，IDMP 可以直接从 TSDB 的 Schema 自动构建资产数据模型——包括元素、元素模板和属性。这省去了手动创建元素和属性的工作量。
 
 IDMP 提供四种方式，均可从 **管理后台 → 连接 → [连接名称]** 下的 TDengine 连接详情页访问：

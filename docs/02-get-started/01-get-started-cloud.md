@@ -3,6 +3,8 @@ title: 云服务快速上手
 sidebar_label: TDengine 云服务
 ---
 
+# 2.1 云服务快速上手
+
 TDengine Cloud 是面向工业大数据的全托管云服务，基于 Amazon Web Services（AWS）以云原生方式提供 TDengine IDMP 的全部功能。注册即可免费获得 250 美元的试用额度。
 
 ## 2.1.1 创建 TDengine Cloud 账户

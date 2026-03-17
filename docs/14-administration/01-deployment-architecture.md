@@ -3,6 +3,8 @@ title: 部署架构
 sidebar_label: 部署架构
 ---
 
+# 14.1 部署架构
+
 TDengine IDMP 支持三种典型部署拓扑：**单实例**、**最小高可用（HA Minimal）**和**复杂高可用（HA Complex）**。每种拓扑适用于不同的规模与可用性需求。
 
 ## 概述

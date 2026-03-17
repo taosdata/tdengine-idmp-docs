@@ -5,6 +5,8 @@ sidebar_label: 系统管理
 
 import DocCardList from '@theme/DocCardList';
 
+# 14. 系统管理
+
 本章介绍 TDengine IDMP 的系统管理相关内容，包括部署架构、容量规划、用户管理、系统配置以及备份与恢复。
 
 管理控制台通过点击右上角头像并选择**管理控制台**来访问。

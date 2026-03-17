@@ -6,6 +6,8 @@ sidebar_label: 安装 Excel 插件
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+# 10.1 安装 Excel 插件
+
 TDengine IDMP Excel 插件让您能够直接在 Microsoft Excel 中检索时序数据和元素属性，无需编写任何代码或 SQL。
 
 ## 前提条件

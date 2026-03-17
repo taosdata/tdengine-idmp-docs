@@ -5,6 +5,8 @@ sidebar_label: 基础库
 
 import DocCardList from '@theme/DocCardList';
 
+# 13. 基础库
+
 **基础库**是 TDengine IDMP 中可复用定义的中央存储库，可在整个平台中共享使用。通过主导航栏中的**基础库**菜单访问。
 
 基础库菜单包含以下部分：

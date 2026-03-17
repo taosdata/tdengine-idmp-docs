@@ -3,6 +3,8 @@ title: AI 辅助分析
 sidebar_label: AI 辅助分析
 ---
 
+# 7.6 AI 辅助分析
+
 TDengine IDMP 内置 AI 助手，可以无需手动填写触发类型、计算表达式和输出属性即可创建分析。有两种使用方式。
 
 ## 打开 AI 面板
