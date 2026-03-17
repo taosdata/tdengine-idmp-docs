@@ -16,6 +16,7 @@ The Admin Console is accessed by clicking the avatar in the top-right corner and
 | **User Management** | Users, roles, permissions, and single sign-on (SSO) via OAuth 2.0 |
 | **System Configuration** | Basic settings, notification contact points, notification templates, and email server |
 | **Backup and Restore** | Configuring automated backups and restoring data from a backup |
+| **Sample Data** | Loading pre-built scenario packages to explore and demonstrate system features without a real data source |
 
 :::note
 **Monitoring and Logging** features are planned for a future release.
