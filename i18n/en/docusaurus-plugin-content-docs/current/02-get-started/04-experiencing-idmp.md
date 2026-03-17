@@ -11,7 +11,7 @@ The Tour Guide opens automatically on your first login. It walks you through the
 
 The interface is organized into the following areas:
 
-![IDMP user interface overview](/docs-img/basic/ui-main.png)
+![IDMP user interface overview](../assets/ui-main.png)
 
 **1. Top Navigation Bar**
 

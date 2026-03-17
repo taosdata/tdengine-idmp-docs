@@ -11,7 +11,7 @@ sidebar_label: 探索 IDMP
 
 界面分为以下几个区域：
 
-![IDMP 用户界面总览](/docs-img/basic/ui-main.png)
+![IDMP 用户界面总览](../../static/docs-img/basic/ui-main.png)
 
 **1. 顶部导航栏**
 
@@ -55,18 +55,18 @@ sidebar_label: 探索 IDMP
 
 ## 2.4.2 查看元素信息
 
-以下步骤以 **Utilities** 场景为例。如果在激活时未加载该场景，请进入**管理后台** > **示例数据**，先加载后再继续。
+以下步骤以 **公共事业** 场景为例。如果在激活时未加载该场景，请进入**管理后台** > **示例数据**，先加载后再继续。
 
-1. 在左侧面板中点击**元素**，Utilities 场景的元素将以树状层次结构显示。
-2. 选择 **Utilities** > **California** > **San Diego County** > **Chula Vista** > **em-10**。该元素代表加利福尼亚州圣地亚哥县丘拉维斯塔市编号为 10 的电表。
+1. 在左侧面板中点击**元素**，公共事业 场景的元素将以树状层次结构显示。
+2. 选择 **公共事业** > **北京** > **朝阳** > **三元桥街道** > **em-10**。该元素代表加利福尼亚州圣地亚哥县丘拉维斯塔市编号为 10 的电表。
 3. 在上下文标签栏中选择**通用**，查看该电表的描述和基本信息。
 4. 选择**属性**，查看其属性信息，如电流、电压等。
 
-![查看元素属性](../../i18n/en/docusaurus-plugin-content-docs/current/assets/get-started-01.png)
+![查看元素属性](../../static/docs-img/get-started/attributes.png)
 
 ## 2.4.3 体验 AI 生成面板
 
-1. 选择元素 **Utilities** > **California** > **San Diego County** > **Chula Vista** > **em-10**。
+1. 选择元素 **公共事业** > **北京** > **朝阳** > **三元桥街道** > **em-10**。
 2. 在上下文标签栏中选择**面板**，页面将显示 5 个 AI 推荐面板。点击 **+ 更多推荐**可生成更多选项。
 3. 您也可以在推荐面板下方的输入框中，以自然语言告诉 AI 您想要的面板，例如：
 
@@ -74,11 +74,11 @@ sidebar_label: 探索 IDMP
 
    点击**问我一下**，AI 会自动生成您期望的面板。
 
-![AI 生成面板](../../i18n/en/docusaurus-plugin-content-docs/current/assets/get-started-02.png)
+![AI 生成面板](../../static/docs-img/get-started/panels.png)
 
 ## 2.4.4 体验 AI 实时分析
 
-1. 选择元素 **Utilities** > **California** > **San Diego County** > **Chula Vista** > **em-10**。
+1. 选择元素 **公共事业** > **北京** > **朝阳** > **三元桥街道** > **em-10**。
 2. 在上下文标签栏中选择**分析**，页面将显示 3 个 AI 推荐问题。
 3. 点击推荐问题的链接，进入实时分析创建页面，可对 AI 生成的配置进行进一步调整，确认后点击**保存**。
 4. 您也可以在推荐问题旁边的输入框中，以自然语言描述分析需求，例如：
@@ -87,7 +87,7 @@ sidebar_label: 探索 IDMP
 
    按**回车**，AI 会自动生成您期望的实时分析。
 
-![AI 实时分析](../../i18n/en/docusaurus-plugin-content-docs/current/assets/get-started-03.png)
+![AI 实时分析](../../static/docs-img/get-started/analysis.png)
 
 ## 2.4.5 下一步
 

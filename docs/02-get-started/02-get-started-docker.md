@@ -77,4 +77,4 @@ chmod +x idmp.sh
 
 <Init />
 
-<Getstarted />
+请继续阅读[第 2.4 节](./04-experiencing-idmp.md)，探索 IDMP 功能。
