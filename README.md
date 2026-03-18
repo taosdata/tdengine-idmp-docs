@@ -42,7 +42,7 @@ git clone git@github.com:taosdata/tdengine-idmp-docs.git
 This project uses [mise](https://github.com/jdx/mise) as the dev tool version manager and [just](https://github.com/casey/just/) as the command runner. `mise` is a polyglot dev tool version manager, it reads [mise.toml](./mise.toml) and automatically installs the correct versions of  [Node.js](https://nodejs.org/) and [pnpm](https://pnpm.io/) used in this project.
 
 
-Install mise on Linux/macOS (For other OS, please refer to mise's [Getting Started](https://mise.jdx.dev/getting-started.html) mannual):
+Install mise on Linux/macOS (For other OS, please refer to mise's [Getting Started](https://mise.jdx.dev/getting-started.html) documentation):
 
 ```bash
 curl https://mise.jdx.dev/install.sh | sh
