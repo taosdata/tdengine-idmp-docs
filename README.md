@@ -10,7 +10,7 @@ English | [简体中文](README-CN.md)
   - [2. Prepare](#2-prepare)
     - [2.1 Clone the Repo](#21-clone-the-repo)
     - [2.2 Install mise](#22-install-mise)
-    - [2.3 Install Develop Environments](#23-install-develop-environments)
+    - [2.3 Install Development Tools](#23-install-development-tools)
     - [2.4 Install Project Dependencies](#24-install-project-dependencies)
   - [3. Local Development and Production Deployment](#3-local-development-and-production-deployment)
     - [3.1 Start Preview](#31-start-preview)
@@ -57,7 +57,7 @@ eval "$(~/.local/bin/mise activate zsh)"    # for zsh
 
 Restart your shell session after modifying your rc file. After restarting, run `mise version` to verify installation.
 
-### 2.3 Install Develop Environments
+### 2.3 Install Development Tools
 
 Trust current directory and install the dev tools with `mise`:
 
