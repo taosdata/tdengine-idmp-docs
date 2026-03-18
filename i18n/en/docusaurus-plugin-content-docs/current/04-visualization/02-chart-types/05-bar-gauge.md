@@ -26,7 +26,7 @@ For a single large numeric value without a scale reference, use the Stat Value p
 
 ### Edit Mode Toolbar
 
-In addition to the [common edit mode controls](../01-panels.md#424-panel-edit-mode), the Bar Gauge adds:
+In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Bar Gauge adds:
 
 | Control | Description |
 |---|---|

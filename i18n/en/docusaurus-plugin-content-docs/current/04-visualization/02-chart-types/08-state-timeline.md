@@ -27,7 +27,7 @@ For continuous numeric signals, use the Trend Chart. For a compact grid view of 
 
 ### Edit Mode Toolbar
 
-In addition to the [common edit mode controls](../01-panels.md#424-panel-edit-mode), the State Timeline adds:
+In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the State Timeline adds:
 
 | Control | Description |
 |---|---|

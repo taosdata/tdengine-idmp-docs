@@ -78,7 +78,7 @@ The element-level events tab has the same filters, columns, and row actions as t
 | Control | Description |
 |---|---|
 | **Generate test event data** | Create a test event on this element for development and validation purposes |
-| **Notification Rule** | Open the notification rule configuration for this element — see [Alerts and Notifications](./05-alerts-and-notifications.md) |
+| **Notification Rule** | Open the notification rule configuration for this element — see [Alerts and Notifications](./04-alerts-and-notifications.md) |
 
 ## 6.2.3 Saved Event Filters
 

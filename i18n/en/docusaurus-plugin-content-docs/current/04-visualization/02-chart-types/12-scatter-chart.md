@@ -28,7 +28,7 @@ For continuous line-based trend analysis, use the Trend Chart. For discrete stat
 
 ### View Mode Toolbar
 
-In addition to the [common view mode controls](../01-panels.md#423-panel-view-mode), the Scatter Chart adds:
+In addition to the [common view mode controls](../01-panels.md#413-panel-view-mode), the Scatter Chart adds:
 
 | Control | Description |
 |---|---|
@@ -36,7 +36,7 @@ In addition to the [common view mode controls](../01-panels.md#423-panel-view-mo
 
 ### Edit Mode Toolbar
 
-In addition to the [common edit mode controls](../01-panels.md#424-panel-edit-mode), the Scatter Chart adds:
+In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Scatter Chart adds:
 
 | Control | Description |
 |---|---|

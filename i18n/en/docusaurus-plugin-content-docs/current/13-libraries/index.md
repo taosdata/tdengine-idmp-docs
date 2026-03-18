@@ -14,7 +14,7 @@ The Libraries menu contains the following sections:
 | Section | Description |
 |---|---|
 | **Element Template** | Define reusable element structures with attribute templates (see [Chapter 3](../03-data-modeling/01-elements.md)) |
-| **Event Template** | Define event schemas and notification rules (see [Chapter 6](../06-events/02-event-templates.md)) |
+| **Event Template** | Define event schemas and notification rules (see [Chapter 6](../06-events/01-event-templates.md)) |
 | **Enumeration Sets** | Map integer values to human-readable labels |
 | **Categories** | Define classification tags for elements, attributes, events, and more |
 | **UOM** | Manage units of measurement and automatic conversion |

@@ -28,7 +28,7 @@ For continuous time-series data where the trend shape matters, use the Trend Cha
 
 ### Edit Mode Toolbar
 
-In addition to the [common edit mode controls](../01-panels.md#424-panel-edit-mode), the Bar Chart adds:
+In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Bar Chart adds:
 
 | Control | Description |
 |---|---|

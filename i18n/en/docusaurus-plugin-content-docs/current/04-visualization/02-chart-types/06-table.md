@@ -26,7 +26,7 @@ For visual trend analysis, use the Trend Chart. For a single summary number, use
 
 ### Edit Mode Toolbar
 
-In addition to the [common edit mode controls](../01-panels.md#424-panel-edit-mode), the Table adds:
+In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Table adds:
 
 | Control | Description |
 |---|---|
