@@ -5,7 +5,6 @@ sidebar_label: AI-Generated Panels
 
 # 8.2 AI-Generated Panels
 
-
 Powered by **Zero Query Intelligence**, IDMP can automatically generate visualization panels for an element based on its attributes, template, and collected time-series data. These panels are ready to use with no manual configuration required.
 
 ## Where to Find AI-Generated Panels

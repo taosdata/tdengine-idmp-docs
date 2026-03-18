@@ -5,7 +5,6 @@ sidebar_label: Creating an Analysis
 
 # 7.2 Creating an Analysis
 
-
 To create a new analysis manually, navigate to an element's **Analyses** tab and click **+** in the toolbar, or click the **+ Create New Analysis Manually** button in the empty list. This opens the analysis creation form.
 
 The form is divided into four numbered sections that you complete in order: **General Information**, **Trigger**, **Calculation**, and **Event**.

@@ -5,7 +5,6 @@ sidebar_label: State Timeline
 
 # 4.2.8 State Timeline
 
-
 ## Overview
 
 The State Timeline displays how a value changes over time as a horizontal colored band. Each segment of the band is colored and labeled according to the value it represents, making it easy to see at a glance how long a process was in each state and when transitions occurred.

@@ -5,7 +5,6 @@ sidebar_label: Planning
 
 # 14.2 Planning
 
-
 ## Hardware Requirements
 
 The minimum hardware requirements to run TDengine IDMP are:

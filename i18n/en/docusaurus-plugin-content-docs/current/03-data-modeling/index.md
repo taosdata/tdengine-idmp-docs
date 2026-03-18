@@ -5,7 +5,6 @@ sidebar_label: Industrial Data Modeling
 
 # 3 Industrial Data Modeling
 
-
 import DocCardList from '@theme/DocCardList';
 
 In the real world, industrial assets — plants, equipment, sensors, and systems — exist within rich layers of organizational context. TDengine IDMP brings that context into the digital world through **industrial data modeling**: the process of building a structured, searchable catalog of your assets and the data they produce.

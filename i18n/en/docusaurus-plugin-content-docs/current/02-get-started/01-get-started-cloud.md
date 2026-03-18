@@ -5,7 +5,6 @@ sidebar_label: TDengine Cloud
 
 # 2.1 Get Started with TDengine Cloud
 
-
 TDengine Cloud is a fully managed cloud service for industrial big data. It delivers all features of TDengine IDMP as a cloud-native solution on Amazon Web Services (AWS). You can register for free and automatically receive $250 in credit to evaluate TDengine IDMP.
 
 ## 2.1.1 Create a TDengine Cloud Account

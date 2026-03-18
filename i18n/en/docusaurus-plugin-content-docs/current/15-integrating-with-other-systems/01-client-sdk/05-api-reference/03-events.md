@@ -5,7 +5,6 @@ sidebar_label: Events API
 
 # 15.1.5.3 Events API
 
-
 `EventResourceApi` provides query and management operations on events.
 
 import Tabs from '@theme/Tabs';

@@ -5,7 +5,6 @@ sidebar_label: Trigger Types
 
 # 7.3 Trigger Types
 
-
 The trigger defines when an analysis fires. TDengine IDMP supports eight trigger types, selected from the **Trigger Type** dropdown in the Trigger section of the analysis form.
 
 Triggers other than Periodic Time Window depend on an element's attributes having live data flowing through TDengine — specifically, the attributes must be of **TDengine Metric** data reference type. If an element has no such attributes, only Sliding Window and Session Window are available.

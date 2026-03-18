@@ -5,7 +5,6 @@ sidebar_label: AI-Generated Analyses
 
 # 8.4 AI-Generated Analyses
 
-
 IDMP can automatically suggest and configure real-time analyses for an element based on its template, attributes, and collected data. This lowers the barrier to analysis creation: instead of manually configuring trigger conditions, expressions, and output attributes, you can start from an AI-generated configuration and save it with a single click.
 
 ## Where to Find AI-Suggested Analyses

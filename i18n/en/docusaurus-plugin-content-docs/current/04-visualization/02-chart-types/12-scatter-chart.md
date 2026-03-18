@@ -5,7 +5,6 @@ sidebar_label: Scatter Chart
 
 # 4.2.12 Scatter Chart
 
-
 ## Overview
 
 The Scatter Chart plots individual data points as dots in a two-dimensional space. In the default mode each point's X position is the timestamp and its Y position is the metric value — a time-scatter view. For correlation analysis, two attributes are plotted against each other (Y vs. X), revealing the relationship between the two variables.

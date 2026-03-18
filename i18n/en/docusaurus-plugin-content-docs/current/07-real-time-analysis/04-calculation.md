@@ -5,7 +5,6 @@ sidebar_label: Calculation
 
 # 7.4 Calculation
 
-
 The Calculation section (section 3 of the analysis form) defines what the analysis computes and where it stores the results. It contains four parts: **Apply Calculation On**, **Rollup On Window**, **Output Timestamp**, and **Output Attributes**.
 
 ## Apply Calculation On

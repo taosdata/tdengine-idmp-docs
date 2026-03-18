@@ -5,7 +5,6 @@ sidebar_label: Data Standardization
 
 # 3.4 Data Standardization
 
-
 Industrial environments often collect data from multiple sources with inconsistent naming, varying units, and different data structures. Without standardization, cross-asset analysis, AI-generated insights, and data aggregation become unreliable or impossible. TDengine IDMP provides several mechanisms to standardize data across your entire asset model.
 
 ## 3.4.1 Unified Naming Through Data References

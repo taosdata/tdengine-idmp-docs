@@ -5,7 +5,6 @@ sidebar_label: Best Practices
 
 # 16 Best Practices
 
-
 import DocCardList from '@theme/DocCardList';
 
 IDMP provides powerful data modeling capabilities that standardize and contextualize industrial data, making it AI-ready and enabling deeper extraction of business value. However, building a good data model is something that requires careful human judgment — it is difficult to automate with AI alone.

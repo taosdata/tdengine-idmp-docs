@@ -5,7 +5,6 @@ sidebar_label: Panel Insights
 
 # 4.3 Panel Insights
 
-
 Panel Insights is the AI analysis feature built directly into every panel. With one click, the AI engine reads the chart data currently displayed, reasons about it in the context of the element's asset model and attribute metadata, and produces a written interpretation of what the data shows.
 
 ## 4.3.1 Accessing Panel Insights

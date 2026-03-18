@@ -5,7 +5,6 @@ sidebar_label: Connecting Excel to IDMP
 
 # 10.2 Connecting Excel to IDMP
 
-
 After installing the Excel Add-In, you need to open it in Excel and sign in to your IDMP instance before you can retrieve data.
 
 ## Opening the Add-In

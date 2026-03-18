@@ -5,7 +5,6 @@ sidebar_label: Status History
 
 # 4.2.9 Status History
 
-
 ## Overview
 
 The Status History panel displays a grid of colored cells where each column represents a time bucket and each row represents a metric. It provides a compact, calendar-style view of state patterns across multiple dimensions simultaneously — ideal for spotting recurring patterns, shifts, or periods of abnormal behavior across a long time range.

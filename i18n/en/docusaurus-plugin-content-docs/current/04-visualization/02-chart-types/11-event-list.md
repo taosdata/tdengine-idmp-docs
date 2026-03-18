@@ -5,7 +5,6 @@ sidebar_label: Event List
 
 # 4.2.11 Event List
 
-
 ## Overview
 
 The Event List panel displays events in a tabular grid, showing severity, acknowledgment status, name, duration, start and end times, and other event metadata. It is created by saving a filtered view from the Events section, and can be placed on an element's panel list or added to a dashboard.

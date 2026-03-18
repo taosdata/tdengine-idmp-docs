@@ -5,7 +5,6 @@ sidebar_label: Finding Elements and Data
 
 # 3.5 Finding Elements and Data
 
-
 As your asset model grows, quickly locating the right element or attribute becomes essential. TDengine IDMP provides several complementary ways to navigate and search your asset catalog: browsing the asset tree, searching by keyword or filter criteria, saving searches as reusable Element Filters, and bookmarking frequently accessed elements as favorites.
 
 ## 3.5.1 Navigating the Asset Tree

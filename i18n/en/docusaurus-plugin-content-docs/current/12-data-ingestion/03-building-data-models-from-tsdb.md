@@ -5,7 +5,6 @@ sidebar_label: Building Data Models from TDengine TSDB
 
 # 12.3 Building Data Models from TDengine TSDB
 
-
 For users who already have data in TDengine TSDB, IDMP can automatically build the asset data model — elements, element templates, and attributes — directly from the TSDB schema. This eliminates the need to create elements and attributes manually.
 
 IDMP provides four approaches, all accessible from the TDengine connection detail page under **Admin Console → Connections → [connection name]**:

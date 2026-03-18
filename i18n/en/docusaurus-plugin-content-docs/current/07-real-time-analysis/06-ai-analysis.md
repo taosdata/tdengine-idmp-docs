@@ -5,7 +5,6 @@ sidebar_label: AI-Assisted Analysis
 
 # 7.6 AI-Assisted Analysis
 
-
 TDengine IDMP includes a built-in AI assistant that can create analyses without manually filling in the trigger type, calculation expressions, and output attributes. There are two ways to use it.
 
 ## Opening the AI Panel

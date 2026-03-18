@@ -5,7 +5,6 @@ sidebar_label: Client SDK
 
 # 15.1 Client SDK
 
-
 import DocCardList from '@theme/DocCardList';
 
 The TDengine IDMP SDK gives you programmatic access to the full data asset: elements, attributes, time-series metrics, and events. The SDK is auto-generated from IDMP's OpenAPI specification and is natively available in **Java** and **Python**. For other languages, the OpenAPI spec can be used with [OpenAPI Generator](https://openapi-generator.tech/) to produce a client in any supported language.

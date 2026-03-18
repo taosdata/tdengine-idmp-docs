@@ -5,7 +5,6 @@ sidebar_label: Elements
 
 # 3.1 Elements
 
-
 In TDengine IDMP, every physical or logical asset in your industrial environment — a factory, a production line, a machine, or a sensor — is represented as an **element**. Elements are the foundational building blocks of your asset model, giving raw time-series data a structured home and meaningful context.
 
 ## 3.1.1 What is an Element

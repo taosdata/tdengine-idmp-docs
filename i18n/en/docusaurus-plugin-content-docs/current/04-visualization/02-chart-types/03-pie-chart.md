@@ -5,7 +5,6 @@ sidebar_label: Pie Chart
 
 # 4.2.3 Pie Chart
 
-
 ## Overview
 
 The Pie Chart divides a circle into slices proportional to each value's share of the total. Each slice represents one category or metric group, making the relative contribution of each part immediately visible.

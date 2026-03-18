@@ -5,7 +5,6 @@ sidebar_label: Using the Add-In
 
 # 10.3 Using the Add-In
 
-
 Once connected to IDMP, the **TDengine EAI** ribbon tab provides all the tools for retrieving data, exploring events, filtering assets, and configuring the add-in. Each button opens a task pane on the right side of Excel where you configure the query and select an output cell.
 
 ## Ribbon Overview

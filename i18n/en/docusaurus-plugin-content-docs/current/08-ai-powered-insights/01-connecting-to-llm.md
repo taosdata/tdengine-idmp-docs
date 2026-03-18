@@ -5,7 +5,6 @@ sidebar_label: Connecting to LLM
 
 # 8.1 Connecting to LLM
 
-
 Most AI features in IDMP — panel generation, analysis suggestions, AI Chat, root cause analysis — require a connection to an external Large Language Model (LLM). IDMP uses an OpenAI-compatible interface, so any LLM provider or self-hosted model that exposes an OpenAI-compatible API can be used.
 
 ## Built-In Trial Connection

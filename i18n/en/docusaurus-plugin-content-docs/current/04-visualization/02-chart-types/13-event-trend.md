@@ -5,7 +5,6 @@ sidebar_label: Event Trend
 
 # 4.2.13 Event Trend
 
-
 ## Overview
 
 The Event Trend panel overlays time-series metrics with highlighted event intervals. It connects data signals to the events that occurred during them, making it immediately visible how measured values behaved before, during, and after each event.

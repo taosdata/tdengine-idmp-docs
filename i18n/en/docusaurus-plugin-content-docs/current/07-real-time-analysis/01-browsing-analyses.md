@@ -5,7 +5,6 @@ sidebar_label: Browsing Analyses
 
 # 7.1 Browsing and Managing Analyses
 
-
 Analyses are managed from the **Analyses** tab on any element in the Explorer. Navigate to an element in the asset tree and click the **Analyses** tab to see all analyses configured on that element.
 
 ## 7.1.1 The Analysis List

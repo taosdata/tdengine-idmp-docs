@@ -5,7 +5,6 @@ sidebar_label: Connections
 
 # 12.1 Connections
 
-
 A **connection** tells IDMP how to reach an external system. Connections are configured in **Admin Console → Connections** and are referenced by data ingestion tasks and asset model imports.
 
 The connection list shows all configured connections with the following columns:

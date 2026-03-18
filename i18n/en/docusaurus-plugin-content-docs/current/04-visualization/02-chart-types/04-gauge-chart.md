@@ -5,7 +5,6 @@ sidebar_label: Gauge Chart
 
 # 4.2.4 Gauge Chart
 
-
 ## Overview
 
 The Gauge Chart displays a single current value on a semicircular dial, similar to an analog instrument panel gauge. The needle and colored arc segments show at a glance where the value stands within its operating range.

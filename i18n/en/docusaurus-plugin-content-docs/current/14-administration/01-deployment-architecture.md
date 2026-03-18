@@ -5,7 +5,6 @@ sidebar_label: Deployment Architecture
 
 # 14.1 Deployment Architecture
 
-
 TDengine IDMP supports three typical deployment topologies: **Single Instance**, **HA Minimal**, and **HA Complex**. Each topology is suited to different scale and availability requirements.
 
 ## Overview

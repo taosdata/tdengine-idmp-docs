@@ -5,7 +5,6 @@ sidebar_label: Bar Gauge
 
 # 4.2.5 Bar Gauge
 
-
 ## Overview
 
 The Bar Gauge displays a value as a filled bar against a configurable scale, similar to a thermometer or progress bar. Color thresholds along the bar visually segment the scale into zones, making it easy to see how far into a range a value has progressed.

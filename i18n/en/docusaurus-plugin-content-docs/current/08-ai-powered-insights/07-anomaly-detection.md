@@ -5,7 +5,6 @@ sidebar_label: Anomaly Detection
 
 # 8.7 Anomaly Detection
 
-
 :::note
 Anomaly detection requires the **TDgpt module** to be installed alongside IDMP. It does not require an LLM connection.
 :::

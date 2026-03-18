@@ -5,7 +5,6 @@ sidebar_label: AI Panel Insights
 
 # 8.3 AI Panel Insights
 
-
 AI Panel Insights generates a natural language narrative for an individual panel — describing what the data shows, identifying notable patterns, and highlighting anomalies or trends that may warrant attention.
 
 ## How to Access

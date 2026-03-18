@@ -5,7 +5,6 @@ sidebar_label: Changelog
 
 # 15.1.8 Changelog
 
-
 This page records changes in each version of the TDengine IDMP SDK. Version numbering follows [Semantic Versioning](https://semver.org/). Change categories follow the [Keep a Changelog](https://keepachangelog.com/) format.
 
 ---

@@ -5,7 +5,6 @@ sidebar_label: Sharing Dashboards and Panels
 
 # 11.1 Sharing Dashboards and Panels
 
-
 IDMP makes it easy to share visualizations with colleagues without requiring them to recreate the same configuration. Both dashboards and individual panels can be shared directly from the visualization interface.
 
 ## Sharing a Dashboard

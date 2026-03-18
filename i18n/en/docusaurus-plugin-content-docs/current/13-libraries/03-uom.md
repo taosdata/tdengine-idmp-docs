@@ -5,7 +5,6 @@ sidebar_label: Units of Measurement
 
 # 13.3 Units of Measurement
 
-
 In industrial and IoT environments, measurements collected from different devices or systems often use different units. Even after data is stored in TDengine TSDB, unit inconsistencies can remain across assets or over time. IDMP manages this through a **Units of Measurement (UOM)** library that enables automatic unit conversion in attribute formulas, calculations, and display.
 
 UOM is managed under **Libraries → UOM**.

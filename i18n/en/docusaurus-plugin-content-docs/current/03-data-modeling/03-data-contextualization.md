@@ -5,7 +5,6 @@ sidebar_label: Data Contextualization
 
 # 3.3 Data Contextualization
 
-
 A column named `current` in a database table is just a number. It becomes useful only when you know which meter produced it, where that meter is installed, what unit the value is in, and what range is considered normal. **Data contextualization** is the process of attaching this surrounding knowledge to your data — turning raw measurements into a rich, queryable, AI-ready industrial dataset.
 
 TDengine IDMP builds context through three complementary mechanisms: elements, attributes, and events. Each contributes a different kind of information, and together they give every data point a complete industrial identity.

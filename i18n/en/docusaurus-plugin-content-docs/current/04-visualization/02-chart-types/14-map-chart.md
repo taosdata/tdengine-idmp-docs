@@ -5,7 +5,6 @@ sidebar_label: Map Chart
 
 # 4.2.14 Map Chart
 
-
 ## Overview
 
 The Map Chart displays geographic data as a choropleth map — regions filled with colors proportional to their associated metric values. It is used for spatial analysis when data is organized by geographic area: countries, provinces, cities, districts, or custom regions defined by a GeoJSON file.

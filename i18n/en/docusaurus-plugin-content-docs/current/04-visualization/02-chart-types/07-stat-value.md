@@ -5,7 +5,6 @@ sidebar_label: Stat Value
 
 # 4.2.7 Stat Value
 
-
 ## Overview
 
 The Stat Value panel displays a single large numeric value with an optional label and timestamp. It is designed for dashboards and status boards where a key figure needs to be visible at a distance or in a summary view.

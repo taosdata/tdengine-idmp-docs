@@ -5,7 +5,6 @@ sidebar_label: Browsing Events
 
 # 6.2 Browsing Events
 
-
 Events can be browsed from two places: the **global Events view** in the main navigation, which shows all events across the entire system, and the **Events tab** on each individual element, which shows only the events for that element and optionally its descendants. Both views share the same layout, controls, and filtering options.
 
 ## 6.2.1 The Global Events View
@@ -33,7 +32,7 @@ The following filter controls narrow the event list:
 ### Left Sidebar
 
 - **Favorites Events:** Individual events that have been marked as favorites for quick access. Any event can be added to favorites.
-- **Event Filters:** Saved filter configurations (see [Saved Event Filters](#633-saved-event-filters) below)
+- **Event Filters:** Saved filter configurations (see [Saved Event Filters](#623-saved-event-filters) below)
 
 ### Event List Columns
 

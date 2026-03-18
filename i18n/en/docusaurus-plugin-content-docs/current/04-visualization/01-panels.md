@@ -5,7 +5,6 @@ sidebar_label: Panels
 
 # 4.1 Panels
 
-
 Panels are the building blocks of all visualization in TDengine IDMP. A panel is a self-contained visualization component — a chart, gauge, table, or other display — bound to one or more attributes of a specific element. Every panel belongs to an element and draws its data from that element's attributes.
 
 This page covers the common features shared across all panel types: browsing, creating, editing, the toolbar controls, and the data configuration interface. Individual panel types and their specific settings are described in the sections that follow.

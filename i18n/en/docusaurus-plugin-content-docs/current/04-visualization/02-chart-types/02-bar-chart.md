@@ -5,7 +5,6 @@ sidebar_label: Bar Chart
 
 # 4.2.2 Bar Chart
 
-
 ## Overview
 
 The Bar Chart represents values as vertical or horizontal bars, where bar height (or width) encodes the data value. It is designed for aggregated data — values grouped by time buckets or by categorical dimensions — making it ideal for comparison across periods or groups.

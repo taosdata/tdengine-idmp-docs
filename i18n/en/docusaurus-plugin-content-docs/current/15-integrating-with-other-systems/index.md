@@ -5,7 +5,6 @@ sidebar_label: Integrating with Other Systems
 
 # 15 Integrating with Other Systems
 
-
 import DocCardList from '@theme/DocCardList';
 
 TDengine IDMP is designed as an **open industrial data platform**. Every capability available through the web UI is also accessible programmatically through a well-documented REST API, and the SDK wraps that API in native Java and Python libraries.

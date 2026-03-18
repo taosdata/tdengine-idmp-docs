@@ -3,7 +3,6 @@ title: Glossary
 sidebar_label: Glossary
 ---
 
-
 ## Attribute
 
 A property of an element. Attributes represent individual data dimensions of an asset — temperature, operating state, power output, rated capacity, and so on. An attribute can be a static configuration value stored in IDMP, a dynamic value linked to a live time series in TSDB, or a derived value computed by a real-time analysis. Every dynamic attribute carries metadata: engineering unit, display unit, decimal precision, and upper and lower limits.

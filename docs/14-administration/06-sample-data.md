@@ -313,6 +313,7 @@ java -jar tda-generator-command.jar -f init.json -c
 - children: 子节点列表；
 
 作用：
+
 - 构建元素树
 - 自动创建子表
 - 自动绑定 TAG 值

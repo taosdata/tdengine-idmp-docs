@@ -5,7 +5,6 @@ sidebar_label: Missing Data Imputation
 
 # 8.9 Missing Data Imputation
 
-
 Time-series data in industrial environments frequently has gaps — sensors go offline, network interruptions delay data delivery, or hardware faults cause temporary measurement loss. Missing data imputation fills these gaps with estimated values, ensuring that downstream analyses, averages, and KPI calculations are not skewed by missing readings.
 
 :::note

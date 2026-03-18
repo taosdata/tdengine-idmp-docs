@@ -5,7 +5,6 @@ sidebar_label: Forecasting
 
 # 8.8 Forecasting
 
-
 :::note
 Forecasting requires the **TDgpt module** to be installed alongside IDMP. It does not require an LLM connection.
 :::

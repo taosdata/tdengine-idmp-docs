@@ -5,7 +5,6 @@ sidebar_label: Scheduled Reports
 
 # 4.6 Scheduled Reports
 
-
 Scheduled Reports let you deliver a rendered image of a panel or dashboard to one or more recipients on a recurring schedule. At the configured time, IDMP captures the panel or dashboard at its current state, generates a PNG image, and sends it through the configured notification contact point — no login or manual export required.
 
 Typical uses include weekly energy summary dashboards sent to management, daily production-line trend charts delivered to shift engineers, and one-time panel exports triggered on demand.

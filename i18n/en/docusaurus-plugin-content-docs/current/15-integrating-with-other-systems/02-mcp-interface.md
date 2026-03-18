@@ -5,7 +5,6 @@ sidebar_label: MCP Interface
 
 # 15.2 MCP Interface
 
-
 :::note Coming Soon
 The TDengine IDMP MCP (Model Context Protocol) Interface is under active development and will be available in a future release. Documentation will be provided at that time.
 :::

@@ -5,7 +5,6 @@ sidebar_label: Table
 
 # 4.2.6 Table
 
-
 ## Overview
 
 The Table panel displays query results in a structured grid with one row per time point and one column per metric. It is the most direct way to read the exact values returned by a query — no aggregation, no visual encoding, just the numbers.

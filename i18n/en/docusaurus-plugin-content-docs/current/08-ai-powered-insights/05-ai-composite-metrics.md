@@ -5,7 +5,6 @@ sidebar_label: AI Composite Metrics
 
 # 8.5 AI Composite Metrics
 
-
 Composite Metrics is an AI-generated library of business KPIs for your asset hierarchy. Based on your element templates, collected data, and industry context, the AI produces a curated set of domain-relevant metrics for each asset group — complete with calculation formulas, TDengine SQL, business meaning, and industry aliases. This gives engineers a ready reference for what to measure and how to compute it, without requiring data science expertise.
 
 ## Where to Find Composite Metrics

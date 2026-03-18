@@ -5,7 +5,6 @@ sidebar_label: Asset List
 
 # 4.2.10 Asset List
 
-
 ## Overview
 
 The Asset List panel displays elements in a tabular grid, showing management attributes and the latest measurement values for each element. It is created by saving a filtered element search result or a parent element's child-element list, and can be placed on an element's panel list or added to a dashboard.

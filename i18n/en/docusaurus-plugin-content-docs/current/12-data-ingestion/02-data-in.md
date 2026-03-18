@@ -5,7 +5,6 @@ sidebar_label: Data In
 
 # 12.2 Data In
 
-
 **Data In** manages the ingestion of time-series data from external sources into TDengine TSDB. It is accessed from **Admin Console → Data In**.
 
 The Data In page lists all TDengine connections. Click a connection to manage its ingestion tasks, agents, and data collection agent configurations.

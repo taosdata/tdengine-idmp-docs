@@ -5,7 +5,6 @@ sidebar_label: Trend Chart
 
 # 4.2.1 Trend Chart
 
-
 ## Overview
 
 The Trend Chart renders one or more time-series metrics as lines plotted against a time axis. It connects data points to show how values change over time, built for continuous measurements — temperatures, pressures, flow rates, energy consumption, vibration levels — where the shape of the data over time carries meaning. Multiple metrics can be plotted on the same chart, each as a separate line, to reveal correlations and relative behavior at a glance.

@@ -5,7 +5,6 @@ sidebar_label: Exporting Data
 
 # 11.3 Exporting Data
 
-
 Throughout IDMP, any table or list view can be exported to a CSV file. This makes it straightforward to take data out of IDMP for use in spreadsheets, reports, or other tools — without writing any queries or using the Excel Add-In.
 
 ## Where CSV Export Is Available

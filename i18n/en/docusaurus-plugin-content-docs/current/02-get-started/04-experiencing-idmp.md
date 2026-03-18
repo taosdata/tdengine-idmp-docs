@@ -5,7 +5,6 @@ sidebar_label: Experiencing IDMP
 
 # 2.4 Experiencing IDMP Features
 
-
 After activating TDengine IDMP, follow the steps in this section to familiarize yourself with the interface and explore the key features of the system.
 
 ## 2.4.1 UI Tour Guide

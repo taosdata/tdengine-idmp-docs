@@ -5,7 +5,6 @@ sidebar_label: Rich Text Panel
 
 # 4.2.15 Rich Text Panel
 
-
 ## Overview
 
 The Rich Text panel replaces the chart area with a full WYSIWYG text editor. It does not display data — instead, it provides a free-form space for documentation, instructions, reference material, or annotated diagrams that you want to embed alongside your data panels.

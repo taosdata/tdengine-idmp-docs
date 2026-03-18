@@ -315,6 +315,7 @@ Effective only in command-line mode.
 - children: Child node list
 
 This section:
+
 - Builds the element tree
 - Automatically creates sub-tables
 - Automatically binds TAG values

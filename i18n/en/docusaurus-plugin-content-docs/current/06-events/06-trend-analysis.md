@@ -5,7 +5,6 @@ sidebar_label: Trend Analysis
 
 # 6.6 Trend Analysis
 
-
 When an event occurs, understanding the data behavior around that event is essential for investigation. TDengine IDMP provides a direct path from any event to a trend chart pre-configured with the event's time range.
 
 ## 6.6.1 Opening a Trend Chart from an Event

@@ -5,7 +5,6 @@ sidebar_label: Quick Start
 
 # 15.1.2 Quick Start
 
-
 :::note Prerequisites
 Complete [Installation](./01-installation.md) first. This guide takes about 5 minutes and walks you through your first API call.
 :::
