@@ -1,9 +1,9 @@
 ---
-title: Visualization and Dashboards
-sidebar_label: Visualization and Dashboards
+title: Visualization
+sidebar_label: Visualization
 ---
 
-# 4 Visualization and Dashboards
+# 4 Visualization
 
 Visualization in TDengine IDMP is designed around a single organizing principle: industrial users think in terms of assets, not signals. An operator monitoring a production line is thinking about Boiler 3, Cooling Loop A, or Compressor Station 7 — not about disconnected metric columns in a database. TDengine IDMP builds visualization around this reality.
 
