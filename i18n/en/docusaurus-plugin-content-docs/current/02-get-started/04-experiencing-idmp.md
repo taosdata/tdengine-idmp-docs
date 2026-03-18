@@ -15,7 +15,7 @@ The interface is organized into the following areas:
 
 ![IDMP user interface overview](../assets/ui-main.png)
 
-### 1. Top Navigation Bar
+**1. Top Navigation Bar**
 
 The top navigation bar spans the full width of the page. On the left is the TDengine logo. In the center are the five main modules:
 
@@ -27,7 +27,7 @@ The top navigation bar spans the full width of the page. On the left is the TDen
 
 On the far right is your **avatar**. Click it to manage your profile, access system administration, or launch the Tour Guide.
 
-### 2. Left Panel
+**2. Left Panel**
 
 The left panel shows the tree structure for the active module. In the **Explorer**, it displays three sections:
 
@@ -35,7 +35,7 @@ The left panel shows the tree structure for the active module. In the **Explorer
 - **Favorite Elements** — Elements you have marked as favorites for quick access.
 - **Element Filters** — Saved search filters that let you quickly recall a specific set of elements.
 
-### 3. Context Tab Bar
+**3. Context Tab Bar**
 
 The context tab bar appears to the right of the left panel. It shows the name of the currently selected object, followed by a set of tabs representing the available views for that object. When an element is selected, the tabs are: **General**, **Attributes**, **Panels**, **Analyses**, **Events**, **Dashboards**, and **Child Elements**. Click a tab to switch views. On the far left of the context tab bar is a collapse icon to hide the left panel and maximize the workspace.
 
@@ -43,15 +43,15 @@ The context tab bar appears to the right of the left panel. It shows the name of
 The built-in Tour Guide refers to this area as the "Path Bar".
 :::
 
-### 4. Action Bar
+**4. Action Bar**
 
 Below the context tab bar is a row of controls. The left side typically shows filter dropdowns (such as **Categories**) and view toggle buttons (such as the **AI** suggestions button or grid/list view). The right side shows action icons including **+** to add a new item and a refresh button.
 
-### 5. Main Workspace
+**5. Main Workspace**
 
 The main area below the action bar displays the content for the currently selected tab — element details, attribute lists, panels, events, and so on. Content can be viewed and edited directly in this area.
 
-### 6. Status Bar
+**6. Status Bar**
 
 The status bar runs along the bottom of the page. The left side shows the current IDMP version. The right side has a **theme toggle** (light/dark mode) and a **language toggle**.
 
