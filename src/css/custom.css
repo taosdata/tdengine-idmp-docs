@@ -269,7 +269,7 @@ caption {
 }
 
 body {
-  counter-reset: section
+  counter-reset: section -1
 }
 
 ul.theme-doc-sidebar-menu li {
