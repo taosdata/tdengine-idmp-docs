@@ -3,6 +3,9 @@ title: Categories
 sidebar_label: Categories
 ---
 
+# 13.2 Categories
+
+
 **Categories** are classification tags that can be applied to objects in IDMP to make them easier to filter, search, and organize. Any element, attribute, event, dashboard, panel, or analysis can be tagged with one or more categories.
 
 Categories are managed under **Libraries → Categories**.

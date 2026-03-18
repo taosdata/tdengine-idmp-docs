@@ -3,6 +3,9 @@ title: AI-Assisted Analysis
 sidebar_label: AI-Assisted Analysis
 ---
 
+# 7.6 AI-Assisted Analysis
+
+
 TDengine IDMP includes a built-in AI assistant that can create analyses without manually filling in the trigger type, calculation expressions, and output attributes. There are two ways to use it.
 
 ## Opening the AI Panel
@@ -11,11 +14,11 @@ The AI panel is shown by default in the Analyses tab. You can toggle it using th
 
 ## Way 1: Use a System-Suggested Analysis
 
-The AI panel displays a **Suggested Questions** list — analyses that the system has already generated based on the current element's attributes, template, and collected data. These suggestions are context-aware: for an electricity meter element, the system might suggest computing hourly max voltage, detecting anomalies on current, or calculating power factor over a sliding window.
+The AI panel displays a **Suggested Analyses** list — powered by **Zero Query Intelligence**, analyses that the system has already generated based on the current element's attributes, template, and collected data. These suggestions are context-aware: for an electricity meter element, the system might suggest computing hourly max voltage, detecting anomalies on current, or calculating power factor over a sliding window.
 
 Click any suggestion to immediately use it. The AI then generates a fully configured analysis form pre-filled with the appropriate settings.
 
-Click the **refresh icon** next to "Suggested Questions" to load a new set of suggestions.
+Click the **refresh icon** next to "Suggested Analyses" to load a new set of suggestions.
 
 ## Way 2: Describe What You Want
 

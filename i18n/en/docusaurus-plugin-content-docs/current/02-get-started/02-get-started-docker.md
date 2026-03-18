@@ -3,6 +3,9 @@ title: Get Started with Docker
 sidebar_label: Docker
 ---
 
+# 2.2 Get Started with Docker
+
+
 import Init from './_init.md';
 
 TDengine IDMP is offered as a Docker Compose setup to make deployment easy. This installs TDengine TSDB-Enterprise along with TDengine IDMP and automatically establishes a connection between them.

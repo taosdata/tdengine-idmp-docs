@@ -3,6 +3,9 @@ title: Attributes
 sidebar_label: Attributes
 ---
 
+# 3.2 Attributes
+
+
 Attributes define the measurable properties and characteristics of an element. They are the bridge between the physical behavior of an asset and the data stored in TDengine TSDB — turning raw numbers into named, typed, and unit-aware engineering values.
 
 ## 3.2.1 What is an Attribute

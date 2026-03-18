@@ -3,7 +3,10 @@ title: Gauge Chart
 sidebar_label: Gauge Chart
 ---
 
-## 4.6.1 Overview
+# 4.2.4 Gauge Chart
+
+
+## Overview
 
 The Gauge Chart displays a single current value on a semicircular dial, similar to an analog instrument panel gauge. The needle and colored arc segments show at a glance where the value stands within its operating range.
 
@@ -11,7 +14,7 @@ The Gauge Chart displays a single current value on a semicircular dial, similar 
 
 The gauge always shows the latest data point in the selected time range. Multiple gauges can be displayed in a single panel — one per metric — arranged horizontally or vertically.
 
-## 4.6.2 When to Use
+## When to Use
 
 Use the Gauge Chart when:
 
@@ -21,7 +24,7 @@ Use the Gauge Chart when:
 
 For multiple values compared across time, use the Trend Chart. For a plain numeric readout without the dial metaphor, use the Stat Value panel.
 
-## 4.6.3 Configuration
+## Configuration
 
 ### Edit Mode Toolbar
 
@@ -56,7 +59,7 @@ Attribute-defined limits — LoLo, Lo, Target, Hi, HiHi — are rendered as colo
 
 Limits are inherited from the attribute configuration on the element and do not need to be re-entered here.
 
-## 4.6.4 Example Scenarios
+## Example Scenarios
 
 **Pump discharge pressure.** A pump's discharge pressure attribute has Lo and Hi limits defined. The gauge chart shows the current pressure with the arc divided into green (normal), yellow (warning), and red (alarm) zones. The operator sees at a glance whether the pump is running within spec.
 

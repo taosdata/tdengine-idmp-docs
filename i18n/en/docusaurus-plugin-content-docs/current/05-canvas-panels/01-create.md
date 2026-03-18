@@ -3,7 +3,7 @@ title: Creating Canvas Panel
 sidebar_label: Creating Canvas Panel
 ---
 
-# Creating Canvas Panel
+# 5.1 Creating Canvas Panel
 
 Select the element, then select the panel, click `New Panel`, and then select `Canvas` to enter the canvas editing interface.
 

@@ -3,6 +3,9 @@ title: Alerts and Notifications
 sidebar_label: Alerts and Notifications
 ---
 
+# 6.4 Alerts and Notifications
+
+
 When an analysis generates an event, TDengine IDMP can automatically send a notification to configured contact points — email addresses, webhooks, messaging platforms, or other channels. This chapter describes how to set up contact points, configure notification rules on elements, and understand how the notification system behaves.
 
 ## 6.4.1 Contact Points

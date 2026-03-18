@@ -3,6 +3,9 @@ title: Elements API
 sidebar_label: Elements API
 ---
 
+# 15.1.5.1 Elements API
+
+
 `ElementResourceApi` provides query, create, update, and delete operations on elements.
 
 import Tabs from '@theme/Tabs';

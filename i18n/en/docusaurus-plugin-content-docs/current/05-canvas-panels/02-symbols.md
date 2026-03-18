@@ -3,7 +3,7 @@ title: Symbol
 sidebar_label: Symbol
 ---
 
-# Symbol
+# 5.2 Symbol
 
 Symbols are the basic units that make up the monitoring screen, just like Lego blocks. Each device icon and closed shape is a symbol. By combining different symbols, you can build a complete industrial monitoring system.
 

@@ -3,6 +3,9 @@ title: Administration
 sidebar_label: Administration
 ---
 
+# 14 Administration
+
+
 import DocCardList from '@theme/DocCardList';
 
 This chapter covers the administrative aspects of TDengine IDMP, including deployment architecture, capacity planning, user management, system configuration, and backup and recovery.

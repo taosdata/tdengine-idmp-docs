@@ -3,6 +3,9 @@ title: Dashboards
 sidebar_label: Dashboards
 ---
 
+# 4.4 Dashboards
+
+
 Dashboards in TDengine IDMP are free-form canvases that combine multiple panels into a single view. Where a panel shows one chart for one element, a dashboard brings together panels from across an element's hierarchy — multiple charts, gauges, tables, and stat panels arranged in a grid — to give operators and engineers a comprehensive, at-a-glance picture of an asset or a process.
 
 ## 4.4.1 The Dashboards Tab

@@ -3,6 +3,9 @@ title: Events
 sidebar_label: Events
 ---
 
+# 6 Events
+
+
 An event in TDengine IDMP is a discrete operational occurrence with a defined start time, end time, and duration — the digital record that something happened. A pump tripped, a temperature exceeded its limit, a batch phase completed, a maintenance window began. This concept is equivalent to **event frames** in OSIsoft PI System, one of the most powerful ideas in industrial data management.
 
 Raw sensor streams tell you what a value was at a given moment; events tell you what was happening operationally — and for how long. Instead of searching through millions of data points to find when a compressor ran in surge, you query the structured event record that already captured it.

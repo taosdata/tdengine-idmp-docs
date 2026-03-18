@@ -3,6 +3,9 @@ title: "Example: Read Time-Series Data"
 sidebar_label: Read Time-Series Data
 ---
 
+# 15.1.6.2 Example: Read Time-Series Data
+
+
 **Scenario:** Query the historical data of a specific element attribute, compute per-minute averages, and output the result as CSV. Useful for data export and report generation.
 
 import Tabs from '@theme/Tabs';

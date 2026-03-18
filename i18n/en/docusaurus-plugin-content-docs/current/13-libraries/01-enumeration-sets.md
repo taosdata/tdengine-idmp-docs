@@ -3,6 +3,9 @@ title: Enumeration Sets
 sidebar_label: Enumeration Sets
 ---
 
+# 13.1 Enumeration Sets
+
+
 An **enumeration set** maps integer (or other numeric) values to human-readable labels. When an attribute's data type is an integer that represents a discrete state — such as `0 = Stopped`, `1 = Running`, `2 = Fault` — you can assign an enumeration set to the attribute so that IDMP displays the label instead of the raw number.
 
 Enumeration sets are managed under **Libraries → Enumeration Sets**.

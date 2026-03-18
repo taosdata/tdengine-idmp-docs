@@ -3,13 +3,16 @@ title: Bar Gauge
 sidebar_label: Bar Gauge
 ---
 
-## 4.7.1 Overview
+# 4.2.5 Bar Gauge
+
+
+## Overview
 
 The Bar Gauge displays a value as a filled bar against a configurable scale, similar to a thermometer or progress bar. Color thresholds along the bar visually segment the scale into zones, making it easy to see how far into a range a value has progressed.
 
 Multiple metrics render as multiple bars stacked in the panel, making the Bar Gauge effective for comparing several similar measurements side by side.
 
-## 4.7.2 When to Use
+## When to Use
 
 Use the Bar Gauge when:
 
@@ -20,7 +23,7 @@ Use the Bar Gauge when:
 
 For a single large numeric value without a scale reference, use the Stat Value panel. For a dial-style gauge, use the Gauge Chart.
 
-## 4.7.3 Configuration
+## Configuration
 
 ### Edit Mode Toolbar
 
@@ -56,7 +59,7 @@ Thresholds define color bands along the bar. Each threshold specifies a value an
 | **Thresholds** | Click **+ Add threshold** to define a boundary value and its color |
 | **Thresholds Mode** | **Absolute** (threshold values are raw data values) or **Percentage** (threshold values are percentages of the Min–Max range) |
 
-## 4.7.4 Example Scenarios
+## Example Scenarios
 
 **Tank fill levels.** Five storage tanks each have a fill-level metric. All five are added to a single Bar Gauge panel with Horizontal orientation. Thresholds at 20% (red), 50% (yellow), and 80% (green) give operators an instant view of which tanks need attention.
 

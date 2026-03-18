@@ -3,7 +3,7 @@ title: Anchor Points
 sidebar_label: Anchor Points
 ---
 
-# Anchor Points
+# 5.4 Anchor Points
 
 Anchor points are the "magic buckles" that keep device connections intact, ensuring that when you move device elements, the connected pipelines automatically adjust to maintain a tidy layout.
 

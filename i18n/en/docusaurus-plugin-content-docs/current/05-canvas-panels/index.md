@@ -3,7 +3,7 @@ title: Canvas Panel
 sidebar_label: Canvas Panel
 ---
 
-# Canvas Panel
+# 5 Canvas Panels
 
 TDengine IDMP supports not only Grafana-style panels but also configuration panels popular in industrial scenarios. It allows business personnel to achieve Web configuration, SCADA, and other solutions through "drag and drop" with "zero code," visually presenting the current operating status of devices and processes. Currently, it supports 2D and 2.5D, with plans to support 3D in the future. It seamlessly integrates with IDMP's asset model, enabling rapid solution delivery and reducing development costs. It has the following features:
 

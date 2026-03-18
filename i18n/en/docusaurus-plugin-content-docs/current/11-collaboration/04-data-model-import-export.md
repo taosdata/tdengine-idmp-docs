@@ -3,6 +3,9 @@ title: Data Model Import and Export
 sidebar_label: Data Model Import and Export
 ---
 
+# 11.4 Data Model Import and Export
+
+
 IDMP's Import/Export feature in the Management Console lets you transfer your data model — elements, element templates, event templates, UOM categories, and libraries — between IDMP instances. This is useful for replicating a configuration from a development environment to production, or for sharing a standard asset model across multiple deployments.
 
 ## Accessing Import/Export

@@ -3,6 +3,9 @@ title: Event Detail
 sidebar_label: Event Detail
 ---
 
+# 6.3 Event Detail
+
+
 Clicking an event name — in either the global events view or an element's Events tab — opens the event detail page. The detail page has two tabs: **General** and **Attributes**. The action toolbar differs between tabs.
 
 ## 6.3.1 General Tab

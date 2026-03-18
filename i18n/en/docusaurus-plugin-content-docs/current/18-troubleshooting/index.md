@@ -3,6 +3,8 @@ title: Troubleshooting
 sidebar_label: Troubleshooting
 ---
 
+# 18 Troubleshooting
+
 ## Confirming the Problem
 
 If you encounter an issue while using TDengine IDMP, start by disabling the browser cache and reloading the page:

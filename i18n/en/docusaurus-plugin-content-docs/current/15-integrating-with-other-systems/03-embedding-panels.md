@@ -3,6 +3,9 @@ title: Embedding Panels and Dashboards
 sidebar_label: Embedding Panels and Dashboards
 ---
 
+# 15.3 Embedding Panels and Dashboards
+
+
 IDMP panels and dashboards can be embedded directly into external web applications, bringing live industrial visualizations into operator portals, custom UIs, or AI dashboards.
 
 ## Getting the Embed Link

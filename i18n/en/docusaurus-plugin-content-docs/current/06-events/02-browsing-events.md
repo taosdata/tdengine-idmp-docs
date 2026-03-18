@@ -3,6 +3,9 @@ title: Browsing Events
 sidebar_label: Browsing Events
 ---
 
+# 6.2 Browsing Events
+
+
 Events can be browsed from two places: the **global Events view** in the main navigation, which shows all events across the entire system, and the **Events tab** on each individual element, which shows only the events for that element and optionally its descendants. Both views share the same layout, controls, and filtering options.
 
 ## 6.2.1 The Global Events View

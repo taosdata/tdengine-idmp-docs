@@ -3,9 +3,12 @@ title: Browsing and Managing Analyses
 sidebar_label: Browsing Analyses
 ---
 
+# 7.1 Browsing and Managing Analyses
+
+
 Analyses are managed from the **Analyses** tab on any element in the Explorer. Navigate to an element in the asset tree and click the **Analyses** tab to see all analyses configured on that element.
 
-## 7.2.1 The Analysis List
+## 7.1.1 The Analysis List
 
 The analysis list shows all analyses on the current element with the following columns:
 
@@ -19,7 +22,7 @@ The analysis list shows all analyses on the current element with the following c
 | **Status** | Current execution status: **Running** or **Paused** |
 | **Update Time** | When the analysis was last modified |
 
-## 7.2.2 Toolbar
+## 7.1.2 Toolbar
 
 | Control | Description |
 |---|---|
@@ -32,7 +35,7 @@ The analysis list shows all analyses on the current element with the following c
 
 The filter area above the list provides a **Categories** dropdown to filter by category tag, and an **AI** button to toggle the AI-assisted creation panel.
 
-## 7.2.3 Row Actions
+## 7.1.3 Row Actions
 
 Hover over any analysis row and click the **⋮** (more) menu on the right to access these actions:
 
@@ -47,7 +50,7 @@ Hover over any analysis row and click the **⋮** (more) menu on the right to ac
 | **Pause** | Pause the analysis — stops execution without deleting it (shows **Resume** when paused) |
 | **Delete** | Delete the analysis and optionally delete the output data it produced |
 
-## 7.2.4 Analysis Statuses
+## 7.1.4 Analysis Statuses
 
 | Status | Meaning |
 |---|---|

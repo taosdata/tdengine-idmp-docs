@@ -3,6 +3,9 @@ title: Metrics API
 sidebar_label: Metrics API
 ---
 
+# 15.1.5.2 Metrics API
+
+
 `MetricResourceApi` provides read and write operations on time-series data. It is one of the most frequently used modules in the SDK.
 
 import Tabs from '@theme/Tabs';

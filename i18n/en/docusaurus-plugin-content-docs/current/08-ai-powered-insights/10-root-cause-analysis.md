@@ -3,6 +3,9 @@ title: Root Cause Analysis
 sidebar_label: Root Cause Analysis
 ---
 
+# 8.10 Root Cause Analysis
+
+
 Root Cause Analysis (RCA) is an AI-powered investigative feature that, given an event, automatically retrieves relevant historical data, forms hypotheses about the cause, tests those hypotheses, and produces a structured analysis report — all without manual intervention.
 
 This feature uses the **Deep Thinking Model** configured in Connection Management to perform multi-step reasoning over your time-series data, operational knowledge, and publicly available technical references.

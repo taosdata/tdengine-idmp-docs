@@ -3,6 +3,9 @@ title: Sharing Panels and Dashboards
 sidebar_label: Sharing
 ---
 
+# 4.5 Sharing Panels and Dashboards
+
+
 TDengine IDMP provides a built-in sharing mechanism that generates time-limited links to panels and dashboards. A shared link gives the recipient a read-only view of the panel or dashboard as it was at the time of sharing, without requiring a login.
 
 ## 4.5.1 Sharing a Panel

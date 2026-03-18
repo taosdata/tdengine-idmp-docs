@@ -3,6 +3,9 @@ title: "Example: Query Element Tree"
 sidebar_label: Query Element Tree
 ---
 
+# 15.1.6.1 Example: Query Element Tree
+
+
 **Scenario:** Iterate through all elements under a parent node and print their names and IDs. Useful for asset inventory, building element selectors, or seeding external systems.
 
 import Tabs from '@theme/Tabs';

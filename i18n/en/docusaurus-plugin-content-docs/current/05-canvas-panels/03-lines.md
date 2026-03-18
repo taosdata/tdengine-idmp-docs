@@ -3,7 +3,7 @@ title: Line
 sidebar_label: Line
 ---
 
-# Line
+# 5.3 Line
 
 Lines are used to represent the flow of materials, signal transmission, or logical relationships between devices. For example:
 

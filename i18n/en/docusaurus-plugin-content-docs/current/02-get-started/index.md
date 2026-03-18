@@ -3,6 +3,9 @@ title: Getting Started
 sidebar_label: Getting Started
 ---
 
+# 2 Getting Started
+
+
 import DocCardList from '@theme/DocCardList';
 
 TDengine IDMP can be deployed and accessed in three ways: as a fully managed cloud service, as a local deployment using Docker, or as a direct installation from a package. All three paths lead to the same destination — a running IDMP instance loaded with built-in sample data, ready for you to explore immediately.

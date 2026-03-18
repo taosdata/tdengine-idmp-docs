@@ -3,6 +3,9 @@ title: Generating Events
 sidebar_label: Generating Events
 ---
 
+# 7.5 Generating Events
+
+
 The Event section (section 4 of the analysis form) controls whether the analysis creates an event each time it fires. Event generation is disabled by default.
 
 ## Enabling Event Generation

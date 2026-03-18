@@ -3,6 +3,9 @@ title: AI-Powered Insights
 sidebar_label: AI-Powered Insights
 ---
 
+# 8 AI-Powered Insights
+
+
 TDengine IDMP embeds AI intelligence throughout the platform, turning it from a passive data repository into an active operational advisor. This chapter covers all AI-powered features — from proactive visualization generation to anomaly detection, forecasting, root cause analysis, and natural language queries.
 
 ## Two Modes of AI Intelligence

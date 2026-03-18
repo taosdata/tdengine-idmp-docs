@@ -3,6 +3,9 @@ title: Installing the Excel Add-In
 sidebar_label: Installing the Excel Add-In
 ---
 
+# 10.1 Installing the Excel Add-In
+
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 

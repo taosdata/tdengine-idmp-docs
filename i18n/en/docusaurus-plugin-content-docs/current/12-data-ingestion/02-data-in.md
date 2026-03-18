@@ -3,11 +3,14 @@ title: Data In
 sidebar_label: Data In
 ---
 
+# 12.2 Data In
+
+
 **Data In** manages the ingestion of time-series data from external sources into TDengine TSDB. It is accessed from **Admin Console → Data In**.
 
 The Data In page lists all TDengine connections. Click a connection to manage its ingestion tasks, agents, and data collection agent configurations.
 
-## 11.2.1 Data In Tasks
+## 12.2.1 Data In Tasks
 
 The **Data In Task** tab lists all configured ingestion tasks for a connection, with columns: **ID**, **Name**, **Type**, **Target**, **Create At**, **Agent**, **Metrics**, and **Status**.
 
@@ -123,11 +126,11 @@ IDMP supports ingesting data from the following source types:
 | **Pulsar** | Apache Pulsar messaging |
 | **Pulsar-Tuya** | Pulsar with Tuya IoT platform integration |
 
-## 11.2.2 Agents
+## 12.2.2 Agents
 
 The **Agent** tab lists the IDMP agent processes registered for this connection, with columns: **ID**, **Name**, **Created At**, and **Status**. Agents handle task execution for protocols that require an intermediary process.
 
-## 11.2.3 Data Collection Agents
+## 12.2.3 Data Collection Agents
 
 The **Data Collection Agents** tab provides configuration guides for third-party agents that can write data directly into TDengine using standard protocols:
 

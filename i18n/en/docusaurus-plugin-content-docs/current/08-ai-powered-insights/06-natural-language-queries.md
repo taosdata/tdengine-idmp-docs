@@ -3,6 +3,9 @@ title: Natural Language Queries
 sidebar_label: Natural Language Queries
 ---
 
+# 8.6 Natural Language Queries
+
+
 The **AI Chat** feature lets you query your operational data using plain language. Instead of writing TDengine SQL or navigating the asset hierarchy to find a value, you can ask questions like "what was the peak voltage for em-1 yesterday?" and receive an answer grounded in your actual data.
 
 ## Opening AI Chat

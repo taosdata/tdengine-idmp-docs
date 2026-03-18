@@ -3,7 +3,10 @@ title: Bar Chart
 sidebar_label: Bar Chart
 ---
 
-## 4.4.1 Overview
+# 4.2.2 Bar Chart
+
+
+## Overview
 
 The Bar Chart represents values as vertical or horizontal bars, where bar height (or width) encodes the data value. It is designed for aggregated data — values grouped by time buckets or by categorical dimensions — making it ideal for comparison across periods or groups.
 
@@ -11,7 +14,7 @@ The Bar Chart represents values as vertical or horizontal bars, where bar height
 
 Each bar corresponds to one aggregated value: a sum, average, or count over a time window (e.g., hourly energy consumption) or over a category (e.g., output per production line). Multiple metrics can be shown as grouped or stacked bar sets.
 
-## 4.4.2 When to Use
+## When to Use
 
 Use the Bar Chart when:
 
@@ -22,7 +25,7 @@ Use the Bar Chart when:
 
 For continuous time-series data where the trend shape matters, use the Trend Chart instead. For a single summary value (e.g., total consumption today), use the Stat Value panel.
 
-## 4.4.3 Configuration
+## Configuration
 
 ### Edit Mode Toolbar
 
@@ -112,7 +115,7 @@ In Table mode, the legend can display summary statistics alongside each series:
 | **Placement** | Position: Bottom or Right |
 | **Legend Values** | Statistics shown in Table mode: Last, Min, Max, Mean, Sum, etc. |
 
-## 4.4.4 Example Scenarios
+## Example Scenarios
 
 **Daily energy consumption comparison.** An energy analyst needs to compare electricity consumption across each day of the past month. A bar chart with a 1-day sliding window shows one bar per day. The Hi limit line highlights days that exceeded the target consumption level.
 

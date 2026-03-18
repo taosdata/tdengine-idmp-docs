@@ -3,7 +3,10 @@ title: Rich Text Panel
 sidebar_label: Rich Text Panel
 ---
 
-## 4.14.1 Overview
+# 4.2.15 Rich Text Panel
+
+
+## Overview
 
 The Rich Text panel replaces the chart area with a full WYSIWYG text editor. It does not display data — instead, it provides a free-form space for documentation, instructions, reference material, or annotated diagrams that you want to embed alongside your data panels.
 
@@ -11,7 +14,7 @@ The Rich Text panel replaces the chart area with a full WYSIWYG text editor. It 
 
 The Rich Text panel has no data configuration, Metrics table, Dimensions table, Axis, Limits, or Legend sections. It does not support Panel Insights since it contains no chart data.
 
-## 4.14.2 When to Use
+## When to Use
 
 Use the Rich Text panel when:
 
@@ -20,7 +23,7 @@ Use the Rich Text panel when:
 - You want to include reference images, annotated P&ID diagrams, or links to external documents
 - You are building an operator guide that lives next to the live data
 
-## 4.14.3 Configuration
+## Configuration
 
 ### Edit Mode Toolbar
 
@@ -59,7 +62,7 @@ The editor supports:
 | **Background Image Layout** | How a background image is positioned: None, Cover, Contain, or Tile |
 | **Background Image** | Upload an image file to use as the panel background |
 
-## 4.14.4 Example Scenarios
+## Example Scenarios
 
 **SOP on an element panel.** A pump element's panel list includes a Rich Text panel containing the startup and shutdown procedure. Operators navigating to the pump's panels see the SOP immediately alongside the trend charts, without switching to a separate document system.
 

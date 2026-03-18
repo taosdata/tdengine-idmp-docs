@@ -3,6 +3,9 @@ title: Acknowledgment
 sidebar_label: Acknowledgment
 ---
 
+# 6.5 Acknowledgment
+
+
 Acknowledgment is the act of a human operator confirming that they have reviewed an event. It serves as an explicit record that the event was seen and acted upon, and it stops the automatic re-notification cycle for that event.
 
 ## 6.5.1 How Acknowledgment Works

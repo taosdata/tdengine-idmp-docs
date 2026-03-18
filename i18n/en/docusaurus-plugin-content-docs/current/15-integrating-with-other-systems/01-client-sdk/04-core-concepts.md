@@ -3,6 +3,9 @@ title: Core Concepts
 sidebar_label: Core Concepts
 ---
 
+# 15.1.4 Core Concepts
+
+
 SDK objects map one-to-one with IDMP product concepts. Understanding these mappings helps you quickly locate the API you need.
 
 ## Object Mapping

@@ -3,11 +3,14 @@ title: Creating an Analysis
 sidebar_label: Creating an Analysis
 ---
 
+# 7.2 Creating an Analysis
+
+
 To create a new analysis manually, navigate to an element's **Analyses** tab and click **+** in the toolbar, or click the **+ Create New Analysis Manually** button in the empty list. This opens the analysis creation form.
 
 The form is divided into four numbered sections that you complete in order: **General Information**, **Trigger**, **Calculation**, and **Event**.
 
-## 7.3.1 General Information
+## 7.2.1 General Information
 
 | Field | Description |
 |---|---|
@@ -17,7 +20,7 @@ The form is divided into four numbered sections that you complete in order: **Ge
 | **Recalculate for out-of-order data** | When checked, if data arrives late (with a timestamp earlier than already-processed data), the analysis re-runs for the affected window. Useful when sensor data may arrive delayed or out of sequence. |
 | **Description** | Optional free-text description of what this analysis computes and why. |
 
-## 7.3.2 Trigger
+## 7.2.2 Trigger
 
 The Trigger section defines when the analysis runs. See [Trigger Types](./03-trigger-types.md) for full details on all eight trigger types and their parameters.
 
@@ -28,11 +31,11 @@ All trigger types share two common optional fields:
   - **Fill History First** — When checked, the analysis processes all historical data before it begins processing new real-time data.
   - **Start Time** — The date and time from which to start the historical backfill.
 
-## 7.3.3 Calculation
+## 7.2.3 Calculation
 
 The Calculation section defines what the analysis computes and where the results are stored. See [Calculation](./04-calculation.md) for full details.
 
-## 7.3.4 Event
+## 7.2.4 Event
 
 The Event section controls whether the analysis generates an event each time it fires. This section is disabled by default. Enable it by checking the **Generate** checkbox. See [Generating Events](./05-generating-events.md) for full details.
 

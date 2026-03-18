@@ -3,9 +3,12 @@ title: Panel Insights
 sidebar_label: Panel Insights
 ---
 
+# 4.3 Panel Insights
+
+
 Panel Insights is the AI analysis feature built directly into every panel. With one click, the AI engine reads the chart data currently displayed, reasons about it in the context of the element's asset model and attribute metadata, and produces a written interpretation of what the data shows.
 
-## 4.4.1 Accessing Panel Insights
+## 4.3.1 Accessing Panel Insights
 
 Panel Insights is available in both view mode and edit mode:
 
@@ -14,7 +17,7 @@ Panel Insights is available in both view mode and edit mode:
 
 The insight report opens in a slide-out panel to the right of the chart.
 
-## 4.4.2 What Panel Insights Analyzes
+## 4.3.2 What Panel Insights Analyzes
 
 The AI engine has access to:
 
@@ -25,7 +28,7 @@ The AI engine has access to:
 
 The insight report is generated in the context of this full asset picture — not just the raw numbers. A value that exceeds the Hi limit is flagged as a threshold violation; a gradual upward trend is identified as a trend and distinguished from noise; an anomalous spike is called out and its timing noted.
 
-## 4.4.3 What the Insight Report Contains
+## 4.3.3 What the Insight Report Contains
 
 A typical insight report covers:
 
@@ -39,7 +42,7 @@ A typical insight report covers:
 
 **Summary and recommendation.** The report closes with a plain-language summary of the overall data picture and, where applicable, a suggested action or further investigation.
 
-## 4.4.4 Using Insights Effectively
+## 4.3.4 Using Insights Effectively
 
 Panel Insights is most useful when:
 

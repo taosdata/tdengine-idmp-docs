@@ -3,11 +3,14 @@ title: Scheduled Reports
 sidebar_label: Scheduled Reports
 ---
 
+# 4.6 Scheduled Reports
+
+
 Scheduled Reports let you deliver a rendered image of a panel or dashboard to one or more recipients on a recurring schedule. At the configured time, IDMP captures the panel or dashboard at its current state, generates a PNG image, and sends it through the configured notification contact point — no login or manual export required.
 
 Typical uses include weekly energy summary dashboards sent to management, daily production-line trend charts delivered to shift engineers, and one-time panel exports triggered on demand.
 
-## 4.7.1 Configuring Reports for a Panel
+## 4.6.1 Configuring Reports for a Panel
 
 Scheduled report delivery is configured in the **Notification Rule** section of the panel editor.
 
@@ -27,7 +30,7 @@ Scheduled report delivery is configured in the **Notification Rule** section of 
 
 Each saved rule appears as a row in the Notification Rule section. Use the delete icon on the row to remove a rule. Expand a collapsed rule row to edit its settings.
 
-## 4.7.2 Configuring Reports for a Dashboard
+## 4.6.2 Configuring Reports for a Dashboard
 
 Dashboard-level reports send a full-dashboard image instead of a single panel. The configuration is identical to panel-level rules.
 
@@ -38,7 +41,7 @@ Dashboard-level reports send a full-dashboard image instead of a single panel. T
 
 When triggered, IDMP renders the full dashboard canvas — all panels at the dashboard's default time range — and sends it as an image.
 
-## 4.7.3 How Delivery Works
+## 4.6.3 How Delivery Works
 
 When a scheduled report fires:
 
@@ -49,7 +52,7 @@ When a scheduled report fires:
 
 Single-frequency rules fire once at the Job Start Time and are then inactive. Recurring rules (Daily, Weekly, Monthly) fire on the same schedule relative to the Job Start Time — for example, a Weekly rule with a Monday 09:00 start time fires every Monday at 09:00.
 
-## 4.7.4 Notification Contact Points
+## 4.6.4 Notification Contact Points
 
 A **Notification Contact Point** is a delivery channel — an email address list, a webhook, a messaging platform integration, or another supported channel — configured in the system's notification settings.
 

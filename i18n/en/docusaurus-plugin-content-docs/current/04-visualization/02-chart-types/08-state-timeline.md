@@ -3,7 +3,10 @@ title: State Timeline
 sidebar_label: State Timeline
 ---
 
-## 4.10.1 Overview
+# 4.2.8 State Timeline
+
+
+## Overview
 
 The State Timeline displays how a value changes over time as a horizontal colored band. Each segment of the band is colored and labeled according to the value it represents, making it easy to see at a glance how long a process was in each state and when transitions occurred.
 
@@ -11,7 +14,7 @@ The State Timeline displays how a value changes over time as a horizontal colore
 
 Multiple metrics render as multiple stacked horizontal bands, enabling side-by-side comparison of state histories across different signals.
 
-## 4.10.2 When to Use
+## When to Use
 
 Use the State Timeline when:
 
@@ -21,7 +24,7 @@ Use the State Timeline when:
 
 For continuous numeric signals, use the Trend Chart. For a compact grid view of states bucketed by time interval across many metrics, use the Status History panel.
 
-## 4.10.3 Configuration
+## Configuration
 
 ### Edit Mode Toolbar
 
@@ -69,7 +72,7 @@ The legend identifies each state color. In Table mode it can also show summary s
 | **Placement** | Position: Bottom or Right |
 | **Legend Values** | Statistics shown in Table mode |
 
-## 4.10.4 Example Scenarios
+## Example Scenarios
 
 **Equipment on/off history.** A pump's run state (0 = Off, 1 = Running) is mapped to gray and green respectively. The state timeline over a 24-hour period shows exactly when the pump was running and for how long each run lasted.
 

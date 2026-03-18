@@ -3,6 +3,9 @@ title: Libraries
 sidebar_label: Libraries
 ---
 
+# 13 Libraries
+
+
 import DocCardList from '@theme/DocCardList';
 
 **Libraries** is the central repository of reusable definitions used across TDengine IDMP. It is accessed from the **Libraries** menu in the main navigation bar.

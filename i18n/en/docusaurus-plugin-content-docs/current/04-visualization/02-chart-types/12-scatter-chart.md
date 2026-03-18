@@ -3,7 +3,10 @@ title: Scatter Chart
 sidebar_label: Scatter Chart
 ---
 
-## 4.12.1 Overview
+# 4.2.12 Scatter Chart
+
+
+## Overview
 
 The Scatter Chart plots individual data points as dots in a two-dimensional space. In the default mode each point's X position is the timestamp and its Y position is the metric value — a time-scatter view. For correlation analysis, two attributes are plotted against each other (Y vs. X), revealing the relationship between the two variables.
 
@@ -11,7 +14,7 @@ The Scatter Chart plots individual data points as dots in a two-dimensional spac
 
 Beyond basic plotting, the Scatter Chart supports data aggregation and regression analysis, making it the primary panel type for statistical and correlation-based analysis in TDengine IDMP.
 
-## 4.12.2 When to Use
+## When to Use
 
 Use the Scatter Chart when:
 
@@ -22,7 +25,7 @@ Use the Scatter Chart when:
 
 For continuous line-based trend analysis, use the Trend Chart. For discrete state patterns, use the State Timeline.
 
-## 4.12.3 Configuration
+## Configuration
 
 ### View Mode Toolbar
 
@@ -130,7 +133,7 @@ In Table mode, the legend shows summary statistics. When placed on the Right wit
 | **Placement** | Position: Bottom or Right |
 | **Legend Values** | Statistics shown in Table mode: Last, Min, Max, Mean, Sum, etc. |
 
-## 4.12.4 Example Scenarios
+## Example Scenarios
 
 **Power vs. temperature correlation.** A process engineer plots active power (X dimension) against motor temperature (Y metric) over a month of data. The scatter plot reveals a clear positive correlation — the regression curve quantifies the relationship and the R² value indicates its strength.
 

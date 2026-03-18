@@ -3,7 +3,10 @@ title: Event Trend
 sidebar_label: Event Trend
 ---
 
-## 4.16.1 Overview
+# 4.2.13 Event Trend
+
+
+## Overview
 
 The Event Trend panel overlays time-series metrics with highlighted event intervals. It connects data signals to the events that occurred during them, making it immediately visible how measured values behaved before, during, and after each event.
 
@@ -11,7 +14,7 @@ The Event Trend panel overlays time-series metrics with highlighted event interv
 
 You can add any combination of element attributes, events, and analyses to the panel. When you add an **event**, the attributes associated with that event's trigger conditions are automatically included, and the event's active duration is highlighted on the time axis. When you add an **analysis**, all attributes referenced by the analysis are added, along with any events the analysis has generated.
 
-## 4.16.2 When to Use
+## When to Use
 
 Use the Event Trend panel when:
 
@@ -22,7 +25,7 @@ Use the Event Trend panel when:
 
 For plain time-series analysis without event overlay, use the Trend Chart. For correlating two process variables against each other rather than against time, use the Scatter Chart.
 
-## 4.16.3 Configuration
+## Configuration
 
 ### Data Sources
 
@@ -68,7 +71,7 @@ Click **Save** in the upper-left corner to permanently save the current analysis
 
 ![Save dialog for saving Event Trend as a panel](../images/event-trend-save-as.png)
 
-## 4.16.4 Example Scenarios
+## Example Scenarios
 
 **Alarm root cause investigation.** A maintenance engineer adds temperature and vibration attributes for a motor, then adds the motor's overtemperature alarm event. The Event Trend panel highlights the 90-minute alarm window and shows the full temperature rise in the hours leading up to it, alongside the vibration signal. The correlation makes the cause immediately apparent.
 

@@ -3,6 +3,9 @@ title: Building Data Models from TDengine TSDB
 sidebar_label: Building Data Models from TDengine TSDB
 ---
 
+# 12.3 Building Data Models from TDengine TSDB
+
+
 For users who already have data in TDengine TSDB, IDMP can automatically build the asset data model — elements, element templates, and attributes — directly from the TSDB schema. This eliminates the need to create elements and attributes manually.
 
 IDMP provides four approaches, all accessible from the TDengine connection detail page under **Admin Console → Connections → [connection name]**:
@@ -14,7 +17,7 @@ IDMP provides four approaches, all accessible from the TDengine connection detai
 | **Import from CSV** | Bulk configuration via a CSV file, especially for single-column data models with many supertables |
 | **Import from OPC** | OPC-structured data already in TSDB |
 
-## 11.3.1 Easy Import
+## 12.3.1 Easy Import
 
 Easy Import works best when your TSDB supertables already have a tag that encodes the asset hierarchy — for example, a `location` tag whose value is a dot-separated path like `Plant.Line1.Machine3`. IDMP maps each supertable to an element template and each child table to an element instance.
 
@@ -38,7 +41,7 @@ A summary at the bottom of the page shows how many tags and metrics are selected
 
 **Data enrichment:** After import, enrich each element with units of measure, descriptions, categories, and limit thresholds to give the data business context and make it AI-ready.
 
-## 11.3.2 Map STable to Element
+## 12.3.2 Map STable to Element
 
 Use this approach when your TSDB data lacks a hierarchical tag, uses a single-column model (one supertable per measurement), or when you need to map columns from multiple supertables to a single element template.
 
@@ -68,7 +71,7 @@ Click **Finish** to create the asset model. Each asset model covers one supertab
 If new supertables are added to the database after setup, you must manually add a new asset model for each. New supertables are not picked up automatically.
 :::
 
-## 11.3.3 Import from CSV
+## 12.3.3 Import from CSV
 
 CSV import is a bulk alternative to Map STable to Element. It is most useful when you have many supertables to configure — especially single-column models — and prefer to define all mappings in a spreadsheet rather than through the UI.
 
@@ -97,7 +100,7 @@ The task history table shows: **Created At**, **Status**, **File Name**, and **R
 If new supertables are added to the database after a CSV import, create a new import task for those supertables. Existing tasks do not pick up new supertables automatically.
 :::
 
-## 11.3.4 Import from OPC
+## 12.3.4 Import from OPC
 
 Use this approach when OPC-structured data is already stored in TDengine TSDB and you want to build the asset model from it.
 

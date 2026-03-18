@@ -3,7 +3,10 @@ title: Pie Chart
 sidebar_label: Pie Chart
 ---
 
-## 4.5.1 Overview
+# 4.2.3 Pie Chart
+
+
+## Overview
 
 The Pie Chart divides a circle into slices proportional to each value's share of the total. Each slice represents one category or metric group, making the relative contribution of each part immediately visible.
 
@@ -11,7 +14,7 @@ The Pie Chart divides a circle into slices proportional to each value's share of
 
 Slice labels are displayed directly on the chart. The chart is most readable with fewer than eight slices — beyond that, small slices become hard to distinguish and a Bar Chart or Table is a better choice.
 
-## 4.5.2 When to Use
+## When to Use
 
 Use the Pie Chart when:
 
@@ -21,7 +24,7 @@ Use the Pie Chart when:
 
 Avoid the Pie Chart when categories are numerous, when values are close in magnitude (differences are hard to judge by arc size), or when tracking change over time. Use the Bar Chart for comparisons and the Trend Chart for time-series data.
 
-## 4.5.3 Configuration
+## Configuration
 
 ### Edit Mode Toolbar
 
@@ -42,7 +45,7 @@ In addition to the [common edit mode controls](../01-panels.md#424-panel-edit-mo
 
 The Pie Chart has no Axis, Limits, or Legend sections. Slice labels and percentages are rendered directly on the chart.
 
-## 4.5.4 Example Scenarios
+## Example Scenarios
 
 **Power consumption by phase.** An electrical engineer adds three metrics — Phase A, Phase B, and Phase C current — to a pie chart. The chart immediately shows whether the load is balanced across phases or concentrated on one.
 

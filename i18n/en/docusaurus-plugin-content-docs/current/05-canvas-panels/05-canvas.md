@@ -3,7 +3,7 @@ title: Canvas
 sidebar_label: Canvas
 ---
 
-# Canvas
+# 5.5 Canvas
 
 ## Setting Canvas Properties
 

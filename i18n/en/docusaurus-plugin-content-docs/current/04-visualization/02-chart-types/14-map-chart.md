@@ -3,7 +3,10 @@ title: Map Chart
 sidebar_label: Map Chart
 ---
 
-## 4.13.1 Overview
+# 4.2.14 Map Chart
+
+
+## Overview
 
 The Map Chart displays geographic data as a choropleth map — regions filled with colors proportional to their associated metric values. It is used for spatial analysis when data is organized by geographic area: countries, provinces, cities, districts, or custom regions defined by a GeoJSON file.
 
@@ -11,7 +14,7 @@ The Map Chart displays geographic data as a choropleth map — regions filled wi
 
 The color intensity of each region reflects the metric value — darker or more saturated regions indicate higher values. A color scale legend shows the mapping from color to value.
 
-## 4.13.2 When to Use
+## When to Use
 
 Use the Map Chart when:
 
@@ -21,7 +24,7 @@ Use the Map Chart when:
 
 For time-series trend analysis, use the Trend Chart. For non-geographic comparisons across categories, use the Bar Chart.
 
-## 4.13.3 Configuration
+## Configuration
 
 ### Edit Mode Toolbar
 
@@ -55,7 +58,7 @@ The color gradient for the choropleth is configured through the **Map Display** 
 | **Map Display** | Color scale: **Min** (value and color for the low end), **Middle** (color at midpoint), **Max** (value and color for the high end). Click color swatches to change them. |
 | **Display Labels** | Toggle: show region name labels on the map |
 
-## 4.13.4 Example Scenarios
+## Example Scenarios
 
 **Energy consumption by province.** An energy utility has elements organized by province. A map chart with a province-level GeoJSON file shows total monthly energy consumption per province. Darker blue regions consumed more; lighter regions consumed less. The operations team immediately identifies which provinces are above forecast.
 

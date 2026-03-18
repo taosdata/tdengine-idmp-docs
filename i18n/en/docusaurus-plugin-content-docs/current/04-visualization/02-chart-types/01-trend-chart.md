@@ -3,7 +3,10 @@ title: Trend Chart
 sidebar_label: Trend Chart
 ---
 
-## 4.3.1 Overview
+# 4.2.1 Trend Chart
+
+
+## Overview
 
 The Trend Chart renders one or more time-series metrics as lines plotted against a time axis. It connects data points to show how values change over time, built for continuous measurements — temperatures, pressures, flow rates, energy consumption, vibration levels — where the shape of the data over time carries meaning. Multiple metrics can be plotted on the same chart, each as a separate line, to reveal correlations and relative behavior at a glance.
 
@@ -11,7 +14,7 @@ The Trend Chart renders one or more time-series metrics as lines plotted against
 
 Beyond basic plotting, the Trend Chart is the primary panel type in TDengine IDMP and the entry point for advanced analytics: forecasting future values with AI, filling data gaps with imputation, overlaying historical periods with time-shift, and comparing batch occurrences on a normalized time axis.
 
-## 4.3.2 When to Use
+## When to Use
 
 Use the Trend Chart when:
 
@@ -24,7 +27,7 @@ Use the Trend Chart when:
 
 For discrete state signals (on/off, running/stopped), use the State Timeline instead. For correlation between two continuous attributes (one vs. the other rather than both vs. time), use the Scatter Chart.
 
-## 4.3.3 Configuration
+## Configuration
 
 ### View Mode Toolbar
 
@@ -153,7 +156,7 @@ The legend can display summary statistics alongside each series name, including 
 | **Placement** | Position: Bottom or Right |
 | **Legend Values** | Statistics shown in Table mode: Last, Min, Max, Mean, Sum, etc. |
 
-## 4.3.4 Example Scenarios
+## Example Scenarios
 
 **Energy monitoring with stacking.** An energy manager needs to track electricity consumption across residential and industrial customers. Two metrics — residential consumption and industrial consumption — are added to the same trend chart with Stack Series enabled and Fill Opacity set to 0.4. The result shows both the individual contributions and the total load on a single chart.
 

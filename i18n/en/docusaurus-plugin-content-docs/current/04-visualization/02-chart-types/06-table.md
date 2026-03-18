@@ -3,13 +3,16 @@ title: Table
 sidebar_label: Table
 ---
 
-## 4.8.1 Overview
+# 4.2.6 Table
+
+
+## Overview
 
 The Table panel displays query results in a structured grid with one row per time point and one column per metric. It is the most direct way to read the exact values returned by a query — no aggregation, no visual encoding, just the numbers.
 
 All configured metrics appear as columns. The timestamp column is always included. Pagination controls at the bottom of the panel let you navigate across large result sets.
 
-## 4.8.2 When to Use
+## When to Use
 
 Use the Table panel when:
 
@@ -20,7 +23,7 @@ Use the Table panel when:
 
 For visual trend analysis, use the Trend Chart. For a single summary number, use the Stat Value panel.
 
-## 4.8.3 Configuration
+## Configuration
 
 ### Edit Mode Toolbar
 
@@ -40,7 +43,7 @@ In addition to the [common edit mode controls](../01-panels.md#424-panel-edit-mo
 
 The Table panel has no Axis, Limits, or Legend sections.
 
-## 4.8.4 Example Scenarios
+## Example Scenarios
 
 **Data quality check.** A data engineer adds all attributes of a meter element to a Table panel with a 1-hour time range and Disable Sampling enabled. The raw row-by-row output lets them verify that readings are arriving at the expected interval and that no values are missing or out of range.
 

@@ -3,6 +3,9 @@ title: Annotations
 sidebar_label: Annotations
 ---
 
+# 11.2 Annotations
+
+
 Annotations let you attach free-text notes to elements, events, and (in a future release) panels and dashboards. They serve as a shared log — visible to anyone with access — for recording observations, corrective actions, investigation findings, or any context that is useful to other team members.
 
 ## Annotating Elements

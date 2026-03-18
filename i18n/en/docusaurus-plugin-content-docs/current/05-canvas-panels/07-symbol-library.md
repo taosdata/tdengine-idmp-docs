@@ -3,7 +3,7 @@ title: Symbol Library
 sidebar_label: Symbol Library
 ---
 
-# Symbol Library
+# 5.7 Symbol Library
 
 The IDMP system already includes a basic symbol library and some industry-specific symbol libraries. If you have more requirements during use, you can create and upload your own symbols, or contact the IDMP team for design support.
 

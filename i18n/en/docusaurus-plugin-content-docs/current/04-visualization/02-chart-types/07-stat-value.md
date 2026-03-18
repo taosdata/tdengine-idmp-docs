@@ -3,7 +3,10 @@ title: Stat Value
 sidebar_label: Stat Value
 ---
 
-## 4.9.1 Overview
+# 4.2.7 Stat Value
+
+
+## Overview
 
 The Stat Value panel displays a single large numeric value with an optional label and timestamp. It is designed for dashboards and status boards where a key figure needs to be visible at a distance or in a summary view.
 
@@ -11,7 +14,7 @@ The Stat Value panel displays a single large numeric value with an optional labe
 
 The value shown is the latest data point in the selected time range. Font size, color, background, and layout are all configurable to match the visual design of the containing dashboard.
 
-## 4.9.2 When to Use
+## When to Use
 
 Use the Stat Value panel when:
 
@@ -21,7 +24,7 @@ Use the Stat Value panel when:
 
 For values that need context against a scale or range, use the Gauge Chart or Bar Gauge. For trend history, use the Trend Chart.
 
-## 4.9.3 Configuration
+## Configuration
 
 ### Edit Mode Toolbar
 
@@ -46,7 +49,7 @@ In addition to the [common edit mode controls](../01-panels.md#424-panel-edit-mo
 | **Background Color** | Panel background color |
 | **Width** | Fixed pixel width for the panel (leave blank for automatic sizing) |
 
-## 4.9.4 Example Scenarios
+## Example Scenarios
 
 **Dashboard headline.** A plant manager's dashboard includes three Stat Value panels in a row: total energy consumed today, current plant output in units per hour, and active alarm count. Each uses a large font size (64) with a white value on a dark background, readable from across the control room.
 

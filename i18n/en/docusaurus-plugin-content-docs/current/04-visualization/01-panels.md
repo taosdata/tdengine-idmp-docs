@@ -3,11 +3,14 @@ title: Panels
 sidebar_label: Panels
 ---
 
+# 4.1 Panels
+
+
 Panels are the building blocks of all visualization in TDengine IDMP. A panel is a self-contained visualization component — a chart, gauge, table, or other display — bound to one or more attributes of a specific element. Every panel belongs to an element and draws its data from that element's attributes.
 
 This page covers the common features shared across all panel types: browsing, creating, editing, the toolbar controls, and the data configuration interface. Individual panel types and their specific settings are described in the sections that follow.
 
-## 4.2.1 The Panels Tab
+## 4.1.1 The Panels Tab
 
 Navigate to any element in the asset tree and click the **Panels** tab to access its panels.
 
@@ -27,7 +30,7 @@ On the right side of the toolbar:
 
 ### AI-Suggested Panels
 
-When the AI toggle is active, the system generates panel suggestions alongside your saved panels. Each suggestion card shows a preview and a panel title. You can:
+When the AI toggle is active, powered by **Zero Query Intelligence**, the system generates panel suggestions alongside your saved panels. Each suggestion card shows a preview and a panel title. You can:
 
 - Click **👍** to mark a suggestion as useful — this does not save it.
 - Click **👎** to dismiss the suggestion.
@@ -51,7 +54,7 @@ Saved panels appear as cards with a live thumbnail preview. Hover over a card to
 | **Open in New Window** | Open the panel in a separate browser window |
 | **Delete** | Remove the panel permanently |
 
-## 4.2.2 Creating a Panel
+## 4.1.2 Creating a Panel
 
 To create a new panel manually:
 
@@ -65,7 +68,7 @@ To create a new panel manually:
 
 To create a panel from an AI suggestion, click **⋮** → **Generate** on any suggestion card.
 
-## 4.2.3 Panel View Mode
+## 4.1.3 Panel View Mode
 
 Clicking **View** on a panel card opens the panel in full view mode. The panel occupies the main content area with the element hierarchy on the left.
 
@@ -90,7 +93,7 @@ The following controls appear in the view mode toolbar for every panel type:
 
 Additional toolbar controls that are specific to a panel type are documented in each panel type's section.
 
-## 4.2.4 Panel Edit Mode
+## 4.1.4 Panel Edit Mode
 
 Click **Edit** in view mode, or **⋮** → **Edit** on a panel card, to open the panel editor. The editor is divided into three panels.
 
@@ -227,7 +230,7 @@ Configure a scheduled report delivery rule on this panel. See [Scheduled Reports
 
 Additional settings sections — Graph, Axis, Limits, Legend, and others — are panel-type-specific and documented in each panel type's section.
 
-## 4.2.5 Organizing Panels
+## 4.1.5 Organizing Panels
 
 **Categories** are free-form text tags assigned to a panel in the General settings. They appear in the Categories filter dropdown on the Panels tab, letting users quickly find panels by function or system area (e.g., Electrical, Mechanical, Quality).
 
