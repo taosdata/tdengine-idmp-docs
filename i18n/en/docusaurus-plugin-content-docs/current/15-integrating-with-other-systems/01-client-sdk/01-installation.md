@@ -42,11 +42,9 @@ mvn install -DskipTests
 <dependency>
   <groupId>com.taosdata</groupId>
   <artifactId>idmp-sdk</artifactId>
-  <version>{SDK_VERSION}</version>
+  <version>1.0.14.1</version>
 </dependency>
 ```
-
-Replace `{SDK_VERSION}` with the actual version number, for example `1.0.13.0`.
 
 </TabItem>
 <TabItem value="python" label="Python">
