@@ -7,9 +7,11 @@ English | [简体中文](README-CN.md)
 - [TDengine IDMP Documentation](#tdengine-idmp-documentation)
   - [Table of Contents](#table-of-contents)
   - [1. Introduction](#1-introduction)
-  - [2. Installation](#2-installation)
-    - [2.1 Install Prerequisite Tools](#21-install-prerequisite-tools)
-    - [2.2 Install Project Dependencies](#22-install-project-dependencies)
+  - [2. Prepare](#2-prepare)
+    - [2.1 Clone the Repo](#21-clone-the-repo)
+    - [2.2 Install mise](#22-install-mise)
+    - [2.3 Install Development Tools](#23-install-development-tools)
+    - [2.4 Install Project Dependencies](#24-install-project-dependencies)
   - [3. Local Development and Production Deployment](#3-local-development-and-production-deployment)
     - [3.1 Start Preview](#31-start-preview)
     - [3.2 Production Build](#32-production-build)
@@ -27,26 +29,58 @@ TDengine IDMP (Industrial Data Management Platform) is an AI-native IoT and indu
 
 This documentation site is built with [Docusaurus](https://docusaurus.io/) and provides user guides, development documentation, and related resources for TDengine IDMP.
 
-## 2. Installation
+## 2. Prepare
 
-### 2.1 Install Prerequisite Tools
-
-This project requires [Node.js](https://nodejs.org/) version 18.0 or above (you can check with `node -v`). You can use nvm to manage multiple Node versions on a single machine. Then, install pnpm globally via npm:
+### 2.1 Clone the Repo
 
 ```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-source ~/.bashrc
-nvm install node
-npm install -g pnpm
-pnpm --version
+git clone git@github.com:taosdata/tdengine-idmp-docs.git
 ```
 
-### 2.2 Install Project Dependencies
+### 2.2 Install mise
 
-Navigate to the project repository directory and run the following command to install all required dependencies:
+This project uses [mise](https://github.com/jdx/mise) as the dev tool version manager and [just](https://github.com/casey/just/) as the command runner. `mise` is a polyglot dev tool version manager, it reads [mise.toml](./mise.toml) and automatically installs the correct versions of  [Node.js](https://nodejs.org/) and [pnpm](https://pnpm.io/) used in this project.
+
+
+Install mise on Linux/macOS (For other OS, please refer to mise's [Getting Started](https://mise.jdx.dev/getting-started.html) documentation):
 
 ```bash
-pnpm install  
+curl https://mise.jdx.dev/install.sh | sh
+```
+
+Activate mise in your shell (add to `~/.bashrc`, `~/.zshrc`, or equivalent):
+
+```bash
+eval "$(~/.local/bin/mise activate bash)"   # for bash
+eval "$(~/.local/bin/mise activate zsh)"    # for zsh
+```
+
+Restart your shell session after modifying your rc file. After restarting, run `mise version` to verify installation.
+
+### 2.3 Install Development Tools
+
+Trust current directory and install the dev tools with `mise`:
+
+```bash
+cd tdengine-idmp-docs
+mise trust
+mise install
+```
+
+`mise` will automatically install the correct Node.js, pnpm versions specified in `mise.toml`. You can verify with:
+
+```bash
+node -v
+pnpm -v
+just -V
+```
+
+### 2.4 Install Project Dependencies
+
+Run the following command to install all required dependencies:
+
+```bash
+just install
 ```
 
 ## 3. Local Development and Production Deployment
@@ -60,13 +94,13 @@ The following commands will automatically open a browser window for real-time pr
 - Start Chinese preview
 
 ```bash
-pnpm start  --host 0.0.0.0
+just start
 ```
 
 - Start English preview
 
 ```bash
-pnpm start --host 0.0.0.0 --locale en
+just start-en
 ```
 
 ### 3.2 Production Build
@@ -76,13 +110,13 @@ Use the following command to build static files for production into the `build` 
 - Build documentation
 
 ```bash
-pnpm build
+just build
 ```
 
 - Local preview
 
 ```bash
-pnpm serve 
+just serve
 ```
 
 ### 3.3 Production Deployment
@@ -99,6 +133,8 @@ After code is merged into the main branch, GitHub Actions will automatically tri
 - **`sidebars.js`**: Sidebar configuration for documentation.
 - **`i18n/`**: Internationalization configuration files, supporting multi-language documentation.
 - **`package.json`**: Project dependencies and script configuration.
+- **`mise.toml`**: Dev tool version configuration for [mise](https://mise.jdx.dev/).
+- **`justfile`**: Task runner recipes for [just](https://just.systems/).
 - **`.github/workflows/`**: GitHub Actions workflow configuration files.
 - **`.docsearch/`**: Algolia doc search service configuration directory.
 - **`pnpm-lock.yaml`**: Dependency lock file for the project.
@@ -115,5 +151,3 @@ If you encounter any problems while using TDengine IDMP or reading the documenta
 
 - [GitHub Issues](https://github.com/taosdata/tdengine-idmp-docs/issues)
 - [Official Support Email](mailto:it@taosdata.com)
-
-## 7. License
