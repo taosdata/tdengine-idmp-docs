@@ -6,7 +6,6 @@ sidebar_label: 安装包
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import PkgListV37 from "/src/components/PkgListZh";
-import Getstarted from './_get_started.md';
 
 # 2.3 安装包快速上手
 

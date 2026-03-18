@@ -8,8 +8,6 @@ sidebar_label: Local Install
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import PkgList from "/src/components/PkgListEn/";
-import Init from './_init.md';
-import Getstarted from './_get_started.md';
 
 You can install TDengine IDMP locally on a Linux, macOS, or Windows machine.
 
@@ -283,23 +281,30 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 </TabItem>
 </Tabs>
 
-<Init />
+## 2.3.3 Activate and Initialize the System
 
-<Getstarted />
+1. In a web browser, access TDengine IDMP at `http://ip:6042`.
+2. Under **Activate TDengine IDMP**, enter your email address and organization.
+3. Click **Get Code** and enter the code sent to your email address.
 
-## 2.3.3 Uninstall TDengine IDMP
+   :::tip
+   If the email does not arrive, check your spam or junk folder.
+   :::
 
-<Tabs>
-<TabItem label="Linux/macOS" value="linux">
+4. Read the User Agreement and Privacy Policy and click **Activate**.
+5. In the **Privacy Settings** dialog, select which diagnostic information you want to share with TDengine, then click **Agree**.
 
-```bash
-sudo rmidmp
-```
+## 2.3.4 Enter Account Information
 
-</TabItem>
-<TabItem label="Windows" value="windows">
+1. Enter your name, phone number, position, and password.
 
-Double-click `C:\TDengine\idmp\unins000.exe` and follow the uninstallation wizard to complete the process.
+   :::note
+   - Your password must be 8 to 20 characters long.
+   - Your password must contain letters, digits, and special characters.
+   - Supported special characters: `. ~ ! @ # $ ^ & *`
+   :::
 
-</TabItem>
-</Tabs>
+2. (Optional) Select a profile picture. JPG and PNG files under 1 MB are supported.
+3. Click **Continue**.
+
+Your TDengine IDMP instance is now ready to use. Continue to [Section 2.4](./04-experiencing-idmp.md) to load sample data and explore IDMP features.

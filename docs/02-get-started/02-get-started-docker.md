@@ -5,7 +5,6 @@ sidebar_label: Docker
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import Getstarted from './_get_started.md';
 
 # 2.2 Docker 快速上手
 
