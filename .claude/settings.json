@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(.venv/bin/python scripts/merge.py)"
+      "Bash(.venv/bin/python scripts/merge.py)",
+      "Bash(.venv/bin/python scripts/validate.py --strict)",
+      "Bash(echo \"exit: $?\")"
     ]
   }
 }
