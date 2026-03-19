@@ -38,11 +38,11 @@ Is this something a user can independently use or an admin can independently con
 
 ### When unmatched capabilities appear
 
-After running `generate.py`, the `unmatched_capabilities` section lists extracted IDs not in the taxonomy:
+After running `validate.py`, the unmatched capabilities report lists extracted IDs not in the taxonomy:
 
 ```
 UNMATCHED: trend-chart-axis-config
-  Found in: 04-visualization/02-chart-types/01-trend-chart.md#configuring-axes
+  Found in: trend-chart#configuring-axes
   Relation: defined
   Confidence: high
 ```
@@ -54,7 +54,7 @@ The curator applies the decision tree:
 3. **New sub-capability** → create a new entry with `parent: <parent-id>`
 4. **Not a capability** → add to the `ignored` list with a `reason`
 
-Then re-run `generate.py` to update `capabilities.yaml`.
+Then re-run `validate.py` to confirm the unmatched list is resolved.
 
 ### When a new product version ships
 
@@ -88,7 +88,7 @@ Then re-run `generate.py` to update `capabilities.yaml`.
 
 | Data | Source |
 |---|---|
-| Which sections define/reference a capability | Extraction cache |
+| Which sections define/reference a capability | Section map |
 | Section content and structure | Sections file |
 | File paths and anchors | Sections file |
 

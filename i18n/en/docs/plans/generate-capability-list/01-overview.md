@@ -16,27 +16,32 @@ Build a structured, maintainable inventory of all capabilities in TDengine IDMP,
 AI-assisted extraction with a human-curated taxonomy:
 
 1. **Parse** every in-scope doc into sections (pure Python, no AI)
-2. **Extract** capabilities from each section using AI, marking each as "defined" or "referenced"
-3. **Join** extraction results with a human-maintained taxonomy of canonical names and categories
-4. **Generate** the final capability list automatically
+2. **Prepare** — detect which sections changed and generate a prompt file for the AI agent
+3. **Extract** capabilities from each section using an AI agent, marking each as "defined" or "referenced"
+4. **Merge** the AI results into the section map
 
 This means:
-- AI does the heavy lifting (reading, identifying, tracking)
-- Humans only make judgment calls (naming, categorizing, grouping)
-- The final output is always regenerable — no hand-curated mappings to lose
+- AI does the heavy lifting (reading, identifying, classifying)
+- Humans curate the taxonomy (naming, categorizing, grouping)
+- The two committed data files (section map + taxonomy) are the complete source of truth
+- Any report or web app consumes these files directly
 
 ## Data Flow
 
 ```
 Docs (source of truth, in-scope files only)
     ↓  parse.py (no AI, pure Python)
-capabilities.sections.yaml (parsed sections with content, hashes, and stable IDs)
-    ↓  extract.py (AI extraction per section)
-capabilities.extraction-cache.yaml (sections + identified capabilities)
-    ↓  generate.py (join with taxonomy)
-capabilities.taxonomy.yaml (human-curated canonical names)
-    ↓
-capabilities.yaml (final output, never hand-edited)
+.sections/ (one directory per section: section.md + meta.yaml, git-ignored)
+    ↓  prepare.py (no AI — change detection, prompt generation)
+.sections/extraction-prompt.md (self-contained prompt for AI agent)
+    ↓  AI agent (manual — e.g., Claude Code)
+capabilities.extraction-result.yaml (AI output, transient)
+    ↓  merge.py (no AI — validate & merge into section map)
+capabilities.section-map.yaml (section→capability mappings, committed)
+    +
+capabilities.taxonomy.yaml (human-curated canonical names, committed)
+    =
+Complete source of truth — consumed directly by reports, web apps, etc.
 ```
 
 ## Key Design Decisions
@@ -59,7 +64,7 @@ This plan targets `i18n/en/` only. English is the sole extraction source. If oth
 | [01-overview.md](01-overview.md) | This document — goals, non-goals, approach, key decisions |
 | [02-scope-and-definitions.md](02-scope-and-definitions.md) | What is a capability, doc inclusion/exclusion policy, edge cases |
 | [03-data-contracts.md](03-data-contracts.md) | All schemas: section_id, anchors, file formats, enums, validation rules |
-| [04-pipeline.md](04-pipeline.md) | Parsing, extraction, post-processing, batching, incremental strategy, failure handling |
+| [04-pipeline.md](04-pipeline.md) | Parsing, extraction prep, AI extraction, merging, failure handling |
 | [05-taxonomy-governance.md](05-taxonomy-governance.md) | Curation workflow, capability modeling rubric, metadata ownership |
 | [06-tooling-and-operations.md](06-tooling-and-operations.md) | Scripts, CI, scheduled runs, file locations |
 | [07-verification.md](07-verification.md) | End-to-end tests and acceptance criteria |

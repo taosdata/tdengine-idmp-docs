@@ -4,30 +4,50 @@ All schemas, ID formats, anchor rules, enums, and validation requirements.
 
 ## Section ID Schema
 
-Every parsed section gets a stable `section_id` that does **not** depend on content. It is derived deterministically from the file path and heading hierarchy.
+Every parsed section gets a stable `section_id` that does **not** depend on content or directory path. It is derived from the **filename and heading** only, so it survives both content edits and directory moves.
 
 ### Format
 
 ```
-{relative_file_path}#{heading_slug}
+{stripped_filename}#{heading_slug}
 ```
 
-Examples:
-- `03-data-modeling/01-elements.md#creating-elements`
-- `03-data-modeling/01-elements.md#(intro)` (content before first H2)
-- `04-visualization/02-chart-types/01-trend-chart.md#configuring-axes`
+The `stripped_filename` has the `.md` extension and numeric prefix removed. Examples:
+
+| Source file | section_id |
+|---|---|
+| `03-data-modeling/01-elements.md`, heading `## Creating Elements` | `elements#creating-elements` |
+| `03-data-modeling/01-elements.md`, intro section | `elements#(intro)` |
+| `04-visualization/02-chart-types/01-trend-chart.md`, heading `## Configuring Axes` | `trend-chart#configuring-axes` |
 
 ### Rules
 
-1. `relative_file_path` is relative to `i18n/en/docusaurus-plugin-content-docs/current/`
-2. `heading_slug` follows the slug algorithm defined below
-3. For content before the first H2, use the literal string `(intro)`
+1. `stripped_filename` is the file's base name with the `.md` extension removed, the numeric ordering prefix stripped, and no directory path. E.g., `03-data-modeling/01-elements.md` → `elements`.
+2. `heading_slug` follows the slug algorithm defined below.
+3. For content before the first H2, use the literal string `(intro)`.
 4. **Duplicate headings within a file**: append `-1`, `-2`, etc. to the second and subsequent occurrences (e.g., `#overview`, `#overview-1`). This matches Docusaurus's default behavior.
-5. Custom heading IDs in markdown (e.g., `## My Heading {#custom-id}`) — use the custom ID, skip the slug algorithm
+5. Custom heading IDs in markdown (e.g., `## My Heading {#custom-id}`) — use the custom ID, skip the slug algorithm.
+6. **Filename collisions**: if two files in different directories have the same stripped name (e.g., `index` appears in every chapter), disambiguate by prepending the immediate parent directory name (also stripped): `data-modeling/index#overview` vs `visualization/index#overview`. The `parse.py` script detects collisions automatically and adds the disambiguator only where needed.
+
+### Formatting prefix stripping
+
+Filenames and directory names in this repo commonly use numeric prefixes for ordering (e.g., `01-elements.md`, `03-data-modeling/`). These prefixes are organizational, not meaningful — they change during reorganization (e.g., `03-data-modeling` → `05-data-modeling`). To keep `section_id` stable across such changes:
+
+1. Strip the `.md` extension: `01-elements.md` → `01-elements`
+2. Strip leading digits and hyphens: `01-elements` → `elements`
+3. Apply the same stripping to directory names when used for disambiguation: `03-data-modeling` → `data-modeling`
+4. The stripping regex: remove the leading match of `^\d+-` (one or more digits followed by a hyphen)
+5. If stripping would produce an empty string (unlikely), keep the original name
+
+### Why stripped filename only (no directory, no numeric prefix, no extension)?
+
+Docs in this repo frequently move between directories and get renumbered (chapter reorganization). A section in `elements#creating-elements` describes the same capability whether the file is named `01-elements.md` or `05-elements.md`, and whether it lives in `03-data-modeling/` or `05-modeling/`. By stripping the directory path, numeric prefix, and extension from `section_id`, reorganization doesn't invalidate the section map or require extraction.
+
+The full directory path is still stored in the `file` field of each section for reference and link generation, but it is not part of the stable identity.
 
 ### Why separate from content_hash?
 
-- `section_id` provides **stable identity** — it survives content edits. The extraction cache can track "this section was re-extracted" without ambiguity.
+- `section_id` provides **stable identity** — it survives both content edits and file moves. The section map can track "this section was extracted" without ambiguity.
 - `content_hash` provides **change detection** — "has this section's content changed since last extraction?"
 - Using hash as identity would cause collisions (two sections with identical content) and ambiguity (any edit changes identity).
 
@@ -72,13 +92,30 @@ Within a single file, if the same slug appears more than once, append `-1`, `-2`
 
 ### Intro sections
 
-The `(intro)` section (content before the first H2) uses the literal string `(intro)` as its slug in `section_id`. This is an internal identifier only — it does not correspond to a Docusaurus anchor. In the generated `capabilities.yaml`, intro sections use the file's root URL with no fragment (e.g., `04-visualization/02-chart-types/01-trend-chart.md` with no `#anchor`).
+The `(intro)` section (content before the first H2) uses the literal string `(intro)` as its slug in `section_id`. This is an internal identifier only — it does not correspond to a Docusaurus anchor. Consumers generating links for intro sections should use the file's root URL with no fragment (e.g., `04-visualization/02-chart-types/01-trend-chart.md` with no `#anchor`).
 
 The `parse.py` script implements this algorithm. All other scripts consume its output.
 
 ## File Schemas
 
-### File 1: `capabilities.sections.yaml` (Machine-Generated, No AI)
+### Sections: `.sections/` directory (Machine-Generated, No AI, Git-Ignored)
+
+Each parsed section is stored as its own directory under `.sections/`, named by the `section_id` components. Each directory contains two files:
+
+**`section.md`** — the raw section content (heading line + body text).
+
+**`meta.yaml`** — section metadata:
+
+```yaml
+section_id: "elements#creating-elements"
+file: "03-data-modeling/01-elements.md"
+heading: "## Creating Elements"
+heading_level: 2
+heading_path: ["Data Modeling", "Elements", "Creating Elements"]
+content_hash: "a3f2b8c4..."
+```
+
+**`.sections/manifest.yaml`** — a summary index for quick diffing:
 
 ```yaml
 version: "1.0"
@@ -87,33 +124,44 @@ doc_root: "i18n/en/docusaurus-plugin-content-docs/current"
 scope:
   include: ["01-introduction", "03-data-modeling", "04-visualization", ...]
   exclude: ["00-index.md", "02-get-started", "16-best-practices", ...]
-total_files: 95       # in-scope files only
+total_files: 95
 total_sections: 487
 
 sections:
-  - section_id: "03-data-modeling/01-elements.md#creating-elements"
-    file: "03-data-modeling/01-elements.md"
-    heading: "## Creating Elements"
-    heading_level: 2
-    heading_path: ["Data Modeling", "Elements", "Creating Elements"]
+  - section_id: "elements#creating-elements"
     content_hash: "a3f2b8c4..."
-    content: |
-      To create an element, navigate to the Element
-      Browser and click the "+" button...
-
-  - section_id: "03-data-modeling/01-elements.md#(intro)"
-    file: "03-data-modeling/01-elements.md"
-    heading: "(intro)"
-    heading_level: 0
-    heading_path: ["Data Modeling", "Elements"]
+  - section_id: "elements#(intro)"
     content_hash: "f1c2d3e4..."
-    content: |
-      Elements are the fundamental building block...
+  # ... one entry per section, for fast hash comparison
 ```
 
-### File 2: `capabilities.extraction-cache.yaml` (Machine-Generated, AI)
+Directory structure example:
 
-Same section references as the sections file, but with capability identifications added and content removed.
+```
+.sections/
+├── manifest.yaml
+├── elements/
+│   ├── creating-elements/
+│   │   ├── section.md
+│   │   └── meta.yaml
+│   └── (intro)/
+│       ├── section.md
+│       └── meta.yaml
+├── data-modeling/index/          # disambiguated collision
+│   └── overview/
+│       ├── section.md
+│       └── meta.yaml
+└── visualization/index/          # disambiguated collision
+    └── overview/
+        ├── section.md
+        └── meta.yaml
+```
+
+The `.sections/` directory is git-ignored — it is regenerated by `parse.py`. Only the section map file (below) is committed.
+
+### File 1: `capabilities.section-map.yaml` (Machine-Generated, AI, Committed)
+
+References sections by `section_id` and stores AI-identified capabilities. Does not contain section content (that lives in `.sections/`).
 
 ```yaml
 version: "1.0"
@@ -121,7 +169,7 @@ last_full_extraction: "2026-03-18"
 prompt_version: "1.0"     # tracks which prompt template was used
 
 sections:
-  - section_id: "03-data-modeling/01-elements.md#creating-elements"
+  - section_id: "elements#creating-elements"
     content_hash: "a3f2b8c4..."
     extracted_at: "2026-03-18"
     capabilities:
@@ -132,7 +180,7 @@ sections:
         relation: referenced
         confidence: medium
 
-  - section_id: "08-ai-powered-insights/03-anomaly-detection.md#configuring-detection-rules"
+  - section_id: "anomaly-detection#configuring-detection-rules"
     content_hash: "e7d1f9a2..."
     extracted_at: "2026-03-18"
     capabilities:
@@ -150,7 +198,7 @@ Key fields:
 - **`prompt_version`** — if the prompt template changes, all sections should be re-extracted.
 - **`confidence`** — `high`, `medium`, or `low`. Low-confidence extractions are included but flagged.
 
-### File 3: `capabilities.taxonomy.yaml` (Human-Curated)
+### File 2: `capabilities.taxonomy.yaml` (Human-Curated)
 
 ```yaml
 version: "1.0"
@@ -233,64 +281,7 @@ Key fields:
 - **`roadmap_ref`** — quarter reference (e.g., `"2026-Q1"`) for `planned` capabilities. `null` otherwise.
 - **`ignored`** — extracted IDs that are false positives. Persisted so they don't resurface.
 
-### File 4: `capabilities.yaml` (Generated Output)
-
-```yaml
-version: "1.0"
-generated_at: "2026-03-18"
-product: "TDengine IDMP"
-
-summary:
-  total: 52
-  by_status: { ga: 45, beta: 3, planned: 4 }
-  by_category:
-    - { id: visualization, name: "Visualization & Dashboards", count: 8 }
-    - { id: ai-insights, name: "AI-Powered Insights", count: 7 }
-
-capabilities:
-  - id: trend-chart
-    name: "Trend Chart"
-    category: visualization
-    status: ga
-    since: "1.0.0.0"
-    tags: [core]
-    parent: null
-    children: [trend-chart-axis-config]
-    defined_in:
-      - section_id: "04-visualization/02-chart-types/01-trend-chart.md#trend-chart"
-        file: "04-visualization/02-chart-types/01-trend-chart.md"
-        heading: "## Trend Chart"
-        link: "04-visualization/02-chart-types/01-trend-chart#trend-chart"
-    referenced_in:
-      - section_id: "08-ai-powered-insights/02-ai-panels.md#supported-panel-types"
-        file: "08-ai-powered-insights/02-ai-panels.md"
-        heading: "## Supported Panel Types"
-        link: "08-ai-powered-insights/02-ai-panels#supported-panel-types"
-
-  # Example: capability defined in an intro section (no heading anchor)
-  - id: element-hierarchy
-    name: "Element Hierarchy"
-    category: data-modeling
-    status: ga
-    since: "1.0.0.0"
-    tags: [core]
-    parent: null
-    children: []
-    defined_in:
-      - section_id: "03-data-modeling/01-elements.md#(intro)"
-        file: "03-data-modeling/01-elements.md"
-        heading: "(intro)"
-        link: "03-data-modeling/01-elements"          # no fragment — intro has no anchor
-
-unmatched_capabilities:
-  - id: some-new-capability
-    found_in:
-      - section_id: "03-data-modeling/06-new-feature.md#some-new-feature"
-        file: "03-data-modeling/06-new-feature.md"
-        heading: "## Some New Feature"
-        relation: defined
-        confidence: high
-```
+There is no generated "File 3" — the section map + taxonomy are the complete source of truth. Any report, web app, or other consumer reads both files and joins them directly. See `04-pipeline.md` "Output: What Consumers Get" for the join algorithm.
 
 ## Enum Definitions
 
@@ -306,9 +297,8 @@ unmatched_capabilities:
 The `validate.py` script enforces all of the following:
 
 ### Path and reference integrity
-- Every `file` in `capabilities.sections.yaml` resolves to an actual file on disk
-- Every `section_id` in `capabilities.extraction-cache.yaml` exists in `capabilities.sections.yaml`
-- Every `section_id` in `capabilities.yaml` `defined_in`/`referenced_in` exists in the cache
+- Every `file` in `.sections/` `meta.yaml` files resolves to an actual file on disk
+- Every `section_id` in `capabilities.section-map.yaml` exists in `.sections/manifest.yaml`
 
 ### Taxonomy integrity
 - No duplicate capability `id` values
@@ -328,4 +318,4 @@ The `validate.py` script enforces all of the following:
 - Report unmatched extracted IDs (not in taxonomy and not in ignored list)
 
 ### Cross-consistency
-- `content_hash` in extraction cache matches `content_hash` in sections file for the same `section_id` (detects stale cache)
+- `content_hash` in section map matches `content_hash` in `.sections/manifest.yaml` for the same `section_id` (detects stale section map)

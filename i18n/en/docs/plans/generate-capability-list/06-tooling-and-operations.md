@@ -19,49 +19,50 @@ Usage:
 ```
 
 - No AI calls — fast, deterministic, always regenerates from scratch
-- `--check` mode: re-parses and compares against committed `capabilities.sections.yaml` without overwriting it. Reports stale files. Used in CI.
+- `--check` mode: re-parses into a temp location and compares `manifest.yaml` against existing `.sections/manifest.yaml` without overwriting. Reports stale/new/deleted sections. Used in CI.
 - Apply scope policy by default; `--include`/`--exclude` override for ad-hoc runs
 - Dependencies: `pyyaml` only
 
-### 2. `extract.py` — AI Extraction
+### 2. `prepare.py` — Extraction Prep (No AI)
 
-Reads `capabilities.sections.yaml`, sends sections to AI, writes `capabilities.extraction-cache.yaml`.
-
-```
-Usage:
-  python scripts/capabilities/extract.py                    # Full extraction
-  python scripts/capabilities/extract.py --incremental      # Only changed sections
-  python scripts/capabilities/extract.py --dry-run           # Show what would be re-extracted
-  python scripts/capabilities/extract.py --bootstrap         # First run: also generate draft taxonomy
-```
-
-Modes:
-- **Full** — extracts all sections, rebuilds cache from scratch
-- **Incremental** — compares `section_id` + `content_hash` against cache, only re-extracts changed/new sections. Handles moves by matching `content_hash` across different `section_id`s.
-- **Dry run** — reports what changed without calling AI
-- **Bootstrap** — full extraction + generate draft `capabilities.taxonomy.yaml`
-
-Dependencies: `pyyaml`, `anthropic`
-
-### 3. `generate.py` — Join & Generate
-
-Joins the extraction cache with the taxonomy to produce `capabilities.yaml`.
+Compares `.sections/manifest.yaml` against the section map, determines what needs extraction, and produces a prompt file for the AI agent.
 
 ```
 Usage:
-  python scripts/capabilities/generate.py
-  python scripts/capabilities/generate.py --format markdown   # Also output capabilities.md
-  python scripts/capabilities/generate.py --include-low-confidence
+  python scripts/capabilities/prepare.py                    # Prepare extraction (only changed/new sections)
+  python scripts/capabilities/prepare.py --force            # Ignore section map, queue all sections
+  python scripts/capabilities/prepare.py --bootstrap        # Generate draft taxonomy from section map (first run)
 ```
 
-Outputs:
-- `capabilities.yaml` — the full capability list with cross-references
-- `capabilities.md` (with `--format markdown`) — readable table grouped by category
-- Prints unmatched capabilities to stdout for human triage
+- Compares `section_id` + `content_hash` against section map; only queues changed/new sections
+- On first run (no section map), all sections are queued
+- Carries forward unchanged section map entries, remaps moved sections, removes deleted sections
+- Writes `.sections/extraction-prompt.md` — a self-contained prompt file for the AI agent
+- If nothing needs extraction, reports "section map is up to date" and does not create the prompt file
 
-Dependencies: `pyyaml`
+Dependencies: `pyyaml` only
 
-### 4. `validate.py` — CI Validation
+### 3. AI Extraction (Manual — AI Agent)
+
+The operator directs an AI agent (e.g., Claude Code) to read `.sections/extraction-prompt.md` and write results to `capabilities.extraction-result.yaml`. This is a manual step — see `04-pipeline.md` Stage 3 for the workflow.
+
+### 4. `merge.py` — Result Validation & Merge (No AI)
+
+Validates the AI agent's output and merges it into the section map.
+
+```
+Usage:
+  python scripts/capabilities/merge.py                      # Validate and merge extraction result
+```
+
+- Validates that every queued `section_id` has a result entry
+- Normalizes capability IDs, deduplicates within sections
+- Merges into `capabilities.section-map.yaml` atomically
+- Cleans up `capabilities.extraction-result.yaml` and `.sections/extraction-prompt.md` on success
+
+Dependencies: `pyyaml` only
+
+### 5. `validate.py` — CI Validation
 
 Lightweight checks, no AI. See `03-data-contracts.md` for the full list of validation rules.
 
@@ -75,7 +76,7 @@ Checks include:
 - Path and reference integrity (all files and section_ids resolve)
 - Taxonomy integrity (no duplicate IDs/aliases, valid enums, valid parent chains)
 - Coverage checks (warn on missing `defined_in`, orphaned capabilities, unmatched IDs)
-- Cross-consistency (cache hashes match sections file)
+- Cross-consistency (section map hashes match sections file)
 
 Exit code 0 if clean, 1 if errors found. Warnings printed but don't fail unless `--strict`.
 
@@ -92,7 +93,7 @@ Add to `.github/workflows/check_docs.yaml`:
     python3 scripts/capabilities/validate.py
 ```
 
-The `parse.py --check` mode re-parses the doc tree and compares the result against the committed `capabilities.sections.yaml`. If they differ (e.g., a doc was edited or renamed but the sections file wasn't regenerated), it exits with code 1 and reports which files are stale. This is fast (no AI, pure Python) and catches the most common drift scenario: someone edits docs without re-running the pipeline.
+The `parse.py --check` mode re-parses the doc tree into a temporary location and compares the resulting `manifest.yaml` against the existing `.sections/manifest.yaml`. If they differ (e.g., a doc was edited or renamed but `parse.py` wasn't re-run), it exits with code 1 and reports which sections are stale, new, or deleted. This is fast (no AI, pure Python) and catches the most common drift scenario: someone edits docs without re-running the pipeline.
 
 The `validate.py` step then checks all the schema and cross-reference rules.
 
@@ -100,58 +101,51 @@ Together, CI catches:
 - Stale sections file (docs changed but `parse.py` wasn't re-run)
 - Broken file references after doc renames/deletes
 - Schema issues in the taxonomy file
-- Stale cache (hash mismatches between sections and cache)
+- Stale section map (hash mismatches between sections and section map)
 - Orphaned or unmatched capabilities
 
 CI does **not** run AI extraction — only parsing freshness checks and validation.
 
-## Scheduled Extraction (Optional)
+## Scheduled Extraction
 
-A GitHub Actions workflow for periodic incremental extraction:
+Since extraction requires a manual AI agent step, fully automated scheduled extraction is not possible. However, CI can detect when extraction is needed:
 
 ```yaml
-name: Update capability list
-on:
-  schedule:
-    - cron: '0 0 * * 0'  # Weekly on Sunday
-  workflow_dispatch: {}    # Manual trigger
-
-jobs:
-  extract:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: pip install -r scripts/capabilities/requirements.txt
-      - run: python scripts/capabilities/parse.py
-      - run: python scripts/capabilities/extract.py --incremental
-      - run: python scripts/capabilities/generate.py
-      - run: python scripts/capabilities/validate.py
-      - uses: peter-evans/create-pull-request@v5
-        with:
-          title: "chore: update capability extraction cache"
-          body: "Automated incremental extraction. Review unmatched capabilities."
+- name: Check if extraction is needed
+  run: |
+    python3 scripts/capabilities/parse.py
+    python3 scripts/capabilities/prepare.py --check   # Exit 1 if sections need extraction
 ```
 
-This creates a PR for human review, never auto-commits.
+This can post a reminder (e.g., Slack notification, GitHub issue comment) when the section map is stale, prompting an operator to run the extraction workflow manually.
 
 ## File Locations
 
 ```
 repo-root/
-├── capabilities.sections.yaml          # Machine-generated, no AI (committed)
-├── capabilities.extraction-cache.yaml  # Machine-generated, AI (committed)
-├── capabilities.taxonomy.yaml          # Human-curated (committed)
-├── capabilities.yaml                   # Generated output (committed)
-├── capabilities.md                     # Generated markdown (optional, committed)
+├── .sections/                             # Git-ignored, regenerated by parse.py
+│   ├── manifest.yaml                      # Section index with content hashes
+│   ├── extraction-prompt.md               # Generated by prepare.py (transient)
+│   ├── elements/                          # One dir per source file (stripped name)
+│   │   ├── creating-elements/
+│   │   │   ├── section.md                 # Raw section content
+│   │   │   └── meta.yaml                  # Section metadata
+│   │   └── (intro)/
+│   │       ├── section.md
+│   │       └── meta.yaml
+│   └── ...
+├── capabilities.section-map.yaml          # Machine-generated via AI agent (committed)
+├── capabilities.extraction-result.yaml    # AI agent output (transient, deleted after merge)
+├── capabilities.taxonomy.yaml             # Human-curated (committed)
 └── scripts/capabilities/
-    ├── parse.py                        # Section parsing (no AI)
-    ├── extract.py                      # AI extraction
-    ├── generate.py                     # Join & generate
-    ├── validate.py                     # CI validation
-    └── requirements.txt                # pyyaml, anthropic
+    ├── parse.py                           # Section parsing (no AI)
+    ├── prepare.py                         # Extraction prep — change detection, prompt generation (no AI)
+    ├── merge.py                           # Validate & merge AI results into section map (no AI)
+    ├── validate.py                        # CI validation
+    └── requirements.txt                   # pyyaml
 ```
 
-All data files are committed so the capability list is available without running extraction.
+The `.sections/` directory is git-ignored and regenerated by `parse.py`. The two committed data files (`capabilities.section-map.yaml` + `capabilities.taxonomy.yaml`) together form the complete capability inventory and are consumed directly by any reporting or presentation layer.
 
 ## Typical Operator Workflows
 
@@ -159,9 +153,11 @@ All data files are committed so the capability list is available without running
 
 ```bash
 python scripts/capabilities/parse.py
-python scripts/capabilities/extract.py --bootstrap
+python scripts/capabilities/prepare.py
+# Direct AI agent to read .sections/extraction-prompt.md and write capabilities.extraction-result.yaml
+python scripts/capabilities/merge.py
+python scripts/capabilities/prepare.py --bootstrap
 # Review and curate capabilities.taxonomy.yaml
-python scripts/capabilities/generate.py
 python scripts/capabilities/validate.py
 ```
 
@@ -169,8 +165,9 @@ python scripts/capabilities/validate.py
 
 ```bash
 python scripts/capabilities/parse.py
-python scripts/capabilities/extract.py --incremental
-python scripts/capabilities/generate.py
+python scripts/capabilities/prepare.py              # Only changed sections are queued
+# Direct AI agent to process .sections/extraction-prompt.md
+python scripts/capabilities/merge.py
 # Review any unmatched capabilities, update taxonomy if needed
 python scripts/capabilities/validate.py
 ```
@@ -179,8 +176,8 @@ python scripts/capabilities/validate.py
 
 ```bash
 python scripts/capabilities/parse.py
-python scripts/capabilities/extract.py          # Full re-extraction
-python scripts/capabilities/generate.py --format markdown
+python scripts/capabilities/prepare.py --force      # Queue all sections
+# Direct AI agent to process .sections/extraction-prompt.md
+python scripts/capabilities/merge.py
 python scripts/capabilities/validate.py --strict
-# Review capabilities.md for completeness
 ```
