@@ -141,7 +141,7 @@ After code is merged into the main branch, GitHub Actions will automatically tri
 
 ## 5. Contribution
 
-Contributions to TDengine IDMP documentation are welcome! When contributing, please follow the [TDengine IDMP Documentation Writing Guide](./docs-guide.md), please submit a Pull Request.
+Contributions to TDengine IDMP documentation are welcome! When contributing, please follow the [TDengine IDMP Documentation Writing Guide](./docs-guide.md) and submit a Pull Request.
 
 ## 6. Community Support
 
