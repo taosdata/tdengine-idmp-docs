@@ -89,8 +89,8 @@ Then re-run `validate.py` to confirm the unmatched list is resolved.
 | Data | Source |
 |---|---|
 | Which sections define/reference a capability | Section map |
-| Section content and structure | Sections file |
-| File paths and anchors | Sections file |
+| Section content and structure | `.sections/` directory |
+| File paths and anchors | Section map (`file`, `anchor` fields) |
 
 ### Synchronization with other docs
 

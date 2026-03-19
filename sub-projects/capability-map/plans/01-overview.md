@@ -16,9 +16,9 @@ Build a structured, maintainable inventory of all capabilities in TDengine IDMP,
 AI-assisted extraction with a human-curated taxonomy:
 
 1. **Parse** every in-scope doc into sections (pure Python, no AI)
-2. **Prepare** — detect which sections changed and generate a prompt file for the AI agent
-3. **Extract** capabilities from each section using an AI agent, marking each as "defined" or "referenced"
-4. **Merge** the AI results into the section map
+2. **Prepare** — detect which sections changed and mark them for extraction
+3. **Extract** — AI agent walks section directories, reads each `section.md`, writes `extraction.yaml`
+4. **Merge** — collect all `extraction.yaml` files into the section map
 
 This means:
 - AI does the heavy lifting (reading, identifying, classifying)
@@ -30,13 +30,12 @@ This means:
 
 ```
 Docs (source of truth, in-scope files only)
-    ↓  parse.py (no AI, pure Python)
+    ↓  parse.py (no AI, pure Python — also deletes stale extraction.yaml)
 .sections/ (one directory per section: section.md + meta.yaml, git-ignored)
-    ↓  prepare.py (no AI — change detection, prompt generation)
-.sections/extraction-prompt.md (self-contained prompt for AI agent)
+    ↓  prepare.py (no AI — reports extraction status, writes prompt)
     ↓  AI agent (manual — e.g., Claude Code)
-capabilities.extraction-result.yaml (AI output, transient)
-    ↓  merge.py (no AI — validate & merge into section map)
+.sections/*/extraction.yaml (one per section, written by AI agent)
+    ↓  merge.py (no AI — collect & merge into section map)
 capabilities.section-map.yaml (section→capability mappings, committed)
     +
 capabilities.taxonomy.yaml (human-curated canonical names, committed)
@@ -44,11 +43,24 @@ capabilities.taxonomy.yaml (human-curated canonical names, committed)
 Complete source of truth — consumed directly by reports, web apps, etc.
 ```
 
+## Project Setup
+
+This sub-project lives at `sub-projects/capability-map/` and uses its own Python virtual environment to isolate dependencies from the main docs project:
+
+```bash
+cd sub-projects/capability-map
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r scripts/requirements.txt
+```
+
+The `.venv/` directory should be git-ignored.
+
 ## Key Design Decisions
 
 1. **Section-level extraction** — AI analyzes at the H2/H3 heading level, not whole files, for precise cross-referencing
-2. **Stable `section_id`** — each section gets a deterministic ID derived from file path + heading path, independent of content. Content hash is used only for change detection.
-3. **Structured extraction** — AI outputs capability IDs in a consistent hyphenated format, with a strict per-section response schema
+2. **Stable `section_id`** — each section gets a deterministic ID derived from stripped filename + heading slug, independent of directory path or content. Content hash is used only for change detection.
+3. **Per-section extraction** — AI reads one `section.md`, writes one `extraction.yaml` next to it. Simple prompt, no batching, naturally incremental.
 4. **Defined vs. referenced** — each capability mention is tagged as either "defined here" (canonical source) or "referenced here" (cross-reference)
 5. **Incremental updates** — only re-extract sections whose content hash has changed; file moves update paths without re-extraction
 6. **Explicit scope** — only docs that describe product behavior are parsed; glossary, roadmap, release history, and tutorials are excluded by default

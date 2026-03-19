@@ -77,7 +77,7 @@ Not all docs describe product capabilities. The parsing step applies an explicit
 
 ### Overriding the defaults
 
-The inclusion/exclusion policy is configured in a `scope` section at the top of `capabilities.sections.yaml` and can be overridden via CLI flags on `parse.py`:
+The inclusion/exclusion policy is recorded in the `scope` section of `.sections/manifest.yaml` and can be overridden via CLI flags on `parse.py`:
 
 ```yaml
 scope:
@@ -109,4 +109,4 @@ Some index files have sections that are just a Docusaurus `<DocCardList />` comp
 
 ### Roadmap items not yet in docs
 
-Capabilities listed in `20-roadmap/index.md` that don't appear in any included doc are added to the taxonomy as `status: planned` entries during the bootstrap phase. They have no `defined_in` references until docs are written for them.
+Capabilities listed in `20-roadmap/index.md` that don't appear in any included doc are added to the taxonomy as `status: planned` entries during the bootstrap phase. They have no `defined` sections in the section map until docs are written for them.
