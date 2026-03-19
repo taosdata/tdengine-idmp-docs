@@ -70,9 +70,25 @@ MANIFEST_VERSION = "1.0"
 # Slug algorithm (Docusaurus GitHub-style)
 # ---------------------------------------------------------------------------
 
+def _apply_slug_algorithm(text: str) -> str:
+    """
+    Core Docusaurus GitHub-style slug algorithm applied to already-cleaned text
+    (no heading prefix, no custom ID).
+    """
+    text = text.strip()
+    text = text.lower()
+    text = re.sub(r'[ _]+', '-', text)
+    text = re.sub(r'[^\w-]', '', text, flags=re.UNICODE)
+    text = re.sub(r'_', '-', text)
+    text = re.sub(r'-+', '-', text)
+    text = text.strip('-')
+    return text
+
+
 def make_slug(heading_text: str) -> str:
     """
-    Convert a heading text to a slug following Docusaurus's GitHub-style algorithm.
+    Convert a heading text to a URL anchor slug (Docusaurus GitHub-style).
+    This is the raw slug — used for the `anchor` field (actual URL fragment).
     Handles custom IDs: '## My Heading {#custom-id}' → 'custom-id'
     """
     # Check for custom ID: {#some-id}
@@ -82,26 +98,35 @@ def make_slug(heading_text: str) -> str:
 
     # Strip markdown heading prefix (##, ###, etc.)
     text = re.sub(r'^#+\s*', '', heading_text)
-    # Strip leading/trailing whitespace
-    text = text.strip()
-    # Convert to lowercase
-    text = text.lower()
-    # Replace spaces and underscores with hyphens
-    text = re.sub(r'[ _]+', '-', text)
-    # Remove characters that are not alphanumeric, hyphens, or Unicode letters/digits
-    # Keep: a-z, 0-9, hyphens, and any non-ASCII letter/digit (Unicode)
-    text = re.sub(r'[^\w-]', '', text, flags=re.UNICODE)
-    # \w in Python unicode mode includes [a-zA-Z0-9_], so we need to also remove underscores
-    # since we already converted underscores to hyphens above, but \w re-includes word chars.
-    # Actually \w = [a-zA-Z0-9_] + unicode letters/digits. We want to keep all of those
-    # except we've already turned underscores to hyphens, so any remaining _ came from
-    # the non-ASCII processing — but that shouldn't happen. Let's keep it clean:
-    text = re.sub(r'_', '-', text)
-    # Collapse consecutive hyphens
-    text = re.sub(r'-+', '-', text)
-    # Strip leading/trailing hyphens
-    text = text.strip('-')
-    return text
+    return _apply_slug_algorithm(text)
+
+
+def make_slug_for_id(heading_text: str) -> str:
+    """
+    Convert a heading text to a stable slug for use in `section_id`.
+
+    Like make_slug(), but also strips leading numeric outline prefixes
+    (e.g. '1.1 ', '3.1.2 ') before slugging. This keeps section_id stable
+    when headings are renumbered during doc reorganisation — the same
+    reasoning as stripping numeric prefixes from filenames.
+
+    Examples:
+      '## 1.1 What is TDengine IDMP'  → 'what-is-tdengine-idmp'
+      '## 3.1.2 Asset Tree'           → 'asset-tree'
+      '## Creating Elements'          → 'creating-elements'   (unchanged)
+      '## My Section {#custom-id}'    → 'custom-id'           (custom ID wins)
+    """
+    # Custom ID takes precedence — no stripping needed
+    custom_id_match = re.search(r'\{#([^}]+)\}\s*$', heading_text)
+    if custom_id_match:
+        return custom_id_match.group(1)
+
+    # Strip markdown heading prefix
+    text = re.sub(r'^#+\s*', '', heading_text)
+    # Strip leading numeric outline prefix: digits and dots followed by a space
+    # Matches: '1 ', '1.1 ', '3.1.2 ', '10.2.3 ', etc.
+    text = re.sub(r'^\d+(\.\d+)*\s+', '', text)
+    return _apply_slug_algorithm(text)
 
 
 # ---------------------------------------------------------------------------
@@ -256,8 +281,8 @@ def is_empty_section(body: str) -> bool:
 # ---------------------------------------------------------------------------
 
 def compute_hash(raw: str) -> str:
-    """SHA-256 of the raw section content (heading line + body)."""
-    return hashlib.sha256(raw.encode('utf-8')).hexdigest()
+    """First 9 hex chars of SHA-256 of the raw section content (heading line + body)."""
+    return hashlib.sha256(raw.encode('utf-8')).hexdigest()[:9]
 
 
 # ---------------------------------------------------------------------------
@@ -362,7 +387,8 @@ def compute_section_ids(
     else:
         stripped_name = base
 
-    # Generate heading slugs with duplicate handling within this file
+    # Generate heading slugs with duplicate handling within this file.
+    # section_id uses the stripped slug (numeric prefix removed) for stability.
     slug_counts: dict[str, int] = {}
     section_ids = []
 
@@ -370,7 +396,7 @@ def compute_section_ids(
         if sec['heading_level'] == 0:
             slug = '(intro)'
         else:
-            slug = make_slug(sec['heading_text'])
+            slug = make_slug_for_id(sec['heading_text'])
 
         # Duplicate handling
         if slug != '(intro)':
@@ -383,6 +409,33 @@ def compute_section_ids(
         section_ids.append(f'{stripped_name}#{slug}')
 
     return section_ids
+
+
+def compute_anchors(sections: list[dict]) -> list[str | None]:
+    """
+    Compute the URL anchor for each section using the raw (un-stripped) slug.
+    This matches what Docusaurus actually generates for the page fragment.
+
+    Intro sections have no anchor (None). Duplicate raw slugs within a file
+    get the same -1, -2 suffix as Docusaurus would apply.
+    """
+    anchor_counts: dict[str, int] = {}
+    anchors: list[str | None] = []
+
+    for sec in sections:
+        if sec['heading_level'] == 0:
+            anchors.append(None)
+            continue
+
+        raw_slug = make_slug(sec['heading_text'])
+        count = anchor_counts.get(raw_slug, 0)
+        anchor_counts[raw_slug] = count + 1
+        if count > 0:
+            anchors.append(f'{raw_slug}-{count}')
+        else:
+            anchors.append(raw_slug)
+
+    return anchors
 
 
 # ---------------------------------------------------------------------------
@@ -467,23 +520,19 @@ def parse_all(
             continue
 
         section_ids = compute_section_ids(rel_path, non_empty, stripped_name_map)
+        anchors = compute_anchors(non_empty)
         heading_paths = build_heading_paths(rel_path, non_empty, frontmatter)
 
-        for sec, sid, hpath in zip(non_empty, section_ids, heading_paths):
+        for sec, sid, anchor, hpath in zip(non_empty, section_ids, anchors, heading_paths):
             content_hash = compute_hash(sec['raw'])
-            anchor = None if sec['heading_level'] == 0 else make_slug(sec['heading_text'])
 
-            # For anchor, we need the final slug from section_id (includes duplicate suffix)
-            # Extract the part after '#'
-            anchor_from_id = sid.split('#', 1)[1] if '#' in sid else None
-            if sec['heading_level'] == 0:
-                anchor = None
-            else:
-                anchor = anchor_from_id
+            file_str = str(rel_path).replace('\\', '/')
+            directory = str(rel_path.parent).replace('\\', '/') if rel_path.parent != Path('.') else ''
 
             records.append({
                 'section_id': sid,
-                'file': str(rel_path).replace('\\', '/'),
+                'file': file_str,
+                'directory': directory,
                 'heading': sec['heading_text'] if sec['heading_level'] != 0 else '(intro)',
                 'heading_level': sec['heading_level'],
                 'anchor': anchor,
@@ -560,6 +609,7 @@ def write_sections(records: list[dict], sections_dir: Path) -> None:
         meta = {
             'section_id': rec['section_id'],
             'file': rec['file'],
+            'directory': rec['directory'],
             'heading': rec['heading'],
             'heading_level': rec['heading_level'],
             'anchor': rec['anchor'],
