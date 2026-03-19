@@ -1,0 +1,743 @@
+version: '1.0'
+last_updated: '2026-03-19'
+categories:
+- id: platform
+  name: Platform
+- id: data-modeling
+  name: Industrial Data Modeling
+- id: visualization
+  name: Visualization & Dashboards
+- id: canvas
+  name: Canvas Panels
+- id: events
+  name: Event Management
+- id: real-time-analysis
+  name: Real-Time Analysis
+- id: ai-insights
+  name: AI-Powered Insights
+- id: advanced-analytics
+  name: Advanced Analytics
+- id: excel
+  name: Excel Add-in
+- id: collaboration
+  name: Collaboration
+- id: data-ingestion
+  name: Data Ingestion
+- id: libraries
+  name: Libraries & Reference Data
+- id: administration
+  name: Administration
+- id: integration
+  name: Integration with Other Systems
+capabilities:
+- id: admin-console
+  name: Admin Console
+  category: administration
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: ai-assisted-analysis
+  name: Ai Assisted Analysis
+  category: real-time-analysis
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: ai-composite-metrics
+  name: Ai Composite Metrics
+  category: ai-insights
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: ai-generated-panels
+  name: Ai Generated Panels
+  category: ai-insights
+  status: ga
+  since: null
+  tags: []
+  aliases:
+  - ai-generated-analyses
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: ai-panel-insights
+  name: Ai Panel Insights
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: analysis-templates
+  name: Analysis Templates
+  category: real-time-analysis
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: annotations
+  name: Annotations
+  category: collaboration
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: anomaly-detection
+  name: Anomaly Detection
+  category: ai-insights
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: asset-list-panel
+  name: Asset List Panel
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases:
+  - event-list-panel
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: asset-modeling
+  name: Asset Modeling
+  category: data-modeling
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: attribute-limits
+  name: Attribute Limits
+  category: data-modeling
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: attribute-templates
+  name: Attribute Templates
+  category: data-modeling
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: backup-restore
+  name: Backup Restore
+  category: administration
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: bar-chart
+  name: Bar Chart
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases:
+  - map-chart
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: bar-gauge
+  name: Bar Gauge
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: canvas-anchor-points
+  name: Canvas Anchor Points
+  category: canvas
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: canvas-panel
+  name: Canvas Panel
+  category: canvas
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: categories
+  name: Categories
+  category: libraries
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: child-elements-aggregation
+  name: Child Elements Aggregation
+  category: real-time-analysis
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: client-sdk
+  name: Client Sdk
+  category: integration
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: connecting-to-llm
+  name: Connecting To Llm
+  category: ai-insights
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: connection-management
+  name: Connection Management
+  category: data-ingestion
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: csv-import
+  name: Csv Import
+  category: data-ingestion
+  status: ga
+  since: null
+  tags: []
+  aliases:
+  - easy-import
+  - opc-import
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: dashboard-sharing
+  name: Dashboard Sharing
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: dashboards
+  name: Dashboards
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: data-contextualization
+  name: Data Contextualization
+  category: data-modeling
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: data-ingestion
+  name: Data Ingestion
+  category: data-ingestion
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: data-model-import-export
+  name: Data Model Import Export
+  category: collaboration
+  status: ga
+  since: null
+  tags: []
+  aliases:
+  - data-model-import-from-tsdb
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: data-reference-binding
+  name: Data Reference Binding
+  category: data-modeling
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: data-standardization
+  name: Data Standardization
+  category: data-modeling
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: deployment-architecture
+  name: Deployment Architecture
+  category: administration
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: element-api
+  name: Element Api
+  category: integration
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: element-attributes
+  name: Element Attributes
+  category: data-modeling
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: event-filter
+  name: Event Filter
+  category: data-modeling
+  status: ga
+  since: null
+  tags: []
+  aliases:
+  - element-filters
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: element-level-access-control
+  name: Element Level Access Control
+  category: administration
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: element-search
+  name: Element Search
+  category: data-modeling
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: event-templates
+  name: Event Templates
+  category: data-modeling
+  status: ga
+  since: null
+  tags: []
+  aliases:
+  - element-templates
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: enumeration-sets
+  name: Enumeration Sets
+  category: libraries
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: event-acknowledgment
+  name: Event Acknowledgment
+  category: events
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: event-browsing
+  name: Event Browsing
+  category: events
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: event-generation
+  name: Event Generation
+  category: real-time-analysis
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: event-notifications
+  name: Event Notifications
+  category: events
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: event-trend-panel
+  name: Event Trend Panel
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: excel-add-in
+  name: Excel Add In
+  category: excel
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: exporting-data
+  name: Exporting Data
+  category: collaboration
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: expression-editor
+  name: Expression Editor
+  category: data-modeling
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: forecasting
+  name: Forecasting
+  category: ai-insights
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: gauge-chart
+  name: Gauge Chart
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: history-backfill
+  name: History Backfill
+  category: real-time-analysis
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: in-app-notification
+  name: In App Notification
+  category: events
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: map-stable-to-element
+  name: Map Stable To Element
+  category: data-ingestion
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: mcp-interface
+  name: Mcp Interface
+  category: integration
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: missing-data-imputation
+  name: Missing Data Imputation
+  category: ai-insights
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: natural-language-queries
+  name: Natural Language Queries
+  category: ai-insights
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: notification-contact-points
+  name: Notification Contact Points
+  category: events
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: notification-delivery-history
+  name: Notification Delivery History
+  category: events
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: notification-escalation
+  name: Notification Escalation
+  category: events
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: notification-rules
+  name: Notification Rules
+  category: events
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: panel-dashboard-templates
+  name: Panel Dashboard Templates
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: panel-embedding
+  name: Panel Embedding
+  category: integration
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: pie-chart
+  name: Pie Chart
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: real-time-analysis
+  name: Real Time Analysis
+  category: real-time-analysis
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: rich-text-panel
+  name: Rich Text Panel
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: root-cause-analysis
+  name: Root Cause Analysis
+  category: ai-insights
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: sample-data
+  name: Sample Data
+  category: administration
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: scatter-chart
+  name: Scatter Chart
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: scheduled-reports
+  name: Scheduled Reports
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: sdk-authentication
+  name: Sdk Authentication
+  category: integration
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: single-sign-on
+  name: Single Sign On
+  category: administration
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: stat-value-panel
+  name: Stat Value Panel
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: state-timeline-panel
+  name: State Timeline Panel
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: status-history-panel
+  name: Status History Panel
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: system-configuration
+  name: System Configuration
+  category: administration
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: table-panel
+  name: Table Panel
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: trend-chart
+  name: Trend Chart
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: unit-of-measurement
+  name: Unit Of Measurement
+  category: libraries
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: user-management
+  name: User Management
+  category: administration
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+- id: zero-query-intelligence
+  name: Zero Query Intelligence
+  category: visualization
+  status: ga
+  since: null
+  tags: []
+  aliases: []
+  parent: null
+  notes: '# REVIEW: auto-generated draft'
+ignored: []
