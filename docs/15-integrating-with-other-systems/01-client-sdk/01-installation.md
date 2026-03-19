@@ -42,7 +42,7 @@ mvn install -DskipTests
 <dependency>
   <groupId>com.taosdata</groupId>
   <artifactId>idmp-sdk</artifactId>
-  <version>1.0.14.1</version>
+  <version>1.0.14.2</version>
 </dependency>
 ```
 

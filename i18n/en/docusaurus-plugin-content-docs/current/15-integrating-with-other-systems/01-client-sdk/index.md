@@ -26,8 +26,8 @@ Version and compatibility information will be published here when the SDK reache
 Download the SDK package from the [TDengine Download Center](https://www.taosdata.com/download-center). The package has the following structure:
 
 ```bash
-idmp-sdk-1.0.14.1/
-  ├── idmp-v1.0.14.1.json         # OpenAPI spec — use this to generate SDKs for other languages
+idmp-sdk-1.0.14.2/
+  ├── idmp-v1.0.14.2.json         # OpenAPI spec — use this to generate SDKs for other languages
   ├── idmp-java-sdk/              # Java SDK source and compiled JAR
   └── idmp-python-sdk/            # Python SDK source
 ```
@@ -48,7 +48,7 @@ wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.6.0
 ```bash
 # Example: generate a Go SDK
 java -jar openapi-generator-cli.jar generate \
-  -i idmp-v1.0.14.1.json \
+  -i idmp-v1.0.14.2.json \
   -g go \
   -o idmp-go-sdk \
   --skip-validate-spec
