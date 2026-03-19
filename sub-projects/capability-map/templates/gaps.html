@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Coverage Gaps — Capability Explorer{% endblock %}
+{% block content %}
+<h1>Coverage Gaps</h1>
+
+<div class="gap-section">
+  <h2>No Defined Sections <span class="count">({{ gaps | length }})</span></h2>
+  <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 8px;">
+    Capabilities in the taxonomy where no documentation section has a "defined" relation.
+  </p>
+  {% if gaps %}
+  <table>
+    <thead>
+      <tr>
+        <th>Capability</th>
+        <th>Category</th>
+        <th>Referenced</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cap in gaps %}
+      <tr>
+        <td><a href="/capability/{{ cap.id }}">{{ cap.name }}</a></td>
+        <td>{{ cat_by_id[cap.category].name }}</td>
+        <td>{{ sections_by_cap[cap.id].referenced | length }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="no-data">All capabilities have at least one defined section.</p>
+  {% endif %}
+</div>
+
+<div class="gap-section">
+  <h2>Orphaned Capabilities <span class="count">({{ orphaned | length }})</span></h2>
+  <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 8px;">
+    Capabilities in the taxonomy with zero section references (neither defined nor referenced).
+  </p>
+  {% if orphaned %}
+  <table>
+    <thead>
+      <tr>
+        <th>Capability</th>
+        <th>Category</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for cap in orphaned %}
+      <tr>
+        <td><a href="/capability/{{ cap.id }}">{{ cap.name }}</a></td>
+        <td>{{ cat_by_id[cap.category].name }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="no-data">All capabilities have at least one section reference.</p>
+  {% endif %}
+</div>
+
+<div class="gap-section">
+  <h2>Unmatched Extracted IDs <span class="count">({{ unmatched_details | length }})</span></h2>
+  <p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 8px;">
+    Capability IDs found in the section map that don't match any taxonomy ID, alias, or ignored entry.
+  </p>
+  {% if unmatched_details %}
+  <table>
+    <thead>
+      <tr>
+        <th>Extracted ID</th>
+        <th>Found In</th>
+        <th>Relation</th>
+        <th>Confidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in unmatched_details %}
+      {% for ref in item.refs %}
+      <tr>
+        <td>{{ item.id }}</td>
+        <td style="font-size: 0.85em;">{{ ref.section.section_id }}</td>
+        <td><span class="badge badge-{{ ref.relation }}">{{ ref.relation }}</span></td>
+        <td><span class="badge badge-{{ ref.confidence }}">{{ ref.confidence }}</span></td>
+      </tr>
+      {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="no-data">All extracted IDs are matched to the taxonomy or ignored list.</p>
+  {% endif %}
+</div>
+{% endblock %}

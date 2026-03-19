@@ -12,73 +12,35 @@ Usage:
 Run from: sub-projects/capability-map/
 """
 
-import os
 import re
 import sys
-import tempfile
 from datetime import date
 from pathlib import Path
 
 import yaml
 
-# ---------------------------------------------------------------------------
-# Constants
-# ---------------------------------------------------------------------------
-
-SUBPROJECT_DIR = Path(__file__).resolve().parents[1]
-SECTIONS_DIR = SUBPROJECT_DIR / ".sections"
-SECTION_MAP_FILE = SUBPROJECT_DIR / "capabilities.section-map.yaml"
-
-SECTION_MAP_VERSION = "1.0"
-PROMPT_VERSION = "1.0"
-
-VALID_RELATIONS = {"defined", "referenced"}
-VALID_CONFIDENCES = {"high", "medium", "low"}
-
+from shared import (
+    PROMPT_VERSION,
+    SECTION_MAP_FILE,
+    SECTION_MAP_VERSION,
+    SECTIONS_DIR,
+    VALID_CONFIDENCES,
+    VALID_RELATIONS,
+    dump_yaml,
+    load_yaml,
+    section_id_to_dir,
+    write_atomic,
+)
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
-
-def load_yaml(path: Path) -> dict | list | None:
-    if not path.exists():
-        return None
-    try:
-        return yaml.safe_load(path.read_text(encoding="utf-8"))
-    except yaml.YAMLError as e:
-        print(f"WARNING: could not parse {path}: {e}", file=sys.stderr)
-        return None
-
-
-def section_id_to_dir(section_id: str, sections_dir: Path) -> Path:
-    name_part, slug = section_id.split("#", 1)
-    dir_path = sections_dir
-    for component in name_part.split("/"):
-        dir_path = dir_path / component
-    return dir_path / slug
-
 
 def normalize_id(cap_id: str) -> str:
     """Lowercase, trim, replace spaces with hyphens."""
     cap_id = cap_id.strip().lower()
     cap_id = re.sub(r"\s+", "-", cap_id)
     return cap_id
-
-
-def write_atomic(path: Path, content: str) -> None:
-    """Write content to a temp file then rename atomically."""
-    dir_ = path.parent
-    fd, tmp_path = tempfile.mkstemp(dir=dir_, suffix=".tmp")
-    try:
-        with os.fdopen(fd, "w", encoding="utf-8") as f:
-            f.write(content)
-        os.replace(tmp_path, path)
-    except Exception:
-        try:
-            os.unlink(tmp_path)
-        except OSError:
-            pass
-        raise
 
 
 # ---------------------------------------------------------------------------
@@ -327,13 +289,7 @@ def main() -> int:
         "sections": entries,
     }
 
-    content = yaml.dump(
-        section_map,
-        allow_unicode=True,
-        default_flow_style=False,
-        sort_keys=False,
-    )
-    write_atomic(SECTION_MAP_FILE, content)
+    write_atomic(SECTION_MAP_FILE, dump_yaml(section_map))
 
     print(f"Written: {SECTION_MAP_FILE}")
     print(f"  {len(entries)} sections total")

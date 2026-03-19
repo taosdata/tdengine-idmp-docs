@@ -23,20 +23,24 @@ from pathlib import Path
 
 import yaml
 
+from shared import (
+    DOC_ROOT,
+    PROMPT_VERSION,
+    SECTION_MAP_FILE,
+    SECTIONS_DIR,
+    TAXONOMY_FILE,
+    TAXONOMY_VERSION,
+    dump_yaml,
+    load_yaml,
+    section_id_to_dir,
+)
+
 # ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
 
-REPO_ROOT = Path(__file__).resolve().parents[3]
-DOC_ROOT = REPO_ROOT / "i18n" / "en" / "docusaurus-plugin-content-docs" / "current"
-SUBPROJECT_DIR = Path(__file__).resolve().parents[1]
-SECTIONS_DIR = SUBPROJECT_DIR / ".sections"
-SECTION_MAP_FILE = SUBPROJECT_DIR / "capabilities.section-map.yaml"
-TAXONOMY_FILE = SUBPROJECT_DIR / "capabilities.taxonomy.yaml"
 EXTRACTION_PROMPT_FILE = SECTIONS_DIR / "extraction-prompt.md"
 ROADMAP_FILE = DOC_ROOT / "20-roadmap" / "index.md"
-
-PROMPT_VERSION = "1.0"
 
 EXTRACTION_PROMPT_CONTENT = """\
 # Capability Extraction Task
@@ -93,26 +97,10 @@ CHAPTER_TO_CATEGORY = {
     "integrating-with-other-systems": "integration",
 }
 
-TAXONOMY_VERSION = "1.0"
-
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
-
-def load_yaml(path: Path) -> dict | list | None:
-    if not path.exists():
-        return None
-    return yaml.safe_load(path.read_text(encoding="utf-8"))
-
-
-def section_id_to_dir(section_id: str, sections_dir: Path) -> Path:
-    name_part, slug = section_id.split("#", 1)
-    dir_path = sections_dir
-    for component in name_part.split("/"):
-        dir_path = dir_path / component
-    return dir_path / slug
-
 
 def strip_numeric_prefix(name: str) -> str:
     return re.sub(r"^\d+-", "", name)
@@ -438,10 +426,7 @@ def main() -> int:
             return 1
         print("Generating draft taxonomy from section map...")
         taxonomy = bootstrap_taxonomy(section_map, SECTIONS_DIR)
-        TAXONOMY_FILE.write_text(
-            yaml.dump(taxonomy, allow_unicode=True, default_flow_style=False, sort_keys=False),
-            encoding="utf-8",
-        )
+        TAXONOMY_FILE.write_text(dump_yaml(taxonomy), encoding="utf-8")
         n_caps = len(taxonomy.get("capabilities", []))
         n_planned = sum(1 for c in taxonomy.get("capabilities", []) if c.get("status") == "planned")
         print(f"Written: {TAXONOMY_FILE}")

@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}{{ cap.name }} — Capability Explorer{% endblock %}
+{% block content %}
+<div class="cap-header">
+  <h1>{{ cap.name }}</h1>
+  <div class="cap-meta">
+    <a href="/categories#{{ cap.category }}">{{ category.name }}</a>
+    <span class="badge status-{{ cap.status }}">{{ cap.status }}</span>
+    {% for tag in cap.tags or [] %}
+    <span class="tag">{{ tag }}</span>
+    {% endfor %}
+    {% if cap.since %}
+    <span style="font-size: 0.85em; color: var(--text-muted);">since {{ cap.since }}</span>
+    {% endif %}
+  </div>
+  {% if cap.aliases %}
+  <div class="cap-aliases">Aliases: {{ cap.aliases | join(", ") }}</div>
+  {% endif %}
+  {% if parent %}
+  <div class="cap-relations">
+    Parent: <a href="/capability/{{ parent.id }}">{{ parent.name }}</a>
+  </div>
+  {% endif %}
+  {% if children %}
+  <div class="cap-relations">
+    Sub-capabilities:
+    {% for child in children %}
+    <a href="/capability/{{ child.id }}">{{ child.name }}</a>{% if not loop.last %}, {% endif %}
+    {% endfor %}
+  </div>
+  {% endif %}
+</div>
+
+<h2>Defined In <span style="font-weight: 400; color: var(--text-muted);">({{ cap_sections.defined | length }})</span></h2>
+{% if cap_sections.defined %}
+<table class="section-table">
+  <thead>
+    <tr>
+      <th>Heading</th>
+      <th>File</th>
+      <th>Confidence</th>
+      <th>Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for entry in cap_sections.defined %}
+    <tr>
+      <td>{{ entry.section.heading }}</td>
+      <td style="font-size: 0.85em; color: var(--text-muted);">{{ entry.section.file }}</td>
+      <td><span class="badge badge-{{ entry.confidence }}">{{ entry.confidence }}</span></td>
+      <td><a href="{{ entry.section.doc_url }}" target="_blank" rel="noopener">docs ↗</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="no-data">No sections define this capability.</p>
+{% endif %}
+
+<h2>Referenced In <span style="font-weight: 400; color: var(--text-muted);">({{ cap_sections.referenced | length }})</span></h2>
+{% if cap_sections.referenced %}
+<table class="section-table">
+  <thead>
+    <tr>
+      <th>Heading</th>
+      <th>File</th>
+      <th>Confidence</th>
+      <th>Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for entry in cap_sections.referenced %}
+    <tr>
+      <td>{{ entry.section.heading }}</td>
+      <td style="font-size: 0.85em; color: var(--text-muted);">{{ entry.section.file }}</td>
+      <td><span class="badge badge-{{ entry.confidence }}">{{ entry.confidence }}</span></td>
+      <td><a href="{{ entry.section.doc_url }}" target="_blank" rel="noopener">docs ↗</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="no-data">No sections reference this capability.</p>
+{% endif %}
+{% endblock %}

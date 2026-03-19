@@ -21,20 +21,16 @@ from pathlib import Path
 
 import yaml
 
-# ---------------------------------------------------------------------------
-# Constants
-# ---------------------------------------------------------------------------
-
-REPO_ROOT = Path(__file__).resolve().parents[3]
-DOC_ROOT = REPO_ROOT / "i18n" / "en" / "docusaurus-plugin-content-docs" / "current"
-SUBPROJECT_DIR = Path(__file__).resolve().parents[1]
-SECTIONS_DIR = SUBPROJECT_DIR / ".sections"
-SECTION_MAP_FILE = SUBPROJECT_DIR / "capabilities.section-map.yaml"
-TAXONOMY_FILE = SUBPROJECT_DIR / "capabilities.taxonomy.yaml"
-
-VALID_STATUSES = {"ga", "beta", "preview", "planned", "deprecated"}
-VALID_RELATIONS = {"defined", "referenced"}
-VALID_CONFIDENCES = {"high", "medium", "low"}
+from shared import (
+    DOC_ROOT,
+    SECTION_MAP_FILE,
+    SECTIONS_DIR,
+    SUBPROJECT_DIR,
+    TAXONOMY_FILE,
+    VALID_CONFIDENCES,
+    VALID_RELATIONS,
+    VALID_STATUSES,
+)
 
 
 # ---------------------------------------------------------------------------
@@ -79,7 +75,8 @@ class Results:
 # Loaders
 # ---------------------------------------------------------------------------
 
-def load_yaml(path: Path, results: Results, label: str) -> dict | None:
+def load_validated(path: Path, results: Results, label: str) -> dict | None:
+    """Load a YAML file and record errors in results if missing/invalid."""
     if not path.exists():
         results.error(f"{label} not found: {path}")
         return None
@@ -376,12 +373,12 @@ def main() -> int:
 
     # --- Load required files ---
     manifest_path = SECTIONS_DIR / "manifest.yaml"
-    manifest = load_yaml(manifest_path, results, "manifest")
-    section_map = load_yaml(SECTION_MAP_FILE, results, "section map")
+    manifest = load_validated(manifest_path, results, "manifest")
+    section_map = load_validated(SECTION_MAP_FILE, results, "section map")
     # Taxonomy is optional until bootstrap has been run — missing is a warning, not an error
     taxonomy = None
     if TAXONOMY_FILE.exists():
-        taxonomy = load_yaml(TAXONOMY_FILE, results, "taxonomy")
+        taxonomy = load_validated(TAXONOMY_FILE, results, "taxonomy")
 
     if not manifest or not section_map:
         results.print_report(args.strict)

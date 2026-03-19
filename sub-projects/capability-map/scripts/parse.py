@@ -25,14 +25,16 @@ from pathlib import Path
 
 import yaml
 
-# ---------------------------------------------------------------------------
-# Constants
-# ---------------------------------------------------------------------------
+from shared import (
+    DOC_ROOT,
+    MANIFEST_VERSION,
+    REPO_ROOT,
+    SECTIONS_DIR,
+    dump_yaml,
+    section_id_to_dir,
+)
 
-REPO_ROOT = Path(__file__).resolve().parents[3]
-DOC_ROOT = REPO_ROOT / "i18n" / "en" / "docusaurus-plugin-content-docs" / "current"
 
-SECTIONS_DIR = Path(__file__).resolve().parents[1] / ".sections"
 
 DEFAULT_INCLUDE = [
     "01-introduction",
@@ -62,8 +64,6 @@ DEFAULT_EXCLUDE = [
     "20-roadmap",
     "21-release-history",
 ]
-
-MANIFEST_VERSION = "1.0"
 
 
 # ---------------------------------------------------------------------------
@@ -111,6 +111,7 @@ def make_slug_for_id(heading_text: str) -> str:
     reasoning as stripping numeric prefixes from filenames.
 
     Examples:
+      '## 1. TDengine Metric'         → 'tdengine-metric'
       '## 1.1 What is TDengine IDMP'  → 'what-is-tdengine-idmp'
       '## 3.1.2 Asset Tree'           → 'asset-tree'
       '## Creating Elements'          → 'creating-elements'   (unchanged)
@@ -123,9 +124,10 @@ def make_slug_for_id(heading_text: str) -> str:
 
     # Strip markdown heading prefix
     text = re.sub(r'^#+\s*', '', heading_text)
-    # Strip leading numeric outline prefix: digits and dots followed by a space
-    # Matches: '1 ', '1.1 ', '3.1.2 ', '10.2.3 ', etc.
-    text = re.sub(r'^\d+(\.\d+)*\s+', '', text)
+    # Strip leading numeric outline prefix: digits and dots followed by a space.
+    # Matches: '1 ', '1. ', '1.1 ', '3.1.2 ', '10.2.3 ', etc.
+    # The optional trailing dot handles ordered-list style like '1. Heading'.
+    text = re.sub(r'^\d+(\.\d+)*\.?\s+', '', text)
     return _apply_slug_algorithm(text)
 
 
@@ -616,27 +618,8 @@ def write_sections(records: list[dict], sections_dir: Path) -> None:
             'heading_path': rec['heading_path'],
             'content_hash': rec['content_hash'],
         }
-        (section_dir / 'meta.yaml').write_text(
-            yaml.dump(meta, allow_unicode=True, default_flow_style=False, sort_keys=False),
-            encoding='utf-8',
-        )
+        (section_dir / 'meta.yaml').write_text(dump_yaml(meta), encoding='utf-8')
 
-
-def section_id_to_dir(section_id: str, sections_dir: Path) -> Path:
-    """
-    Convert a section_id to its directory path under sections_dir.
-
-    'elements#creating-elements'   → sections_dir/elements/creating-elements/
-    'data-modeling/index#overview' → sections_dir/data-modeling/index/overview/
-    'elements#(intro)'             → sections_dir/elements/(intro)/
-    """
-    name_part, slug = section_id.split('#', 1)
-    # name_part may contain '/' for disambiguated collisions
-    dir_path = sections_dir
-    for component in name_part.split('/'):
-        dir_path = dir_path / component
-    dir_path = dir_path / slug
-    return dir_path
 
 
 def _cleanup_empty_parents(directory: Path, stop_at: Path) -> None:
@@ -675,10 +658,7 @@ def write_manifest(
     }
     sections_dir.mkdir(parents=True, exist_ok=True)
     manifest_path = sections_dir / 'manifest.yaml'
-    manifest_path.write_text(
-        yaml.dump(manifest, allow_unicode=True, default_flow_style=False, sort_keys=False),
-        encoding='utf-8',
-    )
+    manifest_path.write_text(dump_yaml(manifest), encoding='utf-8')
 
 
 # ---------------------------------------------------------------------------

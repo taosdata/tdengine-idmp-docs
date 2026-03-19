@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Capability Explorer{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="sidebar-header">Capability Explorer</div>
+    <div class="search-box">
+      <input type="text" id="global-search" placeholder="Search capabilities..." autocomplete="off">
+      <div id="search-results" class="search-results"></div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">Overview</a></li>
+      <li><a href="/categories" class="{% if request.path == '/categories' %}active{% endif %}">Categories</a></li>
+      <li><a href="/gaps" class="{% if request.path == '/gaps' %}active{% endif %}">Gaps</a></li>
+    </ul>
+    {% block sidebar_extra %}{% endblock %}
+  </nav>
+  <main class="content">
+    {% block content %}{% endblock %}
+  </main>
+  <script>
+    window.CAP_INDEX = [
+      {% for cap in capabilities %}
+      {id:"{{cap.id}}",name:"{{cap.name}}",cat:"{{cap.category}}",aliases:{{(cap.aliases or [])|tojson}}}{% if not loop.last %},{% endif %}
+      {% endfor %}
+    ];
+  </script>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

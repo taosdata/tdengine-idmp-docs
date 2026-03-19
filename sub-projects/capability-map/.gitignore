@@ -1,2 +1,4 @@
 .venv/
 .sections/
+
+scripts/__pycache__/

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Categories — Capability Explorer{% endblock %}
+
+{% block content %}
+<h1>Capabilities by Category</h1>
+
+<div class="toolbar">
+  <div class="search-main">
+    <input type="text" id="category-filter" placeholder="Filter capabilities on this page...">
+  </div>
+  <button class="btn" id="expand-all">Expand All</button>
+  <button class="btn" id="collapse-all">Collapse All</button>
+  <span id="filter-count" style="font-size: 0.85em; color: var(--text-muted);"></span>
+</div>
+
+{% for cat in categories %}
+<details class="category-section" id="{{ cat.id }}" open>
+  <summary>
+    {{ cat.name }}
+    <span class="count">({{ caps_by_category[cat.id] | length }})</span>
+  </summary>
+  <div class="category-body">
+    {# Render top-level capabilities (no parent or parent outside this category) #}
+    {% for cap in caps_by_category[cat.id] if not cap.parent %}
+    <div class="cap-row" data-name="{{ cap.name | lower }}" data-id="{{ cap.id }}" data-aliases="{{ (cap.aliases or []) | join(' ') | lower }}">
+      <span class="cap-name">
+        <a href="/capability/{{ cap.id }}">{{ cap.name }}</a>
+        <span class="badge status-{{ cap.status }}">{{ cap.status }}</span>
+        {% for tag in cap.tags or [] %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </span>
+      <span class="cap-counts">
+        <span class="badge badge-defined">{{ sections_by_cap[cap.id].defined | length }} def</span>
+        <span class="badge badge-referenced">{{ sections_by_cap[cap.id].referenced | length }} ref</span>
+      </span>
+    </div>
+    {# Sub-capabilities #}
+    {% for child in children_by_parent.get(cap.id, []) %}
+    <div class="cap-row sub" data-name="{{ child.name | lower }}" data-id="{{ child.id }}" data-aliases="{{ (child.aliases or []) | join(' ') | lower }}">
+      <span class="cap-name">
+        <a href="/capability/{{ child.id }}">{{ child.name }}</a>
+        <span class="badge status-{{ child.status }}">{{ child.status }}</span>
+        {% for tag in child.tags or [] %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </span>
+      <span class="cap-counts">
+        <span class="badge badge-defined">{{ sections_by_cap[child.id].defined | length }} def</span>
+        <span class="badge badge-referenced">{{ sections_by_cap[child.id].referenced | length }} ref</span>
+      </span>
+    </div>
+    {% endfor %}
+    {% endfor %}
+  </div>
+</details>
+{% endfor %}
+{% endblock %}

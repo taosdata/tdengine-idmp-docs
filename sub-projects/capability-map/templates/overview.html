@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block title %}Overview — Capability Explorer{% endblock %}
+{% block content %}
+<h1>Capability Inventory Overview</h1>
+
+<div class="cards">
+  <div class="card">
+    <div class="value">{{ stats.total_capabilities }}</div>
+    <div class="label">Capabilities</div>
+  </div>
+  <div class="card">
+    <div class="value">{{ stats.total_categories }}</div>
+    <div class="label">Categories</div>
+  </div>
+  <div class="card">
+    <div class="value">{{ stats.total_sections }}</div>
+    <div class="label">Doc Sections</div>
+  </div>
+  <div class="card">
+    <div class="value">{{ stats.total_mappings }}</div>
+    <div class="label">Mappings</div>
+  </div>
+  <div class="card">
+    <div class="value">{{ stats.coverage_pct }}%</div>
+    <div class="label">Coverage</div>
+  </div>
+  <div class="card">
+    <div class="value">{{ stats.high_pct }}%</div>
+    <div class="label">High Confidence</div>
+  </div>
+</div>
+
+<h2>Mappings Breakdown</h2>
+<div class="cards" style="margin-bottom: 28px;">
+  <div class="card">
+    <div class="value" style="color: var(--green);">{{ stats.defined_count }}</div>
+    <div class="label">Defined</div>
+  </div>
+  <div class="card">
+    <div class="value" style="color: var(--blue);">{{ stats.referenced_count }}</div>
+    <div class="label">Referenced</div>
+  </div>
+  <div class="card">
+    <div class="value" style="color: var(--green);">{{ stats.confidence_counts.high }}</div>
+    <div class="label">High</div>
+  </div>
+  <div class="card">
+    <div class="value" style="color: var(--amber);">{{ stats.confidence_counts.medium }}</div>
+    <div class="label">Medium</div>
+  </div>
+  <div class="card">
+    <div class="value" style="color: var(--orange);">{{ stats.confidence_counts.low }}</div>
+    <div class="label">Low</div>
+  </div>
+</div>
+
+<h2>By Category</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Capabilities</th>
+      <th>Defined</th>
+      <th>Referenced</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cs in category_stats %}
+    <tr>
+      <td><a href="/categories#{{ cs.category.id }}">{{ cs.category.name }}</a></td>
+      <td>{{ cs.cap_count }}</td>
+      <td>{{ cs.defined_count }}</td>
+      <td>{{ cs.referenced_count }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
