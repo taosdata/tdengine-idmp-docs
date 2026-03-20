@@ -107,7 +107,7 @@ Every attribute has the following configurable properties:
 | **Display UOM** | The unit used when displaying the value in panels and dashboards. Can differ from Default UOM — IDMP applies the conversion automatically. |
 | **Display Digits** | Positive values indicate the number of digits after the decimal point; negative values indicate the number of significant digits. |
 | **Data Reference Type** | Where the attribute value comes from: TDengine Metric, TDengine Tag, Formula, or String Builder (see [3.2.2](#322-data-reference-types)) |
-| **Data Reference Setting** | The path to the TDengine TSDB data source in the format `ConnectionName/DatabaseName/TableName/ColumnName` |
+| **Data Reference Setting** | The path to the TDengine TSDB data source in the format `ConnectionName/DatabaseName/TableName/ColumnName`, optionally with a quality column suffix as `.../ColumnName:QualityColumnName` |
 | **Path** | The full path of the attribute within the asset model (read-only, auto-generated) |
 
 ### Limits Configuration
