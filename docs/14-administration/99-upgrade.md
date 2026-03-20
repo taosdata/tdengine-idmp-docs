@@ -2,6 +2,9 @@
 title: 升级 TDengine IDMP
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 TDengine IDMP 推荐使用安装脚本进行升级。安装脚本会自动检测现有安装环境，并根据实际情况选择升级模式，确保用户数据和配置文件安全。具体说明如下：
 
 - **升级模式自动检测**：安装脚本会自动判断是否为升级安装。

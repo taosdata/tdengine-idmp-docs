@@ -2,6 +2,9 @@
 title: Upgrading TDengine IDMP
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 TDengine IDMP recommends using the official installation script for upgrades. The script will automatically detect the existing installation environment and select the appropriate upgrade mode to ensure the safety of your data and configuration files. Details are as follows:
 
 - **Automatic Upgrade Detection**: The installation script will automatically determine whether it is an upgrade installation.
