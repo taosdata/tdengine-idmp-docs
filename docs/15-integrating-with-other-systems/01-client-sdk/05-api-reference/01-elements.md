@@ -3,12 +3,12 @@ title: 元素 API
 sidebar_label: 元素 API
 ---
 
-`ElementResourceApi` 提供对元素的查询、创建、更新和删除操作。
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # 15.1.5.1 元素 API
+
+`ElementResourceApi` 提供对元素的查询、创建、更新和删除操作。
 
 ## 方法列表
 

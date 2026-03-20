@@ -3,14 +3,14 @@ title: 错误处理
 sidebar_label: 错误处理
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 15.1.7 错误处理
 
 ## 异常类型
 
 SDK 将所有 API 错误统一封装为 `ApiException`，您可以从中获取 HTTP 状态码和服务端返回的错误消息。
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">

@@ -3,12 +3,12 @@ title: Events API
 sidebar_label: Events API
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 15.1.5.3 Events API
 
 `EventResourceApi` provides query and management operations on events.
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 ## Method List
 
