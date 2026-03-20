@@ -196,6 +196,73 @@ Check path: docs/06-data-visualization/images/state-history-demo.png
 ❌ 使用Java SDK            → ✅ 使用 Java SDK
 ```
 
+## Chinese Technical Writing Style (MUST follow)
+
+Chinese documentation must use professional, formal language. Avoid colloquial or conversational expressions. Apply the following rules consistently.
+
+### 11.1 Prohibited Patterns and Replacements
+
+| Category | ❌ Colloquial / Informal | ✅ Professional / Formal |
+|----------|------------------------|------------------------|
+| **Second-person pronouns** | 你、您、你的 | Omit or use the product/system as subject |
+| **Manual** | 手工 | 手动 |
+| **Indicate** | 意味着 | 表示、表明 |
+| **Want / Hope** | 希望、想要 | 需要 |
+| **So that** | 这样就可以 | 以便、从而 |
+| **Filter** (informal) | 过滤 (when used as UI label) | 筛选 |
+| **Accessible** | 可访问 (for actions) | 可执行、可使用 |
+| **Just / Simply** | 只需要... 就可以了 | 仅需 |
+| **Real-time understand** | 实时了解 | 实时掌握 |
+| **Both** | 两者兼有 | 同时写入两者 |
+
+### 11.2 Sentence-Level Rules
+
+| Rule | ❌ Colloquial | ✅ Professional |
+|------|-------------|----------------|
+| **Avoid conversational tone** | 这很简单，只要点击按钮就行 | 点击按钮即可完成操作 |
+| **Use formal conjunctions** | 然后就会看到... | 随后系统将显示... |
+| **No casual examples** | 比如说某个东西 | 例如某个组件 |
+| **Add grammatical subjects** | 会显示确认对话框 | 系统将弹出确认对话框 |
+| **Use structured sentences** | 保持简洁且具有描述性—— | 建议使用简洁且具有描述性的命名 |
+| **Active → formal** | 你可以在这里看到 | 该区域显示 |
+| **Avoid filler** | 帮助你入门 | 供参考 |
+| **Quantifier precision** | 只有满足...才会被考虑 | 仅满足...参与计算 |
+
+### 11.3 Section Introduction Rule
+
+Every `##` subsection that directly starts with a table, list, or steps (without a descriptive paragraph) **must** have a professional introductory sentence added after the heading. The introduction should:
+
+- Summarize the purpose or functionality of that section in 1-2 sentences
+- Use professional, descriptive language
+- Provide context for the content that follows
+
+Example:
+```markdown
+❌ Missing introduction:
+## Event Fields
+
+| Field | Description |
+|---|---|
+
+✅ With introduction:
+## Event Fields
+
+Once event generation is enabled, the following fields must be configured to define
+the event's structure, severity, and delivery policy.
+
+| Field | Description |
+|---|---|
+```
+
+### 11.4 Bilingual Consistency
+
+When editing Chinese documentation, always check and update the corresponding English documentation in `i18n/en/docusaurus-plugin-content-docs/current/` to maintain consistency. Key alignment points:
+
+- Terminology must match (e.g., 定时窗口 ↔ Scheduled Window, 流计算 ↔ stream computation)
+- Section structure must match
+- Added introductory paragraphs must be present in both languages
+- Brand names must be consistent (e.g., AVEVA, not OSIsoft)
+
 ## Output Format
 
 After completing task, briefly state:

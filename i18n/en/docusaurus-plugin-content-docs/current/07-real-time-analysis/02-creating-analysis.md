@@ -11,9 +11,11 @@ The form is divided into four numbered sections that you complete in order: **Ge
 
 ## 7.2.1 General Information
 
+The General Information section (section 1 of the analysis form) defines the analysis's identification and global behavior options, including naming, categorization, and activation policy.
+
 | Field | Description |
 |---|---|
-| **Name** (required) | A unique name for this analysis. Keep it concise and descriptive — for example, "Hourly Max Voltage" or "Compressor Efficiency". |
+| **Name** (required) | A unique name for this analysis. Use concise and descriptive naming — for example, "Hourly Max Voltage" or "Compressor Efficiency". |
 | **Categories** | Optional category tags to organize and filter analyses. You can create new tags inline. |
 | **Enable analysis upon creation** | When checked (default), the analysis starts running immediately after it is saved. Uncheck to create the analysis in a paused state. |
 | **Recalculate for out-of-order data** | When checked, if data arrives late (with a timestamp earlier than already-processed data), the analysis re-runs for the affected window. Useful when sensor data may arrive delayed or out of sequence. |
@@ -25,7 +27,7 @@ The Trigger section defines when the analysis runs. See [Trigger Types](./03-tri
 
 All trigger types share two common optional fields:
 
-- **Pre-filter** — A filter expression applied to the data before the trigger evaluates. Only data rows that satisfy the filter are considered. This is useful for ignoring invalid readings (e.g., filter out zero values before computing averages).
+- **Pre-filter** — A filter expression applied to the data before trigger evaluation. Only data rows satisfying the filter condition participate in the calculation. Useful for excluding invalid readings (e.g., filtering out zero values before computing averages).
 - **Fill History** — When enabled, the analysis runs over historical data to backfill calculated outputs. Enabling this field reveals two additional options:
   - **Fill History First** — When checked, the analysis processes all historical data before it begins processing new real-time data.
   - **Start Time** — The date and time from which to start the historical backfill.
@@ -42,7 +44,7 @@ The Event section controls whether the analysis generates an event each time it 
 
 Click **Save** to create the analysis. If **Enable analysis upon creation** was checked, the analysis starts running immediately and appears in the list with **Running** status.
 
-Click **Discard** to cancel. A confirmation dialog appears if you have unsaved changes.
+Click **Discard** to cancel. If there are unsaved changes, a confirmation dialog will appear.
 
 :::tip
 The form includes a collapsible **User Guide** panel on the right side that explains each field as you fill it in.
