@@ -707,7 +707,7 @@ sections:
   - id: data-reference-binding
     relation: defined
     confidence: high
-- section_id: attributes#1-tdengine-metric
+- section_id: attributes#tdengine-metric
   file: 03-data-modeling/02-attributes.md
   directory: 03-data-modeling
   heading: 1. TDengine Metric
@@ -722,7 +722,7 @@ sections:
   - id: data-reference-binding
     relation: defined
     confidence: high
-- section_id: attributes#2-tdengine-tag
+- section_id: attributes#tdengine-tag
   file: 03-data-modeling/02-attributes.md
   directory: 03-data-modeling
   heading: 2. TDengine Tag
@@ -737,7 +737,7 @@ sections:
   - id: data-reference-binding
     relation: defined
     confidence: high
-- section_id: attributes#3-formula
+- section_id: attributes#formula
   file: 03-data-modeling/02-attributes.md
   directory: 03-data-modeling
   heading: 3. Formula
@@ -752,7 +752,7 @@ sections:
   - id: expression-editor
     relation: referenced
     confidence: high
-- section_id: attributes#4-string-builder
+- section_id: attributes#string-builder
   file: 03-data-modeling/02-attributes.md
   directory: 03-data-modeling
   heading: 4. String Builder

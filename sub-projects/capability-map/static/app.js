@@ -131,4 +131,94 @@ document.addEventListener('DOMContentLoaded', () => {
   };
   scrollToHash();
   window.addEventListener('hashchange', scrollToHash);
+
+  // ===== Section hover preview =====
+  const popover = document.getElementById('section-popover');
+  if (popover) {
+    let hoverTimer = null;
+    let currentHref = null;
+    const cache = {};
+
+    function showPopover(anchor) {
+      const href = anchor.getAttribute('href');
+      if (!href || !href.startsWith('/section/')) return;
+      const apiUrl = '/api' + href;
+
+      // Position near the link
+      const rect = anchor.getBoundingClientRect();
+      const popW = 520;
+      const popMaxH = 360;
+      let left = rect.right + 8;
+      let top = rect.top;
+
+      // If it would overflow the right edge, show to the left
+      if (left + popW > window.innerWidth - 16) {
+        left = rect.left - popW - 8;
+      }
+      // If it would overflow the bottom, shift up
+      if (top + popMaxH > window.innerHeight - 16) {
+        top = Math.max(16, window.innerHeight - popMaxH - 16);
+      }
+      if (left < 16) left = 16;
+
+      popover.style.left = left + 'px';
+      popover.style.top = top + 'px';
+
+      if (cache[apiUrl]) {
+        popover.innerHTML = cache[apiUrl];
+        popover.classList.add('visible');
+        return;
+      }
+
+      popover.innerHTML = '<span class="popover-loading">Loading preview…</span>';
+      popover.classList.add('visible');
+
+      fetch(apiUrl)
+        .then(r => r.ok ? r.json() : null)
+        .then(data => {
+          if (!data) {
+            hidePopover();
+            return;
+          }
+          cache[apiUrl] = data.html;
+          // Only update if still showing for the same link
+          if (currentHref === href) {
+            popover.innerHTML = data.html;
+          }
+        })
+        .catch(() => hidePopover());
+    }
+
+    function hidePopover() {
+      popover.classList.remove('visible');
+      popover.innerHTML = '';
+      currentHref = null;
+    }
+
+    // Event delegation on document for all /section/ links
+    document.addEventListener('mouseenter', (e) => {
+      const anchor = e.target.closest('a[href^="/section/"]');
+      if (!anchor) return;
+      const href = anchor.getAttribute('href');
+      clearTimeout(hoverTimer);
+      currentHref = href;
+      hoverTimer = setTimeout(() => showPopover(anchor), 2000);
+    }, true);
+
+    document.addEventListener('mouseleave', (e) => {
+      const anchor = e.target.closest('a[href^="/section/"]');
+      if (!anchor) return;
+      clearTimeout(hoverTimer);
+      // Delay hide so user can move into the popover
+      setTimeout(() => {
+        if (!popover.matches(':hover')) {
+          hidePopover();
+        }
+      }, 200);
+    }, true);
+
+    popover.addEventListener('mouseleave', () => {
+      hidePopover();
+    });
+  }
 });

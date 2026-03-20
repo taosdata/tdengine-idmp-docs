@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{ meta.heading or section_id }} — Capability Explorer{% endblock %}
+{% block content %}
+<div class="doc-viewer">
+  <div class="doc-breadcrumb">
+    {% if meta.heading_path %}
+    {% for crumb in meta.heading_path %}
+    <span>{{ crumb }}</span>{% if not loop.last %} <span class="sep">›</span> {% endif %}
+    {% endfor %}
+    {% else %}
+    <span>{{ section_id }}</span>
+    {% endif %}
+  </div>
+
+  <div class="doc-toolbar">
+    {% if doc_url %}
+    <a href="{{ doc_url }}{% if meta.anchor %}#{{ meta.anchor }}{% endif %}" class="btn">View full document →</a>
+    {% endif %}
+    <span class="doc-file-label">{{ meta.file or '' }}</span>
+  </div>
+
+  <div class="doc-content">
+    {{ content_html | safe }}
+  </div>
+
+  {% if doc_url %}
+  <div class="doc-footer">
+    <a href="{{ doc_url }}{% if meta.anchor %}#{{ meta.anchor }}{% endif %}" class="btn">View full document →</a>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

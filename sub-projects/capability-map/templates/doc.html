@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} — Capability Explorer{% endblock %}
+{% block content %}
+<div class="doc-viewer">
+  <div class="doc-breadcrumb">
+    <span>{{ title }}</span>
+  </div>
+
+  <div class="doc-toolbar">
+    <span class="doc-file-label">{{ file_path }}</span>
+    <a href="{{ external_url }}" class="btn" target="_blank" rel="noopener">External docs ↗</a>
+  </div>
+
+  <div class="doc-content">
+    {{ content_html | safe }}
+  </div>
+</div>
+{% endblock %}

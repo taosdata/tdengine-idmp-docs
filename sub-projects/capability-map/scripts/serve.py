@@ -5,16 +5,20 @@ import re
 from collections import defaultdict
 from pathlib import Path
 
+import markdown as md
 import yaml
-from flask import Flask, abort, render_template
+from flask import Flask, abort, jsonify, render_template
 
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
 
 SUBPROJECT = Path(__file__).resolve().parents[1]
+REPO_ROOT = SUBPROJECT.parents[1]
 TAXONOMY_FILE = SUBPROJECT / "capabilities.taxonomy.yaml"
 SECTION_MAP_FILE = SUBPROJECT / "capabilities.section-map.yaml"
+SECTIONS_DIR = SUBPROJECT / ".sections"
+DOC_ROOT = REPO_ROOT / "i18n" / "en" / "docusaurus-plugin-content-docs" / "current"
 DOCS_BASE_URL = "https://idmpdocs.taosdata.com"
 
 # ---------------------------------------------------------------------------
@@ -26,11 +30,30 @@ app = Flask(
     template_folder=str(SUBPROJECT / "templates"),
     static_folder=str(SUBPROJECT / "static"),
 )
+app.jinja_env.filters["section_path"] = lambda sid: sid.replace("#", "/")
 
 
 # ---------------------------------------------------------------------------
 # Data helpers
 # ---------------------------------------------------------------------------
+
+
+def render_markdown(text: str) -> str:
+    """Render Markdown text to HTML."""
+    return md.markdown(text, extensions=["tables", "fenced_code"])
+
+
+def section_id_to_path(section_id: str) -> str:
+    """Convert section_id 'foo#bar' to URL-safe path 'foo/bar' (replace # with /)."""
+    return section_id.replace("#", "/")
+
+
+def section_path_to_dir(section_path: str) -> Path | None:
+    """Map a URL path like 'introduction/attributes' to its .sections/ directory."""
+    section_dir = SECTIONS_DIR / section_path
+    if section_dir.is_dir():
+        return section_dir
+    return None
 
 
 def build_doc_url(section: dict) -> str:
@@ -249,6 +272,80 @@ def capability_detail(cap_id: str):
 def gaps_view():
     data = load_data()
     return render_template("gaps.html", **data)
+
+
+@app.route("/section/<path:section_path>")
+def section_view(section_path: str):
+    """Render a single section.md snippet."""
+    section_dir = section_path_to_dir(section_path)
+    if not section_dir:
+        abort(404)
+    section_md = section_dir / "section.md"
+    meta_file = section_dir / "meta.yaml"
+    if not section_md.exists():
+        abort(404)
+
+    content_html = render_markdown(section_md.read_text(encoding="utf-8"))
+    meta = {}
+    if meta_file.exists():
+        meta = yaml.safe_load(meta_file.read_text(encoding="utf-8")) or {}
+
+    # Build link to the full doc page
+    file_path = meta.get("file", "")
+    doc_url = f"/doc/{file_path}" if file_path else None
+
+    data = load_data()
+    return render_template(
+        "section.html",
+        section_id=meta.get("section_id", section_path),
+        content_html=content_html,
+        meta=meta,
+        doc_url=doc_url,
+        **data,
+    )
+
+
+@app.route("/api/section/<path:section_path>")
+def api_section(section_path: str):
+    """Return rendered HTML for a section (used by hover preview)."""
+    section_dir = section_path_to_dir(section_path)
+    if not section_dir:
+        abort(404)
+    section_md = section_dir / "section.md"
+    if not section_md.exists():
+        abort(404)
+    content_html = render_markdown(section_md.read_text(encoding="utf-8"))
+    return jsonify({"html": content_html})
+
+
+@app.route("/doc/<path:file_path>")
+def doc_view(file_path: str):
+    """Render a full source markdown doc file."""
+    abs_path = DOC_ROOT / file_path
+    if not abs_path.exists() or not abs_path.is_file():
+        abort(404)
+    # Security: ensure the resolved path is under DOC_ROOT
+    if not abs_path.resolve().is_relative_to(DOC_ROOT.resolve()):
+        abort(404)
+
+    raw_md = abs_path.read_text(encoding="utf-8")
+    content_html = render_markdown(raw_md)
+
+    # Friendly title from the file name
+    title = file_path.replace(".md", "").split("/")[-1]
+    title = re.sub(r"^\d+-", "", title).replace("-", " ").title()
+
+    external_url = build_doc_url({"file": file_path, "anchor": None})
+
+    data = load_data()
+    return render_template(
+        "doc.html",
+        file_path=file_path,
+        title=title,
+        content_html=content_html,
+        external_url=external_url,
+        **data,
+    )
 
 
 # ---------------------------------------------------------------------------

@@ -39,16 +39,22 @@
       <th>Heading</th>
       <th>File</th>
       <th>Confidence</th>
-      <th>Link</th>
+      <th>Links</th>
     </tr>
   </thead>
   <tbody>
     {% for entry in cap_sections.defined %}
     <tr>
-      <td>{{ entry.section.heading }}</td>
-      <td style="font-size: 0.85em; color: var(--text-muted);">{{ entry.section.file }}</td>
+      <td><a href="/section/{{ entry.section.section_id | section_path }}">{{ entry.section.heading }}</a></td>
+      <td style="font-size: 0.85em; color: var(--text-muted);">
+        <a href="/doc/{{ entry.section.file }}">{{ entry.section.file }}</a>
+      </td>
       <td><span class="badge badge-{{ entry.confidence }}">{{ entry.confidence }}</span></td>
-      <td><a href="{{ entry.section.doc_url }}" target="_blank" rel="noopener">docs ↗</a></td>
+      <td style="white-space: nowrap;">
+        <a href="/section/{{ entry.section.section_id | section_path }}">section</a>
+        · <a href="/doc/{{ entry.section.file }}{% if entry.section.anchor %}#{{ entry.section.anchor }}{% endif %}">doc</a>
+        · <a href="{{ entry.section.doc_url }}" target="_blank" rel="noopener">ext ↗</a>
+      </td>
     </tr>
     {% endfor %}
   </tbody>
@@ -65,16 +71,22 @@
       <th>Heading</th>
       <th>File</th>
       <th>Confidence</th>
-      <th>Link</th>
+      <th>Links</th>
     </tr>
   </thead>
   <tbody>
     {% for entry in cap_sections.referenced %}
     <tr>
-      <td>{{ entry.section.heading }}</td>
-      <td style="font-size: 0.85em; color: var(--text-muted);">{{ entry.section.file }}</td>
+      <td><a href="/section/{{ entry.section.section_id | section_path }}">{{ entry.section.heading }}</a></td>
+      <td style="font-size: 0.85em; color: var(--text-muted);">
+        <a href="/doc/{{ entry.section.file }}">{{ entry.section.file }}</a>
+      </td>
       <td><span class="badge badge-{{ entry.confidence }}">{{ entry.confidence }}</span></td>
-      <td><a href="{{ entry.section.doc_url }}" target="_blank" rel="noopener">docs ↗</a></td>
+      <td style="white-space: nowrap;">
+        <a href="/section/{{ entry.section.section_id | section_path }}">section</a>
+        · <a href="/doc/{{ entry.section.file }}{% if entry.section.anchor %}#{{ entry.section.anchor }}{% endif %}">doc</a>
+        · <a href="{{ entry.section.doc_url }}" target="_blank" rel="noopener">ext ↗</a>
+      </td>
     </tr>
     {% endfor %}
   </tbody>
