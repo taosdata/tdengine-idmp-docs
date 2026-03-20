@@ -3,12 +3,12 @@ title: 指标 API
 sidebar_label: 指标 API
 ---
 
-`MetricResourceApi` 提供时序数据的读写操作，是 SDK 中最常用的模块之一。
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # 15.1.5.2 指标 API
+
+`MetricResourceApi` 提供时序数据的读写操作，是 SDK 中最常用的模块之一。
 
 ## 方法列表
 
@@ -107,5 +107,5 @@ one_hour_ago_ms = now_ms - 3600 * 1000
 </Tabs>
 
 :::note
-完整的方法签名和参数请参考 SDK 包中的 OpenAPI 规范文件（`idmp-v1.0.14.2.json`），或在您的 IDMP 服务器上访问 `/swagger-ui.html` 浏览 Swagger UI。
+完整的方法签名和参数请参考 SDK 包中的 OpenAPI 规范文件（`idmp-v1.0.14.3.json`），或在您的 IDMP 服务器上访问 `/swagger-ui.html` 浏览 Swagger UI。
 :::

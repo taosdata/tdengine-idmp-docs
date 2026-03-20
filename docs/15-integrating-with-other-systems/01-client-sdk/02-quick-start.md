@@ -3,12 +3,12 @@ title: 快速开始
 sidebar_label: 快速开始
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 :::note 前置条件
 请先完成 [安装](./01-installation.md)。本指南大约需要 5 分钟，带您完成第一次 API 调用。
 :::
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 # 15.1.2 快速开始
 

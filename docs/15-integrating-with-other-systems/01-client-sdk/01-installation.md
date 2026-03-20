@@ -29,20 +29,20 @@ import TabItem from '@theme/TabItem';
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
 
-**第一步——将 SDK 安装到本地 Maven 仓库：**
+**第一步——将 SDK 安装到本地 Maven 仓库**：
 
 ```bash
 cd idmp-java-sdk
 mvn install -DskipTests
 ```
 
-### 第二步——在项目的 `pom.xml` 中添加依赖
+**第二步——在项目的 `pom.xml` 中添加依赖**：
 
 ```xml
 <dependency>
   <groupId>com.taosdata</groupId>
   <artifactId>idmp-sdk</artifactId>
-  <version>1.0.14.2</version>
+  <version>1.0.14.3</version>
 </dependency>
 ```
 

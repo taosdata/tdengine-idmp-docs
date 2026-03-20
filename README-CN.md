@@ -101,6 +101,22 @@ just start
 just start-en
 ```
 
+> **使用 pnpm 直接执行**：如果你不使用 `just`，也可以直接通过 `pnpm` 执行等效命令：
+>
+> ```bash
+> # 安装依赖
+> pnpm install
+>
+> # 启动中文预览（默认）
+> pnpm run start:local
+>
+> # 启动英文预览
+> pnpm run start:local:en
+>
+> # 清除生成的资源、缓存和构建产物
+> pnpm run clear
+> ```
+
 ### 3.2 生产构建
 
 我们会通过如下命令，构建出生产环境静态文件到 `build` 目录中，生成的内容可以通过任何静态内容托管服务进行部署。我们使用 [Azure Static Web Apps](https://azure.microsoft.com/en-us/services/app-service/static/) 进行 IDMP 文档服务的部署。
@@ -116,6 +132,16 @@ just build
 ```bash
 just serve
 ```
+
+> **使用 pnpm 直接执行**：
+>
+> ```bash
+> # 构建文档
+> pnpm build
+>
+> # 本地预览构建产物
+> pnpm serve
+> ```
 
 ### 3.3 生产部署
 

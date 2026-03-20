@@ -101,6 +101,22 @@ just start
 just start-en
 ```
 
+> **Using pnpm directly**: If you don't use `just`, you can run the equivalent commands with `pnpm`:
+>
+> ```bash
+> # Install dependencies
+> pnpm install
+>
+> # Start Chinese preview (default)
+> pnpm run start:local
+>
+> # Start English preview
+> pnpm run start:local:en
+>
+> # Clear generated assets, caches, and build artifacts
+> pnpm run clear
+> ```
+
 ### 3.2 Production Build
 
 Use the following command to build static files for production into the `build` directory. The generated content can be deployed using any static content hosting service. We use [Azure Static Web Apps](https://azure.microsoft.com/en-us/services/app-service/static/) to deploy the IDMP documentation service.
@@ -116,6 +132,16 @@ just build
 ```bash
 just serve
 ```
+
+> **Using pnpm directly**:
+>
+> ```bash
+> # Build documentation
+> pnpm build
+>
+> # Preview the production build locally
+> pnpm serve
+> ```
 
 ### 3.3 Production Deployment
 

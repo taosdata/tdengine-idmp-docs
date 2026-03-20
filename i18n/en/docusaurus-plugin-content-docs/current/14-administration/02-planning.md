@@ -42,7 +42,7 @@ When element scale is large, plan dedicated resources for external dependency co
 - **Growth headroom:** Plan resources at 1.5× the expected peak element count to accommodate business growth.
 
 :::note
-These figures are reference guidelines. Actual resource needs depend on modeling complexity and workload characteristics. For TDengine TSDB capacity planning, refer to the TDengine TSDB documentation.
+These figures are reference guidelines. Actual resource needs depend on modeling complexity and workload characteristics. For TDengine TSDB capacity planning, refer to the [TDengine TSDB documentation](https://docs.tdengine.com/operations-and-maintenance/system-requirements/).
 :::
 
 ## Supported Operating Systems
