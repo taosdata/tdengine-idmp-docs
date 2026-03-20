@@ -9,7 +9,7 @@ An event template defines the schema and behavior of events. Every event generat
 
 ## 6.1.1 Creating an Event Template
 
-To create a new event template:
+Event templates are managed centrally in Libraries and can be referenced by any analysis in the system. To create a new event template:
 
 1. Navigate to **Libraries → Event Template** in the left navigation.
 2. Click the **+** (New Event Template) button.
@@ -18,7 +18,11 @@ To create a new event template:
 
 ## 6.1.2 Template Configuration
 
+Event template configuration consists of three parts — general settings, event naming pattern, and template inheritance — which together define the event's identification, naming convention, and hierarchical relationships between templates.
+
 ### General Settings
+
+The following fields define the basic properties and behavioral rules of the event template.
 
 | Field | Description |
 |---|---|
@@ -35,19 +39,19 @@ To create a new event template:
 
 ### Event Naming Pattern
 
-Every event generated from a template receives a name constructed from the **Event Naming Pattern**. Enter static text and insert placeholder variables by clicking the **+** icon on the right side of the field. Available variables include element name, analysis name, start time, end time, and others.
+The Event Naming Pattern defines how names are constructed for events generated from this template. Enter static text and insert placeholder variables by clicking the **+** icon on the right side of the field. Available variables include element name, analysis name, start time, end time, and others.
 
 For best results, include the element name, analysis name, and start time in the pattern — this makes every event name self-descriptive: `{elementName} - {analysisName} - {startTime}`.
 
 ### Template Inheritance
 
-Event templates support inheritance. When creating a template, you can select a **Base Template** from which the new template inherits configuration. Sub-templates can extend the base template's attribute schema and override individual settings.
+Event templates support a hierarchical inheritance mechanism, allowing sub-templates to extend and customize the configuration of a parent template. When creating a template, you can select a **Base Template** from which the new template inherits configuration. Sub-templates can extend the base template's attribute schema and override individual settings.
 
 If a template is marked **Base Template Only**, it cannot be referenced directly when configuring an analysis — it can only be used as a parent.
 
 ## 6.1.3 Event Attribute Templates
 
-An event can carry custom attributes that record values at the time the event occurred — for example, the peak temperature during an exceedance, or the batch ID at the time of a fault. These attributes are defined in the **Event Attribute Template** section of the event template editor.
+Event attribute templates define the custom attributes that events can carry, recording key data at the time of occurrence — for example, the peak temperature during an exceedance, or the batch ID at the time of a fault. These attributes are defined in the **Event Attribute Template** section of the event template editor.
 
 For each attribute, configure:
 
@@ -60,7 +64,7 @@ For each attribute, configure:
 | **Constant** | If enabled, the value cannot be changed after creation |
 | **Hidden** | If enabled, the attribute is not shown in normal event views |
 
-When configuring an analysis, the output of a calculation can be written to any attribute defined in the event template. This lets you capture computed values — like the average value during a window, or the maximum exceedance — directly in the event record.
+When configuring an analysis, the output of a calculation can be written to any attribute defined in the event template. This supports capturing computed values — like the average value during a window, or the maximum exceedance — directly in the event record.
 
 :::tip
 Event attribute data is stored in TDengine IDMP's built-in relational database, not in the time-series store. Event attributes do not support data reference configuration.
@@ -68,7 +72,7 @@ Event attribute data is stored in TDengine IDMP's built-in relational database, 
 
 ## 6.1.4 Managing Event Templates
 
-The **Libraries → Event Template** list shows all templates with their name, category, severity, and description. Use the action icons on each row to:
+The **Libraries → Event Template** list provides a centralized view of all templates with their name, category, severity, and description, supporting edit and delete operations. Use the action icons on each row to:
 
 - **Edit** — Modify the template configuration
 - **Delete** — Remove the template (only possible if no analyses reference it)
