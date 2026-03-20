@@ -16,6 +16,7 @@ from flask import Flask, abort, jsonify, render_template
 SUBPROJECT = Path(__file__).resolve().parents[1]
 REPO_ROOT = SUBPROJECT.parents[1]
 TAXONOMY_FILE = SUBPROJECT / "capabilities.taxonomy.yaml"
+ALIASES_FILE = SUBPROJECT / "capabilities.aliases.yaml"
 SECTION_MAP_FILE = SUBPROJECT / "capabilities.section-map.yaml"
 SECTIONS_DIR = SUBPROJECT / ".sections"
 DOC_ROOT = REPO_ROOT / "i18n" / "en" / "docusaurus-plugin-content-docs" / "current"
@@ -36,6 +37,15 @@ app.jinja_env.filters["section_path"] = lambda sid: sid.replace("#", "/")
 # ---------------------------------------------------------------------------
 # Data helpers
 # ---------------------------------------------------------------------------
+
+
+def _flatten_aliases(grouped: dict[str, list[str]]) -> dict[str, str]:
+    """Flatten grouped aliases (canonical → [aliases]) to alias → canonical lookup."""
+    flat: dict[str, str] = {}
+    for canonical, aliases in grouped.items():
+        for alias in aliases:
+            flat[alias] = canonical
+    return flat
 
 
 def render_markdown(text: str) -> str:
@@ -77,20 +87,17 @@ def load_data() -> dict:
     """
     taxonomy = yaml.safe_load(TAXONOMY_FILE.read_text(encoding="utf-8"))
     section_map = yaml.safe_load(SECTION_MAP_FILE.read_text(encoding="utf-8"))
+    aliases_data = yaml.safe_load(ALIASES_FILE.read_text(encoding="utf-8")) if ALIASES_FILE.exists() else {}
 
     # --- indexes ---
     capabilities = taxonomy.get("capabilities", [])
     categories = taxonomy.get("categories", [])
-    ignored = taxonomy.get("ignored", [])
 
     cap_by_id = {c["id"]: c for c in capabilities}
     cat_by_id = {c["id"]: c for c in categories}
-    ignored_ids = {e["id"] for e in ignored}
 
-    alias_to_cap: dict[str, str] = {}
-    for cap in capabilities:
-        for alias in cap.get("aliases") or []:
-            alias_to_cap[alias] = cap["id"]
+    alias_to_cap: dict[str, str] = _flatten_aliases(aliases_data.get("aliases", {}))
+    ignored_ids = {e["id"] for e in aliases_data.get("ignored", [])}
 
     # All known IDs (canonical + aliases + ignored)
     known_ids = set(cap_by_id.keys()) | set(alias_to_cap.keys()) | ignored_ids
@@ -216,7 +223,7 @@ def load_data() -> dict:
     return {
         "capabilities": capabilities,
         "categories": categories,
-        "ignored": ignored,
+        "ignored_ids": ignored_ids,
         "cap_by_id": cap_by_id,
         "cat_by_id": cat_by_id,
         "sections_by_cap": sections_by_cap,

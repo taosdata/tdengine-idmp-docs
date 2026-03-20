@@ -21,6 +21,7 @@ SUBPROJECT_DIR = Path(__file__).resolve().parents[1]
 SECTIONS_DIR = SUBPROJECT_DIR / ".sections"
 SECTION_MAP_FILE = SUBPROJECT_DIR / "capabilities.section-map.yaml"
 TAXONOMY_FILE = SUBPROJECT_DIR / "capabilities.taxonomy.yaml"
+ALIASES_FILE = SUBPROJECT_DIR / "capabilities.aliases.yaml"
 
 # ---------------------------------------------------------------------------
 # Versions
@@ -42,6 +43,20 @@ VALID_STATUSES = {"ga", "beta", "preview", "planned", "deprecated"}
 # ---------------------------------------------------------------------------
 # YAML helpers
 # ---------------------------------------------------------------------------
+
+def flatten_aliases(grouped: dict[str, list[str]]) -> dict[str, str]:
+    """Flatten grouped aliases (canonical → [aliases]) to a lookup dict (alias → canonical).
+
+    The aliases file stores ``canonical_id: [alias1, alias2, ...]`` for easy
+    human review.  Consumers need the reverse mapping ``alias → canonical`` for
+    fast lookup during extraction resolution.
+    """
+    flat: dict[str, str] = {}
+    for canonical, aliases in grouped.items():
+        for alias in aliases:
+            flat[alias] = canonical
+    return flat
+
 
 def load_yaml(path: Path) -> dict | list | None:
     """Load a YAML file. Returns None if missing or unparseable (prints warning)."""

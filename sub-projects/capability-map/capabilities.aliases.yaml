@@ -1,0 +1,50 @@
+# Alias and ignored-ID mappings for capability extraction.
+#
+# This file maps non-canonical IDs (produced by AI extraction) to their
+# canonical capability IDs, or marks them as ignored. It is separate from
+# the capability set (taxonomy) so that the taxonomy stays conformant to
+# the portable capability-set format.
+#
+# Structure:
+#   aliases   — canonical capability ID → list of non-canonical aliases
+#   ignored   — extracted IDs that are not capabilities (with reason)
+
+aliases:
+  # AI-Powered Insights
+  ai-generated-panels:
+    - ai-generated-analyses
+  llm-connection:
+    - connecting-to-llm
+  # Data Modeling
+  element-search:
+    - element-filters
+  data-model-import-export:
+    - data-model-import-from-tsdb
+
+  # Data Ingestion
+  data-import:
+    - csv-import
+    - easy-import
+    - opc-import
+    - map-stable-to-element
+  data-collection:
+    - data-ingestion
+
+  # Collaboration
+  data-export:
+    - exporting-data
+
+  # Administration
+  single-sign-on:
+    - sso-authentication
+    - sso
+  role-based-access-control:
+    - rbac    
+  admin-console:
+    - system-configuration
+
+ignored:
+- id: deployment-architecture
+  reason: Informational overview of system architecture, not a user/admin capability
+- id: sample-data
+  reason: Demo/seed data utility, not a product capability

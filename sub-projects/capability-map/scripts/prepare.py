@@ -24,6 +24,7 @@ from pathlib import Path
 import yaml
 
 from shared import (
+    ALIASES_FILE,
     DOC_ROOT,
     PROMPT_VERSION,
     SECTION_MAP_FILE,
@@ -279,7 +280,7 @@ def parse_roadmap_items(roadmap_file: Path) -> list[dict]:
     return planned
 
 
-def bootstrap_taxonomy(section_map: dict, sections_dir: Path) -> dict:
+def bootstrap_taxonomy(section_map: dict, sections_dir: Path) -> tuple[dict, dict]:
     """
     Generate a draft capabilities.taxonomy.yaml from the section map.
     Collects defined+high/medium confidence IDs, clusters them, infers
@@ -304,6 +305,7 @@ def bootstrap_taxonomy(section_map: dict, sections_dir: Path) -> dict:
 
     # Build capability entries
     capabilities = []
+    alias_entries: dict[str, list[str]] = defaultdict(list)
     for cluster in clusters:
         canonical = propose_canonical(cluster)
         # Determine category from most common source file
@@ -316,20 +318,21 @@ def bootstrap_taxonomy(section_map: dict, sections_dir: Path) -> dict:
             category_counts[infer_category(f)] += 1
         category = max(category_counts, key=lambda k: category_counts[k]) if category_counts else "platform"
 
-        aliases = [cid for cid in cluster if cid != canonical]
-
         entry: dict = {
             "id": canonical,
             "name": id_to_name(canonical),
             "category": category,
             "status": "ga",
-            "since": None,
             "tags": [],
-            "aliases": aliases,
             "parent": None,
             "notes": "# REVIEW: auto-generated draft",
         }
         capabilities.append(entry)
+
+        # Track aliases for the separate alias mapping file (grouped by canonical)
+        aliases = [cid for cid in cluster if cid != canonical]
+        if aliases:
+            alias_entries[canonical].extend(aliases)
 
     # Add planned entries from roadmap
     planned_items = parse_roadmap_items(ROADMAP_FILE)
@@ -342,11 +345,8 @@ def bootstrap_taxonomy(section_map: dict, sections_dir: Path) -> dict:
                 "name": item["name"],
                 "category": "platform",
                 "status": "planned",
-                "since": None,
                 "tags": [],
-                "aliases": [],
                 "parent": None,
-                "roadmap_ref": item["roadmap_ref"],
                 "notes": "# REVIEW: auto-generated from roadmap",
             })
             existing_ids.add(item["id"])
@@ -372,13 +372,20 @@ def bootstrap_taxonomy(section_map: dict, sections_dir: Path) -> dict:
     from datetime import date
     taxonomy = {
         "version": TAXONOMY_VERSION,
-        "last_updated": str(date.today()),
+        "kind": "product",
+        "name": "TDengine IDMP",
+        "date": str(date.today()),
         "categories": categories,
         "capabilities": capabilities,
+    }
+
+    # Write alias mapping file alongside the taxonomy
+    alias_data = {
+        "aliases": dict(alias_entries),
         "ignored": [],
     }
 
-    return taxonomy
+    return taxonomy, alias_data
 
 
 # ---------------------------------------------------------------------------
@@ -425,11 +432,13 @@ def main() -> int:
             )
             return 1
         print("Generating draft taxonomy from section map...")
-        taxonomy = bootstrap_taxonomy(section_map, SECTIONS_DIR)
+        taxonomy, alias_data = bootstrap_taxonomy(section_map, SECTIONS_DIR)
         TAXONOMY_FILE.write_text(dump_yaml(taxonomy), encoding="utf-8")
+        ALIASES_FILE.write_text(dump_yaml(alias_data), encoding="utf-8")
         n_caps = len(taxonomy.get("capabilities", []))
         n_planned = sum(1 for c in taxonomy.get("capabilities", []) if c.get("status") == "planned")
         print(f"Written: {TAXONOMY_FILE}")
+        print(f"Written: {ALIASES_FILE}")
         print(f"  {n_caps} capabilities ({n_planned} planned from roadmap)")
         print("  Review and curate before committing.")
         return 0

@@ -22,6 +22,7 @@ from pathlib import Path
 import yaml
 
 from shared import (
+    ALIASES_FILE,
     DOC_ROOT,
     SECTION_MAP_FILE,
     SECTIONS_DIR,
@@ -30,6 +31,7 @@ from shared import (
     VALID_CONFIDENCES,
     VALID_RELATIONS,
     VALID_STATUSES,
+    flatten_aliases,
 )
 
 
@@ -178,11 +180,9 @@ def check_taxonomy_integrity(taxonomy: dict, results: Results) -> None:
     """
     categories = {c["id"] for c in taxonomy.get("categories", [])}
     capabilities = taxonomy.get("capabilities", [])
-    ignored = taxonomy.get("ignored", [])
 
-    # Collect all capability ids and aliases for cross-checks
+    # Collect all capability ids for cross-checks
     cap_ids: set[str] = set()
-    all_aliases: dict[str, str] = {}  # alias → canonical id
 
     # --- Required fields and enum values ---
     for cap in capabilities:
@@ -208,37 +208,12 @@ def check_taxonomy_integrity(taxonomy: dict, results: Results) -> None:
                 f"(valid: {', '.join(sorted(VALID_STATUSES))})"
             )
 
-        # planned → must have roadmap_ref; non-planned → roadmap_ref must be null
-        roadmap_ref = cap.get("roadmap_ref")
-        if status == "planned" and not roadmap_ref:
-            results.error(
-                f"capability {cap_id!r} has status 'planned' but no roadmap_ref"
-            )
-        if status and status != "planned" and roadmap_ref:
-            results.error(
-                f"capability {cap_id!r} has roadmap_ref but status is {status!r} "
-                "(only 'planned' capabilities should have a roadmap_ref)"
-            )
-
         # Category exists
         cat = cap.get("category", "")
         if cat and cat not in categories:
             results.error(
                 f"capability {cap_id!r} references unknown category {cat!r}"
             )
-
-        # Aliases: no duplicates across all capabilities
-        for alias in cap.get("aliases", []):
-            if alias in all_aliases:
-                results.error(
-                    f"alias {alias!r} appears in both {all_aliases[alias]!r} and {cap_id!r}"
-                )
-            elif alias in cap_ids:
-                results.error(
-                    f"alias {alias!r} in {cap_id!r} conflicts with an existing capability id"
-                )
-            else:
-                all_aliases[alias] = cap_id
 
     # Second pass: validate parent references and detect cycles
     cap_parents: dict[str, str | None] = {
@@ -267,11 +242,36 @@ def check_taxonomy_integrity(taxonomy: dict, results: Results) -> None:
                 visited.add(current)
                 current = cap_parents.get(current)
 
-    # Ignored list: every entry must have a reason
-    for entry in ignored:
-        ignored_id = entry.get("id", "")
-        if not entry.get("reason"):
-            results.error(f"ignored entry {ignored_id!r} has no reason")
+    # --- Validate alias mapping file ---
+    if ALIASES_FILE.exists():
+        try:
+            aliases_data = yaml.safe_load(ALIASES_FILE.read_text(encoding="utf-8")) or {}
+        except yaml.YAMLError as e:
+            results.error(f"aliases file is not valid YAML: {e}")
+            aliases_data = {}
+
+        # Check aliases: canonical IDs must exist, alias IDs must not conflict
+        for canonical, alias_list in aliases_data.get("aliases", {}).items():
+            if canonical not in cap_ids:
+                results.error(
+                    f"alias group key {canonical!r} is not a capability id"
+                )
+            if not isinstance(alias_list, list):
+                results.error(
+                    f"alias group {canonical!r} value must be a list, got {type(alias_list).__name__}"
+                )
+                continue
+            for alias in alias_list:
+                if alias in cap_ids:
+                    results.error(
+                        f"alias {alias!r} (under {canonical!r}) conflicts with an existing capability id"
+                    )
+
+        # Ignored list: every entry must have a reason
+        for entry in aliases_data.get("ignored", []):
+            ignored_id = entry.get("id", "")
+            if not entry.get("reason"):
+                results.error(f"ignored entry {ignored_id!r} has no reason")
 
 
 # ---------------------------------------------------------------------------
@@ -288,15 +288,24 @@ def check_coverage(
     capabilities with no 'defined' sections.
     """
     capabilities = taxonomy.get("capabilities", [])
-    ignored_ids = {e.get("id", "") for e in taxonomy.get("ignored", [])}
+
+    # Load aliases from separate file
+    aliases_data = {}
+    if ALIASES_FILE.exists():
+        try:
+            aliases_data = yaml.safe_load(ALIASES_FILE.read_text(encoding="utf-8")) or {}
+        except yaml.YAMLError:
+            pass
+    alias_to_cap = flatten_aliases(aliases_data.get("aliases", {}))
+    ignored_ids = {e.get("id", "") for e in aliases_data.get("ignored", [])}
 
     # Build lookup: all known ids (canonical + aliases) → canonical id
     known: dict[str, str] = {}
     for cap in capabilities:
         cap_id = cap.get("id", "")
         known[cap_id] = cap_id
-        for alias in cap.get("aliases", []):
-            known[alias] = cap_id
+    for alias, canonical in alias_to_cap.items():
+        known[alias] = canonical
 
     # Walk section map: collect defined sections per canonical id
     # defined_sections[canonical_id] = list of (section_id, confidence)
