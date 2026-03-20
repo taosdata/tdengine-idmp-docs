@@ -1,0 +1,58 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.tutorialSidebar.category.Feature Overview": {
+    "message": "Descripción general de funciones",
+    "description": "The label for category Feature Overview in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Operation and Maintenance": {
+    "message": "Operación y mantenimiento",
+    "description": "The label for category Operation and Maintenance in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Release History": {
+    "message": "Historial de versiones",
+    "description": "The label for category Release History in sidebar tutorialSidebar"
+  },
+  "sidebar.tutorialSidebar.category.Release Notes": {
+    "message": "Notas de la versión",
+    "description": "The label for category Release Notes in sidebar tutorialSidebar"
+  },
+  "sidebar.defaultSidebar.category.Quick Start Guide": {
+    "message": "Guía de inicio rápido",
+    "description": "The label for category Quick Start Guide in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.Basic Features": {
+    "message": "Funciones básicas",
+    "description": "The label for category Basic Features in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.Advanced Features": {
+    "message": "Funciones avanzadas",
+    "description": "The label for category Advanced Features in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.Operations Manual": {
+    "message": "Manual de operaciones",
+    "description": "The label for category Operations Manual in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.Installing TDengine IDMP": {
+    "message": "Instalación de TDengine IDMP",
+    "description": "The label for category Installing TDengine IDMP in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.Release History": {
+    "message": "Historial de versiones",
+    "description": "The label for category Release History in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.Operations and Maintenance": {
+    "message": "Operaciones y mantenimiento",
+    "description": "The label for category Operations and Maintenance in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.Deploying TDengine IDMP": {
+    "message": "Implementación de TDengine IDMP",
+    "description": "The label for category Deploying TDengine IDMP in sidebar defaultSidebar"
+  },
+  "sidebar.defaultSidebar.category.release-history": {
+    "message": "release-history",
+    "description": "The label for category release-history in sidebar defaultSidebar"
+  }
+}

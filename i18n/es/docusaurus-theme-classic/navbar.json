@@ -1,0 +1,22 @@
+{
+  "item.label.博客": {
+    "message": "Blog",
+    "description": "Navbar item with label 博客"
+  },
+  "item.label.反馈问题": {
+    "message": "Comentarios",
+    "description": "Navbar item with label 反馈问题"
+  },
+  "item.label.联系我们": {
+    "message": "Contáctenos",
+    "description": "Navbar item with label 联系我们"
+  },
+  "item.label.TSDB 文档": {
+    "message": "Docs TSDB",
+    "description": "Navbar item with label TSDB 文档"
+  },
+  "item.label.Cloud": {
+    "message": "Cloud",
+    "description": "Navbar item with label Cloud"
+  }
+}

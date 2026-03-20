@@ -77,7 +77,7 @@ const customSidebarItemsGenerator = async ({
     return items.map(item => {
       if (
         item.type === 'category' &&
-        (item.label === '发布历史' || item.label === 'Release History') &&
+        (item.label === '发布历史' || item.label === 'Release History' || item.label === 'Historial de versiones') &&
         item.items
       ) {
         return { ...item, items: sortReleaseHistory(item.items) };
@@ -112,7 +112,7 @@ const config = {
   },
   i18n: {
     defaultLocale: 'zh-Hans',
-    locales: ['en', 'zh-Hans'],
+    locales: ['en', 'zh-Hans', 'es'],
     localeConfigs: {
       'en': {
         label: 'English',
@@ -120,6 +120,10 @@ const config = {
       },
       'zh-Hans': {
         label: '简体中文',
+      },
+      'es': {
+        label: 'Español',
+        htmlLang: 'es',
       },
     },
   },
