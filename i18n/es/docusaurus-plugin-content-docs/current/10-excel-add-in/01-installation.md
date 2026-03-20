@@ -1,22 +1,22 @@
 ---
-title: Installing the Excel Add-In
-sidebar_label: Installing the Excel Add-In
+title: Instalación del complemento de Excel
+sidebar_label: Instalación del complemento de Excel
 ---
-
-# 10.1 Installing the Excel Add-In
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-The TDengine IDMP Excel Add-In allows you to retrieve time-series data and element attributes directly inside Microsoft Excel, without writing any code or SQL.
+# 10.1 Instalación del complemento de Excel
 
-## Prerequisites
+El complemento de Excel para TDengine IDMP le permite recuperar datos de series temporales y atributos de elementos directamente en Microsoft Excel, sin necesidad de escribir código ni SQL.
 
-### HTTPS Requirement
+## Requisitos previos
 
-The Excel Add-In connects to IDMP over **HTTPS only**. Before installing, ensure that the IDMP HTTPS service is enabled and accessible (default port: **6034**).
+### Requisito de HTTPS
 
-To enable HTTPS, add the following to the IDMP configuration file (`application.yml`):
+El complemento de Excel se conecta a IDMP únicamente a través de **HTTPS**. Antes de instalarlo, asegúrese de que el servicio HTTPS de IDMP esté habilitado y sea accesible (puerto predeterminado: **6034**).
+
+Para habilitar HTTPS, añada lo siguiente al archivo de configuración de IDMP (`application.yml`):
 
 ```yaml
 quarkus:
@@ -31,86 +31,86 @@ quarkus:
         key-files: /usr/local/taos/idmp/config/privkey.pem
 ```
 
-**Built-in test certificate.** IDMP ships with a test certificate valid for 3 months, bound to the domain `idmp.tdengine.net`. This certificate is suitable for evaluation and testing. It is not recommended for production use.
+**Certificado de prueba integrado.** IDMP incluye un certificado de prueba con una validez de 3 meses, vinculado al dominio `idmp.tdengine.net`. Este certificado es adecuado para evaluaciones y pruebas. No se recomienda su uso en entornos de producción.
 
-If you are using the built-in test certificate, add the following entry to the hosts file on the client machine (replace the IP with your actual server address):
+Si utiliza el certificado de prueba integrado, añada la siguiente entrada al archivo hosts de la máquina cliente (reemplace la IP por la dirección real de su servidor):
 
 ```text
 192.168.1.100  idmp.tdengine.net
 ```
 
-Hosts file locations:
+Ubicaciones del archivo hosts:
 
 - **Linux / macOS:** `/etc/hosts`
 - **Windows:** `C:\Windows\System32\drivers\etc\hosts`
 
-### System Requirements
+### Requisitos del sistema
 
-| Requirement | Details |
+| Requisito | Detalles |
 |---|---|
-| **Excel version** | Excel 2016 or later (Windows or macOS) |
-| **Permissions** | Administrator rights required on Windows |
-| **Node.js** | Node.js 22.3 or later required on Windows if logging is enabled |
+| **Versión de Excel** | Excel 2016 o posterior (Windows o macOS) |
+| **Permisos** | Se requieren derechos de administrador en Windows |
+| **Node.js** | Se requiere Node.js 22.3 o posterior en Windows si el registro está habilitado |
 
-## Installation
+## Instalación
 
 <Tabs>
 <TabItem value="macos" label="macOS">
 
-Open a terminal and run:
+Abra una terminal y ejecute:
 
 ```bash
 curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh | sh -s install --force-close --url https://idmp.tdengine.net:6034 --enable-logging
 ```
 
-Replace `https://idmp.tdengine.net:6034` with your actual IDMP HTTPS address.
+Reemplace `https://idmp.tdengine.net:6034` por la dirección HTTPS real de su instancia IDMP.
 
-**Parameters:**
+**Parámetros:**
 
-| Parameter | Description |
+| Parámetro | Descripción |
 |---|---|
-| `--force-close` | Force-closes Excel during installation. Save your work before running. |
-| `--url` | The IDMP HTTPS service address |
-| `--enable-logging` | Enables installation and runtime logging |
+| `--force-close` | Fuerza el cierre de Excel durante la instalación. Guarde su trabajo antes de ejecutar el comando. |
+| `--url` | La dirección del servicio HTTPS de IDMP |
+| `--enable-logging` | Habilita el registro de instalación y tiempo de ejecución |
 
-Log file location: `~/Library/Containers/com.microsoft.Excel/Data/tdengine_eai.log`
+Ubicación del archivo de registro: `~/Library/Containers/com.microsoft.Excel/Data/tdengine_eai.log`
 
 :::warning
-Excel will be force-closed during installation. Save all open workbooks before running the command.
+Excel se cerrará forzosamente durante la instalación. Guarde todos los libros de trabajo abiertos antes de ejecutar el comando.
 :::
 
 </TabItem>
 <TabItem value="windows" label="Windows">
 
-Open PowerShell **as Administrator** and run:
+Abra PowerShell **como administrador** y ejecute:
 
 ```powershell
 powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1))) -Action Install -ForceCloseExcel -Url 'https://idmp.tdengine.net:6034' -EnableLogging"
 ```
 
-Replace `https://idmp.tdengine.net:6034` with your actual IDMP HTTPS address.
+Reemplace `https://idmp.tdengine.net:6034` por la dirección HTTPS real de su instancia IDMP.
 
-**Parameters:**
+**Parámetros:**
 
-| Parameter | Description |
+| Parámetro | Descripción |
 |---|---|
-| `-Action Install` | Runs the installation |
-| `-ForceCloseExcel` | Force-closes Excel during installation. Save your work before running. |
-| `-Url` | The IDMP HTTPS service address |
-| `-EnableLogging` | Enables installation and runtime logging |
+| `-Action Install` | Ejecuta la instalación |
+| `-ForceCloseExcel` | Fuerza el cierre de Excel durante la instalación. Guarde su trabajo antes de ejecutar el comando. |
+| `-Url` | La dirección del servicio HTTPS de IDMP |
+| `-EnableLogging` | Habilita el registro de instalación y tiempo de ejecución |
 
-Log file location: `C:\Users\<your-username>\AppData\Roaming\Microsoft\AddIns\VueOfficeAddin\Logs\tdengine_eai.log`
+Ubicación del archivo de registro: `C:\Users\<su-nombre-de-usuario>\AppData\Roaming\Microsoft\AddIns\VueOfficeAddin\Logs\tdengine_eai.log`
 
 :::warning
-PowerShell must be run as Administrator. Excel will be force-closed during installation. Save all open workbooks before running the command.
+PowerShell debe ejecutarse como administrador. Excel se cerrará forzosamente durante la instalación. Guarde todos los libros de trabajo abiertos antes de ejecutar el comando.
 :::
 
 </TabItem>
 </Tabs>
 
-## Enabling and Disabling Logging
+## Habilitación y deshabilitación del registro
 
-To toggle logging independently of installation:
+Para activar o desactivar el registro de forma independiente (sin reinstalar):
 
 <Tabs>
 <TabItem value="macos" label="macOS">
@@ -137,7 +137,7 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 </TabItem>
 </Tabs>
 
-## Uninstallation
+## Desinstalación
 
 <Tabs>
 <TabItem value="macos" label="macOS">
@@ -157,5 +157,5 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 </Tabs>
 
 :::info
-Uninstallation also force-closes Excel. Save all open workbooks before running the uninstall command.
+La desinstalación también cerrará Excel forzosamente. Guarde todos los libros de trabajo abiertos antes de ejecutar el comando de desinstalación.
 :::

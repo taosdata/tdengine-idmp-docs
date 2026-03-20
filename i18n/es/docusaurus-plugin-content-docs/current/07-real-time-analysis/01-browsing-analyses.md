@@ -1,59 +1,59 @@
 ---
-title: Browsing and Managing Analyses
-sidebar_label: Browsing Analyses
+title: Explorar y Gestionar Análisis
+sidebar_label: Explorar Análisis
 ---
 
-# 7.1 Browsing and Managing Analyses
+# 7.1 Explorar y Gestionar Análisis
 
-Analyses are managed from the **Analyses** tab on any element in the Explorer. Navigate to an element in the asset tree and click the **Analyses** tab to see all analyses configured on that element.
+Los análisis se gestionan desde la pestaña **Análisis** de cualquier elemento en el Explorador. Navegue a un elemento en el árbol de activos y haga clic en la pestaña **Análisis** para ver todos los análisis configurados en ese elemento.
 
-## 7.1.1 The Analysis List
+## 7.1.1 La Lista de Análisis
 
-The analysis list shows all analyses on the current element with the following columns:
+La lista de análisis muestra todos los análisis del elemento actual con las siguientes columnas:
 
-| Column | Description |
+| Columna | Descripción |
 |---|---|
-| **Name** | The analysis name — click to open the analysis detail view |
-| **Trigger Type** | The trigger type (Sliding Window, Periodic Time Window, etc.) |
-| **Stream Name** | The underlying TDengine stream name for this analysis |
-| **Template** | The analysis template this analysis was created from, if any |
-| **Categories** | Category tags |
-| **Status** | Current execution status: **Running** or **Paused** |
-| **Update Time** | When the analysis was last modified |
+| **Nombre** | El nombre del análisis — haga clic para abrir la vista de detalle del análisis |
+| **Tipo de Disparador** | El tipo de disparador (Ventana Deslizante, Ventana Periódica de Tiempo, etc.) |
+| **Nombre del Stream** | El nombre del stream de TDengine subyacente para este análisis |
+| **Plantilla** | La plantilla de análisis a partir de la cual se creó este análisis, si corresponde |
+| **Categorías** | Etiquetas de categoría |
+| **Estado** | Estado de ejecución actual: **Ejecutando** o **Pausado** |
+| **Hora de Actualización** | Cuándo se modificó el análisis por última vez |
 
-## 7.1.2 Toolbar
+## 7.1.2 Barra de Herramientas
 
-| Control | Description |
+| Control | Descripción |
 |---|---|
-| **+** | Create a new analysis manually — opens the analysis creation form |
-| **Paste** | Paste a previously copied analysis onto this element |
-| **Refresh** | Reload the analysis list |
-| **Auto-refresh interval** | Dropdown to set automatic refresh: Off, 1s, 5s, 10s, 15s, 30s, 1m, 5m |
-| **Export Current List as CSV** | Export the analysis list as a CSV file |
-| **Select Columns** | Show or hide columns in the list |
+| **+** | Crear un nuevo análisis manualmente — abre el formulario de creación de análisis |
+| **Pegar** | Pegar un análisis copiado previamente en este elemento |
+| **Actualizar** | Recargar la lista de análisis |
+| **Intervalo de actualización automática** | Menú desplegable para configurar la actualización automática: Desactivado, 1s, 5s, 10s, 15s, 30s, 1m, 5m |
+| **Exportar Lista Actual como CSV** | Exportar la lista de análisis como archivo CSV |
+| **Seleccionar Columnas** | Mostrar u ocultar columnas en la lista |
 
-The filter area above the list provides a **Categories** dropdown to filter by category tag, and an **AI** button to toggle the AI-assisted creation panel.
+El área de filtros sobre la lista proporciona un menú desplegable **Categorías** para filtrar por etiqueta de categoría, y un botón **IA** para alternar el panel de creación asistida por IA.
 
-## 7.1.3 Row Actions
+## 7.1.3 Acciones de Fila
 
-Hover over any analysis row and click the **⋮** (more) menu on the right to access these actions:
+Pase el cursor sobre cualquier fila de análisis y haga clic en el menú **⋮** (más) a la derecha para acceder a estas acciones:
 
-| Action | Description |
+| Acción | Descripción |
 |---|---|
-| **View** | Open the read-only detail view for this analysis |
-| **Edit** | Open the analysis in edit mode to modify its configuration |
-| **Copy** | Copy this analysis so it can be pasted onto another element |
-| **Convert to Template** | Save this analysis as a reusable analysis template in Libraries |
-| **Trend Chart Analysis** | Open a trend chart for the element, useful for inspecting analysis output |
-| **Fill History** | Re-run the analysis over historical data to backfill output attributes |
-| **Pause** | Pause the analysis — stops execution without deleting it (shows **Resume** when paused) |
-| **Delete** | Delete the analysis and optionally delete the output data it produced |
+| **Ver** | Abrir la vista de detalle de solo lectura para este análisis |
+| **Editar** | Abrir el análisis en modo de edición para modificar su configuración |
+| **Copiar** | Copiar este análisis para poder pegarlo en otro elemento |
+| **Convertir a Plantilla** | Guardar este análisis como plantilla de análisis reutilizable en la Biblioteca Base |
+| **Análisis de Tendencias** | Abrir un gráfico de tendencias para el elemento, útil para inspeccionar la salida del análisis |
+| **Recalcular Histórico** | Volver a ejecutar el análisis sobre datos históricos para rellenar los atributos de salida |
+| **Pausar** | Pausar el análisis — detiene la ejecución sin eliminarlo (muestra **Reanudar** cuando está pausado) |
+| **Eliminar** | Eliminar el análisis y opcionalmente eliminar los datos de salida que produjo |
 
-## 7.1.4 Analysis Statuses
+## 7.1.4 Estados del Análisis
 
-| Status | Meaning |
+| Estado | Significado |
 |---|---|
-| **Running** | The analysis stream is active and executing on new data as it arrives |
-| **Paused** | The analysis has been manually paused — no new computations run until resumed |
+| **Ejecutando** | El stream de análisis está activo y se ejecuta sobre los nuevos datos a medida que llegan |
+| **Pausado** | El análisis ha sido pausado manualmente — no se ejecutan nuevos cálculos hasta que se reanude |
 
-When you delete an analysis, a confirmation dialog asks whether to also delete the old output data that the analysis previously wrote.
+Al eliminar un análisis, un diálogo de confirmación pregunta si también se deben eliminar los datos de salida anteriores que el análisis escribió previamente.

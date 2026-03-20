@@ -1,34 +1,34 @@
 ---
-title: Annotations
-sidebar_label: Annotations
+title: Anotaciones
+sidebar_label: Anotaciones
 ---
 
-# 11.2 Annotations
+# 11.2 Anotaciones
 
-Annotations let you attach free-text notes to elements, events, and (in a future release) panels and dashboards. They serve as a shared log — visible to anyone with access — for recording observations, corrective actions, investigation findings, or any context that is useful to other team members.
+Las anotaciones permiten adjuntar notas de texto libre a elementos, eventos y (en una versión futura) indicadores y paneles de control. Funcionan como un registro compartido — visible para cualquier persona con acceso — para registrar observaciones, acciones correctivas, hallazgos de investigaciones o cualquier contexto útil para otros miembros del equipo.
 
-## Annotating Elements
+## Anotar elementos
 
-1. In the Explorer, select an element and click the **General** tab.
-2. Scroll down to the **Annotation** collapsible section and expand it.
-3. Click **+ New Annotation**.
-4. Type your note in the dialog that appears and click **Confirm**.
+1. En el Explorador, seleccione un elemento y haga clic en la pestaña **General**.
+2. Desplácese hacia abajo hasta la sección plegable **Annotation** y expándala.
+3. Haga clic en **+ New Annotation**.
+4. Escriba su nota en el cuadro de diálogo que aparece y haga clic en **Confirm**.
 
-The annotation is saved and appears listed under the Annotation section, showing the note text, the author, and the timestamp.
+La anotación se guarda y aparece en la lista bajo la sección Annotation, mostrando el texto de la nota, el autor y la marca de tiempo.
 
-## Annotating Events
+## Anotar eventos
 
-1. Open an event to reach its detail page and click the **General** tab.
-2. Scroll down to the **Annotation** collapsible section and expand it.
-3. Click **+ New Annotation**.
-4. Type your note and click **Confirm**.
+1. Abra un evento para acceder a su página de detalles y haga clic en la pestaña **General**.
+2. Desplácese hacia abajo hasta la sección plegable **Annotation** y expándala.
+3. Haga clic en **+ New Annotation**.
+4. Escriba su nota y haga clic en **Confirm**.
 
-Event annotations are useful for documenting what was investigated, what action was taken, or why an event was acknowledged. They complement the acknowledgment status by providing a narrative alongside the status change.
+Las anotaciones de eventos son útiles para documentar qué se investigó, qué acción se tomó o por qué se reconoció un evento. Complementan el estado de reconocimiento al proporcionar una narrativa junto al cambio de estado.
 
-## Annotating Panels and Dashboards
+## Anotar indicadores y paneles de control
 
 :::note
-Panel and dashboard annotations are planned for a future release.
+Las anotaciones en indicadores y paneles de control están planificadas para una versión futura.
 :::
 
-In an upcoming release, panels and dashboards will support annotations via a dedicated control icon on the right side. Clicking the icon opens an annotation panel that works the same way as element annotations — allowing you to add timestamped notes visible to anyone viewing that panel or dashboard.
+En una próxima versión, los indicadores y paneles de control admitirán anotaciones a través de un icono de control dedicado en el lado derecho. Al hacer clic en el icono se abre un panel de anotaciones que funciona de la misma manera que las anotaciones de elementos — lo que permite añadir notas con marca de tiempo visibles para cualquier persona que vea ese indicador o panel de control.

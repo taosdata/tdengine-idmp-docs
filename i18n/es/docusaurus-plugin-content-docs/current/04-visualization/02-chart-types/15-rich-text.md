@@ -1,70 +1,70 @@
 ---
-title: Rich Text Panel
-sidebar_label: Rich Text Panel
+title: Texto enriquecido
+sidebar_label: Texto enriquecido
 ---
 
-# 4.2.15 Rich Text Panel
+# 4.2.15 Texto enriquecido
 
-## Overview
+## Descripción general
 
-The Rich Text panel replaces the chart area with a full WYSIWYG text editor. It does not display data — instead, it provides a free-form space for documentation, instructions, reference material, or annotated diagrams that you want to embed alongside your data panels.
+El panel de texto enriquecido reemplaza el área del gráfico por un editor de texto WYSIWYG (lo que ves es lo que obtienes) completo. En lugar de mostrar datos, proporciona un área de edición libre para incrustar documentación de instrucciones, guías operativas, materiales de referencia o diagramas anotados que desee mostrar junto a los paneles de datos.
 
-![Rich text panel showing formatted content in a dashboard](../images/text-demo.png)
+![Panel de texto enriquecido que muestra contenido formateado en un dashboard](../images/text-demo.png)
 
-The Rich Text panel has no data configuration, Metrics table, Dimensions table, Axis, Limits, or Legend sections. It does not support Panel Insights since it contains no chart data.
+El panel de texto enriquecido no tiene configuración de datos, tabla de métricas, tabla de dimensiones, ejes, valores de límite ni secciones de leyenda. Como no contiene datos del gráfico, no admite la función de interpretación del panel.
 
-## When to Use
+## Cuándo usarlo
 
-Use the Rich Text panel when:
+Use el panel de texto enriquecido cuando:
 
-- You want to embed standard operating procedure (SOP) text directly on an element's panel list
-- You need to add context, instructions, or explanations alongside data panels on a dashboard
-- You want to include reference images, annotated P&ID diagrams, or links to external documents
-- You are building an operator guide that lives next to the live data
+- Quiera incrustar directamente el texto de los Procedimientos Operativos Estándar (POE) en la lista de paneles de un elemento
+- Necesite añadir descripciones de contexto, guías operativas o contenido explicativo junto a los paneles de datos en un dashboard
+- Quiera incrustar imágenes de referencia, diagramas de tuberías e instrumentación (P&ID) anotados o enlaces a documentos externos
+- Esté construyendo una guía para operadores que se muestre junto a los datos en tiempo real
 
-## Configuration
+## Configuración
 
-### Edit Mode Toolbar
+### Barra de herramientas del modo de edición
 
-In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Rich Text panel adds:
+Además de los [controles generales del modo de edición](../01-panels.md#414-modo-de-edición-de-paneles), el panel de texto enriquecido añade los siguientes controles:
 
-| Control | Description |
+| Control | Descripción |
 |---|---|
-| **Save as Image** | Download the current panel content as a PNG image |
-| **Full Screen** | Expand the editor to fill the browser window |
+| **Guardar como imagen** | Descarga el contenido del panel actual como imagen PNG |
+| **Pantalla completa** | Expande el editor para llenar la ventana del navegador |
 
-### Content Editor
+### Editor de contenido
 
-The center panel becomes a full WYSIWYG editor:
+El panel central se convierte en un editor WYSIWYG completo:
 
-![Rich text WYSIWYG editor with formatting toolbar](../images/text-edit.png)
+![Editor WYSIWYG de texto enriquecido con barra de herramientas de formato](../images/text-edit.png)
 
-The editor supports:
+El editor admite:
 
-- Text formatting: bold, italic, underline, strikethrough
-- Headings (H1–H6)
-- Font size and font family
-- Text color and background color
-- Ordered and unordered lists
-- Tables
-- Hyperlinks
-- Inline images (uploaded or from URL)
-- Video embeds
+- Formato de texto: negrita, cursiva, subrayado, tachado
+- Encabezados (H1–H6)
+- Tamaño de fuente y familia de fuentes
+- Color de texto y color de fondo
+- Listas ordenadas y no ordenadas
+- Tablas
+- Hipervínculos
+- Imágenes en línea (cargadas o mediante URL)
+- Inserción de vídeos
 
-### Graph Settings
+### Configuración del gráfico
 
-![Rich text panel background image configuration](../images/text-config.png)
+![Configuración de imagen de fondo del panel de texto enriquecido](../images/text-config.png)
 
-| Setting | Description |
+| Ajuste | Descripción |
 |---|---|
-| **Background Color** | Background color of the panel |
-| **Background Image Layout** | How a background image is positioned: None, Cover, Contain, or Tile |
-| **Background Image** | Upload an image file to use as the panel background |
+| **Color de fondo** | El color de fondo del panel |
+| **Diseño de imagen de fondo** | Cómo se posiciona la imagen de fondo: ninguno, cubrir, ajustar o mosaico |
+| **Imagen de fondo** | Carga un archivo de imagen como fondo del panel |
 
-## Example Scenarios
+## Ejemplos de uso
 
-**SOP on an element panel.** A pump element's panel list includes a Rich Text panel containing the startup and shutdown procedure. Operators navigating to the pump's panels see the SOP immediately alongside the trend charts, without switching to a separate document system.
+**Procedimientos operativos en el panel de elemento.** La lista de paneles de un elemento de bomba de agua incluye un panel de texto enriquecido con los procedimientos de arranque y parada. Cuando los operadores navegan al panel de la bomba, pueden ver los procedimientos operativos directamente junto al gráfico de tendencia sin necesidad de cambiar a un sistema de documentos separado.
 
-**Annotated P&ID on a dashboard.** A process dashboard includes a Rich Text panel containing an uploaded P&ID drawing with annotations marking the key measurement points. Operators get spatial context for the data panels displayed alongside it.
+**P&ID anotado en el dashboard.** Un dashboard de proceso incluye un panel de texto enriquecido con un diagrama P&ID cargado y anotado con los puntos de medición clave. Los operadores obtienen el contexto espacial junto a los paneles de datos.
 
-**Shift handover notes template.** A Rich Text panel on a production line dashboard provides a structured template for shift handover notes — safety observations, equipment status, outstanding issues — embedded directly in the operational view that both shifts use.
+**Plantilla de registro de cambio de turno.** Un panel de texto enriquecido en el dashboard de una línea de producción proporciona una plantilla estructurada para el registro de cambio de turno — observaciones de seguridad, estado de los equipos, problemas pendientes — incrustada directamente en la vista operativa compartida por los dos turnos.

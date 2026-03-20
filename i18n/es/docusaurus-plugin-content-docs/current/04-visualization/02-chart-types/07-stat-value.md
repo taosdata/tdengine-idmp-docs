@@ -1,57 +1,57 @@
 ---
-title: Stat Value
-sidebar_label: Stat Value
+title: Valor estadístico
+sidebar_label: Valor estadístico
 ---
 
-# 4.2.7 Stat Value
+# 4.2.7 Valor estadístico
 
-## Overview
+## Descripción general
 
-The Stat Value panel displays a single large numeric value with an optional label and timestamp. It is designed for dashboards and status boards where a key figure needs to be visible at a distance or in a summary view.
+El panel de valor estadístico muestra un único valor numérico con una fuente grande, con una etiqueta y una marca de tiempo opcionales. Es adecuado para dashboards y paneles de estado donde las métricas clave deben presentarse con claridad en pantallas grandes o vistas de resumen.
 
-![Stat value panel showing a large numeric readout](../images/stat-demo.png)
+![Ejemplo de valor estadístico](../images/stat-demo.png)
 
-The value shown is the latest data point in the selected time range. Font size, color, background, and layout are all configurable to match the visual design of the containing dashboard.
+El valor mostrado es el punto de datos más reciente en el rango de tiempo seleccionado. El tamaño de fuente, el color, el fondo y el diseño son configurables para que coincidan con el diseño visual del dashboard al que pertenece.
 
-## When to Use
+## Cuándo usarlo
 
-Use the Stat Value panel when:
+Use el panel de valor estadístico cuando:
 
-- You need a headline number on a dashboard — total production today, current temperature, active alarm count
-- You want a large, readable display for an operator screen viewed from a distance
-- You are building a KPI summary panel combining several key figures side by side
+- Necesite mostrar métricas clave en un dashboard — producción total del día, temperatura actual, número de alarmas activas
+- Quiera mostrar valores con fuente grande y fáciles de leer desde lejos en pantallas de operadores
+- Esté construyendo un panel de resumen de KPI que muestre múltiples métricas clave en paralelo
 
-For values that need context against a scale or range, use the Gauge Chart or Bar Gauge. For trend history, use the Trend Chart.
+Si necesita ver el valor en relación con una escala o rango, use el gráfico de indicador o el indicador de barra. Para ver tendencias históricas, use el gráfico de tendencia.
 
-## Configuration
+## Configuración
 
-### Edit Mode Toolbar
+### Barra de herramientas del modo de edición
 
-In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Stat Value adds:
+Además de los [controles generales del modo de edición](../01-panels.md#414-modo-de-edición-de-paneles), el valor estadístico añade los siguientes controles:
 
-| Control | Description |
+| Control | Descripción |
 |---|---|
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+| **Guardar como imagen** | Descarga la vista previa actual como imagen PNG |
+| **Pantalla completa** | Expande la vista previa del editor para llenar la ventana del navegador |
+| **Interpretar panel** | Ejecuta el análisis de IA sobre los datos de la vista previa actual |
 
-### Graph Settings
+### Configuración del gráfico
 
-| Setting | Description |
+| Ajuste | Descripción |
 |---|---|
-| **Orientation** | **Horizontal** (label and value side by side) or **Vertical** (label above value) |
-| **Display Time** | **On:** show the timestamp of the displayed value below the number. **Off:** show the value only. |
-| **Title Text size** | Font size for the metric name label (default 16) |
-| **Title Text color** | Color of the label text |
-| **Value Text size** | Font size for the numeric value (default 48) |
-| **Value Text color** | Color of the value text |
-| **Background Color** | Panel background color |
-| **Width** | Fixed pixel width for the panel (leave blank for automatic sizing) |
+| **Diseño** | **Horizontal** (la etiqueta y el valor en paralelo) o **Vertical** (la etiqueta encima del valor) |
+| **Mostrar hora** | **Activado:** muestra la marca de tiempo del punto de datos debajo del valor. **Desactivado:** muestra solo el valor. |
+| **Tamaño de fuente del nombre** | Tamaño de fuente de la etiqueta del nombre de la métrica (predeterminado: 16) |
+| **Color de fuente del nombre** | Color del texto de la etiqueta |
+| **Tamaño de fuente del valor** | Tamaño de fuente del valor (predeterminado: 48) |
+| **Color de fuente del valor** | Color del texto del valor |
+| **Color de fondo** | Color de fondo del panel |
+| **Ancho** | Ancho fijo en píxeles del panel (déjelo vacío para ajuste automático de tamaño) |
 
-## Example Scenarios
+## Ejemplos de uso
 
-**Dashboard headline.** A plant manager's dashboard includes three Stat Value panels in a row: total energy consumed today, current plant output in units per hour, and active alarm count. Each uses a large font size (64) with a white value on a dark background, readable from across the control room.
+**Métricas clave del dashboard.** El dashboard de un gerente de fábrica dispone en horizontal tres paneles de valor estadístico: consumo total de energía del día, producción por hora actual y número de alarmas activas. Cada panel usa fuente grande (64), fondo oscuro con valores en blanco, legibles con claridad desde lejos en la sala de control.
 
-**Shift summary KPI.** At shift handover, a Stat Value panel displays total units produced in the last 8 hours. Display Time is enabled so the operator can confirm when the value was last updated.
+**KPI de resumen de turno.** En el cambio de turno, el panel de valor estadístico muestra la producción total de las últimas 8 horas. Con la función "Mostrar hora" activada, los operadores pueden confirmar cuándo se actualizó por última vez el valor.
 
-**Temperature watchpoint.** A critical furnace temperature is displayed as a Stat Value with Value Text color set to red when the attribute's Hi limit is exceeded, providing an immediate visual alert within the dashboard.
+**Punto de monitoreo de temperatura.** La temperatura de un horno crítico se muestra como valor estadístico, con el color de fuente del valor establecido en rojo cuando se supera el límite superior del atributo, proporcionando una alerta visual inmediata dentro del dashboard.

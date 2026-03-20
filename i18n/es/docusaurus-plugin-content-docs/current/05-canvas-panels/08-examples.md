@@ -1,12 +1,12 @@
 ---
-title: Examples
-sidebar_label: Examples
+title: Ejemplos
+sidebar_label: Ejemplos
 ---
 
-# 5.8 Examples
+# 5.8 Ejemplos
 
-The following showcases industrial monitoring screens built with IDMP Canvas Panel for your reference.
+A continuación se muestran algunas pantallas de monitorización industrial construidas con el panel de lienzo de IDMP para su referencia e inspiración.
 
-:::note Coming Soon
-Example screenshots will be added in a future release.
+:::note Próximamente
+Las capturas de pantalla de ejemplo se añadirán en una versión futura.
 :::

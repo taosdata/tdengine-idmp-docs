@@ -1,52 +1,52 @@
 ---
-title: Panel Insights
-sidebar_label: Panel Insights
+title: Información Inteligente del Panel
+sidebar_label: Información Inteligente del Panel
 ---
 
-# 4.3 Panel Insights
+# 4.3 Información Inteligente del Panel
 
-Panel Insights is the AI analysis feature built directly into every panel. With one click, the AI engine reads the chart data currently displayed, reasons about it in the context of the element's asset model and attribute metadata, and produces a written interpretation of what the data shows.
+La información inteligente del panel es una función de análisis con IA integrada directamente en cada panel. Con un solo clic, el motor de IA lee los datos del gráfico actualmente visualizado, los analiza en el contexto del modelo de activos y los metadatos de propiedades del elemento, y genera un informe escrito con la interpretación de lo que muestran los datos.
 
-## 4.3.1 Accessing Panel Insights
+## 4.3.1 Acceso a la Información Inteligente del Panel
 
-Panel Insights is available in both view mode and edit mode:
+La información inteligente del panel está disponible tanto en el modo de visualización como en el modo de edición:
 
-- **View mode:** Click the **Panel Insights** button at the right end of the toolbar. The button is labeled "Panel Insights" and appears as the last control in the toolbar row.
-- **Edit mode:** Click the **Panel Insights** button in the edit mode toolbar to analyze the current preview data before saving.
+- **Modo de visualización:** Haga clic en el botón **Información Inteligente del Panel** situado en el extremo derecho de la barra de herramientas. El botón aparece etiquetado como "Información Inteligente del Panel" y se muestra como el último control de la fila de la barra.
+- **Modo de edición:** Haga clic en el botón **Información Inteligente del Panel** de la barra de herramientas en modo de edición para analizar los datos de la vista previa actual antes de guardar.
 
-The insight report opens in a slide-out panel to the right of the chart.
+El informe de información inteligente se abre en un panel deslizante a la derecha del gráfico.
 
-## 4.3.2 What Panel Insights Analyzes
+## 4.3.2 Qué Analiza la Información Inteligente del Panel
 
-The AI engine has access to:
+El motor de IA tiene acceso a:
 
-- The data currently plotted in the chart, including all series and the selected time range
-- The element's position in the asset hierarchy (site, production line, machine)
-- The attribute's metadata: engineering unit, configured limits (LoLo, Lo, Target, Hi, HiHi, Maximum), and description
-- Any active sliding window or aggregation settings
+- Los datos actualmente representados en el gráfico, incluidas todas las series y el rango de tiempo seleccionado
+- La posición del elemento en la jerarquía de activos (sitio, línea de producción, máquina)
+- Los metadatos de la propiedad: unidad de ingeniería, límites configurados (MínMin, Mín, Objetivo, Máx, MáxMáx, Máximo) y descripción
+- Cualquier ventana deslizante activa o configuración de agregación
 
-The insight report is generated in the context of this full asset picture — not just the raw numbers. A value that exceeds the Hi limit is flagged as a threshold violation; a gradual upward trend is identified as a trend and distinguished from noise; an anomalous spike is called out and its timing noted.
+El informe de información inteligente se genera en el contexto de este panorama completo del activo, no solo de los números brutos. Un valor que supera el límite Máx se marca como violación de umbral; una tendencia ascendente gradual se identifica como tendencia y se distingue del ruido; un pico anómalo se señala y se registra su momento de ocurrencia.
 
-## 4.3.3 What the Insight Report Contains
+## 4.3.3 Contenido del Informe de Información Inteligente
 
-A typical insight report covers:
+Un informe de información inteligente típico cubre:
 
-**Trend analysis.** The AI describes the overall direction of the data over the selected time range — rising, falling, stable, or cyclical — and characterizes the magnitude and rate of change.
+**Análisis de tendencias.** La IA describe la dirección general de los datos en el rango de tiempo seleccionado —ascendente, descendente, estable o cíclica— y caracteriza la magnitud y la velocidad del cambio.
 
-**Threshold violations.** If any values crossed the configured limits (Lo, Hi, LoLo, HiHi), the report notes when they occurred, how long they lasted, and how far the value deviated from the limit.
+**Violaciones de umbral.** Si algún valor cruzó los límites configurados (Mín, Máx, MínMin, MáxMáx), el informe indica cuándo ocurrió, cuánto tiempo duró y en qué medida el valor se desvió del límite.
 
-**Anomalies and notable points.** The AI identifies values that appear anomalous relative to the surrounding data — sudden spikes, unexpected drops, or points that deviate significantly from the trend.
+**Anomalías y puntos destacables.** La IA identifica valores que parecen anómalos con respecto a los datos circundantes: picos repentinos, caídas inesperadas o puntos que se desvían significativamente de la tendencia.
 
-**Pattern identification.** For multi-day or multi-week time ranges, the AI identifies recurring patterns — daily cycles, weekend vs. weekday differences, or batch-correlated behavior.
+**Identificación de patrones.** Para rangos de tiempo de varios días o semanas, la IA identifica patrones recurrentes: ciclos diarios, diferencias entre fines de semana y días laborables, o comportamientos correlacionados con lotes.
 
-**Summary and recommendation.** The report closes with a plain-language summary of the overall data picture and, where applicable, a suggested action or further investigation.
+**Resumen y recomendación.** El informe concluye con un resumen en lenguaje claro de la situación general de los datos y, cuando procede, sugiere una acción o una investigación adicional.
 
-## 4.3.4 Using Insights Effectively
+## 4.3.4 Uso Efectivo de la Función de Información Inteligente
 
-Panel Insights is most useful when:
+La información inteligente del panel es más útil cuando:
 
-- **The time range is meaningful.** Insights generated from a 7-day range will be richer than those from 1 hour, because the AI can identify patterns and trends that span multiple operating cycles.
-- **Attribute limits are configured.** Without defined limits, the AI cannot distinguish normal from abnormal — it can only describe the data statistically. With limits, the insight becomes operationally meaningful.
-- **The attribute has a clear engineering context.** An attribute named `Temperature_Bearing_A` with a unit of °C and a Hi limit of 85 yields a better insight than an unnamed raw sensor with no metadata.
+- **El rango de tiempo es significativo.** Los hallazgos generados a partir de un rango de 7 días serán más ricos que los de 1 hora, porque la IA puede identificar patrones y tendencias que abarcan múltiples ciclos de operación.
+- **Los límites de las propiedades están configurados.** Sin límites definidos, la IA no puede distinguir lo normal de lo anormal: solo puede describir los datos estadísticamente. Con los límites establecidos, la información inteligente adquiere relevancia operacional.
+- **La propiedad tiene un contexto de ingeniería claro.** Una propiedad llamada `Temperatura_Rodamiento_A` con unidad °C y límite Máx de 85 genera mejores hallazgos que un sensor bruto sin nombre y sin metadatos.
 
-Insights are generated on demand and are not stored. Each click of the Panel Insights button regenerates the analysis against the current data and time range. If you change the time range or add a metric, click Panel Insights again to refresh the report.
+Los hallazgos se generan bajo demanda y no se almacenan. Cada clic en el botón de información inteligente del panel regenera el análisis con los datos y el rango de tiempo actuales. Si cambia el rango de tiempo o añade una métrica, vuelva a hacer clic en Información Inteligente del Panel para actualizar el informe.

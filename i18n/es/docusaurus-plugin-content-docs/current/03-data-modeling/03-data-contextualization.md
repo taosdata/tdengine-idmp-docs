@@ -1,52 +1,52 @@
 ---
-title: Data Contextualization
-sidebar_label: Data Contextualization
+title: Contextualización de datos
+sidebar_label: Contextualización de datos
 ---
 
-# 3.3 Data Contextualization
+# 3.3 Contextualización de datos
 
-A column named `current` in a database table is just a number. It becomes useful only when you know which meter produced it, where that meter is installed, what unit the value is in, and what range is considered normal. **Data contextualization** is the process of attaching this surrounding knowledge to your data — turning raw measurements into a rich, queryable, AI-ready industrial dataset.
+Una columna llamada `current` en una tabla de base de datos es solo un número. Se vuelve útil únicamente cuando sabe qué medidor la produjo, dónde está instalado ese medidor, en qué unidad está el valor y qué rango se considera normal. La **contextualización de datos** es el proceso de adjuntar este conocimiento circundante a sus datos — transformando mediciones sin procesar en un conjunto de datos industrial rico, consultable y preparado para la IA.
 
-TDengine IDMP builds context through three complementary mechanisms: elements, attributes, and events. Each contributes a different kind of information, and together they give every data point a complete industrial identity.
+TDengine IDMP construye el contexto a través de tres mecanismos complementarios: elementos, atributos y eventos. Cada uno aporta un tipo diferente de información, y juntos dan a cada punto de datos una identidad industrial completa.
 
-## 3.3.1 Why Contextualization Matters
+## 3.3.1 Por qué importa la contextualización
 
-As described in [Section 1.2](../01-introduction.md#12-why-industrial-data-foundations-matter-in-the-ai-era), AI cannot reason about raw, decontextualized signals. A vibration reading of `4.7` means nothing to an AI system unless it knows which motor produced it, what units the value is in, what the normal operating range is, and what else was happening on that production line at that moment. This is why TDengine IDMP sits between the time-series database and the intelligence layer — it is the semantics layer that transforms raw storage into something AI can reason about.
+Como se describe en la [Sección 1.2](../01-introduction.md#12-why-industrial-data-foundations-matter-in-the-ai-era), la IA no puede razonar sobre señales sin procesar y descontextualizadas. Una lectura de vibración de `4.7` no significa nada para un sistema de IA a menos que sepa qué motor la produjo, en qué unidades está el valor, cuál es el rango de operación normal y qué más estaba ocurriendo en esa línea de producción en ese momento. Por eso TDengine IDMP se sitúa entre la base de datos de series temporales y la capa de inteligencia — es la capa semántica que transforma el almacenamiento sin procesar en algo sobre lo que la IA puede razonar.
 
-But the value of contextualization is not limited to AI. Before AI, the cost showed up differently: as institutional knowledge that existed only in the heads of experienced engineers, as analytics teams rebuilding the same data mappings for every new project, as operators spending hours tracing a signal back to a physical device when something went wrong. Contextualization solves all of these problems at once — it encodes the knowledge about your operation into the data model itself, where it is permanent, searchable, and available to every user and every system.
+Pero el valor de la contextualización no se limita a la IA. Antes de la IA, el coste se manifestaba de otra manera: como conocimiento institucional que existía solo en la mente de ingenieros experimentados, como equipos de análisis que reconstruían los mismos mapeos de datos para cada nuevo proyecto, como operadores que pasaban horas rastreando una señal hasta un dispositivo físico cuando algo iba mal. La contextualización resuelve todos estos problemas a la vez — codifica el conocimiento sobre su operación en el propio modelo de datos, donde es permanente, consultable y está disponible para cada usuario y cada sistema.
 
-The work of this chapter is the work of building that knowledge layer. Every element described, every unit configured, every limit set, and every document attached makes the entire platform more capable — not just for today's questions, but for every analysis and AI query that will ever be run against this data.
+El trabajo de este capítulo es construir esa capa de conocimiento. Cada elemento descrito, cada unidad configurada, cada límite establecido y cada documento adjunto hace que toda la plataforma sea más capaz — no solo para las preguntas de hoy, sino para cada análisis y consulta de IA que se ejecute sobre estos datos en el futuro.
 
-## 3.3.2 Context from Elements
+## 3.3.2 Contexto de los elementos
 
-An element represents a physical or logical asset. The contextual information attached to an element describes what that asset *is*:
+Un elemento representa un activo físico o lógico. La información contextual adjunta a un elemento describe lo que ese activo *es*:
 
-- **Name and hierarchy** — The element's name and its position in the asset tree tell users and systems which asset they are looking at and how it relates to other assets (plant → line → machine → sensor).
-- **Template** — Signals the class of asset this element belongs to, so users immediately know what attributes and behaviors to expect.
-- **Categories** — Business-level labels (e.g., asset type, system, status) that make elements filterable and groupable across large catalogs.
-- **Description** — A human-readable statement of what this asset does or represents.
-- **Location** — GPS coordinates (Longitude, Latitude, Altitude) that place the asset on a map and enable spatial analysis.
-- **Additional Attributes** — Free-form key-value pairs for static asset metadata that does not change over time: manufacturer, model number, serial number, installation date, rated specifications, maintenance contact, and so on.
-- **Related Documents** — Engineering manuals, P&ID drawings, calibration reports, and other reference files attached directly to the element. These documents are indexed by the AI engine and used to provide more accurate, asset-specific answers in AI Chat.
-- **Annotations** — Free-text observations and notes written by engineers or operators, such as maintenance records, incident reports, or configuration change notes.
+- **Nombre y jerarquía** — El nombre del elemento y su posición en el árbol de activos informan a los usuarios y sistemas qué activo están viendo y cómo se relaciona con otros activos (planta → línea → máquina → sensor).
+- **Plantilla** — Indica la clase de activo a la que pertenece este elemento, de modo que los usuarios sepan inmediatamente qué atributos y comportamientos esperar.
+- **Categorías** — Etiquetas de nivel empresarial (p. ej., tipo de activo, sistema, estado) que hacen que los elementos sean filtrables y agrupables en catálogos grandes.
+- **Descripción** — Una declaración legible de lo que hace o representa este activo.
+- **Ubicación** — Coordenadas GPS (longitud, latitud, altitud) que sitúan el activo en un mapa y habilitan el análisis espacial.
+- **Atributos adicionales** — Pares clave-valor de formato libre para metadatos de activo estáticos que no cambian con el tiempo: fabricante, número de modelo, número de serie, fecha de instalación, especificaciones nominales, contacto de mantenimiento, etc.
+- **Documentos relacionados** — Manuales de ingeniería, planos P&ID, informes de calibración y otros archivos de referencia adjuntos directamente al elemento. Estos documentos son indexados por el motor de IA y se usan para proporcionar respuestas más precisas y específicas del activo en el Chat de IA.
+- **Anotaciones** — Observaciones y notas de texto libre escritas por ingenieros u operadores, como registros de mantenimiento, informes de incidentes o notas de cambios de configuración.
 
-All of this information is searchable and available to every feature in TDengine IDMP — dashboards, analyses, event detection, and AI Chat — so that users never have to cross-reference external systems to understand what a piece of data means.
+Toda esta información es consultable y está disponible para cada función de TDengine IDMP — dashboards, análisis, detección de eventos y Chat de IA — de modo que los usuarios nunca tengan que hacer referencias cruzadas a sistemas externos para entender qué significa un dato.
 
-## 3.3.3 Context from Attributes
+## 3.3.3 Contexto de los atributos
 
-An attribute represents a specific measurement of an element. The contextual information attached to an attribute describes what that measurement *means*:
+Un atributo representa una medición específica de un elemento. La información contextual adjunta a un atributo describe lo que esa medición *significa*:
 
-- **Description and Categories** — A plain-language explanation of the measurement and classification tags that group related attributes together.
-- **Engineering units** — The UOM Class, Default UOM, and Display UOM tell the system and its users what physical quantity is being measured and in what unit it is expressed. TDengine IDMP uses this information to perform unit conversions automatically in visualizations and analyses.
-- **Limits** — The Lo, LoLo, Hi, HiHi, Target, Minimum, and Maximum thresholds define the normal operating envelope of the measurement. These limits drive event detection, alarm coloring in dashboards, and the AI engine's assessment of whether current conditions are normal or abnormal.
-- **Additional Properties** — Custom key-value pairs for measurement-specific metadata, such as the instrument tag (e.g., `TIT-101`), calibration date, sensor manufacturer, or measurement range.
+- **Descripción y categorías** — Una explicación en lenguaje simple de la medición y etiquetas de clasificación que agrupan atributos relacionados.
+- **Unidades de ingeniería** — La Clase de UdM, la UdM predeterminada y la UdM de visualización informan al sistema y a sus usuarios qué cantidad física se está midiendo y en qué unidad se expresa. TDengine IDMP usa esta información para realizar conversiones de unidades automáticamente en visualizaciones y análisis.
+- **Límites** — Los umbrales Lo, LoLo, Hi, HiHi, Objetivo, Mínimo y Máximo definen el rango de operación normal de la medición. Estos límites impulsan la detección de eventos, el coloreado de alarmas en los dashboards y la evaluación del motor de IA sobre si las condiciones actuales son normales o anómalas.
+- **Propiedades adicionales** — Pares clave-valor personalizados para metadatos específicos de la medición, como la etiqueta del instrumento (p. ej., `TIT-101`), la fecha de calibración, el fabricante del sensor o el rango de medición.
 
-Without this context, a value of `5.45` is meaningless. With it, TDengine IDMP knows it is `5.45 A` of current on meter `em-12`, within a normal range of 0–10 A, and that anything above 8 A should trigger a high alarm.
+Sin este contexto, un valor de `5.45` no tiene sentido. Con él, TDengine IDMP sabe que se trata de `5.45 A` de corriente en el medidor `em-12`, dentro de un rango normal de 0–10 A, y que cualquier valor por encima de 8 A debería activar una alarma alta.
 
-## 3.3.4 Context from Events
+## 3.3.4 Contexto de los eventos
 
-Events add a temporal dimension to context. When an event rule triggers — for example, when current exceeds the HiHi limit, or when a machine transitions from running to stopped — TDengine IDMP records what happened, when it happened, and on which asset.
+Los eventos añaden una dimensión temporal al contexto. Cuando se activa una regla de evento — por ejemplo, cuando la corriente supera el límite HiHi, o cuando una máquina pasa del estado en marcha al detenido — TDengine IDMP registra qué ocurrió, cuándo ocurrió y en qué activo.
 
-This event history contextualizes your time-series data in a way that static metadata cannot: it annotates specific moments in the data stream with operational meaning. When a user or the AI engine reviews the history of an attribute, the associated event records make it possible to distinguish a normal operating fluctuation from an alarm condition, a planned shutdown from an unexpected failure.
+Este historial de eventos contextualiza los datos de series temporales de una manera que los metadatos estáticos no pueden: anota momentos específicos en el flujo de datos con significado operativo. Cuando un usuario o el motor de IA revisa el historial de un atributo, los registros de eventos asociados permiten distinguir una fluctuación normal de operación de una condición de alarma, o una parada planificada de un fallo inesperado.
 
-Events are configured and managed in detail in Chapter 6. Their role in the data model is to serve as dynamic, condition-driven context that complements the static context provided by element and attribute metadata.
+Los eventos se configuran y gestionan en detalle en el Capítulo 6. Su papel en el modelo de datos es servir como contexto dinámico y basado en condiciones que complementa el contexto estático proporcionado por los metadatos de elementos y atributos.

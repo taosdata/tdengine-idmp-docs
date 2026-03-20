@@ -1,321 +1,321 @@
 ---
-title: Attributes
-sidebar_label: Attributes
+title: Atributos
+sidebar_label: Atributos
 ---
 
-# 3.2 Attributes
+# 3.2 Atributos
 
-Attributes define the measurable properties and characteristics of an element. They are the bridge between the physical behavior of an asset and the data stored in TDengine TSDB — turning raw numbers into named, typed, and unit-aware engineering values.
+Los atributos definen las propiedades y características medibles de un elemento. Son el puente entre el comportamiento físico de un activo y los datos almacenados en TDengine TSDB — transformando números sin procesar en valores de ingeniería con nombre, tipo y unidad de medida.
 
-## 3.2.1 What is an Attribute
+## 3.2.1 Qué es un atributo
 
-An attribute is a named property of an element that holds or references a value. For a pump element, attributes might include flow rate, outlet pressure, motor temperature, and operating status. For a smart meter, they might include current, voltage, power, and device ID.
+Un atributo es una propiedad con nombre de un elemento que contiene o referencia un valor. Para un elemento de tipo bomba, los atributos podrían incluir caudal, presión de salida, temperatura del motor y estado operativo. Para un medidor inteligente, podrían incluir corriente, tensión, potencia e ID de dispositivo.
 
-Attributes give context to raw data. Instead of querying a database column by its technical name, users and applications can reference data by a meaningful attribute name within a well-understood asset hierarchy.
+Los atributos dan contexto a los datos sin procesar. En lugar de consultar una columna de base de datos por su nombre técnico, los usuarios y las aplicaciones pueden referenciar los datos por un nombre de atributo significativo dentro de una jerarquía de activos bien definida.
 
-## 3.2.2 Attribute Types
+## 3.2.2 Tipos de atributo
 
-The **Data Reference Type** determines where an attribute's value comes from. There are four types:
+El **Tipo de referencia de datos** determina de dónde proviene el valor de un atributo. Hay cuatro tipos:
 
 ### 1. TDengine Metric
 
-References a metric column (a time-series measurement column) in a TDengine TSDB table. The attribute value is read in real time as new data is ingested. Use this type for any value that changes over time — temperature, pressure, flow rate, current, voltage, and so on.
+Referencia una columna de métrica (una columna de medición de serie temporal) en una tabla de TDengine TSDB. El valor del atributo se lee en tiempo real a medida que se ingieren nuevos datos. Utilice este tipo para cualquier valor que cambie con el tiempo — temperatura, presión, caudal, corriente, tensión, etc.
 
-The Data Reference Setting format is:
+El formato de la Configuración de referencia de datos es:
 
 ```text
 ConnectionName/DatabaseName/TableName/ColumnName
 ```
 
-Example: `TDengine/idmp_sample_utility/em-12/current`
+Ejemplo: `TDengine/idmp_sample_utility/em-12/current`
 
 ### 2. TDengine Tag
 
-References a tag value in a TDengine TSDB table. Tags are static metadata fields attached to a table (such as device ID, location, or installation floor). Use this type for attributes whose values come from TSDB tags rather than time-series columns.
+Referencia un valor de etiqueta en una tabla de TDengine TSDB. Las etiquetas son campos de metadatos estáticos adjuntos a una tabla (como ID de dispositivo, ubicación o planta de instalación). Utilice este tipo para atributos cuyos valores provienen de etiquetas de TSDB en lugar de columnas de series temporales.
 
-The format is the same as TDengine Metric:
+El formato es el mismo que TDengine Metric:
 
 ```text
 ConnectionName/DatabaseName/TableName/TagName
 ```
 
-Example: `TDengine/idmp_sample_utility/em-17/location`
+Ejemplo: `TDengine/idmp_sample_utility/em-17/location`
 
-### 3. Formula
+### 3. Fórmula
 
-A calculated attribute whose value is derived from an expression referencing other attributes of the same element. The expression is converted to a TDengine SQL expression and executed against TDengine TSDB. The output must be numeric.
+Un atributo calculado cuyo valor se deriva de una expresión que referencia otros atributos del mismo elemento. La expresión se convierte en una expresión SQL de TDengine y se ejecuta contra TDengine TSDB. La salida debe ser numérica.
 
-Example expression:
+Expresión de ejemplo:
 
 ```text
 log(current) * voltage + 10
 ```
 
-The special replacement parameter `TIME` is available — it is substituted with the current local time in milliseconds. You can click **Evaluate** in the expression editor to test and validate the formula before saving. See [Section 3.2.9](#329-expression-editor) for the full Expression Editor reference.
+El parámetro de sustitución especial `TIME` está disponible — se sustituye por la hora local actual en milisegundos. Puede hacer clic en **Evaluar** en el editor de expresiones para probar y validar la fórmula antes de guardar. Consulte la [Sección 3.2.9](#329-expression-editor) para la referencia completa del Editor de expresiones.
 
 :::note
-Formula attributes can only reference attributes of the same element. To use a value from another element, add a new attribute to the current element that maps to the same data source.
+Los atributos de fórmula solo pueden referenciar atributos del mismo elemento. Para usar un valor de otro elemento, añada un nuevo atributo al elemento actual que apunte a la misma fuente de datos.
 :::
 
-### 4. String Builder
+### 4. Constructor de cadenas
 
-Similar to Formula but the output is a string. The input can be any attribute of the current element (not limited to numeric types). Common functions include:
+Similar a Fórmula pero la salida es una cadena. La entrada puede ser cualquier atributo del elemento actual (no limitado a tipos numéricos). Las funciones más comunes incluyen:
 
-- `CONCAT(...)` — concatenate multiple strings
-- `SUBSTR(str, start, length)` — extract a substring
-- `CAST(value AS varchar)` — convert a non-string value to string
+- `CONCAT(...)` — concatenar múltiples cadenas
+- `SUBSTR(str, start, length)` — extraer una subcadena
+- `CAST(value AS varchar)` — convertir un valor no cadena a cadena
 
-Replacement parameters beyond `TIME` are also available, such as the current element name, current attribute name, and the template name.
+También están disponibles parámetros de sustitución más allá de `TIME`, como el nombre del elemento actual, el nombre del atributo actual y el nombre de la plantilla.
 
-Example expression:
+Expresión de ejemplo:
 
 ```text
 CONCAT(${Template#name}, 'Device', ${attributes['Device ID']}, ' voltage is ', CAST(${attributes['Voltage']} AS varchar), 'V')
 ```
 
 :::note
-Use `CONCAT()` to join strings — the `+` operator cannot be used for string concatenation. Always use `CAST()` to convert numeric attributes to string before passing them to `CONCAT()`.
+Use `CONCAT()` para unir cadenas — el operador `+` no puede usarse para la concatenación de cadenas. Utilice siempre `CAST()` para convertir atributos numéricos a cadena antes de pasarlos a `CONCAT()`.
 :::
 
-## 3.2.3 Attribute Properties
+## 3.2.3 Propiedades de los atributos
 
-Every attribute has the following configurable properties:
+Cada atributo tiene las siguientes propiedades configurables:
 
-### Basic fields
+### Campos básicos
 
-| Property | Description |
+| Propiedad | Descripción |
 |---|---|
-| **Name** | A unique name for the attribute within its element |
-| **Description** | A human-readable explanation of what the attribute measures or represents |
-| **Categories** | One or more tags for grouping and filtering attributes within the Attributes tab |
-| **Value Type** | The data type of the value: `Float`, `Double`, `Int`, `BigInt`, `TinyInt`, `SmallInt`, `Bool`, `Nchar`, `Varchar`, `Timestamp` |
-| **Default Value** | The value returned when no data is available from the data source |
-| **UOM Class** | The physical quantity category (e.g., Electric Current, Temperature, Pressure). Selecting a UOM Class filters the available unit options for Default UOM and Display UOM. |
-| **Default UOM** | The unit in which the attribute value is stored (e.g., ampere, °C, bar) |
-| **Display UOM** | The unit used when displaying the value in panels and dashboards. Can differ from Default UOM — IDMP applies the conversion automatically. |
-| **Display Digits** | The number of decimal places shown when displaying the value |
-| **Data Reference Type** | Where the attribute value comes from: TDengine Metric, TDengine Table, or None (see [3.2.2](#322-attribute-types)) |
-| **Data Reference Setting** | The path to the TDengine TSDB data source in the format `database/table/column` |
-| **Path** | The full path of the attribute within the asset model (read-only, auto-generated) |
+| **Nombre** | Un nombre único para el atributo dentro de su elemento |
+| **Descripción** | Una explicación legible de lo que el atributo mide o representa |
+| **Categorías** | Una o más etiquetas para agrupar y filtrar atributos dentro de la pestaña Atributos |
+| **Tipo de valor** | El tipo de datos del valor: `Float`, `Double`, `Int`, `BigInt`, `TinyInt`, `SmallInt`, `Bool`, `Nchar`, `Varchar`, `Timestamp` |
+| **Valor predeterminado** | El valor devuelto cuando no hay datos disponibles de la fuente de datos |
+| **Clase de UdM** | La categoría de cantidad física (p. ej., Corriente eléctrica, Temperatura, Presión). Seleccionar una Clase de UdM filtra las opciones de unidad disponibles para UdM predeterminada y UdM de visualización. |
+| **UdM predeterminada** | La unidad en la que se almacena el valor del atributo (p. ej., amperio, °C, bar) |
+| **UdM de visualización** | La unidad usada al mostrar el valor en paneles y dashboards. Puede diferir de la UdM predeterminada — IDMP aplica la conversión automáticamente. |
+| **Dígitos de visualización** | El número de decimales mostrados al visualizar el valor |
+| **Tipo de referencia de datos** | De dónde proviene el valor del atributo: TDengine Metric, TDengine Tag o Ninguno (consulte [3.2.2](#322-attribute-types)) |
+| **Configuración de referencia de datos** | La ruta a la fuente de datos de TDengine TSDB en el formato `base_de_datos/tabla/columna` |
+| **Ruta** | La ruta completa del atributo dentro del modelo de activos (solo lectura, generada automáticamente) |
 
-### Limits Configuration
+### Configuración de límites
 
-Define operational thresholds for the attribute. Each limit has a name and a numeric value:
+Defina umbrales operativos para el atributo. Cada límite tiene un nombre y un valor numérico:
 
-| Limit | Meaning |
+| Límite | Significado |
 |---|---|
-| **Minimum** | The lowest physically possible or acceptable value |
-| **LoLo** | Low-Low alarm threshold — critical low condition |
-| **Lo** | Low alarm threshold — warning low condition |
-| **Target** | The desired setpoint or normal operating value |
-| **Hi** | High alarm threshold — warning high condition |
-| **HiHi** | High-High alarm threshold — critical high condition |
-| **Maximum** | The highest physically possible or acceptable value |
+| **Mínimo** | El valor más bajo físicamente posible o aceptable |
+| **LoLo** | Umbral de alarma bajo-bajo — condición crítica baja |
+| **Lo** | Umbral de alarma bajo — condición de advertencia baja |
+| **Objetivo** | El punto de ajuste deseado o valor normal de operación |
+| **Hi** | Umbral de alarma alto — condición de advertencia alta |
+| **HiHi** | Umbral de alarma alto-alto — condición crítica alta |
+| **Máximo** | El valor más alto físicamente posible o aceptable |
 
-Each limit entry also has an optional **Attribute** field — you can link a limit to another attribute rather than a fixed value, allowing dynamic limits that change based on real-time conditions.
+Cada entrada de límite también tiene un campo **Atributo** opcional — puede vincular un límite a otro atributo en lugar de un valor fijo, permitiendo límites dinámicos que cambian según las condiciones en tiempo real.
 
-### Forecast Configuration
+### Configuración de pronóstico
 
-Configure AI-based forecasting for this attribute:
+Configure el pronóstico basado en IA para este atributo:
 
-| Option | Description |
+| Opción | Descripción |
 |---|---|
-| **TDgpt** | Use TDengine's built-in time-series forecasting engine (TDgpt) to predict future values |
-| **External** | Connect to an external forecasting service via a configured endpoint |
-| **None** | No forecasting (default) |
+| **TDgpt** | Usar el motor de pronóstico de series temporales integrado de TDengine (TDgpt) para predecir valores futuros |
+| **Externo** | Conectar a un servicio de pronóstico externo a través de un endpoint configurado |
+| **Ninguno** | Sin pronóstico (predeterminado) |
 
-### Additional Properties
+### Propiedades adicionales
 
-Free-form key-value pairs for storing any custom metadata specific to the attribute (e.g., instrument tag, calibration date, sensor model). Click **+** to add a new entry.
+Pares clave-valor de formato libre para almacenar cualquier metadato personalizado específico del atributo (p. ej., etiqueta de instrumento, fecha de calibración, modelo de sensor). Haga clic en **+** para añadir una nueva entrada.
 
-### Configuration flags
+### Indicadores de configuración
 
-| Flag | Description |
+| Indicador | Descripción |
 |---|---|
-| **Constant Item** | Marks this attribute as a constant — its value does not change over time |
-| **Hidden** | Hides the attribute from the default Attributes list. Hidden attributes are only visible when the **Show Hidden Attributes** toggle is enabled. |
-| **Excluded** | Excludes the attribute from analyses and AI-generated insights |
+| **Elemento constante** | Marca este atributo como constante — su valor no cambia con el tiempo |
+| **Oculto** | Oculta el atributo de la lista predeterminada de Atributos. Los atributos ocultos solo son visibles cuando el interruptor **Mostrar atributos ocultos** está activado. |
+| **Excluido** | Excluye el atributo de los análisis y los conocimientos generados por IA |
 
-## 3.2.4 Browsing Attributes
+## 3.2.4 Exploración de atributos
 
-To view the attributes of an element:
+Para ver los atributos de un elemento:
 
-1. Select the element in the asset tree.
-2. Click the **Attributes** tab in the element detail pane.
+1. Seleccione el elemento en el árbol de activos.
+2. Haga clic en la pestaña **Atributos** en el panel de detalles del elemento.
 
-The attributes list shows: Name, Description, current Value, Value Type, Data Reference type, Last Update Time, and Data Reference Setting.
+La lista de atributos muestra: Nombre, Descripción, Valor actual, Tipo de valor, Tipo de referencia de datos, Hora de última actualización y Configuración de referencia de datos.
 
-Use the **Categories** dropdown to filter by category. Toggle **Show Hidden Attributes** to include attributes marked as Hidden.
+Use el desplegable **Categorías** para filtrar por categoría. Active **Mostrar atributos ocultos** para incluir los atributos marcados como ocultos.
 
-Click any attribute name to open its full detail view.
+Haga clic en cualquier nombre de atributo para abrir su vista de detalle completa.
 
-## 3.2.5 Creating Attributes
+## 3.2.5 Creación de atributos
 
-To add a new attribute to an element:
+Para añadir un nuevo atributo a un elemento:
 
-1. Select the element and click the **Attributes** tab.
-2. Click the **+** icon in the toolbar (top right of the Attributes tab).
-3. Fill in the attribute form:
-   - Enter **Name** and **Description**.
-   - Select **Value Type** and set a **Default Value** if needed.
-   - Select **UOM Class**, then choose **Default UOM** and **Display UOM**.
-   - Set **Display Digits**.
-   - Select **Data Reference Type** and enter the **Data Reference Setting** path.
-   - Optionally expand and configure **Limits Configuration**, **Forecast Configuration**, and **Additional Properties**.
-   - Set **Configuration** flags (Hidden, Excluded) as needed.
-4. Click **Save**.
+1. Seleccione el elemento y haga clic en la pestaña **Atributos**.
+2. Haga clic en el icono **+** en la barra de herramientas (parte superior derecha de la pestaña Atributos).
+3. Complete el formulario del atributo:
+   - Introduzca el **Nombre** y la **Descripción**.
+   - Seleccione el **Tipo de valor** y establezca un **Valor predeterminado** si es necesario.
+   - Seleccione la **Clase de UdM**, luego elija la **UdM predeterminada** y la **UdM de visualización**.
+   - Establezca los **Dígitos de visualización**.
+   - Seleccione el **Tipo de referencia de datos** e introduzca la ruta de **Configuración de referencia de datos**.
+   - Opcionalmente expanda y configure la **Configuración de límites**, la **Configuración de pronóstico** y las **Propiedades adicionales**.
+   - Establezca los indicadores de **Configuración** (Oculto, Excluido) según sea necesario.
+4. Haga clic en **Guardar**.
 
-## 3.2.6 Editing Attributes
+## 3.2.6 Edición de atributos
 
-There are two ways to edit an attribute:
+Hay dos formas de editar un atributo:
 
-### Method 1: From the attribute detail view
+### Método 1: Desde la vista de detalle del atributo
 
-1. Click the attribute name in the list to open its detail view.
-2. Click the **Edit** icon (pencil) in the toolbar.
-3. Modify the desired fields and click **Save**.
+1. Haga clic en el nombre del atributo en la lista para abrir su vista de detalle.
+2. Haga clic en el icono **Editar** (lápiz) en la barra de herramientas.
+3. Modifique los campos deseados y haga clic en **Guardar**.
 
-### Method 2: From the attributes list ⋮ menu
+### Método 2: Desde el menú ⋮ de la lista de atributos
 
-1. In the Attributes list, click the **⋮** menu on the attribute row.
-2. Select **Edit**.
-3. Modify the desired fields and click **Save**.
+1. En la lista de Atributos, haga clic en el menú **⋮** en la fila del atributo.
+2. Seleccione **Editar**.
+3. Modifique los campos deseados y haga clic en **Guardar**.
 
-## 3.2.7 Deleting Attributes
+## 3.2.7 Eliminación de atributos
 
-There are two ways to delete an attribute:
+Hay dos formas de eliminar un atributo:
 
-### Method 1: From the attribute detail view
+### Método 1: Desde la vista de detalle del atributo
 
-1. Open the attribute detail view by clicking the attribute name.
-2. Click the **Delete** icon (trash) in the top-right toolbar.
-3. Confirm the deletion.
+1. Abra la vista de detalle del atributo haciendo clic en su nombre.
+2. Haga clic en el icono **Eliminar** (papelera) en la barra de herramientas superior derecha.
+3. Confirme la eliminación.
 
-### Method 2: From the attributes list ⋮ menu
+### Método 2: Desde el menú ⋮ de la lista de atributos
 
-1. In the Attributes list, click the **⋮** menu on the attribute row.
-2. Select **Delete** and confirm.
+1. En la lista de Atributos, haga clic en el menú **⋮** en la fila del atributo.
+2. Seleccione **Eliminar** y confirme.
 
 :::warning
-Deleting an attribute removes its configuration and all associated metadata from TDengine IDMP. The underlying time-series data in TDengine TSDB is not affected. Dashboards, analyses, or event rules that reference the deleted attribute may stop working and will need to be updated.
+Eliminar un atributo elimina su configuración y todos los metadatos asociados de TDengine IDMP. Los datos de series temporales subyacentes en TDengine TSDB no se ven afectados. Los dashboards, análisis o reglas de eventos que referencien el atributo eliminado pueden dejar de funcionar y deberán actualizarse.
 :::
 
-## 3.2.8 Other Attribute Operations
+## 3.2.8 Otras operaciones con atributos
 
-The **⋮** menu in the attributes list also provides the following operations:
+El menú **⋮** en la lista de atributos también ofrece las siguientes operaciones:
 
-| Action | Description |
+| Acción | Descripción |
 |---|---|
-| **View** | Open the attribute detail view |
-| **Copy** | Copy the attribute configuration. The copied attribute can be pasted as a new attribute on the same element or on any other element. |
-| **Move Up / Move Down** | Reorder the attribute within the list |
-| **Add to trend** | Quickly add this attribute to a new Trend Chart panel |
-| **History Value** | View the historical time-series values for this attribute |
+| **Ver** | Abrir la vista de detalle del atributo |
+| **Copiar** | Copiar la configuración del atributo. El atributo copiado puede pegarse como un nuevo atributo en el mismo elemento o en cualquier otro elemento. |
+| **Subir / Bajar** | Reordenar el atributo dentro de la lista |
+| **Añadir a tendencia** | Añadir rápidamente este atributo a un nuevo panel de gráfico de tendencias |
+| **Valor histórico** | Ver los valores de series temporales históricos de este atributo |
 
-## 3.2.9 Expression Editor
+## 3.2.9 Editor de expresiones
 
-The Expression Editor is a shared UI component used wherever expressions are configured in IDMP — including Formula and String Builder attribute definitions, analysis output attributes, and analysis trigger conditions (pre-filter and event window expressions). It opens as a dialog when you click on an expression input field.
+El Editor de expresiones es un componente de interfaz de usuario compartido que se usa en cualquier lugar donde se configuren expresiones en IDMP — incluyendo definiciones de atributos de Fórmula y Constructor de cadenas, atributos de salida de análisis y condiciones de activación de análisis (prefiltro y expresiones de ventana de evento). Se abre como cuadro de diálogo cuando hace clic en un campo de entrada de expresión.
 
-### Where Expressions Are Used
+### Dónde se usan las expresiones
 
-| Location | Purpose |
+| Ubicación | Propósito |
 |---|---|
-| **Formula attribute** — Data Reference Setting | Defines a calculated attribute value derived from other attributes of the same element |
-| **String Builder attribute** — Data Reference Setting | Builds a string value by combining attribute values with string functions |
-| **Analysis** — Output Attributes, Expression column | Computes a result to write to an element or event attribute each time the analysis fires |
-| **Analysis** — Trigger, Pre-filter | Filters data rows before the trigger evaluates |
-| **Analysis** — Event Window trigger, Start/Stop conditions | Defines when the event window opens and closes |
+| **Atributo Fórmula** — Configuración de referencia de datos | Define un valor de atributo calculado derivado de otros atributos del mismo elemento |
+| **Atributo Constructor de cadenas** — Configuración de referencia de datos | Construye un valor de cadena combinando valores de atributos con funciones de cadena |
+| **Análisis** — Atributos de salida, columna Expresión | Calcula un resultado para escribir en un atributo de elemento o evento cada vez que se activa el análisis |
+| **Análisis** — Activador, Prefiltro | Filtra filas de datos antes de que el activador evalúe |
+| **Análisis** — Activador de ventana de evento, condiciones de Inicio/Parada | Define cuándo se abre y cierra la ventana de evento |
 
-### Expression Editor Layout
+### Disposición del Editor de expresiones
 
-The dialog has three panels:
+El cuadro de diálogo tiene tres paneles:
 
-### Attribute panel (left)
+### Panel de atributos (izquierda)
 
-Browse and insert the element's attributes into the expression. Attributes are organized into groups:
+Examine e inserte los atributos del elemento en la expresión. Los atributos se organizan en grupos:
 
-| Group | Contents |
+| Grupo | Contenido |
 |---|---|
-| **Metrics** | Time-series metric attributes (e.g., Current, Voltage, Power) |
-| **Tags** | Tag (dimension) attributes — static metadata fields |
-| **Other Attributes** | Any remaining attributes defined on the element |
-| **Substitution Parameters** | System-level substitution values such as `TIME` (current local time in milliseconds), current element name, attribute name, and template name |
+| **Métricas** | Atributos de métrica de serie temporal (p. ej., Corriente, Tensión, Potencia) |
+| **Etiquetas** | Atributos de etiqueta (dimensión) — campos de metadatos estáticos |
+| **Otros atributos** | Cualquier atributo restante definido en el elemento |
+| **Parámetros de sustitución** | Valores de sustitución a nivel de sistema como `TIME` (hora local actual en milisegundos), nombre del elemento actual, nombre del atributo y nombre de la plantilla |
 
-A **Filter** field at the top lets you search by name. Click an attribute or parameter to insert it at the cursor position in the expression.
+Un campo **Filtrar** en la parte superior le permite buscar por nombre. Haga clic en un atributo o parámetro para insertarlo en la posición del cursor en la expresión.
 
-### Expression editor (center)
+### Editor de expresiones (centro)
 
-A code editor where you write the expression. An operator shortcut bar at the top provides one-click insertion of common operators:
+Un editor de código donde escribe la expresión. Una barra de acceso directo de operadores en la parte superior proporciona inserción con un clic de operadores comunes:
 
 ```text
 +  -  *  /  =  <  >  >=  <=  !=  <>  &  |
 ```
 
-### Function panel (right)
+### Panel de funciones (derecha)
 
-Browse and insert functions by category. A **Filter** field lets you search by function name. Click a function name to insert it at the cursor position.
+Examine e inserte funciones por categoría. Un campo **Filtrar** le permite buscar por nombre de función. Haga clic en un nombre de función para insertarlo en la posición del cursor.
 
-### Function Categories
+### Categorías de funciones
 
-| Category | Example functions |
+| Categoría | Funciones de ejemplo |
 |---|---|
-| **Mathematical Functions** | ABS, CEIL, FLOOR, ROUND, SQRT, LOG, POW, SIN, COS, ... |
-| **String Functions** | CONCAT, LENGTH, LOWER, UPPER, SUBSTR, TRIM, LTRIM, RTRIM, ... |
-| **Conversion Functions** | CAST, TO\_ISO8601, TO\_TIMESTAMP, ... |
-| **Time and Date Functions** | NOW, TODAY, TIMEZONE, TIMETRUNCATE, ... |
-| **Aggregate Functions** | AVG, COUNT, SUM, STDDEV, STDDEV\_POP, PERCENTILE, SPREAD, ELAPSED, HISTOGRAM, ... |
-| **Selection Functions** | MAX, MIN, FIRST, LAST, LAST\_ROW, TOP, BOTTOM, UNIQUE, MODE, SAMPLE, ... |
-| **Time-Series Specific Functions** | MAVG, DERIVATIVE, DIFF, IRATE, CSUM, INTERP, TWA, STATECOUNT, STATEDURATION, ... |
+| **Funciones matemáticas** | ABS, CEIL, FLOOR, ROUND, SQRT, LOG, POW, SIN, COS, ... |
+| **Funciones de cadena** | CONCAT, LENGTH, LOWER, UPPER, SUBSTR, TRIM, LTRIM, RTRIM, ... |
+| **Funciones de conversión** | CAST, TO\_ISO8601, TO\_TIMESTAMP, ... |
+| **Funciones de fecha y hora** | NOW, TODAY, TIMEZONE, TIMETRUNCATE, ... |
+| **Funciones de agregación** | AVG, COUNT, SUM, STDDEV, STDDEV\_POP, PERCENTILE, SPREAD, ELAPSED, HISTOGRAM, ... |
+| **Funciones de selección** | MAX, MIN, FIRST, LAST, LAST\_ROW, TOP, BOTTOM, UNIQUE, MODE, SAMPLE, ... |
+| **Funciones específicas de serie temporal** | MAVG, DERIVATIVE, DIFF, IRATE, CSUM, INTERP, TWA, STATECOUNT, STATEDURATION, ... |
 
-### Evaluating an Expression
+### Evaluación de una expresión
 
-Where supported (Formula and String Builder attribute definitions), the editor includes an **Evaluate** button and an **Evaluate Result** display at the bottom of the center panel. Click **Evaluate** to run the expression against the element's current data and verify the result before saving.
+Donde se admite (definiciones de atributos de Fórmula y Constructor de cadenas), el editor incluye un botón **Evaluar** y una visualización de **Resultado de evaluación** en la parte inferior del panel central. Haga clic en **Evaluar** para ejecutar la expresión contra los datos actuales del elemento y verificar el resultado antes de guardar.
 
-Click **Save** in the dialog to apply the expression, or **Cancel** to discard changes.
+Haga clic en **Guardar** en el cuadro de diálogo para aplicar la expresión, o en **Cancelar** para descartar los cambios.
 
-## 3.2.8 Attribute Templates {#attribute-templates}
+## 3.2.10 Plantillas de atributo {#attribute-templates}
 
-An **attribute template** defines a standard attribute — including its name, data type, unit of measure, and data reference binding — as part of an [element template](./01-elements.md#316-element-templates). When an element is created from the template, all of its attribute templates are instantiated automatically, with substitution strings resolved to the actual values for that element.
+Una **plantilla de atributo** define un atributo estándar — incluyendo su nombre, tipo de datos, unidad de medida y enlace de referencia de datos — como parte de una [plantilla de elemento](./01-elements.md#316-element-templates). Cuando se crea un elemento a partir de la plantilla, todas sus plantillas de atributo se instancian automáticamente, con las cadenas de sustitución resueltas a los valores reales para ese elemento.
 
-### Creating an Attribute Template
+### Creación de una plantilla de atributo
 
-1. In **Libraries**, open the element template you want to add attributes to.
-2. Click the **Attribute Template** tab at the top of the template detail page.
-3. Click **+** to open the attribute template creation form.
-4. Fill in the attribute fields and configure the data reference binding (see below).
+1. En **Bibliotecas**, abra la plantilla de elemento a la que desea añadir atributos.
+2. Haga clic en la pestaña **Plantilla de atributo** en la parte superior de la página de detalles de la plantilla.
+3. Haga clic en **+** para abrir el formulario de creación de plantilla de atributo.
+4. Complete los campos del atributo y configure el enlace de referencia de datos (véase más abajo).
 
-### Attribute Template Fields
+### Campos de la plantilla de atributo
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Name** | Attribute name |
-| **Description** | Optional description |
-| **Configuration** | Additional configuration flags (e.g., hidden, constant) |
-| **Categories** | Category tags |
-| **Value Type** | Data type: Float, Int, Varchar, Bool, etc. |
-| **Default Value** | Optional default value |
-| **Default UOM** | The unit of measure used for storage |
-| **Display UOM** | The unit of measure shown in the UI (may differ from storage UOM) |
-| **Display Digits** | Number of decimal places shown in the UI |
-| **Data Reference Type** | How the attribute is bound to TDengine TSDB data (see below) |
-| **Data Reference Setting** | The resolved binding path, e.g., `TDengine/idmp_sample_utility/${KEYWORD1}/current` |
-| **Limits Configuration** | Optional Hi/Lo alarm limit thresholds |
-| **Forecast Configuration** | Optional TDgpt forecasting configuration for this attribute |
+| **Nombre** | Nombre del atributo |
+| **Descripción** | Descripción opcional |
+| **Configuración** | Indicadores de configuración adicionales (p. ej., oculto, constante) |
+| **Categorías** | Etiquetas de categoría |
+| **Tipo de valor** | Tipo de datos: Float, Int, Varchar, Bool, etc. |
+| **Valor predeterminado** | Valor predeterminado opcional |
+| **UdM predeterminada** | La unidad de medida usada para el almacenamiento |
+| **UdM de visualización** | La unidad de medida mostrada en la interfaz de usuario (puede diferir de la UdM de almacenamiento) |
+| **Dígitos de visualización** | Número de decimales mostrados en la interfaz de usuario |
+| **Tipo de referencia de datos** | Cómo se vincula el atributo a los datos de TDengine TSDB (véase más abajo) |
+| **Configuración de referencia de datos** | La ruta de enlace resuelta, p. ej., `TDengine/idmp_sample_utility/${KEYWORD1}/current` |
+| **Configuración de límites** | Umbrales de alarma Hi/Lo opcionales |
+| **Configuración de pronóstico** | Configuración de pronóstico TDgpt opcional para este atributo |
 
-### Data Reference Binding
+### Enlace de referencia de datos
 
-The **Data Reference Type** determines how the attribute is connected to time-series data in TDengine TSDB:
+El **Tipo de referencia de datos** determina cómo se conecta el atributo a los datos de series temporales en TDengine TSDB:
 
-| Data Reference Type | Use |
+| Tipo de referencia de datos | Uso |
 |---|---|
-| **None** | No TSDB binding — the attribute holds a static or calculated value only. |
-| **TDengine Metric** | Binds the attribute to a time-series metric column in a TDengine supertable. |
-| **TDengine Tag** | Binds the attribute to a tag column in a TDengine supertable. |
+| **Ninguno** | Sin enlace a TSDB — el atributo solo contiene un valor estático o calculado. |
+| **TDengine Metric** | Vincula el atributo a una columna de métrica de serie temporal en una supertabla de TDengine. |
+| **TDengine Tag** | Vincula el atributo a una columna de etiqueta en una supertabla de TDengine. |
 
-When you select **TDengine Metric** or **TDengine Tag**, configure the binding by specifying the TDengine connection, database, child table name (using substitution strings such as `${KEYWORD1}` so each element binds to its own table), and column name. The resulting Data Reference Setting takes the form:
+Cuando selecciona **TDengine Metric** o **TDengine Tag**, configure el enlace especificando la conexión TDengine, la base de datos, el nombre de la tabla secundaria (usando cadenas de sustitución como `${KEYWORD1}` para que cada elemento se vincule a su propia tabla) y el nombre de columna. La Configuración de referencia de datos resultante toma la forma:
 
 ```text
 TDengine/<database>/${KEYWORD1}/<column>
 ```
 
-Click **Check** to verify the binding resolves correctly for a test input.
+Haga clic en **Comprobar** para verificar que el enlace se resuelve correctamente para una entrada de prueba.

@@ -1,60 +1,60 @@
 ---
-title: Scheduled Reports
-sidebar_label: Scheduled Reports
+title: Informes Programados
+sidebar_label: Informes Programados
 ---
 
-# 4.6 Scheduled Reports
+# 4.6 Informes Programados
 
-Scheduled Reports let you deliver a rendered image of a panel or dashboard to one or more recipients on a recurring schedule. At the configured time, IDMP captures the panel or dashboard at its current state, generates a PNG image, and sends it through the configured notification contact point — no login or manual export required.
+Los informes programados permiten enviar una imagen renderizada de un panel o dashboard a uno o más destinatarios según un calendario recurrente. En el momento configurado, IDMP captura el panel o dashboard en su estado actual, genera una imagen PNG y la envía a través del punto de contacto de notificación configurado, sin necesidad de iniciar sesión ni de exportar manualmente.
 
-Typical uses include weekly energy summary dashboards sent to management, daily production-line trend charts delivered to shift engineers, and one-time panel exports triggered on demand.
+Los casos de uso típicos incluyen dashboards semanales de resumen energético enviados a la dirección, gráficos de tendencias de líneas de producción entregados diariamente a los ingenieros de turno, y exportaciones puntuales de paneles activadas bajo demanda.
 
-## 4.6.1 Configuring Reports for a Panel
+## 4.6.1 Configurar Informes Programados para un Panel
 
-Scheduled report delivery is configured in the **Notification Rule** section of the panel editor.
+La entrega de informes programados se configura en la sección **Regla de notificación** del editor de paneles.
 
-1. Open the panel editor (**Edit** on any panel card or in view mode).
-2. In the right settings panel, scroll to **Notification Rule** and click **+** to add a new rule.
-3. Configure the rule fields:
+1. Abra el editor de paneles (**Editar** en cualquier tarjeta de panel o en el modo de visualización).
+2. En el panel de configuración derecho, desplácese hasta **Regla de notificación** y haga clic en **+** para añadir una nueva regla.
+3. Configure los campos de la regla:
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Frequency** | How often to send the report: **Single** (once only), **Daily**, **Weekly**, or **Monthly** |
-| **Job Start Time** | The date and time of the first (or only) delivery. Required. |
-| **End Date** | The date on which the recurring schedule stops. Optional — if left blank, the schedule runs indefinitely. |
-| **Notification Contact Point** | The notification channel(s) that will receive the report. Select one or more pre-configured contact points from the dropdown. Required. |
+| **Frecuencia** | Con qué periodicidad se envía el informe: **Una vez** (solo una vez), **Diario**, **Semanal** o **Mensual** |
+| **Hora de inicio de la tarea** | Fecha y hora de la primera (o única) entrega. Obligatorio. |
+| **Fecha de finalización** | Fecha en que se detiene el calendario recurrente. Opcional; si se deja en blanco, el calendario se ejecuta indefinidamente. |
+| **Punto de contacto de notificación** | El canal o canales de notificación que recibirán el informe. Seleccione uno o más puntos de contacto preconfigurados en la lista desplegable. Obligatorio. |
 
-4. Click **+** again to add additional rules with different frequencies or recipients.
-5. Click **Save** to save the panel and activate the schedule.
+4. Haga clic en **+** de nuevo para añadir reglas adicionales con diferente frecuencia o destinatarios.
+5. Haga clic en **Guardar** para guardar el panel y activar el calendario.
 
-Each saved rule appears as a row in the Notification Rule section. Use the delete icon on the row to remove a rule. Expand a collapsed rule row to edit its settings.
+Cada regla guardada aparece como una fila en la sección Regla de notificación. Use el icono de eliminar de la fila para eliminar una regla. Expanda una fila de regla contraída para editar su configuración.
 
-## 4.6.2 Configuring Reports for a Dashboard
+## 4.6.2 Configurar Informes Programados para un Dashboard
 
-Dashboard-level reports send a full-dashboard image instead of a single panel. The configuration is identical to panel-level rules.
+Los informes a nivel de dashboard envían una imagen del dashboard completo en lugar de un panel individual. La configuración es idéntica a las reglas a nivel de panel.
 
-1. Open the dashboard editor.
-2. In the right settings panel, find the **Notification Rule** field.
-3. Click **+** to add a rule and fill in the same fields: Frequency, Job Start Time, End Date, and Notification Contact Point.
-4. Click **Save** to activate the schedule.
+1. Abra el editor de dashboards.
+2. En el panel de configuración derecho, localice el campo **Regla de notificación**.
+3. Haga clic en **+** para añadir una regla y complete los mismos campos: Frecuencia, Hora de inicio de la tarea, Fecha de finalización y Punto de contacto de notificación.
+4. Haga clic en **Guardar** para activar el calendario.
 
-When triggered, IDMP renders the full dashboard canvas — all panels at the dashboard's default time range — and sends it as an image.
+Cuando se activa, IDMP renderiza el lienzo completo del dashboard —todos los paneles en el rango de tiempo predeterminado del dashboard— y lo envía como imagen.
 
-## 4.6.3 How Delivery Works
+## 4.6.3 Funcionamiento de la Entrega
 
-When a scheduled report fires:
+Cuando se activa un informe programado:
 
-- IDMP renders the panel or dashboard as it would appear at that moment, using the panel or dashboard's saved time range configuration.
-- The report is generated as a PNG image.
-- The image is delivered to all configured contact points for that rule.
-- If the panel belongs to a template, the report is generated and sent for each element that uses that template.
+- IDMP renderiza el panel o dashboard tal como aparecería en ese momento, utilizando la configuración de rango de tiempo guardada del panel o dashboard.
+- El informe se genera como imagen PNG.
+- La imagen se envía a todos los puntos de contacto configurados para esa regla.
+- Si el panel pertenece a una plantilla, el informe se genera y envía por separado para cada elemento que utilice dicha plantilla.
 
-Single-frequency rules fire once at the Job Start Time and are then inactive. Recurring rules (Daily, Weekly, Monthly) fire on the same schedule relative to the Job Start Time — for example, a Weekly rule with a Monday 09:00 start time fires every Monday at 09:00.
+Las reglas de frecuencia única se activan una sola vez en la hora de inicio de la tarea y quedan inactivas a partir de entonces. Las reglas recurrentes (Diario, Semanal, Mensual) se activan según el mismo calendario relativo a la hora de inicio de la tarea; por ejemplo, una regla Semanal con hora de inicio un lunes a las 09:00 se activa todos los lunes a las 09:00.
 
-## 4.6.4 Notification Contact Points
+## 4.6.4 Puntos de Contacto de Notificación
 
-A **Notification Contact Point** is a delivery channel — an email address list, a webhook, a messaging platform integration, or another supported channel — configured in the system's notification settings.
+Un **Punto de contacto de notificación** es un canal de entrega —una lista de direcciones de correo electrónico, un webhook, una integración con una plataforma de mensajería u otro canal compatible— configurado en los ajustes de notificación del sistema.
 
-Contact points are selected by name from the dropdown when configuring a rule. If no contact points appear in the dropdown, they must be created in the notification configuration section before scheduled report rules can be activated.
+Los puntos de contacto se seleccionan por nombre en la lista desplegable al configurar una regla. Si no aparece ningún punto de contacto en la lista desplegable, deberá crearlo en la sección de configuración de notificaciones para poder activar las reglas de informes programados.
 
-See [System Configuration](../14-administration/04-system-configuration.md) for instructions on creating and managing notification contact points.
+Consulte [Configuración del sistema](../14-administration/04-system-configuration.md) para obtener instrucciones sobre cómo crear y gestionar puntos de contacto de notificación.

@@ -1,28 +1,28 @@
 ---
-title: Core Concepts
-sidebar_label: Core Concepts
+title: Conceptos fundamentales
+sidebar_label: Conceptos fundamentales
 ---
 
-# 15.1.4 Core Concepts
+# 15.1.4 Conceptos fundamentales
 
-SDK objects map one-to-one with IDMP product concepts. Understanding these mappings helps you quickly locate the API you need.
+Los objetos del SDK se corresponden uno a uno con los conceptos del producto IDMP. Comprender estas correspondencias le ayuda a localizar rápidamente la API que necesita.
 
-## Object Mapping
+## Mapeo de objetos
 
-| SDK Class / Module | IDMP Concept | Description |
+| Clase / Módulo del SDK | Concepto de IDMP | Descripción |
 |---|---|---|
-| `ApiClient` | — | SDK entry point; manages connection, authentication, and request dispatch |
-| `ElementResourceApi` | Element | Nodes in the asset tree: equipment, systems, areas |
-| `AttributeResourceApi` | Attribute | Named properties of an element; can be bound to time-series data or static values |
-| `MetricResourceApi` | Metric | Time-series data stream from an attribute's historical and real-time data |
-| `EventResourceApi` | Event | Alarm or state-change records triggered by analysis rules |
-| `PanelResourceApi` | Panel | Visualization chart associated with an element |
-| `UserResourceApi` | User | User management and authentication |
-| `UomResourceApi` | UOM | Unit of measurement classes and conversions |
+| `ApiClient` | — | Punto de entrada del SDK; gestiona la conexión, la autenticación y el despacho de solicitudes |
+| `ElementResourceApi` | Elemento | Nodos en el árbol de activos: equipos, sistemas, áreas |
+| `AttributeResourceApi` | Atributo | Propiedades con nombre de un elemento; pueden vincularse a datos de series temporales o valores estáticos |
+| `MetricResourceApi` | Métrica | Flujo de datos de series temporales de los datos históricos y en tiempo real de un atributo |
+| `EventResourceApi` | Evento | Registros de alarma o cambio de estado activados por reglas de análisis |
+| `PanelResourceApi` | Panel | Gráfico de visualización asociado a un elemento |
+| `UserResourceApi` | Usuario | Gestión de usuarios y autenticación |
+| `UomResourceApi` | UOM | Clases y conversiones de unidades de medida |
 
-## Data Access Hierarchy
+## Jerarquía de acceso a datos
 
-IDMP SDK data access follows this hierarchy:
+El acceso a datos del SDK de IDMP sigue esta jerarquía:
 
 ```text
 Element
@@ -30,15 +30,15 @@ Element
        └─ Time-Series Data (Metric)
 ```
 
-**Typical data read flow:**
+**Flujo típico de lectura de datos:**
 
-1. Use `ElementResourceApi` to find the target element (by name, path, or ID).
-2. Use the element ID to query its attribute list (`AttributeResourceApi`).
-3. Use the attribute ID to query time-series data (`MetricResourceApi`).
+1. Use `ElementResourceApi` para encontrar el elemento objetivo (por nombre, ruta o ID).
+2. Use el ID del elemento para consultar su lista de atributos (`AttributeResourceApi`).
+3. Use el ID del atributo para consultar datos de series temporales (`MetricResourceApi`).
 
-## Pagination
+## Paginación
 
-All list endpoints support pagination. The response format is:
+Todos los endpoints de lista soportan paginación. El formato de respuesta es:
 
 ```json
 {
@@ -49,16 +49,16 @@ All list endpoints support pagination. The response format is:
 }
 ```
 
-Control pagination with the `pageNum` and `pageSize` query parameters:
+Controle la paginación con los parámetros de consulta `pageNum` y `pageSize`:
 
 ```python
 # Python example
 result = element_api.api_v1_elements_get(page_num=1, page_size=50)
 ```
 
-## Request and Response Structure
+## Estructura de solicitud y respuesta
 
-All API responses follow a consistent format:
+Todas las respuestas de la API siguen un formato consistente:
 
 ```json
 {
@@ -68,11 +68,11 @@ All API responses follow a consistent format:
 }
 ```
 
-When `code` is non-zero, the SDK raises an `ApiException`. See [Error Handling](./07-error-handling.md) for details.
+Cuando `code` es distinto de cero, el SDK lanza una `ApiException`. Consulte [Manejo de errores](./07-error-handling.md) para más detalles.
 
-## Time Format
+## Formato de tiempo
 
-All time parameters and return values use **Unix timestamps in milliseconds** (UTC).
+Todos los parámetros de tiempo y valores de retorno usan **marcas de tiempo Unix en milisegundos** (UTC).
 
 ```python
 import time

@@ -1,238 +1,238 @@
 ---
-title: Panels
-sidebar_label: Panels
+title: Paneles
+sidebar_label: Paneles
 ---
 
-# 4.1 Panels
+# 4.1 Paneles
 
-Panels are the building blocks of all visualization in TDengine IDMP. A panel is a self-contained visualization component — a chart, gauge, table, or other display — bound to one or more attributes of a specific element. Every panel belongs to an element and draws its data from that element's attributes.
+Los paneles son la unidad básica de construcción de todas las visualizaciones en TDengine IDMP. Un panel es un componente de visualización independiente —un gráfico, indicador, tabla u otra forma de presentación— vinculado a uno o más atributos de un elemento específico. Cada panel pertenece a un elemento y obtiene sus datos de los atributos de ese elemento.
 
-This page covers the common features shared across all panel types: browsing, creating, editing, the toolbar controls, and the data configuration interface. Individual panel types and their specific settings are described in the sections that follow.
+Esta página cubre la funcionalidad común compartida por todos los tipos de paneles: navegación, creación, edición, controles de la barra de herramientas y la interfaz de configuración de datos. Cada tipo de panel y sus ajustes específicos se describen en las secciones posteriores.
 
-## 4.1.1 The Panels Tab
+## 4.1.1 Pestaña de paneles
 
-Navigate to any element in the asset tree and click the **Panels** tab to access its panels.
+Navegue hasta cualquier elemento en el árbol de activos y haga clic en la pestaña **Paneles** para acceder a sus paneles.
 
-### Browsing Panels
+### Explorar paneles
 
-The toolbar above the panel grid provides three controls:
+La barra de herramientas sobre la cuadrícula de paneles ofrece tres controles:
 
-- **Categories:** Filter panels by category tag. Select a category from the dropdown to show only panels with that tag. Defaults to "All".
-- **AI:** Toggle AI suggestions on or off. When enabled, the AI engine analyzes the element's attributes and suggests relevant panels based on the data type and operational context. Click again to show only saved panels.
-- **Card/List view:** Switch between card view (thumbnail previews) and list view (compact list with metadata).
+- **Categoría:** Filtra los paneles por etiqueta de categoría. Seleccione una categoría del menú desplegable para mostrar solo los paneles con esa etiqueta. Por defecto muestra "Todos".
+- **IA:** Activa o desactiva las recomendaciones de IA. Cuando está habilitado, el motor de IA analiza los atributos del elemento y recomienda paneles relevantes según el tipo de datos y el contexto operativo. Haga clic de nuevo para mostrar solo los paneles guardados.
+- **Vista de tarjetas/lista:** Alterna entre la vista de tarjetas (vista previa en miniatura) y la vista de lista (lista compacta con metadatos).
 
-On the right side of the toolbar:
+En el lado derecho de la barra de herramientas:
 
-- **+ (Add New Panel):** Opens the panel editor to create a new panel from scratch.
-- **Grid icon:** Adjust the card grid density.
-- **Refresh:** Reload the panel list.
+- **+ (Nuevo panel):** Abre el editor de paneles para crear un nuevo panel desde cero.
+- **Icono de cuadrícula:** Ajusta la densidad de la cuadrícula de tarjetas.
+- **Actualizar:** Recarga la lista de paneles.
 
-### AI-Suggested Panels
+### Paneles recomendados por IA
 
-When the AI toggle is active, powered by **Zero Query Intelligence**, the system generates panel suggestions alongside your saved panels. Each suggestion card shows a preview and a panel title. You can:
+Cuando el interruptor de IA está activado, impulsado por la tecnología **Wuwen Zhitui**, el sistema genera recomendaciones de paneles junto a los paneles guardados. Cada tarjeta de recomendación muestra una vista previa y el título del panel. Puede:
 
-- Click **👍** to mark a suggestion as useful — this does not save it.
-- Click **👎** to dismiss the suggestion.
-- Click **⋮** on a suggestion → **Generate** to save it as a permanent panel.
-- Click **⋮** → **Delete** to remove the suggestion.
+- Hacer clic en **👍** para marcar la sugerencia como útil — esto no la guarda.
+- Hacer clic en **👎** para descartar la sugerencia.
+- Hacer clic en **⋮** → **Generar** sobre la sugerencia para guardarla como panel permanente.
+- Hacer clic en **⋮** → **Eliminar** para quitar la sugerencia.
 
-A **+ More Suggestions** card at the end of the list requests additional AI-generated suggestions.
+La tarjeta **+ Más sugerencias** al final de la lista permite solicitar sugerencias adicionales generadas por IA.
 
-At the bottom of the panel list, a text input lets you describe a panel in natural language: "Tell me what panel you want and I'll build it for you." Click **Ask AI** to generate the described panel.
+En la parte inferior de la lista de paneles hay un campo de texto que le permite describir un panel en lenguaje natural: "Dígame qué panel desea y lo generaré." Haga clic en **Pregúntame** para generar el panel descrito.
 
-### Saved Panels
+### Paneles guardados
 
-Saved panels appear as cards with a live thumbnail preview. Hover over a card to reveal the **⋮** (more) menu, which provides the following actions:
+Los paneles guardados se muestran como tarjetas con vista previa en miniatura en tiempo real. Pase el cursor sobre una tarjeta para mostrar el menú **⋮** (más) con las siguientes acciones:
 
-| Action | Description |
+| Acción | Descripción |
 |---|---|
-| **View** | Open the panel in full view mode |
-| **Edit** | Open the panel editor |
-| **Copy** | Create a duplicate of the panel on the same element |
-| **Convert to Template** | Save this panel's configuration as a panel template |
-| **Open in New Window** | Open the panel in a separate browser window |
-| **Delete** | Remove the panel permanently |
+| **Ver** | Abre el panel en modo de vista completa |
+| **Editar** | Abre el editor de paneles |
+| **Copiar** | Crea una copia del panel en el mismo elemento |
+| **Convertir a plantilla** | Guarda la configuración de este panel como plantilla de panel |
+| **Abrir en nueva ventana** | Abre el panel en una ventana del navegador separada |
+| **Eliminar** | Elimina permanentemente el panel |
 
-## 4.1.2 Creating a Panel
+## 4.1.2 Crear un panel
 
-To create a new panel manually:
+Para crear un nuevo panel manualmente:
 
-1. Click the **+ Add New Panel** card at the end of the panel grid.
-2. A dialog appears asking you to select the panel type: **Standard** or **Canvas**.
-   - **Standard:** A regular data-driven panel (Trend Chart, Bar Chart, Gauge, etc.).
-   - **Canvas:** A free-layout canvas panel for building custom visual displays.
-3. Select a type and the panel editor opens immediately in edit mode.
-4. Configure the data source, metrics, and visualization settings.
-5. Click **Save** to save the panel.
+1. Haga clic en la tarjeta **+ Nuevo panel** al final de la cuadrícula de paneles.
+2. Aparece un cuadro de diálogo preguntándole que seleccione el tipo de panel: **Estándar** u **Organización**.
+   - **Estándar:** Panel estándar basado en datos (gráficos de tendencia, gráficos de barras, indicadores, etc.).
+   - **Organización:** Panel de organización con diseño libre para construir visualizaciones personalizadas.
+3. Al seleccionar el tipo, el editor de paneles se abre inmediatamente en modo de edición.
+4. Configure la fuente de datos, las métricas y los ajustes de visualización.
+5. Haga clic en **Guardar** para guardar el panel.
 
-To create a panel from an AI suggestion, click **⋮** → **Generate** on any suggestion card.
+Para crear un panel desde una recomendación de IA, haga clic en **⋮** → **Generar** sobre cualquier tarjeta de recomendación.
 
-## 4.1.3 Panel View Mode
+## 4.1.3 Modo de visualización de paneles
 
-Clicking **View** on a panel card opens the panel in full view mode. The panel occupies the main content area with the element hierarchy on the left.
+Haga clic en **Ver** en una tarjeta de panel para abrirlo en modo de vista completa. El panel ocupa el área de contenido principal con la jerarquía de elementos en el lado izquierdo.
 
-### View Mode Toolbar
+### Barra de herramientas del modo de visualización
 
-The following controls appear in the view mode toolbar for every panel type:
+La barra de herramientas del modo de visualización para cada tipo de panel contiene los siguientes controles:
 
-| Control | Description |
+| Control | Descripción |
 |---|---|
-| **Back to List** | Return to the Panels tab |
-| **Edit** | Open the panel editor |
-| **Favorite** | Mark this panel as a favorite for quick access |
-| **Time picker** | Select the time range for the chart (e.g., Last 7 Days). Click the dropdown arrow for preset ranges or a custom range. |
-| **Zoom out** | Expand the time range to the next level |
-| **Refresh** | Reload the chart data immediately |
-| **Auto-refresh** | Set an automatic refresh interval (Off, 5s, 10s, 30s, 1m, etc.) |
-| **Save as Image** | Download the current chart as a PNG image |
-| **Share** | Generate a time-limited shareable link to this panel view |
-| **Full Screen** | Expand the panel to fill the browser window |
-| **Open in New Window** | Open this panel in a separate browser window |
-| **Panel Insights** | Open the AI-generated insight report for this panel |
+| **Volver a la lista** | Regresa a la pestaña de paneles |
+| **Editar** | Abre el editor de paneles |
+| **Favorito** | Marca este panel como favorito para acceso rápido |
+| **Selector de tiempo** | Selecciona el rango de tiempo del gráfico (por ejemplo, los últimos 7 días). Haga clic en la flecha desplegable para seleccionar rangos preestablecidos o un rango personalizado. |
+| **Alejar** | Expande el rango de tiempo al siguiente nivel |
+| **Actualizar** | Recarga los datos del gráfico inmediatamente |
+| **Actualización automática** | Configura el intervalo de actualización automática (desactivado, 5 s, 10 s, 30 s, 1 min, etc.) |
+| **Guardar como imagen** | Descarga el gráfico actual como imagen PNG |
+| **Compartir** | Genera un enlace de uso compartido con tiempo limitado para esta vista del panel |
+| **Pantalla completa** | Expande el panel para llenar la ventana del navegador |
+| **Abrir en nueva ventana** | Abre este panel en una ventana del navegador separada |
+| **Interpretar panel** | Abre el informe de interpretación generado por IA para este panel |
 
-Additional toolbar controls that are specific to a panel type are documented in each panel type's section.
+Los controles adicionales de la barra de herramientas específicos de cada tipo de panel se describen en las secciones correspondientes.
 
-## 4.1.4 Panel Edit Mode
+## 4.1.4 Modo de edición de paneles
 
-Click **Edit** in view mode, or **⋮** → **Edit** on a panel card, to open the panel editor. The editor is divided into three panels.
+Haga clic en **Editar** en el modo de visualización, o en **⋮** → **Editar** en una tarjeta de panel, para abrir el editor de paneles. El editor se divide en tres áreas.
 
-### Edit Mode Toolbar
+### Barra de herramientas del modo de edición
 
-The following controls appear in the edit mode toolbar for every panel type:
+La barra de herramientas del modo de edición para cada tipo de panel contiene los siguientes controles:
 
-| Control | Description |
+| Control | Descripción |
 |---|---|
-| **Back to List** | Return to the Panels tab (prompts to save or discard changes) |
-| **Save** | Save all changes to the panel |
-| **Discard** | Discard changes and return to view mode |
-| **Time picker** | Select the preview time range |
-| **Zoom out** | Expand the preview time range to the next level |
-| **Refresh** | Reload the preview data |
-| **Auto-refresh** | Set an automatic refresh interval for the preview |
+| **Volver a la lista** | Regresa a la pestaña de paneles (solicita guardar o descartar los cambios) |
+| **Guardar** | Guarda todos los cambios en el panel |
+| **Descartar** | Descarta los cambios y vuelve al modo de visualización |
+| **Selector de tiempo** | Selecciona el rango de tiempo de la vista previa |
+| **Alejar** | Expande el rango de tiempo de la vista previa al siguiente nivel |
+| **Actualizar** | Recarga los datos de la vista previa |
+| **Actualización automática** | Configura el intervalo de actualización automática para la vista previa |
 
-Additional toolbar controls that are specific to a panel type are documented in each panel type's section.
+Los controles adicionales de la barra de herramientas específicos de cada tipo de panel se describen en las secciones correspondientes.
 
-### Left Panel: Data Source
+### Área izquierda: Fuente de datos
 
-The left panel controls which data is available to the panel. Two radio buttons at the top determine the data source mode: **Element** and **Child Elements Grouping**.
+El área izquierda controla qué datos están disponibles para el panel. Los dos botones de opción en la parte superior determinan el modo de fuente de datos: **Elemento** y **Agregación de subelementos**.
 
-### Element mode
+### Modo Elemento
 
-The panel draws data from the current element and any of its descendant child elements. The left panel shows two sections:
+El panel obtiene datos del elemento actual y de cualquiera de sus subelementos descendientes. El área izquierda muestra dos secciones:
 
-- **Metrics:** The attributes (time-series metrics) belonging to the current element itself.
-- **Child Elements:** A navigable hierarchy of all descendants. Expand the tree to browse to any child element and access its attributes. Attributes from any level of the hierarchy can be added to the panel.
+- **Métricas:** Atributos que pertenecen al elemento actual en sí (métricas de series temporales).
+- **Subelementos:** Jerarquía navegable de todos los elementos descendientes. Expanda el árbol para navegar hasta cualquier subelemento y acceder a sus atributos. Los atributos de cualquier nivel pueden añadirse al panel.
 
-To add an attribute, double-click it in the tree to add it to the Metrics table. Alternatively, hover over an attribute to reveal the **⋮** menu, then choose **Add to Metric** or **Add to Dimension**.
+Para añadir un atributo, haga doble clic en él en el árbol para añadirlo a la tabla de métricas. Alternativamente, pase el cursor sobre el atributo para mostrar el menú **⋮** y seleccione **Añadir a métricas** o **Añadir a dimensiones**.
 
-### Child Elements Grouping mode
+### Modo Agregación de subelementos
 
-The panel aggregates data across all child elements of a selected element template. Instead of navigating to individual child elements, you select an **element template** from the dropdown (for example, "Electricity meter" or "Water meter"). The tree then shows all Metrics and Tags that the element template has, allowing you to build a panel that displays aggregated or grouped values across every child element of that template simultaneously.
+El panel agrega datos de todos los subelementos de la plantilla de elemento seleccionada. En lugar de navegar a subelementos individuales, selecciona una **Plantilla de elemento** (por ejemplo, "Contador de electricidad" o "Contador de agua") desde un menú desplegable. El árbol muestra entonces todas las métricas y etiquetas de esa plantilla de elemento, permitiéndole construir un panel que muestre valores agregados o agrupados de todos los subelementos bajo esa plantilla simultáneamente.
 
-### Center Panel: Preview and Data Configuration
+### Área central: Vista previa y configuración de datos
 
-The upper portion of the center panel shows a live preview of the chart, updated as you make changes. Below the chart is a minimap for navigation.
+La parte superior del área central muestra una vista previa en tiempo real del gráfico que se actualiza instantáneamente con sus modificaciones. Debajo del gráfico hay una miniatura para navegar.
 
-Below the minimap is the data configuration area, divided into two collapsible sections:
+Debajo de la miniatura está el área de configuración de datos, dividida en dos secciones plegables:
 
-### Metrics
+### Métricas
 
-The Metrics section defines the data series plotted on the chart. The header row provides three additional controls:
+La sección de métricas define las series de datos trazadas en el gráfico. La fila de título ofrece tres controles adicionales:
 
-- **View SQL:** Display the SQL query generated from the current configuration.
-- **Limit:** Set a limit on the number of records returned.
-- **Sliding Window:** Apply a sliding window aggregation. Configure the window size and unit (s = seconds, m = minutes, h = hours, d = days). The edit icon opens the full sliding window configuration; the trash icon removes it.
+- **Ver SQL:** Muestra la consulta SQL generada desde la configuración actual.
+- **Límite:** Establece un límite superior en el número de registros devueltos.
+- **Ventana deslizante:** Aplica la agregación de ventana deslizante. Configura el tamaño y la unidad de la ventana (s = segundos, m = minutos, h = horas, d = días). El icono de edición abre la configuración completa de la ventana deslizante; el icono de papelera la elimina.
 
-Each row in the Metrics table represents one data series:
+Cada fila en la tabla de métricas representa una serie de datos:
 
-| Column | Description |
+| Columna | Descripción |
 |---|---|
-| **Name** | The display label for this series in the chart legend |
-| **Expression** | The aggregation expression (e.g., `avg(attribute)`, `max(attribute)`) |
-| **UOM** | The display unit of measurement. Leave blank to use the attribute's configured unit. |
-| **Conditions** | Optional filter conditions applied to this series |
-| **Time Shift** | Offset this series by a time amount to overlay historical comparison. Enter a number and select the unit. |
-| **Prediction** | AI forecast configuration for this series. Set to None for no forecast, or configure a forecast model. |
-| **Order By** | Sort order for the query results |
+| **Nombre** | La etiqueta de visualización de esta serie en la leyenda del gráfico |
+| **Expresión** | Expresión de agregación (por ejemplo, `avg(atributo)`, `max(atributo)`) |
+| **Unidad de medida** | La unidad de medida mostrada. Déjela vacía para usar la unidad configurada en el atributo. |
+| **Condición de filtro** | Condición de filtro opcional aplicada a esta serie |
+| **Desplazamiento temporal** | Desplaza esta serie por una cantidad de tiempo para superposición de comparación histórica. Ingrese un número y seleccione la unidad. |
+| **Predicción** | Configuración de predicción de IA para esta serie. Configúrelo como "Ninguno" para no predecir, o configure un modelo de predicción. |
+| **Orden** | Orden de clasificación de los resultados de la consulta |
 
-Use the action icons at the end of each row to edit or delete a metric.
+Use los iconos de acción al final de cada fila para editar o eliminar métricas.
 
-### Dimensions
+### Dimensiones
 
-The Dimensions section defines grouping dimensions for aggregate queries. This is used when grouping data by a categorical field (similar to SQL GROUP BY). Each dimension row has:
+La sección de dimensiones define las dimensiones de agrupación para las consultas de agregación. Se utiliza cuando necesita agrupar datos por campos categóricos (similar a SQL GROUP BY). Cada fila de dimensión contiene:
 
-| Column | Description |
+| Columna | Descripción |
 |---|---|
-| **Name** | Display label for this dimension |
-| **Expression** | The grouping expression |
-| **Conditions** | Filter conditions for this dimension |
-| **Group By** | Whether to include this dimension in GROUP BY |
-| **Order By** | Sort order |
+| **Nombre** | La etiqueta de visualización de esta dimensión |
+| **Expresión** | Expresión de agrupación |
+| **Condición de filtro** | Condición de filtro para esta dimensión |
+| **Agrupación** | Si incluir esta dimensión en GROUP BY |
+| **Orden** | Orden de clasificación |
 
-### Advanced SQL Mode
+### Modo SQL avanzado
 
-The **Advanced** toggle at the bottom of the data configuration area switches to a raw SQL editor. In advanced mode you can add multiple SQL queries — each appears as a separate query block — and all results are displayed together in the same panel.
+El interruptor **Avanzado** en la parte inferior del área de configuración de datos cambia al editor SQL sin procesar. En el modo avanzado, puede añadir múltiples consultas SQL —cada consulta aparece como un bloque de consulta independiente— y todos los resultados se muestran juntos en el mismo panel.
 
-Each query block has a **Query Type** selector:
+Cada bloque de consulta tiene un selector de **Tipo de consulta**:
 
-| Query Type | Description |
+| Tipo de consulta | Descripción |
 |---|---|
-| **TDengine** | Executes against the TDengine connection associated with the current element or element template |
-| **Event** | Queries system-generated events |
+| **TDengine** | Se ejecuta usando la conexión de TDengine asociada con el elemento o plantilla de elemento actual |
+| **Evento** | Consulta los eventos generados por el sistema |
 
-After entering a SQL statement, click **Validate** to check whether it is valid and executable. A green indicator appears next to the button on success. After validation, two additional selectors become available:
+Después de ingresar una instrucción SQL completa, haga clic en **Validar** para verificar que es válida y ejecutable. Cuando se realiza correctamente, aparece un icono verde junto al botón. Después de una validación exitosa, hay dos selectores adicionales disponibles:
 
-- **Time Column:** Select which result column to use as the time axis. Deselect to treat the query result as non-time-series.
-- **Dimensions:** Select one or more result columns to treat as dimension (grouping) columns rather than metric values.
+- **Columna de tiempo:** Selecciona qué columna de resultado usar como eje de tiempo. Deseleccionar trata los resultados de la consulta como datos no temporales.
+- **Dimensiones:** Selecciona una o más columnas de resultado como columnas de dimensión (agrupación) en lugar de valores de métricas.
 
-### Template variables
+### Variables de plantilla
 
-Advanced SQL supports four built-in template variables that are substituted at query time:
+El SQL avanzado soporta cuatro variables de plantilla integradas que se reemplazan en el momento de la consulta:
 
-| Variable | Replaced with |
+| Variable | Se reemplaza por |
 |---|---|
-| `${FROM_TIME}` | The start time from the panel's time picker |
-| `${TO_TIME}` | The end time from the panel's time picker |
-| `${Element#fullVirtualTable}` | The full virtual table name of the current element |
-| `${Element#name}` | The name of the current element |
+| `${FROM_TIME}` | La hora de inicio del selector de tiempo del panel |
+| `${TO_TIME}` | La hora de fin del selector de tiempo del panel |
+| `${Element#fullVirtualTable}` | El nombre completo de la tabla virtual del elemento actual |
+| `${Element#name}` | El nombre del elemento actual |
 
 :::tip
-All four variables support autocomplete in the SQL editor: type `FROM_TIME`, `TO_TIME`, or `ELEMENT` and the editor completes to the full variable syntax. `${FROM_TIME}` and `${TO_TIME}` automatically add or omit surrounding quotes based on context — do not add quotes manually. `${Element#fullVirtualTable}` automatically handles backtick quoting. `${Element#name}` resolves to a plain string — add single quotes around it when used in a string comparison.
+Las cuatro variables admiten autocompletado en el editor SQL: escriba `FROM_TIME`, `TO_TIME` o `ELEMENT` y el editor completará automáticamente la sintaxis completa de la variable. `${FROM_TIME}` y `${TO_TIME}` añaden u omiten comillas automáticamente según el contexto — no es necesario añadirlas manualmente. `${Element#fullVirtualTable}` maneja automáticamente las comillas invertidas. `${Element#name}` se resuelve como una cadena de texto simple — añada comillas simples a su alrededor cuando se use en comparaciones de cadenas.
 :::
 
-Additional controls on each query block:
+Controles adicionales para cada bloque de consulta:
 
-- **Format:** Click the format icon to auto-format the SQL statement.
-- **Enable / Disable:** Toggle a query block on or off without deleting it, useful for temporarily excluding a query from the panel.
+- **Formatear:** Haga clic en el icono de formatear para aplicar formato automático a la instrucción SQL.
+- **Habilitar/Deshabilitar:** Activa o desactiva el bloque de consulta sin eliminarlo, útil para excluir temporalmente una consulta del panel.
 
-### Right Panel: Visualization Settings
+### Área derecha: Configuración de visualización
 
-The right panel contains all visual configuration for the chart. At the top is the **panel type selector** — a dropdown listing all available panel types. Changing the type re-renders the preview with the new visualization while preserving the data configuration.
+El área derecha contiene toda la configuración de visualización del gráfico. En la parte superior está el **selector de tipo de panel** — un menú desplegable que lista todos los tipos de panel disponibles. Cambiar el tipo vuelve a renderizar la vista previa con la nueva visualización mientras conserva la configuración de datos.
 
-The visualization settings are organized into collapsible sections. The following three sections appear for every panel type:
+Los ajustes de visualización están organizados en secciones plegables. Las siguientes tres secciones se muestran para cada tipo de panel:
 
 ### General
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Name** | The panel title displayed at the top of the chart |
-| **Description** | An optional description shown on hover or in exports |
-| **Categories** | One or more tags for organizing and filtering panels in the Panels list |
+| **Nombre** | El título del panel que se muestra en la parte superior del gráfico |
+| **Descripción** | Descripción opcional que se muestra al pasar el cursor o al exportar |
+| **Categoría** | Una o más etiquetas para organizar y filtrar paneles en la lista de paneles |
 
-### Data Links
+### Enlace de datos
 
-Define clickable links attached to data points. Each link specifies a label and a URL, which can include template variables referencing the data point's time or value. Clicking a data point in the chart opens the configured link.
+Define los vínculos en los que se puede hacer clic adjuntos a los puntos de datos. Cada enlace especifica una etiqueta y una URL, que puede incluir variables de plantilla que hacen referencia al tiempo o valor del punto de datos. Hacer clic en un punto de datos del gráfico abre el enlace configurado.
 
-### Notification Rule
+### Reglas de notificación
 
-Configure a scheduled report delivery rule on this panel. See [Scheduled Reports](./06-scheduled-reports.md) for details.
+Configura las reglas de envío de informes programados en este panel. Consulte [Informes programados](./06-scheduled-reports.md) para más detalles.
 
-Additional settings sections — Graph, Axis, Limits, Legend, and others — are panel-type-specific and documented in each panel type's section.
+Otras secciones de ajustes — gráfico, ejes, valores de límite, leyenda, etc. — son específicas del tipo de panel y se describen en las secciones de cada tipo de panel.
 
-## 4.1.5 Organizing Panels
+## 4.1.5 Gestión de paneles
 
-**Categories** are free-form text tags assigned to a panel in the General settings. They appear in the Categories filter dropdown on the Panels tab, letting users quickly find panels by function or system area (e.g., Electrical, Mechanical, Quality).
+**Categoría** son etiquetas de texto libre asignadas a los paneles en la configuración general. Aparecen en el menú desplegable de filtro "Categoría" de la pestaña de paneles, lo que permite a los usuarios encontrar rápidamente paneles por función o área del sistema (por ejemplo, eléctrico, mecánico, calidad).
 
-**Favorites** mark panels for quick access. Favorited panels appear in the Favorites filter on the Panels tab.
+**Favorito** marca un panel para acceso rápido. Los paneles marcados como favoritos aparecen en el filtro "Favoritos" de la pestaña de paneles.
 
-**Convert to Template** saves the panel's configuration as a reusable panel template. Once saved to the template library, the same panel structure can be applied to other elements of the same type without reconfiguration. See [Panel and Dashboard Templates](./07-panel-dashboard-templates.md) for details on template management.
+**Convertir a plantilla** guarda la configuración de un panel como una plantilla de panel reutilizable. Una vez guardada en la biblioteca de plantillas, la misma estructura de panel puede aplicarse a otros elementos del mismo tipo sin necesidad de reconfigurar. Para más detalles sobre la gestión de plantillas, consulte [Plantillas de paneles y dashboards](./07-panel-dashboard-templates.md).

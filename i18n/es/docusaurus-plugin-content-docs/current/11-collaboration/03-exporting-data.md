@@ -1,32 +1,32 @@
 ---
-title: Exporting Data
-sidebar_label: Exporting Data
+title: Exportación de datos
+sidebar_label: Exportación de datos
 ---
 
-# 11.3 Exporting Data
+# 11.3 Exportación de datos
 
-Throughout IDMP, any table or list view can be exported to a CSV file. This makes it straightforward to take data out of IDMP for use in spreadsheets, reports, or other tools — without writing any queries or using the Excel Add-In.
+En IDMP, cualquier vista de tabla o lista puede exportarse a un archivo CSV. Esto facilita la extracción de datos de IDMP para su uso en hojas de cálculo, informes u otras herramientas, sin necesidad de escribir consultas ni utilizar el complemento de Excel.
 
-## Where CSV Export Is Available
+## Dónde está disponible la exportación CSV
 
-The CSV export option is available on every tabular view in IDMP, including:
+La opción de exportación CSV está disponible en cada vista tabular de IDMP, incluidas:
 
-| View | What is exported |
+| Vista | Qué se exporta |
 |---|---|
-| **Explorer — Child element list** | The list of child elements under a selected element |
-| **Explorer — Attribute list** | Attribute values and metadata for a selected element |
-| **Events list** | Filtered event records including timestamps, severity, and status |
-| **Event Filter results** | Events matching criteria from an Event Search Criteria |
-| **Attribute Filter results** | Attribute metadata matching your search criteria |
-| **Asset Filter results** | Element metadata matching your search criteria |
-| **Analyses results** | Output rows from a saved analysis query |
+| **Explorador — Lista de elementos secundarios** | La lista de elementos secundarios bajo un elemento seleccionado |
+| **Explorador — Lista de atributos** | Valores de atributos y metadatos de un elemento seleccionado |
+| **Lista de eventos** | Registros de eventos filtrados incluyendo marcas de tiempo, gravedad y estado |
+| **Resultados del filtro de eventos** | Eventos que coinciden con los criterios de una búsqueda de eventos |
+| **Resultados del filtro de atributos** | Metadatos de atributos que coinciden con sus criterios de búsqueda |
+| **Resultados del filtro de activos** | Metadatos de elementos que coinciden con sus criterios de búsqueda |
+| **Resultados de análisis** | Filas de salida de una consulta de análisis guardada |
 
-## How to Export
+## Cómo exportar
 
-Look for the **Export** or **Download** icon (typically a downward arrow or CSV icon) in the toolbar above the table. Click it to download the currently displayed data — including any active filters — as a CSV file.
+Busque el icono de **Exportar** o **Descargar** (normalmente una flecha hacia abajo o un icono CSV) en la barra de herramientas sobre la tabla. Haga clic en él para descargar los datos que se muestran actualmente — incluyendo cualquier filtro activo — como un archivo CSV.
 
-The export reflects what is visible in the table at the time of download. Apply filters first to narrow the data before exporting.
+La exportación refleja lo que está visible en la tabla en el momento de la descarga. Aplique filtros primero para acotar los datos antes de exportar.
 
-## Excel Add-In
+## Complemento de Excel
 
-For more structured or recurring data retrieval into Excel, the [Excel Add-In](../10-excel-add-in/index.md) provides a purpose-built integration that lets you pull live or historical time-series data directly into worksheet cells with full control over time ranges, aggregation, and output layout.
+Para una recuperación de datos más estructurada o recurrente en Excel, el [complemento de Excel](../10-excel-add-in/index.md) proporciona una integración diseñada específicamente para este fin, que le permite extraer datos de series temporales en tiempo real o históricos directamente en las celdas de la hoja de cálculo con control total sobre los rangos de tiempo, la agregación y el diseño de salida.

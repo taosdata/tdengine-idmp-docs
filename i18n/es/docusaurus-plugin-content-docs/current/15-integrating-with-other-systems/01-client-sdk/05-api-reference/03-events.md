@@ -1,43 +1,43 @@
 ---
-title: Events API
-sidebar_label: Events API
+title: API de eventos
+sidebar_label: API de eventos
 ---
 
-# 15.1.5.3 Events API
-
-`EventResourceApi` provides query and management operations on events.
+`EventResourceApi` proporciona operaciones de consulta y gestión de eventos.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Method List
+# 15.1.5.3 API de eventos
 
-| Method | HTTP | Description |
+## Lista de métodos
+
+| Método | HTTP | Descripción |
 |---|---|---|
-| `apiV1EventsGet` | GET /api/v1/events | Paginated query of the event list |
-| `apiV1EventsIdGet` | GET /api/v1/events/\{id\} | Get a single event by ID |
-| `apiV1EventsIdAcknowledgePut` | PUT /api/v1/events/\{id\}/acknowledge | Acknowledge an event |
-| `apiV1EventsIdResolvePut` | PUT /api/v1/events/\{id\}/resolve | Resolve an event |
+| `apiV1EventsGet` | GET /api/v1/events | Consulta paginada de la lista de eventos |
+| `apiV1EventsIdGet` | GET /api/v1/events/\{id\} | Obtener un solo evento por ID |
+| `apiV1EventsIdAcknowledgePut` | PUT /api/v1/events/\{id\}/acknowledge | Reconocer un evento |
+| `apiV1EventsIdResolvePut` | PUT /api/v1/events/\{id\}/resolve | Resolver un evento |
 
 ---
 
-## Query Event List
+## Consultar lista de eventos
 
-Returns a paginated list of events with optional filtering by time range, status, severity, and element.
+Devuelve una lista paginada de eventos con filtrado opcional por rango de tiempo, estado, severidad y elemento.
 
-### Parameters
+### Parámetros
 
-| Name | Type | Required | Description |
+| Nombre | Tipo | Requerido | Descripción |
 |---|---|---|---|
-| from | long | No | Start time, Unix millisecond timestamp |
-| to | long | No | End time, Unix millisecond timestamp |
-| status | string | No | Event status: `active`, `acknowledged`, `resolved` |
-| severity | string | No | Severity level: `critical`, `warning`, `info` |
-| elementId | string | No | Filter by element ID |
-| pageNum | integer | No | Page number |
-| pageSize | integer | No | Records per page |
+| from | long | No | Tiempo de inicio, marca de tiempo Unix en milisegundos |
+| to | long | No | Tiempo de fin, marca de tiempo Unix en milisegundos |
+| status | string | No | Estado del evento: `active`, `acknowledged`, `resolved` |
+| severity | string | No | Nivel de severidad: `critical`, `warning`, `info` |
+| elementId | string | No | Filtrar por ID de elemento |
+| pageNum | integer | No | Número de página |
+| pageSize | integer | No | Registros por página |
 
-### Example
+### Ejemplo
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -74,5 +74,5 @@ event_api = idmp_sdk.EventResourceApi(api_client)
 </Tabs>
 
 :::note
-For the complete method signatures and parameters, refer to the OpenAPI spec file (`idmp-v1.0.14.2.json`) included in the SDK package, or browse the Swagger UI at `/swagger-ui.html` on your IDMP server.
+Para las firmas de métodos y parámetros completos, consulte el archivo de especificación OpenAPI (`idmp-v1.0.14.2.json`) incluido en el paquete del SDK, o explore el Swagger UI en `/swagger-ui.html` en su servidor IDMP.
 :::

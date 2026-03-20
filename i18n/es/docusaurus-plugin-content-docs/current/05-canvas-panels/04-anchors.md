@@ -1,54 +1,54 @@
 ---
-title: Anchor Points
-sidebar_label: Anchor Points
+title: Anclas
+sidebar_label: Anclas
 ---
 
-# 5.4 Anchor Points
+# 5.4 Anclas
 
-Anchor points are the "magic buckles" that keep device connections intact, ensuring that when you move device elements, the connected pipelines automatically adjust to maintain a tidy layout.
+Las anclas son los "broches mágicos" que mantienen intactas las conexiones entre dispositivos, asegurando que al mover un símbolo de dispositivo, las tuberías conectadas se ajusten automáticamente para mantener una disposición ordenada.
 
-## Adding/Removing Anchor Points (A)
+## Añadir / Eliminar Anclas (A)
 
-Anchor points can be added/removed on both symbols and lines.
+Las anclas pueden añadirse o eliminarse tanto en símbolos como en líneas.
 
-Press the keyboard shortcut "A", hover the mouse over a symbol, and click the left mouse button to add an anchor point.
+Presione el atajo de teclado "A", coloque el ratón sobre un símbolo y haga clic con el botón izquierdo para añadir un ancla.
 
-Press the keyboard shortcut "A", hover the mouse over an anchor point, and click the left mouse button to delete the anchor point.
+Presione el atajo de teclado "A", coloque el ratón sobre un ancla y haga clic con el botón izquierdo para eliminar el ancla.
 
-![Delete Anchor Point](./images/canvas-11.png)
+![Eliminar ancla](./images/canvas-11.png)
 
-## Moving Anchor Points (G)
+## Mover Anclas (G)
 
-Move the cursor over an anchor point, press the shortcut key G, and drag the mouse to move the anchor point.
+Mueva el cursor hasta un ancla, presione el atajo de teclado G y arrastre el ratón para mover el ancla.
 
-## Handles
+## Tiradores
 
-### Function of Handles
+### Función de los Tiradores
 
-Handles allow precise adjustment of local shapes without damaging the shape of other sections of the curve, supporting fine-tuning of curve details.
+Los tiradores permiten un ajuste preciso de las formas locales sin afectar la forma de otras secciones de la curva, admitiendo el ajuste fino de los detalles de la curva.
 
-1. **Control the curve bending direction**: The direction of the handle determines the entry and exit direction of the curve at the anchor point. The curve naturally transitions along the extended line of the handle, avoiding sharp corners.
-2. **Adjust the curve arc and curvature**: Dragging the handle changes its length and angle, directly adjusting the degree of curve bending: the longer the handle, the gentler the curvature; the shorter the handle, the steeper the curvature.
-3. **Achieve smooth transitions and sharp corner switching**: Symmetrical handles on both sides can create continuous, smooth curves; independently adjustable handles on one side can achieve a mix of polyline + curve at the same anchor point, meeting complex shape requirements.
+1. **Controlar la dirección de curvatura**: La dirección del tirador determina la dirección de entrada y salida de la curva en el punto de ancla. La curva hace una transición natural a lo largo de la prolongación del tirador, evitando esquinas bruscas.
+2. **Ajustar el arco y la curvatura**: Arrastrar el tirador cambia su longitud y ángulo, ajustando directamente el grado de curvatura: cuanto más largo sea el tirador, más suave será la curvatura; cuanto más corto, más pronunciada.
+3. **Lograr transiciones suaves y cambios a esquina aguda**: Los tiradores simétricos en ambos lados pueden crear curvas continuas y fluidas; los tiradores ajustables de forma independiente en un lado pueden lograr una mezcla de polilínea y curva en el mismo ancla, satisfaciendo requisitos de formas complejas.
 
-![Handles](./images/canvas-12.gif)
+![Tiradores](./images/canvas-12.gif)
 
-### Adding Handles (H) / Deleting Handles (D)
+### Añadir Tiradores (H) / Eliminar Tiradores (D)
 
-Click on the anchor point on the line, press the shortcut key H to add a handle to adjust the line.
+Haga clic en el ancla de la línea y presione el atajo de teclado H para añadir un tirador y ajustar la línea.
 
-In the handle activation state, press the shortcut key D to delete the handle.
+En el estado de tirador activado, presione el atajo de teclado D para eliminar el tirador.
 
-In the handle activation state, press the Shift key to switch between three different handle types:
+En el estado de tirador activado, presione la tecla Shift para alternar entre tres tipos de tirador diferentes:
 
-1. Both ends of the handle are completely symmetrical
-2. One end of the handle can freely stretch in length
-3. One end of the handle can freely stretch in length and change angle
+1. Ambos extremos del tirador son completamente simétricos
+2. Un extremo del tirador puede estirarse libremente en longitud
+3. Un extremo del tirador puede estirarse libremente en longitud y cambiar de ángulo
 
-## Automatic Anchor Points
+## Anclas Automáticas
 
-Click the "Automatic Anchor Points" button in the toolbox to activate automatic anchor points. When drawing lines on the canvas, if there are no anchor points at both ends of the line, the nearest anchor points will be automatically connected.
+Haga clic en el botón "Anclas automáticas" de la caja de herramientas para activar las anclas automáticas. Al dibujar líneas en el lienzo, si no hay anclas en ambos extremos de la línea, se conectarán automáticamente a las anclas más cercanas.
 
-## Disabling Anchor Points
+## Deshabilitar Anclas
 
-Disabling anchor points means that anchor points are not displayed.
+Deshabilitar las anclas significa que no se muestran los puntos de ancla.

@@ -1,99 +1,99 @@
 ---
-title: Planning
-sidebar_label: Planning
+title: Planificación
+sidebar_label: Planificación
 ---
 
-# 14.2 Planning
+# 14.2 Planificación
 
-## Hardware Requirements
+## Requisitos de hardware
 
-The minimum hardware requirements to run TDengine IDMP are:
+Los requisitos mínimos de hardware para ejecutar TDengine IDMP son:
 
-- **CPU:** 4 cores
-- **Memory:** 10 GB
-- **Disk:** 50 GB free space
+- **CPU:** 4 núcleos
+- **Memoria:** 10 GB
+- **Disco:** 50 GB de espacio libre
 
-For production deployments, size resources based on the number of elements (assets) managed:
+Para despliegues en producción, dimensione los recursos en función del número de elementos (activos) gestionados:
 
-### IDMP Service Resources
+### Recursos del servicio IDMP
 
-| Element Scale | CPU | Memory | Disk | Typical Use Case |
+| Escala de elementos | CPU | Memoria | Disco | Caso de uso típico |
 |:---:|:---:|:---:|:---:|:---|
-| < 10,000 | 4 cores | 10 GB | 50 GB | PoC / demo / small projects |
-| 10,000 – 100,000 | 8 cores | 16 GB | 100 GB | Small to medium production |
-| 100,000 – 500,000 | 16 cores | 32 GB | 200 GB | Medium production |
-| 500,000 – 1,000,000 | 32 cores | 64 GB | 500 GB | Large production |
-| > 1,000,000 | 64+ cores | 128+ GB | 1 TB+ | Very large production |
+| < 10,000 | 4 núcleos | 10 GB | 50 GB | PoC / demostración / proyectos pequeños |
+| 10,000 – 100,000 | 8 núcleos | 16 GB | 100 GB | Producción pequeña a mediana |
+| 100,000 – 500,000 | 16 núcleos | 32 GB | 200 GB | Producción mediana |
+| 500,000 – 1,000,000 | 32 núcleos | 64 GB | 500 GB | Producción grande |
+| > 1,000,000 | 64+ núcleos | 128+ GB | 1 TB+ | Producción muy grande |
 
-### External Dependency Resources
+### Recursos de dependencias externas
 
-When element scale is large, plan dedicated resources for external dependency components:
+Cuando la escala de elementos es grande, planifique recursos dedicados para los componentes de dependencias externas:
 
-| Component | 10K–100K Elements | 100K–500K Elements | 500K+ Elements |
+| Componente | 10K–100K elementos | 100K–500K elementos | 500K+ elementos |
 |:---|:---:|:---:|:---:|
-| Redis | 2 cores / 4 GB | 4 cores / 8 GB | 8 cores / 16 GB (cluster) |
-| MySQL | 4 cores / 8 GB | 8 cores / 16 GB | 16 cores / 32 GB (primary-replica) |
+| Redis | 2 núcleos / 4 GB | 4 núcleos / 8 GB | 8 núcleos / 16 GB (clúster) |
+| MySQL | 4 núcleos / 8 GB | 8 núcleos / 16 GB | 16 núcleos / 32 GB (primario-réplica) |
 | DFS | 100 GB | 500 GB | 1 TB+ |
 
-### Planning Guidelines
+### Directrices de planificación
 
-- **Disk type:** Use SSDs in production for significantly better query and import/export performance.
-- **Network bandwidth:** For large-scale deployments, use 10 Gbps internal networking to support data collection and query throughput.
-- **Growth headroom:** Plan resources at 1.5× the expected peak element count to accommodate business growth.
+- **Tipo de disco:** Use SSD en producción para obtener un rendimiento significativamente mejor en consultas e importación/exportación.
+- **Ancho de banda de red:** Para despliegues a gran escala, use redes internas de 10 Gbps para soportar la recopilación de datos y el rendimiento de consultas.
+- **Margen de crecimiento:** Planifique recursos a 1,5 veces el recuento máximo esperado de elementos para acomodar el crecimiento del negocio.
 
 :::note
-These figures are reference guidelines. Actual resource needs depend on modeling complexity and workload characteristics. For TDengine TSDB capacity planning, refer to the TDengine TSDB documentation.
+Estas cifras son directrices de referencia. Las necesidades reales de recursos dependen de la complejidad del modelado y las características de la carga de trabajo. Para la planificación de capacidad de TDengine TSDB, consulte la documentación de TDengine TSDB.
 :::
 
-## Supported Operating Systems
+## Sistemas operativos compatibles
 
-| OS | Supported Versions | x86_64 | arm64 |
+| SO | Versiones compatibles | x86_64 | arm64 |
 |:---:|:---:|:---:|:---:|
-| Ubuntu | 20.04, 22.04 | Yes | Yes |
-| Debian | 10, 11, 12 | Yes | Yes |
-| CentOS | 8 | Yes | Yes |
-| macOS | 13, 14, 15 | Yes | Yes |
-| Windows | 10, 11, Server 2019+ | Yes | Yes |
+| Ubuntu | 20.04, 22.04 | Sí | Sí |
+| Debian | 10, 11, 12 | Sí | Sí |
+| CentOS | 8 | Sí | Sí |
+| macOS | 13, 14, 15 | Sí | Sí |
+| Windows | 10, 11, Server 2019+ | Sí | Sí |
 
-## Software Prerequisites
+## Prerrequisitos de software
 
-| Dependency | Version |
+| Dependencia | Versión |
 |---|---|
 | Python | 3.12 |
-| Java | 21 or later |
-| glibc | 2.25 or later |
-| TDengine TSDB Enterprise | 3.3.7.0 or later |
-| SMTP mail service | Required for email notifications; deploy internally if the server cannot reach the internet |
+| Java | 21 o posterior |
+| glibc | 2.25 o posterior |
+| TDengine TSDB Enterprise | 3.3.7.0 o posterior |
+| Servicio de correo SMTP | Requerido para notificaciones por correo electrónico; despliegue internamente si el servidor no puede acceder a internet |
 
-## Network Ports
+## Puertos de red
 
-TDengine IDMP uses the following ports by default:
+TDengine IDMP utiliza los siguientes puertos por defecto:
 
-| Port | Protocol | Description |
+| Puerto | Protocolo | Descripción |
 |---|---|---|
-| 6042 | HTTP | External port — IDMP web UI and REST API (browser and API access) |
-| 6034 | HTTPS | External port — Secure access to the web UI and REST API; recommended for production |
-| 6038 | HTTP | Internal port — Built-in H2 database web interface |
-| 6039 | TCP | Internal port — Built-in H2 database listener |
-| 6040 | HTTP | Internal port — Internal chat service API |
+| 6042 | HTTP | Puerto externo — interfaz Web UI y REST API de IDMP (acceso desde navegador y API) |
+| 6034 | HTTPS | Puerto externo — acceso seguro a la interfaz Web UI y REST API; recomendado para producción |
+| 6038 | HTTP | Puerto interno — interfaz web de la base de datos H2 embebida |
+| 6039 | TCP | Puerto interno — listener de la base de datos H2 embebida |
+| 6040 | HTTP | Puerto interno — API del servicio de chat interno |
 
-Ensure the external ports (6042 and 6034) are open in the firewall. Keep internal ports accessible only within the private network.
+Asegúrese de que los puertos externos (6042 y 6034) estén abiertos en el cortafuegos. Mantenga los puertos internos accesibles únicamente dentro de la red privada.
 
-## Installation Directory
+## Directorio de instalación
 
-TDengine IDMP installs by default under `/usr/local/taos/idmp`. The directory structure is:
+TDengine IDMP se instala por defecto en `/usr/local/taos/idmp`. La estructura del directorio es:
 
-| Directory | Description |
+| Directorio | Descripción |
 |---|---|
-| `app` | Symlink to `standalone/app` |
-| `backend` | Backend service binaries |
-| `bin` | Start/stop scripts |
-| `chat` | Chat service files |
-| `config` | Service configuration files (including `application.yml`) |
-| `data` | Data files (symlink to `/var/lib/taos`) |
-| `frontend` | Frontend assets |
-| `lib` | Backend library dependencies |
-| `logs` | Log files (symlink to `/var/log/taos`) |
-| `quarkus` | Backend service framework files |
-| `service` | System service configuration |
-| `standalone` | Integrated frontend/backend service files |
+| `app` | Enlace simbólico a `standalone/app` |
+| `backend` | Binarios del servicio backend |
+| `bin` | Scripts de inicio/detención |
+| `chat` | Archivos del servicio de chat |
+| `config` | Archivos de configuración del servicio (incluye `application.yml`) |
+| `data` | Archivos de datos (enlace simbólico a `/var/lib/taos`) |
+| `frontend` | Recursos estáticos del frontend |
+| `lib` | Dependencias de bibliotecas del backend |
+| `logs` | Archivos de registro (enlace simbólico a `/var/log/taos`) |
+| `quarkus` | Archivos del framework del servicio backend |
+| `service` | Configuración del servicio del sistema |
+| `standalone` | Archivos del servicio integrado frontend/backend |

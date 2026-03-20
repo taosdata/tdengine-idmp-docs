@@ -1,36 +1,36 @@
 ---
-title: AI-Generated Panels
-sidebar_label: AI-Generated Panels
+title: Paneles generados por IA
+sidebar_label: Paneles generados por IA
 ---
 
-# 8.2 AI-Generated Panels
+# 8.2 Paneles generados por IA
 
-Powered by **Zero Query Intelligence**, IDMP can automatically generate visualization panels for an element based on its attributes, template, and collected time-series data. These panels are ready to use with no manual configuration required.
+Impulsado por la **inteligencia sin consulta**, IDMP puede generar automáticamente paneles de visualización para un elemento basándose en sus atributos, plantilla y datos de series temporales recopilados. Estos paneles están listos para usar sin necesidad de configuración manual.
 
-## Where to Find AI-Generated Panels
+## Dónde encontrar los paneles generados por IA
 
-AI-generated panels appear in the **Panels** tab of any element in the Explorer. When you open this tab, the AI has already produced a set of suggested panels based on the element's data context.
+Los paneles generados por IA aparecen en la pestaña **Paneles** de cualquier elemento en el Explorador. Cuando abre esta pestaña, la IA ya ha producido un conjunto de paneles sugeridos basándose en el contexto de datos del elemento.
 
-The toolbar above the panel list includes an **AI** filter button. Click it to view only AI-generated panels and hide manually created ones.
+La barra de herramientas sobre la lista de paneles incluye un botón de filtro **IA**. Haga clic en él para ver solo los paneles generados por IA y ocultar los creados manualmente.
 
-## Using AI-Generated Panels
+## Usar los paneles generados por IA
 
-Each AI-generated panel card displays a preview of the visualization, a descriptive name, and thumbs up / thumbs down feedback buttons.
+Cada tarjeta de panel generado por IA muestra una vista previa de la visualización, un nombre descriptivo y botones de retroalimentación de pulgar arriba/pulgar abajo.
 
-- Click the panel card to open the full visualization.
-- Click **thumbs up** to mark the panel as useful — this feedback improves future suggestions.
-- Click **thumbs down** to dismiss the panel from your suggestions.
+- Haga clic en la tarjeta del panel para abrir la visualización completa.
+- Haga clic en **pulgar arriba** para marcar el panel como útil — esta retroalimentación mejora las sugerencias futuras.
+- Haga clic en **pulgar abajo** para descartar el panel de sus sugerencias.
 
-## Requesting More Suggestions
+## Solicitar más sugerencias
 
-At the end of the AI panel list, a **+ More Recommendations** card is shown. Click it to request an additional batch of AI-generated panel suggestions. The system uses your element's template, attribute definitions, and current data to produce a new set of visualizations.
+Al final de la lista de paneles de IA, se muestra una tarjeta **+ Más recomendaciones**. Haga clic en ella para solicitar un lote adicional de sugerencias de paneles generados por IA. El sistema utiliza la plantilla del elemento, las definiciones de atributos y los datos actuales para producir un nuevo conjunto de visualizaciones.
 
-## Describing a Panel in Natural Language
+## Describir un panel en lenguaje natural
 
-If the system suggestions do not include what you need, you can describe the panel you want in plain language. Type your request in the AI input field — for example, "show me hourly average voltage as a line chart for the past 7 days" or "create a gauge showing the current power factor". The AI interprets your description, selects the appropriate chart type and attributes, and generates the panel for you. You do not need to know which chart type to use or how to configure it — as long as you know what you want to see, the AI handles the rest.
+Si las sugerencias del sistema no incluyen lo que necesita, puede describir el panel que desea en lenguaje sencillo. Escriba su solicitud en el campo de entrada de IA — por ejemplo, "muéstrame el voltaje promedio por hora como un gráfico de líneas para los últimos 7 días" o "crea un indicador que muestre el factor de potencia actual". La IA interpreta su descripción, selecciona el tipo de gráfico y los atributos apropiados, y genera el panel para usted. No necesita saber qué tipo de gráfico usar ni cómo configurarlo — mientras sepa lo que quiere ver, la IA se encarga del resto.
 
-## Saving Panels
+## Guardar paneles
 
-AI-generated panels are suggestions — they are not permanently saved until you explicitly save them. To add an AI-generated panel to the element's permanent panel list, open the panel and click **Save**. Once saved, the panel behaves identically to a manually created panel and can be edited, moved, or deleted from the Panels tab.
+Los paneles generados por IA son sugerencias — no se guardan permanentemente hasta que los guarde explícitamente. Para agregar un panel generado por IA a la lista permanente de paneles del elemento, abra el panel y haga clic en **Guardar**. Una vez guardado, el panel se comporta de manera idéntica a un panel creado manualmente y puede editarse, moverse o eliminarse desde la pestaña Paneles.
 
-For a full reference on panel types and configuration, see [Chapter 4: Visualization](../04-visualization/index.md).
+Para una referencia completa sobre tipos de paneles y configuración, consulte el [Capítulo 4: Visualización](../04-visualization/index.md).

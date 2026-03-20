@@ -1,24 +1,44 @@
 ---
-title: Sharing Dashboards and Panels
-sidebar_label: Sharing Dashboards and Panels
+title: Compartir paneles de control e indicadores
+sidebar_label: Compartir paneles de control e indicadores
 ---
 
-# 11.1 Sharing Dashboards and Panels
+# 11.1 Compartir paneles de control e indicadores
 
-IDMP makes it easy to share visualizations with colleagues without requiring them to recreate the same configuration. Both dashboards and individual panels can be shared directly from the visualization interface.
+IDMP facilita compartir visualizaciones con los colegas sin necesidad de que estos recreen la misma configuración. Tanto los paneles de control como los indicadores individuales pueden compartirse directamente desde la interfaz de visualización.
 
-## Sharing a Dashboard
+## Compartir un panel de control
 
-A dashboard can be shared so that another user can open and view the same layout of panels, time ranges, and configurations. To share a dashboard, open it and use the **Share** option in the dashboard toolbar. IDMP generates a shareable link or allows you to copy the dashboard configuration.
+Un panel de control puede compartirse para que otro usuario pueda abrir y ver la misma disposición de indicadores, rangos de tiempo y configuraciones. Para compartir un panel de control, ábralo y utilice la opción **Compartir** de la barra de herramientas del panel. IDMP genera un enlace que se puede compartir o permite copiar la configuración del panel de control.
 
-See [Dashboards](../04-visualization/04-dashboards.md) for the full sharing workflow.
+Puede también integrar el panel de control en páginas de su sistema mediante una etiqueta iframe:
 
-## Sharing a Panel
+```html
+<iframe
+  src="enlace de integración"
+  width="100%"
+  height="600"
+  frameborder="0"
+  sandbox="allow-same-origin allow-scripts"
+></iframe>
+```
 
-Individual panels can be shared or exported independently of their parent dashboard. Open the panel menu (the three-dot icon on the panel header) and select the share option.
+Por motivos de seguridad, se recomienda configurar encabezados de Content Security Policy (CSP) apropiados en la página de integración y limitar las capacidades del iframe mediante el atributo `sandbox`.
 
-See [Panels](../04-visualization/01-panels.md) for panel-level sharing options.
+También puede abrir el panel de control en una nueva página mediante un enlace:
 
-## Access Control
+```html
+<a href="enlace de integración" target="_blank">Abrir panel de control</a>
+```
 
-Shared content is subject to IDMP's role-based access control. Recipients must have at least read access to the underlying elements and attributes to view live data in a shared dashboard or panel.
+Consulte [Paneles de control](../04-visualization/04-dashboards.md) para ver el flujo de trabajo completo de compartición.
+
+## Compartir un indicador
+
+Los indicadores individuales pueden compartirse o exportarse independientemente del panel de control al que pertenecen. Abra el menú del indicador (el icono de tres puntos en el encabezado del indicador) y seleccione la opción de compartir.
+
+Consulte [Indicadores](../04-visualization/01-panels.md) para ver las opciones de compartición a nivel de indicador.
+
+## Control de acceso
+
+El contenido compartido está sujeto al control de acceso basado en roles de IDMP. Los destinatarios deben tener al menos acceso de lectura a los elementos y atributos subyacentes para ver datos en tiempo real en un panel de control o indicador compartido.

@@ -1,32 +1,32 @@
 ---
-title: Lienzo
-sidebar_label: Lienzo
+title: Paneles de Lienzo
+sidebar_label: Paneles de Lienzo
 ---
 
-# 5 Canvas
+# 5. Paneles de Lienzo
 
-TDengine IDMP supports not only Grafana-style panels but also configuration panels popular in industrial scenarios. It allows business personnel to achieve Web configuration, SCADA, and other solutions through "drag and drop" with "zero code," visually presenting the current operating status of devices and processes. Currently, it supports 2D and 2.5D, with plans to support 3D in the future. It seamlessly integrates with IDMP's asset model, enabling rapid solution delivery and reducing development costs. It has the following features:
+Además de los paneles al estilo de Grafana, TDengine IDMP también admite la configuración de lienzos, popular en escenarios industriales. Permite al personal de negocio implementar soluciones de configuración web, SCADA y similares mediante "arrastrar y soltar" con "cero código", presentando visualmente el estado operativo actual de dispositivos y procesos. Actualmente admite 2D y 2.5D, con planes de admitir 3D en el futuro. Se integra a la perfección con el modelo de activos de IDMP, permitiendo una entrega rápida de soluciones y reduciendo los costes de desarrollo. Sus características son las siguientes:
 
-1. **Intuitive and easy-to-use drag-and-drop editing**: No technical background required, easily create monitoring screens like building blocks
-2. **Intelligent data-driven**: Configure once to automatically update the screen with real-time data, reducing repetitive operations
-3. **Rich animation effects**: Built-in multiple animations, support customization, making the monitoring screen vivid and intuitive
-4. **Flexible state management**: Automatically switch device states such as running/stopped/alarm based on data changes
-5. **Expandable graphic library**: Support uploading custom graphics (JS, SVG, images, etc.) to meet special needs
-6. **Powerful performance**: A single screen can support tens of thousands of symbols, meeting the needs of large industrial scenarios
+1. **Edición de arrastrar y soltar intuitiva y fácil de usar**: Sin necesidad de conocimientos técnicos, cree pantallas de monitorización fácilmente como si ensamblara piezas de un juego de construcción
+2. **Impulsado por datos inteligente**: Configure una vez para que los datos en tiempo real actualicen automáticamente la pantalla, reduciendo las operaciones repetitivas
+3. **Efectos de animación enriquecidos**: Múltiples animaciones integradas con soporte de personalización, haciendo que la pantalla de monitorización sea vívida e intuitiva
+4. **Gestión de estado flexible**: Cambia automáticamente los estados del dispositivo como en ejecución / detenido / alarma según los cambios en los datos
+5. **Biblioteca gráfica extensible**: Admite la carga de gráficos personalizados (JS, SVG, imágenes, etc.) para satisfacer necesidades especiales
+6. **Alto rendimiento**: Una sola pantalla puede admitir decenas de miles de símbolos, satisfaciendo las necesidades de grandes escenarios industriales
 
-Below is a typical configuration editing interface:
+A continuación se muestra una interfaz de edición de lienzo típica:
 
-![Configuration Editing Interface](./images/canvas-01.png)
+![Interfaz de edición de lienzo](./images/canvas-01.png)
 
-The entire editing screen consists of several major parts:
+La interfaz de edición completa está compuesta por varias secciones principales:
 
-1. **Canvas**: The canvas is the central drawing area where symbols are dragged and dropped for editing and drawing. The canvas has various properties, such as background color, grid, ruler, etc., all of which can be personalized.
-2. **Symbols**: These are the basic units of the canvas, the fundamental elements of graphical expression. Various devices and components on the diagram are symbols. Symbols have various properties, such as color, background color, size, displayed text, progress, value, state, etc.
-3. **Toolbox**: The top toolbox provides drawing tools such as pen, pencil, magnifier, eagle eye map (thumbnail), line start point, line end point, line width, view scale, auto anchor point, disable anchor point, etc.
-4. **Symbol Library**: There are basic graphic libraries and industry graphic libraries, and users are allowed to upload their own drawn graphics.
-5. **Configuration**: Configure the canvas and each symbol on the canvas, such as color, background color, font, events, animations, etc., to modify their display and interactive behavior.
+1. **Lienzo**: El lienzo es el área de dibujo central donde los símbolos se arrastran y sueltan para editar y dibujar el diagrama de configuración. El lienzo tiene diversas propiedades, como color de fondo, cuadrícula, regla, etc., todas personalizables.
+2. **Símbolos**: Son las unidades básicas del lienzo y los elementos fundamentales de la expresión gráfica. Los distintos dispositivos y componentes del diagrama son símbolos. Los símbolos tienen diversas propiedades, como color, color de fondo, tamaño, texto mostrado, progreso, valor, estado, etc.
+3. **Caja de herramientas**: La caja de herramientas superior proporciona herramientas de dibujo como lápiz de tinta, lápiz, lupa, mapa general (miniatura), punto de inicio de línea, punto final de línea, ancho de línea, escala de vista, ancla automática, deshabilitar ancla, etc.
+4. **Biblioteca de símbolos**: Incluye bibliotecas gráficas básicas y bibliotecas gráficas industriales, y permite a los usuarios subir sus propios gráficos diseñados.
+5. **Configuración**: Configure el lienzo y cada símbolo sobre él, como color, color de fondo, fuente, eventos, animaciones, etc., para modificar su comportamiento de visualización e interacción.
 
-This document only provides a brief introduction to the basic concepts and basic operations. More details need to be discovered through extensive use.
+Este documento ofrece solo una breve introducción a los conceptos básicos y las operaciones fundamentales. Los detalles adicionales se descubren con el uso continuado.
 
 import DocCardList from '@theme/DocCardList';
 

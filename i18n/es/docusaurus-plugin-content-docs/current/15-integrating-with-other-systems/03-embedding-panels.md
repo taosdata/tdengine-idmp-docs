@@ -1,23 +1,23 @@
 ---
-title: Embedding Panels and Dashboards
-sidebar_label: Embedding Panels and Dashboards
+title: Incrustación de paneles y paneles de control
+sidebar_label: Incrustación de paneles y paneles de control
 ---
 
-# 15.3 Embedding Panels and Dashboards
+# 15.3 Incrustación de paneles y paneles de control
 
-IDMP panels and dashboards can be embedded directly into external web applications, bringing live industrial visualizations into operator portals, custom UIs, or AI dashboards.
+Los paneles y paneles de control de IDMP pueden incrustarse directamente en aplicaciones web externas, llevando visualizaciones industriales en tiempo real a portales de operadores, interfaces de usuario personalizadas o paneles de IA.
 
-## Getting the Embed Link
+## Obtener el enlace de incrustación
 
-1. Log in to IDMP and navigate to the **Dashboards** or **Panels** view.
-2. Open the dashboard or panel you want to embed.
-3. Click the **Share** button in the top-right corner.
-4. Set the share duration and click **Submit**.
-5. Copy the generated embed link.
+1. Inicie sesión en IDMP y navegue a la vista de **Paneles de control** o **Paneles**.
+2. Abra el panel de control o panel que desea incrustar.
+3. Haga clic en el botón **Compartir** en la esquina superior derecha.
+4. Establezca la duración del compartido y haga clic en **Enviar**.
+5. Copie el enlace de incrustación generado.
 
-## Embedding with an iframe
+## Incrustar con un iframe
 
-Use an `<iframe>` tag to embed the panel or dashboard in your web page. For security, configure a Content Security Policy (CSP) header on your host page (e.g., restrict `frame-ancestors` and `script-src`) and use the `sandbox` attribute to limit iframe capabilities:
+Use una etiqueta `<iframe>` para incrustar el panel o panel de control en su página web. Por seguridad, configure un encabezado de Política de Seguridad de Contenido (CSP) en su página anfitriona (p. ej., restrinja `frame-ancestors` y `script-src`) y use el atributo `sandbox` para limitar las capacidades del iframe:
 
 ```html
 <iframe
@@ -29,11 +29,11 @@ Use an `<iframe>` tag to embed the panel or dashboard in your web page. For secu
 ></iframe>
 ```
 
-Adjust the `sandbox` permissions carefully based on your requirements (e.g., whether to allow form submission or pop-ups), and configure strict CSP headers on the server to reduce XSS and clickjacking risks.
+Ajuste los permisos de `sandbox` cuidadosamente según sus requisitos (p. ej., si se permite el envío de formularios o ventanas emergentes), y configure encabezados CSP estrictos en el servidor para reducir los riesgos de XSS y clickjacking.
 
-## Opening in a New Tab
+## Abrir en una nueva pestaña
 
-To open a panel or dashboard in a new browser tab instead of embedding it inline, use a link:
+Para abrir un panel o panel de control en una nueva pestaña del navegador en lugar de incrustarlo en línea, use un enlace:
 
 ```html
 <a href="<embed-link>" target="_blank">Open Dashboard</a>

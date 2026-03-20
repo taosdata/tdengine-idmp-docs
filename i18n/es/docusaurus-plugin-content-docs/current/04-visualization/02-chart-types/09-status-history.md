@@ -1,55 +1,55 @@
 ---
-title: Status History
-sidebar_label: Status History
+title: Historial de estado
+sidebar_label: Historial de estado
 ---
 
-# 4.2.9 Status History
+# 4.2.9 Historial de estado
 
-## Overview
+## Descripción general
 
-The Status History panel displays a grid of colored cells where each column represents a time bucket and each row represents a metric. It provides a compact, calendar-style view of state patterns across multiple dimensions simultaneously — ideal for spotting recurring patterns, shifts, or periods of abnormal behavior across a long time range.
+El historial de estado muestra la distribución del historial de estados de las métricas en una cuadrícula densa, donde cada columna representa un intervalo de tiempo y cada fila representa una métrica. Proporciona una vista compacta de estilo calendario adecuada para mostrar patrones de estado en múltiples dimensiones simultáneamente — ideal para detectar patrones cíclicos, diferencias de turno o períodos de comportamiento anómalo en rangos de tiempo más largos.
 
-## When to Use
+## Cuándo usarlo
 
-Use the Status History panel when:
+Use el historial de estado cuando:
 
-- You want a high-level calendar-style overview of states across many time buckets (hours, days, shifts)
-- You are comparing state patterns across multiple metrics or devices at the same time
-- You need to answer questions like "which hours this week had out-of-limit conditions?" or "which devices were in alarm on Monday?"
+- Necesite una descripción general de alto nivel de estilo calendario del estado en múltiples intervalos de tiempo (horas, días, turnos)
+- Esté comparando patrones de estado de múltiples métricas o equipos en el mismo período de tiempo
+- Necesite responder preguntas como "¿En qué horas de esta semana se produjeron excedencias?" o "¿Qué equipos estaban en estado de alarma el lunes?"
 
-For a continuous band showing every state transition in detail, use the State Timeline instead.
+Para mostrar bandas continuas que muestren cada transición de estado con detalle, use la línea de tiempo de estado.
 
-## Configuration
+## Configuración
 
-### Edit Mode Toolbar
+### Barra de herramientas del modo de edición
 
-In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Status History adds:
+Además de los [controles generales del modo de edición](../01-panels.md#414-modo-de-edición-de-paneles), el historial de estado añade los siguientes controles:
 
-| Control | Description |
+| Control | Descripción |
 |---|---|
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+| **Guardar como imagen** | Descarga la vista previa actual como imagen PNG |
+| **Pantalla completa** | Expande la vista previa del editor para llenar la ventana del navegador |
+| **Interpretar panel** | Ejecuta el análisis de IA sobre los datos de la vista previa actual |
 
-### Graph Settings
+### Configuración del gráfico
 
-| Setting | Description |
+| Ajuste | Descripción |
 |---|---|
-| **Title** | Chart title |
-| **Subtitle** | Secondary title |
-| **Value Mapping** | Click **+ Edit Value Mappings** to define how data values map to display colors and labels. For example: 0 → "Off" (gray), 1 → "Running" (green), 2 → "Fault" (red). |
-| **Border Width** | Width of the borders between cells (slider) |
-| **Row Height** | Relative height of each row (slider) |
-| **Column Width** | Width of each time-bucket column (slider) |
-| **Fill Opacity** | Transparency of the cell fill color, 0–1 |
-| **Rotate Labels** | Rotation of X-axis time labels |
+| **Título** | El título del gráfico |
+| **Subtítulo** | El título secundario |
+| **Mapeo de valores** | Haga clic en **+ Editar mapeo de valores** para definir la correspondencia entre los valores de datos y los colores y etiquetas de visualización. Por ejemplo: 0 → "Detenido" (gris), 1 → "En marcha" (verde), 2 → "Fallo" (rojo). |
+| **Grosor de línea** | El ancho del borde entre celdas (control deslizante) |
+| **Altura de fila** | La altura relativa de cada fila (control deslizante) |
+| **Ancho de columna** | El ancho de cada columna de intervalo de tiempo (control deslizante) |
+| **Transparencia de relleno** | Transparencia del color de relleno de las celdas, de 0 a 1 |
+| **Rotación de etiquetas** | Ángulo de rotación de las etiquetas de tiempo del eje X |
 
-The time bucket size is controlled by the **Sliding Window** setting in the data configuration. For example, a 1-hour sliding window produces one column per hour.
+El tamaño del intervalo de tiempo está controlado por el ajuste **Ventana deslizante** en la configuración de datos. Por ejemplo, una ventana deslizante de 1 hora genera una columna por hora.
 
-## Example Scenarios
+## Ejemplos de uso
 
-**Weekly alarm heatmap.** Ten alarm signals are added as rows. A 1-hour sliding window produces 168 columns (one per hour over 7 days). Value mappings set 0 → gray and 1 → red. The resulting grid shows at a glance which devices were in alarm and at what hours throughout the week.
+**Mapa de calor de alarmas semanal.** Se añaden diez señales de alarma como filas, y una ventana deslizante de 1 hora genera 168 columnas (7 días, una por hora). El mapeo de valores establece 0 → gris, 1 → rojo. La cuadrícula resultante permite ver de un vistazo qué equipos estaban en estado de alarma en qué horas.
 
-**Shift-by-shift operating mode review.** An 8-hour sliding window across a month produces one column per shift. Each row represents a production line's operating mode. The operations manager can immediately see which shifts ran in the expected mode and which had unplanned stoppages.
+**Revisión de patrones operativos por turno.** Una ventana deslizante de 8 horas a lo largo de un mes genera una columna por turno. Cada fila representa el modo operativo de una línea de producción. El gerente de operaciones puede ver de inmediato qué turnos siguieron el patrón esperado y cuáles tuvieron paradas no planificadas.
 
-**Out-of-limit condition calendar.** A quality engineer adds 12 process variables as rows with a 1-day sliding window. Value mappings color cells green (in-limit) or red (out-of-limit). The resulting calendar view highlights which days had quality issues across the process.
+**Calendario de excedencias.** Un ingeniero de calidad añade 12 variables de proceso como filas y establece una ventana deslizante de 1 día. El mapeo de valores colorea las celdas en verde (dentro del límite) o rojo (fuera del límite). La vista de calendario resultante destaca los días con problemas de calidad en el proceso.

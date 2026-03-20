@@ -3,10 +3,10 @@ title: Tipos de gráficos
 sidebar_label: Tipos de gráficos
 ---
 
-# 4.2 Chart Types
-
 import DocCardList from '@theme/DocCardList';
 
-TDengine IDMP supports the following panel chart types. Each type is suited to different kinds of data and analytical tasks — select the one that best matches what you need to communicate.
+# 4.2 Tipos de gráficos
+
+TDengine IDMP admite los siguientes tipos de gráficos de panel. Cada tipo es adecuado para diferentes tipos de datos y tareas de análisis — elija el que mejor se adapte a lo que necesita comunicar.
 
 <DocCardList />

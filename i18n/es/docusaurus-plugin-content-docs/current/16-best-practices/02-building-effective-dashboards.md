@@ -1,10 +1,10 @@
 ---
-title: Building Effective Dashboards
-sidebar_label: Building Effective Dashboards
+title: Construir paneles de control eficaces
+sidebar_label: Construir paneles de control eficaces
 ---
 
-# 16.2 Building Effective Dashboards
+# 16.2 Construir paneles de control eficaces
 
-:::note Coming Soon
-This section is under development. Content will be available in a future release.
+:::note Próximamente
+Esta sección está en desarrollo. El contenido estará disponible en una versión futura.
 :::

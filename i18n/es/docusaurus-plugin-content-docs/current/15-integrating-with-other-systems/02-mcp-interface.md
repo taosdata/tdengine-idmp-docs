@@ -1,12 +1,12 @@
 ---
-title: MCP Interface
-sidebar_label: MCP Interface
+title: Interfaz MCP
+sidebar_label: Interfaz MCP
 ---
 
-# 15.2 MCP Interface
+# 15.2 Interfaz MCP
 
-:::note Coming Soon
-The TDengine IDMP MCP (Model Context Protocol) Interface is under active development and will be available in a future release. Documentation will be provided at that time.
+:::note Próximamente
+La interfaz MCP (Model Context Protocol) de TDengine IDMP está en desarrollo activo y estará disponible en una versión futura. La documentación se proporcionará en ese momento.
 :::
 
-The MCP Interface will expose IDMP industrial data and context directly to LLM agents, enabling natural language interaction with plant data, assets, and events without custom integration work.
+La interfaz MCP expondrá los datos industriales y el contexto de IDMP directamente a los agentes LLM, permitiendo la interacción en lenguaje natural con los datos de planta, activos y eventos sin necesidad de trabajo de integración personalizado.

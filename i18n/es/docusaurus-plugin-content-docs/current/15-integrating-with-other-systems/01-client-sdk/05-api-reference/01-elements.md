@@ -1,43 +1,43 @@
 ---
-title: Elements API
-sidebar_label: Elements API
+title: API de elementos
+sidebar_label: API de elementos
 ---
 
-# 15.1.5.1 Elements API
-
-`ElementResourceApi` provides query, create, update, and delete operations on elements.
+`ElementResourceApi` proporciona operaciones de consulta, creación, actualización y eliminación de elementos.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Method List
+# 15.1.5.1 API de elementos
 
-| Method | HTTP | Description |
+## Lista de métodos
+
+| Método | HTTP | Descripción |
 |---|---|---|
-| `apiV1ElementsGet` | GET /api/v1/elements | Paginated query of the element list |
-| `apiV1ElementsIdGet` | GET /api/v1/elements/\{id\} | Get a single element by ID |
-| `apiV1ElementsPost` | POST /api/v1/elements | Create an element |
-| `apiV1ElementsIdPut` | PUT /api/v1/elements/\{id\} | Update an element |
-| `apiV1ElementsIdDelete` | DELETE /api/v1/elements/\{id\} | Delete an element |
+| `apiV1ElementsGet` | GET /api/v1/elements | Consulta paginada de la lista de elementos |
+| `apiV1ElementsIdGet` | GET /api/v1/elements/\{id\} | Obtener un solo elemento por ID |
+| `apiV1ElementsPost` | POST /api/v1/elements | Crear un elemento |
+| `apiV1ElementsIdPut` | PUT /api/v1/elements/\{id\} | Actualizar un elemento |
+| `apiV1ElementsIdDelete` | DELETE /api/v1/elements/\{id\} | Eliminar un elemento |
 
 ---
 
-## apiV1ElementsGet — Query Element List
+## apiV1ElementsGet — Consultar lista de elementos
 
-Returns a paginated list of elements accessible to the current user, with optional filtering by name or parent element.
+Devuelve una lista paginada de elementos accesibles al usuario actual, con filtrado opcional por nombre o elemento padre.
 
-### Parameters
+### Parámetros
 
-| Name | Type | Required | Default | Description |
+| Nombre | Tipo | Requerido | Predeterminado | Descripción |
 |---|---|---|---|---|
-| pageNum | integer | No | 1 | Page number, 1-based |
-| pageSize | integer | No | 20 | Records per page |
-| parentId | string | No | — | Filter by parent element ID |
-| name | string | No | — | Fuzzy search by element name |
+| pageNum | integer | No | 1 | Número de página, basado en 1 |
+| pageSize | integer | No | 20 | Registros por página |
+| parentId | string | No | — | Filtrar por ID del elemento padre |
+| name | string | No | — | Búsqueda difusa por nombre de elemento |
 
-**Returns:** `PageOfBasicElementDTO`
+**Devuelve:** `PageOfBasicElementDTO`
 
-### Example
+### Ejemplo
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -67,19 +67,19 @@ for elem in result.data:
 
 ---
 
-## apiV1ElementsIdGet — Get Single Element
+## apiV1ElementsIdGet — Obtener elemento único
 
-### Parameters
+### Parámetros
 
-| Name | Type | Required | Description |
+| Nombre | Tipo | Requerido | Descripción |
 |---|---|---|---|
-| id | string | Yes | Element ID |
+| id | string | Sí | ID del elemento |
 
-**Returns:** `ElementDTO`
+**Devuelve:** `ElementDTO`
 
-**Throws:** `ApiException(404)` — element not found
+**Lanza:** `ApiException(404)` — elemento no encontrado
 
-### Example
+### Ejemplo
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -103,5 +103,5 @@ print(element.name)
 ---
 
 :::note
-For the full parameter reference for create, update, and delete methods, see the OpenAPI spec file or the Swagger UI at `/swagger-ui.html` on your IDMP server.
+Para la referencia completa de parámetros de los métodos de creación, actualización y eliminación, consulte el archivo de especificación OpenAPI o el Swagger UI en `/swagger-ui.html` en su servidor IDMP.
 :::

@@ -1,11 +1,11 @@
 ---
-title: "Example: Query Element Tree"
-sidebar_label: Query Element Tree
+title: "Ejemplo: Consultar el árbol de elementos"
+sidebar_label: Consultar el árbol de elementos
 ---
 
-# 15.1.6.1 Example: Query Element Tree
+# 15.1.6.1 Ejemplo: Consultar el árbol de elementos
 
-**Scenario:** Iterate through all elements under a parent node and print their names and IDs. Useful for asset inventory, building element selectors, or seeding external systems.
+**Escenario:** Iterar por todos los elementos bajo un nodo padre e imprimir sus nombres e IDs. Útil para inventario de activos, construcción de selectores de elementos o sincronización de datos con sistemas externos.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

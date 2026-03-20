@@ -1,22 +1,22 @@
 ---
-title: AI Panel Insights
-sidebar_label: AI Panel Insights
+title: Información de paneles con IA
+sidebar_label: Información de paneles con IA
 ---
 
-# 8.3 AI Panel Insights
+# 8.3 Información de paneles con IA
 
-AI Panel Insights generates a natural language narrative for an individual panel — describing what the data shows, identifying notable patterns, and highlighting anomalies or trends that may warrant attention.
+La información de paneles con IA genera una narrativa en lenguaje natural para un panel individual — describiendo lo que muestran los datos, identificando patrones notables y destacando anomalías o tendencias que puedan requerir atención.
 
-## How to Access
+## Cómo acceder
 
-Open any panel (either AI-generated or manually created) from an element's **Panels** tab. In the panel toolbar, click the **AI Insights** button (the sparkle or AI icon). The system queries the LLM with the panel's current data and returns a text summary displayed alongside the visualization.
+Abra cualquier panel (ya sea generado por IA o creado manualmente) desde la pestaña **Paneles** de un elemento. En la barra de herramientas del panel, haga clic en el botón **Información de IA** (el icono de destello o IA). El sistema consulta al LLM con los datos actuales del panel y devuelve un resumen de texto que se muestra junto a la visualización.
 
-## What the Insight Contains
+## Qué contiene la información
 
-The insight describes the panel's data in plain language. For a trend chart showing voltage over the past 24 hours, the insight might note the overall range, identify a peak or dip, and flag whether the values remain within normal operating limits. For a statistics panel, it might compare the current reading against the historical average.
+La información describe los datos del panel en lenguaje sencillo. Para un gráfico de tendencias que muestra el voltaje durante las últimas 24 horas, la información podría señalar el rango general, identificar un pico o caída, e indicar si los valores se mantienen dentro de los límites operativos normales. Para un panel de estadísticas, podría comparar la lectura actual con el promedio histórico.
 
-Insights are generated on demand — each time you click the AI Insights button, the system fetches fresh data and generates a new narrative based on the current query window.
+La información se genera bajo demanda — cada vez que hace clic en el botón de información de IA, el sistema obtiene datos actualizados y genera una nueva narrativa basada en la ventana de consulta actual.
 
-If you want a fresh interpretation, click the **Refresh** button in the insight panel. The system re-queries the data and generates a new narrative.
+Si desea una interpretación nueva, haga clic en el botón **Actualizar** en el panel de información. El sistema vuelve a consultar los datos y genera una nueva narrativa.
 
-For a full reference on panels and the visualization interface, see [Chapter 4: Visualization](../04-visualization/index.md).
+Para una referencia completa sobre paneles e interfaz de visualización, consulte el [Capítulo 4: Visualización](../04-visualization/index.md).

@@ -1,55 +1,55 @@
 ---
-title: Anomaly Detection
-sidebar_label: Anomaly Detection
+title: Detección de anomalías
+sidebar_label: Detección de anomalías
 ---
 
-# 8.7 Anomaly Detection
+# 8.7 Detección de anomalías
 
 :::note
-Anomaly detection requires the **TDgpt module** to be installed alongside IDMP. It does not require an LLM connection.
+La detección de anomalías requiere que el **módulo TDgpt** esté instalado junto con IDMP. No requiere una conexión al LLM.
 :::
 
-Anomaly detection in IDMP is powered by **TDgpt**, TDengine's built-in time-series AI engine. It is available as one of the eight trigger types when creating a real-time analysis. Unlike threshold-based triggers where you must define explicit boundary conditions, the Anomaly Detection trigger identifies unusual behavior automatically — you select the target attribute and the algorithm; TDgpt determines when anomalies begin and end.
+La detección de anomalías en IDMP está impulsada por **TDgpt**, el motor de IA de series temporales integrado de TDengine. Está disponible como uno de los ocho tipos de activación al crear un análisis en tiempo real. A diferencia de los activadores basados en umbrales donde debe definir condiciones de límite explícitas, el activador de detección de anomalías identifica comportamientos inusuales automáticamente — usted selecciona el atributo objetivo y el algoritmo; TDgpt determina cuándo comienzan y terminan las anomalías.
 
-## How It Works
+## Cómo funciona
 
-When an analysis is configured with the **Anomaly Detection** trigger, TDgpt continuously monitors the selected attribute's time-series data. It applies the chosen algorithm to model the expected behavior of the signal and flags periods where the observed values deviate significantly from that model. The analysis fires when an anomaly window is detected, and the event it generates captures the anomaly start and end times.
+Cuando un análisis se configura con el activador de **Detección de anomalías**, TDgpt monitorea continuamente los datos de series temporales del atributo seleccionado. Aplica el algoritmo elegido para modelar el comportamiento esperado de la señal y marca los períodos en que los valores observados se desvían significativamente de ese modelo. El análisis se activa cuando se detecta una ventana de anomalía, y el evento que genera captura los tiempos de inicio y fin de la anomalía.
 
-Because detection is model-based rather than rule-based, TDgpt can identify complex patterns — gradual drift, sudden spikes, seasonal deviations — that fixed thresholds would miss or falsely trigger on.
+Dado que la detección está basada en modelos en lugar de reglas, TDgpt puede identificar patrones complejos — deriva gradual, picos repentinos, desviaciones estacionales — que los umbrales fijos perderían o activarían falsamente.
 
-## Configuring an Anomaly Detection Analysis
+## Configurar un análisis de detección de anomalías
 
-To create an anomaly detection analysis:
+Para crear un análisis de detección de anomalías:
 
-1. Navigate to the element's **Analyses** tab and click **+** to create a new analysis.
-2. In the **Trigger** section, select **Anomaly Detection** as the trigger type.
-3. Configure the Anomaly Detection trigger fields:
+1. Navegue a la pestaña **Análisis** del elemento y haga clic en **+** para crear un nuevo análisis.
+2. En la sección **Activador**, seleccione **Detección de anomalías** como tipo de activación.
+3. Configure los campos del activador de detección de anomalías:
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Attribute** | The element attribute to monitor for anomalies |
-| **Algorithm** | The anomaly detection algorithm to apply (see below) |
-| **Window** | The time window over which the algorithm evaluates each data segment |
+| **Atributo** | El atributo del elemento a monitorear en busca de anomalías |
+| **Algoritmo** | El algoritmo de detección de anomalías a aplicar (ver a continuación) |
+| **Ventana** | La ventana de tiempo sobre la que el algoritmo evalúa cada segmento de datos |
 
-4. Complete the **Calculation** and **Event** sections as with any other analysis type.
-5. Click **Save**.
+4. Complete las secciones **Cálculo** y **Evento** como con cualquier otro tipo de análisis.
+5. Haga clic en **Guardar**.
 
-## Supported Algorithms
+## Algoritmos compatibles
 
-TDgpt includes multiple anomaly detection algorithms backed by different ML frameworks:
+TDgpt incluye múltiples algoritmos de detección de anomalías respaldados por diferentes marcos de ML:
 
-| Algorithm | Framework | Characteristics |
+| Algoritmo | Marco | Características |
 |---|---|---|
-| **IQR** | Statistical | Interquartile range — simple, fast, works well for univariate signals with clear outliers |
-| **LOF** | scikit-learn | Local Outlier Factor — density-based, effective for detecting point anomalies |
-| **Isolation Forest** | scikit-learn | Tree-based, robust to high-dimensional data and varying anomaly density |
-| **LSTM-AD** | PyTorch | LSTM-based sequence model — captures temporal dependencies, suitable for seasonal or periodic signals |
-| **TDtsfm** | TDengine | TDengine's own time-series foundation model, pre-trained on industrial time-series data |
+| **IQR** | Estadístico | Rango intercuartílico — simple, rápido, funciona bien para señales univariadas con valores atípicos claros |
+| **LOF** | scikit-learn | Factor de valor atípico local — basado en densidad, eficaz para detectar anomalías de punto |
+| **Isolation Forest** | scikit-learn | Basado en árboles, robusto para datos de alta dimensionalidad y densidad de anomalías variable |
+| **LSTM-AD** | PyTorch | Modelo de secuencia basado en LSTM — captura dependencias temporales, adecuado para señales estacionales o periódicas |
+| **TDtsfm** | TDengine | El propio modelo fundacional de series temporales de TDengine, preentrenado con datos industriales de series temporales |
 
-The appropriate algorithm depends on the nature of the signal and the type of anomaly you expect. For most industrial sensor streams, IQR or Isolation Forest provide a good starting point.
+El algoritmo apropiado depende de la naturaleza de la señal y el tipo de anomalía que espera. Para la mayoría de los flujos de sensores industriales, IQR o Isolation Forest proporcionan un buen punto de partida.
 
-## Output
+## Salida
 
-When TDgpt detects an anomaly window, the analysis fires and (if event generation is enabled) creates an event capturing the anomaly period. The start and end timestamps of the anomaly window are stored as event attributes.
+Cuando TDgpt detecta una ventana de anomalía, el análisis se activa y (si la generación de eventos está habilitada) crea un evento que captura el período de la anomalía. Las marcas de tiempo de inicio y fin de la ventana de anomalía se almacenan como atributos del evento.
 
-For the full trigger configuration reference, see [Trigger Types](../07-real-time-analysis/03-trigger-types.md).
+Para la referencia completa de configuración de activadores, consulte [Tipos de activación](../07-real-time-analysis/03-trigger-types.md).

@@ -3,8 +3,8 @@ title: Análisis avanzado
 sidebar_label: Análisis avanzado
 ---
 
-# 9 Advanced Analytics
+# 9. Análisis avanzado
 
-:::note Coming Soon
-This chapter is under development. Content will be published in a future release.
+:::note Próximamente
+Este capítulo está en desarrollo. El contenido se publicará en una versión futura.
 :::

@@ -1,90 +1,90 @@
 ---
-title: Alerts and Notifications
-sidebar_label: Alerts and Notifications
+title: Alertas y Notificaciones
+sidebar_label: Alertas y Notificaciones
 ---
 
-# 6.4 Alerts and Notifications
+# 6.4 Alertas y Notificaciones
 
-When an analysis generates an event, TDengine IDMP can automatically send a notification to configured contact points — email addresses, webhooks, messaging platforms, or other channels. This chapter describes how to set up contact points, configure notification rules on elements, and understand how the notification system behaves.
+Cuando un análisis genera un evento, TDengine IDMP puede enviar automáticamente una notificación a los puntos de contacto configurados — direcciones de correo electrónico, webhooks, plataformas de mensajería u otros canales. Este capítulo describe cómo configurar puntos de contacto, configurar reglas de notificación en los elementos y comprender cómo se comporta el sistema de notificaciones.
 
-## 6.4.1 Contact Points
+## 6.4.1 Puntos de Contacto
 
-A **contact point** is a delivery channel for notifications. Contact points are configured system-wide and then referenced by notification rules on individual elements.
+Un **punto de contacto** es un canal de entrega para notificaciones. Los puntos de contacto se configuran a nivel de sistema y luego son referenciados por las reglas de notificación en los elementos individuales.
 
-### Managing Contact Points
+### Gestionar Puntos de Contacto
 
-Contact points are managed in **Admin Console → System Configuration → Notification Contact Point**.
+Los puntos de contacto se gestionan en **Consola de Administración → Configuración del Sistema → Punto de Contacto de Notificaciones**.
 
-The contact point list shows:
+La lista de puntos de contacto muestra:
 
-| Column | Description |
+| Columna | Descripción |
 |---|---|
-| **Name** | A descriptive name for this contact point (e.g., `Jeff_default_contact_point`) |
-| **Type** | The delivery channel type (e.g., EMAIL, webhook, Feishu) |
-| **Address** | The recipient address or endpoint URL |
-| **Description** | Optional description |
+| **Nombre** | Un nombre descriptivo para este punto de contacto (por ejemplo, `Jeff_default_contact_point`) |
+| **Tipo** | El tipo de canal de entrega (por ejemplo, EMAIL, webhook, Feishu) |
+| **Dirección** | La dirección del destinatario o URL del endpoint |
+| **Descripción** | Descripción opcional |
 
-To create a new contact point, click **+** and fill in the name, type, address, and description fields. The available types depend on the integrations configured for your IDMP instance.
+Para crear un nuevo punto de contacto, haga clic en **+** y complete los campos de nombre, tipo, dirección y descripción. Los tipos disponibles dependen de las integraciones configuradas para su instancia de IDMP.
 
 :::tip
-Contact points are shared across the system. The same contact point can be referenced by notification rules on many different elements. Create one contact point per recipient or channel, then reuse it wherever needed.
+Los puntos de contacto se comparten en todo el sistema. El mismo punto de contacto puede ser referenciado por reglas de notificación en muchos elementos diferentes. Cree un punto de contacto por destinatario o canal, y luego reutilícelo donde sea necesario.
 :::
 
-## 6.4.2 Notification Rules
+## 6.4.2 Reglas de Notificación
 
-A **notification rule** defines how and to whom notifications are sent when an event occurs on a specific element. Each element has exactly one notification rule, shared by all events generated on that element.
+Una **regla de notificación** define cómo y a quién se envían notificaciones cuando ocurre un evento en un elemento específico. Cada elemento tiene exactamente una regla de notificación, compartida por todos los eventos generados en ese elemento.
 
-### Configuring a Notification Rule
+### Configurar una Regla de Notificación
 
-To configure the notification rule for an element, navigate to the element in the asset tree, open its **Events** tab, and click the **Notification Rule** icon in the toolbar (the icon showing a document with a bell, second from the right). This opens the Notification Rule dialog showing the current configuration.
+Para configurar la regla de notificación de un elemento, navegue al elemento en el árbol de activos, abra su pestaña **Eventos** y haga clic en el icono **Regla de Notificación** en la barra de herramientas (el icono que muestra un documento con una campana, segundo desde la derecha). Esto abre el diálogo de Regla de Notificación con la configuración actual.
 
-Click **Edit** in the dialog to modify the settings. The configurable parameters are:
+Haga clic en **Editar** en el diálogo para modificar la configuración. Los parámetros configurables son:
 
-| Parameter | Description |
+| Parámetro | Descripción |
 |---|---|
-| **Contact Point** (required) | The primary delivery channel for event notifications. Select from the pre-configured contact points. |
-| **Resend Interval** (required) | How often to re-send a notification for an active, unacknowledged event. For example, set to 1 hour to alert operators every hour until the event is acknowledged or closed. |
-| **Escalation Contact Point** | An additional contact point to notify if the event remains unacknowledged for longer than the escalation interval. Used to alert supervisors or on-call staff when first-line operators have not responded. |
-| **Escalation Interval** | How long an event must remain unacknowledged before the escalation contact point is notified. |
-| **Max Resend Count** | The maximum number of times a single event can trigger a re-notification. Prevents indefinite re-sending for long-running events. |
-| **Message** | The notification message body. Supports variable substitution — for example `{elementName}`, `{eventName}`, `{startTime}`, `{severityLevel}`, `{eventUrl}` — to include event-specific information in each notification. |
-| **Event Template** | Per-template minimum severity threshold. For each event template listed, specify the lowest severity level that will trigger a notification. Events below the configured severity are suppressed. |
+| **Punto de Contacto** (obligatorio) | El canal de entrega principal para las notificaciones de eventos. Seleccione de los puntos de contacto preconfigurados. |
+| **Intervalo de Reenvío** (obligatorio) | Con qué frecuencia reenviar una notificación para un evento activo sin confirmar. Por ejemplo, configurar en 1 hora para alertar a los operadores cada hora hasta que el evento sea confirmado o cerrado. |
+| **Punto de Contacto de Escalada** | Un punto de contacto adicional a notificar si el evento permanece sin confirmar durante más tiempo que el intervalo de escalada. Se usa para alertar a supervisores o personal de guardia cuando los operadores de primera línea no han respondido. |
+| **Intervalo de Escalada** | Cuánto tiempo debe permanecer un evento sin confirmar antes de que se notifique al punto de contacto de escalada. |
+| **Número Máximo de Reenvíos** | El número máximo de veces que un único evento puede activar una re-notificación. Evita el reenvío indefinido para eventos de larga duración. |
+| **Mensaje** | El cuerpo del mensaje de notificación. Admite sustitución de variables — por ejemplo `{elementName}`, `{eventName}`, `{startTime}`, `{severityLevel}`, `{eventUrl}` — para incluir información específica del evento en cada notificación. |
+| **Plantilla de Evento** | Umbral mínimo de gravedad por plantilla. Para cada plantilla de evento listada, especifique el nivel de gravedad más bajo que activará una notificación. Los eventos por debajo de la gravedad configurada quedarán suprimidos. |
 
-The dialog also has a **Preview Message** button to see how the rendered message looks, and a **Send Message** button to manually dispatch a notification immediately.
+El diálogo también tiene un botón **Vista Previa del Mensaje** para ver cómo se ve el mensaje renderizado, y un botón **Enviar Mensaje** para despachar una notificación manualmente de forma inmediata.
 
-## 6.4.3 Notification Behavior
+## 6.4.3 Comportamiento de las Notificaciones
 
-Understanding the notification lifecycle helps you configure the right resend and escalation settings.
+Comprender el ciclo de vida de las notificaciones le ayuda a configurar los ajustes correctos de reenvío y escalada.
 
-### Notification Flow
+### Flujo de Notificaciones
 
-When an analysis generates an event:
+Cuando un análisis genera un evento:
 
-1. **Initial Notification** — The system immediately sends a notification to the configured contact point, subject to the **Minimum Notification Interval** setting on the event template. If a notification was sent recently for an event from the same analysis (within the minimum interval), the initial notification is suppressed to prevent overload.
+1. **Notificación Inicial** — El sistema envía inmediatamente una notificación al punto de contacto configurado, sujeto al ajuste de **Intervalo Mínimo de Notificación** en la plantilla de evento. Si se envió una notificación recientemente para un evento del mismo análisis (dentro del intervalo mínimo), la notificación inicial se suprime para evitar sobrecarga.
 
-2. **Resend Mechanism** — If the event requires acknowledgment (configured in the event template) and the event is not acknowledged within the **Resend Interval**, the system sends another notification. This continues until:
-   - The event is acknowledged by an operator, or
-   - The event is closed (end time is set), or
-   - The **Maximum Resend Count** is reached.
+2. **Mecanismo de Reenvío** — Si el evento requiere confirmación (configurado en la plantilla de evento) y el evento no es confirmado dentro del **Intervalo de Reenvío**, el sistema envía otra notificación. Esto continúa hasta que:
+   - El evento sea confirmado por un operador, o
+   - El evento sea cerrado (se establece una hora de fin), o
+   - Se alcance el **Número Máximo de Reenvíos**.
 
-3. **Escalation** — If an **Escalation Contact Point** and **Escalation Interval** are configured, and the event remains unacknowledged beyond the escalation interval, the system sends a notification to the escalation contact point in addition to the primary contact point.
+3. **Escalada** — Si se configuran un **Punto de Contacto de Escalada** y un **Intervalo de Escalada**, y el evento permanece sin confirmar más allá del intervalo de escalada, el sistema envía una notificación al punto de contacto de escalada además del punto de contacto principal.
 
-4. **Notification Stops** — Once the event is acknowledged or closed, no further notifications are sent for that event.
+4. **Notificaciones Se Detienen** — Una vez que el evento es confirmado o cerrado, no se envían más notificaciones para ese evento.
 
-### Active Events
+### Eventos Activos
 
-An event that has occurred but has not yet been closed is called an **active event**. Active events continue to trigger re-notifications according to the notification rule. The event list marks active events to make them easy to identify. Once closed, the system stops all automatic notifications for that event.
+Un evento que ha ocurrido pero que aún no ha sido cerrado se denomina **evento activo**. Los eventos activos continúan activando re-notificaciones según la regla de notificación. La lista de eventos marca los eventos activos para que sean fáciles de identificar. Una vez cerrado, el sistema detiene todas las notificaciones automáticas para ese evento.
 
-### In-App Notification Pop-up
+### Ventana Emergente de Notificación en la Aplicación
 
-When an event is generated, IDMP shows an in-app **New Event Notification** pop-up in the bottom-right corner of the screen. This pop-up appears for all logged-in users regardless of which page they are viewing. It displays the event name, start time, end time, and severity level, along with the current count of **Unacknowledged Events** in the system. Click the **×** button to dismiss it.
+Cuando se genera un evento, IDMP muestra una ventana emergente de **Nueva Notificación de Evento** en la esquina inferior derecha de la pantalla. Esta ventana emergente aparece para todos los usuarios conectados independientemente de qué página estén viendo. Muestra el nombre del evento, la hora de inicio, la hora de fin y el nivel de gravedad, junto con el recuento actual de **Eventos Sin Confirmar** en el sistema. Haga clic en el botón **×** para cerrarla.
 
-### Delivery History
+### Historial de Entregas
 
-Every notification attempt — successful or failed — is logged in the **Notification Record** section of the event detail page. This log includes the contact point name, timestamp, and delivery status, providing a complete audit trail of who was notified and when.
+Cada intento de notificación — exitoso o fallido — se registra en la sección **Registro de Notificaciones** de la página de detalle del evento. Este registro incluye el nombre del punto de contacto, la marca de tiempo y el estado de entrega, proporcionando un rastro de auditoría completo de quién fue notificado y cuándo.
 
-## 6.4.4 Notification Rule Template
+## 6.4.4 Plantilla de Regla de Notificación
 
-When elements of the same type all require the same notification setup, you can define a **notification rule template** on the [element template](../03-data-modeling/01-elements.md#316-element-templates) rather than configuring each element individually.
+Cuando los elementos del mismo tipo requieren la misma configuración de notificaciones, puede definir una **plantilla de regla de notificación** en la [plantilla de elemento](../03-data-modeling/01-elements.md#316-element-templates) en lugar de configurar cada elemento individualmente.
 
-The **Notification Rule Template** tab on an element template exposes the same parameters as a regular notification rule — contact point, resend interval, escalation contact point, escalation interval, max resend count, message, and per-event-template severity thresholds. Configure it once, and every element created from that template inherits the notification rule automatically.
+La pestaña **Plantilla de Regla de Notificación** en una plantilla de elemento expone los mismos parámetros que una regla de notificación normal — punto de contacto, intervalo de reenvío, punto de contacto de escalada, intervalo de escalada, número máximo de reenvíos, mensaje y umbrales de gravedad por plantilla de evento. Configúrelo una vez, y cada elemento creado a partir de esa plantilla hereda automáticamente la regla de notificación.

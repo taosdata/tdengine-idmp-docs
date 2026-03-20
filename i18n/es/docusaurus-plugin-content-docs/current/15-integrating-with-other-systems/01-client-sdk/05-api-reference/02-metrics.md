@@ -1,43 +1,43 @@
 ---
-title: Metrics API
-sidebar_label: Metrics API
+title: API de métricas
+sidebar_label: API de métricas
 ---
 
-# 15.1.5.2 Metrics API
-
-`MetricResourceApi` provides read and write operations on time-series data. It is one of the most frequently used modules in the SDK.
+`MetricResourceApi` proporciona operaciones de lectura y escritura sobre datos de series temporales. Es uno de los módulos más utilizados del SDK.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Method List
+# 15.1.5.2 API de métricas
 
-| Method | HTTP | Description |
+## Lista de métodos
+
+| Método | HTTP | Descripción |
 |---|---|---|
-| `apiV1MetricsGet` | GET /api/v1/metrics | Query the metric list |
-| `apiV1MetricsIdHistoryGet` | GET /api/v1/metrics/\{id\}/history | Query historical data for a metric |
-| `apiV1MetricsIdLatestGet` | GET /api/v1/metrics/\{id\}/latest | Query the latest value of a metric |
-| `apiV1MetricsIdDataPost` | POST /api/v1/metrics/\{id\}/data | Write data to a metric |
+| `apiV1MetricsGet` | GET /api/v1/metrics | Consultar la lista de métricas |
+| `apiV1MetricsIdHistoryGet` | GET /api/v1/metrics/\{id\}/history | Consultar datos históricos de una métrica |
+| `apiV1MetricsIdLatestGet` | GET /api/v1/metrics/\{id\}/latest | Consultar el valor más reciente de una métrica |
+| `apiV1MetricsIdDataPost` | POST /api/v1/metrics/\{id\}/data | Escribir datos en una métrica |
 
 ---
 
-## Query Historical Data
+## Consultar datos históricos
 
-Returns metric data within a specified time range, with optional aggregation.
+Devuelve los datos de la métrica dentro de un rango de tiempo especificado, con agregación opcional.
 
-### Parameters
+### Parámetros
 
-| Name | Type | Required | Description |
+| Nombre | Tipo | Requerido | Descripción |
 |---|---|---|---|
-| id | string | Yes | Metric ID |
-| from | long | Yes | Start time, Unix millisecond timestamp |
-| to | long | Yes | End time, Unix millisecond timestamp |
-| interval | string | No | Aggregation time window, e.g. `1m`, `1h`. Omit to return raw data. |
-| aggregate | string | No | Aggregation function: `avg`, `max`, `min`, `sum` |
+| id | string | Sí | ID de la métrica |
+| from | long | Sí | Tiempo de inicio, marca de tiempo Unix en milisegundos |
+| to | long | Sí | Tiempo de fin, marca de tiempo Unix en milisegundos |
+| interval | string | No | Ventana de tiempo de agregación, p. ej. `1m`, `1h`. Omita para devolver datos sin procesar. |
+| aggregate | string | No | Función de agregación: `avg`, `max`, `min`, `sum` |
 
-**Returns:** `MetricDataDTO`
+**Devuelve:** `MetricDataDTO`
 
-### Example
+### Ejemplo
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -79,11 +79,11 @@ one_hour_ago_ms = now_ms - 3600 * 1000
 
 ---
 
-## Query Latest Value
+## Consultar valor más reciente
 
-Returns the most recent data point for a metric. Suitable for real-time monitoring scenarios.
+Devuelve el punto de datos más reciente de una métrica. Adecuado para escenarios de monitoreo en tiempo real.
 
-### Example
+### Ejemplo
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -107,5 +107,5 @@ Returns the most recent data point for a metric. Suitable for real-time monitori
 </Tabs>
 
 :::note
-For the complete method signatures and parameters, refer to the OpenAPI spec file (`idmp-v1.0.14.2.json`) included in the SDK package, or browse the Swagger UI at `/swagger-ui.html` on your IDMP server.
+Para las firmas de métodos y parámetros completos, consulte el archivo de especificación OpenAPI (`idmp-v1.0.14.2.json`) incluido en el paquete del SDK, o explore el Swagger UI en `/swagger-ui.html` en su servidor IDMP.
 :::

@@ -1,67 +1,67 @@
 ---
-title: Bar Gauge
-sidebar_label: Bar Gauge
+title: Indicador de barra
+sidebar_label: Indicador de barra
 ---
 
-# 4.2.5 Bar Gauge
+# 4.2.5 Indicador de barra
 
-## Overview
+## Descripción general
 
-The Bar Gauge displays a value as a filled bar against a configurable scale, similar to a thermometer or progress bar. Color thresholds along the bar visually segment the scale into zones, making it easy to see how far into a range a value has progressed.
+El indicador de barra muestra los valores como barras rellenas, similar a un termómetro o una barra de progreso, mostrando hasta dónde ha llegado el valor dentro de un rango de escala configurable. Los umbrales de color en la barra dividen visualmente la escala en diferentes zonas, lo que facilita ver de un vistazo hasta dónde ha avanzado el valor en el rango.
 
-Multiple metrics render as multiple bars stacked in the panel, making the Bar Gauge effective for comparing several similar measurements side by side.
+Se pueden mostrar múltiples métricas en el panel como múltiples barras apiladas, lo que hace que el indicador de barra sea ideal para comparar en paralelo múltiples mediciones similares.
 
-## When to Use
+## Cuándo usarlo
 
-Use the Bar Gauge when:
+Use el indicador de barra cuando:
 
-- You want a linear fill metaphor rather than a circular dial
-- You are showing capacity utilization, fill levels, or completion percentages
-- You need to compare multiple similar measurements (e.g., fill levels across several tanks) in a compact layout
-- A progress-bar visual is more intuitive for your audience than a needle gauge
+- Prefiera la metáfora de relleno lineal en lugar de una esfera circular
+- Muestre utilización de capacidad, nivel de llenado o porcentaje de completado
+- Necesite comparar múltiples mediciones similares en un diseño compacto (como el nivel de múltiples tanques)
+- La visualización de barra de progreso sea más intuitiva para su audiencia que un indicador con puntero
 
-For a single large numeric value without a scale reference, use the Stat Value panel. For a dial-style gauge, use the Gauge Chart.
+Para un único valor grande sin referencia de escala, use el panel de valor estadístico. Para un indicador estilo esfera, use el indicador.
 
-## Configuration
+## Configuración
 
-### Edit Mode Toolbar
+### Barra de herramientas del modo de edición
 
-In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Bar Gauge adds:
+Además de los [controles generales del modo de edición](../01-panels.md#414-modo-de-edición-de-paneles), el indicador de barra añade los siguientes controles:
 
-| Control | Description |
+| Control | Descripción |
 |---|---|
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+| **Guardar como imagen** | Descarga la vista previa actual como imagen PNG |
+| **Pantalla completa** | Expande la vista previa del editor para llenar la ventana del navegador |
+| **Interpretar panel** | Ejecuta el análisis de IA sobre los datos de la vista previa actual |
 
-### Graph Settings
+### Configuración del gráfico
 
-| Setting | Description |
+| Ajuste | Descripción |
 |---|---|
-| **Title** | Chart title |
-| **Subtitle** | Secondary title |
-| **Orientation** | Horizontal (bar fills left to right) or Vertical (bar fills bottom to top) |
-| **Display Mode** | Visual style: **Gradient** (smooth color transition), **Basic** (solid fill), **Retro LCD** (segmented display) |
-| **Value Display** | Where the numeric value is shown: **Value Color** (overlaid on bar, colored to match threshold), **Text Color** (overlaid, plain text), **Hidden** |
-| **Name Placement** | Metric name position: **Auto** (beside the bar) or **Hidden** |
-| **Bar size** | **Auto** (bar fills available space) or **Manual** (fixed pixel size) |
-| **Min** | Minimum value of the scale (default 0) |
-| **Max** | Maximum value of the scale (default 1) |
-| **Decimals** | Number of decimal places shown |
+| **Título** | El título del gráfico |
+| **Subtítulo** | El título secundario |
+| **Orientación del diseño** | Horizontal (la barra se rellena de izquierda a derecha) o vertical (la barra se rellena de abajo hacia arriba) |
+| **Modo de visualización** | Estilo visual: **Degradado** (transición de color suave), **Básico** (relleno de color sólido), **LCD retro** (visualización segmentada) |
+| **Visualización del valor** | Posición de visualización del valor: **Color del valor** (superpuesto en la barra, el color cambia con el umbral), **Color del texto** (superpuesto, color de texto normal), **Oculto** |
+| **Visualización del nombre** | Posición del nombre de la métrica: **Automático** (junto a la barra) u **Oculto** |
+| **Tamaño de barra** | **Automático** (la barra llena el espacio disponible) o **Manual** (tamaño fijo en píxeles) |
+| **Valor mínimo** | El valor mínimo de la escala (predeterminado: 0) |
+| **Valor máximo** | El valor máximo de la escala (predeterminado: 1) |
+| **Decimales** | El número de decimales mostrados |
 
-#### Thresholds
+#### Umbrales
 
-Thresholds define color bands along the bar. Each threshold specifies a value and a color; the bar changes color as the value crosses each boundary:
+Los umbrales definen las bandas de color en la barra. Cada umbral especifica un valor y un color; cuando el valor cruza cada límite, la barra cambia de color:
 
-| Setting | Description |
+| Ajuste | Descripción |
 |---|---|
-| **Thresholds** | Click **+ Add threshold** to define a boundary value and its color |
-| **Thresholds Mode** | **Absolute** (threshold values are raw data values) or **Percentage** (threshold values are percentages of the Min–Max range) |
+| **Umbrales** | Haga clic en **+ Añadir umbral** para definir un valor límite y su color |
+| **Modo de umbral** | **Valor absoluto** (el umbral es el valor de datos sin procesar) o **Porcentaje** (el umbral es un porcentaje del rango mínimo-máximo) |
 
-## Example Scenarios
+## Ejemplos de uso
 
-**Tank fill levels.** Five storage tanks each have a fill-level metric. All five are added to a single Bar Gauge panel with Horizontal orientation. Thresholds at 20% (red), 50% (yellow), and 80% (green) give operators an instant view of which tanks need attention.
+**Nivel de tanques.** Cinco tanques tienen cada uno una métrica de nivel. Se añaden los cinco a un único panel de indicador de barra con diseño horizontal. Se establecen umbrales en 20% (rojo), 50% (amarillo) y 80% (verde), lo que permite al operador ver de inmediato qué tanques requieren atención.
 
-**Capacity utilization comparison.** Three production lines contribute their hourly throughput as metrics. The Bar Gauge shows each line's utilization against a 100% maximum, with Gradient display mode providing a smooth color shift from green to red as utilization increases.
+**Comparación de utilización de capacidad.** Tres líneas de producción contribuyen con su producción por hora como métricas. El indicador de barra muestra la utilización de cada línea con un máximo del 100%, y el modo de visualización con degradado produce una transición de color suave de verde a rojo a medida que aumenta la utilización.
 
-**Battery state of charge.** A battery storage system's state of charge is displayed with a Vertical bar gauge, Min 0% and Max 100%, with Percentage thresholds at 20% (red) and 50% (yellow). The visual immediately communicates how much reserve is available.
+**Estado de carga de batería.** El estado de carga de un sistema de almacenamiento de energía se muestra como un indicador de barra vertical, con un valor mínimo de 0%, un valor máximo de 100% y umbrales porcentuales establecidos en 20% (rojo) y 50% (amarillo). El efecto visual comunica de forma intuitiva la reserva disponible.

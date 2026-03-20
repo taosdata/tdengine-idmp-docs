@@ -3,11 +3,11 @@ title: Colaboración y uso compartido
 sidebar_label: Colaboración y uso compartido
 ---
 
-# 11 Collaboration and Sharing
+# 11. Colaboración y uso compartido
 
-Industrial data only delivers its full value when insights can flow freely across an organization. An observation made by one engineer on the floor is wasted if it cannot reach the operations team, management, or colleagues at another site. TDengine IDMP builds collaboration into the platform so that teams can share visualizations, preserve institutional knowledge, export data for external tools, and migrate data models between deployments.
+Los datos industriales solo ofrecen su máximo valor cuando los conocimientos pueden fluir libremente por toda una organización. Una observación realizada por un ingeniero en planta no sirve de nada si no puede llegar al equipo de operaciones, a la dirección o a los colegas de otro sitio. TDengine IDMP incorpora la colaboración en la plataforma para que los equipos puedan compartir visualizaciones, preservar el conocimiento institucional, exportar datos para herramientas externas y migrar modelos de datos entre implementaciones.
 
-This chapter covers all collaboration and sharing capabilities in IDMP: sharing dashboards and panels, adding annotations to elements and events, exporting data as CSV, and importing and exporting data models between IDMP instances.
+Este capítulo cubre todas las capacidades de colaboración y uso compartido de IDMP: compartir paneles de control e indicadores, añadir anotaciones a elementos y eventos, exportar datos como CSV, e importar y exportar modelos de datos entre instancias de IDMP.
 
 import DocCardList from '@theme/DocCardList';
 

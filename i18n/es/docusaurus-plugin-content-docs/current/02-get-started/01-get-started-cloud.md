@@ -1,46 +1,46 @@
 ---
-title: Get Started with TDengine Cloud
+title: Inicio rápido con TDengine Cloud
 sidebar_label: TDengine Cloud
 ---
 
-# 2.1 Get Started with TDengine Cloud
+# 2.1 Inicio rápido con TDengine Cloud
 
-TDengine Cloud is a fully managed cloud service for industrial big data. It delivers all features of TDengine IDMP as a cloud-native solution on Amazon Web Services (AWS). You can register for free and automatically receive $250 in credit to evaluate TDengine IDMP.
+TDengine Cloud es un servicio en la nube totalmente gestionado para big data industrial. Ofrece todas las funcionalidades de TDengine IDMP como solución nativa en la nube sobre Amazon Web Services (AWS). Puede registrarse de forma gratuita y recibir automáticamente 250 USD en crédito para evaluar TDengine IDMP.
 
-## 2.1.1 Create a TDengine Cloud Account
+## 2.1.1 Crear una cuenta de TDengine Cloud
 
-1. In a web browser, go to [cloud.tdengine.com](https://cloud.tdengine.com).
-2. Under **Sign Up**, enter your email address and organization name.
-3. Click **Get Confirmation Code** and enter the code sent to your email address.
+1. En un navegador web, acceda a [cloud.tdengine.com](https://cloud.tdengine.com).
+2. En la sección **Registrarse**, introduzca su dirección de correo electrónico y el nombre de su organización.
+3. Haga clic en **Obtener código de confirmación** e introduzca el código enviado a su dirección de correo electrónico.
 
    :::tip
-   If the confirmation email does not arrive, check your spam or junk folder, or request the code again.
+   Si el correo electrónico de confirmación no llega, compruebe su carpeta de spam o correo no deseado, o solicite el código de nuevo.
    :::
 
-4. Read the Terms of Service and Privacy Policy and click **Sign up for TDengine Cloud**.
+4. Lea los Términos de Servicio y la Política de Privacidad y haga clic en **Registrarse en TDengine Cloud**.
 
-## 2.1.2 Enter Account Information
+## 2.1.2 Introducir la información de la cuenta
 
-1. On the page displayed, enter your name and password.
+1. En la página mostrada, introduzca su nombre y contraseña.
 
    :::note
-   - Your password must be 8 to 20 characters long.
-   - Your password must contain letters, digits, and special characters.
-   - Supported special characters: `. ~ ! @ # $ ^ & *`
+   - La contraseña debe tener entre 8 y 20 caracteres.
+   - La contraseña debe contener letras, dígitos y caracteres especiales.
+   - Caracteres especiales admitidos: `. ~ ! @ # $ ^ & *`
    :::
 
-2. (Optional) Enter your phone number and job title.
-3. (Optional) Select a profile picture. JPG and PNG files under 1 MB are supported.
-4. Click **Continue**.
+2. (Opcional) Introduzca su número de teléfono y cargo.
+3. (Opcional) Seleccione una foto de perfil. Se admiten archivos JPG y PNG de menos de 1 MB.
+4. Haga clic en **Continuar**.
 
-## 2.1.3 Create an IDMP Instance
+## 2.1.3 Crear una instancia de IDMP
 
-1. In the dialog box displayed, select **IDMP** to create a TDengine IDMP instance. A TDengine TSDB-Enterprise instance will also be created during this process.
-2. Enter a name for your TDengine IDMP instance and select a pricing plan.
-3. Enter a name for your TDengine TSDB-Enterprise instance and select a pricing plan.
-4. Specify whether you want a high-availability TDengine TSDB-Enterprise instance.
-5. Click **Create**. Your instances are created and started — this may take a moment.
+1. En el cuadro de diálogo mostrado, seleccione **IDMP** para crear una instancia de TDengine IDMP. Durante este proceso también se creará una instancia de TDengine TSDB-Enterprise.
+2. Introduzca un nombre para su instancia de TDengine IDMP y seleccione un plan de precios.
+3. Introduzca un nombre para su instancia de TDengine TSDB-Enterprise y seleccione un plan de precios.
+4. Especifique si desea una instancia de TDengine TSDB-Enterprise con alta disponibilidad.
+5. Haga clic en **Crear**. Sus instancias se crean e inician; este proceso puede tardar un momento.
 
-## 2.1.4 Activate and Initialize the System
+## 2.1.4 Activar e inicializar el sistema
 
-On TDengine Cloud, activation is handled automatically during account creation. Once your instances are running, continue to [Section 2.4](./04-experiencing-idmp.md) to explore IDMP features.
+En TDengine Cloud, la activación se gestiona automáticamente durante la creación de la cuenta. Una vez que sus instancias estén en funcionamiento, continúe en la [Sección 2.4](./04-experiencing-idmp.md) para explorar las funcionalidades de IDMP.

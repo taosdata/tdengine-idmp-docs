@@ -1,36 +1,36 @@
 ---
-title: Event List
-sidebar_label: Event List
+title: Lista de eventos
+sidebar_label: Lista de eventos
 ---
 
-# 4.2.11 Event List
+# 4.2.11 Lista de eventos
 
-## Overview
+## Descripción general
 
-The Event List panel displays events in a tabular grid, showing severity, acknowledgment status, name, duration, start and end times, and other event metadata. It is created by saving a filtered view from the Events section, and can be placed on an element's panel list or added to a dashboard.
+El panel de lista de eventos muestra información de eventos en formato de tabla, incluyendo el nivel de gravedad, el estado de confirmación, el nombre, la duración, las horas de inicio/fin y otros metadatos de eventos. Se puede crear guardando desde la vista de eventos, y puede colocarse en la lista de paneles de elementos o añadirse a un dashboard.
 
-![Event List entry point in the Events view](../images/table-event-01.png)
+![Entrada de la lista de eventos](../images/table-event-01.png)
 
-## When to Use
+## Cuándo usarlo
 
-Use the Event List panel when:
+Use el panel de lista de eventos cuando:
 
-- You want to surface a filtered event view — such as active alarms for a specific area — directly on a dashboard
-- You need to monitor events for a group of assets alongside other operational panels
-- You want operations or maintenance teams to see relevant events in context without navigating to the Events view
+- Quiera mostrar directamente en un dashboard una vista de eventos filtrada (como las alarmas activas de un área específica)
+- Necesite monitorear sincronizadamente los eventos de un conjunto de activos junto a otros paneles operativos
+- Quiera que los equipos de operaciones o mantenimiento puedan ver los eventos relevantes en contexto sin necesidad de entrar en la vista de eventos
 
-## Configuration
+## Configuración
 
-### Saving an Event List Panel
+### Guardar un panel de lista de eventos
 
-Navigate to the **Events** main menu and click **Event Filter** in the left panel. Configure the filter conditions to scope the events you want to track. Click **Save as Panel** to save the current filtered event list as an Event List panel.
+Haga clic en el menú principal **Eventos**, haga clic en **Filtro de eventos** en el lado izquierdo para entrar en la página de consulta de eventos. Configure los criterios de filtrado para reducir el alcance de los eventos que necesita rastrear. Haga clic en el botón **Guardar como panel** para guardar la lista de eventos filtrada actual como panel de lista de eventos.
 
-After saving, the panel preview opens automatically. You can also navigate to the target element's **Panels** tab to view the new Event List panel.
+Después de guardar correctamente, se abre automáticamente la vista previa del panel. También puede ir a la pestaña **Paneles** del elemento de destino para ver el panel de lista de eventos recién creado.
 
-## Example Scenarios
+## Ejemplos de uso
 
-**Area event monitor.** A maintenance team lead saves an Event List filtered to alarms for Production Area B and places it on the area dashboard. Operators see the current alarm list in context alongside the trend panels for the area, without switching to the Events view.
+**Monitoreo de eventos de área.** El responsable del equipo de mantenimiento guarda un panel de lista de eventos filtrado para las alarmas del área de producción B y lo coloca en el dashboard de esa área. Los operadores pueden ver la lista de alarmas actuales junto a los paneles de tendencias en tiempo real sin necesidad de cambiar a la vista de eventos.
 
-**Shift handover events.** An operations manager saves an Event List scoped to the past 24 hours for a production line and pins it to the shift handover dashboard. Both incoming and outgoing shifts see the same filtered event history at the start of every shift.
+**Revisión de eventos de cambio de turno.** Un gerente de operaciones guarda un panel de lista de eventos filtrado para los eventos de las últimas 24 horas de una línea de producción y lo fija en el dashboard de cambio de turno. Tanto el turno saliente como el entrante ven el mismo historial de eventos filtrado en cada cambio de turno.
 
-**Critical-severity watch.** A plant manager saves an Event List filtered to critical-severity events across the entire site and adds it to the plant overview dashboard. The panel gives immediate visibility into any critical conditions regardless of which area they occur in.
+**Monitoreo de alarmas críticas.** El administrador de la planta guarda un panel de lista de eventos filtrado para eventos de nivel de emergencia en toda la planta y lo añade al dashboard de resumen de la planta. El panel proporciona visibilidad inmediata independientemente del área donde se produzca la alarma.

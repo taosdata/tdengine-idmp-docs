@@ -3,23 +3,23 @@ title: Bibliotecas
 sidebar_label: Bibliotecas
 ---
 
-# 13 Libraries
-
 import DocCardList from '@theme/DocCardList';
 
-**Libraries** is the central repository of reusable definitions used across TDengine IDMP. It is accessed from the **Libraries** menu in the main navigation bar.
+# 13. Bibliotecas
 
-The Libraries menu contains the following sections:
+**Libraries** es el repositorio central de definiciones reutilizables que se usan en TDengine IDMP. Se accede desde el menú **Libraries** de la barra de navegación principal.
 
-| Section | Description |
+El menú Libraries contiene las siguientes secciones:
+
+| Sección | Descripción |
 |---|---|
-| **Element Template** | Define reusable element structures with attribute templates (see [Chapter 3](../03-data-modeling/01-elements.md)) |
-| **Event Template** | Define event schemas and notification rules (see [Chapter 6](../06-events/01-event-templates.md)) |
-| **Enumeration Sets** | Map integer values to human-readable labels |
-| **Categories** | Define classification tags for elements, attributes, events, and more |
-| **UOM** | Manage units of measurement and automatic conversion |
-| **Composite Metric** | Define virtual metrics computed from other attributes (see [Chapter 7](../07-real-time-analysis/index.md)) |
+| **Element Template** | Definir estructuras de elementos reutilizables con plantillas de atributos (consulte el [Capítulo 3](../03-data-modeling/01-elements.md)) |
+| **Event Template** | Definir esquemas de eventos y reglas de notificación (consulte el [Capítulo 6](../06-events/01-event-templates.md)) |
+| **Enumeration Sets** | Mapear valores enteros a etiquetas legibles para las personas |
+| **Categories** | Definir etiquetas de clasificación para elementos, atributos, eventos y más |
+| **UOM** | Gestionar unidades de medida y conversión automática |
+| **Composite Metric** | Definir métricas virtuales calculadas a partir de otros atributos (consulte el [Capítulo 7](../07-real-time-analysis/index.md)) |
 
-This chapter covers Enumeration Sets, Categories, and UOM.
+Este capítulo cubre los Conjuntos de enumeración, las Categorías y las UdM.
 
 <DocCardList />

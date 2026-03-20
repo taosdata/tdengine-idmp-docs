@@ -1,115 +1,115 @@
 ---
-title: Deployment Architecture
-sidebar_label: Deployment Architecture
+title: Arquitectura de despliegue
+sidebar_label: Arquitectura de despliegue
 ---
 
-# 14.1 Deployment Architecture
+# 14.1 Arquitectura de despliegue
 
-TDengine IDMP supports three typical deployment topologies: **Single Instance**, **HA Minimal**, and **HA Complex**. Each topology is suited to different scale and availability requirements.
+TDengine IDMP soporta tres topologías de despliegue típicas: **instancia única**, **alta disponibilidad mínima (HA Minimal)** y **alta disponibilidad compleja (HA Complex)**. Cada topología se adapta a diferentes requisitos de escala y disponibilidad.
 
-## Overview
+## Descripción general
 
-A TDengine IDMP deployment typically consists of the following layers:
+El despliegue de TDengine IDMP generalmente se compone de las siguientes capas:
 
-- **Data collection layer:** taosX agents connect to OPC-UA/DA, MQTT, Aveva PI, and other data sources, collecting and forwarding data to TDengine TSDB.
-- **Service layer:** TDengine IDMP (single or multi-instance) provides business logic; TDengine TSDB stores and serves time-series data.
-- **Access and governance layer (optional):** An API Gateway serves as the unified external entry point, providing routing, authentication, and traffic management.
-- **External dependencies (by scenario):** Redis, MySQL, distributed file system, and optionally Elasticsearch, Kafka, and Apollo.
-- **Network boundary:** A firewall separates the data collection side from the service side. Cross-boundary communication should open the minimum required ports.
+- **Capa de recopilación de datos:** Los agentes taosX se conectan a fuentes de datos como OPC-UA/DA, MQTT, Aveva PI y otras, recopilan los datos y los reenvían a TDengine TSDB.
+- **Capa de servicios:** TDengine IDMP (instancia única o múltiples instancias) proporciona la lógica de negocio; TDengine TSDB se encarga del almacenamiento y el servicio de datos de series temporales.
+- **Capa de acceso y gobernanza (opcional):** El API Gateway actúa como punto de entrada externo unificado, proporcionando enrutamiento, autenticación y gestión del tráfico.
+- **Dependencias externas (según el escenario):** Redis, MySQL, sistema de archivos distribuido, y opcionalmente Elasticsearch, Kafka y Apollo.
+- **Perímetro de red:** El cortafuegos aísla el lado de recopilación de datos del lado de servicios. La comunicación entre perímetros debe abrir únicamente los puertos mínimos necesarios.
 
-## Single Instance
+## Instancia única
 
-The single-instance topology targets rapid delivery and low operational complexity. It is suitable for PoC evaluations, demonstrations, small-scale deployments, or air-gapped environments.
+La topología de instancia única está orientada a escenarios de entrega rápida y baja complejidad operativa, siendo adecuada para validaciones PoC, demostraciones, despliegues de pequeña escala o entornos air-gapped.
 
-![Single Instance Deployment](./images/single_deploy.png)
+![Despliegue de instancia única](./images/single_deploy.png)
 
-TDengine IDMP runs as a single process and serves both the web UI and REST API. The taosX agent collects data and writes it to TDengine TSDB through the firewall; IDMP accesses TSDB internally for data management and queries.
+TDengine IDMP se ejecuta como un proceso único, proporcionando tanto la interfaz Web UI como la REST API. El agente taosX recopila datos y los escribe en TDengine TSDB a través del cortafuegos; IDMP accede internamente a TSDB para la gestión y consulta de datos.
 
-**Connectivity:**
+**Relaciones de conexión:**
 
-- Web Browser → **TDengine IDMP (port 6042)**
-- taosX agent → (through Firewall) → **TDengine TSDB (port 6055)**
-- **TDengine IDMP → TDengine TSDB (port 6041)**
+- Navegador web → **TDengine IDMP (puerto 6042)**
+- Agente taosX → (a través del cortafuegos) → **TDengine TSDB (puerto 6055)**
+- **TDengine IDMP → TDengine TSDB (puerto 6041)**
 
-**Characteristics:**
+**Características:**
 
-- Fewest components and shortest paths; lowest deployment and operational cost.
-- Browser connects directly to IDMP — authentication, rate limiting, and auditing must be handled at the service level.
-- Scaling to multiple instances typically requires adding an API Gateway or load balancer.
-- Uses embedded H2 database, local file system, and internal caching instead of external MySQL, DFS, and Redis.
+- Mínimo de componentes y rutas más cortas; el menor costo de despliegue y operación.
+- El navegador se conecta directamente a IDMP — la autenticación, la limitación de tasa y la auditoría deben gestionarse en la capa de servicios.
+- Escalar a múltiples instancias generalmente requiere agregar un API Gateway o un balanceador de carga.
+- Utiliza la base de datos H2 embebida, el sistema de archivos local y la caché interna, sin depender de MySQL externo, DFS ni Redis.
 
-## HA Minimal
+## Alta disponibilidad mínima (HA Minimal)
 
-The HA Minimal topology targets a production-ready baseline with manageable complexity. It introduces an API Gateway as the unified external entry point, so only the gateway is exposed externally. IDMP can be scaled to multiple instances behind the gateway.
+La topología de alta disponibilidad mínima está orientada a una línea de base lista para producción con una complejidad manejable. Introduce un API Gateway como punto de entrada externo unificado, donde solo el gateway está expuesto al exterior. IDMP puede escalar a múltiples instancias detrás del gateway.
 
-![HA Minimal Deployment](./images/simple_deploy.png)
+![Despliegue de alta disponibilidad mínima](./images/simple_deploy.png)
 
-**Connectivity:**
+**Relaciones de conexión:**
 
-- Web Browser → **API Gateway** → **TDengine IDMP (port 6042)**
-- taosX agent → (through Firewall) → **TDengine TSDB (port 6055)**
-- **TDengine IDMP ↔ TDengine TSDB (port 6041)**
-- IDMP dependencies: **Redis / MySQL / Distributed File System**
+- Navegador web → **API Gateway** → **TDengine IDMP (puerto 6042)**
+- Agente taosX → (a través del cortafuegos) → **TDengine TSDB (puerto 6055)**
+- **TDengine IDMP ↔ TDengine TSDB (puerto 6041)**
+- Dependencias de IDMP: **Redis / MySQL / Sistema de archivos distribuido**
 
-**Characteristics:**
+**Características:**
 
-- Single external entry point through the gateway; IDMP is not directly exposed.
-- Includes the three most common infrastructure dependencies for a production baseline.
-- Suitable for deployments that want standardized gateway governance before expanding capabilities.
-- Uses internal Lucene instead of Elasticsearch; uses Redis message queue instead of Kafka; uses internal service configuration instead of Apollo.
+- Proporciona un único punto de entrada externo a través del gateway; IDMP no está expuesto directamente.
+- Incluye las tres dependencias de infraestructura más comunes, conformando la línea de base de producción.
+- Adecuado para despliegues que buscan una gobernanza de gateway estandarizada antes de ampliar capacidades.
+- Utiliza Lucene interno en lugar de Elasticsearch; utiliza cola de mensajes Redis en lugar de Kafka; utiliza configuración de servicio interna en lugar de Apollo.
 
-## HA Complex
+## Alta disponibilidad compleja (HA Complex)
 
-The HA Complex topology targets medium-to-large production environments with enterprise integration requirements. IDMP runs as a highly available multi-instance cluster behind the API Gateway. A complete set of peripheral dependencies is introduced to support asynchronous decoupling, centralized search, dynamic configuration, and service governance.
+La topología de alta disponibilidad compleja está orientada a entornos de producción medianos y grandes con requisitos de integración empresarial. IDMP opera en un clúster de múltiples instancias de alta disponibilidad detrás del API Gateway. Se introducen dependencias externas completas para soportar desacoplamiento asíncrono, búsqueda centralizada, configuración dinámica y gobernanza de servicios.
 
-![HA Complex Deployment](./images/complex_deploy.png)
+![Despliegue de alta disponibilidad compleja](./images/complex_deploy.png)
 
-**Connectivity:**
+**Relaciones de conexión:**
 
-- Web Browser → **API Gateway** → **TDengine IDMP (multiple instances)**
-- taosX agent → (through Firewall) → **TDengine TSDB (port 6055)**
-- **TDengine IDMP → TDengine TSDB (port 6041)**
-- IDMP dependencies: **Redis, MySQL, Distributed File System, Elasticsearch, Kafka, Apollo**
+- Navegador web → **API Gateway** → **TDengine IDMP (múltiples instancias)**
+- Agente taosX → (a través del cortafuegos) → **TDengine TSDB (puerto 6055)**
+- **TDengine IDMP → TDengine TSDB (puerto 6041)**
+- Dependencias de IDMP: **Redis, MySQL, sistema de archivos distribuido, Elasticsearch, Kafka, Apollo**
 
-**Characteristics:**
+**Características:**
 
-- Multi-instance IDMP improves throughput and availability.
-- Full peripheral stack supports centralized search (Elasticsearch), async messaging (Kafka), and dynamic configuration (Apollo).
-- Higher deployment and operational complexity; suitable for environments with strict reliability, audit, and scalability requirements.
+- Múltiples instancias de IDMP mejoran el rendimiento y la disponibilidad.
+- La pila externa completa soporta búsqueda centralizada (Elasticsearch), mensajería asíncrona (Kafka) y configuración dinámica (Apollo).
+- Mayor complejidad de despliegue y operación; adecuado para entornos con requisitos estrictos de fiabilidad, auditoría y escalabilidad.
 
-## Key Components
+## Componentes clave
 
 ### API Gateway
 
-The API Gateway is the unified entry point between external clients and internal services.
+El API Gateway es el punto de entrada unificado entre los clientes externos y los servicios internos.
 
-| Responsibility | Description |
+| Responsabilidad | Descripción |
 |---|---|
-| **Unified entry** | Exposes a single address/port externally; backend services are not directly exposed |
-| **Routing and load balancing** | Distributes requests across IDMP and TSDB instances |
-| **Security** | TLS termination, unified authentication (Token/SSO), IP access control |
-| **Traffic governance** | Rate limiting, circuit breaking, retry, timeout, canary releases |
-| **Observability** | Centralized access logs, metrics, and distributed tracing |
+| **Punto de entrada unificado** | Expone una única dirección/puerto al exterior; los servicios backend no están expuestos directamente |
+| **Enrutamiento y balanceo de carga** | Distribuye las solicitudes entre las instancias de IDMP y TSDB |
+| **Seguridad** | Terminación TLS, autenticación unificada (Token/SSO), control de acceso por IP |
+| **Gobernanza del tráfico** | Limitación de tasa, disyuntor, reintentos, tiempos de espera, lanzamientos canary |
+| **Observabilidad** | Registros de acceso centralizados, métricas y trazado distribuido |
 
-### External Dependencies
+### Dependencias externas
 
-| Component | Role | Single-instance replacement |
+| Componente | Función | Alternativa para instancia única |
 |---|---|---|
-| **Redis** | Caching, short-lived state, distributed locks | Internal cache and lock |
-| **MySQL** | Relational metadata (users, permissions, tasks, configuration) | Embedded H2 database |
-| **Distributed File System** | File/object persistence (metadata, graphics, import/export files) | Local file system |
-| **Elasticsearch** | Centralized index management and full-text search | Internal Lucene |
-| **Kafka** | Async messaging and event bus (decoupling, task orchestration, notifications) | Internal message queue (single instance) or Redis MQ (HA Minimal) |
-| **Apollo** | Configuration center (dynamic config, version management) | Internal service configuration |
+| **Redis** | Caché, estado de vida corta, bloqueos distribuidos | Caché y bloqueos internos |
+| **MySQL** | Metadatos relacionales (usuarios, permisos, tareas, configuración) | Base de datos H2 embebida |
+| **Sistema de archivos distribuido** | Persistencia de archivos/objetos (metadatos, gráficos, archivos de importación/exportación) | Sistema de archivos local |
+| **Elasticsearch** | Gestión de índices centralizada y búsqueda de texto completo | Lucene interno |
+| **Kafka** | Mensajería asíncrona y bus de eventos (desacoplamiento, orquestación de tareas, notificaciones) | Cola de mensajes interna (instancia única) o Redis MQ (HA mínima) |
+| **Apollo** | Centro de configuración (configuración dinámica, gestión de versiones) | Configuración de servicio interna |
 
-## Deployment Recommendations
+## Recomendaciones de despliegue
 
-1. **Use Single Instance for PoC; use HA for production.** Start with Single Instance for quick validation; prefer HA Minimal for production and evolve to HA Complex as requirements grow.
+1. **Use instancia única para PoC; use alta disponibilidad para producción.** Comience con instancia única para una validación rápida; priorice HA Minimal para producción y evolucione hacia HA Complex según crezcan los requisitos.
 
-2. **Minimize external exposure.** Expose only the gateway externally; keep internal ports (such as 6041) on the internal network only.
+2. **Minimice la exposición externa.** Exponga solo el gateway al exterior; mantenga los puertos internos (como el 6041) dentro de la red privada.
 
-3. **Scale IDMP horizontally when needed.** Use multiple IDMP instances for high availability and throughput; configure session handling and load balancing at the gateway.
+3. **Escale IDMP horizontalmente según sea necesario.** Utilice múltiples instancias de IDMP para mejorar la alta disponibilidad y el rendimiento; configure el manejo de sesiones y el balanceo de carga en el gateway.
 
-4. **Plan external dependencies for availability.** Configure backup and high availability for Redis, MySQL, and the distributed file system. Include Kafka, Elasticsearch, and Apollo in monitoring and capacity planning once enabled.
+4. **Planifique la alta disponibilidad para las dependencias externas.** Configure copias de seguridad y alta disponibilidad para Redis, MySQL y el sistema de archivos distribuido. Una vez habilitados, incorpore Kafka, Elasticsearch y Apollo en el monitoreo y la planificación de capacidad.
 
-5. **Centralize observability.** Collect logs and metrics from the gateway, IDMP, TSDB, and key dependencies. Establish alerting and distributed tracing to simplify troubleshooting.
+5. **Centralice la observabilidad.** Recopile registros y métricas del gateway, IDMP, TSDB y las dependencias clave; establezca alertas y trazado distribuido para simplificar la resolución de problemas.

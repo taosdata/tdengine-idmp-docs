@@ -1,21 +1,21 @@
 ---
-title: Units of Measurement
-sidebar_label: Units of Measurement
+title: Unidades de medida
+sidebar_label: Unidades de medida
 ---
 
-# 13.3 Units of Measurement
+# 13.3 Unidades de medida
 
-In industrial and IoT environments, measurements collected from different devices or systems often use different units. Even after data is stored in TDengine TSDB, unit inconsistencies can remain across assets or over time. IDMP manages this through a **Units of Measurement (UOM)** library that enables automatic unit conversion in attribute formulas, calculations, and display.
+En entornos industriales y de IoT, las mediciones recopiladas de diferentes dispositivos o sistemas a menudo usan unidades distintas. Incluso después de que los datos se almacenan en TDengine TSDB, pueden persistir inconsistencias de unidades entre activos o a lo largo del tiempo. IDMP gestiona esto a través de una biblioteca de **Unidades de medida (UdM)** que permite la conversión automática de unidades en fórmulas de atributos, cálculos y visualización.
 
-UOM is managed under **Libraries → UOM**.
+Las UdM se gestionan en **Libraries → UOM**.
 
-## UOM Classes
+## Clases de UdM
 
-IDMP organizes units into **UOM classes** — groups of units that measure the same physical quantity. Each class has a **canonical unit** (the base unit used internally for conversions) and optionally one or more **base UOM classes** (for derived quantities such as Pressure = Mass / (Length × Time²)).
+IDMP organiza las unidades en **clases de UdM** — grupos de unidades que miden la misma magnitud física. Cada clase tiene una **unidad canónica** (la unidad base utilizada internamente para las conversiones) y opcionalmente una o más **clases de UdM base** (para magnitudes derivadas como Presión = Masa / (Longitud × Tiempo²)).
 
-IDMP ships with the following built-in UOM classes:
+IDMP incluye las siguientes clases de UdM integradas:
 
-| Class | Canonical Unit | Base UOM Classes |
+| Clase | Unidad canónica | Clases de UdM base |
 |---|---|---|
 | Area | square meter | Length |
 | Computer Storage | byte | — |
@@ -39,97 +39,97 @@ IDMP ships with the following built-in UOM classes:
 | Velocity | meter per second | — |
 | Volume | cubic meter | Length |
 
-You can extend this list by adding custom UOM classes.
+Puede ampliar esta lista añadiendo clases de UdM personalizadas.
 
-## Viewing Units in a Class
+## Visualización de unidades en una clase
 
-Click any UOM class name to see its individual units. The unit list shows:
+Haga clic en cualquier nombre de clase de UdM para ver sus unidades individuales. La lista de unidades muestra:
 
-| Column | Description |
+| Columna | Descripción |
 |---|---|
-| **Name** | Unit name (e.g., liter, US gallon) |
-| **Abbreviation** | Short symbol (e.g., L, US gal) |
-| **Origin** | `System Defined` for built-in units, or the user name for custom units |
-| **Description** | Optional description |
-| **Canonical** | Conversion formula relative to the canonical unit |
-| **Quantity Converted** | How many of this unit equal one canonical unit |
+| **Name** | Nombre de la unidad (p. ej., litro, galón estadounidense) |
+| **Abbreviation** | Símbolo abreviado (p. ej., L, US gal) |
+| **Origin** | `System Defined` para unidades integradas, o el nombre de usuario para unidades personalizadas |
+| **Description** | Descripción opcional |
+| **Canonical** | Fórmula de conversión relativa a la unidad canónica |
+| **Quantity Converted** | Cuántas de estas unidades equivalen a una unidad canónica |
 
-A **Quantity** field at the top lets you enter a reference amount to preview conversions across all units in the class.
+Un campo **Quantity** en la parte superior le permite introducir una cantidad de referencia para previsualizar las conversiones entre todas las unidades de la clase.
 
-## Creating a Custom UOM Class
+## Creación de una clase de UdM personalizada
 
-Click **+** on the UOM list page to create a new class. Fill in:
+Haga clic en **+** en la página de lista de UdM para crear una nueva clase. Rellene:
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Name** (required) | Class name. Accepts letters, numbers, underscores, hyphens, and spaces. |
-| **Canonical UOM** (required) | The name of the canonical (base) unit for this class. |
-| **UOM Abbreviation** (required) | The abbreviation for the canonical unit. |
-| **Description** | Optional description. |
-| **Base UOM Class** | Optional. Add one or more existing classes that this class is derived from (e.g., Pressure is derived from Mass, Length, and Time). Click **+** to add each base class. |
+| **Name** (obligatorio) | Nombre de la clase. Acepta letras, números, guiones bajos, guiones y espacios. |
+| **Canonical UOM** (obligatorio) | El nombre de la unidad canónica (base) para esta clase. |
+| **UOM Abbreviation** (obligatorio) | La abreviatura de la unidad canónica. |
+| **Description** | Descripción opcional. |
+| **Base UOM Class** | Opcional. Añada una o más clases existentes de las que deriva esta clase (p. ej., la Presión deriva de Masa, Longitud y Tiempo). Haga clic en **+** para añadir cada clase base. |
 
-Click **Save** to create the class.
+Haga clic en **Save** para crear la clase.
 
-## Adding a Custom Unit to a Class
+## Adición de una unidad personalizada a una clase
 
-Open a UOM class and click **+** to add a new unit. Fill in:
+Abra una clase de UdM y haga clic en **+** para añadir una nueva unidad. Rellene:
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Name** (required) | Unit name. Accepts letters, numbers, underscores, hyphens, and spaces. |
-| **Abbreviation** (required) | Short symbol for the unit. |
-| **Description** | Optional description. |
-| **Ref UOM** | The reference unit to convert from (defaults to the canonical unit of the class). |
-| **Ref Factor** | Multiplicative factor: `new_unit = Ref_Factor × Ref_UOM`. Default: 1.0. |
-| **Ref Offset** | Additive offset applied after the factor: `new_unit = Ref_Factor × Ref_UOM + Ref_Offset`. Use this for non-proportional conversions such as Celsius ↔ Fahrenheit. Default: 0.0. |
+| **Name** (obligatorio) | Nombre de la unidad. Acepta letras, números, guiones bajos, guiones y espacios. |
+| **Abbreviation** (obligatorio) | Símbolo abreviado de la unidad. |
+| **Description** | Descripción opcional. |
+| **Ref UOM** | La unidad de referencia desde la que convertir (por defecto, la unidad canónica de la clase). |
+| **Ref Factor** | Factor multiplicativo: `nueva_unidad = Ref_Factor × Ref_UOM`. Predeterminado: 1.0. |
+| **Ref Offset** | Desplazamiento aditivo aplicado después del factor: `nueva_unidad = Ref_Factor × Ref_UOM + Ref_Offset`. Úselo para conversiones no proporcionales como Celsius ↔ Fahrenheit. Predeterminado: 0.0. |
 
-Click **Save** to add the unit.
+Haga clic en **Save** para añadir la unidad.
 
-## Assigning UOM to Attributes
+## Asignación de UdM a atributos
 
-Each attribute can be configured with:
+Cada atributo puede configurarse con:
 
-- **UOM Class** — the physical quantity type (e.g., Temperature)
-- **Default UOM** — the unit in which data is stored in TSDB (e.g., kelvin)
-- **Display UOM** — the unit shown to users (e.g., Celsius)
+- **UOM Class** — el tipo de magnitud física (p. ej., Temperature)
+- **Default UOM** — la unidad en la que los datos se almacenan en TSDB (p. ej., kelvin)
+- **Display UOM** — la unidad mostrada a los usuarios (p. ej., Celsius)
 
-When the default UOM and display UOM differ, IDMP automatically converts the stored value to the display unit.
+Cuando la UdM predeterminada y la UdM de visualización son diferentes, IDMP convierte automáticamente el valor almacenado a la unidad de visualización.
 
-## Automatic Unit Conversion in Formulas
+## Conversión automática de unidades en fórmulas
 
-When attributes with UOM assignments participate in formula expressions, IDMP applies unit conversion rules automatically. This ensures that calculated results are physically meaningful.
+Cuando los atributos con asignaciones de UdM participan en expresiones de fórmulas, IDMP aplica las reglas de conversión de unidades automáticamente. Esto garantiza que los resultados calculados sean físicamente coherentes.
 
-### Addition and Subtraction
+### Suma y resta
 
-For `A + B` or `A - B`:
+Para `A + B` o `A - B`:
 
-- If A and B belong to different UOM classes, an error is reported.
-- If A and B belong to the same UOM class but have different units, IDMP converts B's unit to A's unit before computing.
-- If one operand has a UOM and the other does not, the unitless operand is treated as having the same unit as the other.
+- Si A y B pertenecen a diferentes clases de UdM, se notifica un error.
+- Si A y B pertenecen a la misma clase de UdM pero tienen unidades diferentes, IDMP convierte la unidad de B a la unidad de A antes de calcular.
+- Si un operando tiene UdM y el otro no, el operando sin unidades se trata como si tuviera la misma unidad que el otro.
 
-### Multiplication and Division
+### Multiplicación y división
 
-For `A * B` or `A / B`:
+Para `A * B` o `A / B`:
 
-- Both operands are first converted to their respective canonical units.
-- The result's UOM class is determined by combining the base UOM classes of the operands (e.g., Mass / (Length × Time²) = Pressure).
-- The result unit is the canonical unit of the resolved class.
-- If the resulting combination does not match any defined UOM class, an error is reported.
+- Ambos operandos se convierten primero a sus respectivas unidades canónicas.
+- La clase de UdM del resultado se determina combinando las clases de UdM base de los operandos (p. ej., Masa / (Longitud × Tiempo²) = Presión).
+- La unidad del resultado es la unidad canónica de la clase resuelta.
+- Si la combinación resultante no coincide con ninguna clase de UdM definida, se notifica un error.
 
-**Example:** Attribute A has unit `cm` (Length), attribute B has unit `m²` (Area). The formula `A * B` converts A to meters, multiplies by B, and produces a result in `m³` (Volume).
+**Ejemplo:** El atributo A tiene unidad `cm` (Longitud), el atributo B tiene unidad `m²` (Área). La fórmula `A * B` convierte A a metros, multiplica por B y produce un resultado en `m³` (Volumen).
 
-### Comparison and Bitwise Operators
+### Operadores de comparación y bit a bit
 
-For operators `=`, `<>`, `>`, `<`, `>=`, `<=`, `|`, `&`:
+Para los operadores `=`, `<>`, `>`, `<`, `>=`, `<=`, `|`, `&`:
 
-- If both operands have UOM and belong to different classes, an error is reported.
-- If one operand has UOM and the other does not, UOM is ignored.
-- If both operands have UOM and belong to the same class with different units, the right operand is converted to the left operand's unit before the operation.
+- Si ambos operandos tienen UdM y pertenecen a clases diferentes, se notifica un error.
+- Si un operando tiene UdM y el otro no, se ignora la UdM.
+- Si ambos operandos tienen UdM y pertenecen a la misma clase con unidades diferentes, el operando derecho se convierte a la unidad del operando izquierdo antes de la operación.
 
-### Functions
+### Funciones
 
-The result of a function applied to an attribute carries the same UOM as the function's first argument. For example, `SIN(A)` has the same UOM as A.
+El resultado de una función aplicada a un atributo lleva la misma UdM que el primer argumento de la función. Por ejemplo, `SIN(A)` tiene la misma UdM que A.
 
 :::tip
-When editing a formula expression on an attribute, click the **Evaluate** button in the expression editor to preview the computed value and automatically detect unit errors. If the attribute has no UOM assigned yet, IDMP will suggest the UOM inferred from the last evaluation result.
+Al editar una expresión de fórmula en un atributo, haga clic en el botón **Evaluate** del editor de expresiones para previsualizar el valor calculado y detectar automáticamente errores de unidades. Si el atributo aún no tiene UdM asignada, IDMP sugerirá la UdM inferida del último resultado de evaluación.
 :::

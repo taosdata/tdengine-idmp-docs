@@ -1,53 +1,53 @@
 ---
-title: Acknowledgment
-sidebar_label: Acknowledgment
+title: Confirmación
+sidebar_label: Confirmación
 ---
 
-# 6.5 Acknowledgment
+# 6.5 Confirmación
 
-Acknowledgment is the act of a human operator confirming that they have reviewed an event. It serves as an explicit record that the event was seen and acted upon, and it stops the automatic re-notification cycle for that event.
+La confirmación es el acto mediante el cual un operador humano confirma que ha revisado un evento. Sirve como registro explícito de que el evento fue visto y atendido, y detiene el ciclo automático de re-notificaciones para ese evento.
 
-## 6.5.1 How Acknowledgment Works
+## 6.5.1 Cómo Funciona la Confirmación
 
-Whether a specific event requires acknowledgment is determined by the **Allow Acknowledgment** setting in the event template. If this setting is enabled, events created from that template will have an **Unacknowledged** status when first generated.
+Si un evento específico requiere confirmación está determinado por el ajuste **Permitir Confirmación** en la plantilla de evento. Si este ajuste está habilitado, los eventos creados con esa plantilla tendrán un estado **Sin Confirmar** cuando se generen por primera vez.
 
-An unacknowledged event:
+Un evento sin confirmar:
 
-- Displays an acknowledgment indicator in the event list (the **A** column)
-- Continues to trigger re-notifications on the schedule defined by the element's notification rule
-- Appears when the **Unacknowledged** filter toggle is enabled in the events view
+- Muestra un indicador de confirmación en la lista de eventos (la columna **A**)
+- Continúa activando re-notificaciones según el calendario definido por la regla de notificación del elemento
+- Aparece cuando el filtro alternante **Sin Confirmar** está habilitado en la vista de eventos
 
-Once acknowledged:
+Una vez confirmado:
 
-- The event status changes to **Acknowledged**
-- The acknowledgment indicator updates in the event list
-- Re-notifications stop immediately — no further alerts are sent for this event regardless of whether it remains active
+- El estado del evento cambia a **Confirmado**
+- El indicador de confirmación se actualiza en la lista de eventos
+- Las re-notificaciones se detienen de inmediato — no se envían más alertas para este evento independientemente de si permanece activo
 
-## 6.5.2 How to Acknowledge an Event
+## 6.5.2 Cómo Confirmar un Evento
 
-There are two ways to acknowledge an event:
+Hay dos maneras de confirmar un evento:
 
-**From the event list:**
+**Desde la lista de eventos:**
 
-Click the **Acknowledge** action icon on the event row. The status updates immediately.
+Haga clic en el icono de acción **Confirmar** en la fila del evento. El estado se actualiza de inmediato.
 
-**From the event detail page:**
+**Desde la página de detalle del evento:**
 
-Open the event by clicking its name, then click the **Ack** icon in the toolbar on the General tab.
+Abra el evento haciendo clic en su nombre, luego haga clic en el icono **Confirmar** en la barra de herramientas de la pestaña General.
 
-## 6.5.3 Finding Unacknowledged Events
+## 6.5.3 Encontrar Eventos Sin Confirmar
 
-The **Events** item in the main navigation bar displays a badge showing the total number of unacknowledged events in the system. This gives every logged-in user an at-a-glance count of outstanding events that still require attention, visible from any page in IDMP.
+El elemento **Eventos** en la barra de navegación principal muestra un indicador con el número total de eventos sin confirmar en el sistema. Esto da a cada usuario conectado un recuento de un vistazo de los eventos pendientes que aún requieren atención, visible desde cualquier página en IDMP.
 
-The global events view and the element-level events tab both provide an **Unacknowledged** toggle in the toolbar. Enable this toggle to filter the list to only events that still require attention. This is the fastest way for an operator to identify their open action items at the start of a shift.
+La vista global de eventos y la pestaña de eventos a nivel de elemento proporcionan un alternador **Sin Confirmar** en la barra de herramientas. Active este alternador para filtrar la lista y mostrar solo los eventos que aún requieren atención. Esta es la forma más rápida para que un operador identifique sus elementos de acción abiertos al inicio de un turno.
 
-Unacknowledged events can also be found through saved event filters — create and save a filter with the Unacknowledged toggle enabled, then pin it as a favorite for one-click access.
+Los eventos sin confirmar también pueden encontrarse a través de filtros de eventos guardados — cree y guarde un filtro con el alternador Sin Confirmar activado, luego fíjelo como favorito para acceso con un solo clic.
 
-## 6.5.4 Acknowledgment and Notification Interaction
+## 6.5.4 Interacción entre Confirmación y Notificación
 
-Acknowledgment and notification are tightly linked. The key behaviors to understand:
+La confirmación y las notificaciones están estrechamente vinculadas. Los comportamientos clave que hay que entender:
 
-- If **Allow Acknowledgment** is disabled on the event template, the event has no acknowledgment requirement, and re-notifications do not occur — the system sends at most one initial notification per event.
-- If **Allow Acknowledgment** is enabled, re-notifications continue until the event is acknowledged or closed, or the maximum resend count is reached.
-- Acknowledging an event does not close it. An acknowledged event may still be active (no end time). Closing an event is a separate action performed by the analysis when its end condition is met.
-- If an event is closed before being acknowledged, re-notifications also stop — the system does not send notifications for closed events.
+- Si **Permitir Confirmación** está deshabilitado en la plantilla de evento, el evento no tiene requisito de confirmación y las re-notificaciones no ocurren — el sistema envía como máximo una notificación inicial por evento.
+- Si **Permitir Confirmación** está habilitado, las re-notificaciones continúan hasta que el evento sea confirmado o cerrado, o se alcance el número máximo de reenvíos.
+- Confirmar un evento no lo cierra. Un evento confirmado puede seguir activo (sin hora de fin). Cerrar un evento es una acción separada realizada por el análisis cuando se cumple su condición de finalización.
+- Si un evento se cierra antes de ser confirmado, las re-notificaciones también se detienen — el sistema no envía notificaciones para eventos cerrados.

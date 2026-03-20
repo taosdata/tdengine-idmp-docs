@@ -1,53 +1,53 @@
 ---
-title: Connecting Excel to IDMP
-sidebar_label: Connecting Excel to IDMP
+title: Conexión de Excel a IDMP
+sidebar_label: Conexión de Excel a IDMP
 ---
 
-# 10.2 Connecting Excel to IDMP
+# 10.2 Conexión de Excel a IDMP
 
-After installing the Excel Add-In, you need to open it in Excel and sign in to your IDMP instance before you can retrieve data.
+Tras instalar el complemento de Excel, debe abrirlo en Excel e iniciar sesión en su instancia de IDMP para poder recuperar datos.
 
-## Opening the Add-In
+## Apertura del complemento
 
-The TDengine IDMP Add-In is an Office Web Add-In. After installation it does not automatically appear as a ribbon tab — you need to activate it from **My Add-ins** the first time.
+El complemento de TDengine IDMP es un complemento web de Office. Una vez instalado, no aparece automáticamente como una pestaña de la cinta de opciones; debe activarlo desde **Mis complementos** la primera vez.
 
-1. Open Microsoft Excel.
-2. Click the **Insert** tab in the ribbon.
-3. In the **Add-ins** group, click **My Add-ins**.
+1. Abra Microsoft Excel.
+2. Haga clic en la pestaña **Insertar** de la cinta de opciones.
+3. En el grupo **Complementos**, haga clic en **Mis complementos**.
 
    :::tip
-   If you do not see a **My Add-ins** button, look for a small **Add-ins** icon in the Insert tab, or click the dropdown arrow on the Add-ins button. On older Excel versions (2016/2019), the button may be labeled **Office Add-ins**.
+   Si no ve el botón **Mis complementos**, busque un pequeño icono de **Complementos** en la pestaña Insertar, o haga clic en la flecha desplegable del botón Complementos. En versiones anteriores de Excel (2016/2019), el botón puede estar etiquetado como **Complementos de Office**.
    :::
 
-4. In the **Office Add-ins** dialog, select the **My Add-ins** tab.
-5. Find **TDengine IDMP** in the list and double-click it, or select it and click **Add**.
+4. En el cuadro de diálogo **Complementos de Office**, seleccione la pestaña **Mis complementos**.
+5. Busque **TDengine IDMP** en la lista y haga doble clic en él, o selecciónelo y haga clic en **Agregar**.
 
-The TDengine IDMP task pane opens on the right side of the Excel window.
+El panel de tareas de TDengine IDMP se abrirá en el lado derecho de la ventana de Excel.
 
 :::note
-After the first activation, Excel may remember the add-in and show a **TDengine IDMP** button directly in the **Home** tab or a dedicated ribbon tab on subsequent sessions. If the add-in disappears after restarting Excel, repeat the steps above to re-open it from **My Add-ins**.
+Tras la primera activación, Excel puede recordar el complemento y mostrar un botón **TDengine IDMP** directamente en la pestaña **Inicio** o en una pestaña dedicada de la cinta de opciones en sesiones posteriores. Si el complemento desaparece tras reiniciar Excel, repita los pasos anteriores para reabrirlo desde **Mis complementos**.
 :::
 
-## Add-In Not Showing in My Add-ins
+## El complemento no aparece en Mis complementos
 
-If **TDengine IDMP** does not appear in the **My Add-ins** list after installation:
+Si **TDengine IDMP** no aparece en la lista **Mis complementos** tras la instalación:
 
-- **Close and reopen Excel** — the add-in registration takes effect only after a full restart.
-- **Check for a security block (Windows)** — files downloaded from the internet may be blocked by Windows. If the installation script downloaded any files, right-click each file, select **Properties**, and check **Unblock** at the bottom of the General tab.
-- **Verify the installation completed** — re-run the installation command from [Installing the Excel Add-In](./01-installation.md) and check for error output.
+- **Cierre y vuelva a abrir Excel** — el registro del complemento solo surte efecto tras un reinicio completo.
+- **Compruebe si hay un bloqueo de seguridad (Windows)** — es posible que Windows bloquee los archivos descargados de Internet. Si el script de instalación descargó algún archivo, haga clic derecho en cada uno, seleccione **Propiedades** y marque **Desbloquear** en la parte inferior de la pestaña General.
+- **Verifique que la instalación se completó** — vuelva a ejecutar el comando de instalación de [Instalación del complemento de Excel](./01-installation.md) y compruebe si hay errores en la salida.
 
-## Signing In
+## Inicio de sesión
 
-Once the task pane is open:
+Una vez que el panel de tareas esté abierto:
 
-1. Enter your IDMP server address in the format `https://<host>:<port>` (for example, `https://idmp.tdengine.net:6034`).
-2. Enter your IDMP username and password.
-3. Click **Sign In**.
+1. Introduzca la dirección de su servidor IDMP en el formato `https://<host>:<puerto>` (por ejemplo, `https://idmp.tdengine.net:6034`).
+2. Introduzca su nombre de usuario y contraseña de IDMP.
+3. Haga clic en **Iniciar sesión**.
 
-Once connected, the task pane displays your IDMP asset hierarchy and allows you to browse elements and their attributes.
+Una vez conectado, el panel de tareas muestra la jerarquía de activos de IDMP y le permite explorar los elementos y sus atributos.
 
-## Connection Requirements
+## Requisitos de conexión
 
-- The IDMP server must be reachable from the machine running Excel.
-- HTTPS must be configured on the IDMP server (see [Installing the Excel Add-In](./01-installation.md) for HTTPS setup).
-- Your IDMP account must have at least read access to the elements and attributes you want to retrieve.
+- El servidor IDMP debe ser accesible desde la máquina que ejecuta Excel.
+- HTTPS debe estar configurado en el servidor IDMP (consulte [Instalación del complemento de Excel](./01-installation.md) para la configuración de HTTPS).
+- Su cuenta de IDMP debe tener al menos acceso de lectura a los elementos y atributos que desea recuperar.

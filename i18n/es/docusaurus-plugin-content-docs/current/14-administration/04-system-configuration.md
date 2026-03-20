@@ -1,78 +1,78 @@
 ---
-title: System Configuration
-sidebar_label: System Configuration
+title: Configuración del sistema
+sidebar_label: Configuración del sistema
 ---
 
-# 14.4 System Configuration
+# 14.4 Configuración del sistema
 
-System Configuration is accessed from **Admin Console → System Configuration**. It has four sections: Basic Configuration, Notification Contact Point, Notification Template, and Email Configuration.
+La configuración del sistema se accede desde **Consola de administración → Configuración del sistema**. Tiene cuatro secciones: Configuración básica, Punto de contacto de notificaciones, Plantilla de notificaciones y Configuración de correo electrónico.
 
-## Basic Configuration
+## Configuración básica
 
-Basic Configuration contains system-wide settings:
+La configuración básica contiene ajustes a nivel de sistema:
 
-| Setting | Description |
+| Ajuste | Descripción |
 |---|---|
-| **Language** | Default display language for the interface |
-| **Enable User Behavior Collection** | Whether to collect anonymized usage data for product improvement |
-| **Upload Crash Reports** | Whether to automatically upload crash reports |
-| **Auto Refresh Elements Explorer** | Whether the asset explorer automatically refreshes when elements change |
+| **Idioma** | Idioma de visualización predeterminado de la interfaz |
+| **Habilitar recopilación de comportamiento de usuario** | Si se deben recopilar datos de uso anonimizados para mejorar el producto |
+| **Cargar informes de fallos** | Si se deben cargar automáticamente los informes de fallos |
+| **Actualización automática del Explorador de elementos** | Si el explorador de activos se actualiza automáticamente cuando cambian los elementos |
 
-Click the edit (pencil) icon to modify these settings.
+Haga clic en el icono de edición (lápiz) para modificar estos ajustes.
 
-## Notification Contact Point
+## Punto de contacto de notificaciones
 
-A **Notification Contact Point** defines a destination that IDMP sends notifications to. Multiple contact points can be configured. The first user to activate the system has their email address automatically added as a contact point.
+Un **Punto de contacto de notificaciones** define un destino al que IDMP envía notificaciones. Se pueden configurar múltiples puntos de contacto. El primer usuario en activar el sistema tiene su dirección de correo electrónico agregada automáticamente como punto de contacto.
 
-To create a contact point, click **+** and fill in:
+Para crear un punto de contacto, haga clic en **+** y complete:
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Name** | A unique name for this contact point |
-| **Notify Type** | The delivery channel: `Email`, `Feishu`, or `Webhook` |
-| **Address** | The target address — email address, Feishu webhook URL, or HTTP endpoint |
-| **Description** | Optional description |
+| **Nombre** | Un nombre único para este punto de contacto |
+| **Tipo de notificación** | El canal de entrega: `Correo electrónico`, `Feishu` o `Webhook` |
+| **Dirección** | La dirección de destino — dirección de correo electrónico, URL de webhook de Feishu o endpoint HTTP |
+| **Descripción** | Descripción opcional |
 
-Because Webhook is supported, virtually any notification destination can be configured — including Teams, DingTalk, PagerDuty, and other systems that accept HTTP callbacks.
+Como Webhook está soportado, prácticamente cualquier destino de notificación puede configurarse — incluyendo Teams, DingTalk, PagerDuty y otros sistemas que acepten callbacks HTTP.
 
-## Notification Template
+## Plantilla de notificaciones
 
-Notification Templates define the content of system-generated messages for events such as user invitations, password resets, and alert notifications.
+Las plantillas de notificaciones definen el contenido de los mensajes generados por el sistema para eventos como invitaciones de usuarios, restablecimiento de contraseñas y notificaciones de alertas.
 
-IDMP ships with built-in templates for common notification scenarios. Click a template name to view or edit its content. Templates support variable substitution to include dynamic values such as usernames, URLs, and event details.
+IDMP incluye plantillas integradas para escenarios de notificación comunes. Haga clic en el nombre de una plantilla para ver o editar su contenido. Las plantillas soportan sustitución de variables para incluir valores dinámicos como nombres de usuario, URLs y detalles de eventos.
 
-## Email Configuration
+## Configuración de correo electrónico
 
-Email Configuration defines the SMTP server that IDMP uses to send outbound email. Click the edit (pencil) icon to update the settings.
+La configuración de correo electrónico define el servidor SMTP que IDMP utiliza para enviar correos salientes. Haga clic en el icono de edición (lápiz) para actualizar los ajustes.
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Host** | SMTP server hostname or IP address |
-| **Port** | SMTP server port (e.g., 465 for TLS, 587 for STARTTLS, 25 for unencrypted) |
-| **Username** | SMTP authentication username |
-| **Password** | SMTP authentication password |
-| **Sender** | The "From" email address used in outgoing messages |
-| **Enable TLS** | Whether to use TLS encryption for the SMTP connection |
-| **Enable Authentication** | Whether SMTP authentication is required |
+| **Host** | Nombre de host o dirección IP del servidor SMTP |
+| **Puerto** | Puerto del servidor SMTP (p. ej., 465 para TLS, 587 para STARTTLS, 25 para sin cifrado) |
+| **Nombre de usuario** | Nombre de usuario de autenticación SMTP |
+| **Contraseña** | Contraseña de autenticación SMTP |
+| **Remitente** | La dirección de correo electrónico "De" utilizada en los mensajes salientes |
+| **Habilitar TLS** | Si se debe usar cifrado TLS para la conexión SMTP |
+| **Habilitar autenticación** | Si se requiere autenticación SMTP |
 
-IDMP sends email for several purposes: system activation (verification code), user invitations, password resets, and event alert notifications. By default, IDMP uses a TDengine-provided mail service.
+IDMP envía correos electrónicos para varios propósitos: activación del sistema (código de verificación), invitaciones de usuarios, restablecimiento de contraseñas y notificaciones de alertas de eventos. Por defecto, IDMP utiliza un servicio de correo proporcionado por TDengine.
 
-### Using MailHog for Air-Gapped Environments
+### Usar MailHog para entornos air-gapped
 
-If the IDMP server cannot reach the internet, you can deploy [MailHog](https://github.com/mailhog/MailHog) internally as a lightweight SMTP relay for development and testing:
+Si el servidor IDMP no puede acceder a internet, puede desplegar [MailHog](https://github.com/mailhog/MailHog) internamente como un relé SMTP ligero para desarrollo y pruebas:
 
 ```bash
 docker run -d -p 1025:1025 -p 8025:8025 --name mailhog mailhog/mailhog:v1.0.1
 ```
 
-After starting MailHog, configure Email Configuration with:
+Después de iniciar MailHog, configure la Configuración de correo electrónico con:
 
-| Field | Value |
+| Campo | Valor |
 |---|---|
-| Host | Host machine IP (or service name if in the same Docker Compose network) |
-| Port | `1025` |
-| Username / Password | Any value (MailHog disables authentication by default) |
-| Enable TLS / Enable Authentication | Unchecked |
-| Sender | Any valid email format (e.g., `support@example.com`) |
+| Host | IP de la máquina host (o nombre del servicio si está en la misma red Docker Compose) |
+| Puerto | `1025` |
+| Nombre de usuario / Contraseña | Cualquier valor (MailHog deshabilita la autenticación por defecto) |
+| Habilitar TLS / Habilitar autenticación | Sin marcar |
+| Remitente | Cualquier formato de correo electrónico válido (p. ej., `support@example.com`) |
 
-Access the MailHog web interface at `http://<server-ip>:8025` to view captured emails.
+Acceda a la interfaz web de MailHog en `http://<ip-del-servidor>:8025` para ver los correos electrónicos capturados.

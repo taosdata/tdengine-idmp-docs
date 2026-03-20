@@ -1,62 +1,62 @@
 ---
-title: Sample Data
-sidebar_label: Sample Data
+title: Datos de muestra
+sidebar_label: Datos de muestra
 ---
 
-# 14.6 Sample Data
+# 14.6 Datos de muestra
 
-The Sample Data feature lets users load a pre-built business scenario into TDengine IDMP with a single click — no real data source required. During loading, the tool automatically creates the data model from a JSON configuration file and inserts simulated time-series data directly into the TDengine time-series database. The system ships with several industry scenario packages out of the box, and users can build their own custom packages to match any business situation.
+La función de datos de muestra permite a los usuarios cargar un escenario de negocio preconfigurado en TDengine IDMP con un solo clic, sin necesidad de una fuente de datos real. Durante la carga, la herramienta crea automáticamente el modelo de datos a partir de un archivo de configuración JSON e inserta datos de series temporales simulados directamente en la base de datos de series temporales de TDengine. El sistema incluye varios paquetes de escenarios industriales de forma predeterminada, y los usuarios pueden crear sus propios paquetes personalizados para adaptarse a cualquier situación de negocio.
 
-This feature is especially valuable for system integrators and pre-sales engineers. After learning about a customer's operational environment, they can rapidly assemble a working demo that mirrors the customer's actual scenario, letting the customer see and validate exactly the capabilities they care about — without waiting for a full integration.
+Esta función es especialmente valiosa para integradores de sistemas e ingenieros de preventa. Después de conocer el entorno operativo de un cliente, pueden ensamblar rápidamente una demostración funcional que refleje el escenario real del cliente, permitiéndole ver y validar exactamente las capacidades que le interesan, sin esperar una integración completa.
 
-Sample Data is accessed from **Admin Console → Sample Data**.
+Los datos de muestra se acceden desde **Consola de administración → Datos de muestra**.
 
-## Usage Instructions
+## Instrucciones de uso
 
-### Command-Line Mode
+### Modo de línea de comandos
 
-#### Environment Requirements
+#### Requisitos del entorno
 
-| Component | Requirement               |
+| Componente | Requisito |
 | --------- | ------------------------- |
-| Java      | JDK 8 or later            |
-| TDengine  | Installed and accessible  |
-| IDMP      | Installed and accessible  |
-| JSON File | Sample data configuration |
+| Java | JDK 8 o posterior |
+| TDengine | Instalado y accesible |
+| IDMP | Instalado y accesible |
+| Archivo JSON | Configuración de datos de muestra |
 
-#### Tool Location
+#### Ubicación de la herramienta
 
-Inside the TDasset Docker container:
+Dentro del contenedor Docker de TDasset:
 
 ```bash
 /app/tda-generator-command.jar
 ```
 
-#### Basic Commands
+#### Comandos básicos
 
-##### Generate sample data
+##### Generar datos de muestra
 
 ```bash
 java -jar tda-generator-command.jar -f init.json
 ```
 
-##### Clean up sample data
+##### Limpiar datos de muestra
 
 ```bash
 java -jar tda-generator-command.jar -f init.json -c
 ```
 
-⚠️ **For testing environments only**
+⚠️ **Solo para entornos de prueba**
 
-### GUI Mode
+### Modo de interfaz gráfica
 
-In the IDMP management console, navigate to the **Sample Data** module. Upload or select a JSON configuration file, then click **Load** or **Unload**.
+En la consola de administración de IDMP, navegue al módulo **Datos de muestra**. Cargue o seleccione un archivo de configuración JSON, luego haga clic en **Load** o **Unload**.
 
-## Configuration Guide (JSON)
+## Guía de configuración (JSON)
 
-The JSON file is the single source of truth for sample data generation.
+El archivo JSON es la fuente única de verdad para la generación de datos de muestra.
 
-### Overall Structure
+### Estructura general
 
 ```json
 {
@@ -70,9 +70,9 @@ The JSON file is the single source of truth for sample data generation.
 }
 ```
 
-### info — Sample Data Information
+### info — Información de datos de muestra
 
-Used only for display in the IDMP UI.
+Se utiliza solo para la visualización en la interfaz de usuario de IDMP.
 
 ```json
 {
@@ -84,13 +84,13 @@ Used only for display in the IDMP UI.
 }
 ```
 
-- name: Scenario name (must be unique in the sample data list)
-- description: Scenario description
-- file: Must match the filename
+- name: Nombre del escenario (debe ser único en la lista de datos de muestra)
+- description: Descripción del escenario
+- file: Debe coincidir con el nombre del archivo
 
-### TDasset — IDMP Connection
+### TDasset — Conexión IDMP
 
-Effective only in command-line mode.
+Solo efectivo en modo de línea de comandos.
 
 ```json
 {
@@ -100,11 +100,11 @@ Effective only in command-line mode.
 }
 ```
 
-- url: IDMP access URL
-- user: IDMP username
-- password: IDMP login password
+- url: URL de acceso a IDMP
+- user: Nombre de usuario de IDMP
+- password: Contraseña de inicio de sesión de IDMP
 
-### datasource — TDengine Connection
+### datasource — Conexión TDengine
 
 ```json
 {
@@ -125,12 +125,12 @@ Effective only in command-line mode.
 }
 ```
 
-- db: TDengine connection details
-- max_active: Maximum active connections in pool
-- min_idle: Minimum idle connections in pool
-- Other parameters refer to TDengine JDBC connection pool documentation
+- db: Detalles de conexión a TDengine
+- max_active: Máximo de conexiones activas en el pool
+- min_idle: Mínimo de conexiones inactivas en el pool
+- Otros parámetros: consulte la documentación de configuración del pool de conexiones JDBC de TDengine
 
-### databases — Database Definition
+### databases — Definición de base de datos
 
 ```json
 {
@@ -144,18 +144,18 @@ Effective only in command-line mode.
 }
 ```
 
-- name: Database name
-- drop: Whether to drop existing database (recommended for testing only)
-- vgroups: Initial number of vgroups
-- precision: Timestamp precision (default: ms)
-- replica: Replication factor (default: 1)
-- duration: Data file storage duration (default: 10d)
-- keep: Data retention days (default: 3650)
-- Other parameters refer to TDengine database creation documentation
+- name: Nombre de la base de datos
+- drop: Si se debe eliminar la base de datos existente (recomendado solo para pruebas)
+- vgroups: Número inicial de vgroups
+- precision: Precisión de la marca de tiempo (predeterminado: ms)
+- replica: Factor de replicación (predeterminado: 1)
+- duration: Duración de almacenamiento del archivo de datos (predeterminado: 10d)
+- keep: Días de retención de datos (predeterminado: 3650)
+- Otros parámetros: consulte la documentación de creación de bases de datos de TDengine
 
-### templates — Element Template Configuration
+### templates — Configuración de plantilla de elementos
 
-#### Super Table Template (Leaf Nodes)
+#### Plantilla de supertabla (nodos hoja)
 
 ```json
 {
@@ -233,33 +233,33 @@ Effective only in command-line mode.
 }
 ```
 
-- name: Template name (must be unique)
-- leaf: Whether this is a leaf node template (true for leaf, false for path)
-- namingPattern: Naming rule
-- keywordsDesc: Keyword description for naming
-- location: Location attribute range (altitude, latitude, longitude)
-- super_tables: Super table configuration list
-  - db: Database name
-  - name: Super table name
-  - start_timestamp: Data start timestamp (null = 4 days ago)
-  - time_step: Time step in milliseconds
-  - non_stop_mode: false = fixed rows; true = continuous real-time simulation
-  - insert_rows: Total rows to insert
-  - batch_insert_num: Rows per batch
-  - insert_interval: Interval between batches (ms; 0 = no delay)
-  - metrics: List of metric attributes
-    - name: Metric name
-    - title: Metric title
-    - description: Metric description
-    - type: Data type (Float, Double, Int, BigInt, Varchar, and other TDengine supported types)
-    - tdType: Field role — metric for measurements, tag for tags
-    - uomClass: Unit category
-    - uom: Unit name
-    - displayDigits: Decimal places displayed
-    - fun: Data generation function; supports basic math and random(); x represents the time variable
-  - tags: List of tag attributes (same structure as metrics)
+- name: Nombre de la plantilla (debe ser único)
+- leaf: Si es una plantilla de nodo hoja (true para hoja, false para ruta)
+- namingPattern: Regla de nomenclatura
+- keywordsDesc: Descripción de palabras clave para nomenclatura
+- location: Rango de atributos de ubicación (altitud, latitud, longitud)
+- super_tables: Lista de configuración de supertablas
+  - db: Nombre de la base de datos
+  - name: Nombre de la supertabla
+  - start_timestamp: Marca de tiempo de inicio de los datos (null = hace 4 días)
+  - time_step: Paso de tiempo en milisegundos
+  - non_stop_mode: false = filas fijas; true = simulación continua en tiempo real
+  - insert_rows: Total de filas a insertar
+  - batch_insert_num: Filas por lote
+  - insert_interval: Intervalo entre lotes (ms; 0 = sin demora)
+  - metrics: Lista de atributos de métricas
+    - name: Nombre de la métrica
+    - title: Título de la métrica
+    - description: Descripción de la métrica
+    - type: Tipo de dato (Float, Double, Int, BigInt, Varchar y otros tipos soportados por TDengine)
+    - tdType: Función del campo — metric para mediciones, tag para etiquetas
+    - uomClass: Categoría de unidad
+    - uom: Nombre de la unidad
+    - displayDigits: Decimales mostrados
+    - fun: Función de generación de datos; soporta funciones matemáticas básicas y random(); x representa la variable de tiempo
+  - tags: Lista de atributos de etiquetas (misma estructura que las métricas)
 
-#### Path Template (Non-Leaf Nodes)
+#### Plantilla de ruta (nodos no hoja)
 
 ```json
 {
@@ -273,11 +273,11 @@ Effective only in command-line mode.
 }
 ```
 
-- name: #LEVEL is controlled by level; #ID references info.id
-- level: Number of path template levels
-- namingPattern: Naming rule
+- name: #LEVEL está controlado por level; #ID hace referencia a info.id
+- level: Número de niveles de la plantilla de ruta
+- namingPattern: Regla de nomenclatura
 
-### tree_root — Element Tree Root Node
+### tree_root — Nodo raíz del árbol de elementos
 
 ```json
 {
@@ -287,9 +287,9 @@ Effective only in command-line mode.
 }
 ```
 
-- visible: Whether the root node is visible
+- visible: Si el nodo raíz es visible
 
-### trees — Element Tree and Child Table Generation
+### trees — Árbol de elementos y generación de tablas hijo
 
 ```json
 {
@@ -310,19 +310,19 @@ Effective only in command-line mode.
 }
 ```
 
-- template: Template name (must match one defined in templates)
-- values: Assigns values to naming keywords; supports ranges like em[1,5] → em1 to em5
-- children: Child node list
+- template: Nombre de la plantilla (debe coincidir con una definida en templates)
+- values: Asigna valores a palabras clave de nomenclatura; soporta rangos como em[1,5] → em1 a em5
+- children: Lista de nodos hijo
 
-This section:
+Esta sección:
 
-- Builds the element tree
-- Automatically creates sub-tables
-- Automatically binds TAG values
+- Construye el árbol de elementos
+- Crea automáticamente subtablas
+- Vincula automáticamente valores de TAG
 
-## Usage Recommendations
+## Recomendaciones de uso
 
-- One JSON file per sample scenario
-- Use consistent prefixes for template names
-- Control child table count when using continuous data generation
-- Always confirm the environment before running cleanup operations
+- Un archivo JSON por escenario de muestra
+- Use prefijos consistentes para los nombres de plantillas
+- Controle el recuento de tablas hijo cuando use generación continua de datos
+- Confirme siempre el entorno antes de ejecutar operaciones de limpieza

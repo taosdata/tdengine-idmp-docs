@@ -1,41 +1,45 @@
 ---
-title: Connections
-sidebar_label: Connections
+title: Conexiones
+sidebar_label: Conexiones
 ---
 
-# 12.1 Connections
+# 12.1 Conexiones
 
-A **connection** tells IDMP how to reach an external system. Connections are configured in **Admin Console → Connections** and are referenced by data ingestion tasks and asset model imports.
+Una **conexión** indica a IDMP cómo acceder a un sistema externo. Las conexiones se configuran en **Admin Console → Connections** y son referenciadas por las tareas de ingesta de datos y las importaciones de modelos de activos.
 
-The connection list shows all configured connections with the following columns:
+:::note
+Las conexiones son de dos tipos, TDengine y AI: las conexiones TDengine se utilizan para la gestión de datos de negocio, mientras que las conexiones AI se utilizan para preguntas y respuestas inteligentes y recomendaciones de problemas.
+:::
 
-| Column | Description |
+La lista de conexiones muestra todas las conexiones configuradas con las siguientes columnas:
+
+| Columna | Descripción |
 |---|---|
-| **Name** | Connection name |
-| **Type** | Connection type (e.g., TDengine TSDB) |
-| **Connection Status** | Whether the connection is currently in use |
-| **URL** | The endpoint address |
-| **Auth Type** | Authentication method used |
+| **Name** | Nombre de la conexión |
+| **Type** | Tipo de conexión (p. ej., TDengine TSDB) |
+| **Connection Status** | Si la conexión está actualmente en uso |
+| **URL** | La dirección del endpoint |
+| **Auth Type** | Método de autenticación utilizado |
 
-To create a connection, click **+**. To edit, enable/disable, or delete an existing connection, click the **⋮** menu on the connection row, or hover over the connection name in the left tree to reveal the quick-action menu.
+Para crear una conexión, haga clic en **+**. Para editar, habilitar/deshabilitar o eliminar una conexión existente, haga clic en el menú **⋮** de la fila de la conexión, o pase el cursor sobre el nombre de la conexión en el árbol izquierdo para mostrar el menú de acciones rápidas.
 
-A TDengine TSDB connection links IDMP to a TDengine time-series database. Once created, it enables asset model import and real-time data access for all elements and attributes that reference this connection.
+Una conexión TDengine TSDB vincula IDMP a una base de datos de series temporales TDengine. Una vez creada, habilita la importación de modelos de activos y el acceso a datos en tiempo real para todos los elementos y atributos que referencian esta conexión.
 
-**Connection form fields:**
+**Campos del formulario de conexión:**
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Name** (required) | A unique name for this connection. Accepts letters, numbers, underscores, hyphens, and spaces. |
-| **Type** | Select **TDengine TSDB** |
-| **URL** (required) | The TDengine REST API endpoint, e.g., `http://localhost:6041` |
-| **Auth Type** | **Username Password** or **Token** |
-| **Username** | Database username (for Username Password auth) |
-| **Password** (required) | Database password |
-| **Explorer URL** (required) | The TDengine Explorer address for this instance, typically `http://[host]:6060` |
-| **Additional Properties** | Optional key-value pairs for advanced configuration |
+| **Name** (obligatorio) | Un nombre único para esta conexión. Acepta letras, números, guiones bajos, guiones y espacios. |
+| **Type** | Seleccione **TDengine TSDB** |
+| **URL** (obligatorio) | El endpoint de la API REST de TDengine, p. ej., `http://localhost:6041` |
+| **Auth Type** | **Username Password** o **Token** |
+| **Username** | Nombre de usuario de la base de datos (para autenticación con nombre de usuario y contraseña) |
+| **Password** (obligatorio) | Contraseña de la base de datos |
+| **Explorer URL** (obligatorio) | La dirección de TDengine Explorer para esta instancia, normalmente `http://[host]:6060` |
+| **Additional Properties** | Pares clave-valor opcionales para configuración avanzada |
 
-Click **Check** to verify the connection before saving, then click **Save**.
+Haga clic en **Check** para verificar la conexión antes de guardar, y luego haga clic en **Save**.
 
 :::tip
-For AI connections used by the intelligent Q&A and analysis features, see [Chapter 8 AI-Powered Insights](../08-ai-powered-insights/index.md).
+Para las conexiones AI utilizadas por las funciones de preguntas y respuestas inteligentes y análisis, consulte el [Capítulo 8 AI-Powered Insights](../08-ai-powered-insights/index.md).
 :::

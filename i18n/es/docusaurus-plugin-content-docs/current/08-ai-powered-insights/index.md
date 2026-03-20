@@ -1,42 +1,42 @@
 ---
-title: Información con IA
-sidebar_label: Información con IA
+title: Información impulsada por IA
+sidebar_label: Información impulsada por IA
 ---
 
-# 8 AI-Powered Insights
+# 8. Información impulsada por IA
 
-TDengine IDMP embeds AI intelligence throughout the platform, turning it from a passive data repository into an active operational advisor. This chapter covers all AI-powered features — from proactive visualization generation to anomaly detection, forecasting, root cause analysis, and natural language queries.
+TDengine IDMP integra inteligencia de IA en toda la plataforma, transformándola de un repositorio de datos pasivo en un asesor operativo activo. Este capítulo cubre todas las funciones impulsadas por IA — desde la generación proactiva de visualizaciones hasta la detección de anomalías, el pronóstico, el análisis de causa raíz y las consultas en lenguaje natural.
 
-## Two Modes of AI Intelligence
+## Dos modos de inteligencia de IA
 
-IDMP delivers AI insights in two complementary modes:
+IDMP ofrece información de IA en dos modos complementarios:
 
-**Push-driven (Zero-Query Intelligence).** The system proactively analyzes your data and pushes findings to you without waiting for you to ask. When you open an element's Panels tab, AI-generated visualizations are already waiting. When you navigate to an element's Analyses tab, the AI has already suggested relevant analyses. This is Zero-Query Intelligence: the system continuously works in the background, applying LLM reasoning over your asset hierarchy and time-series data to surface insights before you think to look for them.
+**Modo push (inteligencia sin consulta).** El sistema analiza proactivamente sus datos y le envía los hallazgos sin esperar a que pregunte. Cuando abre la pestaña Paneles de un elemento, las visualizaciones generadas por IA ya están esperando. Cuando navega a la pestaña Análisis de un elemento, la IA ya ha sugerido análisis relevantes. Esta es la inteligencia sin consulta: el sistema trabaja continuamente en segundo plano, aplicando razonamiento LLM sobre su jerarquía de activos y datos de series temporales para mostrar información antes de que piense en buscarla.
 
-**Pull-driven.** You ask, the system answers. You can describe a panel or an analysis in plain language — "show me daily average voltage as a bar chart" or "calculate the hourly max current and alert when it exceeds normal" — and the AI builds it for you. The AI Chat interface also accepts free-form questions about your data — "what was the average current for em-1 last week?" — and returns answers grounded in your actual TDengine data. Root Cause Analysis runs on demand from an event detail page and produces a structured investigative report.
+**Modo pull.** Usted pregunta, el sistema responde. Puede describir un panel o un análisis en lenguaje sencillo — "muéstrame el voltaje promedio diario como un gráfico de barras" o "calcula la corriente máxima por hora y alerta cuando supere lo normal" — y la IA lo construye para usted. La interfaz de chat con IA también acepta preguntas de formato libre sobre sus datos — "¿cuál fue la corriente promedio de em-1 la semana pasada?" — y devuelve respuestas basadas en sus datos reales de TDengine. El análisis de causa raíz se ejecuta bajo demanda desde una página de detalle de evento y produce un informe de investigación estructurado.
 
-Together, these AI features dramatically lower the barrier to operational intelligence. Engineers who are not data scientists can build dashboards, configure analyses, detect anomalies, and investigate incidents without writing SQL or mastering complex tooling. This makes advanced industrial analytics accessible to small and medium-sized businesses that cannot afford dedicated data analysts or full-time process engineers.
+Juntas, estas funciones de IA reducen drásticamente la barrera para la inteligencia operativa. Los ingenieros que no son científicos de datos pueden crear dashboards, configurar análisis, detectar anomalías e investigar incidentes sin escribir SQL ni dominar herramientas complejas. Esto hace que los análisis industriales avanzados sean accesibles para las pequeñas y medianas empresas que no pueden permitirse analistas de datos dedicados o ingenieros de procesos a tiempo completo.
 
-## AI Components
+## Componentes de IA
 
-IDMP's AI capabilities are built on two underlying engines:
+Las capacidades de IA de IDMP están construidas sobre dos motores subyacentes:
 
-**Large Language Model (LLM).** An external LLM (configured via an OpenAI-compatible connection) handles natural language understanding, visualization and analysis generation, insight narration, and root cause reasoning. IDMP ships with a built-in 15-day trial connection so you can explore AI features immediately without any setup.
+**Modelo de lenguaje grande (LLM).** Un LLM externo (configurado a través de una conexión compatible con OpenAI) gestiona la comprensión del lenguaje natural, la generación de visualizaciones y análisis, la narración de información y el razonamiento de causa raíz. IDMP incluye una conexión de prueba integrada de 15 días para que pueda explorar las funciones de IA de inmediato sin ninguna configuración.
 
-**TDgpt.** TDengine's built-in time-series AI engine handles computationally intensive analytical tasks that operate directly on time-series data: anomaly detection, forecasting, and missing data imputation. TDgpt is a separate module that must be installed alongside IDMP — once installed, it works independently of the LLM connection and requires no external AI configuration.
+**TDgpt.** El motor de IA de series temporales integrado de TDengine gestiona tareas analíticas computacionalmente intensivas que operan directamente sobre datos de series temporales: detección de anomalías, pronóstico e imputación de datos faltantes. TDgpt es un módulo separado que debe instalarse junto con IDMP — una vez instalado, funciona independientemente de la conexión al LLM y no requiere configuración de IA externa.
 
-## What's Covered in This Chapter
+## Contenido de este capítulo
 
-- **[Connecting to LLM](./01-connecting-to-llm.md)** — Configuring the AI connection (LLM endpoint, models, authentication)
-- **[AI-Generated Panels](./02-ai-generated-panels.md)** — Panels automatically generated and suggested by AI on the element Panels tab
-- **[AI Panel Insights](./03-ai-panel-insights.md)** — Natural language summaries and interpretations generated for individual panels
-- **[AI-Generated Analyses](./04-ai-generated-analyses.md)** — Analyses automatically suggested and created by AI on the element Analyses tab
-- **[AI Composite Metrics](./05-ai-composite-metrics.md)** — AI-suggested formula and composite attribute definitions
-- **[Natural Language Queries](./06-natural-language-queries.md)** — The AI Chat interface for querying your data in plain language
-- **[Anomaly Detection](./07-anomaly-detection.md)** — TDgpt-powered anomaly detection as an analysis trigger type
-- **[Forecasting](./08-forecasting.md)** — TDgpt-powered time-series forecasting for element attributes
-- **[Missing Data Imputation](./09-missing-data-imputation.md)** — TDgpt-powered gap filling for time-series data
-- **[Root Cause Analysis](./10-root-cause-analysis.md)** — AI-generated root cause investigation reports for events
+- **[Conexión al LLM](./01-connecting-to-llm.md)** — Configurar la conexión de IA (endpoint del LLM, modelos, autenticación)
+- **[Paneles generados por IA](./02-ai-generated-panels.md)** — Paneles generados y sugeridos automáticamente por IA en la pestaña Paneles del elemento
+- **[Información de paneles con IA](./03-ai-panel-insights.md)** — Resúmenes e interpretaciones en lenguaje natural generados para paneles individuales
+- **[Análisis generados por IA](./04-ai-generated-analyses.md)** — Análisis sugeridos y creados automáticamente por IA en la pestaña Análisis del elemento
+- **[Métricas compuestas con IA](./05-ai-composite-metrics.md)** — Definiciones de fórmulas y atributos compuestos sugeridas por IA
+- **[Consultas en lenguaje natural](./06-natural-language-queries.md)** — La interfaz de chat con IA para consultar sus datos en lenguaje sencillo
+- **[Detección de anomalías](./07-anomaly-detection.md)** — Detección de anomalías impulsada por TDgpt como tipo de activación de análisis
+- **[Pronóstico](./08-forecasting.md)** — Pronóstico de series temporales impulsado por TDgpt para atributos de elementos
+- **[Imputación de datos faltantes](./09-missing-data-imputation.md)** — Relleno de brechas en series temporales impulsado por TDgpt
+- **[Análisis de causa raíz](./10-root-cause-analysis.md)** — Informes de investigación de causa raíz de eventos generados por IA
 
 import DocCardList from '@theme/DocCardList';
 

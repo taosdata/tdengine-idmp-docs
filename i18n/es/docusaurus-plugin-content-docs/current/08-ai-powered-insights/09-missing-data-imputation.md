@@ -1,39 +1,39 @@
 ---
-title: Missing Data Imputation
-sidebar_label: Missing Data Imputation
+title: Imputación de datos faltantes
+sidebar_label: Imputación de datos faltantes
 ---
 
-# 8.9 Missing Data Imputation
+# 8.9 Imputación de datos faltantes
 
-Time-series data in industrial environments frequently has gaps — sensors go offline, network interruptions delay data delivery, or hardware faults cause temporary measurement loss. Missing data imputation fills these gaps with estimated values, ensuring that downstream analyses, averages, and KPI calculations are not skewed by missing readings.
+Los datos de series temporales en entornos industriales frecuentemente tienen brechas — los sensores se desconectan, las interrupciones de red retrasan la entrega de datos, o los fallos de hardware causan pérdidas temporales de medición. La imputación de datos faltantes rellena estas brechas con valores estimados, asegurando que los análisis posteriores, los promedios y los cálculos de KPIs no se sesguen por lecturas faltantes.
 
 :::note
-Missing data imputation via TDgpt requires the **TDgpt module** to be installed alongside IDMP. It does not require an LLM connection.
+La imputación de datos faltantes mediante TDgpt requiere que el **módulo TDgpt** esté instalado junto con IDMP. No requiere una conexión al LLM.
 :::
 
-IDMP provides AI-based imputation through **TDgpt**, which uses learned patterns from the signal's historical behavior to estimate what the values during a gap should have been.
+IDMP proporciona imputación basada en IA a través de **TDgpt**, que utiliza patrones aprendidos del comportamiento histórico de la señal para estimar cuáles deberían haber sido los valores durante una brecha.
 
-## How Imputation Works
+## Cómo funciona la imputación
 
-TDgpt's imputation capability operates on a time window of historical data around a gap. It applies a trained model to predict the most likely values for the missing timestamps and writes those estimates back into the data. The imputed values are flagged as estimated, distinguishing them from actual sensor measurements.
+La capacidad de imputación de TDgpt opera sobre una ventana de tiempo de datos históricos alrededor de una brecha. Aplica un modelo entrenado para predecir los valores más probables para las marcas de tiempo faltantes y escribe esas estimaciones de vuelta en los datos. Los valores imputados se marcan como estimados, distinguiéndolos de las mediciones reales del sensor.
 
-Imputation is complementary to TDengine's native interpolation functions (`INTERP`, `FILL`). Native interpolation uses simple strategies (linear, previous value, next value) and is suitable for short, predictable gaps. TDgpt imputation uses learned patterns and is better suited for longer gaps, irregular signals, or cases where simple interpolation would produce unrealistic values.
+La imputación es complementaria a las funciones de interpolación nativas de TDengine (`INTERP`, `FILL`). La interpolación nativa usa estrategias simples (lineal, valor anterior, valor siguiente) y es adecuada para brechas cortas y predecibles. La imputación de TDgpt usa patrones aprendidos y es más adecuada para brechas más largas, señales irregulares, o casos donde la interpolación simple produciría valores poco realistas.
 
-## Configuring Imputation
+## Configurar la imputación
 
-Imputation is configured directly from a Trend Chart panel. Open a Trend Chart that displays the attribute with missing data, then use the **imputation control icon** on the right side of the chart to enable imputation and select the method.
+La imputación se configura directamente desde un panel de gráfico de tendencias. Abra un gráfico de tendencias que muestre el atributo con datos faltantes, luego use el **icono de control de imputación** en el lado derecho del gráfico para habilitar la imputación y seleccionar el método.
 
-## Supported TDgpt Algorithms
+## Algoritmos TDgpt compatibles
 
-| Algorithm | Characteristics |
+| Algoritmo | Características |
 |---|---|
-| **MEAN** | Fills gaps with the local mean of surrounding values — fast and robust for stable signals |
-| **IEM** | Iterative expectation-maximization — suitable for correlated multivariate signals |
-| **LSTM** | PyTorch LSTM model — captures temporal dependencies for complex, non-stationary signals |
-| **TDtsfm** | TDengine's time-series foundation model |
+| **MEAN** | Rellena las brechas con la media local de los valores circundantes — rápido y robusto para señales estables |
+| **IEM** | Maximización de expectativa iterativa — adecuado para señales multivariadas correlacionadas |
+| **LSTM** | Modelo LSTM de PyTorch — captura dependencias temporales para señales complejas no estacionarias |
+| **TDtsfm** | El modelo fundacional de series temporales de TDengine |
 
-## Viewing and Toggling Imputation in a Trend Chart
+## Ver y alternar la imputación en un gráfico de tendencias
 
-Imputed values appear in Trend Chart panels and attribute history views alongside measured data, visually distinguishable from actual sensor measurements.
+Los valores imputados aparecen en los paneles de gráficos de tendencias y las vistas de historial de atributos junto con los datos medidos, visualmente distinguibles de las mediciones reales del sensor.
 
-In the Trend Chart panel, an **imputation control icon** on the right side of the chart lets you toggle imputation on or off directly from the chart view, without changing the attribute configuration. Use this to compare the raw data (with gaps) against the imputed view.
+En el panel de gráfico de tendencias, un **icono de control de imputación** en el lado derecho del gráfico le permite activar o desactivar la imputación directamente desde la vista del gráfico, sin cambiar la configuración del atributo. Use esto para comparar los datos sin procesar (con brechas) con la vista imputada.

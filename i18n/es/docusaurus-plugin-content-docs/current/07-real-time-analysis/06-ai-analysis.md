@@ -1,49 +1,49 @@
 ---
-title: AI-Assisted Analysis
-sidebar_label: AI-Assisted Analysis
+title: Análisis Asistido por IA
+sidebar_label: Análisis Asistido por IA
 ---
 
-# 7.6 AI-Assisted Analysis
+# 7.6 Análisis Asistido por IA
 
-TDengine IDMP includes a built-in AI assistant that can create analyses without manually filling in the trigger type, calculation expressions, and output attributes. There are two ways to use it.
+TDengine IDMP incluye un asistente de IA integrado que puede crear análisis sin necesidad de completar manualmente el tipo de disparador, las expresiones de cálculo y los atributos de salida. Hay dos formas de usarlo.
 
-## Opening the AI Panel
+## Abrir el Panel de IA
 
-The AI panel is shown by default in the Analyses tab. You can toggle it using the **AI** button in the toolbar filter area above the analysis list.
+El panel de IA se muestra de forma predeterminada en la pestaña Análisis. Puede alternarlo usando el botón **IA** en el área de filtros de la barra de herramientas sobre la lista de análisis.
 
-## Way 1: Use a System-Suggested Analysis
+## Forma 1: Usar un Análisis Sugerido por el Sistema
 
-The AI panel displays a **Suggested Analyses** list — powered by **Zero Query Intelligence**, analyses that the system has already generated based on the current element's attributes, template, and collected data. These suggestions are context-aware: for an electricity meter element, the system might suggest computing hourly max voltage, detecting anomalies on current, or calculating power factor over a sliding window.
+El panel de IA muestra una lista de **Análisis Sugeridos** — impulsados por **Zero Query Intelligence**, análisis que el sistema ya ha generado basándose en los atributos, la plantilla y los datos recopilados del elemento actual. Estas sugerencias son conscientes del contexto: para un elemento de medidor de electricidad, el sistema podría sugerir calcular el voltaje máximo por hora, detectar anomalías en la corriente o calcular el factor de potencia sobre una ventana deslizante.
 
-Click any suggestion to immediately use it. The AI then generates a fully configured analysis form pre-filled with the appropriate settings.
+Haga clic en cualquier sugerencia para usarla de inmediato. La IA genera entonces un formulario de análisis completamente configurado y rellenado previamente con la configuración apropiada.
 
-Click the **refresh icon** next to "Suggested Analyses" to load a new set of suggestions.
+Haga clic en el **icono de actualización** junto a "Análisis Sugeridos" para cargar un nuevo conjunto de sugerencias.
 
-## Way 2: Describe What You Want
+## Forma 2: Describir lo que Desea
 
-Type a free-form description in the text input field at the right of the AI panel. For example:
+Escriba una descripción en forma libre en el campo de texto a la derecha del panel de IA. Por ejemplo:
 
 > "Calculate the maximum Current of this element over a 1-hour period, sliding every 10 minutes"
 
-The field also has a **microphone button** for voice input. Press Enter or submit to send the description. The AI generates a fully configured analysis form pre-filled with the appropriate settings.
+El campo también tiene un **botón de micrófono** para entrada de voz. Presione Intro o envíe para mandar la descripción. La IA genera un formulario de análisis completamente configurado y rellenado previamente con la configuración apropiada.
 
-## After AI Generation
+## Después de la Generación por IA
 
-Regardless of which way you used, the result is the same:
+Independientemente de la forma que haya utilizado, el resultado es el mismo:
 
-1. The AI opens the creation form pre-filled with a name, trigger type, sliding interval, rollup window, output expression, and a new output attribute.
-2. Review the pre-filled form. You can adjust any field before saving.
-3. Click **Save** to create the analysis.
+1. La IA abre el formulario de creación rellenado previamente con un nombre, tipo de disparador, intervalo deslizante, ventana de agregación, expresión de salida y un nuevo atributo de salida.
+2. Revise el formulario pre-rellenado. Puede ajustar cualquier campo antes de guardar.
+3. Haga clic en **Guardar** para crear el análisis.
 
-## What the AI Configures
+## Qué Configura la IA
 
-The AI can populate all four sections of the analysis form:
+La IA puede completar las cuatro secciones del formulario de análisis:
 
-- **General Information** — a descriptive name and optional description
-- **Trigger** — the appropriate trigger type (typically Sliding Window) and its parameters
-- **Calculation** — the rollup interval, output timestamp, and a computed expression mapped to a new element attribute
-- **Event** — event generation settings, if the described condition implies alerting
+- **Información General** — un nombre descriptivo y una descripción opcional
+- **Disparador** — el tipo de disparador apropiado (típicamente Ventana Deslizante) y sus parámetros
+- **Cálculo** — el intervalo de agregación, la marca de tiempo de salida y una expresión calculada mapeada a un nuevo atributo del elemento
+- **Evento** — configuración de generación de eventos, si la condición descrita implica alertas
 
-## Limitations
+## Limitaciones
 
-The AI assistant creates analyses based on natural language intent. For complex custom conditions or advanced event window logic, reviewing and adjusting the AI-generated configuration is recommended before saving.
+El asistente de IA crea análisis basándose en la intención expresada en lenguaje natural. Para condiciones personalizadas complejas o lógica avanzada de ventana de evento, se recomienda revisar y ajustar la configuración generada por IA antes de guardar.

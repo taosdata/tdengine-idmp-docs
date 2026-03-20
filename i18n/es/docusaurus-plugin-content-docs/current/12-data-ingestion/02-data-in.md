@@ -1,144 +1,144 @@
 ---
-title: Data In
-sidebar_label: Data In
+title: Tareas de ingesta de datos
+sidebar_label: Tareas de ingesta de datos
 ---
 
-# 12.2 Data In
+# 12.2 Tareas de ingesta de datos
 
-**Data In** manages the ingestion of time-series data from external sources into TDengine TSDB. It is accessed from **Admin Console → Data In**.
+**Data In** gestiona la ingesta de datos de series temporales de fuentes externas hacia TDengine TSDB. Se accede desde **Admin Console → Data In**.
 
-The Data In page lists all TDengine connections. Click a connection to manage its ingestion tasks, agents, and data collection agent configurations.
+La página Data In lista todas las conexiones de TDengine. Haga clic en una conexión para gestionar sus tareas de ingesta, agentes y configuraciones de agentes de recopilación de datos.
 
-## 12.2.1 Data In Tasks
+## 12.2.1 Tareas de ingesta de datos
 
-The **Data In Task** tab lists all configured ingestion tasks for a connection, with columns: **ID**, **Name**, **Type**, **Target**, **Create At**, **Agent**, **Metrics**, and **Status**.
+La pestaña **Data In Task** lista todas las tareas de ingesta configuradas para una conexión, con columnas: **ID**, **Name**, **Type**, **Target**, **Create At**, **Agent**, **Metrics** y **Status**.
 
-The toolbar provides controls to start, stop, delete, import, and export tasks, as well as a refresh button and settings.
+La barra de herramientas proporciona controles para iniciar, detener, eliminar, importar y exportar tareas, así como un botón de actualización y opciones de configuración.
 
-### Creating a Task
+### Creación de una tarea
 
-Click **+** to create a new task. Configure the following sections:
+Haga clic en **+** para crear una nueva tarea. Configure las siguientes secciones:
 
-### General Information
+### Información general
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Name** (required) | A descriptive name for the task |
-| **Type** | The data source protocol (see task types below) |
-| **Target** (required) | The destination TDengine database. Click **+ Create Database** to create a new one. |
+| **Name** (obligatorio) | Un nombre descriptivo para la tarea |
+| **Type** | El protocolo de fuente de datos (consulte los tipos de tarea a continuación) |
+| **Target** (obligatorio) | La base de datos TDengine de destino. Haga clic en **+ Create Database** para crear una nueva. |
 
-### Connection Configuration
+### Configuración de la conexión
 
-Configuration fields vary by task type. Two common examples are shown below.
+Los campos de configuración varían según el tipo de tarea. A continuación se muestran dos ejemplos comunes.
 
-### Example: OPC-UA
+### Ejemplo: OPC-UA
 
-OPC-UA (OPC Unified Architecture) is a widely used industrial protocol for connecting PLCs, sensors, and SCADA systems.
+OPC-UA (OPC Unified Architecture) es un protocolo industrial ampliamente utilizado para conectar PLC, sensores y sistemas SCADA.
 
-#### Connection Configuration
+#### Configuración de la conexión
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Server Endpoint** (required) | OPC-UA server address, e.g., `127.0.0.1:6666/OPCUA/ServerPath` |
-| **Failover Server Endpoints** | Backup server endpoints for high availability |
-| **Security Mode** | OPC-UA security mode (None, Sign, SignAndEncrypt) |
-| **Security Policy** | Encryption policy to use |
-| **Secure Channel Certificate** | Certificate file for secure channel |
-| **Certificate's Private Key** | Private key file for the certificate |
-| **Connect Timeout** | Connection timeout in seconds (default: 10) |
-| **Request Timeout** | Request timeout in seconds (default: 10) |
+| **Server Endpoint** (obligatorio) | Dirección del servidor OPC-UA, p. ej., `127.0.0.1:6666/OPCUA/ServerPath` |
+| **Failover Server Endpoints** | Endpoints de servidor de respaldo para alta disponibilidad |
+| **Security Mode** | Modo de seguridad OPC-UA (None, Sign, SignAndEncrypt) |
+| **Security Policy** | Política de cifrado a utilizar |
+| **Secure Channel Certificate** | Archivo de certificado para el canal seguro |
+| **Certificate's Private Key** | Archivo de clave privada para el certificado |
+| **Connect Timeout** | Tiempo de espera de conexión en segundos (predeterminado: 10) |
+| **Request Timeout** | Tiempo de espera de solicitud en segundos (predeterminado: 10) |
 
-#### Authentication
+#### Autenticación
 
-Choose **Anonymous**, **Username** (username and password), or **Certificates** (client certificate files).
+Elija **Anonymous**, **Username** (nombre de usuario y contraseña) o **Certificates** (archivos de certificado de cliente).
 
-Click **Check Connection** to verify before proceeding.
+Haga clic en **Check Connection** para verificar antes de continuar.
 
-#### Data Sets
+#### Conjuntos de datos
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Root node ID** | Starting node for data point discovery, e.g., `ns=1;i=1001` |
-| **Namespaces** | OPC-UA namespaces to include (populated after connection check) |
-| **Node Class** | Type of OPC-UA nodes to collect (default: all) |
-| **Point ID Regex Pattern** | Filter data points by node ID pattern |
-| **Point Name Regex Pattern** | Filter data points by name pattern |
-| **Super Table Name** (required) | Target supertable name template (default: `opc_{type}`) |
-| **Value Column Name** | Column name for the value (default: `val`) |
-| **Timestamp** | Timestamp source (default: `original_ts`) |
+| **Root node ID** | Nodo de inicio para el descubrimiento de puntos de datos, p. ej., `ns=1;i=1001` |
+| **Namespaces** | Espacios de nombres OPC-UA a incluir (se completan después de la verificación de la conexión) |
+| **Node Class** | Tipo de nodos OPC-UA a recopilar (predeterminado: todos) |
+| **Point ID Regex Pattern** | Filtrar puntos de datos por patrón de ID de nodo |
+| **Point Name Regex Pattern** | Filtrar puntos de datos por patrón de nombre |
+| **Super Table Name** (obligatorio) | Plantilla de nombre de supertabla de destino (predeterminado: `opc_{type}`) |
+| **Value Column Name** | Nombre de columna para el valor (predeterminado: `val`) |
+| **Timestamp** | Fuente de la marca de tiempo (predeterminado: `original_ts`) |
 
-#### Collect
+#### Recopilación
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Collect Mode** | `subscribe` (push) or `poll` (pull) |
-| **Point Update Mode** | How point metadata updates are handled |
-| **Point Update Interval** | Interval in seconds to check for point changes (default: 600) |
+| **Collect Mode** | `subscribe` (push) o `poll` (pull) |
+| **Point Update Mode** | Cómo se gestionan las actualizaciones de metadatos de puntos |
+| **Point Update Interval** | Intervalo en segundos para comprobar cambios en los puntos (predeterminado: 600) |
 
-### Example: SparkplugB (MQTT)
+### Ejemplo: SparkplugB (MQTT)
 
-SparkplugB is an MQTT-based protocol widely used in IIoT deployments.
+SparkplugB es un protocolo basado en MQTT ampliamente utilizado en implementaciones IIoT.
 
-#### Connection Configuration
+#### Configuración de la conexión
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Brokers** (required) | MQTT broker address(es), e.g., `mqtt://host:1883` |
-| **MQTT Protocol Version** | MQTT version to use |
-| **Client ID** | MQTT client identifier |
-| **Keep Alive** | Keep-alive interval in seconds |
-| **Username** | MQTT username |
-| **Password** | MQTT password |
-| **TLS Verification** | Enable TLS for the MQTT connection |
-| **Group ID** | Sparkplug group ID to subscribe to |
-| **Node Device List** | List of Sparkplug node/device IDs to collect |
-| **Message Type** | Sparkplug message types to process |
+| **Brokers** (obligatorio) | Dirección(es) del broker MQTT, p. ej., `mqtt://host:1883` |
+| **MQTT Protocol Version** | Versión de MQTT a utilizar |
+| **Client ID** | Identificador de cliente MQTT |
+| **Keep Alive** | Intervalo de keep-alive en segundos |
+| **Username** | Nombre de usuario MQTT |
+| **Password** | Contraseña MQTT |
+| **TLS Verification** | Habilitar TLS para la conexión MQTT |
+| **Group ID** | ID de grupo Sparkplug al que suscribirse |
+| **Node Device List** | Lista de IDs de nodos/dispositivos Sparkplug a recopilar |
+| **Message Type** | Tipos de mensajes Sparkplug a procesar |
 
-An **Advanced Options** section is available for all task types for further tuning.
+Todos los tipos de tarea disponen de una sección de **Advanced Options** para un ajuste más fino.
 
-Click **Submit** to create the task.
+Haga clic en **Submit** para crear la tarea.
 
 :::note
-The Data In feature is powered by TDengine TSDB's data ingestion engine. For complete documentation of all task types and their configuration fields, refer to the [TDengine TSDB documentation](https://docs.tdengine.com).
+La función Data In está impulsada por el motor de ingesta de datos de TDengine TSDB. Para obtener documentación completa sobre todos los tipos de tarea y sus campos de configuración, consulte la [documentación de TDengine TSDB](https://docs.tdengine.com).
 :::
 
-### Supported Task Types
+### Tipos de tarea compatibles
 
-IDMP supports ingesting data from the following source types:
+IDMP admite la ingesta de datos de los siguientes tipos de fuentes:
 
-| Type | Description |
+| Tipo | Descripción |
 |---|---|
-| **TDengine Data Subscription** | Subscribe to TDengine TMQ topics for real-time data ingestion |
-| **TDengine Query** | Pull data from TDengine via SQL queries on a schedule |
+| **TDengine Data Subscription** | Suscribirse a temas TMQ de TDengine para ingesta de datos en tiempo real |
+| **TDengine Query** | Extraer datos de TDengine mediante consultas SQL según un calendario |
 | **PI** | OSIsoft PI System |
-| **PI Backfill** | Historical backfill from OSIsoft PI |
+| **PI Backfill** | Relleno histórico desde OSIsoft PI |
 | **OPC-UA** | OPC Unified Architecture |
 | **OPC-DA** | OPC Data Access |
-| **InfluxDB** | InfluxDB time-series database |
-| **OpenTSDB** | OpenTSDB time-series database |
-| **PostgreSQL** | PostgreSQL relational database |
-| **Oracle** | Oracle database |
+| **InfluxDB** | Base de datos de series temporales InfluxDB |
+| **OpenTSDB** | Base de datos de series temporales OpenTSDB |
+| **PostgreSQL** | Base de datos relacional PostgreSQL |
+| **Oracle** | Base de datos Oracle |
 | **Microsoft SQL Server** | Microsoft SQL Server |
-| **MongoDB** | MongoDB document database |
-| **SparkplugB** | MQTT Sparkplug B protocol |
-| **KingHistorian** | KingHistorian industrial historian |
-| **Pulsar** | Apache Pulsar messaging |
-| **Pulsar-Tuya** | Pulsar with Tuya IoT platform integration |
+| **MongoDB** | Base de datos de documentos MongoDB |
+| **SparkplugB** | Protocolo MQTT Sparkplug B |
+| **KingHistorian** | Historiador industrial KingHistorian |
+| **Pulsar** | Mensajería Apache Pulsar |
+| **Pulsar-Tuya** | Pulsar con integración de la plataforma IoT Tuya |
 
-## 12.2.2 Agents
+## 12.2.2 Agentes
 
-The **Agent** tab lists the IDMP agent processes registered for this connection, with columns: **ID**, **Name**, **Created At**, and **Status**. Agents handle task execution for protocols that require an intermediary process.
+La pestaña **Agent** lista los procesos de agente de IDMP registrados para esta conexión, con columnas: **ID**, **Name**, **Created At** y **Status**. Los agentes gestionan la ejecución de tareas para protocolos que requieren un proceso intermediario.
 
-## 12.2.3 Data Collection Agents
+## 12.2.3 Agentes de recopilación de datos
 
-The **Data Collection Agents** tab provides configuration guides for third-party agents that can write data directly into TDengine using standard protocols:
+La pestaña **Data Collection Agents** proporciona guías de configuración para agentes de terceros que pueden escribir datos directamente en TDengine utilizando protocolos estándar:
 
-| Agent | Description |
+| Agente | Descripción |
 |---|---|
-| **Prometheus** | Configure Prometheus remote write to push metrics into TDengine |
-| **Telegraf** | Configure Telegraf output plugin to write metrics to TDengine |
-| **InfluxDB Line Protocol** | Write data using the InfluxDB line protocol wire format |
-| **OpenTSDB JSON Protocol** | Write data using the OpenTSDB HTTP JSON API |
-| **OpenTSDB Telnet Protocol** | Write data using the OpenTSDB telnet interface |
+| **Prometheus** | Configurar la escritura remota de Prometheus para enviar métricas a TDengine |
+| **Telegraf** | Configurar el plugin de salida de Telegraf para escribir métricas en TDengine |
+| **InfluxDB Line Protocol** | Escribir datos usando el formato de protocolo de línea de InfluxDB |
+| **OpenTSDB JSON Protocol** | Escribir datos usando la API HTTP JSON de OpenTSDB |
+| **OpenTSDB Telnet Protocol** | Escribir datos usando la interfaz telnet de OpenTSDB |
 
-Click any card to view the configuration guide for that agent.
+Haga clic en cualquier tarjeta para ver la guía de configuración de ese agente.

@@ -1,213 +1,213 @@
 ---
-title: Using the Add-In
-sidebar_label: Using the Add-In
+title: Uso del complemento
+sidebar_label: Uso del complemento
 ---
 
-# 10.3 Using the Add-In
+# 10.3 Uso del complemento
 
-Once connected to IDMP, the **TDengine EAI** ribbon tab provides all the tools for retrieving data, exploring events, filtering assets, and configuring the add-in. Each button opens a task pane on the right side of Excel where you configure the query and select an output cell.
+Una vez conectado a IDMP, la pestaña **TDengine EAI** de la cinta de opciones proporciona todas las herramientas para recuperar datos, explorar eventos, filtrar activos y configurar el complemento. Cada botón abre un panel de tareas en el lado derecho de Excel, donde puede configurar la consulta y seleccionar una celda de salida.
 
-## Ribbon Overview
+## Descripción general de la cinta de opciones
 
-| Button | Description |
+| Botón | Descripción |
 |---|---|
-| **Current Value** | Retrieve the latest value of one or more attributes |
-| **Archive Value** | Retrieve the attribute value at a specific point in time |
-| **Raw Data** | Retrieve raw time-series data over a time range |
-| **Sampled Data** | Retrieve time-series data sampled at a regular interval |
-| **Timed Data** | Retrieve the attribute value at specific timestamps |
-| **Calculated Data** | Retrieve aggregated (calculated) values over time windows |
-| **Time Filtered** | Retrieve data filtered by a state or condition expression |
-| **Event Explore** | Query and export events from IDMP |
-| **Attribute Filter** | Search and export attribute metadata |
-| **Asset Filter** | Search and export element (asset) metadata |
-| **Properties** | Retrieve a specific metadata property of an element attribute |
-| **Update** | Refresh all data in the workbook |
-| **Settings** | Configure global add-in settings |
+| **Current Value** | Recuperar el valor más reciente de uno o más atributos |
+| **Archive Value** | Recuperar el valor del atributo en un momento específico |
+| **Raw Data** | Recuperar datos brutos de series temporales en un intervalo de tiempo |
+| **Sampled Data** | Recuperar datos de series temporales muestreados a intervalos regulares |
+| **Timed Data** | Recuperar el valor del atributo en marcas de tiempo específicas |
+| **Calculated Data** | Recuperar valores agregados (calculados) en ventanas temporales |
+| **Time Filtered** | Recuperar datos filtrados por estado o expresión de condición |
+| **Event Explore** | Consultar y exportar eventos de IDMP |
+| **Attribute Filter** | Buscar y exportar metadatos de atributos |
+| **Asset Filter** | Buscar y exportar metadatos de elementos (activos) |
+| **Properties** | Recuperar una propiedad de metadatos específica de un atributo de elemento |
+| **Update** | Actualizar todos los datos del libro de trabajo |
+| **Settings** | Configurar ajustes globales del complemento |
 
-## Common Fields
+## Campos comunes
 
-Most data retrieval forms share the following fields:
+La mayoría de los formularios de recuperación de datos comparten los siguientes campos:
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Data Items** | The IDMP element attributes to query. Click the search icon to browse the asset hierarchy and select one or more attributes. |
-| **Output Cell** | The Excel cell where results will be written. Defaults to the currently selected cell (e.g., `Sheet1!A1`). |
-| **Time Position** | How timestamps are written alongside the data: **No Time Stamp** (values only), **Time at Left** (timestamp in the column to the left), or **Time on Top** (timestamp in the row above). |
+| **Data Items** | Los atributos de elementos de IDMP que se van a consultar. Haga clic en el icono de búsqueda para explorar la jerarquía de activos y seleccionar uno o más atributos. |
+| **Output Cell** | La celda de Excel donde se escribirán los resultados. De forma predeterminada, es la celda actualmente seleccionada (p. ej., `Sheet1!A1`). |
+| **Time Position** | Cómo se escriben las marcas de tiempo junto con los datos: **No Time Stamp** (solo valores), **Time at Left** (marca de tiempo en la columna de la izquierda) o **Time on Top** (marca de tiempo en la fila superior). |
 
-Click **OK** to insert data and close the pane, or **Apply** to insert data and keep the pane open for further queries.
+Haga clic en **OK** para insertar los datos y cerrar el panel, o en **Apply** para insertar los datos y mantener el panel abierto para consultas posteriores.
 
 ## Current Value
 
-Retrieves the latest value of the selected attributes and writes it to the output cell.
+Recupera el valor más reciente de los atributos seleccionados y lo escribe en la celda de salida.
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Data Items** | The attributes to query (required) |
-| **Output Cell** | Target cell |
+| **Data Items** | Los atributos que se van a consultar (obligatorio) |
+| **Output Cell** | Celda de destino |
 | **Time Position** | No Time Stamp / Time at Left / Time on Top |
 
 ## Archive Value
 
-Retrieves the attribute value at a specific historical timestamp, with gap-filling support.
+Recupera el valor del atributo en una marca de tiempo histórica específica, con soporte para relleno de huecos.
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Data Items** | The attributes to query (required) |
-| **Fill Type** | How to fill if no exact value exists at the timestamp: **Previous** (use the last known value before), or other fill strategies |
-| **Time Stamp** | The specific timestamp to query (required) |
-| **Output Cell** | Target cell |
+| **Data Items** | Los atributos que se van a consultar (obligatorio) |
+| **Fill Type** | Cómo rellenar si no existe un valor exacto en la marca de tiempo: **Previous** (usar el último valor conocido anterior) u otras estrategias de relleno |
+| **Time Stamp** | La marca de tiempo específica que se va a consultar (obligatorio) |
+| **Output Cell** | Celda de destino |
 | **Time Position** | No Time Stamp / Time at Left / Time on Top |
 
 ## Raw Data
 
-Retrieves all raw time-series data points within a time range, with no aggregation.
+Recupera todos los puntos de datos brutos de series temporales en un intervalo de tiempo, sin ninguna agregación.
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Data Items** | The attributes to query (required) |
-| **Start Time** | Start of the time range (required) |
-| **End Time** | End of the time range (required) |
-| **Output Cell** | Top-left cell of the output range |
+| **Data Items** | Los atributos que se van a consultar (obligatorio) |
+| **Start Time** | Inicio del intervalo de tiempo (obligatorio) |
+| **End Time** | Fin del intervalo de tiempo (obligatorio) |
+| **Output Cell** | Celda superior izquierda del rango de salida |
 | **Time Position** | No Time Stamp / Time at Left / Time on Top |
 
 ## Sampled Data
 
-Retrieves time-series data resampled at a regular interval over a time range. Use this to get a uniformly-spaced series regardless of the original data frequency.
+Recupera datos de series temporales remuestreados a intervalos regulares en un intervalo de tiempo. Úselo para obtener una serie con espaciado uniforme independientemente de la frecuencia de los datos originales.
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Data Items** | The attributes to query (required) |
-| **Start Time** | Start of the time range (required) |
-| **End Time** | End of the time range (required) |
-| **Time Interval** | The resampling interval (e.g., `1h`, `30m`, `1d`) |
-| **Filter Expression** | Optional filter to exclude certain data points before sampling |
-| **Output Cell** | Top-left cell of the output range |
+| **Data Items** | Los atributos que se van a consultar (obligatorio) |
+| **Start Time** | Inicio del intervalo de tiempo (obligatorio) |
+| **End Time** | Fin del intervalo de tiempo (obligatorio) |
+| **Time Interval** | El intervalo de remuestreo (p. ej., `1h`, `30m`, `1d`) |
+| **Filter Expression** | Filtro opcional para excluir ciertos puntos de datos antes del muestreo |
+| **Output Cell** | Celda superior izquierda del rango de salida |
 | **Time Position** | No Time Stamp / Time at Left / Time on Top |
 
 ## Timed Data
 
-Retrieves the attribute value at one or more specific timestamps that you provide, with fill support for gaps.
+Recupera el valor del atributo en una o más marcas de tiempo específicas que usted proporciona, con soporte para relleno de huecos.
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Data Items** | The attributes to query (required) |
-| **Fill Type** | How to fill if no exact value exists at a given timestamp (e.g., **Previous**) |
-| **Time Stamp** | The specific timestamp(s) to query |
-| **Output Cell** | Target cell |
+| **Data Items** | Los atributos que se van a consultar (obligatorio) |
+| **Fill Type** | Cómo rellenar si no existe un valor exacto en una marca de tiempo dada (p. ej., **Previous**) |
+| **Time Stamp** | Las marcas de tiempo específicas que se van a consultar |
+| **Output Cell** | Celda de destino |
 | **Time Position** | No Time Stamp / Time at Left / Time on Top |
 
 ## Calculated Data
 
-Retrieves aggregated data over regular time windows — for example, the hourly average, daily maximum, or sum per shift.
+Recupera datos agregados en ventanas de tiempo regulares — por ejemplo, la media horaria, el máximo diario o la suma por turno.
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Data Items** | The attributes to query (required) |
-| **Start Time** | Start of the time range (required) |
-| **End Time** | End of the time range (required) |
-| **Time Interval** | The aggregation window size (e.g., `1h`) |
-| **Filter Expression** | Optional filter applied before aggregation |
-| **Aggregation Function** | The aggregation to apply (required). Supports all TDengine selection and aggregation functions that return one row of data per window (e.g., AVG, MAX, MIN, SUM, COUNT, FIRST, LAST, TOP, BOTTOM). |
-| **Output Cell** | Top-left cell of the output range |
-| **Time Options** | Optionally show **Start Time**, **End Time**, or **Max/Min Time** columns alongside the aggregated values |
+| **Data Items** | Los atributos que se van a consultar (obligatorio) |
+| **Start Time** | Inicio del intervalo de tiempo (obligatorio) |
+| **End Time** | Fin del intervalo de tiempo (obligatorio) |
+| **Time Interval** | El tamaño de la ventana de agregación (p. ej., `1h`) |
+| **Filter Expression** | Filtro opcional aplicado antes de la agregación |
+| **Aggregation Function** | La agregación que se va a aplicar (obligatorio). Compatible con todas las funciones de selección y agregación de TDengine que devuelven una fila de datos por ventana (p. ej., AVG, MAX, MIN, SUM, COUNT, FIRST, LAST, TOP, BOTTOM). |
+| **Output Cell** | Celda superior izquierda del rango de salida |
+| **Time Options** | Opcionalmente, mostrar columnas de **Start Time**, **End Time** o **Max/Min Time** junto con los valores agregados |
 
 ## Time Filtered
 
-Retrieves data filtered by a state or condition defined by start and end expressions — useful for extracting data only during specific operating conditions (e.g., when a machine is running).
+Recupera datos filtrados por un estado o condición definida por expresiones de inicio y fin — útil para extraer datos solo durante condiciones operativas específicas (p. ej., cuando una máquina está en funcionamiento).
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Data Items** | The attributes to query (required) |
-| **Expression — Start With** | The condition expression that marks the beginning of a valid period (required) |
-| **Expression — End With** | The condition expression that marks the end of a valid period (required) |
-| **Start Time** | Start of the search range (required) |
-| **End Time** | End of the search range (required) |
-| **Time Interval** | Interval for data points within each valid period |
-| **Time Units** | The unit for the time interval (e.g., Second) |
-| **Output Cell** | Top-left cell of the output range |
-| **Time Options** | Optionally show **Start Time** and/or **End Time** columns |
+| **Data Items** | Los atributos que se van a consultar (obligatorio) |
+| **Expression — Start With** | La expresión de condición que marca el inicio de un período válido (obligatorio) |
+| **Expression — End With** | La expresión de condición que marca el fin de un período válido (obligatorio) |
+| **Start Time** | Inicio del rango de búsqueda (obligatorio) |
+| **End Time** | Fin del rango de búsqueda (obligatorio) |
+| **Time Interval** | Intervalo para los puntos de datos dentro de cada período válido |
+| **Time Units** | La unidad del intervalo de tiempo (p. ej., Second) |
+| **Output Cell** | Celda superior izquierda del rango de salida |
+| **Time Options** | Opcionalmente, mostrar columnas de **Start Time** y/o **End Time** |
 
 ## Event Explore
 
-Queries IDMP events and exports the results as a table in the spreadsheet. Supports filtering by multiple criteria.
+Consulta eventos de IDMP y exporta los resultados como tabla en la hoja de cálculo. Admite el filtrado por múltiples criterios.
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Name** | Filter by event name |
-| **Description** | Filter by event description |
-| **Template** | Filter by event template |
-| **Severity Level** | Filter by severity (All, Warning, Critical, etc.) |
-| **Is Ack** | Filter by acknowledgement status |
-| **Created at** | Filter by event creation time range |
-| **Updated at** | Filter by last update time range |
-| **Maximum Results** | Maximum number of events to return (default: 1000) |
-| **Order By** | Sort field, with ASC or DESC order |
-| **Element Criteria — Root Path** | Limit results to events associated with elements under a specific asset tree path |
-| **Output Cell** | Top-left cell of the output table |
-| **Columns to Display** | Select which event fields to include as columns in the output table. A multi-select picker lets you choose from all available event fields (e.g., Ack, Status, and more). |
+| **Name** | Filtrar por nombre de evento |
+| **Description** | Filtrar por descripción de evento |
+| **Template** | Filtrar por plantilla de evento |
+| **Severity Level** | Filtrar por gravedad (All, Warning, Critical, etc.) |
+| **Is Ack** | Filtrar por estado de reconocimiento |
+| **Created at** | Filtrar por rango de tiempo de creación del evento |
+| **Updated at** | Filtrar por rango de tiempo de última actualización |
+| **Maximum Results** | Número máximo de eventos a devolver (predeterminado: 1000) |
+| **Order By** | Campo de ordenación, con orden ascendente o descendente |
+| **Element Criteria — Root Path** | Limitar los resultados a eventos asociados con elementos bajo una ruta específica del árbol de activos |
+| **Output Cell** | Celda superior izquierda de la tabla de salida |
+| **Columns to Display** | Seleccionar qué campos de evento incluir como columnas en la tabla de salida. Un selector múltiple permite elegir entre todos los campos de evento disponibles (p. ej., Ack, Status y más). |
 
 ## Attribute Filter
 
-Searches IDMP attribute metadata and exports the results as a table. Useful for auditing your data model or building dynamic references.
+Busca metadatos de atributos de IDMP y exporta los resultados como tabla. Útil para auditar su modelo de datos o crear referencias dinámicas.
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Attribute Name** | Filter by attribute name |
-| **Attribute Description** | Filter by attribute description |
-| **Attribute Categories** | Filter by attribute category tag |
-| **Attribute Value Type** | Filter by data type (Float, Int, Bool, etc.) |
-| **Maximum Results** | Maximum number of results (default: 1000) |
-| **Order By** | Sort field, with ASC or DESC order |
-| **Element Criteria** | Filter by the element that owns the attribute: Root Path, Name, Description, Categories, Template |
-| **Output Cell** | Top-left cell of the output table |
-| **Columns to Display** | Select which attribute fields to include as columns in the output table. A multi-select picker lets you choose from all available attribute fields (e.g., Name, Description, and more). |
+| **Attribute Name** | Filtrar por nombre de atributo |
+| **Attribute Description** | Filtrar por descripción de atributo |
+| **Attribute Categories** | Filtrar por etiqueta de categoría de atributo |
+| **Attribute Value Type** | Filtrar por tipo de dato (Float, Int, Bool, etc.) |
+| **Maximum Results** | Número máximo de resultados (predeterminado: 1000) |
+| **Order By** | Campo de ordenación, con orden ascendente o descendente |
+| **Element Criteria** | Filtrar por el elemento propietario del atributo: Root Path, Name, Description, Categories, Template |
+| **Output Cell** | Celda superior izquierda de la tabla de salida |
+| **Columns to Display** | Seleccionar qué campos de atributo incluir como columnas en la tabla de salida. Un selector múltiple permite elegir entre todos los campos de atributo disponibles (p. ej., Name, Description y más). |
 
 ## Asset Filter
 
-Searches IDMP elements (assets) and exports the results as a table.
+Busca elementos (activos) de IDMP y exporta los resultados como tabla.
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Root Path** | Limit results to elements under a specific path in the asset tree |
-| **Name** | Filter by element name |
-| **Description** | Filter by element description |
-| **Attribute Name** | Filter elements that have an attribute matching this name |
-| **Attribute Description** | Filter by attribute description on the element |
-| **Categories** | Filter by element category |
-| **Template** | Filter by element template |
-| **Created at** | Filter by element creation time range |
-| **Updated at** | Filter by last update time range |
-| **Maximum Results** | Maximum number of results (default: 1000) |
-| **Order By** | Sort field, with ASC or DESC order |
-| **Output Cell** | Top-left cell of the output table |
+| **Root Path** | Limitar los resultados a elementos bajo una ruta específica del árbol de activos |
+| **Name** | Filtrar por nombre de elemento |
+| **Description** | Filtrar por descripción de elemento |
+| **Attribute Name** | Filtrar elementos que tengan un atributo que coincida con este nombre |
+| **Attribute Description** | Filtrar por descripción de atributo en el elemento |
+| **Categories** | Filtrar por categoría de elemento |
+| **Template** | Filtrar por plantilla de elemento |
+| **Created at** | Filtrar por rango de tiempo de creación del elemento |
+| **Updated at** | Filtrar por rango de tiempo de última actualización |
+| **Maximum Results** | Número máximo de resultados (predeterminado: 1000) |
+| **Order By** | Campo de ordenación, con orden ascendente o descendente |
+| **Output Cell** | Celda superior izquierda de la tabla de salida |
 
 ## Properties
 
-Retrieves a specific metadata property of an element attribute (such as its unit, description, or configured limits) and writes it to a cell.
+Recupera una propiedad de metadatos específica de un atributo de elemento (como su unidad de medida, descripción o límites configurados) y la escribe en una celda.
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Data Items** | The attribute to query (required) |
-| **Property** | The metadata property to retrieve (e.g., unit of measure, description, Hi limit) |
-| **Output Cell** | Target cell |
+| **Data Items** | El atributo que se va a consultar (obligatorio) |
+| **Property** | La propiedad de metadatos que se va a recuperar (p. ej., unidad de medida, descripción, límite superior) |
+| **Output Cell** | Celda de destino |
 
 ## Update
 
-Click **Update** in the ribbon to refresh all data in the workbook. Every cell that was populated by the TDengine EAI add-in is re-queried with its original parameters and updated with the latest results.
+Haga clic en **Update** en la cinta de opciones para actualizar todos los datos del libro de trabajo. Cada celda que fue rellenada por el complemento TDengine EAI se vuelve a consultar con sus parámetros originales y se actualiza con los resultados más recientes.
 
-Use this to keep a workbook current without reopening each form individually. For automatic periodic refresh, configure the **Interval** in Settings.
+Use esta función para mantener el libro de trabajo actualizado sin necesidad de reabrir cada formulario individualmente. Para una actualización periódica automática, configure el **Interval** en Settings.
 
 ## Settings
 
-Configures global defaults for the add-in.
+Configura los valores predeterminados globales del complemento.
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Time format** | The format used when writing timestamps to cells (default: `YYYY-MM-DD HH:mm:ss`) |
-| **Number format** | The Excel number format applied to numeric output cells (default: `General`) |
-| **Maximum event count** | Default maximum results for Event Explore queries (default: 1000) |
-| **Maximum filter search count** | Default maximum results for Attribute Filter and Asset Filter queries (default: 1000) |
-| **Interval (seconds)** | Auto-refresh interval in seconds. Set to `0` to disable automatic refresh. |
+| **Time format** | El formato utilizado al escribir marcas de tiempo en las celdas (predeterminado: `YYYY-MM-DD HH:mm:ss`) |
+| **Number format** | El formato numérico de Excel aplicado a las celdas de salida numérica (predeterminado: `General`) |
+| **Maximum event count** | Número máximo de resultados predeterminado para consultas de Event Explore (predeterminado: 1000) |
+| **Maximum filter search count** | Número máximo de resultados predeterminado para consultas de Attribute Filter y Asset Filter (predeterminado: 1000) |
+| **Interval (seconds)** | Intervalo de actualización automática en segundos. Establezca `0` para desactivar la actualización automática. |
 
-Click **Confirm** to save settings.
+Haga clic en **Confirm** para guardar la configuración.

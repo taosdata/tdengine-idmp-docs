@@ -1,123 +1,123 @@
 ---
-title: Bar Chart
-sidebar_label: Bar Chart
+title: Gráfico de barras
+sidebar_label: Gráfico de barras
 ---
 
-# 4.2.2 Bar Chart
+# 4.2.2 Gráfico de barras
 
-## Overview
+## Descripción general
 
-The Bar Chart represents values as vertical or horizontal bars, where bar height (or width) encodes the data value. It is designed for aggregated data — values grouped by time buckets or by categorical dimensions — making it ideal for comparison across periods or groups.
+El gráfico de barras representa los valores numéricos mediante la altura de las barras (o el ancho en la disposición horizontal). Es adecuado para datos agregados —valores agrupados por intervalos de tiempo o dimensiones categóricas— y es ideal para escenarios de comparación entre períodos o grupos.
 
-![Bar chart comparing values across time buckets](../images/bar-demo.png)
+![Gráfico de barras que compara valores en diferentes intervalos de tiempo](../images/bar-demo.png)
 
-Each bar corresponds to one aggregated value: a sum, average, or count over a time window (e.g., hourly energy consumption) or over a category (e.g., output per production line). Multiple metrics can be shown as grouped or stacked bar sets.
+Cada barra corresponde a un valor agregado: la suma, el promedio o el conteo dentro de una ventana de tiempo (como el consumo de energía por hora), o el valor de una categoría (como la producción por línea de producción). Se pueden mostrar múltiples métricas como barras agrupadas o apiladas.
 
-## When to Use
+## Cuándo usarlo
 
-Use the Bar Chart when:
+Use el gráfico de barras cuando:
 
-- You are comparing discrete quantities across time periods (hourly, daily, monthly)
-- You are comparing the same metric across multiple categories or sites
-- You want to visualize the contribution of parts to a whole using stacked bars
-- Your data is inherently aggregated rather than a continuous time-series
+- Compare cantidades discretas en diferentes períodos de tiempo (por hora, por día, por mes)
+- Compare la misma métrica entre múltiples categorías o sitios
+- Visualice la contribución de cada parte al todo usando barras apiladas
+- Los datos son intrínsecamente agregados, no series temporales continuas
 
-For continuous time-series data where the trend shape matters, use the Trend Chart instead. For a single summary value (e.g., total consumption today), use the Stat Value panel.
+Para datos de series temporales continuas donde el patrón de tendencia es importante, use el gráfico de tendencia. Para un único valor de resumen (como el consumo total del día), use el panel de valor estadístico.
 
-## Configuration
+## Configuración
 
-### Edit Mode Toolbar
+### Barra de herramientas del modo de edición
 
-In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Bar Chart adds:
+Además de los [controles generales del modo de edición](../01-panels.md#414-modo-de-edición-de-paneles), el gráfico de barras añade los siguientes controles:
 
-| Control | Description |
+| Control | Descripción |
 |---|---|
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+| **Guardar como imagen** | Descarga la vista previa actual como imagen PNG |
+| **Pantalla completa** | Expande la vista previa del editor para llenar la ventana del navegador |
+| **Interpretar panel** | Ejecuta el análisis de IA sobre los datos de la vista previa actual |
 
-### Graph Settings
+### Configuración del gráfico
 
-#### Orientation
+#### Orientación del diseño
 
-The Bar Chart supports **Vertical** (default) and **Horizontal** layouts. Horizontal bars work better when category labels are long or when comparing many groups side by side:
+El gráfico de barras admite diseños tanto **vertical** (por defecto) como **horizontal**. Las barras horizontales son más fáciles de leer cuando las etiquetas de categorías son largas o cuando se necesita comparar múltiples grupos en paralelo:
 
-![Bar chart in horizontal layout](../images/bar-horizontal.png)
+![Gráfico de barras con diseño horizontal](../images/bar-horizontal.png)
 
-#### Bar Style
+#### Estilo de barra
 
-**Bar Width** and **Bar Opacity** control the appearance of individual bars:
+**Ancho de barra** y **Transparencia de barra** controlan la apariencia de las barras individuales:
 
-![Bar width and opacity settings](../images/bar-style.png)
+![Ajustes de ancho y transparencia de barra](../images/bar-style.png)
 
-If Bar Width is left unset, the chart automatically sizes bars based on the available width and the number of bars — this adaptive behavior works well in most cases. Only set a fixed width when displaying on a fixed-resolution screen where precise spacing is required.
+Si no se establece el ancho de barra, el gráfico lo calcula automáticamente en función del ancho general y el número de barras — este comportamiento adaptativo funciona bien en la mayoría de los casos. Solo establezca un ancho fijo cuando necesite un espaciado preciso en pantallas de resolución fija.
 
-| Setting | Description |
+| Ajuste | Descripción |
 |---|---|
-| **Orientation** | Vertical (bars extend up) or Horizontal (bars extend right) |
-| **Bar Width** | Width of individual bars (slider; leave unset for auto) |
-| **Bar Opacity** | Transparency of bars, 0–1 |
-| **Stack Series** | Stack multiple metrics: None, Same Sign, All, Positive, Negative |
+| **Orientación del diseño** | Vertical (las barras se extienden hacia arriba) u horizontal (las barras se extienden hacia la derecha) |
+| **Ancho de barra** | Ancho de las barras individuales (control deslizante; déjelo vacío para el cálculo automático) |
+| **Transparencia de barra** | Transparencia de las barras, 0–1 |
+| **Apilado de series** | Apila múltiples métricas: ninguno, mismo signo, todos, valores positivos, valores negativos |
 
-#### Labels
+#### Etiquetas
 
-When category labels are long or numerous, they can overlap on the axis. Two settings address this:
+Cuando las etiquetas de categorías son largas o numerosas, pueden superponerse en el eje. Dos ajustes pueden resolver esto:
 
-1. **Rotate Labels** — tilt the label text to prevent overlap:
+1. **Rotación de etiquetas** — Inclina el texto de las etiquetas para evitar superposiciones:
 
-![Category axis labels rotated to avoid overlap](../images/bar-rotate.png)
+![Etiquetas del eje de categorías rotadas para evitar superposiciones](../images/bar-rotate.png)
 
-2. **Label Interval** — reduce the number of labels shown:
+2. **Intervalo de etiquetas** — Reduce el número de etiquetas mostradas:
 
-![Label interval reduced to lower density](../images/bar-interval.png)
+![Reducción del intervalo de etiquetas para disminuir la densidad](../images/bar-interval.png)
 
-| Setting | Description |
+| Ajuste | Descripción |
 |---|---|
-| **Rotate Labels** | Rotation angle for axis labels |
-| **Label Interval** | Label density: Auto, Small, Medium, Large |
+| **Rotación de etiquetas** | Ángulo de rotación de las etiquetas del eje |
+| **Intervalo de etiquetas** | Densidad de etiquetas: automático, pequeño, mediano, grande |
 
-### Axis Settings
+### Configuración de ejes
 
-#### Axis Title
+#### Títulos de ejes
 
-The Y axis can be labeled with a name and unit:
+El eje Y puede configurarse con un nombre y una etiqueta de unidad:
 
-![Y-axis title configured on the bar chart](../images/bar-ytitle.png)
+![Título del eje Y configurado en un gráfico de barras](../images/bar-ytitle.png)
 
-#### Dual Y Axis
+#### Doble eje Y
 
-When two metrics with very different scales are plotted together, the smaller signal is compressed and unreadable on a shared axis. Enabling the **Right Y Axis** assigns each metric to its own scale:
+Cuando se trazan dos métricas con rangos que difieren en órdenes de magnitud, un eje compartido comprime la señal más pequeña haciéndola difícil de leer. Habilitar **Eje derecho** asigna cada métrica a su propia escala:
 
-![Dual Y axis showing two metrics at different scales](../images/bar-bothY.png)
+![Doble eje Y que muestra dos métricas con rangos diferentes](../images/bar-bothY.png)
 
-| Setting | Description |
+| Ajuste | Descripción |
 |---|---|
-| **Left Y Axis Title** | Label for the left Y axis |
-| **Value Range** | Min and Max for the Y axis (blank = auto-scale) |
-| **Right Y Axis** | Enable a secondary Y axis on the right |
+| **Título del eje Y izquierdo** | Etiqueta del eje Y izquierdo |
+| **Rango de valores** | Valor mínimo y máximo del eje Y (vacío = escala automática) |
+| **Eje derecho** | Habilita el eje Y secundario en el lado derecho |
 
-### Limits Settings
+### Configuración de valores de límite
 
-Limit lines from the attribute configuration — LoLo, Lo, Target, Hi, HiHi — can be displayed as horizontal reference lines across the bars, marking safe and alert zones:
+Los límites de la configuración de atributos —LoLo, Lo, Valor objetivo, Hi, HiHi— pueden mostrarse como líneas de referencia horizontales sobre las barras, marcando las zonas de seguridad y advertencia:
 
-![Bar chart with limit lines marking operating boundaries](../images/bar-limit.png)
+![Gráfico de barras con líneas de límite que marcan los límites operativos](../images/bar-limit.png)
 
-### Legend Settings
+### Configuración de leyenda
 
-In Table mode, the legend can display summary statistics alongside each series:
+En modo tabla, la leyenda puede mostrar estadísticas de resumen junto a cada serie:
 
-![Legend in table mode with statistics](../images/bar-legend.png)
+![Leyenda en modo tabla con estadísticas](../images/bar-legend.png)
 
-| Setting | Description |
+| Ajuste | Descripción |
 |---|---|
-| **Show** | Display mode: List, Table, or Hidden |
-| **Placement** | Position: Bottom or Right |
-| **Legend Values** | Statistics shown in Table mode: Last, Min, Max, Mean, Sum, etc. |
+| **Mostrar** | Modo de visualización: lista, tabla u oculto |
+| **Posición** | Ubicación: abajo o a la derecha |
+| **Valores de leyenda** | Estadísticas que se muestran en modo tabla: valor más reciente, mínimo, máximo, promedio, total, etc. |
 
-## Example Scenarios
+## Ejemplos de uso
 
-**Daily energy consumption comparison.** An energy analyst needs to compare electricity consumption across each day of the past month. A bar chart with a 1-day sliding window shows one bar per day. The Hi limit line highlights days that exceeded the target consumption level.
+**Comparación del consumo diario de energía.** Un analista de energía necesita comparar el consumo de electricidad de cada día del último mes. Un gráfico de barras con una ventana deslizante de 1 día muestra una barra por día. La línea de límite Hi resalta los días que superaron el nivel de consumo objetivo.
 
-**Site-by-site throughput.** A operations manager adds a Dimension grouping by site name. Each bar represents one site's total production output for the selected period. Switching to horizontal layout improves readability when site names are long.
+**Comparación de producción entre sitios.** Un gerente de operaciones añade una dimensión de agrupación por nombre de sitio. Cada barra representa la producción total de un sitio durante el período de tiempo seleccionado. Cambiar al diseño horizontal mejora la legibilidad cuando los nombres de los sitios son largos.
 
-**Residential vs. industrial load stacking.** Two metrics — residential consumption and industrial consumption — are added to the same bar chart with Stack Series enabled. Each bar shows the total load with the two components visually separated by color, making it easy to see which component dominates at each time bucket.
+**Carga residencial e industrial apilada.** Se añaden dos métricas —consumo residencial y consumo industrial— al mismo gráfico de barras con el apilado de series habilitado. Cada barra muestra la carga total con los dos componentes separados por color, lo que permite ver de un vistazo qué componente domina en cada intervalo de tiempo.

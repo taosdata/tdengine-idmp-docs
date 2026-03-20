@@ -1,66 +1,66 @@
 ---
-title: Map Chart
-sidebar_label: Map Chart
+title: Mapa
+sidebar_label: Mapa
 ---
 
-# 4.2.14 Map Chart
+# 4.2.14 Mapa
 
-## Overview
+## Descripción general
 
-The Map Chart displays geographic data as a choropleth map — regions filled with colors proportional to their associated metric values. It is used for spatial analysis when data is organized by geographic area: countries, provinces, cities, districts, or custom regions defined by a GeoJSON file.
+El mapa presenta datos geográficos en forma de mapa coroplético — rellena cada área con diferentes tonalidades de color según el valor de la métrica asociada a esa región. Es adecuado para el análisis espacial cuando los datos están organizados por regiones geográficas: países, provincias, ciudades, distritos o regiones personalizadas definidas por archivos GeoJSON.
 
-![Map chart showing metric values across geographic regions](../images/map-demo.png)
+![Ejemplo de mapa](../images/map-demo.png)
 
-The color intensity of each region reflects the metric value — darker or more saturated regions indicate higher values. A color scale legend shows the mapping from color to value.
+La tonalidad del color de cada región refleja el valor de la métrica — el color más oscuro o más saturado indica valores más altos. La leyenda de escala de color muestra la correspondencia entre el color y los valores.
 
-## When to Use
+## Cuándo usarlo
 
-Use the Map Chart when:
+Use el mapa cuando:
 
-- Your elements are organized by geographic area and you want to visualize a metric across those areas
-- You need to answer questions like "which region has the highest energy consumption?" or "which sites are underperforming?"
-- You have a custom geographic boundary definition (GeoJSON) matching your operational territories
+- Los elementos estén organizados por región geográfica y necesite visualizar una métrica en esas regiones
+- Necesite responder preguntas como "¿Qué región tiene el mayor consumo de energía?" o "¿Qué sitios tienen un rendimiento inferior?"
+- Tenga definiciones de límites geográficos personalizados (GeoJSON) que coincidan con sus regiones operativas
 
-For time-series trend analysis, use the Trend Chart. For non-geographic comparisons across categories, use the Bar Chart.
+Para el análisis de tendencias de series temporales, use el gráfico de tendencia. Para comparaciones no geográficas entre categorías, use el gráfico de barras.
 
-## Configuration
+## Configuración
 
-### Edit Mode Toolbar
+### Barra de herramientas del modo de edición
 
-In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Map Chart adds:
+Además de los [controles generales del modo de edición](../01-panels.md#414-modo-de-edición-de-paneles), el mapa añade los siguientes controles:
 
-| Control | Description |
+| Control | Descripción |
 |---|---|
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+| **Guardar como imagen** | Descarga la vista previa actual como imagen PNG |
+| **Pantalla completa** | Expande la vista previa del editor para llenar la ventana del navegador |
+| **Interpretar panel** | Ejecuta el análisis de IA sobre los datos de la vista previa actual |
 
-### Graph Settings
+### Configuración del gráfico
 
-#### Map GeoJSON
+#### Archivo de mapa
 
-The map requires a GeoJSON file that defines the geographic region boundaries. Upload your GeoJSON file using the **Map GeoJSON** setting:
+El mapa requiere un archivo GeoJSON para definir los límites de las regiones geográficas. Use el ajuste **Archivo de mapa** para cargar su archivo GeoJSON:
 
-![Uploading a GeoJSON file to define map regions](../images/map-upload.png)
+![Carga de un archivo GeoJSON para definir las regiones del mapa](../images/map-upload.png)
 
-The GeoJSON `properties` for each feature must include a key that matches the geographic identifier attribute on your elements. This is how the map connects each region polygon to its corresponding data value.
+Las `properties` de cada característica en el GeoJSON deben contener una clave que coincida con el atributo de identificador geográfico del elemento. Así es como el mapa asocia cada polígono de región con su valor de datos correspondiente.
 
-#### Map Display
+#### Configuración de visualización
 
-The color gradient for the choropleth is configured through the **Map Display** setting, which defines three anchor points:
+El gradiente de color del mapa coroplético se configura mediante la **Configuración de visualización**, que define tres puntos de anclaje:
 
-![Map display color scale configuration](../images/map-data.png)
+![Configuración de la escala de colores de visualización del mapa](../images/map-data.png)
 
-| Setting | Description |
+| Ajuste | Descripción |
 |---|---|
-| **Map GeoJSON** | Upload or edit the GeoJSON file defining region boundaries |
-| **Map Display** | Color scale: **Min** (value and color for the low end), **Middle** (color at midpoint), **Max** (value and color for the high end). Click color swatches to change them. |
-| **Display Labels** | Toggle: show region name labels on the map |
+| **Archivo de mapa** | Carga o edita el archivo GeoJSON que define los límites de las regiones |
+| **Configuración de visualización** | Escala de color: **Valor mínimo** (valor y color en el extremo bajo), **Valor intermedio** (color en el punto medio), **Valor máximo** (valor y color en el extremo alto). Haga clic en los bloques de color para cambiarlos. |
+| **Mostrar etiquetas** | Interruptor: muestra etiquetas de nombres de región en el mapa |
 
-## Example Scenarios
+## Ejemplos de uso
 
-**Energy consumption by province.** An energy utility has elements organized by province. A map chart with a province-level GeoJSON file shows total monthly energy consumption per province. Darker blue regions consumed more; lighter regions consumed less. The operations team immediately identifies which provinces are above forecast.
+**Consumo de energía por provincia.** Una empresa de energía tiene sus elementos organizados por provincia. Un mapa que usa un archivo GeoJSON provincial muestra el consumo de energía total mensual de cada provincia. Las provincias de color más oscuro consumen más; las de color más claro, menos. El equipo de operaciones puede identificar de inmediato qué provincias superan las previsiones.
 
-**Site performance by country.** A multinational company has sites in 20 countries. A country-level GeoJSON with a green-to-red color scale shows OEE (Overall Equipment Effectiveness) per country. The map highlights underperforming regions that need management attention.
+**Rendimiento de sitios por país.** Una empresa multinacional tiene sitios en 20 países. Un GeoJSON de nivel de país con escala de color verde a rojo muestra la Eficiencia Global de los Equipos (OEE) de cada país. El mapa destaca las regiones de bajo rendimiento que requieren atención de la dirección.
 
-**City-level sensor coverage.** A smart metering company has meters deployed across a city's districts. A district-level GeoJSON shows the number of active meters per district, revealing coverage gaps where fewer meters are reporting data.
+**Cobertura de sensores a nivel de ciudad.** Una empresa de medición inteligente despliega contadores de electricidad en los distritos de una ciudad. Un GeoJSON de nivel de distrito muestra el número de contadores activos en cada distrito, revelando las áreas de cobertura donde hay menos contadores que reportan datos.

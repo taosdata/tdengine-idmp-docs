@@ -1,51 +1,51 @@
 ---
-title: Table
-sidebar_label: Table
+title: Tabla
+sidebar_label: Tabla
 ---
 
-# 4.2.6 Table
+# 4.2.6 Tabla
 
-## Overview
+## Descripción general
 
-The Table panel displays query results in a structured grid with one row per time point and one column per metric. It is the most direct way to read the exact values returned by a query — no aggregation, no visual encoding, just the numbers.
+El panel de tabla muestra los resultados de la consulta en una cuadrícula estructurada, con una fila por marca de tiempo y una columna por métrica. Es la forma más directa de leer los valores numéricos exactos devueltos por la consulta — sin agregación, sin codificación visual, solo números.
 
-All configured metrics appear as columns. The timestamp column is always included. Pagination controls at the bottom of the panel let you navigate across large result sets.
+Todas las métricas configuradas se muestran como columnas. La columna de marca de tiempo siempre está incluida. Los controles de paginación en la parte inferior del panel permiten navegar por grandes conjuntos de resultados.
 
-## When to Use
+## Cuándo usarlo
 
-Use the Table panel when:
+Use el panel de tabla cuando:
 
-- You need to inspect exact data values rather than visual trends
-- You are verifying data quality or checking for missing values
-- You want to build a summary report with aggregated values per time bucket
-- You need to export data for further analysis
+- Necesite ver valores de datos precisos en lugar de tendencias visuales
+- Esté validando la calidad de los datos o comprobando valores faltantes
+- Quiera crear un informe de resumen con valores agregados para cada intervalo de tiempo
+- Necesite exportar datos para su análisis posterior
 
-For visual trend analysis, use the Trend Chart. For a single summary number, use the Stat Value panel.
+Para el análisis visual de tendencias, use el gráfico de tendencia. Para un único valor de resumen, use el panel de valor estadístico.
 
-## Configuration
+## Configuración
 
-### Edit Mode Toolbar
+### Barra de herramientas del modo de edición
 
-In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Table adds:
+Además de los [controles generales del modo de edición](../01-panels.md#414-modo-de-edición-de-paneles), la tabla añade los siguientes controles:
 
-| Control | Description |
+| Control | Descripción |
 |---|---|
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+| **Guardar como imagen** | Descarga la vista previa actual como imagen PNG |
+| **Pantalla completa** | Expande la vista previa del editor para llenar la ventana del navegador |
+| **Interpretar panel** | Ejecuta el análisis de IA sobre los datos de la vista previa actual |
 
-### Graph Settings
+### Configuración del gráfico
 
-| Setting | Description |
+| Ajuste | Descripción |
 |---|---|
-| **Timestamp Format** | Display format for the timestamp column (default: `YYYY-MM-DD HH:mm:ss`) |
+| **Formato de marca de tiempo** | El formato de visualización de la columna de marca de tiempo (predeterminado: `YYYY-MM-DD HH:mm:ss`) |
 
-The Table panel has no Axis, Limits, or Legend sections.
+El panel de tabla no tiene secciones de ejes, valores de límite ni leyenda.
 
-## Example Scenarios
+## Ejemplos de uso
 
-**Data quality check.** A data engineer adds all attributes of a meter element to a Table panel with a 1-hour time range and Disable Sampling enabled. The raw row-by-row output lets them verify that readings are arriving at the expected interval and that no values are missing or out of range.
+**Verificación de calidad de datos.** Un ingeniero de datos añade todos los atributos de un elemento de contador de electricidad a un panel de tabla, establece un rango de tiempo de 1 hora y habilita la desactivación del muestreo. La salida fila por fila sin procesar le permite verificar que las lecturas llegan a los intervalos esperados y si hay valores faltantes o fuera de rango.
 
-**Shift summary report.** An operations manager configures a Table with a 1-day Sliding Window and aggregation functions (sum for energy, mean for temperature). The resulting table shows one row per day with the aggregate values for each metric — a clean tabular report suitable for export.
+**Informe de resumen de turno.** Un gerente de operaciones configura una tabla con una ventana deslizante de 1 día y funciones de agregación (suma para el consumo de energía, promedio para la temperatura). La tabla resultante muestra una fila por día con el valor agregado de cada métrica — un informe tabular limpio adecuado para exportar.
 
-**Event review.** A maintenance engineer reviews a 7-day table of alarm counts grouped by hour. The timestamp and count columns give an exact record of when alarm activity was highest, complementing the trend visualization.
+**Revisión de eventos.** Un ingeniero de mantenimiento revisa una tabla de 7 días de conteos de alarmas agrupados por hora. Las columnas de marca de tiempo y conteo registran con precisión los períodos de mayor actividad de alarmas, complementando la visualización de tendencias.

@@ -1,70 +1,70 @@
 ---
-title: Data Model Import and Export
-sidebar_label: Data Model Import and Export
+title: Importación y exportación del modelo de datos
+sidebar_label: Importación y exportación del modelo de datos
 ---
 
-# 11.4 Data Model Import and Export
+# 11.4 Importación y exportación del modelo de datos
 
-IDMP's Import/Export feature in the Management Console lets you transfer your data model — elements, element templates, event templates, UOM categories, and libraries — between IDMP instances. This is useful for replicating a configuration from a development environment to production, or for sharing a standard asset model across multiple deployments.
+La función de importación/exportación de IDMP en la Consola de administración le permite transferir su modelo de datos — elementos, plantillas de elementos, plantillas de eventos, categorías de UdM y bibliotecas — entre instancias de IDMP. Esto resulta útil para replicar una configuración de un entorno de desarrollo a producción, o para compartir un modelo de activos estándar entre múltiples implementaciones.
 
-## Accessing Import/Export
+## Acceso a la importación/exportación
 
-Navigate to **Management Console → Import/Export**.
+Navegue a **Management Console → Import/Export**.
 
-The main page shows a history table of all past import and export operations, with columns for **Created at**, **Status**, **Name**, and **Reason**. Use the **Categories** and **Import** filter buttons to switch between viewing export and import history.
+La página principal muestra una tabla con el historial de todas las operaciones de importación y exportación anteriores, con columnas para **Created at**, **Status**, **Name** y **Reason**. Use los botones de filtro **Categories** e **Import** para alternar entre ver el historial de exportación e importación.
 
-## Exporting the Data Model
+## Exportación del modelo de datos
 
-Click the **Export** icon (download arrow) in the top-right corner to open the export configuration form.
+Haga clic en el icono de **Export** (flecha de descarga) en la esquina superior derecha para abrir el formulario de configuración de exportación.
 
-### Selecting Resources
+### Selección de recursos
 
-The export form has two selectors:
+El formulario de exportación tiene dos selectores:
 
-| Selector | What it selects |
+| Selector | Qué selecciona |
 |---|---|
-| **Select Elements** | One or more root elements from the asset tree. IDMP includes the selected elements and all resources they depend on. |
-| **Select Libraries** | One or more library entries (element templates, UOM categories, etc.) to include independently of any elements. |
+| **Select Elements** | Uno o más elementos raíz del árbol de activos. IDMP incluye los elementos seleccionados y todos los recursos de los que dependen. |
+| **Select Libraries** | Una o más entradas de biblioteca (plantillas de elementos, categorías de UdM, etc.) para incluir independientemente de cualquier elemento. |
 
-As you make selections, the **Selected Resources** tree preview updates to show exactly what will be included in the export — elements, their templates, event templates, UOM categories, and individual units of measure.
+A medida que realiza selecciones, la vista previa en árbol de **Selected Resources** se actualiza para mostrar exactamente qué se incluirá en la exportación — elementos, sus plantillas, plantillas de eventos, categorías de UdM y unidades de medida individuales.
 
-### Export Summary
+### Resumen de exportación
 
-At the bottom of the form, a summary table confirms the counts of each resource type to be exported:
+En la parte inferior del formulario, una tabla de resumen confirma los recuentos de cada tipo de recurso que se va a exportar:
 
-| Resource | Description |
+| Recurso | Descripción |
 |---|---|
-| **Elements Count** | Number of elements selected |
-| **Element Templates Count** | Number of element templates pulled in |
-| **Event Templates Count** | Number of event templates pulled in |
-| **Categories Count** | Number of UOM categories pulled in |
-| **UOMs Count** | Number of units of measure pulled in |
-| **Total Resources Count** | Total number of resources in the export |
+| **Elements Count** | Número de elementos seleccionados |
+| **Element Templates Count** | Número de plantillas de elementos incluidas |
+| **Event Templates Count** | Número de plantillas de eventos incluidas |
+| **Categories Count** | Número de categorías de UdM incluidas |
+| **UOMs Count** | Número de unidades de medida incluidas |
+| **Total Resources Count** | Número total de recursos en la exportación |
 
-Click **Confirm** to generate and download the export file. Click **Discard** to cancel.
+Haga clic en **Confirm** para generar y descargar el archivo de exportación. Haga clic en **Discard** para cancelar.
 
-## Importing a Data Model
+## Importación de un modelo de datos
 
-Click the **Import** icon (upload arrow) in the top-right corner to open the import form.
+Haga clic en el icono de **Import** (flecha de carga) en la esquina superior derecha para abrir el formulario de importación.
 
-### Import Fields
+### Campos de importación
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Metadata File** (required) | The data model file produced by a previous IDMP export. Click **Select Metadata File** to upload it. |
-| **TSGen Configuration File** (optional) | An optional TDengine schema-generation configuration file to associate with the import. |
-| **Select Connections** (required) | The TDengine connection that imported elements will be bound to for time-series data storage. |
-| **Contact Point** (required) | The notification contact point to associate with imported event templates. |
+| **Metadata File** (obligatorio) | El archivo de modelo de datos producido por una exportación anterior de IDMP. Haga clic en **Select Metadata File** para cargarlo. |
+| **TSGen Configuration File** (opcional) | Un archivo de configuración de generación de esquemas de TDengine opcional para asociar con la importación. |
+| **Select Connections** (obligatorio) | La conexión de TDengine a la que se vincularán los elementos importados para el almacenamiento de datos de series temporales. |
+| **Contact Point** (obligatorio) | El punto de contacto de notificación que se asociará con las plantillas de eventos importadas. |
 
-Click **Confirm** to start the import. The operation runs in the background and its progress and result appear in the history table on the main Import/Export page.
+Haga clic en **Confirm** para iniciar la importación. La operación se ejecuta en segundo plano y su progreso y resultado aparecen en la tabla de historial de la página principal de Import/Export.
 
-## Typical Workflow
+## Flujo de trabajo típico
 
-A typical cross-instance deployment workflow looks like this:
+Un flujo de trabajo típico de implementación entre instancias es el siguiente:
 
-1. On the **source** instance, configure your elements, templates, and libraries.
-2. Go to **Management Console → Import/Export** and export the relevant elements and libraries.
-3. Download the metadata file.
-4. On the **target** instance, go to **Management Console → Import/Export** and import the metadata file.
-5. Select the appropriate connection and contact point on the target instance.
-6. Confirm the import and verify the resources appear in the Explorer and Libraries.
+1. En la instancia de **origen**, configure sus elementos, plantillas y bibliotecas.
+2. Vaya a **Management Console → Import/Export** y exporte los elementos y bibliotecas relevantes.
+3. Descargue el archivo de metadatos.
+4. En la instancia de **destino**, vaya a **Management Console → Import/Export** e importe el archivo de metadatos.
+5. Seleccione la conexión y el punto de contacto apropiados en la instancia de destino.
+6. Confirme la importación y verifique que los recursos aparezcan en el Explorador y las Bibliotecas.

@@ -1,80 +1,80 @@
 ---
-title: State Timeline
-sidebar_label: State Timeline
+title: Línea de tiempo de estado
+sidebar_label: Línea de tiempo de estado
 ---
 
-# 4.2.8 State Timeline
+# 4.2.8 Línea de tiempo de estado
 
-## Overview
+## Descripción general
 
-The State Timeline displays how a value changes over time as a horizontal colored band. Each segment of the band is colored and labeled according to the value it represents, making it easy to see at a glance how long a process was in each state and when transitions occurred.
+La línea de tiempo de estado muestra los cambios de valor a lo largo del tiempo como bandas horizontales de colores. Cada segmento de la banda se colorea y etiqueta según el valor que representa, lo que permite ver de un vistazo cuánto tiempo ha estado un proceso en cada estado y cuándo se produjeron las transiciones de estado.
 
-![State timeline showing equipment operating states over time](../images/state-timeline-demo.png)
+![Ejemplo de línea de tiempo de estado](../images/state-timeline-demo.png)
 
-Multiple metrics render as multiple stacked horizontal bands, enabling side-by-side comparison of state histories across different signals.
+Se pueden mostrar múltiples métricas como múltiples bandas horizontales apiladas, lo que permite la comparación en paralelo del historial de estados de diferentes señales.
 
-## When to Use
+## Cuándo usarlo
 
-Use the State Timeline when:
+Use la línea de tiempo de estado cuando:
 
-- Your data represents discrete states rather than continuous measurements (on/off, running/idle/fault, open/closed)
-- You want to see how long a process spent in each state and when transitions happened
-- You need to compare state histories across multiple signals or equipment on the same time axis
+- Los datos representen estados discretos en lugar de mediciones continuas (encendido/apagado, en marcha/inactivo/fallo, abierto/cerrado)
+- Necesite ver cuánto tiempo ha estado un proceso en cada estado y cuándo se produjeron las transiciones
+- Necesite comparar el historial de estados de múltiples señales o equipos en el mismo eje de tiempo
 
-For continuous numeric signals, use the Trend Chart. For a compact grid view of states bucketed by time interval across many metrics, use the Status History panel.
+Para señales de valor continuo, use el gráfico de tendencia. Para una vista compacta de cuadrícula de múltiples métricas con estados por intervalos de tiempo, use el historial de estado.
 
-## Configuration
+## Configuración
 
-### Edit Mode Toolbar
+### Barra de herramientas del modo de edición
 
-In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the State Timeline adds:
+Además de los [controles generales del modo de edición](../01-panels.md#414-modo-de-edición-de-paneles), la línea de tiempo de estado añade los siguientes controles:
 
-| Control | Description |
+| Control | Descripción |
 |---|---|
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+| **Guardar como imagen** | Descarga la vista previa actual como imagen PNG |
+| **Pantalla completa** | Expande la vista previa del editor para llenar la ventana del navegador |
+| **Interpretar panel** | Ejecuta el análisis de IA sobre los datos de la vista previa actual |
 
-### Graph Settings
+### Configuración del gráfico
 
-The appearance of each state band is controlled by the following settings:
+La apariencia de cada banda de estado se controla mediante los siguientes ajustes:
 
-![State timeline style settings showing border, height, and fill options](../images/state-timeline-style.png)
+![Ajustes de estilo de línea de la línea de tiempo de estado](../images/state-timeline-style.png)
 
-| Setting | Description |
+| Ajuste | Descripción |
 |---|---|
-| **Title** | Chart title |
-| **Subtitle** | Secondary title |
-| **Border Width** | Width of the border drawn around each state segment (0 = no border) |
-| **Row Height** | Relative height of each band (default 0.3) |
-| **Fill Opacity** | Transparency of the state color fill, 0–1 |
-| **Rotate Labels** | Rotation of X-axis time labels |
-| **Label Interval** | Density of X-axis labels |
+| **Título** | El título del gráfico |
+| **Subtítulo** | El título secundario |
+| **Grosor de línea** | El ancho del borde alrededor de cada segmento de estado (0 = sin borde) |
+| **Altura de fila** | La altura relativa de cada banda (predeterminado: 0,3) |
+| **Transparencia de relleno** | Transparencia del relleno de color del estado, de 0 a 1 |
+| **Rotación de etiquetas** | Ángulo de rotación de las etiquetas de tiempo del eje X |
+| **Intervalo de etiquetas** | Densidad de las etiquetas del eje X |
 
-State colors and labels are determined by the **Value Mapping** configuration, where you map each value (e.g., 0, 1, "Running") to a display color and text label.
+Los colores y etiquetas de estado están determinados por la configuración de **Mapeo de valores**, donde puede mapear cada valor (por ejemplo, 0, 1, "En marcha") a un color de visualización y una etiqueta de texto correspondientes.
 
-### Limits Settings
+### Configuración de valores de límite
 
-Limit lines can be overlaid on the timeline to mark threshold values:
+Se pueden superponer líneas de límite en la línea de tiempo para marcar los umbrales:
 
-![State timeline with limit lines](../images/state-timeline-limit.png)
+![Línea de tiempo de estado con líneas de límite](../images/state-timeline-limit.png)
 
-### Legend Settings
+### Configuración de leyenda
 
-The legend identifies each state color. In Table mode it can also show summary statistics:
+La leyenda identifica el color de cada estado. En modo tabla, también se pueden mostrar estadísticas de resumen:
 
-![State timeline legend](../images/state-timeline-legend.png)
+![Leyenda de la línea de tiempo de estado](../images/state-timeline-legend.png)
 
-| Setting | Description |
+| Ajuste | Descripción |
 |---|---|
-| **Show** | Display mode: List, Table, or Hidden |
-| **Placement** | Position: Bottom or Right |
-| **Legend Values** | Statistics shown in Table mode |
+| **Mostrar** | Modo de visualización: lista, tabla u oculto |
+| **Posición** | Posición: abajo o a la derecha |
+| **Valores de leyenda** | Estadísticas mostradas en modo tabla |
 
-## Example Scenarios
+## Ejemplos de uso
 
-**Equipment on/off history.** A pump's run state (0 = Off, 1 = Running) is mapped to gray and green respectively. The state timeline over a 24-hour period shows exactly when the pump was running and for how long each run lasted.
+**Historial de encendido/apagado de equipos.** El estado de funcionamiento de una bomba de agua (0 = detenida, 1 = en marcha) se mapea a gris y verde respectivamente. La línea de tiempo de estado de 24 horas muestra con precisión cuándo estaba funcionando la bomba y cuánto duró cada ciclo de funcionamiento.
 
-**Multi-mode process timeline.** A batch reactor has four operating modes: Heating, Reaction, Cooling, Idle. Each mode is mapped to a distinct color. The timeline shows the full batch cycle from start to finish and makes it immediately visible if any phase ran longer than expected.
+**Línea de tiempo de proceso multimodo.** Un reactor por lotes tiene cuatro modos operativos: calentamiento, reacción, enfriamiento, inactivo. Cada modo se mapea a un color diferente. La línea de tiempo muestra el ciclo completo del lote de principio a fin, y se puede ver visualmente si alguna fase se prolongó más de lo esperado.
 
-**Alarm active/inactive history.** Multiple alarm signals are stacked as separate bands. A maintenance engineer reviews a week of history to identify which alarms were most frequently active and whether they correlate in time.
+**Historial de alarma activa/inactiva.** Se muestran múltiples señales de alarma como bandas apiladas independientes. Un ingeniero de mantenimiento revisa el historial de una semana para identificar qué alarmas han estado más frecuentemente activas y si están correlacionadas en el tiempo.

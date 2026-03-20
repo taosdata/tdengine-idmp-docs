@@ -1,18 +1,18 @@
 ---
-title: Authentication
-sidebar_label: Authentication
+title: Autenticación
+sidebar_label: Autenticación
 ---
 
-# 15.1.3 Authentication
+# 15.1.3 Autenticación
 
-The IDMP SDK uses **Bearer Token (JWT)** for authentication. How you obtain a token depends on your deployment type.
+El SDK de IDMP utiliza **Bearer Token (JWT)** para la autenticación. La forma de obtener un token depende de su tipo de despliegue.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Enterprise (Self-Hosted) Authentication
+## Autenticación empresarial (autoalojada)
 
-For self-hosted deployments, obtain a token by calling the login endpoint with a username and password.
+Para despliegues autoalojados, obtenga un token llamando al endpoint de inicio de sesión con un nombre de usuario y contraseña.
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -58,24 +58,24 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 </TabItem>
 </Tabs>
 
-## Cloud Service Authentication
+## Autenticación del servicio en la nube
 
-The cloud service requires two tokens on each request: `Authorization` (Bearer Token) and `Access-token`.
+El servicio en la nube requiere dos tokens en cada solicitud: `Authorization` (Bearer Token) y `Access-token`.
 
-**Steps to obtain the tokens:**
+**Pasos para obtener los tokens:**
 
-1. Log in to the cloud service in your browser (`https://<instance-id>.idmp.taosdata.com`).
-2. Open the browser Developer Tools → Network tab.
-3. Refresh the page and locate any backend API request (e.g., `/api/v1/permissions/menus`).
-4. Copy the following three values:
+1. Inicie sesión en el servicio en la nube desde su navegador (`https://<instance-id>.idmp.taosdata.com`).
+2. Abra las Herramientas para desarrolladores del navegador → pestaña Red.
+3. Actualice la página y localice cualquier solicitud de API del backend (p. ej., `/api/v1/permissions/menus`).
+4. Copie los siguientes tres valores:
 
-| Item | Description |
+| Elemento | Descripción |
 |---|---|
-| Request URL host | Format: `https://<instance-id>.idmp.taosdata.com` |
-| `Access-token` request header | Cloud service-specific authentication token |
-| `Authorization` request header | Bearer Token — use the value without the `Bearer` prefix |
+| Host de la URL de solicitud | Formato: `https://<instance-id>.idmp.taosdata.com` |
+| Cabecera de solicitud `Access-token` | Token de autenticación específico del servicio en la nube |
+| Cabecera de solicitud `Authorization` | Bearer Token — use el valor sin el prefijo `Bearer` |
 
-5. Set the values as environment variables:
+5. Establezca los valores como variables de entorno:
 
 ```bash
 export CLOUD_HOST=https://<instance-id>.idmp.taosdata.com
@@ -83,7 +83,7 @@ export CLOUD_TOKEN=<Access-token value>
 export BEARER_TOKEN=<Authorization token value (without the "Bearer " prefix)>
 ```
 
-6. Initialize the client in code:
+6. Inicialice el cliente en el código:
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -116,19 +116,19 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 </TabItem>
 </Tabs>
 
-## Token Lifetime and Refresh
+## Vida útil y actualización del token
 
-| Deployment | Token Lifetime | How to Refresh |
+| Despliegue | Vida útil del token | Cómo actualizar |
 |---|---|---|
-| Enterprise (self-hosted) | Configured on the server (see `application.yml`) | Call the login endpoint again to get a new token |
-| Cloud service | Controlled by the browser session | Log in through the browser again and copy new tokens from DevTools |
+| Empresarial (autoalojado) | Configurado en el servidor (consulte `application.yml`) | Llame al endpoint de inicio de sesión nuevamente para obtener un nuevo token |
+| Servicio en la nube | Controlado por la sesión del navegador | Inicie sesión de nuevo desde el navegador y copie los nuevos tokens desde las DevTools |
 
 :::tip
-Wrap token acquisition and refresh in a utility function. Trigger a refresh automatically when you receive a `401 Unauthorized` response.
+Envuelva la adquisición y actualización de tokens en una función de utilidad. Active una actualización automáticamente cuando reciba una respuesta `401 Unauthorized`.
 :::
 
-## Security Best Practices
+## Mejores prácticas de seguridad
 
-- **Never** hardcode tokens, usernames, or passwords in source code.
-- Store credentials in environment variables or a secrets manager (Vault, AWS Secrets Manager, etc.).
-- Always use HTTPS when connecting to an IDMP server in production.
+- **Nunca** codifique tokens, nombres de usuario o contraseñas directamente en el código fuente.
+- Almacene las credenciales en variables de entorno o en un gestor de secretos (Vault, AWS Secrets Manager, etc.).
+- Utilice siempre HTTPS al conectarse a un servidor IDMP en producción.

@@ -1,100 +1,100 @@
 ---
-title: Experiencing IDMP Features
-sidebar_label: Experiencing IDMP
+title: Exploración de las funcionalidades de IDMP
+sidebar_label: Exploración de IDMP
 ---
 
-# 2.4 Experiencing IDMP Features
+# 2.4 Exploración de las funcionalidades de IDMP
 
-After activating TDengine IDMP, follow the steps in this section to familiarize yourself with the interface and explore the key features of the system.
+Tras activar TDengine IDMP, siga los pasos de esta sección para familiarizarse con la interfaz y explorar las funcionalidades clave del sistema.
 
-## 2.4.1 UI Tour Guide
+## 2.4.1 Tour guiado de la interfaz
 
-The Tour Guide opens automatically on your first login. It walks you through the main areas of the IDMP interface. Click **Next** to proceed through each step. You can close it at any time by clicking **X**. To restart the tour later, click your avatar in the top right and select **Tour Guide**.
+El Tour guiado se abre automáticamente en su primer inicio de sesión. Le conduce por las principales áreas de la interfaz de IDMP. Haga clic en **Siguiente** para avanzar por cada paso. Puede cerrarlo en cualquier momento haciendo clic en **X**. Para volver a iniciar el tour más tarde, haga clic en su avatar en la parte superior derecha y seleccione **Tour guiado**.
 
-The interface is organized into the following areas:
+La interfaz está organizada en las siguientes áreas:
 
-![IDMP user interface overview](../assets/ui-main.png)
+![Descripción general de la interfaz de usuario de IDMP](../assets/ui-main.png)
 
-**1. Top Navigation Bar**
+**1. Barra de navegación superior**
 
-The top navigation bar spans the full width of the page. On the left is the TDengine logo. In the center are the five main modules:
+La barra de navegación superior ocupa todo el ancho de la página. A la izquierda se encuentra el logotipo de TDengine. En el centro están los cinco módulos principales:
 
-- **AI Chat** — Ask questions about your industrial data in natural language.
-- **Explorer** — Browse and manage your asset hierarchy, attributes, panels, analyses, and events.
-- **Dashboards** — View and manage dashboards across all elements.
-- **Events** — Browse, filter, and analyze events across the system.
-- **Libraries** — Manage shared resources such as element templates, event templates, enumerations, units of measure, and more.
+- **Chat IA** — Haga preguntas sobre sus datos industriales en lenguaje natural.
+- **Explorador** — Explore y gestione su jerarquía de activos, atributos, paneles, análisis y eventos.
+- **Dashboards** — Vea y gestione dashboards en todos los elementos.
+- **Eventos** — Examine, filtre y analice eventos en todo el sistema.
+- **Bibliotecas** — Gestione recursos compartidos como plantillas de elementos, plantillas de eventos, enumeraciones, unidades de medida y más.
 
-On the far right is your **avatar**. Click it to manage your profile, access system administration, or launch the Tour Guide.
+En el extremo derecho está su **avatar**. Haga clic en él para gestionar su perfil, acceder a la administración del sistema o iniciar el Tour guiado.
 
-**2. Left Panel**
+**2. Panel izquierdo**
 
-The left panel shows the tree structure for the active module. In the **Explorer**, it displays three sections:
+El panel izquierdo muestra la estructura de árbol del módulo activo. En el **Explorador**, muestra tres secciones:
 
-- **Elements** — The asset hierarchy. Click the arrow to expand a node; click the element name to select it. Use the search icon to find elements by name.
-- **Favorite Elements** — Elements you have marked as favorites for quick access.
-- **Element Filters** — Saved search filters that let you quickly recall a specific set of elements.
+- **Elementos** — La jerarquía de activos. Haga clic en la flecha para expandir un nodo; haga clic en el nombre del elemento para seleccionarlo. Use el icono de búsqueda para encontrar elementos por nombre.
+- **Elementos favoritos** — Elementos que ha marcado como favoritos para un acceso rápido.
+- **Filtros de elementos** — Filtros de búsqueda guardados que le permiten recuperar rápidamente un conjunto específico de elementos.
 
-**3. Context Tab Bar**
+**3. Barra de pestañas de contexto**
 
-The context tab bar appears to the right of the left panel. It shows the name of the currently selected object, followed by a set of tabs representing the available views for that object. When an element is selected, the tabs are: **General**, **Attributes**, **Panels**, **Analyses**, **Events**, **Dashboards**, and **Child Elements**. Click a tab to switch views. On the far left of the context tab bar is a collapse icon to hide the left panel and maximize the workspace.
+La barra de pestañas de contexto aparece a la derecha del panel izquierdo. Muestra el nombre del objeto seleccionado actualmente, seguido de un conjunto de pestañas que representan las vistas disponibles para ese objeto. Cuando se selecciona un elemento, las pestañas son: **General**, **Atributos**, **Paneles**, **Análisis**, **Eventos**, **Dashboards** y **Elementos hijos**. Haga clic en una pestaña para cambiar de vista. En el extremo izquierdo de la barra de pestañas de contexto hay un icono de colapso para ocultar el panel izquierdo y maximizar el área de trabajo.
 
 :::note
-The built-in Tour Guide refers to this area as the "Path Bar".
+El Tour guiado integrado denomina esta área como "Barra de ruta".
 :::
 
-**4. Action Bar**
+**4. Barra de acciones**
 
-Below the context tab bar is a row of controls. The left side typically shows filter dropdowns (such as **Categories**) and view toggle buttons (such as the **AI** suggestions button or grid/list view). The right side shows action icons including **+** to add a new item and a refresh button.
+Debajo de la barra de pestañas de contexto hay una fila de controles. El lado izquierdo normalmente muestra menús desplegables de filtro (como **Categorías**) y botones de alternancia de vista (como el botón de sugerencias de **IA** o la alternancia entre vista de cuadrícula y lista). El lado derecho muestra iconos de acción, incluido **+** para agregar un nuevo elemento y un botón de actualización.
 
-**5. Main Workspace**
+**5. Área de trabajo principal**
 
-The main area below the action bar displays the content for the currently selected tab — element details, attribute lists, panels, events, and so on. Content can be viewed and edited directly in this area.
+El área principal debajo de la barra de acciones muestra el contenido de la pestaña seleccionada actualmente: detalles del elemento, listas de atributos, paneles, eventos, etc. El contenido se puede ver y editar directamente en esta área.
 
-**6. Status Bar**
+**6. Barra de estado**
 
-The status bar runs along the bottom of the page. The left side shows the current IDMP version. The right side has a **theme toggle** (light/dark mode) and a **language toggle**.
+La barra de estado se extiende a lo largo de la parte inferior de la página. El lado izquierdo muestra la versión actual de IDMP. El lado derecho tiene un **selector de tema** (modo claro/oscuro) y un **selector de idioma**.
 
-## 2.4.2 View Element Information
+## 2.4.2 Ver información del elemento
 
-The following steps use the **Utilities** scenario as an example. If you did not load it during activation, go to **Admin Console** > **Sample Data** and load it before continuing.
+Los siguientes pasos utilizan el escenario **Utilities** (Servicios públicos) como ejemplo. Si no lo cargó durante la activación, vaya a **Consola de administración** > **Datos de muestra** y cárguelo antes de continuar.
 
-1. In the left panel, click **Elements**. The elements in the Utilities scenario appear in a tree hierarchy.
-2. Select **Utilities** > **California** > **San Diego County** > **Chula Vista** > **em-10**. This element represents electricity meter number 10 in Chula Vista, California.
-3. In the context tab bar, select **General** to view the description and basic information about this meter.
-4. Select **Attributes** to view its attributes, such as current and voltage.
+1. En el panel izquierdo, haga clic en **Elementos**. Los elementos del escenario Utilities aparecen en una jerarquía de árbol.
+2. Seleccione **Utilities** > **California** > **San Diego County** > **Chula Vista** > **em-10**. Este elemento representa el medidor de electricidad número 10 en Chula Vista, California.
+3. En la barra de pestañas de contexto, seleccione **General** para ver la descripción e información básica sobre este medidor.
+4. Seleccione **Atributos** para ver sus atributos, como corriente y voltaje.
 
-![View element attributes](../assets/get-started-01.png)
+![Ver atributos del elemento](../assets/get-started-01.png)
 
-## 2.4.3 Try AI-Generated Panels
+## 2.4.3 Probar paneles generados por IA
 
-1. Select the element **Utilities** > **California** > **San Diego County** > **Chula Vista** > **em-10**.
-2. In the context tab bar, select **Panels**. Five AI-recommended panels are displayed. Click **+ More Suggestions** to generate additional options.
-3. You can also request a panel in natural language using the input box below the recommendations. For example:
+1. Seleccione el elemento **Utilities** > **California** > **San Diego County** > **Chula Vista** > **em-10**.
+2. En la barra de pestañas de contexto, seleccione **Paneles**. Se muestran cinco paneles recomendados por IA. Haga clic en **+ Más sugerencias** para generar opciones adicionales.
+3. También puede solicitar un panel en lenguaje natural usando el cuadro de entrada debajo de las recomendaciones. Por ejemplo:
 
-   *"Show a line chart of the voltage and current changes every minute for electricity meter em-10 over the past 24 hours."*
+   *"Muestra un gráfico de líneas con los cambios de voltaje y corriente cada minuto del medidor de electricidad em-10 en las últimas 24 horas."*
 
-   Click **Ask AI** to generate the panel.
+   Haga clic en **Preguntar a la IA** para generar el panel.
 
-![AI-generated panels](../assets/get-started-02.png)
+![Paneles generados por IA](../assets/get-started-02.png)
 
-## 2.4.4 Try AI-Powered Analysis
+## 2.4.4 Probar el análisis impulsado por IA
 
-1. Select the element **Utilities** > **California** > **San Diego County** > **Chula Vista** > **em-10**.
-2. In the context tab bar, select **Analyses**. Three AI-recommended questions are displayed.
-3. Click a suggestion link to open the analysis creation page, where you can review and adjust the AI-generated configuration. Click **Save** to complete the setup.
-4. You can also describe an analysis in natural language using the input box next to the recommendations. For example:
+1. Seleccione el elemento **Utilities** > **California** > **San Diego County** > **Chula Vista** > **em-10**.
+2. En la barra de pestañas de contexto, seleccione **Análisis**. Se muestran tres preguntas recomendadas por IA.
+3. Haga clic en un enlace de sugerencia para abrir la página de creación de análisis, donde puede revisar y ajustar la configuración generada por IA. Haga clic en **Guardar** para completar la configuración.
+4. También puede describir un análisis en lenguaje natural usando el cuadro de entrada junto a las recomendaciones. Por ejemplo:
 
-   *"If power fluctuation for electricity meter em-10 exceeds plus or minus 20% for 30 minutes, generate a 'warning' level alert and calculate the fluctuation range."*
+   *"Si la fluctuación de potencia del medidor de electricidad em-10 supera más o menos el 20% durante 30 minutos, generar una alerta de nivel 'advertencia' y calcular el rango de fluctuación."*
 
-   Press **Enter** to generate the analysis.
+   Pulse **Intro** para generar el análisis.
 
-![AI-powered analysis](../assets/get-started-03.png)
+![Análisis impulsado por IA](../assets/get-started-03.png)
 
-## 2.4.5 Next Steps
+## 2.4.5 Próximos pasos
 
-You have explored the IDMP interface and tried AI-generated panels and analyses. From here, you can:
+Ha explorado la interfaz de IDMP y probado los paneles y análisis generados por IA. A partir de aquí, puede:
 
-- Proceed to **Chapter 3** to learn how to build your own asset model with elements and attributes.
-- Proceed to **Chapter 12** to connect your own data sources and ingest real industrial data.
-- Load additional sample scenarios to explore more industry use cases. Click your avatar in the top right, select **Admin Console**, and then click **Sample Data** in the left panel.
+- Continuar con el **Capítulo 3** para aprender cómo construir su propio modelo de activos con elementos y atributos.
+- Continuar con el **Capítulo 12** para conectar sus propias fuentes de datos e ingestar datos industriales reales.
+- Cargar escenarios de muestra adicionales para explorar más casos de uso del sector. Haga clic en su avatar en la parte superior derecha, seleccione **Consola de administración** y luego haga clic en **Datos de muestra** en el panel izquierdo.

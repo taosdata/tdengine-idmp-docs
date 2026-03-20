@@ -1,66 +1,66 @@
 ---
-title: AI Composite Metrics
-sidebar_label: AI Composite Metrics
+title: Métricas compuestas con IA
+sidebar_label: Métricas compuestas con IA
 ---
 
-# 8.5 AI Composite Metrics
+# 8.5 Métricas compuestas con IA
 
-Composite Metrics is an AI-generated library of business KPIs for your asset hierarchy. Based on your element templates, collected data, and industry context, the AI produces a curated set of domain-relevant metrics for each asset group — complete with calculation formulas, TDengine SQL, business meaning, and industry aliases. This gives engineers a ready reference for what to measure and how to compute it, without requiring data science expertise.
+Las métricas compuestas son una biblioteca de KPIs de negocio generada por IA para su jerarquía de activos. Basándose en sus plantillas de elementos, datos recopilados y contexto industrial, la IA produce un conjunto seleccionado de métricas relevantes para el dominio de cada grupo de activos — con fórmulas de cálculo, SQL de TDengine, significado empresarial y alias de la industria. Esto proporciona a los ingenieros una referencia lista para usar sobre qué medir y cómo calcularlo, sin necesidad de conocimientos en ciencia de datos.
 
-## Where to Find Composite Metrics
+## Dónde encontrar las métricas compuestas
 
-Composite Metrics is located in **Libraries** → **Composite Metrics** in the left sidebar.
+Las métricas compuestas se encuentran en **Bibliotecas** → **Métricas compuestas** en la barra lateral izquierda.
 
-The top-level list shows one entry per asset tree group (for example, "Oil Field" or "Utilities"), along with the number of metrics generated and the last update time. Click any group to open its metric list.
+La lista de nivel superior muestra una entrada por grupo del árbol de activos (por ejemplo, "Campo petrolero" o "Servicios públicos"), junto con el número de métricas generadas y la hora de la última actualización. Haga clic en cualquier grupo para abrir su lista de métricas.
 
-## Metric List
+## Lista de métricas
 
-Each metric in the list has the following columns:
+Cada métrica en la lista tiene las siguientes columnas:
 
-| Column | Description |
+| Columna | Descripción |
 |---|---|
-| **Metric Name** | A structured name for the metric (e.g., `ElectricityMeter_Equipment_Current_LoadFactor`) |
-| **Metric Definition** | A plain language description of what the metric measures |
-| **Industry Alias** | Alternative names for this metric as used in the industry |
-| **Syntax Support** | Whether the metric can be computed directly using TDengine SQL (`true`/`false`) |
+| **Nombre de métrica** | Un nombre estructurado para la métrica (por ejemplo, `ElectricityMeter_Equipment_Current_LoadFactor`) |
+| **Definición de métrica** | Una descripción en lenguaje sencillo de lo que mide la métrica |
+| **Alias de la industria** | Nombres alternativos para esta métrica según se usan en la industria |
+| **Soporte de sintaxis** | Si la métrica puede calcularse directamente usando TDengine SQL (`true`/`false`) |
 
-Click any metric to open its full detail view.
+Haga clic en cualquier métrica para abrir su vista de detalle completa.
 
-## Metric Detail
+## Detalle de métrica
 
-Each metric detail view shows:
+Cada vista de detalle de métrica muestra:
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Name** | The metric identifier |
-| **Description** | Full description of what the metric measures |
-| **English Abbreviation** | Short code for the metric (e.g., `CLF`) |
-| **Industry Aliases** | Alternative industry names for this metric |
-| **Calculation Formula** | The abstract formula (e.g., `AVG(Current) / MAX(Current)`) |
-| **Calculation SQL** | The concrete TDengine SQL query that computes the metric |
-| **Involved Fields** | The element attributes used in the calculation |
-| **Data Template** | The element template this metric applies to |
-| **Missing Fields** | Attributes required by the formula that are not yet configured on the element |
-| **Business Meaning** | Plain language explanation of what the metric value indicates operationally |
-| **Syntax Support** | Whether TDengine SQL can directly compute this metric |
-| **Hierarchy Level** | The level of the asset hierarchy at which this metric applies (e.g., `EQUIPMENT`, `SITE`) |
-| **Test Result** | Whether the SQL was executed successfully against actual data |
-| **Aggregate Function** | Whether the metric uses an aggregate function |
-| **Nested Subquery** | Whether the SQL requires a nested subquery |
+| **Nombre** | El identificador de la métrica |
+| **Descripción** | Descripción completa de lo que mide la métrica |
+| **Abreviatura en inglés** | Código corto para la métrica (por ejemplo, `CLF`) |
+| **Alias de la industria** | Nombres alternativos de la industria para esta métrica |
+| **Fórmula de cálculo** | La fórmula abstracta (por ejemplo, `AVG(Current) / MAX(Current)`) |
+| **SQL de cálculo** | La consulta SQL concreta de TDengine que calcula la métrica |
+| **Campos involucrados** | Los atributos del elemento utilizados en el cálculo |
+| **Plantilla de datos** | La plantilla de elemento a la que se aplica esta métrica |
+| **Campos faltantes** | Atributos requeridos por la fórmula que aún no están configurados en el elemento |
+| **Significado empresarial** | Explicación en lenguaje sencillo de lo que indica el valor de la métrica operacionalmente |
+| **Soporte de sintaxis** | Si TDengine SQL puede calcular directamente esta métrica |
+| **Nivel jerárquico** | El nivel de la jerarquía de activos en el que se aplica esta métrica (por ejemplo, `EQUIPMENT`, `SITE`) |
+| **Resultado de prueba** | Si el SQL se ejecutó correctamente contra datos reales |
+| **Función de agregado** | Si la métrica utiliza una función de agregado |
+| **Subconsulta anidada** | Si el SQL requiere una subconsulta anidada |
 
-## Actions
+## Acciones
 
-The metric list toolbar provides the following actions:
+La barra de herramientas de la lista de métricas proporciona las siguientes acciones:
 
-| Action | Description |
+| Acción | Descripción |
 |---|---|
-| **Download** | Export the full metric list as a file for offline review or modification |
-| **Upload** | Import a modified metric list back into IDMP. Use this after editing downloaded metrics to correct formulas or descriptions. |
-| **Regenerate** | Ask the AI to re-generate the composite metrics for this group. Use this after adding more element data, descriptions, or attributes to improve the quality of suggestions. Regeneration typically takes 5 to 10 minutes. |
-| **Select Columns** | Choose which columns are visible in the metric list. Use this to focus on the fields most relevant to your current review. |
+| **Descargar** | Exportar la lista completa de métricas como archivo para revisión o modificación sin conexión |
+| **Cargar** | Importar una lista de métricas modificada de vuelta a IDMP. Úselo después de editar las métricas descargadas para corregir fórmulas o descripciones. |
+| **Regenerar** | Solicitar a la IA que regenere las métricas compuestas para este grupo. Úselo después de agregar más datos de elementos, descripciones o atributos para mejorar la calidad de las sugerencias. La regeneración suele tardar de 5 a 10 minutos. |
+| **Seleccionar columnas** | Elegir qué columnas son visibles en la lista de métricas. Úselo para centrarse en los campos más relevantes para su revisión actual. |
 
-## How the AI Generates Metrics
+## Cómo la IA genera las métricas
 
-The AI analyzes each asset tree group — examining the element templates, attribute names, units, and collected time-series data — and produces metrics that are relevant for that type of asset in its industry context. For an electricity meter group, it produces metrics like load factor, voltage stability index, and phase unbalance score. For an oil well group, it produces metrics like production efficiency, water cut ratio, and pressure decline rate.
+La IA analiza cada grupo del árbol de activos — examinando las plantillas de elementos, nombres de atributos, unidades y datos de series temporales recopilados — y produce métricas que son relevantes para ese tipo de activo en su contexto industrial. Para un grupo de medidores de electricidad, produce métricas como factor de carga, índice de estabilidad de voltaje y puntuación de desequilibrio de fase. Para un grupo de pozos de petróleo, produce métricas como eficiencia de producción, relación de corte de agua y tasa de caída de presión.
 
-Because the AI cannot guarantee 100% accuracy, the download / upload workflow allows you to review, correct, and enrich the generated metrics before treating them as authoritative references for your operation.
+Dado que la IA no puede garantizar una precisión del 100%, el flujo de trabajo de descarga/carga le permite revisar, corregir y enriquecer las métricas generadas antes de tratarlas como referencias autorizadas para su operación.

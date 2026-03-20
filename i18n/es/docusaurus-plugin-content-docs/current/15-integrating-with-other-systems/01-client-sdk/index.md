@@ -3,27 +3,27 @@ title: SDK de cliente
 sidebar_label: SDK de cliente
 ---
 
-# 15.1 Client SDK
-
 import DocCardList from '@theme/DocCardList';
 
-The TDengine IDMP SDK gives you programmatic access to the full data asset: elements, attributes, time-series metrics, and events. The SDK is auto-generated from IDMP's OpenAPI specification and is natively available in **Java** and **Python**. For other languages, the OpenAPI spec can be used with [OpenAPI Generator](https://openapi-generator.tech/) to produce a client in any supported language.
+# 15.1 SDK de cliente
 
-## Typical Use Cases
+El SDK de TDengine IDMP le proporciona acceso programático al activo de datos completo: elementos, atributos, métricas de series temporales y eventos. El SDK se genera automáticamente a partir de la especificación OpenAPI de IDMP y está disponible de forma nativa en **Java** y **Python**. Para otros lenguajes, la especificación OpenAPI puede usarse con [OpenAPI Generator](https://openapi-generator.tech/) para producir un cliente en cualquier lenguaje compatible.
 
-- Bulk read or write element attribute data from third-party systems
-- Automate creation and management of elements, metrics, and events
-- Integrate IDMP data into custom BI tools or data platforms
-- Trigger external automation workflows from IDMP events
-- Feed industrial context into AI/ML pipelines
+## Casos de uso típicos
 
-:::note Coming Soon
-Version and compatibility information will be published here when the SDK reaches general availability. Download the latest SDK package from the [TDengine Download Center](https://www.taosdata.com/download-center).
+- Lectura o escritura masiva de datos de atributos de elementos desde sistemas de terceros
+- Automatización de la creación y gestión de elementos, métricas y eventos
+- Integración de datos de IDMP en herramientas de BI personalizadas o plataformas de datos
+- Activación de flujos de trabajo de automatización externos desde eventos de IDMP
+- Alimentación de contexto industrial en pipelines de IA/ML
+
+:::note Próximamente
+La información de versión y compatibilidad se publicará aquí cuando el SDK alcance disponibilidad general. Descargue el último paquete del SDK desde el [Centro de descargas de TDengine](https://www.taosdata.com/download-center).
 :::
 
-## SDK Package Contents
+## Contenido del paquete del SDK
 
-Download the SDK package from the [TDengine Download Center](https://www.taosdata.com/download-center). The package has the following structure:
+Descargue el paquete del SDK desde el [Centro de descargas de TDengine](https://www.taosdata.com/download-center). El paquete tiene la siguiente estructura:
 
 ```bash
 idmp-sdk-1.0.14.2/
@@ -32,18 +32,18 @@ idmp-sdk-1.0.14.2/
   └── idmp-python-sdk/            # Python SDK source
 ```
 
-## Generating an SDK for Other Languages
+## Generar un SDK para otros lenguajes
 
-If you need a language other than Java or Python, use OpenAPI Generator with the included spec file.
+Si necesita un lenguaje diferente a Java o Python, use OpenAPI Generator con el archivo de especificación incluido.
 
-**Step 1 — Download the OpenAPI Generator CLI:**
+**Paso 1 — Descargar el CLI de OpenAPI Generator:**
 
 ```bash
 wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.6.0/openapi-generator-cli-7.6.0.jar \
      -O openapi-generator-cli.jar
 ```
 
-**Step 2 — Generate the target language SDK:**
+**Paso 2 — Generar el SDK para el lenguaje objetivo:**
 
 ```bash
 # Example: generate a Go SDK
@@ -54,6 +54,6 @@ java -jar openapi-generator-cli.jar generate \
   --skip-validate-spec
 ```
 
-Replace `-g go` with the target language name. See the [OpenAPI Generator documentation](https://openapi-generator.tech/docs/generators) for supported languages and available options.
+Reemplace `-g go` con el nombre del lenguaje objetivo. Consulte la [documentación de OpenAPI Generator](https://openapi-generator.tech/docs/generators) para conocer los lenguajes compatibles y las opciones disponibles.
 
 <DocCardList />

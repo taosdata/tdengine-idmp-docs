@@ -1,35 +1,35 @@
 ---
-title: Quick Start
-sidebar_label: Quick Start
+title: Inicio rápido
+sidebar_label: Inicio rápido
 ---
 
-# 15.1.2 Quick Start
+# 15.1.2 Inicio rápido
 
-:::note Prerequisites
-Complete [Installation](./01-installation.md) first. This guide takes about 5 minutes and walks you through your first API call.
+:::note Prerrequisitos
+Complete primero la [Instalación](./01-installation.md). Esta guía toma aproximadamente 5 minutos y le lleva a través de su primera llamada a la API.
 :::
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Goal
+## Objetivo
 
-By the end of this page you will be able to:
+Al final de esta página podrá:
 
-1. Log in with a username and password to obtain an access token
-2. Use the token to query the element list
+1. Iniciar sesión con un nombre de usuario y contraseña para obtener un token de acceso
+2. Usar el token para consultar la lista de elementos
 
-## Step 1 — Configure the Connection
+## Paso 1 — Configurar la conexión
 
-Store the server address and credentials in environment variables to avoid hardcoding secrets in source code:
+Almacene la dirección del servidor y las credenciales en variables de entorno para evitar codificar secretos en el código fuente:
 
 ```bash
-export IDMP_HOST=http://localhost:6042   # replace with your IDMP server address
+export IDMP_HOST=http://localhost:6042   # reemplace con la dirección de su servidor IDMP
 export IDMP_USERNAME=your_username
 export IDMP_PASSWORD=your_password
 ```
 
-## Step 2 — Log In and Obtain a Token
+## Paso 2 — Iniciar sesión y obtener un token
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -86,7 +86,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 </TabItem>
 </Tabs>
 
-## Step 3 — Query the Element List
+## Paso 3 — Consultar la lista de elementos
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -128,8 +128,8 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 </TabItem>
 </Tabs>
 
-## Next Steps
+## Próximos pasos
 
-- Understand all authentication options including cloud service auth → [Authentication](./03-authentication.md)
-- Understand the core objects in the SDK → [Core Concepts](./04-core-concepts.md)
-- Browse the full API reference → [API Reference](./05-api-reference/index.md)
+- Entender todas las opciones de autenticación, incluida la autenticación del servicio en la nube → [Autenticación](./03-authentication.md)
+- Entender los objetos principales del SDK → [Conceptos fundamentales](./04-core-concepts.md)
+- Explorar la referencia de API completa → [Referencia de API](./05-api-reference/index.md)

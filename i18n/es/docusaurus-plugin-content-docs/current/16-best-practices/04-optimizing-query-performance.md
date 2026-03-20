@@ -1,10 +1,10 @@
 ---
-title: Optimizing Query Performance
-sidebar_label: Optimizing Query Performance
+title: Optimizar el rendimiento de consultas
+sidebar_label: Optimizar el rendimiento de consultas
 ---
 
-# 16.4 Optimizing Query Performance
+# 16.4 Optimizar el rendimiento de consultas
 
-:::note Coming Soon
-This section is under development. Content will be available in a future release.
+:::note Próximamente
+Esta sección está en desarrollo. El contenido estará disponible en una versión futura.
 :::

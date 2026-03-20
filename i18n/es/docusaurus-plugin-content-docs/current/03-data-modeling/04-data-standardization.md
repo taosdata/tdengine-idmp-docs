@@ -1,95 +1,95 @@
 ---
-title: Data Standardization
-sidebar_label: Data Standardization
+title: Estandarización de datos
+sidebar_label: Estandarización de datos
 ---
 
-# 3.4 Data Standardization
+# 3.4 Estandarización de datos
 
-Industrial environments often collect data from multiple sources with inconsistent naming, varying units, and different data structures. Without standardization, cross-asset analysis, AI-generated insights, and data aggregation become unreliable or impossible. TDengine IDMP provides several mechanisms to standardize data across your entire asset model.
+Los entornos industriales suelen recopilar datos de múltiples fuentes con nomenclatura inconsistente, unidades variables y estructuras de datos diferentes. Sin estandarización, el análisis entre activos, los conocimientos generados por IA y la agregación de datos se vuelven poco fiables o imposibles. TDengine IDMP proporciona varios mecanismos para estandarizar los datos en todo su modelo de activos.
 
-## 3.4.1 Unified Naming Through Data References
+## 3.4.1 Nomenclatura unificada mediante referencias de datos
 
-Different data sources often use different names for the same physical measurement. One system may store temperature as `temperature`, another as `WD`, and a third as `tmp_sensor_1`. Without standardization, you cannot compare or aggregate these values.
+Diferentes fuentes de datos suelen usar nombres distintos para la misma medición física. Un sistema puede almacenar la temperatura como `temperature`, otro como `WD`, y un tercero como `tmp_sensor_1`. Sin estandarización, no se pueden comparar ni agregar estos valores.
 
-IDMP solves this through the **data reference** mechanism: no matter what the underlying column is named in TDengine TSDB, you define a single standard attribute name on the element — for example, `IndoorTemperature` — and map it to whichever column in whichever table holds the actual data. All users, dashboards, and analyses then refer to `IndoorTemperature` regardless of the source system's naming.
+IDMP resuelve esto mediante el mecanismo de **referencia de datos**: independientemente de cómo se llame la columna subyacente en TDengine TSDB, usted define un nombre de atributo estándar único en el elemento — por ejemplo, `TemperaturaInterior` — y lo mapea a la columna de la tabla que contiene los datos reales. Todos los usuarios, dashboards y análisis se refieren entonces a `TemperaturaInterior` independientemente de la nomenclatura del sistema fuente.
 
-This means you can:
+Esto significa que puede:
 
-- Rename poorly named or abbreviated source fields into clear engineering names
-- Apply a consistent naming convention across all assets of the same type
-- Change the underlying data source without affecting any dashboards or analyses that reference the attribute
+- Renombrar campos fuente con nombres poco descriptivos o abreviados por nombres de ingeniería claros
+- Aplicar una convención de nomenclatura coherente en todos los activos del mismo tipo
+- Cambiar la fuente de datos subyacente sin afectar a ningún dashboard o análisis que referencie el atributo
 
-## 3.4.2 Data Transformation with Formula and String Builder
+## 3.4.2 Transformación de datos con Fórmula y Constructor de cadenas
 
-When data from different sources uses different representations of the same measurement, IDMP allows you to transform it through **Formula** and **String Builder** data references.
+Cuando los datos de diferentes fuentes usan representaciones distintas de la misma medición, IDMP le permite transformarlos mediante referencias de datos de tipo **Fórmula** y **Constructor de cadenas**.
 
-**Formula attributes** let you compute a derived value from other attributes. For example:
+Los **atributos de Fórmula** permiten calcular un valor derivado a partir de otros atributos. Por ejemplo:
 
-- One data source records active power directly; another records current and voltage separately. Create a Formula attribute `ActivePower = current × voltage` to produce a consistent power value regardless of source.
-- Convert between scales: `TemperatureCelsius = (TemperatureFahrenheit - 32) × 5 / 9`
+- Una fuente de datos registra la potencia activa directamente; otra registra corriente y tensión por separado. Cree un atributo Fórmula `PotenciaActiva = corriente × tensión` para producir un valor de potencia consistente independientemente de la fuente.
+- Convertir entre escalas: `TemperaturaCelsius = (TemperaturaFahrenheit - 32) × 5 / 9`
 
-**String Builder attributes** let you construct standardized string values from multiple source fields. For example, build a standard location description from separate city and building fields:
+Los **atributos Constructor de cadenas** permiten construir valores de cadena estandarizados a partir de múltiples campos fuente. Por ejemplo, construir una descripción de ubicación estándar a partir de campos de ciudad y edificio separados:
 
 ```text
 CONCAT(${attributes['City']}, '-', ${attributes['Building']}, '-Floor', CAST(${attributes['Floor']} AS varchar))
 ```
 
-Through these mechanisms, IDMP absorbs heterogeneous raw data and exposes it through a consistent, standardized attribute model.
+A través de estos mecanismos, IDMP absorbe datos sin procesar heterogéneos y los expone a través de un modelo de atributos consistente y estandarizado.
 
-## 3.4.3 Unit of Measurement Standardization
+## 3.4.3 Estandarización de unidades de medida
 
-IDMP decouples the **storage unit** from the **display unit**, enabling automatic conversion:
+IDMP desacopla la **unidad de almacenamiento** de la **unidad de visualización**, habilitando la conversión automática:
 
-- **Default UOM** — the unit in which the source data is stored (e.g., meters, watts, kelvin)
-- **Display UOM** — the unit shown to users in panels and dashboards (e.g., kilometers, kilowatts, °C)
+- **UdM predeterminada** — la unidad en la que la fuente almacena los datos (p. ej., metros, vatios, kelvin)
+- **UdM de visualización** — la unidad mostrada a los usuarios en paneles y dashboards (p. ej., kilómetros, kilovatios, °C)
 
-When the two differ, IDMP converts the value automatically. For example, if the default unit is meters and the display unit is kilometers, a stored value of 1000 is displayed as 1 km.
+Cuando las dos difieren, IDMP convierte el valor automáticamente. Por ejemplo, si la unidad predeterminada es metros y la unidad de visualización es kilómetros, un valor almacenado de 1000 se muestra como 1 km.
 
-Both units must belong to the same **UOM Class** (e.g., Length, Power, Temperature). The UOM Class dropdown groups compatible units and prevents invalid pairings.
+Ambas unidades deben pertenecer a la misma **Clase de UdM** (p. ej., Longitud, Potencia, Temperatura). El desplegable de Clase de UdM agrupa las unidades compatibles y evita emparejamientos inválidos.
 
-This mechanism standardizes the user-facing presentation of data even when different source systems record values in different units, and ensures dimensional consistency in formula expressions.
+Este mecanismo estandariza la presentación de datos de cara al usuario incluso cuando sistemas fuente diferentes registran valores en unidades distintas, y garantiza la coherencia dimensional en las expresiones de fórmulas.
 
-## 3.4.4 Templates for Structural Standardization
+## 3.4.4 Plantillas para la estandarización estructural
 
-Templates are the most powerful tool for ensuring consistent structure across similar assets. IDMP provides templates at multiple levels:
+Las plantillas son la herramienta más potente para garantizar una estructura coherente entre activos similares. IDMP proporciona plantillas en múltiples niveles:
 
-### Element templates
+### Plantillas de elemento
 
-Define a standard asset structure for each asset class (e.g., Pump, Meter, Boiler). An element template pre-configures the full set of standard attributes — with their names, data types, units, limits, and descriptions — that every asset of that class should have. When a new element is created from a template, all standard attributes are added automatically.
+Definen una estructura de activo estándar para cada clase de activo (p. ej., Bomba, Medidor, Caldera). Una plantilla de elemento preconfigurada incluye el conjunto completo de atributos estándar — con sus nombres, tipos de datos, unidades, límites y descripciones — que todo activo de esa clase debería tener. Cuando se crea un nuevo elemento a partir de una plantilla, todos los atributos estándar se añaden automáticamente.
 
-### Attribute templates
+### Plantillas de atributo
 
-Individual attribute definitions can be saved to the template library and reused across multiple elements or element templates. This ensures that common attributes (e.g., `ActivePower`, `OperatingStatus`) are defined consistently everywhere they appear.
+Las definiciones de atributos individuales pueden guardarse en la biblioteca de plantillas y reutilizarse en múltiples elementos o plantillas de elemento. Esto garantiza que los atributos comunes (p. ej., `PotenciaActiva`, `EstadoOperativo`) se definan de forma consistente en todos los lugares donde aparecen.
 
-### Other template types
+### Otros tipos de plantilla
 
-IDMP also provides templates for analyses, panels, dashboards, events, and notifications — ensuring that operational logic and visualizations are standardized across the same asset class, not just the data model.
+IDMP también proporciona plantillas para análisis, paneles, dashboards, eventos y notificaciones — garantizando que la lógica operativa y las visualizaciones estén estandarizadas en la misma clase de activo, no solo en el modelo de datos.
 
-See [Chapter 13 — Libraries](../13-libraries/index.md) for details on creating and managing templates.
+Consulte el [Capítulo 13 — Bibliotecas](../13-libraries/index.md) para más detalles sobre la creación y gestión de plantillas.
 
-## 3.4.5 Categories for Attribute Organization
+## 3.4.5 Categorías para la organización de atributos
 
-Assign **Categories** to attributes to group them by function, system, or any organizational scheme relevant to your operations (e.g., Electrical, Mechanical, Safety, Quality). Categories serve two purposes:
+Asigne **Categorías** a los atributos para agruparlos por función, sistema o cualquier esquema organizativo relevante para sus operaciones (p. ej., Eléctrico, Mecánico, Seguridad, Calidad). Las categorías sirven para dos propósitos:
 
-- **Filtering**: on the Attributes tab, use the Categories dropdown to display only the attributes belonging to a specific group
-- **Consistency**: when the same category tags are applied across all elements of the same type, users always know where to find related attributes
+- **Filtrado**: en la pestaña Atributos, use el desplegable de Categorías para mostrar solo los atributos pertenecientes a un grupo específico
+- **Consistencia**: cuando se aplican las mismas etiquetas de categoría a todos los elementos del mismo tipo, los usuarios siempre saben dónde encontrar los atributos relacionados
 
-Categories are free-form text tags and can be combined with templates to enforce a standard categorization scheme across the asset model.
+Las categorías son etiquetas de texto libre y pueden combinarse con plantillas para aplicar un esquema de categorización estándar en todo el modelo de activos.
 
-## 3.4.6 Limits Configuration for Alarm Standardization
+## 3.4.6 Configuración de límites para la estandarización de alarmas
 
-Defining standard alarm thresholds — Minimum, LoLo, Lo, Target, Hi, HiHi, Maximum — on attributes standardizes how operational boundaries are expressed across assets of the same type. When defined in an element template, all elements created from that template automatically inherit the same limits, ensuring consistent alarm behavior across the fleet.
+Definir umbrales de alarma estándar — Mínimo, LoLo, Lo, Objetivo, Hi, HiHi, Máximo — en los atributos estandariza cómo se expresan los límites operativos entre activos del mismo tipo. Cuando se definen en una plantilla de elemento, todos los elementos creados a partir de esa plantilla heredan automáticamente los mismos límites, garantizando un comportamiento de alarma consistente en toda la flota.
 
-Limits can be set as fixed values or linked to other attributes (dynamic limits), giving flexibility while maintaining a standard structure.
+Los límites pueden establecerse como valores fijos o vincularse a otros atributos (límites dinámicos), proporcionando flexibilidad al tiempo que se mantiene una estructura estándar.
 
-## 3.4.7 Copy and Paste Across Elements
+## 3.4.7 Copiar y pegar entre elementos
 
-When you need to apply the same attribute configuration to multiple elements that are not covered by a template, use the **Copy** operation:
+Cuando necesite aplicar la misma configuración de atributo a múltiples elementos que no están cubiertos por una plantilla, use la operación **Copiar**:
 
-1. In the Attributes list, click the **⋮** menu on an attribute row and select **Copy**.
-2. Navigate to the target element.
-3. On the target element's Attributes tab, paste the attribute.
+1. En la lista de Atributos, haga clic en el menú **⋮** en la fila de un atributo y seleccione **Copiar**.
+2. Navegue al elemento de destino.
+3. En la pestaña Atributos del elemento de destino, pegue el atributo.
 
-The copied attribute brings its full configuration — data type, unit, limits, description, and data reference type — to the new element, where you only need to update the Data Reference Setting to point to the correct source column for that element.
+El atributo copiado lleva su configuración completa — tipo de datos, unidad, límites, descripción y tipo de referencia de datos — al nuevo elemento, donde solo necesita actualizar la Configuración de referencia de datos para apuntar a la columna fuente correcta para ese elemento.
 
-This provides a quick, lightweight alternative to formal templates when standardizing a small number of elements ad hoc.
+Esto proporciona una alternativa rápida y ligera a las plantillas formales cuando se estandarizan ad hoc un pequeño número de elementos.

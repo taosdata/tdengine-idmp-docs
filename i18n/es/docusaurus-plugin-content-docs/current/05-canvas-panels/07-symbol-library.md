@@ -1,22 +1,22 @@
 ---
-title: Symbol Library
-sidebar_label: Symbol Library
+title: Biblioteca de Símbolos
+sidebar_label: Biblioteca de Símbolos
 ---
 
-# 5.7 Symbol Library
+# 5.7 Biblioteca de Símbolos
 
-The IDMP system already includes a basic symbol library and some industry-specific symbol libraries. If you have more requirements during use, you can create and upload your own symbols, or contact the IDMP team for design support.
+El sistema IDMP ya incluye una biblioteca de símbolos básica y algunas bibliotecas de símbolos específicas para distintos sectores industriales. Si durante el uso necesita más recursos, puede crear y subir sus propios símbolos, o ponerse en contacto con el equipo de IDMP para obtener soporte de diseño.
 
-## System Symbol Library
+## Biblioteca de Símbolos del Sistema
 
-IDMP's built-in symbol library meets the basic needs of most industries, offering symbols in three formats: native code (JS), Alibaba font (iconfont), and images (svg, gif). Additionally, the canvas supports video playback for MP4, WebM, and Ogg formats.
+La biblioteca de símbolos integrada en IDMP cubre las necesidades básicas de la mayoría de los sectores industriales y ofrece símbolos en tres formatos: código nativo (JS), fuente de Alibaba (iconfont) e imágenes (svg, gif). Además, el lienzo admite la reproducción de vídeo en los formatos MP4, WebM y Ogg.
 
-## Private Symbol Library
+## Biblioteca de Símbolos Privada
 
-IDMP symbol library is an extensible and open graphic library that can customize various cool component effects and scenes according to different needs. Supports creating symbol libraries, uploading symbols, etc.
+La biblioteca de símbolos de IDMP es una biblioteca gráfica extensible y abierta que puede personalizarse con distintos efectos de componentes y escenas según las necesidades. Admite la creación de bibliotecas de símbolos, la carga de símbolos, etc.
 
-## Symbol Library Management
+## Gestión de la Biblioteca de Símbolos
 
-Symbol library management can configure whether to display the symbol library, and you can choose to display only the symbol libraries you need.
+La gestión de la biblioteca de símbolos permite configurar qué bibliotecas se muestran; puede elegir mostrar solo las bibliotecas de símbolos que necesite.
 
-![Symbol Library Management](./images/canvas-16.png)
+![Gestión de la biblioteca de símbolos](./images/canvas-16.png)

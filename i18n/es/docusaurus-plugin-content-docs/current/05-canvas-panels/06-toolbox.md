@@ -1,32 +1,32 @@
 ---
-title: Toolbox
-sidebar_label: Toolbox
+title: Caja de Herramientas
+sidebar_label: Caja de Herramientas
 ---
 
-# 5.6 Toolbox
+# 5.6 Caja de Herramientas
 
-## Pen
+## Lápiz de Tinta
 
-1. Start: Left click
-2. Pause: Right click or enter
-3. End: esc
-4. Close/Unclose: enter
+1. Inicio: clic izquierdo
+2. Pausa: clic derecho o Intro
+3. Fin: Esc
+4. Cerrar / Abrir: Intro
 
-## Pencil
+## Lápiz
 
-1. Start: Continuous left drag
-2. Pause: Release left button
-3. End: esc
-4. Close/Unclose: enter
+1. Inicio: arrastrar continuamente con el botón izquierdo
+2. Pausa: soltar el botón izquierdo
+3. Fin: Esc
+4. Cerrar / Abrir: Intro
 
-## Magnifier
+## Lupa
 
-Used to observe details in the image.
+Se usa para observar los detalles de la imagen.
 
-![Magnifier](./images/canvas-14.png)
+![Lupa](./images/canvas-14.png)
 
-## Overview Map (Thumbnail)
+## Mapa General (Miniatura)
 
-The global view of the configuration diagram. Clicking on the overview map allows you to quickly switch the center position on the canvas.
+Vista global del diagrama de configuración. Hacer clic en el mapa general permite cambiar rápidamente la posición central en el lienzo.
 
-![Overview Map](./images/canvas-15.png)
+![Mapa general](./images/canvas-15.png)

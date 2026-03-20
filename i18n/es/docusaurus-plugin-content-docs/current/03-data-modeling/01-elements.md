@@ -1,60 +1,60 @@
 ---
-title: Elements
-sidebar_label: Elements
+title: Elementos
+sidebar_label: Elementos
 ---
 
-# 3.1 Elements
+# 3.1 Elementos
 
-In TDengine IDMP, every physical or logical asset in your industrial environment — a factory, a production line, a machine, or a sensor — is represented as an **element**. Elements are the foundational building blocks of your asset model, giving raw time-series data a structured home and meaningful context.
+En TDengine IDMP, cada activo físico o lógico de su entorno industrial — una fábrica, una línea de producción, una máquina o un sensor — se representa como un **elemento**. Los elementos son los bloques constructivos fundamentales de su modelo de activos, y proporcionan a los datos de series temporales sin procesar un hogar estructurado y un contexto significativo.
 
-## 3.1.1 What is an Element
+## 3.1.1 Qué es un elemento
 
-An element is a digital representation of a real-world asset or logical grouping in your industrial environment. Elements make it possible to organize, search, and analyze data by asset rather than by raw data tables.
+Un elemento es una representación digital de un activo del mundo real o de una agrupación lógica en su entorno industrial. Los elementos permiten organizar, buscar y analizar datos por activo en lugar de por tablas de datos sin procesar.
 
-![Element asset tree and General tab](../images/03-element-general.png)
+![Árbol de activos del elemento y pestaña General](../images/03-element-general.png)
 
-When you select an element in the asset tree, the **General** tab displays the following information:
+Cuando selecciona un elemento en el árbol de activos, la pestaña **General** muestra la siguiente información:
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Name** | The element's unique identifier within its parent scope |
-| **Path** | The full hierarchical path to this element in the asset tree (for example, `/Elements/Utilities/California/San Diego County/Chula Vista/em-10`) |
-| **Template** | The element template this element is based on. Click the template name to navigate to the template definition. |
-| **Categories** | One or more user-defined category tags for grouping and filtering elements |
-| **Default Attribute** | The attribute shown by default when this element is displayed in a summary view |
-| **Description** | A free-text description of what this asset represents |
-| **Location** | The GPS coordinates of the physical asset: Longitude, Latitude, and Altitude. Used for map-based visualizations. |
-| **Additional Attributes** | Free-form key-value pairs for any custom metadata specific to this element, such as manufacturer, model number, serial number, installation date, or maintenance contact |
+| **Nombre** | El identificador único del elemento dentro del ámbito de su padre |
+| **Ruta** | La ruta jerárquica completa a este elemento en el árbol de activos (por ejemplo, `/Elements/Utilities/California/San Diego County/Chula Vista/em-10`) |
+| **Plantilla** | La plantilla de elemento en la que se basa este elemento. Haga clic en el nombre de la plantilla para navegar a su definición. |
+| **Categorías** | Una o más etiquetas de categoría definidas por el usuario para agrupar y filtrar elementos |
+| **Atributo predeterminado** | El atributo que se muestra por defecto cuando este elemento aparece en una vista de resumen |
+| **Descripción** | Una descripción en texto libre de lo que representa este activo |
+| **Ubicación** | Las coordenadas GPS del activo físico: longitud, latitud y altitud. Se utiliza para visualizaciones basadas en mapas. |
+| **Atributos adicionales** | Pares clave-valor de formato libre para cualquier metadato personalizado específico de este elemento, como fabricante, número de modelo, número de serie, fecha de instalación o contacto de mantenimiento |
 
-Below the main fields, the General tab contains the following expandable sections:
+Debajo de los campos principales, la pestaña General contiene las siguientes secciones expandibles:
 
-### Related Documents
+### Documentos relacionados
 
-Upload files — such as user manuals, engineering handbooks, P&ID drawings, calibration reports, or any domain-specific reference material — and attach them directly to the element. These documents are indexed and made available to TDengine IDMP's AI engine. When a user asks questions about an element through AI Chat, the AI can draw on these documents to provide more accurate, context-aware answers. For example, attaching a pump's operation manual allows the AI to answer questions about its expected operating range, maintenance intervals, and alarm thresholds.
+Cargue archivos — como manuales de usuario, manuales de ingeniería, planos P&ID, informes de calibración o cualquier material de referencia específico del dominio — y adjúntelos directamente al elemento. Estos documentos se indexan y quedan disponibles para el motor de IA de TDengine IDMP. Cuando un usuario hace preguntas sobre un elemento a través del Chat de IA, la IA puede recurrir a estos documentos para proporcionar respuestas más precisas y contextualizadas. Por ejemplo, adjuntar el manual de operación de una bomba permite a la IA responder preguntas sobre su rango de operación esperado, intervalos de mantenimiento y umbrales de alarma.
 
-To add a document: expand **Related Documents** and click **+ Add Document**.
+Para añadir un documento: expanda **Documentos relacionados** y haga clic en **+ Añadir documento**.
 
-### Annotation
+### Anotación
 
-Add free-text notes to the element. Annotations are useful for recording observations, maintenance history, or operational context that does not fit into structured attribute fields.
+Añada notas de texto libre al elemento. Las anotaciones son útiles para registrar observaciones, historial de mantenimiento o contexto operativo que no encaja en los campos de atributos estructurados.
 
-To add an annotation: expand **Annotation** and click **+ New Annotation**. See [Annotations](../11-collaboration/02-annotations.md) for details.
+Para añadir una anotación: expanda **Anotación** y haga clic en **+ Nueva anotación**. Consulte [Anotaciones](../11-collaboration/02-annotations.md) para más detalles.
 
-### Parents
+### Padres
 
-Shows all parent elements in the asset hierarchy. An element can appear in multiple hierarchies simultaneously (for example, a pump may belong to both a geographic hierarchy and a functional equipment hierarchy). The Parents section lists each parent with its full path.
+Muestra todos los elementos padre en la jerarquía de activos. Un elemento puede aparecer en múltiples jerarquías simultáneamente (por ejemplo, una bomba puede pertenecer tanto a una jerarquía geográfica como a una jerarquía de equipos funcional). La sección Padres lista cada padre con su ruta completa.
 
-### Security *(coming soon)*
+### Seguridad *(próximamente)*
 
-Role-based access control for this element. This feature is not yet implemented.
+Control de acceso basado en roles para este elemento. Esta función aún no está implementada.
 
-### Version *(coming soon)*
+### Versión *(próximamente)*
 
-Version history and audit trail for changes to this element's configuration. This feature is not yet implemented.
+Historial de versiones y registro de auditoría de los cambios en la configuración de este elemento. Esta función aún no está implementada.
 
-## 3.1.2 Asset Tree and Child Elements
+## 3.1.2 Árbol de activos y elementos secundarios
 
-Elements are organized into a hierarchical **asset tree**, which mirrors the physical or logical structure of your industrial environment. A typical hierarchy might look like this:
+Los elementos se organizan en un **árbol de activos** jerárquico que refleja la estructura física o lógica de su entorno industrial. Una jerarquía típica podría verse así:
 
 ```text
 Enterprise
@@ -64,239 +64,239 @@ Enterprise
             └── Sensor
 ```
 
-Any element can have one or more **child elements**. This parent-child relationship allows you to:
+Cualquier elemento puede tener uno o más **elementos secundarios**. Esta relación padre-hijo le permite:
 
-- Browse your entire asset catalog from the top down
-- Aggregate data across a branch of the tree (for example, total energy usage across all machines on a production line)
-- Apply configurations at any level of the hierarchy
+- Navegar por todo el catálogo de activos desde arriba hacia abajo
+- Agregar datos a través de una rama del árbol (por ejemplo, el uso total de energía en todas las máquinas de una línea de producción)
+- Aplicar configuraciones en cualquier nivel de la jerarquía
 
-The root of the asset tree — the top-level element with no parent — typically represents an enterprise or site-level asset. You can create multiple root-level elements to represent separate sites or business units.
+La raíz del árbol de activos — el elemento de nivel superior sin padre — normalmente representa un activo de nivel empresarial o de sitio. Puede crear múltiples elementos de nivel raíz para representar sitios o unidades de negocio separados.
 
-An element can also appear in more than one hierarchy at the same time — for example, a wind turbine may belong to both a geographic site tree and an equipment-type tree. This is achieved through *element references*. See [3.1.7 Element References](#317-element-references) for details.
+Un elemento también puede aparecer en más de una jerarquía al mismo tiempo — por ejemplo, una turbina eólica puede pertenecer tanto a un árbol de sitio geográfico como a un árbol por tipo de equipo. Esto se logra mediante *referencias de elemento*. Consulte [3.1.7 Referencias de elemento](#317-element-references) para más detalles.
 
-## 3.1.3 Creating Elements
+## 3.1.3 Creación de elementos
 
-New elements are always created as children of an existing parent element. There are three ways to do this:
+Los nuevos elementos siempre se crean como hijos de un elemento padre existente. Hay tres formas de hacerlo:
 
-### Method 1: From the asset tree hover menu
+### Método 1: Desde el menú contextual al pasar el cursor sobre el árbol de activos
 
-1. In the asset tree, hover over the parent element to reveal the **⋮** icon next to its name.
-2. Click **⋮** and select **New Child Element**.
-3. Fill in the element details and click **Save**.
+1. En el árbol de activos, pase el cursor sobre el elemento padre para mostrar el icono **⋮** junto a su nombre.
+2. Haga clic en **⋮** y seleccione **Nuevo elemento secundario**.
+3. Complete los detalles del elemento y haga clic en **Guardar**.
 
-### Method 2: From the Child Elements tab toolbar
+### Método 2: Desde la barra de herramientas de la pestaña Elementos secundarios
 
-1. Select the parent element in the asset tree.
-2. Click the **Child Elements** tab in the element detail pane.
-3. Click the **+** icon in the toolbar (top right of the Child Elements tab).
-4. Fill in the element details and click **Save**.
+1. Seleccione el elemento padre en el árbol de activos.
+2. Haga clic en la pestaña **Elementos secundarios** en el panel de detalles del elemento.
+3. Haga clic en el icono **+** en la barra de herramientas (parte superior derecha de la pestaña Elementos secundarios).
+4. Complete los detalles del elemento y haga clic en **Guardar**.
 
 :::tip
-Use a consistent naming convention across your organization. For example, prefix element names with a site code (such as `SF-Line-01`) to make large asset trees easier to navigate. Selecting a **Template** when creating an element will pre-populate a standard set of attributes for that asset class.
+Utilice una convención de nomenclatura coherente en toda su organización. Por ejemplo, agregue un código de sitio como prefijo a los nombres de elementos (como `SF-Line-01`) para facilitar la navegación en árboles de activos grandes. Al seleccionar una **Plantilla** al crear un elemento, se prellenará automáticamente un conjunto estándar de atributos para esa clase de activo.
 :::
 
-## 3.1.4 Editing Elements
+## 3.1.4 Edición de elementos
 
-To edit an existing element:
+Para editar un elemento existente:
 
-1. Select the element in the asset tree.
-2. In the General tab, click the **Edit** icon (pencil icon) in the toolbar.
-3. Modify the fields as needed: Name, Description, Template, Categories, Default Attribute, Location, and Additional Attributes.
-4. Click **Save** to apply your changes.
+1. Seleccione el elemento en el árbol de activos.
+2. En la pestaña General, haga clic en el icono **Editar** (icono de lápiz) en la barra de herramientas.
+3. Modifique los campos según sea necesario: Nombre, Descripción, Plantilla, Categorías, Atributo predeterminado, Ubicación y Atributos adicionales.
+4. Haga clic en **Guardar** para aplicar los cambios.
 
-To add or update **Related Documents**, **Annotations**, or other sections, expand the relevant section directly in the General tab without entering edit mode.
+Para añadir o actualizar **Documentos relacionados**, **Anotaciones** u otras secciones, expanda la sección correspondiente directamente en la pestaña General sin entrar en modo de edición.
 
 :::note
-Changing the parent element of an existing element will relocate it — and all its children — to the new position in the asset tree. This does not affect the underlying time-series data linked to its attributes.
+Cambiar el elemento padre de un elemento existente lo reubicará a él — y a todos sus hijos — en la nueva posición del árbol de activos. Esto no afecta a los datos de series temporales subyacentes vinculados a sus atributos.
 :::
 
-## 3.1.5 Deleting Elements
+## 3.1.5 Eliminación de elementos
 
-There are several ways to delete an element:
+Hay varias formas de eliminar un elemento:
 
-### Method 1: From the General tab toolbar
+### Método 1: Desde la barra de herramientas de la pestaña General
 
-1. Select the element in the asset tree.
-2. Click the **Delete** icon (trash icon) in the top-right corner of the General tab.
-3. Confirm the deletion in the dialog box.
+1. Seleccione el elemento en el árbol de activos.
+2. Haga clic en el icono **Eliminar** (icono de papelera) en la esquina superior derecha de la pestaña General.
+3. Confirme la eliminación en el cuadro de diálogo.
 
-### Method 2: From the parent's Child Elements tab
+### Método 2: Desde la pestaña Elementos secundarios del padre
 
-1. Navigate to the parent element and click the **Child Elements** tab.
-2. In the child elements list, click the **⋮** (three-dot) menu on the row of the element you want to delete.
-3. Select **Delete** and confirm.
+1. Navegue al elemento padre y haga clic en la pestaña **Elementos secundarios**.
+2. En la lista de elementos secundarios, haga clic en el menú **⋮** (tres puntos) en la fila del elemento que desea eliminar.
+3. Seleccione **Eliminar** y confirme.
 
-### Method 3: From the asset tree context menu
+### Método 3: Desde el menú contextual del árbol de activos
 
-1. Hover over the element in the asset tree to reveal the **⋮** menu.
-2. Select **Delete** and confirm.
+1. Pase el cursor sobre el elemento en el árbol de activos para mostrar el menú **⋮**.
+2. Seleccione **Eliminar** y confirme.
 
 :::warning
-Deleting a parent element permanently deletes all of its child elements as well. This action cannot be undone. The underlying time-series data in TDengine TSDB is not deleted, but all element configurations, attribute mappings, related documents, annotations, and other metadata associated with the deleted elements will be permanently lost.
+Eliminar un elemento padre elimina permanentemente todos sus elementos secundarios también. Esta acción no se puede deshacer. Los datos de series temporales subyacentes en TDengine TSDB no se eliminan, pero todas las configuraciones de elementos, asignaciones de atributos, documentos relacionados, anotaciones y otros metadatos asociados con los elementos eliminados se perderán permanentemente.
 :::
 
-## 3.1.6 Element Templates
+## 3.1.6 Plantillas de elemento
 
-In industrial environments, large numbers of assets are often of the same type — hundreds of electricity meters, dozens of pumps, or thousands of sensors. Creating each element individually is impractical and error-prone. **Element templates** solve this by defining a reusable blueprint for an asset class: its attributes, analyses, panels, dashboards, and notification rules are all specified once in the template and then automatically applied to every element created from it.
+En entornos industriales, grandes cantidades de activos suelen ser del mismo tipo — cientos de medidores de electricidad, decenas de bombas o miles de sensores. Crear cada elemento individualmente no es práctico y es propenso a errores. Las **plantillas de elemento** resuelven esto definiendo un modelo reutilizable para una clase de activo: sus atributos, análisis, paneles, dashboards y reglas de notificación se especifican una vez en la plantilla y luego se aplican automáticamente a cada elemento creado a partir de ella.
 
-Element templates are managed under **Libraries** in the main navigation menu.
+Las plantillas de elemento se gestionan en **Bibliotecas** en el menú de navegación principal.
 
-### Template Inheritance
+### Herencia de plantillas
 
-Templates support inheritance. You can create a base template (for example, "Motor") and then derive more specialized templates from it (for example, "AC Motor", "DC Motor"). A template marked as **Base Template Only** can only be inherited — it cannot be used directly to create elements.
+Las plantillas admiten herencia. Puede crear una plantilla base (por ejemplo, "Motor") y luego derivar plantillas más especializadas a partir de ella (por ejemplo, "Motor AC", "Motor DC"). Una plantilla marcada como **Solo plantilla base** solo puede heredarse — no puede usarse directamente para crear elementos.
 
-### Substitution Strings
+### Cadenas de sustitución
 
-Because a template is shared across many elements, field values inside a template cannot be hardcoded. IDMP provides **substitution strings** that are resolved to the actual values when an element is created. Common substitution strings include:
+Dado que una plantilla se comparte entre muchos elementos, los valores de los campos dentro de una plantilla no pueden estar codificados de forma fija. IDMP proporciona **cadenas de sustitución** que se resuelven a los valores reales cuando se crea un elemento. Las cadenas de sustitución más comunes incluyen:
 
-| Substitution string | Resolves to |
+| Cadena de sustitución | Se resuelve en |
 |---|---|
-| `${Template#name}` | The template name |
-| `${Element#name}` | The element name |
-| `${Attribute#name}` | The attribute name |
-| `${attributes["AttrName"]#value}` | The current value of the named attribute |
-| `${startTime}` | The event start time |
-| `${endTime}` | The event end time |
+| `${Template#name}` | El nombre de la plantilla |
+| `${Element#name}` | El nombre del elemento |
+| `${Attribute#name}` | El nombre del atributo |
+| `${attributes["AttrName"]#value}` | El valor actual del atributo nombrado |
+| `${startTime}` | La hora de inicio del evento |
+| `${endTime}` | La hora de fin del evento |
 
-You do not need to memorize these — wherever substitution strings are valid, IDMP shows a **+** picker that lists all applicable strings for that field.
+No necesita memorizar estas cadenas — en cualquier lugar donde las cadenas de sustitución sean válidas, IDMP muestra un selector **+** que lista todas las cadenas aplicables para ese campo.
 
-In addition to system-provided strings, you can define custom **KEYWORD** substitution strings on a template. A KEYWORD is a parameter you define — with a descriptive help text — that the user must supply at element creation time. For example, a KEYWORD named "Device ID" would prompt the user to enter the specific device ID when creating each element, allowing the template to automatically bind that element to the correct data source in TDengine TSDB.
+Además de las cadenas proporcionadas por el sistema, puede definir cadenas de sustitución **KEYWORD** personalizadas en una plantilla. Un KEYWORD es un parámetro que usted define — con un texto de ayuda descriptivo — que el usuario debe proporcionar en el momento de crear el elemento. Por ejemplo, un KEYWORD llamado "ID de dispositivo" solicitaría al usuario que introduzca el ID de dispositivo específico al crear cada elemento, permitiendo que la plantilla vincule automáticamente ese elemento a la fuente de datos correcta en TDengine TSDB.
 
-### Key Template Settings
+### Configuraciones clave de plantilla
 
-| Setting | Description |
+| Configuración | Descripción |
 |---|---|
-| **Base Template Only** | If enabled, this template can only be used as a parent for other templates, not to create elements directly. |
-| **Allow Extension** | If enabled, elements created from this template can have additional custom attributes, analyses, or panels added on top of the template-defined ones. If disabled, no customization is permitted. |
-| **Element Naming Pattern** | A pattern — composed of fixed strings and substitution strings — that determines the auto-generated name for each element created from this template. For example, `DEV-${KEYWORD1}` would name elements like `DEV-smeter-1`. |
+| **Solo plantilla base** | Si está habilitada, esta plantilla solo puede usarse como padre para otras plantillas, no para crear elementos directamente. |
+| **Permitir extensión** | Si está habilitada, los elementos creados a partir de esta plantilla pueden tener atributos, análisis o paneles personalizados adicionales además de los definidos en la plantilla. Si está deshabilitada, no se permite ninguna personalización. |
+| **Patrón de nombre de elemento** | Un patrón — compuesto de cadenas fijas y cadenas de sustitución — que determina el nombre generado automáticamente para cada elemento creado a partir de esta plantilla. Por ejemplo, `DEV-${KEYWORD1}` nombraría los elementos como `DEV-smeter-1`. |
 
-### General Tab Fields
+### Campos de la pestaña General
 
-When you open an element template, the **General** tab shows:
+Cuando abre una plantilla de elemento, la pestaña **General** muestra:
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Template Name** | The name of the template |
-| **Description** | Optional description |
-| **Base Template** | The parent template this one inherits from, if any |
-| **Categories** | Category tags |
-| **Default Attribute** | The attribute shown by default when an element is displayed in summary views |
-| **Element Naming Pattern** | The auto-generated name pattern using substitution strings (e.g., `${KEYWORD1}`) |
-| **Base Template Only** | If true, this template cannot be used to create elements directly — only as a base for other templates |
-| **Allow Extension** | If true, elements may have custom attributes, analyses, or panels added beyond what the template defines |
-| **Location** | Default GPS coordinates (Altitude, Latitude, Longitude) inherited by elements |
-| **Keywords** | Custom KEYWORD substitution strings defined for this template, each with a descriptive help text shown at element creation time |
-| **Related Documents** | Files attached to the template, indexed by the AI engine |
+| **Nombre de plantilla** | El nombre de la plantilla |
+| **Descripción** | Descripción opcional |
+| **Plantilla base** | La plantilla padre de la que hereda esta, si la hay |
+| **Categorías** | Etiquetas de categoría |
+| **Atributo predeterminado** | El atributo que se muestra por defecto cuando un elemento aparece en vistas de resumen |
+| **Patrón de nombre de elemento** | El patrón de nombre generado automáticamente usando cadenas de sustitución (p. ej., `${KEYWORD1}`) |
+| **Solo plantilla base** | Si es verdadero, esta plantilla no puede usarse para crear elementos directamente — solo como base para otras plantillas |
+| **Permitir extensión** | Si es verdadero, los elementos pueden tener atributos, análisis o paneles personalizados más allá de lo que define la plantilla |
+| **Ubicación** | Coordenadas GPS predeterminadas (Altitud, Latitud, Longitud) heredadas por los elementos |
+| **Palabras clave** | Cadenas de sustitución KEYWORD personalizadas definidas para esta plantilla, cada una con un texto de ayuda descriptivo que se muestra en el momento de crear el elemento |
+| **Documentos relacionados** | Archivos adjuntos a la plantilla, indexados por el motor de IA |
 
-### What an Element Template Contains
+### Contenido de una plantilla de elemento
 
-Once a template is created, its detail page shows the following tabs. Each tab manages one category of sub-template that is automatically instantiated for every element created from this template:
+Una vez creada una plantilla, su página de detalles muestra las siguientes pestañas. Cada pestaña gestiona una categoría de subplantilla que se instancia automáticamente para cada elemento creado a partir de esta plantilla:
 
-| Tab | Description |
+| Pestaña | Descripción |
 |---|---|
-| **General** | The element-level settings described above |
-| **Attribute Template** | The standard set of attributes, including TDengine TSDB data reference bindings. See [Attribute Templates](./02-attributes.md#attribute-templates). |
-| **Panel Template** | Standard panels (Trend Chart, Gauge, Table, etc.) auto-created for each element. See [Panel and Dashboard Templates](../04-visualization/07-panel-dashboard-templates.md). |
-| **Analysis Template** | Reusable analysis rules that run on every element of this type. See [Analysis Templates](../07-real-time-analysis/07-analysis-templates.md). |
-| **Dashboard Template** | Standard dashboards auto-associated with each element. See [Panel and Dashboard Templates](../04-visualization/07-panel-dashboard-templates.md). |
-| **Notification Rule Template** | The default notification rule applied to elements created from this template, including contact point, resend interval, escalation settings, and message template. |
+| **General** | Las configuraciones a nivel de elemento descritas anteriormente |
+| **Plantilla de atributo** | El conjunto estándar de atributos, incluyendo los enlaces de referencia de datos de TDengine TSDB. Consulte [Plantillas de atributo](./02-attributes.md#attribute-templates). |
+| **Plantilla de panel** | Paneles estándar (gráfico de tendencias, indicador, tabla, etc.) creados automáticamente para cada elemento. Consulte [Plantillas de panel y dashboard](../04-visualization/07-panel-dashboard-templates.md). |
+| **Plantilla de análisis** | Reglas de análisis reutilizables que se ejecutan en cada elemento de este tipo. Consulte [Plantillas de análisis](../07-real-time-analysis/07-analysis-templates.md). |
+| **Plantilla de dashboard** | Dashboards estándar asociados automáticamente con cada elemento. Consulte [Plantillas de panel y dashboard](../04-visualization/07-panel-dashboard-templates.md). |
+| **Plantilla de regla de notificación** | La regla de notificación predeterminada aplicada a los elementos creados a partir de esta plantilla, incluyendo punto de contacto, intervalo de reenvío, configuración de escalada y plantilla de mensaje. |
 
-### Creating an Element Template
+### Creación de una plantilla de elemento
 
-1. Navigate to **Libraries** in the main menu and select **Element Template**.
-2. Click **+** to open the element template creation form.
-3. Enter the template name, configure the key settings, define Keywords if needed, and click **Save**.
-4. From the template detail page, click each tab (**Attribute Template**, **Panel Template**, **Analysis Template**, **Dashboard Template**, **Notification Rule Template**) to add the corresponding sub-templates.
+1. Navegue a **Bibliotecas** en el menú principal y seleccione **Plantilla de elemento**.
+2. Haga clic en **+** para abrir el formulario de creación de plantilla de elemento.
+3. Introduzca el nombre de la plantilla, configure las opciones clave, defina las palabras clave si es necesario y haga clic en **Guardar**.
+4. Desde la página de detalles de la plantilla, haga clic en cada pestaña (**Plantilla de atributo**, **Plantilla de panel**, **Plantilla de análisis**, **Plantilla de dashboard**, **Plantilla de regla de notificación**) para añadir las subplantillas correspondientes.
 
-### Example: Using KEYWORD to Map a TDengine Supertable
+### Ejemplo: Uso de KEYWORD para mapear una supertabla de TDengine
 
-This example shows how KEYWORD substitution strings work in practice. Suppose your TDengine database `smdb` contains a supertable `SMeter` with two metric columns (`current`, `voltage`) and one tag column (`model`). The supertable has child tables named `smeter-1`, `smeter-2`, and so on. You want to create one IDMP element per child table, with each element automatically bound to its corresponding table.
+Este ejemplo muestra cómo funcionan en la práctica las cadenas de sustitución KEYWORD. Suponga que su base de datos TDengine `smdb` contiene una supertabla `SMeter` con dos columnas de métricas (`current`, `voltage`) y una columna de etiqueta (`model`). La supertabla tiene tablas secundarias llamadas `smeter-1`, `smeter-2`, etc. Desea crear un elemento IDMP por cada tabla secundaria, con cada elemento vinculado automáticamente a su tabla correspondiente.
 
-#### Step 1 — Create the element template
+#### Paso 1 — Crear la plantilla de elemento
 
-Create a new element template named `Smart Meter`. In the **Element Naming Pattern** field, type `DEV-`, then click **+** and select **KEYWORD**. The system prompts you for a help text — enter something like `Child table name in supertable SMeter (e.g., smeter-1)`. The naming pattern becomes:
+Cree una nueva plantilla de elemento llamada `Smart Meter`. En el campo **Patrón de nombre de elemento**, escriba `DEV-`, luego haga clic en **+** y seleccione **KEYWORD**. El sistema le solicita un texto de ayuda — introduzca algo como `Nombre de tabla secundaria en la supertabla SMeter (p. ej., smeter-1)`. El patrón de nombre queda:
 
 ```text
 DEV-${KEYWORD1}
 ```
 
-#### Step 2 — Create attribute templates
+#### Paso 2 — Crear plantillas de atributo
 
-Create three attribute templates on the `Smart Meter` template:
+Cree tres plantillas de atributo en la plantilla `Smart Meter`:
 
-| Attribute | Data Reference Type | Data Reference Setting |
+| Atributo | Tipo de referencia de datos | Configuración de referencia de datos |
 |---|---|---|
 | Current | TDengine Metric | `TDengine/smdb/${KEYWORD1}/current` |
 | Voltage | TDengine Metric | `TDengine/smdb/${KEYWORD1}/voltage` |
 | Model | TDengine Tag | `TDengine/smdb/${KEYWORD1}/model` |
 
-For each attribute, set the **Data Reference Type** to **TDengine Metric** or **TDengine Tag**, then open the Data Reference Setting dialog. Select the TDengine connection and database `smdb`. In the **Table Name Pattern** field, click **+** and select `KEYWORD1`. Enter the column name (`current`, `voltage`, or `model`). Click **Check** with a sample child table name to verify the binding.
+Para cada atributo, establezca el **Tipo de referencia de datos** en **TDengine Metric** o **TDengine Tag**, luego abra el cuadro de diálogo de Configuración de referencia de datos. Seleccione la conexión TDengine y la base de datos `smdb`. En el campo **Patrón de nombre de tabla**, haga clic en **+** y seleccione `KEYWORD1`. Introduzca el nombre de columna (`current`, `voltage` o `model`). Haga clic en **Comprobar** con un nombre de tabla secundaria de ejemplo para verificar el enlace.
 
-#### Step 3 — Create elements from the template
+#### Paso 3 — Crear elementos a partir de la plantilla
 
-When you create a new element using the `Smart Meter` template, IDMP prompts you to enter a value for `KEYWORD1`, displaying the help text you defined. Enter a child table name — for example, `smeter-1`. IDMP automatically:
+Cuando crea un nuevo elemento usando la plantilla `Smart Meter`, IDMP le solicita que introduzca un valor para `KEYWORD1`, mostrando el texto de ayuda que definió. Introduzca el nombre de una tabla secundaria — por ejemplo, `smeter-1`. IDMP automáticamente:
 
-- Names the element `DEV-smeter-1`
-- Resolves all three attribute bindings:
+- Nombra el elemento `DEV-smeter-1`
+- Resuelve los tres enlaces de atributo:
   - Current: `TDengine/smdb/smeter-1/current`
   - Voltage: `TDengine/smdb/smeter-1/voltage`
   - Model: `TDengine/smdb/smeter-1/model`
 
-Repeat for `smeter-2`, `smeter-3`, and so on. Each element is fully configured with a single input at creation time.
+Repita el proceso para `smeter-2`, `smeter-3`, etc. Cada elemento queda completamente configurado con una sola entrada en el momento de creación.
 
-## 3.1.7 Element References
+## 3.1.7 Referencias de elemento
 
 :::note
-This is an advanced topic. Most users can skip this section and come back to it when they need to organize assets across multiple hierarchies.
+Este es un tema avanzado. La mayoría de los usuarios puede omitir esta sección y volver a ella cuando necesiten organizar activos en múltiples jerarquías.
 :::
 
-When an element is created under a parent, a **reference** is established between the two. An element can have multiple references — meaning it can appear in more than one place in the asset tree simultaneously, without being physically duplicated. This is similar to a symbolic link in a file system.
+Cuando se crea un elemento bajo un padre, se establece una **referencia** entre los dos. Un elemento puede tener múltiples referencias — lo que significa que puede aparecer en más de un lugar del árbol de activos simultáneamente, sin ser duplicado físicamente. Esto es similar a un enlace simbólico en un sistema de archivos.
 
-For example, a wind turbine might appear under a geographic hierarchy (`Site A → Wind Turbines → Wind Turbine-1`) and also under an equipment-type hierarchy (`All Turbines → Wind Turbine-1`). Both are views of the same element and its data.
+Por ejemplo, una turbina eólica podría aparecer bajo una jerarquía geográfica (`Sitio A → Turbinas eólicas → Turbina eólica-1`) y también bajo una jerarquía por tipo de equipo (`Todas las turbinas → Turbina eólica-1`). Ambas son vistas del mismo elemento y sus datos.
 
-The **Parents** section in an element's General tab lists all current references — every location in the asset tree where this element appears.
+La sección **Padres** en la pestaña General de un elemento lista todas las referencias actuales — cada ubicación en el árbol de activos donde aparece este elemento.
 
-### Reference Types
+### Tipos de referencia
 
-IDMP defines three reference types that control what happens when an element or its parent is deleted.
+IDMP define tres tipos de referencia que controlan qué sucede cuando se elimina un elemento o su padre.
 
-### Strong Reference
+### Referencia fuerte
 
-The default reference type. An element with at least one strong reference always exists somewhere in the asset tree. Deleting it from one location only removes that reference — the element continues to exist wherever its other strong references are.
+El tipo de referencia predeterminado. Un elemento con al menos una referencia fuerte siempre existe en algún lugar del árbol de activos. Eliminarlo de una ubicación solo elimina esa referencia — el elemento continúa existiendo donde estén sus otras referencias fuertes.
 
-![Strong reference example](../images/03/strong-ref.png)
+![Ejemplo de referencia fuerte](../images/03/strong-ref.png)
 
-In the diagram above, Wind Turbine-1 has strong references under both Wind Turbines and Site A. Deleting Wind Turbine-1 from under Site A removes only that reference — Wind Turbine-1 still exists under Wind Turbines.
+En el diagrama anterior, Turbina eólica-1 tiene referencias fuertes tanto en Turbinas eólicas como en Sitio A. Eliminar Turbina eólica-1 de Sitio A solo elimina esa referencia — Turbina eólica-1 sigue existiendo en Turbinas eólicas.
 
-### Composition Reference
+### Referencia de composición
 
-Used when an element is physically part of its parent — for example, a motor that is a component of a wind turbine. A composition reference is a stronger bond: if the parent element is deleted, the child is completely deleted from all locations, regardless of any other references it may have.
+Se utiliza cuando un elemento forma parte físicamente de su padre — por ejemplo, un motor que es un componente de una turbina eólica. Una referencia de composición es un vínculo más fuerte: si se elimina el elemento padre, el hijo se elimina completamente de todas las ubicaciones, independientemente de cualquier otra referencia que pueda tener.
 
-![Composition reference example](../images/03/composition-ref.png)
+![Ejemplo de referencia de composición](../images/03/composition-ref.png)
 
-In the diagram above, Motor-A has a composition reference under Wind Turbine-1 and also appears elsewhere. When Wind Turbine-1 is deleted, Motor-A is permanently deleted from everywhere.
+En el diagrama anterior, Motor-A tiene una referencia de composición bajo Turbina eólica-1 y también aparece en otros lugares. Cuando se elimina Turbina eólica-1, Motor-A se elimina permanentemente de todos los lugares.
 
-An element can have at most one composition reference.
+Un elemento puede tener como máximo una referencia de composición.
 
-### Weak Reference
+### Referencia débil
 
-Used when you want an element to appear in an additional hierarchy without affecting its lifecycle. Weak references are informational — deleting a weak reference has no effect on the element or its other references.
+Se utiliza cuando desea que un elemento aparezca en una jerarquía adicional sin afectar a su ciclo de vida. Las referencias débiles son informativas — eliminar una referencia débil no tiene ningún efecto en el elemento ni en sus otras referencias.
 
-![Weak reference example](../images/03/weak-ref.png)
+![Ejemplo de referencia débil](../images/03/weak-ref.png)
 
-However, if all strong and composition references are removed, the element ceases to exist and all its weak references are automatically cleaned up.
+Sin embargo, si se eliminan todas las referencias fuertes y de composición, el elemento deja de existir y todas sus referencias débiles se limpian automáticamente.
 
-![Deleting the strong reference removes all weak references](../images/03/weak-ref-del-strong.png)
+![Eliminar la referencia fuerte elimina todas las referencias débiles](../images/03/weak-ref-del-strong.png)
 
-### Reference Rules
+### Reglas de referencia
 
-The following rules govern element references:
+Las siguientes reglas rigen las referencias de elemento:
 
-1. When creating a child element, the reference type can be set to **Strong** or **Composition**.
-2. An element can have any number of weak references; removing a weak reference has no effect on the element.
-3. An element can have at most one composition reference.
-4. If an element has no composition reference, it must have at least one strong reference to exist.
-5. If a parent with a composition reference is deleted, the child element is completely deleted from all locations.
-6. If after a deletion an element has zero strong and composition references, all its weak references are automatically removed and the element no longer exists.
+1. Al crear un elemento secundario, el tipo de referencia puede establecerse en **Fuerte** o **Composición**.
+2. Un elemento puede tener cualquier número de referencias débiles; eliminar una referencia débil no tiene ningún efecto en el elemento.
+3. Un elemento puede tener como máximo una referencia de composición.
+4. Si un elemento no tiene referencia de composición, debe tener al menos una referencia fuerte para existir.
+5. Si se elimina un padre con referencia de composición, el elemento hijo se elimina completamente de todas las ubicaciones.
+6. Si después de una eliminación un elemento tiene cero referencias fuertes y de composición, todas sus referencias débiles se eliminan automáticamente y el elemento deja de existir.
 
-Within a single asset tree, an element can appear only once. It can appear across multiple separate trees, but not in multiple paths within the same tree.
+Dentro de un único árbol de activos, un elemento solo puede aparecer una vez. Puede aparecer en múltiples árboles separados, pero no en múltiples rutas dentro del mismo árbol.

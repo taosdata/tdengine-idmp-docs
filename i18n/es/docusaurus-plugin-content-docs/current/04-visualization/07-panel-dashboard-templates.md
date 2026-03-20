@@ -1,29 +1,29 @@
 ---
-title: Panel and Dashboard Templates
-sidebar_label: Panel and Dashboard Templates
+title: Plantillas de Paneles y Dashboards
+sidebar_label: Plantillas de Paneles y Dashboards
 ---
 
-# 4.7 Panel and Dashboard Templates
+# 4.7 Plantillas de Paneles y Dashboards
 
-Panel templates and dashboard templates are sub-templates within an [element template](../03-data-modeling/01-elements.md#316-element-templates). They define the standard visualizations that are automatically created for every element of a given asset class — so that when an element is instantiated from the template, its panels and dashboards are ready to use without any manual configuration.
+Las plantillas de paneles y dashboards son sub-plantillas dentro de una [plantilla de elemento](../03-data-modeling/01-elements.md#316-element-templates). Definen las visualizaciones estándar que se crean automáticamente para cada elemento de una clase de activo determinada, de modo que cuando un elemento se instancia a partir de la plantilla, sus paneles y dashboards estén listos para usar sin ninguna configuración manual.
 
-## Panel Templates
+## Plantillas de Paneles
 
-The **Panel Template** tab on an element template works identically to the regular Panels view on an element. It supports both AI-assisted and manual panel creation:
+La pestaña **Plantilla de panel** en una plantilla de elemento funciona de forma idéntica a la vista de paneles habitual de un elemento. Admite tanto la creación de paneles asistida por IA como la creación manual:
 
-- Use the **Ask AI** text box ("Tell me what panel you want and I'll build it for you") to describe a panel in natural language and have AI generate it.
-- Click **+ New Panel Template** to create a panel manually, selecting the panel type and configuring its data sources.
+- Use el cuadro de texto **Preguntar a la IA** ("Dígame qué panel quiere y lo construiré para usted") para describir un panel en lenguaje natural y hacer que la IA lo genere.
+- Haga clic en **+ Nueva plantilla de panel** para crear un panel manualmente, seleccionando el tipo de panel y configurando sus fuentes de datos.
 
-Because a panel template is shared across many elements, any reference to element-specific data must use substitution strings such as `${Element#name}` or `${Attribute#name}`. IDMP provides a **+** picker at every relevant input field to help you select the correct substitution string.
+Dado que una plantilla de panel se comparte entre muchos elementos, cualquier referencia a datos específicos del elemento debe utilizar cadenas de sustitución como `${Element#name}` o `${Attribute#name}`. IDMP proporciona un selector **+** en cada campo de entrada relevante para ayudarle a seleccionar la cadena de sustitución correcta.
 
-When an element is created from the template, all panel templates are automatically instantiated with substitution strings resolved to the element's actual name and attributes.
+Cuando se crea un elemento a partir de la plantilla, todas las plantillas de paneles se instancian automáticamente con las cadenas de sustitución resueltas al nombre real del elemento y sus atributos.
 
-## Dashboard Templates
+## Plantillas de Dashboards
 
-The **Dashboard Template** tab shows a list of dashboard templates (columns: **Name**, **Categories**). Click **+ New Dashboard Template** to create a dashboard layout that will be automatically associated with each element created from this template.
+La pestaña **Plantilla de dashboard** muestra una lista de plantillas de dashboards (columnas: **Nombre**, **Categorías**). Haga clic en **+ Nueva plantilla de dashboard** para crear un diseño de dashboard que se asociará automáticamente a cada elemento creado a partir de esta plantilla.
 
-## Relationship to Standalone Panels and Dashboards
+## Relación con Paneles y Dashboards Independientes
 
-Panel templates and dashboard templates defined inside an element template are distinct from standalone panels and dashboards created directly on a specific element. Template-based visualizations are instantiated automatically across all elements of the asset class and kept consistent at the template level.
+Las plantillas de paneles y dashboards definidas dentro de una plantilla de elemento son distintas de los paneles y dashboards autónomos creados directamente en un elemento específico. Las visualizaciones basadas en plantillas se instancian automáticamente en todos los elementos de la clase de activo y se mantienen consistentes a nivel de plantilla.
 
-If **Allow Extension** is enabled on the element template, individual elements can have additional panels and dashboards added on top of those defined in the template.
+Si la opción **Permitir extensión** está habilitada en la plantilla de elemento, los elementos individuales pueden tener paneles y dashboards adicionales añadidos por encima de los definidos en la plantilla.

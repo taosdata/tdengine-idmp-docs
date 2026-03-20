@@ -1,57 +1,57 @@
 ---
-title: Enumeration Sets
-sidebar_label: Enumeration Sets
+title: Conjuntos de enumeración
+sidebar_label: Conjuntos de enumeración
 ---
 
-# 13.1 Enumeration Sets
+# 13.1 Conjuntos de enumeración
 
-An **enumeration set** maps integer (or other numeric) values to human-readable labels. When an attribute's data type is an integer that represents a discrete state — such as `0 = Stopped`, `1 = Running`, `2 = Fault` — you can assign an enumeration set to the attribute so that IDMP displays the label instead of the raw number.
+Un **conjunto de enumeración** mapea valores enteros (u otros valores numéricos) a etiquetas legibles para las personas. Cuando el tipo de dato de un atributo es un entero que representa un estado discreto — como `0 = Detenido`, `1 = En marcha`, `2 = Fallo` — puede asignar un conjunto de enumeración al atributo para que IDMP muestre la etiqueta en lugar del número sin procesar.
 
-Enumeration sets are managed under **Libraries → Enumeration Sets**.
+Los conjuntos de enumeración se gestionan en **Libraries → Enumeration Sets**.
 
-## The Enumeration Set List
+## La lista de conjuntos de enumeración
 
-The list shows all defined enumeration sets with the following columns:
+La lista muestra todos los conjuntos de enumeración definidos con las siguientes columnas:
 
-| Column | Description |
+| Columna | Descripción |
 |---|---|
-| **Name** | Enumeration set name |
-| **Value Type** | The numeric data type of the raw values |
-| **Description** | Optional description |
+| **Name** | Nombre del conjunto de enumeración |
+| **Value Type** | El tipo de dato numérico de los valores sin procesar |
+| **Description** | Descripción opcional |
 
-Click an enumeration set name to view or edit it. Use the **⋮** menu on a row to edit or delete it.
+Haga clic en el nombre de un conjunto de enumeración para verlo o editarlo. Use el menú **⋮** de una fila para editarlo o eliminarlo.
 
-## Creating an Enumeration Set
+## Creación de un conjunto de enumeración
 
-Click **+** to create a new enumeration set. Fill in the following fields:
+Haga clic en **+** para crear un nuevo conjunto de enumeración. Rellene los siguientes campos:
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Name** (required) | A unique name. Accepts letters, numbers, underscores, hyphens, and spaces. |
-| **Value Type** | The data type of the raw values. Options: `TinyInt` (default), `SmallInt`, `Int`, `BigInt`, `TinyInt Unsigned`, `SmallInt Unsigned`, `Int Unsigned`, `BigInt Unsigned`, `Float`, `Double`, `Boolean`, `Varchar`, `Nchar`, `Timestamp`. |
-| **Description** | Optional description of the enumeration set. |
+| **Name** (obligatorio) | Un nombre único. Acepta letras, números, guiones bajos, guiones y espacios. |
+| **Value Type** | El tipo de dato de los valores sin procesar. Opciones: `TinyInt` (predeterminado), `SmallInt`, `Int`, `BigInt`, `TinyInt Unsigned`, `SmallInt Unsigned`, `Int Unsigned`, `BigInt Unsigned`, `Float`, `Double`, `Boolean`, `Varchar`, `Nchar`, `Timestamp`. |
+| **Description** | Descripción opcional del conjunto de enumeración. |
 
-Then add one or more enumeration values in the **Value** table by clicking **+** in the table:
+A continuación, añada uno o más valores de enumeración en la tabla **Value** haciendo clic en **+** en la tabla:
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Name** (required) | The display label. Accepts letters, numbers, underscores, and hyphens. |
-| **Value** (required) | The raw numeric value this label maps to. |
-| **Description** | Optional description of this enumeration value. |
-| **Parent** | Optional parent enumeration value. Use this to group related values under a common parent for easier filtering and browsing. |
+| **Name** (obligatorio) | La etiqueta de visualización. Acepta letras, números, guiones bajos y guiones. |
+| **Value** (obligatorio) | El valor numérico sin procesar al que se mapea esta etiqueta. |
+| **Description** | Descripción opcional de este valor de enumeración. |
+| **Parent** | Valor de enumeración padre opcional. Úselo para agrupar valores relacionados bajo un padre común y facilitar el filtrado y la navegación. |
 
-Click **Confirm** to add the value, then **Save** to save the enumeration set.
+Haga clic en **Confirm** para añadir el valor y luego en **Save** para guardar el conjunto de enumeración.
 
-## Sub-Values (Grouping)
+## Subvalores (agrupación)
 
-IDMP supports sub-enumeration values: one enumeration value can serve as the parent of others. This is a grouping mechanism — parent values do not represent data themselves, but allow you to organize and filter child values.
+IDMP admite subvalores de enumeración: un valor de enumeración puede servir como padre de otros. Este es un mecanismo de agrupación — los valores padre no representan datos en sí mismos, sino que permiten organizar y filtrar los valores secundarios.
 
-**Example:** For a motor state enumeration, you might define a parent value `Abnormal` and group `Fault`, `Overload`, and `Emergency Stop` under it. Users can then filter by `Abnormal` to see all abnormal states at once.
+**Ejemplo:** Para una enumeración de estado de motor, podría definir un valor padre `Anómalo` y agrupar `Fallo`, `Sobrecarga` y `Parada de emergencia` bajo él. Los usuarios pueden entonces filtrar por `Anómalo` para ver todos los estados anómalos a la vez.
 
-## Editing and Deleting
+## Edición y eliminación
 
-To edit an enumeration set, click its name in the list. To delete it, use the **⋮** menu on its row. An enumeration set cannot be deleted if it is currently assigned to one or more attributes.
+Para editar un conjunto de enumeración, haga clic en su nombre en la lista. Para eliminarlo, use el menú **⋮** de su fila. Un conjunto de enumeración no puede eliminarse si está asignado actualmente a uno o más atributos.
 
-## Using Enumeration Sets
+## Uso de conjuntos de enumeración
 
-After creating an enumeration set, assign it to an attribute by selecting the enumeration set in the attribute's **Enumeration Set** field (available when the attribute's data type is a numeric type). IDMP will then display the mapped label wherever the attribute value appears — in trend charts, tables, state timelines, and events.
+Después de crear un conjunto de enumeración, asígnelo a un atributo seleccionándolo en el campo **Enumeration Set** del atributo (disponible cuando el tipo de dato del atributo es de tipo numérico). IDMP mostrará entonces la etiqueta mapeada en todos los lugares donde aparezca el valor del atributo — en gráficos de tendencias, tablas, líneas de tiempo de estados y eventos.

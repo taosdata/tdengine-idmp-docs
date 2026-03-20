@@ -1,53 +1,53 @@
 ---
-title: Pie Chart
-sidebar_label: Pie Chart
+title: Gráfico circular
+sidebar_label: Gráfico circular
 ---
 
-# 4.2.3 Pie Chart
+# 4.2.3 Gráfico circular
 
-## Overview
+## Descripción general
 
-The Pie Chart divides a circle into slices proportional to each value's share of the total. Each slice represents one category or metric group, making the relative contribution of each part immediately visible.
+El gráfico circular divide un círculo en sectores proporcionales, donde cada sector representa la proporción de su categoría correspondiente sobre el total. Cada sector representa una categoría o grupo de métricas, lo que hace que las contribuciones relativas de cada parte sean evidentes de un vistazo.
 
-![Pie chart showing distribution across categories](../images/pie-demo.png)
+![Gráfico circular que muestra la distribución de categorías](../images/pie-demo.png)
 
-Slice labels are displayed directly on the chart. The chart is most readable with fewer than eight slices — beyond that, small slices become hard to distinguish and a Bar Chart or Table is a better choice.
+Las etiquetas de los sectores se muestran directamente en el gráfico. El gráfico es más claro cuando hay menos de 8 sectores — con más, los sectores más pequeños son difíciles de distinguir, y en ese caso un gráfico de barras o una tabla son mejores opciones.
 
-## When to Use
+## Cuándo usarlo
 
-Use the Pie Chart when:
+Use el gráfico circular cuando:
 
-- You want to show how a total is distributed across a small number of categories
-- The relative proportion between parts matters more than absolute values
-- You have five to seven categories at most
+- Quiera mostrar cómo se distribuye un total entre un número reducido de categorías
+- La proporción relativa entre las partes sea más importante que los valores absolutos
+- Haya como máximo cinco a siete categorías
 
-Avoid the Pie Chart when categories are numerous, when values are close in magnitude (differences are hard to judge by arc size), or when tracking change over time. Use the Bar Chart for comparisons and the Trend Chart for time-series data.
+Evite el gráfico circular cuando haya muchas categorías, cuando los valores sean similares en magnitud (es difícil juzgar diferencias por el tamaño del arco), o cuando necesite rastrear cambios a lo largo del tiempo. Use el gráfico de barras para comparaciones y el gráfico de tendencia para datos temporales.
 
-## Configuration
+## Configuración
 
-### Edit Mode Toolbar
+### Barra de herramientas del modo de edición
 
-In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Pie Chart adds:
+Además de los [controles generales del modo de edición](../01-panels.md#414-modo-de-edición-de-paneles), el gráfico circular añade los siguientes controles:
 
-| Control | Description |
+| Control | Descripción |
 |---|---|
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+| **Guardar como imagen** | Descarga la vista previa actual como imagen PNG |
+| **Pantalla completa** | Expande la vista previa del editor para llenar la ventana del navegador |
+| **Interpretar panel** | Ejecuta el análisis de IA sobre los datos de la vista previa actual |
 
-### Graph Settings
+### Configuración del gráfico
 
-| Setting | Description |
+| Ajuste | Descripción |
 |---|---|
-| **Title** | Chart title displayed above the pie |
-| **Subtitle** | Secondary title shown below the main title |
+| **Título** | El título del gráfico que se muestra encima del gráfico circular |
+| **Subtítulo** | Un título secundario que se muestra debajo del título principal |
 
-The Pie Chart has no Axis, Limits, or Legend sections. Slice labels and percentages are rendered directly on the chart.
+El gráfico circular no tiene secciones de ejes, valores de límite ni leyenda. Las etiquetas de los sectores y los porcentajes se muestran directamente en el gráfico.
 
-## Example Scenarios
+## Ejemplos de uso
 
-**Power consumption by phase.** An electrical engineer adds three metrics — Phase A, Phase B, and Phase C current — to a pie chart. The chart immediately shows whether the load is balanced across phases or concentrated on one.
+**Consumo de electricidad por fase.** Un ingeniero eléctrico añade tres métricas —corriente de fase A, fase B y fase C— al gráfico circular. El gráfico muestra de inmediato si la carga está distribuida de forma uniforme entre las fases o si se concentra en una de ellas.
 
-**Production share by shift.** A plant manager adds a Dimension grouping by shift (Day, Evening, Night) with total units produced as the metric. The pie chart shows each shift's contribution to the daily production total.
+**Contribución de producción por turno.** Un gerente de fábrica añade una dimensión de agrupación por turno (diurno, nocturno, madrugada) con la producción total como métrica. El gráfico circular muestra la contribución de cada turno a la producción total del día.
 
-**Event distribution by severity.** An operations team adds a Dimension grouping by alarm severity category. The pie chart shows what fraction of events were critical, warning, or informational — useful for a shift summary report.
+**Distribución de eventos por gravedad.** Un equipo de operaciones añade una dimensión de agrupación por categoría de gravedad de alarma. El gráfico circular muestra qué proporción corresponde a eventos urgentes, de advertencia e informativos — adecuado para los informes de resumen de turno.

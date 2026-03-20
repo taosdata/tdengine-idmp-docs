@@ -1,87 +1,87 @@
 ---
-title: Line
-sidebar_label: Line
+title: Líneas
+sidebar_label: Líneas
 ---
 
-# 5.3 Line
+# 5.3 Líneas
 
-Lines are used to represent the flow of materials, signal transmission, or logical relationships between devices. For example:
+Las líneas se utilizan para representar el flujo de materiales, la transmisión de señales o las relaciones lógicas entre dispositivos. Por ejemplo:
 
-1. Pipeline connections represent material transportation
-2. Dashed lines represent signal transmission
-3. Lines of different colors represent different media
+1. Las conexiones de tubería representan el transporte de materiales
+2. Las líneas discontinuas representan la transmisión de señales
+3. Las líneas de diferentes colores representan diferentes medios
 
-Through line animations, you can visually display the real-time flow status of materials.
+Mediante animaciones de línea, puede visualizar el estado de flujo en tiempo real de los materiales.
 
-## Drawing Lines
+## Dibujar Líneas
 
-### Pen Drawing Lines
+### Dibujar Líneas con el Lápiz de Tinta
 
-Select a line type, then click the pen to activate drawing with that line type.
+Seleccione un tipo de línea, luego haga clic en el lápiz de tinta para activar el dibujo con ese tipo de línea.
 
-Start: Left-click;
+Inicio: clic izquierdo;
 
-Pause: Right-click or enter;
+Pausa: clic derecho o Intro;
 
-End: esc.
+Fin: Esc.
 
-#### Curves, Line Segments, Straight Lines, Mind Map Curves
+#### Curvas, Segmentos de Línea, Líneas Rectas, Curvas de Mapa Mental
 
-You can use the pen to draw different types of curves, or select a line and modify its line type.
+Puede usar el lápiz de tinta para dibujar diferentes tipos de curvas, o seleccionar una línea y modificar su tipo.
 
-#### Horizontal Line
+#### Línea Horizontal
 
-Press the shortcut key Shift, click the left mouse button to draw, right-click to end drawing (line type selected as straight line).
+Mantenga presionada la tecla Shift, haga clic con el botón izquierdo del ratón para dibujar y haga clic derecho para terminar el dibujo (con el tipo de línea establecido en línea recta).
 
-#### Vertical Line
+#### Línea Vertical
 
-Press the shortcut key Ctrl, click the left mouse button to draw, right-click to end drawing (line type selected as straight line).
+Mantenga presionada la tecla Ctrl, haga clic con el botón izquierdo del ratón para dibujar y haga clic derecho para terminar el dibujo (con el tipo de línea establecido en línea recta).
 
-#### Diagonal Line
+#### Línea Diagonal
 
-Line type selected as straight line, select the pen, left-click to draw the starting point, hold down the shortcut keys Ctrl+Shift, move the mouse angle (in increments of 15°), left-click to draw the second point, right-click to end drawing.
+Con el tipo de línea establecido en línea recta, seleccione el lápiz de tinta, haga clic izquierdo para dibujar el punto de inicio, mantenga presionadas las teclas Ctrl+Shift, mueva el ratón en el ángulo deseado (en incrementos de 15°), haga clic izquierdo para dibujar el segundo punto y haga clic derecho para terminar el dibujo.
 
-### Pencil Drawing Lines
+### Dibujar Líneas con el Lápiz
 
-You can use the pencil to draw any type of line. Click "Pencil" to activate the pencil tool, press the left mouse button on the canvas to start drawing, and the line will be drawn according to the mouse movement trajectory. Release the mouse button to end drawing.
+Puede usar el lápiz para dibujar cualquier tipo de línea. Haga clic en "Lápiz" para activar la herramienta de lápiz, presione el botón izquierdo del ratón sobre el lienzo para comenzar a dibujar; la línea se trazará siguiendo la trayectoria del movimiento del ratón. Suelte el botón del ratón para terminar el dibujo.
 
-### Connecting Symbols with Lines
+### Conectar Símbolos con Líneas
 
-When the mouse hovers over a symbol, anchor points are activated. Press the mouse on an anchor point and drag it to the anchor point of another symbol. Release the mouse to draw a curve between the two symbol anchor points.
+Cuando el ratón se sitúa sobre un símbolo, se activan los puntos de ancla. Presione el ratón sobre un punto de ancla y arrástrelo hasta el punto de ancla de otro símbolo. Suelte el ratón para dibujar una curva entre los dos puntos de ancla de los símbolos.
 
-### Convert Line to Symbol
+### Convertir Línea en Símbolo
 
-Right-click on the line and select "Convert to Node".
+Haga clic con el botón derecho sobre la línea y seleccione "Convertir a nodo".
 
-## Cutting/Merging Lines
+## Cortar / Unir Líneas
 
-Cutting lines: Select the line, move the mouse to the anchor point where you want to break the line, click, and press the S key.
+Cortar líneas: seleccione la línea, mueva el ratón hasta el punto de ancla donde desea separar la línea, haga clic y presione la tecla S.
 
-Merging lines: When connecting lines, drag the connection end of the currently selected line to align with the connection end of another line, press the Alt key, release the mouse, and then release the Alt key.
+Unir líneas: al conectar líneas, arrastre el extremo de conexión de la línea seleccionada actualmente para alinearlo con el extremo de conexión de otra línea, presione la tecla Alt, suelte el ratón y luego suelte la tecla Alt.
 
-## Line Styles
+## Estilos de Línea
 
-After selecting a line, you can set the appearance style of the line in the property configuration area on the right:
+Después de seleccionar una línea, puede configurar su estilo de apariencia en el área de configuración de propiedades de la derecha:
 
-- Line style: solid, dashed
-- Line type: curve, polyline, straight line
-- Connection style: bevel, round, default
-- Line gradient: none, linear gradient
-- Line color, hover color, selected color
-- Line width
-- Background: solid color background, linear gradient, radial gradient
-- Background color, hover background color, selected background color
-- Opacity: 0-1
-- Anchor point color, anchor point radius (≥0)
-- Shadow color, shadow blur, shadow X offset, shadow Y offset
-- Border color, border width (≥0)
+- Estilo de línea: sólida, discontinua
+- Tipo de línea: curva, polilínea, línea recta
+- Estilo de conexión: bisel, redondeado, predeterminado
+- Degradado de línea: ninguno, degradado lineal
+- Color de línea, color flotante, color seleccionado
+- Ancho de línea
+- Fondo: color sólido, degradado lineal, degradado radial
+- Color de fondo, color de fondo flotante, color de fondo seleccionado
+- Opacidad: 0-1
+- Color del ancla, radio del ancla (≥0)
+- Color de sombra, desenfoque de sombra, desplazamiento X de sombra, desplazamiento Y de sombra
+- Color del borde, ancho del borde (≥0)
 
-## Line Animations
+## Animaciones de Línea
 
-IDMP has built-in three animation effects for lines, making the visuals more dynamic.
+IDMP tiene integrados tres efectos de animación para líneas, lo que hace que los efectos visuales sean más dinámicos.
 
-- Animation effects: water flow, water droplet flow, dots.
-- Animation line width (≥0), animation color, animation speed, reverse flow, number of loops.
-- Next animation: tag, autoplay, maintain animation state, linear playback: yes/no.
+- Efectos de animación: flujo de agua, flujo de gotas de agua, puntos.
+- Ancho de línea de animación (≥0), color de animación, velocidad de animación, flujo inverso, número de repeticiones.
+- Siguiente animación: etiqueta, reproducción automática, mantener estado de animación, reproducción lineal: sí/no.
 
-![Line Animations](./images/canvas-10.gif)
+![Animaciones de línea](./images/canvas-10.gif)

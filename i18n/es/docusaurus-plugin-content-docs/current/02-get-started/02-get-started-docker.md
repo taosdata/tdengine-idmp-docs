@@ -1,27 +1,27 @@
 ---
-title: Get Started with Docker
+title: Inicio rápido con Docker
 sidebar_label: Docker
 ---
 
-# 2.2 Get Started with Docker
+# 2.2 Inicio rápido con Docker
 
-TDengine IDMP is offered as a Docker Compose setup to make deployment easy. This installs TDengine TSDB-Enterprise along with TDengine IDMP and automatically establishes a connection between them.
+TDengine IDMP se ofrece como una configuración de Docker Compose para facilitar el despliegue. Esto instala TDengine TSDB-Enterprise junto con TDengine IDMP y establece automáticamente una conexión entre ellos.
 
-## 2.2.1 Environment Requirements
+## 2.2.1 Requisitos del entorno
 
-- Docker Engine 20.10 or later. See [Install Docker Engine](https://docs.docker.com/engine/install/).
-- Docker Compose 1.29.2 or later. See [Install Docker Compose](https://docs.docker.com/compose/install/).
-- Git installed on your local machine. See [git-scm.com](https://git-scm.com/).
+- Docker Engine 20.10 o posterior. Consulte [Install Docker Engine](https://docs.docker.com/engine/install/).
+- Docker Compose 1.29.2 o posterior. Consulte [Install Docker Compose](https://docs.docker.com/compose/install/).
+- Git instalado en su máquina local. Consulte [git-scm.com](https://git-scm.com/).
 
-## 2.2.2 Prepare the Docker Environment
+## 2.2.2 Preparar el entorno Docker
 
-Clone the TDengine IDMP deployment repository:
+Clone el repositorio de despliegue de TDengine IDMP:
 
 ```bash
 git clone https://github.com/taosdata/tdengine-idmp-deployment.git
 ```
 
-## 2.2.3 Start TDengine IDMP with Docker
+## 2.2.3 Iniciar TDengine IDMP con Docker
 
 ```bash
 cd tdengine-idmp-deployment/docker
@@ -30,41 +30,41 @@ chmod +x idmp.sh
 ./idmp.sh start
 ```
 
-This command will prompt you to select a deployment mode:
+Este comando le pedirá que seleccione un modo de despliegue:
 
-- **Standard** — TDengine TSDB Enterprise + IDMP
-- **Full** — TDengine TSDB Enterprise + IDMP + TDgpt (adds AI/ML algorithms for time-series forecasting and anomaly detection)
+- **Estándar** — TDengine TSDB Enterprise + IDMP
+- **Completo** — TDengine TSDB Enterprise + IDMP + TDgpt (añade algoritmos de IA/ML para pronóstico de series temporales y detección de anomalías)
 
-The required images will be pulled automatically if not already present locally.
+Las imágenes necesarias se descargarán automáticamente si no están presentes en local.
 
 :::note
-Set the `TZ` environment variable to match your environment. `UTC` is a good default for server environments. All containers in the Compose stack inherit this setting — an incorrect timezone will cause analysis triggers and event timestamps to be misaligned.
+Establezca la variable de entorno `TZ` para que coincida con su entorno. `UTC` es una buena opción predeterminada para entornos de servidor. Todos los contenedores en la pila de Compose heredan esta configuración: una zona horaria incorrecta provocará que los disparadores de análisis y las marcas de tiempo de los eventos queden desalineados.
 :::
 
-## 2.2.4 Activate and Initialize the System
+## 2.2.4 Activar e inicializar el sistema
 
-1. In a web browser, access TDengine IDMP at `http://ip:6042`.
-2. Under **Activate TDengine IDMP**, enter your email address and organization.
-3. Click **Get Code** and enter the code sent to your email address.
+1. En un navegador web, acceda a TDengine IDMP en `http://ip:6042`.
+2. En **Activar TDengine IDMP**, introduzca su dirección de correo electrónico y organización.
+3. Haga clic en **Obtener código** e introduzca el código enviado a su dirección de correo electrónico.
 
    :::tip
-   If the email does not arrive, check your spam or junk folder.
+   Si el correo electrónico no llega, compruebe su carpeta de spam o correo no deseado.
    :::
 
-4. Read the User Agreement and Privacy Policy and click **Activate**.
-5. In the **Privacy Settings** dialog, select which diagnostic information you want to share with TDengine, then click **Agree**.
+4. Lea el Acuerdo de Usuario y la Política de Privacidad y haga clic en **Activar**.
+5. En el cuadro de diálogo **Configuración de privacidad**, seleccione qué información de diagnóstico desea compartir con TDengine y, a continuación, haga clic en **Aceptar**.
 
-## 2.2.5 Enter Account Information
+## 2.2.5 Introducir la información de la cuenta
 
-1. Enter your name, phone number, position, and password.
+1. Introduzca su nombre, número de teléfono, cargo y contraseña.
 
    :::note
-   - Your password must be 8 to 20 characters long.
-   - Your password must contain letters, digits, and special characters.
-   - Supported special characters: `. ~ ! @ # $ ^ & *`
+   - La contraseña debe tener entre 8 y 20 caracteres.
+   - La contraseña debe contener letras, dígitos y caracteres especiales.
+   - Caracteres especiales admitidos: `. ~ ! @ # $ ^ & *`
    :::
 
-2. (Optional) Select a profile picture. JPG and PNG files under 1 MB are supported.
-3. Click **Continue**.
+2. (Opcional) Seleccione una foto de perfil. Se admiten archivos JPG y PNG de menos de 1 MB.
+3. Haga clic en **Continuar**.
 
-Your TDengine IDMP instance is now ready to use. Continue to [Section 2.4](./04-experiencing-idmp.md) to load sample data and explore IDMP features.
+Su instancia de TDengine IDMP está lista para usar. Continúe en la [Sección 2.4](./04-experiencing-idmp.md) para cargar datos de muestra y explorar las funcionalidades de IDMP.

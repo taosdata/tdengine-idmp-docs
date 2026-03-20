@@ -1,61 +1,61 @@
 ---
-title: Calculation
-sidebar_label: Calculation
+title: Cálculo
+sidebar_label: Cálculo
 ---
 
-# 7.4 Calculation
+# 7.4 Cálculo
 
-The Calculation section (section 3 of the analysis form) defines what the analysis computes and where it stores the results. It contains four parts: **Apply Calculation On**, **Rollup On Window**, **Output Timestamp**, and **Output Attributes**.
+La sección Cálculo (sección 3 del formulario de análisis) define qué calcula el análisis y dónde almacena los resultados. Contiene cuatro partes: **Aplicar Cálculo En**, **Agregar en Ventana**, **Marca de Tiempo de Salida** y **Atributos de Salida**.
 
-## Apply Calculation On
+## Aplicar Cálculo En
 
-This radio button determines the data scope for the calculation.
+Este botón de opción determina el alcance de los datos para el cálculo.
 
-| Option | Description |
+| Opción | Descripción |
 |---|---|
-| **Element Self** | The calculation runs on the element's own attributes. This is the typical case — use it when you are computing something about this specific device or location. |
-| **Child Elements Aggregation** | The calculation aggregates data across the element's child elements that share a common template. Use this to compute metrics like "average power output across all turbines under this wind farm". |
+| **El Propio Elemento** | El cálculo se ejecuta sobre los atributos propios del elemento. Este es el caso típico — úselo cuando calcule algo sobre este dispositivo o ubicación específicos. |
+| **Agregación de Elementos Secundarios** | El cálculo agrega datos a través de los elementos secundarios del elemento que comparten una plantilla común. Use esto para calcular métricas como "potencia de salida promedio de todas las turbinas bajo esta granja eólica". |
 
-When **Child Elements Aggregation** is selected, two additional fields appear:
+Cuando se selecciona **Agregación de Elementos Secundarios**, aparecen dos campos adicionales:
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Child Element Template** | The template that the child elements must match. Only children with this template are included in the aggregation. Automatically pre-populated if all children share the same template. |
-| **Subtable Filter** | An optional filter expression to narrow which child elements are included in the aggregation. For example, filter to only children in a specific operating state. |
+| **Plantilla de Elemento Secundario** | La plantilla que deben coincidir los elementos secundarios. Solo los elementos secundarios con esta plantilla se incluyen en la agregación. Se rellena automáticamente si todos los elementos secundarios comparten la misma plantilla. |
+| **Filtro de Subtabla** | Una expresión de filtro opcional para reducir qué elementos secundarios se incluyen en la agregación. Por ejemplo, filtrar solo los elementos secundarios en un estado de operación específico. |
 
 :::note
-**Child Elements Aggregation** is only available when the element has child elements. On leaf elements, this option is disabled and only **Element Self** is available.
+La **Agregación de Elementos Secundarios** solo está disponible cuando el elemento tiene elementos secundarios. En los elementos hoja, esta opción está deshabilitada y solo está disponible **El Propio Elemento**.
 :::
 
-## Rollup On Window
+## Agregar en Ventana
 
-The **Rollup On Window** checkbox (enabled by default) controls whether the calculation is aggregated over a time window.
+La casilla de verificación **Agregar en Ventana** (habilitada de forma predeterminada) controla si el cálculo se agrega sobre una ventana de tiempo.
 
-When enabled, the **Interval** field specifies the length of the aggregation window (number + time unit). For example, an interval of 1 hour means each trigger firing computes the aggregate over the past 1 hour of data.
+Cuando está habilitado, el campo **Intervalo** especifica la longitud de la ventana de agregación (número + unidad de tiempo). Por ejemplo, un intervalo de 1 hora significa que cada activación del disparador calcula el agregado sobre la última hora de datos.
 
-When disabled, the calculation runs over individual data points without windowed aggregation — suitable for row-level calculations or transformations.
+Cuando está deshabilitado, el cálculo se ejecuta sobre puntos de datos individuales sin agregación en ventana — adecuado para cálculos a nivel de fila o transformaciones.
 
-## Output Timestamp
+## Marca de Tiempo de Salida
 
-The **Output Timestamp** dropdown specifies which timestamp is written to the output attribute for each result row:
+El menú desplegable **Marca de Tiempo de Salida** especifica qué marca de tiempo se escribe en el atributo de salida para cada fila de resultado:
 
-| Option | Description |
+| Opción | Descripción |
 |---|---|
-| **Window Start** | The timestamp of the beginning of the window |
-| **Window End** | The timestamp of the end of the window (default) |
+| **Inicio de Ventana** | La marca de tiempo del inicio de la ventana |
+| **Fin de Ventana** | La marca de tiempo del fin de la ventana (predeterminado) |
 
-The **Offset** field adds a time offset (number + unit, default 0 seconds) to the selected window boundary. This can be useful to shift the output timestamp for display alignment.
+El campo **Desplazamiento** añade un desplazamiento de tiempo (número + unidad, predeterminado 0 segundos) al límite de ventana seleccionado. Esto puede ser útil para desplazar la marca de tiempo de salida para la alineación de la visualización.
 
-## Output Attributes
+## Atributos de Salida
 
-The **Output Attributes** table maps calculation expressions to element attributes (and optionally event attributes when event generation is enabled).
+La tabla **Atributos de Salida** mapea expresiones de cálculo a atributos del elemento (y opcionalmente a atributos de evento cuando la generación de eventos está habilitada).
 
-Each row in the table has the following columns:
+Cada fila de la tabla tiene las siguientes columnas:
 
-| Column | Description |
+| Columna | Descripción |
 |---|---|
-| **Expression** | A calculation expression. Click the cell to open the Expression Editor (see [Section 3.2.9](../03-data-modeling/02-attributes.md#329-expression-editor)). |
-| **Element Attribute** | The element attribute where the computed result is stored as a new time-series value |
-| **Event Attribute** | *(Visible only when event generation is enabled in section 4)* An event attribute to capture the computed value at the moment the event fires |
+| **Expresión** | Una expresión de cálculo. Haga clic en la celda para abrir el Editor de Expresiones (véase la [Sección 3.2.9](../03-data-modeling/02-attributes.md#329-expression-editor)). |
+| **Atributo de Elemento** | El atributo del elemento donde el resultado calculado se almacena como un nuevo valor de series temporales |
+| **Atributo de Evento** | *(Visible solo cuando la generación de eventos está habilitada en la sección 4)* Un atributo de evento para capturar el valor calculado en el momento en que se activa el evento |
 
-Use the **+** button at the bottom of the table to add additional output rows. Each row is an independent expression — you can compute multiple metrics in a single analysis and write them to different attributes.
+Use el botón **+** en la parte inferior de la tabla para añadir filas de salida adicionales. Cada fila es una expresión independiente — puede calcular múltiples métricas en un único análisis y escribirlas en diferentes atributos.

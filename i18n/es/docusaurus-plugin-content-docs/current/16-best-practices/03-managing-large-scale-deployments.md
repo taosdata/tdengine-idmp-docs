@@ -1,10 +1,10 @@
 ---
-title: Managing Large-Scale Deployments
-sidebar_label: Managing Large-Scale Deployments
+title: Gestionar despliegues a gran escala
+sidebar_label: Gestionar despliegues a gran escala
 ---
 
-# 16.3 Managing Large-Scale Deployments
+# 16.3 Gestionar despliegues a gran escala
 
-:::note Coming Soon
-This section is under development. Content will be available in a future release.
+:::note Próximamente
+Esta sección está en desarrollo. El contenido estará disponible en una versión futura.
 :::

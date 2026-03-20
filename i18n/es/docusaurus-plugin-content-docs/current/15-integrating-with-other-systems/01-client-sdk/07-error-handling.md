@@ -1,13 +1,13 @@
 ---
-title: Error Handling
-sidebar_label: Error Handling
+title: Manejo de errores
+sidebar_label: Manejo de errores
 ---
 
-# 15.1.7 Error Handling
+# 15.1.7 Manejo de errores
 
-## Exception Type
+## Tipo de excepción
 
-The SDK wraps all API errors in a single `ApiException` class. You can retrieve the HTTP status code and the server-side error message from it.
+El SDK envuelve todos los errores de API en una única clase `ApiException`. Puede recuperar el código de estado HTTP y el mensaje de error del servidor desde ella.
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -44,20 +44,20 @@ except ApiException as e:
 </TabItem>
 </Tabs>
 
-## Common Error Codes
+## Códigos de error comunes
 
-| HTTP Status | Meaning | Common Cause | Recommended Action |
+| Estado HTTP | Significado | Causa común | Acción recomendada |
 |---|---|---|---|
-| 400 | Bad request | Wrong parameter type or missing required field | Check request parameters |
-| 401 | Unauthenticated | Token missing or expired | Re-authenticate and obtain a new token |
-| 403 | Forbidden | Current user has no permission for this resource | Review user role and element access configuration |
-| 404 | Not found | Wrong ID or resource has been deleted | Verify the resource ID |
-| 429 | Too many requests | API rate limit exceeded | Reduce request frequency; add retry with backoff |
-| 500 | Internal server error | Server-side exception | Retry later, or contact the administrator |
+| 400 | Solicitud incorrecta | Tipo de parámetro incorrecto o campo requerido faltante | Verifique los parámetros de la solicitud |
+| 401 | No autenticado | Token faltante o expirado | Vuelva a autenticarse y obtenga un nuevo token |
+| 403 | Prohibido | El usuario actual no tiene permiso para este recurso | Revise la configuración de rol del usuario y acceso a elementos |
+| 404 | No encontrado | ID incorrecto o el recurso ha sido eliminado | Verifique el ID del recurso |
+| 429 | Demasiadas solicitudes | Límite de tasa de la API excedido | Reduzca la frecuencia de solicitudes; agregue reintentos con retroceso |
+| 500 | Error interno del servidor | Excepción en el lado del servidor | Reintente más tarde o contacte al administrador |
 
-## Recommended Retry Pattern
+## Patrón de reintento recomendado
 
-For `429` (rate limiting) and `5xx` (server errors), use **exponential backoff**:
+Para `429` (limitación de tasa) y `5xx` (errores del servidor), use **retroceso exponencial**:
 
 <Tabs groupId="language">
 <TabItem value="python" label="Python">
@@ -123,8 +123,8 @@ interface ApiCall<T> {
 </TabItem>
 </Tabs>
 
-## Debugging Tips
+## Consejos de depuración
 
-- On `401`, check first whether the token has expired — do not assume a code bug.
-- On `400`, print the full `responseBody`. The server typically includes a specific description of which parameter is invalid.
-- During development, enable HTTP request logging in the SDK to trace the raw request and response.
+- Con un `401`, verifique primero si el token ha expirado — no asuma que hay un error en el código.
+- Con un `400`, imprima el `responseBody` completo. El servidor normalmente incluye una descripción específica de qué parámetro es inválido.
+- Durante el desarrollo, habilite el registro de solicitudes HTTP en el SDK para rastrear la solicitud y respuesta sin procesar.

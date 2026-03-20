@@ -1,125 +1,125 @@
 ---
-title: Building Data Models from TDengine TSDB
-sidebar_label: Building Data Models from TDengine TSDB
+title: Construcción de modelos de datos desde TDengine TSDB
+sidebar_label: Construcción de modelos de datos desde TDengine TSDB
 ---
 
-# 12.3 Building Data Models from TDengine TSDB
+# 12.3 Construcción de modelos de datos desde TDengine TSDB
 
-For users who already have data in TDengine TSDB, IDMP can automatically build the asset data model — elements, element templates, and attributes — directly from the TSDB schema. This eliminates the need to create elements and attributes manually.
+Para los usuarios que ya tienen datos en TDengine TSDB, IDMP puede construir automáticamente el modelo de datos de activos — elementos, plantillas de elementos y atributos — directamente desde el esquema del TSDB. Esto elimina la necesidad de crear elementos y atributos manualmente.
 
-IDMP provides four approaches, all accessible from the TDengine connection detail page under **Admin Console → Connections → [connection name]**:
+IDMP proporciona cuatro enfoques, todos accesibles desde la página de detalles de la conexión de TDengine en **Admin Console → Connections → [nombre de la conexión]**:
 
-| Tab | Best for |
+| Pestaña | Más adecuado para |
 |---|---|
-| **Easy Import** | Well-structured TSDB data with hierarchical location tags — fastest path to a complete model |
-| **Map STable to Element** | Data without location tags, or when mapping multiple supertables to one element template |
-| **Import from CSV** | Bulk configuration via a CSV file, especially for single-column data models with many supertables |
-| **Import from OPC** | OPC-structured data already in TSDB |
+| **Easy Import** | Datos TSDB bien estructurados con etiquetas de ubicación jerárquicas — la ruta más rápida hacia un modelo completo |
+| **Map STable to Element** | Datos sin etiquetas de ubicación, o cuando se necesita mapear múltiples supertablas a una plantilla de elemento |
+| **Import from CSV** | Configuración masiva mediante un archivo CSV, especialmente para modelos de datos de una sola columna con muchas supertablas |
+| **Import from OPC** | Datos con estructura OPC ya almacenados en TSDB |
 
 ## 12.3.1 Easy Import
 
-Easy Import works best when your TSDB supertables already have a tag that encodes the asset hierarchy — for example, a `location` tag whose value is a dot-separated path like `Plant.Line1.Machine3`. IDMP maps each supertable to an element template and each child table to an element instance.
+Easy Import funciona mejor cuando sus supertablas de TSDB ya tienen una etiqueta que codifica la jerarquía de activos — por ejemplo, una etiqueta `location` cuyo valor es una ruta separada por puntos como `Plant.Line1.Machine3`. IDMP mapea cada supertabla a una plantilla de elemento y cada tabla secundaria a una instancia de elemento.
 
-**How to use:**
+**Cómo utilizar:**
 
-1. Select the **Database** and **Supertable** at the top of the page. Check **Ignore** to skip a supertable entirely.
-2. In the **Tags** section, configure each tag:
-   - Check **Path** to use the tag value as the element's location in the asset tree. Set **Path Level** (0 = leaf) to control hierarchy depth. Optionally set a **Parent Element** to root the import under an existing element.
-   - Leave **Path** unchecked to import the tag as a static attribute (element property).
-   - Use the **Rename** field to give the attribute a display name different from the TSDB column name.
-   - Optionally assign an **Attribute Category**.
-3. In the **Metrics** section, check **Map STable to Element** for each metric column you want to import as a dynamic attribute. Use **Rename** and **Attribute Category** as needed.
-4. Optionally set an **Element Category** and a **Subtable Filter** (a SQL WHERE-style expression to include only matching child tables).
-5. Click **Next Supertable** to proceed to the next supertable, or click **Finish** to complete the configuration immediately using defaults for remaining supertables.
+1. Seleccione la **Database** y la **Supertable** en la parte superior de la página. Marque **Ignore** para omitir una supertabla por completo.
+2. En la sección **Tags**, configure cada etiqueta:
+   - Marque **Path** para usar el valor de la etiqueta como la ubicación del elemento en el árbol de activos. Establezca **Path Level** (0 = hoja) para controlar la profundidad de la jerarquía. Opcionalmente, establezca un **Parent Element** para enraizar la importación bajo un elemento existente.
+   - Deje **Path** sin marcar para importar la etiqueta como un atributo estático (propiedad del elemento).
+   - Use el campo **Rename** para dar al atributo un nombre de visualización diferente al nombre de columna del TSDB.
+   - Opcionalmente, asigne una **Attribute Category**.
+3. En la sección **Metrics**, marque **Map STable to Element** para cada columna de métrica que desee importar como atributo dinámico. Use **Rename** y **Attribute Category** según sea necesario.
+4. Opcionalmente, establezca una **Element Category** y un **Subtable Filter** (una expresión estilo SQL WHERE para incluir solo las tablas secundarias que coincidan).
+5. Haga clic en **Next Supertable** para pasar a la siguiente supertabla, o haga clic en **Finish** para completar la configuración inmediatamente usando los valores predeterminados para las supertablas restantes.
 
-A summary at the bottom of the page shows how many tags and metrics are selected for the current supertable, and the total count of supertables selected versus ignored.
+Un resumen en la parte inferior de la página muestra cuántas etiquetas y métricas están seleccionadas para la supertabla actual, y el recuento total de supertablas seleccionadas frente a ignoradas.
 
-**Auto-sync:** After the import task runs, IDMP monitors the TSDB for metadata changes. New child tables added to a configured supertable are automatically synced as new elements — no manual intervention required.
+**Sincronización automática:** Una vez que la tarea de importación se ejecuta, IDMP monitoriza el TSDB en busca de cambios de metadatos. Las nuevas tablas secundarias añadidas a una supertabla configurada se sincronizan automáticamente como nuevos elementos — sin intervención manual.
 
-**Rebuild:** If new supertables are added to the database, click **Rebuild** to re-open the configuration with existing settings pre-loaded. Add the new supertables and save.
+**Reconstrucción:** Si se añaden nuevas supertablas a la base de datos, haga clic en **Rebuild** para reabrir la configuración con los ajustes existentes precargados. Añada las nuevas supertablas y guarde.
 
-**Data enrichment:** After import, enrich each element with units of measure, descriptions, categories, and limit thresholds to give the data business context and make it AI-ready.
+**Enriquecimiento de datos:** Tras la importación, enriquezca cada elemento con unidades de medida, descripciones, categorías y umbrales de límite para dar contexto empresarial a los datos y hacerlos listos para IA.
 
 ## 12.3.2 Map STable to Element
 
-Use this approach when your TSDB data lacks a hierarchical tag, uses a single-column model (one supertable per measurement), or when you need to map columns from multiple supertables to a single element template.
+Use este enfoque cuando sus datos TSDB carecen de una etiqueta jerárquica, usan un modelo de una sola columna (una supertabla por medición), o cuando necesita mapear columnas de múltiples supertablas a una única plantilla de elemento.
 
-IDMP internally creates virtual supertables and virtual tables to merge data from multiple supertables into a unified element — this process is transparent to the user.
+IDMP crea internamente supertablas y tablas virtuales para fusionar datos de múltiples supertablas en un elemento unificado — este proceso es transparente para el usuario.
 
-**The Map STable to Element tab** shows a list of configured asset models with columns: **Database**, **Supertable**, **Element Template Name**, **Status**, **Create Time**, and **Update Time**.
+**La pestaña Map STable to Element** muestra una lista de modelos de activos configurados con columnas: **Database**, **Supertable**, **Element Template Name**, **Status**, **Create Time** y **Update Time**.
 
-Click **+ Add New Asset Model** to configure a new mapping. The form includes:
+Haga clic en **+ Add New Asset Model** para configurar un nuevo mapeo. El formulario incluye:
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Database** | The source TDengine database |
-| **Supertable** | The source supertable |
-| **Element Template** (required) | The element template to map to. Must be created in Libraries before starting. |
-| **Element Name** (required) | Expression defining the element name. Click **+** to insert substitution strings (e.g., tag values). Click the preview icon to verify the result. |
-| **Element Path** (required) | Expression defining the element's location in the asset tree. Use dots to separate hierarchy levels, e.g., `${location}.${rack}`. Click the preview icon to verify. |
-| **Element Category** | Optional category tag for the created elements |
-| **Tags** | Map each supertable tag to an attribute template on the element template, or select **None** to discard it |
-| **Metrics** | Map each supertable metric column to an attribute template, or select **None** to discard it |
-| **Subtable Filter** | Optional filter expression to include only matching child tables |
+| **Database** | La base de datos TDengine de origen |
+| **Supertable** | La supertabla de origen |
+| **Element Template** (obligatorio) | La plantilla de elemento a la que mapear. Debe crearse en Bibliotecas antes de comenzar. |
+| **Element Name** (obligatorio) | Expresión que define el nombre del elemento. Haga clic en **+** para insertar cadenas de sustitución (p. ej., valores de etiquetas). Haga clic en el icono de vista previa para verificar el resultado. |
+| **Element Path** (obligatorio) | Expresión que define la ubicación del elemento en el árbol de activos. Use puntos para separar los niveles de jerarquía, p. ej., `${location}.${rack}`. Haga clic en el icono de vista previa para verificar. |
+| **Element Category** | Etiqueta de categoría opcional para los elementos creados |
+| **Tags** | Mapear cada etiqueta de supertabla a una plantilla de atributo en la plantilla de elemento, o seleccionar **None** para descartarla |
+| **Metrics** | Mapear cada columna de métricas de supertabla a una plantilla de atributo, o seleccionar **None** para descartarla |
+| **Subtable Filter** | Expresión de filtro opcional para incluir solo las tablas secundarias que coincidan |
 
-Click **Finish** to create the asset model. Each asset model covers one supertable-to-template mapping. For a complete single-column data model, create one asset model per supertable (or per subset of metrics).
+Haga clic en **Finish** para crear el modelo de activos. Cada modelo de activos cubre un mapeo de supertabla a plantilla. Para un modelo de datos completo de una sola columna, cree un modelo de activos por supertabla (o por subconjunto de métricas).
 
-**Auto-sync:** New child tables added to mapped supertables are automatically synced as new elements.
+**Sincronización automática:** Las nuevas tablas secundarias añadidas a las supertablas mapeadas se sincronizan automáticamente como nuevos elementos.
 
 :::note
-If new supertables are added to the database after setup, you must manually add a new asset model for each. New supertables are not picked up automatically.
+Si se añaden nuevas supertablas a la base de datos después de la configuración, debe añadir manualmente un nuevo modelo de activos para cada una. Las nuevas supertablas no se detectan automáticamente.
 :::
 
 ## 12.3.3 Import from CSV
 
-CSV import is a bulk alternative to Map STable to Element. It is most useful when you have many supertables to configure — especially single-column models — and prefer to define all mappings in a spreadsheet rather than through the UI.
+La importación CSV es una alternativa masiva a Map STable to Element. Es más útil cuando tiene muchas supertablas que configurar — especialmente modelos de una sola columna — y prefiere definir todos los mapeos en una hoja de cálculo en lugar de hacerlo a través de la interfaz de usuario.
 
-**Workflow:**
+**Flujo de trabajo:**
 
-1. Click the **export** icon (download) in the toolbar to export a CSV configuration template based on your TSDB schema. Select the databases and supertables to include. Optionally check **Export child table names** to include individual child table names for cases where each child table needs a specific element name or path.
-2. Edit the CSV file to fill in element name expressions, element path expressions, attribute template mappings, and other settings.
-3. Click the **import** icon (upload) in the toolbar to upload the completed CSV file. The import task starts immediately.
+1. Haga clic en el icono de **export** (descarga) en la barra de herramientas para exportar una plantilla de configuración CSV basada en su esquema TSDB. Seleccione las bases de datos y supertablas a incluir. Opcionalmente, marque **Export child table names** para incluir nombres de tablas secundarias individuales en los casos en que cada tabla secundaria necesite un nombre o ruta de elemento específico.
+2. Edite el archivo CSV para rellenar las expresiones de nombre de elemento, expresiones de ruta de elemento, mapeos de plantillas de atributo y otros ajustes.
+3. Haga clic en el icono de **import** (carga) en la barra de herramientas para cargar el archivo CSV completado. La tarea de importación se inicia inmediatamente.
 
-The task history table shows: **Created At**, **Status**, **File Name**, and **Reason** (if failed).
+La tabla de historial de tareas muestra: **Created At**, **Status**, **File Name** y **Reason** (si falló).
 
-**Auto-sync:** Tasks without a specific child table name filter automatically sync new child tables added to the database.
+**Sincronización automática:** Las tareas sin un filtro de nombre de tabla secundaria específico sincronizan automáticamente las nuevas tablas secundarias añadidas a la base de datos.
 
-**CSV file format rules:**
+**Reglas de formato del archivo CSV:**
 
-- Comment lines start with `#` and are required — do not delete them.
-- The first non-comment row is the header row.
-- Data is divided into blocks; each block starts with a row that sets the **Database Name** and **Supertable Name**.
-- If no element template is specified, one is created automatically using the supertable name.
-- The **Element Name Expression** supports substitution strings like `${tbname}` (child table name) or tag values like `${tag_name}`.
-- The **Element Path Expression** supports the same substitutions. A dot in the value automatically creates hierarchy levels.
-- **Reference Type** must be `TDengineMetric` or `TDengineTag`.
-- The file must be encoded in **UTF-8** (not UTF-8 with BOM). If editing in Excel on Windows, convert the encoding before uploading.
+- Las líneas de comentario comienzan con `#` y son obligatorias — no las elimine.
+- La primera fila sin comentario es la fila de encabezado.
+- Los datos se dividen en bloques; cada bloque comienza con una fila que establece el **Database Name** y el **Supertable Name**.
+- Si no se especifica ninguna plantilla de elemento, se crea automáticamente una usando el nombre de la supertabla.
+- La **Element Name Expression** admite cadenas de sustitución como `${tbname}` (nombre de tabla secundaria) o valores de etiquetas como `${tag_name}`.
+- La **Element Path Expression** admite las mismas sustituciones. Un punto en el valor crea automáticamente niveles de jerarquía.
+- El **Reference Type** debe ser `TDengineMetric` o `TDengineTag`.
+- El archivo debe estar codificado en **UTF-8** (no UTF-8 con BOM). Si edita en Excel en Windows, convierta la codificación antes de cargar.
 
 :::note
-If new supertables are added to the database after a CSV import, create a new import task for those supertables. Existing tasks do not pick up new supertables automatically.
+Si se añaden nuevas supertablas a la base de datos después de una importación CSV, cree una nueva tarea de importación para esas supertablas. Las tareas existentes no detectan nuevas supertablas automáticamente.
 :::
 
 ## 12.3.4 Import from OPC
 
-Use this approach when OPC-structured data is already stored in TDengine TSDB and you want to build the asset model from it.
+Use este enfoque cuando los datos con estructura OPC ya están almacenados en TDengine TSDB y desea construir el modelo de activos a partir de ellos.
 
-The **Import from OPC** tab shows the following configuration per database:
+La pestaña **Import from OPC** muestra la siguiente configuración por base de datos:
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Database** | The source TDengine database |
-| **Parent Element** | An optional existing element to root the imported elements under |
-| **Ignore** | Check to skip this database |
+| **Database** | La base de datos TDengine de origen |
+| **Parent Element** | Un elemento existente opcional bajo el que enraizar los elementos importados |
+| **Ignore** | Marque para omitir esta base de datos |
 
-For each supertable in the database, configure:
+Para cada supertabla en la base de datos, configure:
 
-| Column | Description |
+| Columna | Descripción |
 |---|---|
-| Checkbox | Include or exclude this supertable |
-| **Super Table Name** | The supertable to import |
-| **Path** | The tag column whose value represents the OPC node path |
-| **Data Column** | The metric column containing the data values |
-| **Quality Column** | Optional tag or column containing the data quality value |
-| **Path Level** | The depth offset within the path hierarchy |
+| Casilla de verificación | Incluir o excluir esta supertabla |
+| **Super Table Name** | La supertabla a importar |
+| **Path** | La columna de etiqueta cuyo valor representa la ruta del nodo OPC |
+| **Data Column** | La columna de métricas que contiene los valores de datos |
+| **Quality Column** | Etiqueta o columna opcional que contiene el valor de calidad de los datos |
+| **Path Level** | El desplazamiento de profundidad dentro de la jerarquía de rutas |
 
-Navigate between databases using **Previous Database** and **Next Database**, then click **Finish** to create the import task.
+Navegue entre bases de datos usando **Previous Database** y **Next Database**, luego haga clic en **Finish** para crear la tarea de importación.

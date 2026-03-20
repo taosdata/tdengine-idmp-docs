@@ -3,14 +3,14 @@ title: Primeros pasos
 sidebar_label: Primeros pasos
 ---
 
-# 2 Getting Started
+# 2. Primeros pasos
 
 import DocCardList from '@theme/DocCardList';
 
-TDengine IDMP can be deployed and accessed in three ways: as a fully managed cloud service, as a local deployment using Docker, or as a direct installation from a package. All three paths lead to the same destination — a running IDMP instance loaded with built-in sample data, ready for you to explore immediately.
+TDengine IDMP puede desplegarse y accederse de tres formas: como servicio en la nube totalmente gestionado, como despliegue local mediante Docker, o como instalación directa desde un paquete. Los tres caminos conducen al mismo destino: una instancia de IDMP en funcionamiento con datos de muestra integrados, lista para explorar de inmediato.
 
-If your organization already has TDengine IDMP running — either on the cloud or on-premises — you don't need to set anything up yourself. Ask your administrator to send you an invitation email. The email will contain a link to activate your account. Click the link, set your password, and you will be taken directly into the IDMP web console, ready to explore all features immediately.
+Si su organización ya tiene TDengine IDMP en ejecución —ya sea en la nube o en las instalaciones—, no necesita configurar nada por su cuenta. Solicite a su administrador que le envíe un correo electrónico de invitación. El correo contendrá un enlace para activar su cuenta. Haga clic en el enlace, establezca su contraseña y accederá directamente a la consola web de IDMP, lista para explorar todas las funcionalidades de inmediato.
 
-In the sections that follow, we'll guide you through all three ways to get started with TDengine IDMP.
+En las secciones siguientes, le guiaremos por las tres formas de comenzar a usar TDengine IDMP.
 
 <DocCardList />

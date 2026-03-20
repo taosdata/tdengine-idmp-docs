@@ -1,141 +1,141 @@
 ---
-title: Scatter Chart
-sidebar_label: Scatter Chart
+title: Gráfico de dispersión
+sidebar_label: Gráfico de dispersión
 ---
 
-# 4.2.12 Scatter Chart
+# 4.2.12 Gráfico de dispersión
 
-## Overview
+## Descripción general
 
-The Scatter Chart plots individual data points as dots in a two-dimensional space. In the default mode each point's X position is the timestamp and its Y position is the metric value — a time-scatter view. For correlation analysis, two attributes are plotted against each other (Y vs. X), revealing the relationship between the two variables.
+El gráfico de dispersión traza puntos de datos individuales como puntos en un espacio bidimensional. En el modo predeterminado, la posición X de cada punto es la marca de tiempo y la posición Y es el valor de la métrica — es decir, una vista de dispersión temporal. En el análisis de correlación, se trazan dos atributos uno frente al otro (Y frente a X), revelando la relación entre las dos variables.
 
-![Scatter chart showing data points in two-dimensional space](../images/scatter-demo.png)
+![Ejemplo de gráfico de dispersión](../images/scatter-demo.png)
 
-Beyond basic plotting, the Scatter Chart supports data aggregation and regression analysis, making it the primary panel type for statistical and correlation-based analysis in TDengine IDMP.
+Además del trazado básico, el gráfico de dispersión admite la agregación de datos y el análisis de regresión, siendo el tipo de panel principal en TDengine IDMP para el análisis estadístico y de correlación.
 
-## When to Use
+## Cuándo usarlo
 
-Use the Scatter Chart when:
+Use el gráfico de dispersión cuando:
 
-- You want to explore the relationship between two process variables (e.g., power vs. temperature, flow rate vs. pressure drop)
-- You need to identify clusters or outliers in a dataset
-- You want to fit a regression curve to quantify a relationship
-- You want to plot raw, unsampled data points without aggregation
+- Necesite explorar la relación entre dos variables de proceso (como potencia frente a temperatura, o caudal frente a caída de presión)
+- Necesite identificar clústeres o valores atípicos en un conjunto de datos
+- Quiera ajustar una curva de regresión para cuantificar una relación
+- Quiera trazar puntos de datos sin procesar sin agregación
 
-For continuous line-based trend analysis, use the Trend Chart. For discrete state patterns, use the State Timeline.
+Para el análisis de tendencias basado en líneas continuas, use el gráfico de tendencia. Para patrones de estado discreto, use la línea de tiempo de estado.
 
-## Configuration
+## Configuración
 
-### View Mode Toolbar
+### Barra de herramientas del modo de visualización
 
-In addition to the [common view mode controls](../01-panels.md#413-panel-view-mode), the Scatter Chart adds:
+Además de los [controles generales del modo de visualización](../01-panels.md#413-modo-de-visualización-de-paneles), el gráfico de dispersión añade los siguientes controles:
 
-| Control | Description |
+| Control | Descripción |
 |---|---|
-| **Disable Sampling** | Fetch raw data without downsampling to ensure all individual data points are plotted |
+| **Deshabilitar muestreo** | Obtiene datos sin procesar sin reducción de muestras, asegurando que todos los puntos de datos estén trazados |
 
-### Edit Mode Toolbar
+### Barra de herramientas del modo de edición
 
-In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Scatter Chart adds:
+Además de los [controles generales del modo de edición](../01-panels.md#414-modo-de-edición-de-paneles), el gráfico de dispersión añade los siguientes controles:
 
-| Control | Description |
+| Control | Descripción |
 |---|---|
-| **Disable Sampling** | Toggle raw data mode for the preview |
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+| **Deshabilitar muestreo** | Activa el modo de datos sin procesar en la vista previa |
+| **Guardar como imagen** | Descarga la vista previa actual como imagen PNG |
+| **Pantalla completa** | Expande la vista previa del editor para llenar la ventana del navegador |
+| **Interpretar panel** | Ejecuta el análisis de IA sobre los datos de la vista previa actual |
 
-### Graph Settings
+### Configuración del gráfico
 
-#### Point Style
+#### Estilo de punto
 
-The symbol shape, size, and opacity of each data point are configurable:
+La forma del símbolo, el tamaño y la transparencia de cada punto de datos son configurables:
 
-![Scatter chart symbol shape options](../images/scatter-step.png)
+![Opciones de forma de símbolo del gráfico de dispersión](../images/scatter-step.png)
 
-![Scatter chart point size and opacity settings](../images/scatter-style.png)
+![Ajustes de tamaño y transparencia de puntos del gráfico de dispersión](../images/scatter-style.png)
 
-#### Special Points
+#### Puntos especiales
 
-The **Special Point** setting highlights specific data points — such as the maximum or minimum value — with a distinct marker and custom color:
+El ajuste **Puntos especiales** puede resaltar puntos de datos específicos (como el máximo o el mínimo) usando marcadores únicos y colores personalizados:
 
-![Special point markers highlighting maximum and minimum values](../images/scatter-point.png)
+![Marcadores de puntos especiales que resaltan el máximo y el mínimo](../images/scatter-point.png)
 
-#### Labels
+#### Etiquetas
 
-When data is dense, axis labels can overlap. Use **Rotate Labels** and **Label Interval** to improve readability:
+Cuando los datos son densos, las etiquetas de los ejes pueden superponerse. Use **Rotación de etiquetas** e **Intervalo de etiquetas** para mejorar la legibilidad:
 
-![Dense axis labels before adjustment](../images/scatter-tendency.png)
+![Etiquetas demasiado densas](../images/scatter-tendency.png)
 
-![Labels rotated to prevent overlap](../images/scatter-rotate.png)
+![Etiquetas rotadas para evitar superposiciones](../images/scatter-rotate.png)
 
-![Label interval reduced to lower density](../images/scatter-interval.png)
+![Intervalo de etiquetas ajustado para reducir la densidad](../images/scatter-interval.png)
 
-| Setting | Description |
+| Ajuste | Descripción |
 |---|---|
-| **Style** | Symbol shape for data points (circle, heart, smiley, and others) |
-| **Symbol Size** | Size of each dot (slider, default 6) |
-| **Scatter Opacity** | Transparency of dots, 0–1 |
-| **Special Point** | Highlight max/min or other specific points with a distinct marker |
-| **Rotate Labels** | Rotation angle for X-axis labels |
-| **Label Interval** | Density of X-axis labels |
+| **Estilo** | Forma del símbolo de los puntos de datos (círculo, corazón, cara sonriente, etc.) |
+| **Tamaño de punto** | Tamaño de cada punto (control deslizante, predeterminado: 6) |
+| **Transparencia de dispersión** | Transparencia de los puntos, de 0 a 1 |
+| **Puntos especiales** | Resalta el máximo/mínimo u otros puntos específicos con marcadores únicos |
+| **Rotación de etiquetas** | Ángulo de rotación de las etiquetas del eje X |
+| **Intervalo de etiquetas** | Densidad de las etiquetas del eje X |
 
-### Transform Settings
+### Configuración de transformación de datos
 
-The Scatter Chart has a unique Transform section for analytical functions:
+El gráfico de dispersión tiene una sección única de transformación de datos para funciones de análisis:
 
-**Data Aggregation** groups points into clusters, displayed with distinct colors to enable visual clustering analysis:
+**Agregación de datos** agrupa los puntos en clústeres mostrados con diferentes colores, lo que permite el análisis de agrupamiento visual:
 
-![Scatter chart with data aggregation showing color-coded clusters](../images/scatter-aggregation.png)
+![Gráfico de dispersión con agregación de datos que muestra clústeres codificados por colores](../images/scatter-aggregation.png)
 
-**Regression Analysis** fits a curve to the data and overlays it on the scatter plot. Supported functions include linear regression, exponential regression, and polynomial regression (with configurable degree):
+**Análisis de regresión** ajusta una curva a los datos y la superpone en el gráfico de dispersión. Las funciones admitidas incluyen regresión lineal, exponencial y polinómica (con orden configurable):
 
-![Scatter chart with regression curve overlaid](../images/scatter-analysis.png)
+![Gráfico de dispersión con curva de regresión](../images/scatter-analysis.png)
 
-| Transform Function Type | Description |
+| Tipo de transformación de datos | Descripción |
 |---|---|
-| **Off** | No transform; raw data points are plotted |
-| **Data Aggregation** | Groups data points and displays aggregated clusters |
-| **Regression Analysis** | Fits a regression curve (linear, exponential, or polynomial) to the data |
+| **Desactivado** | Sin transformación, traza los puntos de datos sin procesar directamente |
+| **Agregación de datos** | Agrupa los puntos de datos y muestra clústeres agregados |
+| **Análisis de regresión** | Ajusta una curva de regresión a los datos (lineal, exponencial o polinómica) |
 
-### Axis Settings
+### Configuración de ejes
 
-#### Axis Title
+#### Títulos de ejes
 
-Configure Y-axis labels with names and units:
+Configura el nombre y la unidad del eje Y:
 
-![Scatter chart with Y-axis title configured](../images/scatter-title.png)
+![Gráfico de dispersión con título del eje Y configurado](../images/scatter-title.png)
 
-#### Dual Y Axis
+#### Doble eje Y
 
-When two metrics have very different scales, a shared Y axis compresses the smaller signal. Enabling the **Right Y Axis** assigns each to its own scale:
+Cuando dos métricas tienen rangos muy diferentes, compartir el eje Y comprime la señal más pequeña. Habilitar **Eje derecho** asigna cada métrica a su propia escala:
 
-![Scatter chart with two metrics on a shared axis — smaller signal compressed](../images/scatter-both.png)
+![Dos métricas con el mismo eje — la señal más pequeña está comprimida](../images/scatter-both.png)
 
-![Scatter chart with dual Y axis — each metric readable](../images/scatter-bothY.png)
+![Doble eje Y — cada métrica es claramente legible](../images/scatter-bothY.png)
 
-### Limits Settings
+### Configuración de valores de límite
 
-Limit lines can be overlaid on the scatter plot to mark operating boundaries:
+Se pueden superponer líneas de límite en el gráfico de dispersión para marcar los rangos operativos:
 
-![Scatter chart with limit lines](../images/scatter-limit.png)
+![Gráfico de dispersión con líneas de límite](../images/scatter-limit.png)
 
-### Legend Settings
+### Configuración de leyenda
 
-In Table mode, the legend shows summary statistics. When placed on the Right with Table mode, the legend table width is also adjustable:
+En modo tabla, la leyenda muestra estadísticas de resumen. Cuando la leyenda está a la derecha y en modo tabla, también se puede ajustar el ancho de la tabla:
 
-![Scatter chart legend in table mode with statistics](../images/scatter-legend.png)
+![Leyenda del gráfico de dispersión con estadísticas en modo tabla](../images/scatter-legend.png)
 
-| Setting | Description |
+| Ajuste | Descripción |
 |---|---|
-| **Show** | Display mode: List, Table, or Hidden |
-| **Placement** | Position: Bottom or Right |
-| **Legend Values** | Statistics shown in Table mode: Last, Min, Max, Mean, Sum, etc. |
+| **Mostrar** | Modo de visualización: lista, tabla u oculto |
+| **Posición** | Posición: abajo o a la derecha |
+| **Valores de leyenda** | Estadísticas mostradas en modo tabla: valor más reciente, mínimo, máximo, promedio, suma, etc. |
 
-## Example Scenarios
+## Ejemplos de uso
 
-**Power vs. temperature correlation.** A process engineer plots active power (X dimension) against motor temperature (Y metric) over a month of data. The scatter plot reveals a clear positive correlation — the regression curve quantifies the relationship and the R² value indicates its strength.
+**Correlación potencia-temperatura.** Un ingeniero de procesos traza un mes de potencia activa (dimensión X) frente a la temperatura del motor (métrica Y) en un gráfico de dispersión. El gráfico muestra una clara correlación positiva — la curva de regresión cuantifica la relación, y el valor R² indica su intensidad.
 
-**Quality clustering.** A quality engineer plots two process variables (pressure and temperature) for all batches in a quarter. Data Aggregation colors the clusters — most batches cluster tightly in the green zone, but a handful of outliers in a separate cluster correlate with the failed batches.
+**Agrupamiento de calidad.** Un ingeniero de calidad traza dos variables de proceso (presión y temperatura) de todos los lotes de un trimestre en un gráfico de dispersión. La función de agregación de datos colorea los clústeres — la mayoría de los lotes se agrupan estrechamente en la zona verde, pero algunos valores atípicos están en un clúster separado correlacionado con lotes no conformes.
 
-**Outlier detection.** A data engineer enables Disable Sampling to plot every raw reading of a sensor. The Special Point setting highlights the maximum value with a red marker. A clear outlier point significantly above the cluster is identified for investigation.
+**Detección de valores atípicos.** Un ingeniero de datos habilita la desactivación del muestreo y traza todas las lecturas sin procesar de un sensor. El ajuste de puntos especiales usa rojo para resaltar el máximo. Se identifica un punto anómalo claramente por encima del clúster para su investigación posterior.

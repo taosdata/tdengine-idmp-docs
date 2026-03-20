@@ -1,85 +1,85 @@
 ---
-title: Browsing Events
-sidebar_label: Browsing Events
+title: Explorar Eventos
+sidebar_label: Explorar Eventos
 ---
 
-# 6.2 Browsing Events
+# 6.2 Explorar Eventos
 
-Events can be browsed from two places: the **global Events view** in the main navigation, which shows all events across the entire system, and the **Events tab** on each individual element, which shows only the events for that element and optionally its descendants. Both views share the same layout, controls, and filtering options.
+Los eventos pueden explorarse desde dos lugares: la **vista global de Eventos** en la navegación principal, que muestra todos los eventos de todo el sistema, y la **pestaña Eventos** en cada elemento individual, que muestra solo los eventos de ese elemento y, opcionalmente, sus descendientes. Ambas vistas comparten el mismo diseño, controles y opciones de filtrado.
 
-## 6.2.1 The Global Events View
+## 6.2.1 La Vista Global de Eventos
 
-Click **Events** in the top navigation bar to open the system-wide events list. This view shows all events across all elements that the current user has permission to access.
+Haga clic en **Eventos** en la barra de navegación superior para abrir la lista de eventos a nivel de sistema. Esta vista muestra todos los eventos de todos los elementos a los que el usuario actual tiene permiso de acceso.
 
-### Toolbar
+### Barra de Herramientas
 
-| Control | Description |
+| Control | Descripción |
 |---|---|
-| **Search** | Search events by name or other text |
-| **Column selector** | Show or hide optional columns. The **Path** column (element hierarchy path) is hidden by default |
-| **Refresh** | Reload the events list |
-| **Export CSV** | Export the current filtered event list as a CSV file |
-| **Save as Panel** | Save the current event list as a panel so it can be added to a dashboard |
+| **Buscar** | Buscar eventos por nombre u otro texto |
+| **Selector de columnas** | Mostrar u ocultar columnas opcionales. La columna **Ruta** (ruta jerárquica del elemento) está oculta de forma predeterminada |
+| **Actualizar** | Recargar la lista de eventos |
+| **Exportar CSV** | Exportar la lista de eventos filtrada actual como archivo CSV |
+| **Guardar como Panel** | Guardar la lista de eventos actual como panel para poder añadirla a un panel de control |
 
-### Filters
+### Filtros
 
-The following filter controls narrow the event list:
+Los siguientes controles de filtro reducen la lista de eventos:
 
-- **Show Unacknowledged only:** Toggle to show only events that have not been acknowledged
-- **Categories:** Filter by event category tag
-- **Template:** Filter by event template
+- **Mostrar solo sin confirmar:** Alternar para mostrar únicamente los eventos que no han sido confirmados
+- **Categorías:** Filtrar por etiqueta de categoría de evento
+- **Plantilla:** Filtrar por plantilla de evento
 
-### Left Sidebar
+### Barra Lateral Izquierda
 
-- **Favorites Events:** Individual events that have been marked as favorites for quick access. Any event can be added to favorites.
-- **Event Filters:** Saved filter configurations (see [Saved Event Filters](#623-saved-event-filters) below)
+- **Eventos Favoritos:** Eventos individuales marcados como favoritos para acceso rápido. Cualquier evento puede añadirse a favoritos.
+- **Filtros de Eventos:** Configuraciones de filtros guardadas (véase [Filtros de Eventos Guardados](#623-filtros-de-eventos-guardados) a continuación)
 
-### Event List Columns
+### Columnas de la Lista de Eventos
 
-| Column | Description |
+| Columna | Descripción |
 |---|---|
-| **S** | Severity level indicator icon |
-| **A** | Acknowledgment status icon |
-| **Name** | Event name — click to open the event detail page |
-| **Duration** | Elapsed time from start to end |
-| **Start Time** | Event start timestamp |
-| **End Time** | Event end timestamp (blank if the event is still active) |
-| **Categories** | Category tags |
-| **Template** | Event template name |
-| **Severity Level** | Severity label |
-| **Reason Code** | Reason code if set |
-| **Description** | Description text |
+| **S** | Icono indicador del nivel de gravedad |
+| **A** | Icono de estado de confirmación |
+| **Nombre** | Nombre del evento — haga clic para abrir la página de detalle del evento |
+| **Duración** | Tiempo transcurrido desde el inicio hasta el fin |
+| **Hora de Inicio** | Marca de tiempo de inicio del evento |
+| **Hora de Fin** | Marca de tiempo de fin del evento (en blanco si el evento sigue activo) |
+| **Categorías** | Etiquetas de categoría |
+| **Plantilla** | Nombre de la plantilla de evento |
+| **Nivel de Gravedad** | Etiqueta de gravedad |
+| **Código de Causa** | Código de causa, si está configurado |
+| **Descripción** | Texto de descripción |
 
-### Row Actions
+### Acciones de Fila
 
-Hover over any event row to reveal the **⋮** (more) menu on the right. Click it to expand the following options:
+Pase el cursor sobre cualquier fila de evento para mostrar el menú **⋮** (más) a la derecha. Haga clic para expandir las siguientes opciones:
 
-| Action | Description |
+| Acción | Descripción |
 |---|---|
-| **View** | Open the event detail page |
-| **Send Notification** | Manually trigger a notification for this event to its configured contact points |
-| **Ack** | Acknowledge the event |
-| **Trend Chart Analysis** | Open a trend chart for the event's time range on its associated element |
-| **Delete** | Delete the event record |
+| **Ver** | Abrir la página de detalle del evento |
+| **Enviar Notificación** | Activar manualmente una notificación para este evento hacia sus puntos de contacto configurados |
+| **Confirmar** | Confirmar el evento |
+| **Análisis de Tendencias** | Abrir un gráfico de tendencias para el intervalo de tiempo del evento en su elemento asociado |
+| **Eliminar** | Eliminar el registro del evento |
 
-## 6.2.2 Element-Level Events
+## 6.2.2 Eventos a Nivel de Elemento
 
-Each element has its own **Events** tab showing only the events associated with that element. Navigate to any element in the asset tree and click the **Events** tab.
+Cada elemento tiene su propia pestaña **Eventos** que muestra solo los eventos asociados a ese elemento. Navegue a cualquier elemento en el árbol de activos y haga clic en la pestaña **Eventos**.
 
-A scope toggle controls which events are shown:
+Un control de alcance determina qué eventos se muestran:
 
-- **This element only:** Shows events generated by analyses configured on this element
-- **Include child elements:** Expands the list to include events from all descendant elements in the hierarchy
+- **Solo este elemento:** Muestra los eventos generados por análisis configurados en este elemento
+- **Incluir elementos secundarios:** Amplía la lista para incluir eventos de todos los elementos descendientes en la jerarquía
 
-The include-child-elements option makes it easy to review all operational events for an entire production line or site — simply navigate to the appropriate level in the asset tree.
+La opción de incluir elementos secundarios facilita revisar todos los eventos operacionales de una línea de producción o sitio completo — simplemente navegue al nivel apropiado en el árbol de activos.
 
-The element-level events tab has the same filters, columns, and row actions as the global events view. Its toolbar includes all the same controls plus two additional ones specific to this context:
+La pestaña de eventos a nivel de elemento tiene los mismos filtros, columnas y acciones de fila que la vista global de eventos. Su barra de herramientas incluye todos los mismos controles más dos adicionales específicos de este contexto:
 
-| Control | Description |
+| Control | Descripción |
 |---|---|
-| **Generate test event data** | Create a test event on this element for development and validation purposes |
-| **Notification Rule** | Open the notification rule configuration for this element — see [Alerts and Notifications](./04-alerts-and-notifications.md) |
+| **Generar datos de evento de prueba** | Crear un evento de prueba en este elemento para propósitos de desarrollo y validación |
+| **Regla de Notificación** | Abrir la configuración de la regla de notificación para este elemento — véase [Alertas y Notificaciones](./04-alerts-and-notifications.md) |
 
-## 6.2.3 Saved Event Filters
+## 6.2.3 Filtros de Eventos Guardados
 
-**Event Filters** are created by performing an event search and saving the search result under a name. After running a search — using any combination of the available filter controls — save the current search result as a named filter. The saved filter then appears in the **Event Filters** section of the left sidebar. Clicking it re-runs the same search and restores that result instantly.
+Los **Filtros de Eventos** se crean realizando una búsqueda de eventos y guardando el resultado bajo un nombre. Después de ejecutar una búsqueda — usando cualquier combinación de los controles de filtro disponibles — guarde el resultado actual como filtro con nombre. El filtro guardado aparecerá en la sección **Filtros de Eventos** de la barra lateral izquierda. Al hacer clic en él, se vuelve a ejecutar la misma búsqueda y se restaura ese resultado de inmediato.

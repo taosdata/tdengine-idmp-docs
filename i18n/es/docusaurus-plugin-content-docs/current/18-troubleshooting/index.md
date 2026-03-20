@@ -3,55 +3,54 @@ title: Solución de problemas
 sidebar_label: Solución de problemas
 ---
 
-# 18 Troubleshooting
+# 18. Solución de problemas
 
-## Confirming the Problem
+## 18.1 Confirmar el problema
 
-If you encounter an issue while using TDengine IDMP, start by disabling the browser cache and reloading the page:
+Si encuentra algún problema al usar TDengine IDMP, primero desactive la caché del navegador, luego actualice la página y vuelva a intentarlo. Los pasos específicos son los siguientes:
 
-1. Open your browser's developer tools.
-2. Switch to the **Network** tab.
-3. Check **Disable cache**.
-4. Reload the page and check whether the problem persists.
+1. Abra las herramientas de desarrollo del navegador.
+2. Cambie a la pestaña **Red**.
+3. Marque la opción **Deshabilitar caché**.
+4. Actualice la página y compruebe si el problema persiste.
 
-If the problem persists, follow the steps below to collect frontend and backend diagnostic information before submitting a report.
+Si el problema persiste, siga los pasos a continuación para recopilar información de errores del frontend y del backend, de modo que podamos investigar.
 
-## Collecting Frontend Information
+## 18.2 Recopilar información del frontend
 
-### Console Errors
+### 18.2.1 Recopilar mensajes de error de la consola
 
-1. Open your browser's developer tools.
-2. Switch to the **Console** tab.
-3. If errors are present, right-click any error entry and choose **Save as** to save the console output to a file.
+1. Abra las herramientas de desarrollo del navegador.
+2. Cambie a la pestaña **Consola**.
+3. Si hay errores en la consola, haga clic derecho sobre el error y seleccione **Guardar como** para guardar los errores en un archivo.
 
-### Network Request Failures
+### 18.2.2 Recopilar información de solicitudes de red
 
-1. Open your browser's developer tools.
-2. Switch to the **Network** tab.
-3. Identify any failed requests (shown in red).
-4. Right-click a failed request and choose **Copy**. Save the following to a file:
-   - Request headers
-   - Response headers
-   - Response body
-   - Stack trace (if available)
+1. Abra las herramientas de desarrollo del navegador.
+2. Cambie a la pestaña **Red**.
+3. Si hay solicitudes fallidas, haga clic derecho sobre la solicitud fallida (mostrada en rojo) y seleccione **Copiar**. Guarde el siguiente contenido en un archivo:
+   - Encabezados de solicitud
+   - Encabezados de respuesta
+   - Cuerpo de la respuesta
+   - Seguimiento de la pila (si está disponible)
 
-## Collecting Backend Logs
+## 18.3 Recopilar registros del backend
 
-### Local Installation
+### Instalación local
 
-For a locally installed deployment, log files are located at the following paths:
+Si ha implementado TDengine IDMP mediante instalación local, los archivos de registro se encuentran en las siguientes ubicaciones:
 
-| Component | Log File Path |
+| Componente | Ruta del archivo de registro |
 | --- | --- |
-| TDengine IDMP | `/var/log/taos/tda.log` |
-| TDengine IDMP error log | `/var/log/taos/tda-error.log` |
-| TDengine IDMP AI | `/var/log/taos/idmp-ai.log` |
-| TDengine IDMP AI error log | `/var/log/taos/idmp-ai-error.log` |
-| TDengine TSDB-Enterprise | `/var/log/taos/taosdlog.*` |
+| Registro de TDengine IDMP | `/var/log/taos/tda.log` |
+| Registro de errores de TDengine IDMP | `/var/log/taos/tda-error.log` |
+| Registro de IA de TDengine IDMP | `/var/log/taos/idmp-ai.log` |
+| Registro de errores de IA de TDengine IDMP | `/var/log/taos/idmp-ai-error.log` |
+| Registro de TDengine TSDB-Enterprise | `/var/log/taos/taosdlog.*` |
 
-### Docker Deployment
+### Implementación en contenedores
 
-For a Docker-based deployment, copy the log files out of the containers using the following commands:
+Si ha implementado TDengine IDMP mediante contenedores, puede copiar los archivos de registro desde el contenedor al entorno local con los siguientes comandos:
 
 ```bash
 docker cp tdengine-tsdb:/var/log/taos/taosdlog.* ./
@@ -61,6 +60,6 @@ docker cp tdengine-idmp:/var/log/taos/idmp-ai.log ./
 docker cp tdengine-idmp:/var/log/taos/idmp-ai-error.log ./
 ```
 
-## Submitting an Issue
+## 18.4 Enviar un problema
 
-TDengine uses [GitHub Issues](https://github.com/taosdata/tdengine-idmp-docs/issues/new/choose) to track and manage bug reports and support requests. Follow the issue template and attach the information collected above. The support team will respond as soon as possible.
+Utilizamos [GitHub Issues](https://github.com/taosdata/tdengine-idmp-docs/issues/new/choose) para rastrear y gestionar problemas. Por favor, siga la plantilla de GitHub Issues para enviar la información recopilada anteriormente; nuestro equipo de soporte le responderá lo antes posible y le ayudará a resolver el problema.

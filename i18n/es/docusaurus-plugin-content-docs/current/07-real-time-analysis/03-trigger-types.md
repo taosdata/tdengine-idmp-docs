@@ -1,231 +1,231 @@
 ---
-title: Trigger Types
-sidebar_label: Trigger Types
+title: Tipos de Disparador
+sidebar_label: Tipos de Disparador
 ---
 
-# 7.3 Trigger Types
+# 7.3 Tipos de Disparador
 
-The trigger defines when an analysis fires. TDengine IDMP supports eight trigger types, selected from the **Trigger Type** dropdown in the Trigger section of the analysis form.
+El disparador define cuándo se activa un análisis. TDengine IDMP admite ocho tipos de disparador, seleccionados en el menú desplegable **Tipo de Disparador** en la sección Disparador del formulario de análisis.
 
-Triggers other than Periodic Time Window depend on an element's attributes having live data flowing through TDengine — specifically, the attributes must be of **TDengine Metric** data reference type. If an element has no such attributes, only Sliding Window and Session Window are available.
+Los disparadores distintos a la Ventana Periódica de Tiempo dependen de que los atributos de un elemento tengan datos en tiempo real fluyendo a través de TDengine — específicamente, los atributos deben ser del tipo de referencia de datos **TDengine Metric**. Si un elemento no tiene tales atributos, solo están disponibles la Ventana Deslizante y la Ventana de Sesión.
 
-## Sliding Window
+## Ventana Deslizante
 
-Fires on a fixed sliding time interval based on event time — the timestamps of the incoming data.
+Se activa en un intervalo de tiempo deslizante fijo basado en el tiempo del evento — las marcas de tiempo de los datos entrantes.
 
-### When to Use
+### Cuándo Usar
 
-- You need a metric that is always fresh and continuously updated as new data arrives
-- You want rolling aggregations such as moving averages, rolling totals, or sliding-window KPIs
-- Operators need a dashboard value that reflects the last N minutes of activity at all times
-- You want to detect trends or rate-of-change by comparing successive window results
+- Necesita una métrica que siempre esté actualizada y se actualice continuamente a medida que llegan nuevos datos
+- Quiere agregaciones continuas como promedios móviles, totales acumulados o KPIs de ventana deslizante
+- Los operadores necesitan un valor en el panel de control que siempre refleje los últimos N minutos de actividad
+- Quiere detectar tendencias o tasas de cambio comparando resultados de ventanas sucesivas
 
-### Parameters
+### Parámetros
 
-| Parameter | Description |
+| Parámetro | Descripción |
 |---|---|
-| **Sliding** | The interval between trigger firings (e.g., every 1 minute, every 10 seconds) |
+| **Deslizamiento** | El intervalo entre activaciones del disparador (por ejemplo, cada 1 minuto, cada 10 segundos) |
 
-### Examples
+### Ejemplos
 
-**Rolling energy consumption.** A factory floor dashboard shows average power draw for each motor over the last 10 minutes, recalculated every minute. Operators can spot a motor running hotter than usual before it trips a breaker.
+**Consumo de energía continuo.** Un panel de control en la planta muestra el consumo medio de energía de cada motor durante los últimos 10 minutos, recalculado cada minuto. Los operadores pueden detectar un motor que funciona más caliente de lo habitual antes de que salte un disyuntor.
 
-**Production rate tracking.** A packaging line counts units produced in the last 5 minutes, updated every 30 seconds. The line supervisor can see in real time whether the rate is on target for the shift goal.
+**Seguimiento de la tasa de producción.** Una línea de empaquetado cuenta las unidades producidas en los últimos 5 minutos, actualizado cada 30 segundos. El supervisor de línea puede ver en tiempo real si la tasa está en línea con el objetivo del turno.
 
-**Vibration trending.** A rotating equipment monitor computes RMS vibration over a 1-minute sliding window every 15 seconds. A gradual upward trend in the output signals developing bearing wear days before a fault occurs.
-
----
-
-## Anomaly Detection
-
-Runs an anomaly detection algorithm against a target attribute on a sliding schedule. The system automatically identifies readings that deviate from expected behavior without requiring manually defined thresholds.
-
-### When to Use
-
-- You want to catch abnormal behavior without knowing in advance what "abnormal" looks like
-- Equipment behavior is complex enough that fixed thresholds produce too many false alarms
-- You want the system to learn the normal operating pattern and flag deviations automatically
-- You need early warning of developing faults that would not yet breach a hard limit
-
-### Parameters
-
-| Parameter | Description |
-|---|---|
-| **Sliding** | How often to run the anomaly check |
-| **Target** (required) | The attribute to analyze for anomalies |
-| **Algorithm** (required) | The anomaly detection algorithm to apply |
-| **White Noise Data Check** | When enabled, skips the anomaly check if the data appears to be white noise (no meaningful signal) |
-| **Algorithm Parameters** | Optional algorithm-specific parameters in `a=1,b=2,c=3` format |
-
-### Examples
-
-**Chiller performance degradation.** An anomaly detection analysis runs every 5 minutes on a chiller's coefficient of performance. No threshold is configured — the algorithm learns the normal seasonal pattern. When performance begins drifting outside that pattern, an event fires weeks before the chiller would fail a manual efficiency check.
-
-**Pump flow anomaly.** A water pump's flow rate looks normal to the eye, but an anomaly detection analysis flags a subtle periodic fluctuation that indicates the beginning of impeller cavitation. Maintenance schedules an inspection during the next planned outage.
+**Seguimiento de vibraciones.** Un monitor de equipos rotativos calcula el valor RMS de vibración sobre una ventana deslizante de 1 minuto cada 15 segundos. Una tendencia gradualmente ascendente en la salida indica un desgaste incipiente del rodamiento días antes de que ocurra el fallo.
 
 ---
 
-## Periodic Time Window
+## Detección de Anomalías
 
-Fires on the system wall clock at a fixed calendar interval, independent of when data arrives.
+Ejecuta un algoritmo de detección de anomalías sobre un atributo objetivo según un programa deslizante. El sistema identifica automáticamente lecturas que se desvían del comportamiento esperado sin requerir umbrales definidos manualmente.
 
-### When to Use
+### Cuándo Usar
 
-- You need scheduled reports or summaries that land at predictable times — hourly, daily, per shift
-- Downstream systems (ERP, MES, dashboards) expect data on a fixed schedule
-- You want to aggregate an entire shift, day, or week into a single KPI record
-- The calculation makes sense only over a complete time period, not a rolling window
+- Quiere detectar comportamientos anómalos sin saber de antemano cómo se ve lo "anómalo"
+- El comportamiento del equipo es suficientemente complejo como para que los umbrales fijos produzcan demasiadas falsas alarmas
+- Quiere que el sistema aprenda el patrón de operación normal y marque las desviaciones automáticamente
+- Necesita advertencia temprana de fallos en desarrollo que aún no superarían un límite fijo
 
-### Parameters
+### Parámetros
 
-| Parameter | Description |
+| Parámetro | Descripción |
 |---|---|
-| **Period** | The calendar interval (e.g., every 1 hour, every 1 day) |
-| **Offset** | A delay after the period boundary before firing. For example, a 1-day period with a 2-hour offset fires at 02:00 each day — useful for generating daily reports after late-arriving data has had time to settle. |
+| **Deslizamiento** | Con qué frecuencia ejecutar la verificación de anomalías |
+| **Objetivo** (obligatorio) | El atributo a analizar en busca de anomalías |
+| **Algoritmo** (obligatorio) | El algoritmo de detección de anomalías a aplicar |
+| **Verificación de Datos de Ruido Blanco** | Cuando está habilitado, omite la verificación de anomalías si los datos parecen ser ruido blanco (sin señal significativa) |
+| **Parámetros del Algoritmo** | Parámetros opcionales específicos del algoritmo en formato `a=1,b=2,c=3` |
 
-### Examples
+### Ejemplos
 
-**Daily production summary.** A report fires every day at 06:00 (period: 1 day, offset: 6 hours), aggregating total output, average yield, and downtime for the previous day. The plant manager finds the summary waiting in their dashboard each morning.
+**Degradación del rendimiento del enfriador.** Un análisis de detección de anomalías se ejecuta cada 5 minutos sobre el coeficiente de rendimiento de un enfriador. No se configura ningún umbral — el algoritmo aprende el patrón estacional normal. Cuando el rendimiento comienza a desviarse de ese patrón, se genera un evento semanas antes de que el enfriador falle en una verificación manual de eficiencia.
 
-**Hourly OEE snapshot.** An OEE analysis fires at the top of each hour, computing availability, performance, and quality for the preceding hour. The results feed a trend chart that shows how OEE evolves across the shift.
-
-**Shift handover report.** A 12-hour period with an appropriate offset aligns exactly with shift boundaries. Each outgoing shift hands over a complete record — total units, faults, and average process temperature — without manual calculation.
+**Anomalía de flujo en bomba.** La tasa de flujo de una bomba de agua parece normal a simple vista, pero un análisis de detección de anomalías señala una fluctuación periódica sutil que indica el inicio de cavitación en el impulsor. El equipo de mantenimiento programa una inspección durante la próxima parada planificada.
 
 ---
 
-## Data Input
+## Ventana Periódica de Tiempo
 
-Fires whenever new data is written to a specific attribute — or any attribute — on the element.
+Se activa según el reloj del sistema en un intervalo de calendario fijo, independientemente de cuándo lleguen los datos.
 
-### When to Use
+### Cuándo Usar
 
-- You want the analysis to react to every new measurement with the minimum possible delay
-- The value of the result depends on the very latest reading, not a time-aggregated window
-- You are computing derived attributes (unit conversions, calculated tags) that should always reflect current data
-- You want to evaluate a condition on every single incoming point
+- Necesita informes o resúmenes programados que lleguen en momentos predecibles — por hora, por día, por turno
+- Los sistemas posteriores (ERP, MES, paneles de control) esperan datos en un horario fijo
+- Quiere agregar un turno, día o semana completos en un único registro KPI
+- El cálculo solo tiene sentido sobre un período de tiempo completo, no sobre una ventana continua
 
-### Parameters
+### Parámetros
 
-| Parameter | Description |
+| Parámetro | Descripción |
 |---|---|
-| **Target** | The attribute whose new data writes trigger the analysis. Leave empty to trigger on any new data from any attribute. |
+| **Período** | El intervalo de calendario (por ejemplo, cada 1 hora, cada 1 día) |
+| **Desplazamiento** | Un retraso después del límite del período antes de activarse. Por ejemplo, un período de 1 día con un desplazamiento de 2 horas se activa a las 02:00 cada día — útil para generar informes diarios después de que los datos que llegan tarde hayan tenido tiempo de asentarse. |
 
-### Examples
+### Ejemplos
 
-**Real-time unit conversion.** A pressure sensor reports in PSI. A Data Input analysis converts each reading to bar and writes it back as a derived attribute. Every downstream dashboard and analysis sees the converted value with no lag.
+**Resumen diario de producción.** Un informe se activa todos los días a las 06:00 (período: 1 día, desplazamiento: 6 horas), agregando la producción total, el rendimiento promedio y el tiempo de parada del día anterior. El gerente de planta encuentra el resumen esperándolo en su panel de control cada mañana.
 
-**Instant limit check.** A temperature attribute triggers an analysis on every new reading. If the value exceeds the operating limit, an event fires immediately — not at the next scheduled interval.
+**Instantánea de OEE por hora.** Un análisis de OEE se activa en punto cada hora, calculando disponibilidad, rendimiento y calidad para la hora anterior. Los resultados alimentan un gráfico de tendencias que muestra cómo evoluciona el OEE a lo largo del turno.
+
+**Informe de cambio de turno.** Un período de 12 horas con un desplazamiento apropiado se alinea exactamente con los límites del turno. Cada turno saliente entrega un registro completo — unidades totales, fallos y temperatura de proceso promedio — sin cálculo manual.
 
 ---
 
-## State Window
+## Entrada de Datos
 
-Fires when the value of an integer-type attribute changes from one state to another.
+Se activa cada vez que se escriben nuevos datos en un atributo específico — o cualquier atributo — del elemento.
 
-### When to Use
+### Cuándo Usar
 
-- Equipment operates in distinct modes — running, idle, faulted, warming up — and you want to analyze each mode separately
-- You need to know how long a machine spent in each state to calculate utilization or OEE
-- You want to capture a summary of what happened during each operating mode, not just the transitions
-- State-based grouping aligns more naturally with your process than time-based grouping
-- Each batch in your process carries a unique batch number attribute, and you want automatic per-batch summaries without manually marking start and end times
+- Quiere que el análisis reaccione a cada nueva medición con el mínimo retraso posible
+- El valor del resultado depende de la lectura más reciente, no de una ventana de tiempo agregada
+- Está calculando atributos derivados (conversiones de unidades, etiquetas calculadas) que siempre deben reflejar los datos actuales
+- Quiere evaluar una condición en cada punto entrante individual
 
-### Parameters
+### Parámetros
 
-| Parameter | Description |
+| Parámetro | Descripción |
 |---|---|
-| **State** (required) | The integer attribute whose state changes trigger the analysis |
+| **Objetivo** | El atributo cuyas nuevas escrituras de datos activan el análisis. Deje vacío para activar con cualquier nuevo dato de cualquier atributo. |
 
-### Examples
+### Ejemplos
 
-**Equipment utilization tracking.** A production machine has a status attribute: 0 = idle, 1 = running, 2 = faulted. A State Window analysis captures the duration and average output for every running period. The maintenance team can see exactly how much productive time was lost to each fault.
+**Conversión de unidades en tiempo real.** Un sensor de presión reporta en PSI. Un análisis de Entrada de Datos convierte cada lectura a bar y la escribe de vuelta como atributo derivado. Cada panel de control y análisis posterior ve el valor convertido sin demora.
 
-**OEE availability calculation.** Each time a machine transitions out of its "running" state, the analysis records the run duration. Summing these durations across a shift gives the availability component of OEE without any manual data extraction.
-
-**Mode-specific energy analysis.** A compressor runs in three modes: standby, load, and full load. State Window captures average power consumption for each mode separately, making it easy to compare actual consumption against nameplate specifications per operating mode.
-
-**Batch process summarization.** A reactor carries a batch number attribute that increments with each new batch. Every time the batch number changes — a state transition — the analysis fires, computing average temperature, total reaction time, and yield for the completed batch. Each batch gets its own summary automatically, regardless of how long it ran, with no operator intervention required.
+**Verificación instantánea de límite.** Un atributo de temperatura activa un análisis en cada nueva lectura. Si el valor supera el límite de operación, se genera un evento de inmediato — no en el siguiente intervalo programado.
 
 ---
 
-## Event Window
+## Ventana de Estado
 
-Fires based on a user-defined start condition and stop condition, expressed as expressions evaluated against element attributes.
+Se activa cuando el valor de un atributo de tipo entero cambia de un estado a otro.
 
-### When to Use
+### Cuándo Usar
 
-- You need to detect and characterize a sustained condition — not a momentary spike, but something that develops and resolves over time
-- You want to capture everything that happened during an abnormal episode: duration, peak values, averages
-- The boundary of the analysis window is defined by process behavior, not the clock
-- You need to filter out noise by requiring a condition to persist for a minimum duration before it counts
+- El equipo opera en modos distintos — en funcionamiento, inactivo, con fallo, calentando — y quiere analizar cada modo por separado
+- Necesita saber cuánto tiempo pasó una máquina en cada estado para calcular la utilización o el OEE
+- Quiere capturar un resumen de lo que sucedió durante cada modo de operación, no solo las transiciones
+- La agrupación basada en estados se alinea más naturalmente con su proceso que la agrupación basada en tiempo
+- Cada lote en su proceso lleva un atributo de número de lote único, y quiere resúmenes automáticos por lote sin marcar manualmente los tiempos de inicio y fin
 
-### Parameters
+### Parámetros
 
-| Parameter | Description |
+| Parámetro | Descripción |
 |---|---|
-| **Start Trigger — Expression** (required) | A condition expression that, when it evaluates to a positive value, opens the event window |
-| **Start Trigger — True for** | A minimum duration the start condition must remain true before the window opens. Prevents false triggers from momentary noise. |
-| **Stop Trigger — Expression** (required) | A condition expression that, when it evaluates to a positive value, closes the event window and fires the analysis |
+| **Estado** (obligatorio) | El atributo entero cuyos cambios de estado activan el análisis |
 
-Both expressions can be tested with the **Evaluate** button before saving.
+### Ejemplos
 
-### Examples
+**Seguimiento de utilización del equipo.** Una máquina de producción tiene un atributo de estado: 0 = inactivo, 1 = en funcionamiento, 2 = con fallo. Un análisis de Ventana de Estado captura la duración y la salida promedio de cada período en funcionamiento. El equipo de mantenimiento puede ver exactamente cuánto tiempo productivo se perdió por cada fallo.
 
-**Temperature exceedance characterization.** The start condition is `temperature > 85`. The stop condition is `temperature < 80`. Every time the process runs hot, the analysis captures how long it lasted, the peak temperature reached, and the average temperature during the exceedance — turning a raw alarm into a structured event with full context.
+**Cálculo de disponibilidad de OEE.** Cada vez que una máquina sale de su estado "en funcionamiento", el análisis registra la duración de la ejecución. Sumar estas duraciones a lo largo de un turno proporciona el componente de disponibilidad del OEE sin ninguna extracción manual de datos.
 
-**Compressor surge detection.** The start condition is `discharge_pressure > surge_limit AND flow < min_flow`. The "True for" setting is 5 seconds, filtering out transient noise. When a genuine surge condition is confirmed, the window opens. The stop condition closes it when pressure returns to normal. Each surge event is recorded with its duration and pressure profile.
+**Análisis de energía por modo.** Un compresor opera en tres modos: espera, carga y carga completa. La Ventana de Estado captura el consumo de energía promedio de cada modo por separado, facilitando la comparación del consumo real contra las especificaciones de la placa de características por modo de operación.
 
-**Low-efficiency production window.** The start condition is `oee < 0.75`. The stop condition is `oee > 0.85`. Each time OEE drops below the target and recovers, the analysis summarizes the episode — when it started, how long it lasted, and which component (availability, performance, or quality) drove the loss.
+**Resumen de proceso por lotes.** Un reactor lleva un atributo de número de lote que se incrementa con cada nuevo lote. Cada vez que cambia el número de lote — una transición de estado — el análisis se activa, calculando la temperatura promedio, el tiempo de reacción total y el rendimiento del lote completado. Cada lote obtiene su propio resumen automáticamente, independientemente de cuánto tiempo tardó, sin intervención del operador.
 
 ---
 
-## Session Window
+## Ventana de Evento
 
-Fires when there has been no new data on the element for a specified inactivity period. The analysis runs once the silence gap is detected, covering the data from the preceding active period.
+Se activa basándose en una condición de inicio y una condición de parada definidas por el usuario, expresadas como expresiones evaluadas contra los atributos del elemento.
 
-### When to Use
+### Cuándo Usar
 
-- Equipment transmits data in natural bursts — a vehicle reporting only while running, a batch machine active only during a job
-- You want to treat each burst of activity as a complete, self-contained unit of analysis
-- There is no fixed schedule to anchor the analysis; the data itself defines when a session begins and ends
-- You need per-trip, per-batch, or per-cycle summaries without manually marking start and end times
+- Necesita detectar y caracterizar una condición sostenida — no un pico momentáneo, sino algo que se desarrolla y se resuelve con el tiempo
+- Quiere capturar todo lo que sucedió durante un episodio anómalo: duración, valores máximos, promedios
+- El límite de la ventana de análisis está definido por el comportamiento del proceso, no por el reloj
+- Necesita filtrar el ruido requiriendo que una condición persista durante una duración mínima antes de que cuente
 
-### Parameters
+### Parámetros
 
-| Parameter | Description |
+| Parámetro | Descripción |
 |---|---|
-| **No Activity Interval** | How long data must be absent before the session is considered closed and the trigger fires |
+| **Disparador de Inicio — Expresión** (obligatorio) | Una expresión de condición que, cuando evalúa a un valor positivo, abre la ventana de evento |
+| **Disparador de Inicio — Verdadero durante** | Una duración mínima que la condición de inicio debe permanecer verdadera antes de que se abra la ventana. Evita disparadores falsos por ruido momentáneo. |
+| **Disparador de Parada — Expresión** (obligatorio) | Una expresión de condición que, cuando evalúa a un valor positivo, cierra la ventana de evento y activa el análisis |
 
-### Examples
+Ambas expresiones pueden probarse con el botón **Evaluar** antes de guardar.
 
-**Fleet trip analysis.** A delivery vehicle transmits GPS, speed, and fuel data only while the ignition is on. With a 10-minute no-activity interval, each trip becomes a session. When the driver parks and the data stream stops, the analysis fires — computing total distance, average speed, fuel consumed, and idle time for that trip.
+### Ejemplos
 
-**Batch cycle summary.** A reactor sends process data during each batch run and goes silent between runs. Session Window fires at the end of each batch, computing average temperature, total reaction time, and yield — without any operator needing to mark the batch boundaries manually.
+**Caracterización de excedencia de temperatura.** La condición de inicio es `temperature > 85`. La condición de parada es `temperature < 80`. Cada vez que el proceso se calienta demasiado, el análisis captura cuánto tiempo duró, la temperatura máxima alcanzada y la temperatura promedio durante la excedencia — convirtiendo una alarma en bruto en un evento estructurado con contexto completo.
 
-**CNC job reporting.** A machining center transmits spindle load and feed rate data only during active jobs. Each job becomes a session, and the analysis at the end of each session records actual cutting time, peak load, and any anomalous vibration events detected during the job.
+**Detección de surge en compresor.** La condición de inicio es `discharge_pressure > surge_limit AND flow < min_flow`. El ajuste "Verdadero durante" es de 5 segundos, filtrando el ruido transitorio. Cuando se confirma una condición de surge genuina, la ventana se abre. La condición de parada la cierra cuando la presión vuelve a la normalidad. Cada evento de surge se registra con su duración y perfil de presión.
+
+**Ventana de producción de baja eficiencia.** La condición de inicio es `oee < 0.75`. La condición de parada es `oee > 0.85`. Cada vez que el OEE cae por debajo del objetivo y se recupera, el análisis resume el episodio — cuándo comenzó, cuánto tiempo duró y qué componente (disponibilidad, rendimiento o calidad) impulsó la pérdida.
 
 ---
 
-## Count Window
+## Ventana de Sesión
 
-Fires when a specified number of new records have been written to the element's attributes.
+Se activa cuando no ha habido nuevos datos en el elemento durante un período de inactividad especificado. El análisis se ejecuta una vez que se detecta el intervalo de silencio, cubriendo los datos del período activo precedente.
 
-### When to Use
+### Cuándo Usar
 
-- Your process is defined by cycles or samples rather than elapsed time — every 100 parts inspected, every 50 sensor readings
-- Data arrives at irregular intervals but you want consistent batch sizes for analysis
-- You are working with instruments that report on demand or event-driven rather than on a fixed schedule
-- Sample-based quality analysis requires a fixed number of measurements per calculation
+- El equipo transmite datos en ráfagas naturales — un vehículo que reporta solo mientras está en marcha, una máquina de lotes activa solo durante un trabajo
+- Quiere tratar cada ráfaga de actividad como una unidad de análisis completa e independiente
+- No hay un horario fijo para anclar el análisis; los propios datos definen cuándo comienza y termina una sesión
+- Necesita resúmenes por viaje, por lote o por ciclo sin marcar manualmente los tiempos de inicio y fin
 
-### Parameters
+### Parámetros
 
-| Parameter | Description |
+| Parámetro | Descripción |
 |---|---|
-| **Target** | The specific attribute to count new records for. Leave empty to count across all attributes. |
-| **Count** | The number of new records that must accumulate before the trigger fires |
+| **Intervalo Sin Actividad** | Cuánto tiempo deben estar ausentes los datos antes de que la sesión se considere cerrada y el disparador se active |
 
-### Examples
+### Ejemplos
 
-**Statistical process control.** A quality sensor on a production line takes a measurement every time a part passes. A Count Window analysis fires every 25 readings, computing the mean and standard deviation for that sample group. Control chart limits are evaluated against each group result, independent of how long the 25 parts took to produce.
+**Análisis de viajes de flota.** Un vehículo de reparto transmite datos de GPS, velocidad y combustible solo mientras el encendido está activado. Con un intervalo de 10 minutos sin actividad, cada viaje se convierte en una sesión. Cuando el conductor aparca y el flujo de datos se detiene, el análisis se activa — calculando la distancia total, la velocidad promedio, el combustible consumido y el tiempo en ralentí para ese viaje.
 
-**Lab instrument batch.** A gas chromatograph reports one result per sample run. A Count Window fires every 10 results, computing the average concentration and flagging any outlier readings in the batch — matching the natural unit of work for the lab team.
+**Resumen de ciclo por lotes.** Un reactor envía datos de proceso durante cada ejecución de lote y queda en silencio entre ejecuciones. La Ventana de Sesión se activa al final de cada lote, calculando la temperatura promedio, el tiempo de reacción total y el rendimiento — sin que ningún operador necesite marcar los límites del lote manualmente.
+
+**Reporte de trabajos CNC.** Un centro de mecanizado transmite datos de carga del husillo y velocidad de avance solo durante los trabajos activos. Cada trabajo se convierte en una sesión, y el análisis al final de cada sesión registra el tiempo de corte real, la carga máxima y cualquier evento de vibración anómala detectado durante el trabajo.
+
+---
+
+## Ventana de Conteo
+
+Se activa cuando se ha escrito un número especificado de nuevos registros en los atributos del elemento.
+
+### Cuándo Usar
+
+- Su proceso está definido por ciclos o muestras en lugar de tiempo transcurrido — cada 100 piezas inspeccionadas, cada 50 lecturas de sensor
+- Los datos llegan a intervalos irregulares pero quiere tamaños de lote consistentes para el análisis
+- Trabaja con instrumentos que reportan bajo demanda o por evento en lugar de en un horario fijo
+- El análisis de calidad basado en muestras requiere un número fijo de mediciones por cálculo
+
+### Parámetros
+
+| Parámetro | Descripción |
+|---|---|
+| **Objetivo** | El atributo específico para contar los nuevos registros. Deje vacío para contar en todos los atributos. |
+| **Conteo** | El número de nuevos registros que deben acumularse antes de que el disparador se active |
+
+### Ejemplos
+
+**Control estadístico de procesos.** Un sensor de calidad en una línea de producción toma una medición cada vez que pasa una pieza. Un análisis de Ventana de Conteo se activa cada 25 lecturas, calculando la media y la desviación estándar de ese grupo de muestras. Los límites del gráfico de control se evalúan contra cada resultado del grupo, independientemente de cuánto tardaron en producirse las 25 piezas.
+
+**Lote de instrumentos de laboratorio.** Un cromatógrafo de gases reporta un resultado por ejecución de muestra. Una Ventana de Conteo se activa cada 10 resultados, calculando la concentración promedio y marcando cualquier lectura atípica en el lote — coincidiendo con la unidad de trabajo natural del equipo de laboratorio.

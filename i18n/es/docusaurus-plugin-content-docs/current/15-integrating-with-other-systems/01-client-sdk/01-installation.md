@@ -1,20 +1,20 @@
 ---
-title: Installation
-sidebar_label: Installation
+title: Instalación
+sidebar_label: Instalación
 ---
 
-# 15.1.1 Installation
+# 15.1.1 Instalación
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Prerequisites
+## Prerrequisitos
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
 
-- Java ≥ 11 (latest LTS release recommended)
-- Maven command-line tools
+- Java ≥ 11 (se recomienda la última versión LTS)
+- Herramientas de línea de comandos de Maven
 
 </TabItem>
 <TabItem value="python" label="Python">
@@ -24,19 +24,19 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 </Tabs>
 
-## Installing the SDK
+## Instalar el SDK
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
 
-**Step 1 — Install the SDK into your local Maven repository:**
+**Paso 1 — Instalar el SDK en su repositorio Maven local:**
 
 ```bash
 cd idmp-java-sdk
 mvn install -DskipTests
 ```
 
-### Step 2 — Add the dependency to your project's `pom.xml`
+### Paso 2 — Agregar la dependencia al `pom.xml` de su proyecto
 
 ```xml
 <dependency>
@@ -49,7 +49,7 @@ mvn install -DskipTests
 </TabItem>
 <TabItem value="python" label="Python">
 
-Navigate to the `idmp-python-sdk` directory and install with pip:
+Navegue al directorio `idmp-python-sdk` e instale con pip:
 
 ```bash
 cd idmp-python-sdk
@@ -57,7 +57,7 @@ pip install .
 ```
 
 :::tip
-Install in a virtual environment to avoid dependency conflicts with other projects:
+Instale en un entorno virtual para evitar conflictos de dependencias con otros proyectos:
 
 ```bash
 python -m venv .venv
@@ -70,12 +70,12 @@ pip install .
 </TabItem>
 </Tabs>
 
-## Verifying the Installation
+## Verificar la instalación
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
 
-Add the following import to your project. If it compiles without errors, the SDK is installed correctly:
+Agregue el siguiente import a su proyecto. Si compila sin errores, el SDK está instalado correctamente:
 
 ```java
 import org.openapitools.client.ApiClient;
@@ -92,14 +92,14 @@ python -c "import idmp_sdk; print('SDK installed successfully')"
 </TabItem>
 </Tabs>
 
-## Private Repository Setup
+## Configuración de repositorio privado
 
-If your development environment has no internet access, host the SDK in a private repository:
+Si su entorno de desarrollo no tiene acceso a internet, aloje el SDK en un repositorio privado:
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
 
-Upload the JAR to your private Maven repository (Nexus, Artifactory, etc.), then configure the repository URL in `pom.xml`:
+Cargue el JAR a su repositorio Maven privado (Nexus, Artifactory, etc.), luego configure la URL del repositorio en `pom.xml`:
 
 ```xml
 <repositories>
@@ -113,7 +113,7 @@ Upload the JAR to your private Maven repository (Nexus, Artifactory, etc.), then
 </TabItem>
 <TabItem value="python" label="Python">
 
-Upload the SDK source to a private PyPI server, then install from that index:
+Cargue el código fuente del SDK a un servidor PyPI privado, luego instale desde ese índice:
 
 ```bash
 pip install idmp-sdk --index-url https://your-pypi-server/simple/

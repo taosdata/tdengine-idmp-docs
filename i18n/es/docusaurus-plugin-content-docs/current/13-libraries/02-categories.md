@@ -1,47 +1,47 @@
 ---
-title: Categories
-sidebar_label: Categories
+title: Categorías
+sidebar_label: Categorías
 ---
 
-# 13.2 Categories
+# 13.2 Categorías
 
-**Categories** are classification tags that can be applied to objects in IDMP to make them easier to filter, search, and organize. Any element, attribute, event, dashboard, panel, or analysis can be tagged with one or more categories.
+Las **categorías** son etiquetas de clasificación que pueden aplicarse a objetos en IDMP para facilitar su filtrado, búsqueda y organización. Cualquier elemento, atributo, evento, panel de control, indicador o análisis puede etiquetarse con una o más categorías.
 
-Categories are managed under **Libraries → Categories**.
+Las categorías se gestionan en **Libraries → Categories**.
 
-## The Category List
+## La lista de categorías
 
-The list shows all defined categories with the following columns:
+La lista muestra todas las categorías definidas con las siguientes columnas:
 
-| Column | Description |
+| Columna | Descripción |
 |---|---|
-| **Name** | Category name |
-| **Description** | Optional description |
+| **Name** | Nombre de la categoría |
+| **Description** | Descripción opcional |
 
-Each category also has a **Type** that determines which kind of object it can be applied to. The list is organized by object type. Click a category name to edit it. Use the **⋮** menu on a row to edit or delete it.
+Cada categoría también tiene un **Type** que determina a qué tipo de objeto puede aplicarse. La lista está organizada por tipo de objeto. Haga clic en el nombre de una categoría para editarla. Use el menú **⋮** de una fila para editarla o eliminarla.
 
-## Creating a Category
+## Creación de una categoría
 
-Click **+** to create a new category. Fill in the following fields:
+Haga clic en **+** para crear una nueva categoría. Rellene los siguientes campos:
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Name** (required) | A unique name within its type. Accepts letters, numbers, underscores, hyphens, and spaces. |
-| **Type** | The object type this category applies to: `Element`, `Attribute`, `Analysis`, `Dashboard`, `Panel`, or `Event`. |
-| **Description** | Optional description. |
+| **Name** (obligatorio) | Un nombre único dentro de su tipo. Acepta letras, números, guiones bajos, guiones y espacios. |
+| **Type** | El tipo de objeto al que se aplica esta categoría: `Element`, `Attribute`, `Analysis`, `Dashboard`, `Panel` o `Event`. |
+| **Description** | Descripción opcional. |
 
-Click **Save** to create the category.
+Haga clic en **Save** para crear la categoría.
 
-## Using Categories
+## Uso de categorías
 
-When creating or editing an object (element, attribute, event, panel, dashboard, or analysis), you can assign one or more categories to it in the **Category** field. Categories must match the object type — for example, only categories of type **Element** appear when editing an element.
+Al crear o editar un objeto (elemento, atributo, evento, indicador, panel de control o análisis), puede asignarle una o más categorías en el campo **Category**. Las categorías deben coincidir con el tipo de objeto — por ejemplo, solo las categorías de tipo **Element** aparecen cuando se edita un elemento.
 
-Once assigned, categories appear as filter options throughout IDMP:
+Una vez asignadas, las categorías aparecen como opciones de filtro en todo IDMP:
 
-- In the **Explorer**, use the category filter to narrow the asset tree to elements of a specific category.
-- In **Dashboards** and **Events** lists, filter by category to find relevant panels or events quickly.
-- In **Libraries**, categories help organize large sets of element templates and event templates.
+- En el **Explorador**, use el filtro de categoría para limitar el árbol de activos a elementos de una categoría específica.
+- En las listas de **Dashboards** y **Events**, filtre por categoría para encontrar rápidamente indicadores o eventos relevantes.
+- En **Libraries**, las categorías ayudan a organizar grandes conjuntos de plantillas de elementos y de eventos.
 
-## Editing and Deleting
+## Edición y eliminación
 
-To edit a category, click its name. To delete it, use the **⋮** menu. Deleting a category does not affect the objects it was assigned to — the category tag is simply removed from those objects.
+Para editar una categoría, haga clic en su nombre. Para eliminarla, use el menú **⋮**. Eliminar una categoría no afecta a los objetos a los que estaba asignada — la etiqueta de categoría simplemente se elimina de esos objetos.

@@ -1,51 +1,51 @@
 ---
-title: Análisis en tiempo real
-sidebar_label: Análisis en tiempo real
+title: Análisis en Tiempo Real
+sidebar_label: Análisis en Tiempo Real
 ---
 
-# 7 Real-Time Analysis
+# 7. Análisis en Tiempo Real
 
-Real-time analysis is one of the most important capabilities in TDengine IDMP. It is the engine that turns raw time-series data into operational intelligence — continuously running calculations on live sensor streams, detecting anomalies, computing KPIs, and generating events when conditions are met. With built-in AI assistance, analyses can be created from a natural language description, and anomalies can be detected without writing any detection rules.
+El análisis en tiempo real es una de las capacidades más importantes de TDengine IDMP. Es el motor que convierte los datos de series temporales en bruto en inteligencia operacional — ejecutando continuamente cálculos sobre flujos de sensores en tiempo real, detectando anomalías, calculando KPIs y generando eventos cuando se cumplen las condiciones. Con la asistencia de IA integrada, los análisis pueden crearse a partir de una descripción en lenguaje natural, y las anomalías pueden detectarse sin escribir ninguna regla de detección.
 
-The concept is directly equivalent to **Analysis** in OSIsoft PI System: a rule that runs automatically against an element's data, produces calculated outputs, and optionally generates events. If you have used PI Analysis Service, the mental model maps directly.
+El concepto es directamente equivalente al de **Análisis** en OSIsoft PI System: una regla que se ejecuta automáticamente contra los datos de un elemento, produce salidas calculadas y opcionalmente genera eventos. Si ha utilizado PI Analysis Service, el modelo mental se aplica directamente.
 
-## What Real-Time Analysis Does
+## Qué Hace el Análisis en Tiempo Real
 
-An analysis on an element watches the element's data and, when a configured trigger condition fires, executes a calculation. The result can be:
+Un análisis en un elemento observa los datos del elemento y, cuando se activa una condición de disparador configurada, ejecuta un cálculo. El resultado puede:
 
-- **Written to element attributes** — computed values such as hourly averages, efficiency ratios, or running totals are stored as new time-series data alongside the raw measurements.
-- **Written to event attributes** — when an event is generated, calculated values (peak temperature, batch duration, fault code) are captured at the moment the event occurs.
-- **Both** — the same calculation run can produce multiple output attributes and also generate an event.
+- **Escribirse en los atributos del elemento** — los valores calculados, como promedios por hora, ratios de eficiencia o totales acumulados, se almacenan como nuevos datos de series temporales junto a las mediciones en bruto.
+- **Escribirse en los atributos de evento** — cuando se genera un evento, los valores calculados (temperatura máxima, duración del lote, código de fallo) se capturan en el momento en que ocurre el evento.
+- **Ambos** — la misma ejecución de cálculo puede producir múltiples atributos de salida y también generar un evento.
 
-## Under the Hood
+## Bajo el Capó
 
-Real-time analysis in IDMP runs entirely inside the TDengine TSDB-Enterprise streaming computation engine. IDMP provides the graphical configuration interface; the actual computation runs as a persistent stream in the database. This means analyses consume no IDMP server resources — they are offloaded to TDengine and continue running even if the IDMP application server is restarted.
+El análisis en tiempo real en IDMP se ejecuta completamente dentro del motor de computación de streaming de TDengine TSDB-Enterprise. IDMP proporciona la interfaz de configuración gráfica; el cálculo real se ejecuta como un stream persistente en la base de datos. Esto significa que los análisis no consumen recursos del servidor IDMP — se descargan a TDengine y continúan ejecutándose incluso si el servidor de la aplicación IDMP se reinicia.
 
-Each analysis corresponds to a **stream** in TDengine. The stream name is visible in the analysis list and uniquely identifies the computation in the underlying database.
+Cada análisis corresponde a un **stream** en TDengine. El nombre del stream es visible en la lista de análisis e identifica de forma única el cálculo en la base de datos subyacente.
 
-## Beyond the Traditional Data Historian
+## Más Allá del Historiador de Datos Tradicional
 
-Traditional data historians require engineers to manually configure every analysis: define trigger conditions, write expressions, map output attributes. This is time-consuming and demands deep familiarity with the system. IDMP lowers this barrier significantly.
+Los historiadores de datos tradicionales requieren que los ingenieros configuren manualmente cada análisis: definir condiciones de disparador, escribir expresiones, mapear atributos de salida. Esto consume mucho tiempo y exige un profundo conocimiento del sistema. IDMP reduce significativamente esta barrera.
 
-**AI-assisted analysis creation.** A built-in AI assistant can create a fully configured analysis from a natural language description — "calculate the average power factor over 15-minute windows" — and pre-fill the entire creation form for you. Even better, the system proactively suggests analyses based on the element's template, attributes, and collected data. You do not need to describe anything: browse the suggestions, click one, and the form is ready to save.
+**Creación de análisis asistida por IA.** Un asistente de IA integrado puede crear un análisis completamente configurado a partir de una descripción en lenguaje natural — "calcular el factor de potencia promedio en ventanas de 15 minutos" — y rellenar previamente todo el formulario de creación. Aún mejor, el sistema sugiere proactivamente análisis basándose en la plantilla, los atributos y los datos recopilados del elemento. No necesita describir nada: explore las sugerencias, haga clic en una y el formulario estará listo para guardar.
 
-**Anomaly detection without detection rules.** In a traditional data historian, detecting anomalies means writing explicit threshold conditions — you can only catch what you know to look for. IDMP includes an **Anomaly Detection** trigger type powered by **TDgpt**, TDengine's built-in AI analytics engine. You select the target attribute and the algorithm; TDgpt determines when anomalies begin and end with no threshold rules required. It supports multiple algorithms backed by statsmodels, PyTorch, scikit-learn, and TDengine's own TDtsfm time-series foundation model. Like any other trigger type, it fits naturally into the same analysis form alongside sliding windows, event windows, and the rest.
+**Detección de anomalías sin reglas de detección.** En un historiador de datos tradicional, detectar anomalías significa escribir condiciones de umbral explícitas — solo puede detectar lo que sabe que debe buscar. IDMP incluye un tipo de disparador de **Detección de Anomalías** impulsado por **TDgpt**, el motor de análisis de IA integrado de TDengine. Usted selecciona el atributo objetivo y el algoritmo; TDgpt determina cuándo comienzan y terminan las anomalías sin necesidad de reglas de umbral. Admite múltiples algoritmos respaldados por statsmodels, PyTorch, scikit-learn y el propio modelo de base de series temporales TDtsfm de TDengine. Al igual que cualquier otro tipo de disparador, encaja naturalmente en el mismo formulario de análisis junto a ventanas deslizantes, ventanas de evento y el resto.
 
-## Analysis and the Element Hierarchy
+## Análisis y la Jerarquía de Elementos
 
-Every analysis belongs to exactly one element and is configured on that element's **Analyses** tab. An analysis can compute over:
+Cada análisis pertenece exactamente a un elemento y se configura en la pestaña **Análisis** de ese elemento. Un análisis puede calcular sobre:
 
-- **The element's own attributes** — the typical case, where you calculate something about this specific device or location.
-- **Its child elements (aggregation)** — where you aggregate a metric across all (or filtered) child elements that share a common template. For example, compute the average power output across all turbines under a wind farm element.
+- **Los atributos propios del elemento** — el caso típico, donde se calcula algo sobre este dispositivo o ubicación específicos.
+- **Sus elementos secundarios (agregación)** — donde se agrega una métrica a través de todos los elementos secundarios (o los filtrados) que comparten una plantilla común. Por ejemplo, calcular la potencia de salida promedio de todas las turbinas bajo un elemento de granja eólica.
 
-## What's Covered in This Chapter
+## Contenido de este Capítulo
 
-- **[Browsing and Managing Analyses](./01-browsing-analyses.md)** — The analysis list, toolbar controls, and row actions
-- **[Creating an Analysis](./02-creating-analysis.md)** — The four-section creation form: General Information, Trigger, Calculation, and Event
-- **[Trigger Types](./03-trigger-types.md)** — All eight trigger types and their specific parameters
-- **[Calculation](./04-calculation.md)** — Apply calculation on, rollup on window, output timestamp, and output attributes
-- **[Generating Events](./05-generating-events.md)** — Configuring an analysis to produce events
-- **[AI-Assisted Analysis](./06-ai-analysis.md)** — Using the built-in AI to create analyses from natural language
+- **[Explorar y Gestionar Análisis](./01-browsing-analyses.md)** — La lista de análisis, controles de la barra de herramientas y acciones de fila
+- **[Crear un Análisis](./02-creating-analysis.md)** — El formulario de creación de cuatro secciones: Información General, Disparador, Cálculo y Evento
+- **[Tipos de Disparador](./03-trigger-types.md)** — Los ocho tipos de disparador y sus parámetros específicos
+- **[Cálculo](./04-calculation.md)** — Aplicar cálculo en, agregar en ventana, marca de tiempo de salida y atributos de salida
+- **[Generar Eventos](./05-generating-events.md)** — Configurar un análisis para producir eventos
+- **[Análisis Asistido por IA](./06-ai-analysis.md)** — Usar la IA integrada para crear análisis a partir de lenguaje natural
 
 import DocCardList from '@theme/DocCardList';
 

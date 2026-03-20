@@ -1,63 +1,63 @@
 ---
-title: Forecasting
-sidebar_label: Forecasting
+title: Pronóstico
+sidebar_label: Pronóstico
 ---
 
-# 8.8 Forecasting
+# 8.8 Pronóstico
 
 :::note
-Forecasting requires the **TDgpt module** to be installed alongside IDMP. It does not require an LLM connection.
+El pronóstico requiere que el **módulo TDgpt** esté instalado junto con IDMP. No requiere una conexión al LLM.
 :::
 
-IDMP supports AI-based time-series forecasting powered by **TDgpt**. Forecasting predicts future values of an element attribute based on its historical behavior, enabling proactive operations — identifying potential threshold breaches, planning maintenance windows, or estimating future consumption.
+IDMP soporta el pronóstico de series temporales basado en IA impulsado por **TDgpt**. El pronóstico predice valores futuros de un atributo de elemento basándose en su comportamiento histórico, permitiendo operaciones proactivas — identificar posibles superaciones de umbrales, planificar ventanas de mantenimiento o estimar el consumo futuro.
 
-## Configuring Forecasting on an Attribute
+## Configurar el pronóstico en un atributo
 
-Forecasting is configured per attribute in the **Forecast Configuration** section of the attribute properties.
+El pronóstico se configura por atributo en la sección **Configuración de pronóstico** de las propiedades del atributo.
 
-To enable forecasting for an attribute:
+Para habilitar el pronóstico en un atributo:
 
-1. Open the attribute (from the element's **Attributes** tab, click the attribute name).
-2. Click **Edit**.
-3. Expand the **Forecast Configuration** section.
-4. Select the forecast provider:
+1. Abra el atributo (desde la pestaña **Atributos** del elemento, haga clic en el nombre del atributo).
+2. Haga clic en **Editar**.
+3. Expanda la sección **Configuración de pronóstico**.
+4. Seleccione el proveedor de pronóstico:
 
-| Option | Description |
+| Opción | Descripción |
 |---|---|
-| **TDgpt** | Use TDengine's built-in time-series forecasting engine. Select the forecast algorithm and configure the forecast horizon (how far ahead to predict). |
-| **External** | Connect to an external forecasting service via a configured endpoint. |
-| **None** | No forecasting (default). |
+| **TDgpt** | Usar el motor de pronóstico de series temporales integrado de TDengine. Seleccione el algoritmo de pronóstico y configure el horizonte de pronóstico (cuánto tiempo adelante predecir). |
+| **Externo** | Conectar a un servicio de pronóstico externo a través de un endpoint configurado. |
+| **Ninguno** | Sin pronóstico (predeterminado). |
 
-5. When **TDgpt** is selected, configure:
+5. Cuando se selecciona **TDgpt**, configure:
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Algorithm** | The forecasting algorithm (see below) |
-| **Forecast Rows** | The number of future data points to predict |
+| **Algoritmo** | El algoritmo de pronóstico (ver a continuación) |
+| **Filas de pronóstico** | El número de puntos de datos futuros a predecir |
 
-6. Click **Save**.
+6. Haga clic en **Guardar**.
 
-## Supported Algorithms
+## Algoritmos compatibles
 
-TDgpt provides several forecasting algorithms:
+TDgpt proporciona varios algoritmos de pronóstico:
 
-| Algorithm | Characteristics |
+| Algoritmo | Características |
 |---|---|
-| **ARIMA** | Classical statistical model for stationary time series with trend and seasonality components |
-| **HoltWinters** | Exponential smoothing with trend and seasonal decomposition — good for regular periodic patterns |
-| **LSTM** | PyTorch-based LSTM neural network — captures complex nonlinear temporal dependencies |
-| **TDtsfm** | TDengine's time-series foundation model, pre-trained on diverse industrial time-series data for zero-shot and fine-tuned forecasting |
+| **ARIMA** | Modelo estadístico clásico para series temporales estacionarias con componentes de tendencia y estacionalidad |
+| **HoltWinters** | Suavizado exponencial con descomposición de tendencia y estacionalidad — adecuado para patrones periódicos regulares |
+| **LSTM** | Red neuronal LSTM basada en PyTorch — captura dependencias temporales no lineales complejas |
+| **TDtsfm** | El modelo fundacional de series temporales de TDengine, preentrenado con datos industriales de series temporales diversas para pronóstico sin entrenamiento previo y ajustado |
 
-## Viewing and Toggling Forecasts in a Trend Chart
+## Ver y alternar pronósticos en un gráfico de tendencias
 
-Once forecasting is enabled on an attribute, forecast values appear alongside historical data in Trend Chart panels. The predicted values are rendered as a continuation of the time-series line, visually distinguishable from measured data.
+Una vez que el pronóstico está habilitado en un atributo, los valores de pronóstico aparecen junto con los datos históricos en los paneles de gráficos de tendencias. Los valores predichos se muestran como una continuación de la línea de series temporales, visualmente distinguibles de los datos medidos.
 
-In the Trend Chart panel, a **forecast control icon** on the right side of the chart lets you toggle the forecast overlay on or off without changing the attribute configuration. Use this to quickly show or hide the predicted values while browsing data.
+En el panel de gráfico de tendencias, un **icono de control de pronóstico** en el lado derecho del gráfico le permite activar o desactivar la superposición de pronóstico sin cambiar la configuración del atributo. Use esto para mostrar u ocultar rápidamente los valores predichos mientras navega por los datos.
 
-Forecast results are accessible programmatically via TDengine SQL using the `FORECAST` function, which returns the predicted values for a configured number of future rows.
+Los resultados del pronóstico son accesibles de forma programática mediante TDengine SQL usando la función `FORECAST`, que devuelve los valores predichos para un número configurado de filas futuras.
 
-## Use Cases
+## Casos de uso
 
-- **Energy management:** Forecast electricity consumption for the next 24 hours to optimize load scheduling.
-- **Predictive maintenance:** Forecast temperature or vibration trends to anticipate when a value will breach a threshold.
-- **Capacity planning:** Forecast storage tank levels or production throughput over the coming week.
+- **Gestión de energía:** Pronosticar el consumo de electricidad para las próximas 24 horas para optimizar la programación de carga.
+- **Mantenimiento predictivo:** Pronosticar tendencias de temperatura o vibración para anticipar cuándo un valor superará un umbral.
+- **Planificación de capacidad:** Pronosticar los niveles de tanques de almacenamiento o el rendimiento de producción durante la próxima semana.

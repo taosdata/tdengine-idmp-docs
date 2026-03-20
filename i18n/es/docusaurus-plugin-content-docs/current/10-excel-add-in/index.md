@@ -3,9 +3,9 @@ title: Complemento de Excel
 sidebar_label: Complemento de Excel
 ---
 
-# 10 Excel Add-In
+# 10. Complemento de Excel
 
-The TDengine IDMP Excel Add-In lets you retrieve time-series data and element attributes directly in Microsoft Excel without writing any code or SQL. Once installed, the **TDengine EAI** ribbon tab gives you access to current values, historical data, aggregated results, event browsing, and asset metadata — all output directly into spreadsheet cells.
+El complemento de Excel para TDengine IDMP le permite recuperar datos de series temporales y atributos de elementos directamente en Microsoft Excel, sin necesidad de escribir código ni SQL. Una vez instalado, la pestaña **TDengine EAI** de la cinta de opciones le da acceso a valores actuales, datos históricos, resultados agregados, exploración de eventos y metadatos de activos — todo ello volcado directamente en las celdas de la hoja de cálculo.
 
 import DocCardList from '@theme/DocCardList';
 

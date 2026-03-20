@@ -5,132 +5,132 @@ sidebar_label: Dashboards
 
 # 4.4 Dashboards
 
-Dashboards in TDengine IDMP are free-form canvases that combine multiple panels into a single view. Where a panel shows one chart for one element, a dashboard brings together panels from across an element's hierarchy — multiple charts, gauges, tables, and stat panels arranged in a grid — to give operators and engineers a comprehensive, at-a-glance picture of an asset or a process.
+Los dashboards en TDengine IDMP son lienzos de disposición libre que combinan múltiples paneles en una única vista. Mientras que un panel muestra un gráfico de un solo elemento, un dashboard agrupa paneles de toda la jerarquía de un elemento —múltiples gráficos, indicadores de medidor, tablas y paneles de valores estadísticos dispuestos en una cuadrícula— para ofrecer a operadores e ingenieros una visión completa y de un vistazo de un activo o proceso.
 
-## 4.4.1 The Dashboards Tab
+## 4.4.1 La Pestaña Dashboards
 
-Navigate to any element in the asset tree and click the **Dashboards** tab to access its dashboards.
+Navegue a cualquier elemento en el árbol de activos y haga clic en la pestaña **Dashboards** para acceder a sus dashboards.
 
-The toolbar above the dashboard list provides controls on the left side:
+La barra de herramientas situada sobre la lista de dashboards ofrece los siguientes controles en el lado izquierdo:
 
-- **Categories:** Filter dashboards by category tag. Defaults to "All".
-- **View toggles:** Two icon buttons to toggle between showing saved dashboards only, or including dashboards visible from parent or child elements.
+- **Categorías:** Filtra los dashboards por etiqueta de categoría. El valor predeterminado es "Todos".
+- **Selectores de vista:** Dos botones de icono para alternar entre mostrar solo los dashboards guardados, o incluir también los dashboards visibles desde elementos padre o hijo.
 
-On the right side:
+En el lado derecho:
 
-- **+ (Add New Dashboard):** Open the dashboard editor to create a new dashboard.
-- **Copy:** Duplicate an existing dashboard.
-- **Refresh:** Reload the dashboard list.
-- **Settings:** Configure dashboard list preferences.
+- **+ (Añadir Nuevo Dashboard):** Abre el editor de dashboards para crear un nuevo dashboard.
+- **Copiar:** Duplica un dashboard existente.
+- **Actualizar:** Recarga la lista de dashboards.
+- **Configuración:** Configura las preferencias de la lista de dashboards.
 
-The list displays all saved dashboards for the element with these columns:
+La lista muestra todos los dashboards guardados del elemento con las siguientes columnas:
 
-| Column | Description |
+| Columna | Descripción |
 |---|---|
-| **Name** | Dashboard name |
-| **Path** | The element path this dashboard belongs to |
-| **Description** | Optional description |
-| **Template** | Whether this dashboard was created from a template |
-| **Categories** | Category tags assigned to this dashboard |
+| **Nombre** | Nombre del dashboard |
+| **Ruta** | Ruta del elemento al que pertenece el dashboard |
+| **Descripción** | Descripción opcional |
+| **Plantilla** | Indica si el dashboard fue creado desde una plantilla |
+| **Categorías** | Etiquetas de categoría asignadas al dashboard |
 
-Hover over a row to reveal action buttons for viewing, editing, or deleting the dashboard.
+Pase el cursor sobre una fila para mostrar los botones de acción para ver, editar o eliminar ese dashboard.
 
-## 4.4.2 Creating a Dashboard
+## 4.4.2 Creación de un Dashboard
 
-To create a new dashboard:
+Para crear un nuevo dashboard:
 
-1. Click the **+** button in the Dashboards tab toolbar.
-2. The dashboard editor opens with an empty grid canvas.
-3. Add panels to the canvas by dragging from the left panel library or creating new panels.
-4. Configure the dashboard name and settings in the right panel.
-5. Click **Save** to save the dashboard.
+1. Haga clic en el botón **+** de la barra de herramientas de la pestaña Dashboards.
+2. El editor de dashboards se abre con un lienzo de cuadrícula vacío.
+3. Añada paneles al lienzo arrastrándolos desde la biblioteca de paneles de la izquierda o creando nuevos paneles.
+4. Configure el nombre y los ajustes del dashboard en el panel derecho.
+5. Haga clic en **Guardar** para guardar el dashboard.
 
-Dashboards can also be created from a panel's view mode: use **Save to Dashboard** in the panel toolbar to add that panel to a new or existing dashboard.
+Los dashboards también pueden crearse desde el modo de visualización de un panel: use **Guardar en Dashboard** en la barra de herramientas del panel para añadir ese panel a un dashboard nuevo o existente.
 
-## 4.4.3 Dashboard Editor
+## 4.4.3 Editor de Dashboards
 
-The dashboard editor has three areas: a left panel library, a center canvas, and a right settings panel.
+El editor de dashboards tiene tres áreas: una biblioteca de paneles a la izquierda, un lienzo central y un panel de configuración a la derecha.
 
-### Editor Toolbar
+### Barra de Herramientas del Editor
 
-| Control | Description |
+| Control | Descripción |
 |---|---|
-| **Back** | Return to the Dashboards tab |
-| **Save** | Save all changes to the dashboard |
-| **Discard** | Discard changes |
-| **+ (Create New Panel and Insert)** | Open the panel editor to create a new panel and add it to this dashboard |
-| **Time picker** | Set the time range for all panels in the dashboard |
-| **Zoom out** | Expand the time range to the next level |
-| **Refresh** | Reload all panel data |
-| **Auto-refresh** | Set an automatic refresh interval (Off, 5s, 10s, 30s, 1m, etc.) |
-| **Full Screen** | Expand the dashboard to fill the browser window |
+| **Volver** | Regresa a la pestaña Dashboards |
+| **Guardar** | Guarda todos los cambios del dashboard |
+| **Descartar** | Descarta los cambios |
+| **+ (Crear Nuevo Panel e Insertar)** | Abre el editor de paneles para crear un nuevo panel y añadirlo al dashboard |
+| **Selector de tiempo** | Establece el rango de tiempo para todos los paneles del dashboard |
+| **Alejar** | Amplía el rango de tiempo al nivel siguiente |
+| **Actualizar** | Recarga los datos de todos los paneles |
+| **Actualización automática** | Establece un intervalo de actualización automática (Desactivada, 5 s, 10 s, 30 s, 1 min, etc.) |
+| **Pantalla completa** | Expande el dashboard para ocupar toda la ventana del navegador |
 
-### Left Panel: Panel Library
+### Panel Izquierdo: Biblioteca de Paneles
 
-The left panel shows the panels available for this element, organized in a tree:
+El panel izquierdo muestra los paneles disponibles para este elemento, organizados en árbol:
 
-- **Panels:** Lists all saved panels belonging to the current element. Expand the section to see panel names.
-- **Child Elements:** Lists child elements whose panels can also be included in this dashboard.
+- **Paneles:** Enumera todos los paneles guardados pertenecientes al elemento actual. Expanda la sección para ver los nombres de los paneles.
+- **Elementos hijo:** Enumera los elementos hijo cuyos paneles también pueden incluirse en este dashboard.
 
-To add a panel to the canvas, drag it from the library onto the grid.
+Para añadir un panel al lienzo, arrástrelo desde la biblioteca a la cuadrícula.
 
-### Center: Grid Canvas
+### Centro: Lienzo de Cuadrícula
 
-The canvas is a 12-column grid. Panels are placed by dragging from the library or by using the **+** toolbar button. Once placed on the canvas, panels can be:
+El lienzo es una cuadrícula de 12 columnas. Los paneles se colocan arrastrándolos desde la biblioteca o usando el botón **+** de la barra de herramientas. Una vez colocados en el lienzo, los paneles pueden:
 
-- **Resized** by dragging the panel's resize handle at the bottom-right corner.
-- **Moved** by dragging the panel header to a new position on the grid.
-- **Removed** by clicking the panel's close icon.
+- **Redimensionarse** arrastrando el controlador de redimensionado en la esquina inferior derecha del panel.
+- **Moverse** arrastrando el encabezado del panel a una nueva posición en la cuadrícula.
+- **Eliminarse** haciendo clic en el icono de cerrar del panel.
 
-Panels render their live data on the canvas according to the dashboard's current time range setting.
+Los paneles renderizan sus datos en tiempo real en el lienzo según la configuración de rango de tiempo actual del dashboard.
 
-### Right Panel: Dashboard Settings
+### Panel Derecho: Configuración del Dashboard
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Name** | The dashboard title (required) |
-| **Description** | Optional description for the dashboard |
-| **Categories** | One or more tags for filtering and organizing dashboards |
-| **Notification Rule** | Configure an alerting rule at the dashboard level |
+| **Nombre** | Título del dashboard (obligatorio) |
+| **Descripción** | Descripción opcional del dashboard |
+| **Categorías** | Una o más etiquetas para filtrar y organizar los dashboards |
+| **Regla de notificación** | Configura una regla de alertas a nivel de dashboard |
 
-## 4.4.4 Adding Panels to a Dashboard
+## 4.4.4 Añadir Paneles a un Dashboard
 
-There are three ways to populate a dashboard:
+Hay tres formas de añadir contenido a un dashboard:
 
-**Drag from the panel library.** The left panel shows all existing panels saved to the current element. Drag any panel onto the canvas. The panel renders with its saved data configuration and visualization settings.
+**Arrastrar desde la biblioteca de paneles.** El panel izquierdo muestra todos los paneles existentes guardados en el elemento actual. Arrastre cualquier panel al lienzo. El panel se renderiza con su configuración de datos y ajustes de visualización guardados.
 
-**Create a new panel.** Click the **+ (Create New Panel and Insert)** button in the toolbar. This opens the standard panel editor in a new tab. After saving the new panel, it is added to the dashboard canvas.
+**Crear un nuevo panel.** Haga clic en el botón **+ (Crear Nuevo Panel e Insertar)** de la barra de herramientas. Se abre el editor de paneles estándar en una nueva pestaña. Tras guardar el nuevo panel, se añade al lienzo del dashboard.
 
-**Add from panel view mode.** When viewing any panel in full view mode, open the panel card's **⋮** menu and select a dashboard action, or navigate to the Dashboards tab and use the panel library to drag it onto the canvas.
+**Añadir desde el modo de visualización del panel.** Al visualizar cualquier panel en modo de vista completa, abra el menú **⋮** de la tarjeta del panel y seleccione una acción de dashboard, o navegue a la pestaña Dashboards y use la biblioteca de paneles para arrastrarlo al lienzo.
 
-## 4.4.5 The Global Dashboards View
+## 4.4.5 La Vista Global de Dashboards
 
-The **Dashboards** item in the main navigation bar opens the global dashboards list, which shows all dashboards across every element in the system.
+El elemento **Dashboards** de la barra de navegación principal abre la lista global de dashboards, que muestra todos los dashboards de cada elemento del sistema.
 
-The left sidebar of the global view organizes navigation into six sections:
+La barra lateral izquierda de la vista global organiza la navegación en seis secciones:
 
-- **Dashboards:** The primary list of all dashboards system-wide.
-- **Panels:** A global list of all saved panels across all elements.
-- **Favorite Dashboards:** Dashboards you have marked as favorites.
-- **Favorite Panels:** Panels you have marked as favorites.
-- **Dashboard Filters:** Saved filter configurations for the dashboards list.
-- **Panel Filters:** Saved filter configurations for the panels list.
+- **Dashboards:** La lista principal de todos los dashboards del sistema.
+- **Paneles:** Una lista global de todos los paneles guardados en todos los elementos.
+- **Dashboards Favoritos:** Dashboards que ha marcado como favoritos.
+- **Paneles Favoritos:** Paneles que ha marcado como favoritos.
+- **Filtros de Dashboards:** Configuraciones de filtros guardadas para la lista de dashboards.
+- **Filtros de Paneles:** Configuraciones de filtros guardadas para la lista de paneles.
 
-The dashboard list displays the following columns:
+La lista de dashboards muestra las siguientes columnas:
 
-| Column | Description |
+| Columna | Descripción |
 |---|---|
-| **Name** | Dashboard name |
-| **Description** | Optional description |
-| **Template** | Whether this dashboard was created from a template |
-| **Categories** | Category tags assigned to this dashboard |
+| **Nombre** | Nombre del dashboard |
+| **Descripción** | Descripción opcional |
+| **Plantilla** | Indica si el dashboard fue creado desde una plantilla |
+| **Categorías** | Etiquetas de categoría asignadas al dashboard |
 
-The toolbar provides a search field, a CSV download button to export the list, and a settings gear for list preferences.
+La barra de herramientas ofrece un campo de búsqueda, un botón de descarga CSV para exportar la lista y un engranaje de preferencias de lista.
 
-From the global view, you can:
+Desde la vista global puede:
 
-- **Search and filter** by categories to find dashboards across the hierarchy.
-- **Open** any dashboard directly.
-- **Edit** or **delete** dashboards without first navigating to the element.
+- **Buscar y filtrar** por categorías para encontrar dashboards en toda la jerarquía.
+- **Abrir** cualquier dashboard directamente.
+- **Editar** o **eliminar** dashboards sin necesidad de navegar primero al elemento.
 
-This view is particularly useful for fleet-wide monitoring — finding dashboards for all meters in a region, or reviewing all production-line dashboards for a site — without traversing the asset tree.
+Esta vista es especialmente útil para la monitorización a nivel de flota: encontrar los dashboards de todos los medidores de una región, o revisar todos los dashboards de líneas de producción de un sitio, sin recorrer el árbol de activos.

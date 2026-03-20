@@ -1,48 +1,54 @@
 ---
-title: Connecting to LLM
-sidebar_label: Connecting to LLM
+title: Conexión al LLM
+sidebar_label: Conexión al LLM
 ---
 
-# 8.1 Connecting to LLM
+# 8.1 Conexión al LLM
 
-Most AI features in IDMP — panel generation, analysis suggestions, AI Chat, root cause analysis — require a connection to an external Large Language Model (LLM). IDMP uses an OpenAI-compatible interface, so any LLM provider or self-hosted model that exposes an OpenAI-compatible API can be used.
+La mayoría de las funciones de IA en IDMP — generación de paneles, sugerencias de análisis, chat con IA, análisis de causa raíz — requieren una conexión a un LLM externo. IDMP utiliza una interfaz compatible con OpenAI, por lo que puede usarse cualquier proveedor de servicios LLM o modelo alojado localmente que exponga una API compatible con OpenAI.
 
-## Built-In Trial Connection
+## Conexión de prueba integrada
 
-IDMP ships with a built-in trial AI connection that is active for 15 days after installation. During the trial period, all LLM-dependent AI features work immediately without any configuration. Once the trial expires, you must configure your own AI connection to continue using these features.
+IDMP incluye una conexión de IA de prueba integrada que está activa durante 15 días después de la instalación. Durante el período de prueba, todas las funciones de IA que dependen del LLM funcionan de inmediato sin ninguna configuración. Una vez que la prueba expire, deberá configurar su propia conexión de IA para continuar usando estas funciones.
 
-TDgpt-based features (anomaly detection, forecasting, missing data imputation) are independent of the LLM connection. They require the TDgpt module to be installed alongside IDMP.
+Las funciones basadas en TDgpt (detección de anomalías, pronóstico, imputación de datos faltantes) son independientes de la conexión al LLM. Requieren que el módulo TDgpt esté instalado junto con IDMP.
 
-## Configuring an AI Connection
+## Configurar una conexión de IA
 
-AI connections are managed in the **Connection Management** section of the system settings, alongside TDengine data connections.
+Las conexiones de IA se gestionan en la sección **Gestión de conexiones** de la configuración del sistema, junto con las conexiones de datos de TDengine.
 
-To add or edit an AI connection:
+Para agregar o editar una conexión de IA:
 
-1. Navigate to **Settings** → **Connection Management**.
-2. Click **+ Add Connection** and select the **AI** connection type.
-3. Fill in the connection fields:
+1. Navegue a **Configuración** → **Gestión de conexiones**.
+2. Haga clic en **+ Agregar conexión** y seleccione el tipo de conexión **IA**.
+3. Complete los campos de la conexión:
 
-| Field | Description |
+| Campo | Descripción |
 |---|---|
-| **Connection Name** | A unique name to identify this AI connection |
-| **API Endpoint** | The base URL of the OpenAI-compatible API (e.g., `https://api.openai.com/v1`) |
-| **API Key** | The authentication key for the API. Leave blank for local deployments that do not require authentication. |
-| **Q&A Model** | The model used for standard natural language queries and panel/analysis generation (e.g., `gpt-4o`) |
-| **Deep Thinking Model** | The model used for complex analytical tasks that require extended reasoning, such as root cause analysis (e.g., `o1` or `o3`) |
+| **Nombre de la conexión** | Un nombre único para identificar esta conexión de IA |
+| **Endpoint de API** | La URL base de la API compatible con OpenAI (por ejemplo, `https://api.openai.com/v1`) |
+| **Clave de API** | La clave de autenticación de la API. Déjela en blanco para implementaciones locales que no requieran autenticación. |
+| **Modelo de Q&A** | El modelo utilizado para consultas en lenguaje natural estándar y para la generación de paneles/análisis (por ejemplo, `gpt-4o`) |
+| **Modelo de pensamiento profundo** | El modelo utilizado para tareas analíticas complejas que requieren razonamiento extendido, como el análisis de causa raíz (por ejemplo, `o1` u `o3`) |
 
-4. Click **Test Connection** to verify the endpoint and credentials.
-5. Click **Save**.
+4. Haga clic en **Probar conexión** para verificar el endpoint y las credenciales.
+5. Haga clic en **Guardar**.
 
-## Two Model Configuration
+## Configuración de doble modelo
 
-IDMP uses two separate models from the same AI connection:
+IDMP utiliza dos modelos distintos de la misma conexión de IA:
 
-- **Q&A Model** — handles everyday interactions: answering natural language queries, generating panel suggestions, creating analysis configurations, and narrating panel insights. This model should be fast and cost-effective.
-- **Deep Thinking Model** — handles computationally intensive tasks that benefit from extended reasoning chains, most notably Root Cause Analysis. This model can be slower and more expensive; it is only invoked when deep analysis is explicitly requested.
+- **Modelo de Q&A** — gestiona las interacciones cotidianas: responder consultas en lenguaje natural, generar sugerencias de paneles, crear configuraciones de análisis y narrar información de paneles. Este modelo debe ser rápido y rentable.
+- **Modelo de pensamiento profundo** — gestiona tareas computacionalmente intensivas que se benefician de cadenas de razonamiento extendidas, siendo el análisis de causa raíz el caso más destacado. Este modelo puede ser más lento y costoso; solo se invoca cuando se solicita explícitamente un análisis profundo.
 
-In the AI Chat interface, users can toggle **Deep Thinking** mode to route their query to the Deep Thinking Model instead of the Q&A Model.
+En la interfaz de chat con IA, los usuarios pueden activar el modo **Pensamiento profundo** para enrutar su consulta al modelo de pensamiento profundo en lugar del modelo de Q&A.
 
-## Local Deployment
+## Implementación local
 
-For organizations running a self-hosted LLM (such as a locally deployed Ollama or vLLM instance), set the **API Endpoint** to the local service URL and leave the **API Key** blank if the service does not require authentication. As long as the service exposes an OpenAI-compatible API, all IDMP AI features work without modification.
+Para organizaciones que ejecutan un LLM alojado localmente (como una instancia de Ollama o vLLM desplegada en local), configure el **Endpoint de API** con la URL del servicio local y deje la **Clave de API** en blanco si el servicio no requiere autenticación. Mientras el servicio exponga una API compatible con OpenAI, todas las funciones de IA de IDMP funcionarán sin ninguna modificación.
+
+## Desactivar las funciones de IA
+
+Para desactivar las funciones de IA en todo el sistema, haga clic en el icono de avatar en la esquina superior derecha del navegador, acceda a la **Consola de administración** (Admin Console) y suspenda o elimine la conexión de IA.
+
+También puede desactivar las recomendaciones de IA directamente desde la página de lista de análisis o la página de lista de paneles.

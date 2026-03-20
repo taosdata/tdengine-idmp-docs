@@ -3,22 +3,22 @@ title: Mejores prácticas
 sidebar_label: Mejores prácticas
 ---
 
-# 16 Best Practices
-
 import DocCardList from '@theme/DocCardList';
 
-IDMP provides powerful data modeling capabilities that standardize and contextualize industrial data, making it AI-ready and enabling deeper extraction of business value. However, building a good data model is something that requires careful human judgment — it is difficult to automate with AI alone.
+# 16. Mejores prácticas
 
-To minimize the cost and effort of modeling, TDengine recommends starting with solid data governance at the source. A few key guidelines:
+IDMP proporciona potentes capacidades de modelado de datos que estandarizan y contextualizan los datos industriales, haciéndolos aptos para IA y permitiendo una extracción más profunda de valor empresarial. Sin embargo, construir un buen modelo de datos es algo que requiere un juicio humano cuidadoso — es difícil de automatizar solo con IA.
 
-1. **Use consistent, standardized names for every measurement point** — naming conventions should be globally uniform across all data sources.
-2. **Prefer multi-column models for simultaneously sampled physical quantities** — since they share a timestamp, grouping them into a single row reduces storage overhead and simplifies queries.
-3. **Configure a hierarchical structure for each data collection point** — whether single-column or multi-column, attach the hierarchy as metadata when writing to TDengine TSDB-Enterprise. For example: `Plant-1.Line-A.Device-X`.
+Para minimizar el costo y el esfuerzo del modelado, TDengine recomienda comenzar con una gobernanza de datos sólida en la fuente. Algunas directrices clave:
 
-The taosX module inside TDengine TSDB-Enterprise can read this metadata and automatically create supertables and subtables, perform data transformations, and attach additional tags to preserve the device hierarchy. IDMP can then use that metadata to automatically build the element tree and generate element templates and element instances.
+1. **Use nombres coherentes y estandarizados para cada punto de medición** — las convenciones de nomenclatura deben ser globalmente uniformes en todas las fuentes de datos.
+2. **Prefiera modelos de múltiples columnas para magnitudes físicas muestreadas simultáneamente** — dado que comparten una marca de tiempo, agruparlas en una sola fila reduce el overhead de almacenamiento y simplifica las consultas.
+3. **Configure una estructura jerárquica para cada punto de recopilación de datos** — ya sea de una o varias columnas, adjunte la jerarquía como metadatos al escribir en TDengine TSDB-Enterprise. Por ejemplo: `Planta-1.Línea-A.Dispositivo-X`.
 
-For PLC-collected data using a single-column model, where a single device has multiple measurement points, you need to assemble those points under one element inside IDMP. Refer to the [Building Data Models from TSDB](../12-data-ingestion/03-building-data-models-from-tsdb.md) section for guidance.
+El módulo taosX dentro de TDengine TSDB-Enterprise puede leer estos metadatos y crear automáticamente supertablas y subtablas, realizar transformaciones de datos y adjuntar etiquetas adicionales para preservar la jerarquía de dispositivos. IDMP puede entonces usar esos metadatos para construir automáticamente el árbol de elementos y generar plantillas e instancias de elementos.
 
-Once the hierarchical element model is established in IDMP, you can enrich it further with element and attribute templates — adding descriptions, units, and business semantics — to provide richer data context and make the entire platform AI-ready.
+Para los datos recopilados por PLC que usan un modelo de una sola columna, donde un único dispositivo tiene múltiples puntos de medición, es necesario ensamblar esos puntos bajo un elemento dentro de IDMP. Consulte la sección [Construir modelos de datos desde TSDB](../12-data-ingestion/03-building-data-models-from-tsdb.md) para obtener orientación.
+
+Una vez que el modelo jerárquico de elementos esté establecido en IDMP, puede enriquecerlo aún más con plantillas de elementos y atributos — agregando descripciones, unidades y semántica empresarial — para proporcionar un contexto de datos más rico y hacer que toda la plataforma esté preparada para IA.
 
 <DocCardList />
