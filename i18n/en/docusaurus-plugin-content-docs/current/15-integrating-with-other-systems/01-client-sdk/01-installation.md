@@ -3,10 +3,10 @@ title: Installation
 sidebar_label: Installation
 ---
 
-# 15.1.1 Installation
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+# 15.1.1 Installation
 
 ## Prerequisites
 
@@ -36,7 +36,7 @@ cd idmp-java-sdk
 mvn install -DskipTests
 ```
 
-### Step 2 — Add the dependency to your project's `pom.xml`
+**Step 2 — Add the dependency to your project's `pom.xml`**
 
 ```xml
 <dependency>

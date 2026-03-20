@@ -13,7 +13,7 @@ An attribute is a named property of an element that holds or references a value.
 
 Attributes give context to raw data. Instead of querying a database column by its technical name, users and applications can reference data by a meaningful attribute name within a well-understood asset hierarchy.
 
-## 3.2.2 Attribute Types
+## 3.2.2 Data Reference Types
 
 The **Data Reference Type** determines where an attribute's value comes from. There are four types:
 
@@ -28,6 +28,18 @@ ConnectionName/DatabaseName/TableName/ColumnName
 ```
 
 Example: `TDengine/idmp_sample_utility/em-12/current`
+
+If the collected metric also carries a data quality value stored in the same table, the Data Reference Setting can include the name of the quality column. The format is:
+
+```text
+ConnectionName/DatabaseName/TableName/ColumnName:QualityColumnName
+```
+
+Example: `TDengine/idmp_sample_utility/em-12/current:quality`
+
+:::note
+The data type of the quality column must be INT.
+:::
 
 ### 2. TDengine Tag
 
@@ -70,7 +82,7 @@ Replacement parameters beyond `TIME` are also available, such as the current ele
 Example expression:
 
 ```text
-CONCAT(${Template#name}, 'Device', ${attributes['Device ID']}, ' voltage is ', CAST(${attributes['Voltage']} AS varchar), 'V')
+CONCAT('voltage of device ', ${attributes['Device ID']}, ' is ', CAST(${attributes['Voltage']} AS varchar), 'V')
 ```
 
 :::note
@@ -93,9 +105,9 @@ Every attribute has the following configurable properties:
 | **UOM Class** | The physical quantity category (e.g., Electric Current, Temperature, Pressure). Selecting a UOM Class filters the available unit options for Default UOM and Display UOM. |
 | **Default UOM** | The unit in which the attribute value is stored (e.g., ampere, °C, bar) |
 | **Display UOM** | The unit used when displaying the value in panels and dashboards. Can differ from Default UOM — IDMP applies the conversion automatically. |
-| **Display Digits** | The number of decimal places shown when displaying the value |
-| **Data Reference Type** | Where the attribute value comes from: TDengine Metric, TDengine Table, or None (see [3.2.2](#322-attribute-types)) |
-| **Data Reference Setting** | The path to the TDengine TSDB data source in the format `database/table/column` |
+| **Display Digits** | Positive values indicate the number of digits after the decimal point; negative values indicate the number of significant digits. |
+| **Data Reference Type** | Where the attribute value comes from: TDengine Metric, TDengine Tag, Formula, or String Builder (see [3.2.2](#322-data-reference-types)) |
+| **Data Reference Setting** | The path to the TDengine TSDB data source in the format `ConnectionName/DatabaseName/TableName/ColumnName`, optionally with a quality column suffix as `.../ColumnName:QualityColumnName` |
 | **Path** | The full path of the attribute within the asset model (read-only, auto-generated) |
 
 ### Limits Configuration
@@ -209,6 +221,7 @@ The **⋮** menu in the attributes list also provides the following operations:
 | **View** | Open the attribute detail view |
 | **Copy** | Copy the attribute configuration. The copied attribute can be pasted as a new attribute on the same element or on any other element. |
 | **Move Up / Move Down** | Reorder the attribute within the list |
+| **Add Data Entry** | An operation exclusive to TDengine Metric attributes. Manually enter a data point; the entered data will be inserted into the TSDB table referenced by the attribute. |
 | **Add to trend** | Quickly add this attribute to a new Trend Chart panel |
 | **History Value** | View the historical time-series values for this attribute |
 

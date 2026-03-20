@@ -5,11 +5,11 @@ sidebar_label: Trend Analysis
 
 # 6.6 Trend Analysis
 
-When an event occurs, understanding the data behavior around that event is essential for investigation. TDengine IDMP provides a direct path from any event to a trend chart pre-configured with the event's time range.
+When an event occurs, understanding the data behavior around that event is essential for investigation. TDengine IDMP provides a direct path from any event to a trend chart pre-configured with the event's time range, enabling rapid analysis of data changes during the event period.
 
 ## 6.6.1 Opening a Trend Chart from an Event
 
-You can open a trend chart for any event in two ways:
+The system provides two ways to quickly open a trend chart from an event, suitable for both list browsing and detail viewing scenarios.
 
 **From the event list:**
 
@@ -21,11 +21,11 @@ On the General tab, click the **Trend Chart Analysis** icon in the toolbar to op
 
 ## 6.6.2 Working with the Event Trend Chart
 
-The trend chart opened from an event shows the element's time-series attributes over the event's time window, with the event's start and end times marked on the chart.
+The event trend chart supports multi-event overlay comparison, cross-element attribute addition, and time window adjustment. The trend chart opened from an event shows the element's time-series attributes over the event's time window, with the event's start and end times marked on the chart.
 
-Multiple events can be added to the same trend chart analysis, allowing you to overlay and compare different events side by side — for example, comparing the sensor behavior during two separate fault occurrences.
+The system supports adding multiple events to the same trend chart analysis, allowing you to overlay and compare different events side by side — for example, comparing the sensor behavior during two separate fault occurrences.
 
-From the chart view you can add additional attributes from the element or from other elements in the asset tree, and zoom or pan to adjust the time window.
+From the chart view, additional attributes can be added from the element or from other elements in the asset tree, and zoom or pan to adjust the time window.
 
 :::note
 Trend Chart Analysis is a powerful feature with many capabilities. A dedicated section in the **Advanced Analytics** chapter covers it in full detail.

@@ -3,12 +3,12 @@ title: 事件 API
 sidebar_label: 事件 API
 ---
 
-`EventResourceApi` 提供事件的查询和管理操作。
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # 15.1.5.3 事件 API
+
+`EventResourceApi` 提供事件的查询和管理操作。
 
 ## 方法列表
 

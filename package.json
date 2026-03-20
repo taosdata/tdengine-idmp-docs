@@ -5,6 +5,8 @@
   "scripts": {
     "docusaurus": "docusaurus",
     "start": "docusaurus start --poll",
+    "start:local": "docusaurus start --poll --host 0.0.0.0",
+    "start:local:en": "docusaurus start --poll --host 0.0.0.0 --locale en",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",

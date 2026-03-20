@@ -7,7 +7,7 @@ sidebar_label: Trigger Types
 
 The trigger defines when an analysis fires. TDengine IDMP supports eight trigger types, selected from the **Trigger Type** dropdown in the Trigger section of the analysis form.
 
-Triggers other than Periodic Time Window depend on an element's attributes having live data flowing through TDengine — specifically, the attributes must be of **TDengine Metric** data reference type. If an element has no such attributes, only Sliding Window and Session Window are available.
+Triggers other than Periodic Window depend on an element's attributes having live data flowing through TDengine — specifically, the attributes must be of **TDengine Metric** data reference type. If an element has no such attributes, only Sliding Window and Session Window are available.
 
 ## Sliding Window
 
@@ -52,7 +52,7 @@ Runs an anomaly detection algorithm against a target attribute on a sliding sche
 | Parameter | Description |
 |---|---|
 | **Sliding** | How often to run the anomaly check |
-| **Target** (required) | The attribute to analyze for anomalies |
+| **Target** (required) | The attribute to analyze for anomalies. Multiple targets can be selected; when multiple targets are chosen, the system automatically creates an independent sub-analysis for each target attribute. |
 | **Algorithm** (required) | The anomaly detection algorithm to apply |
 | **White Noise Data Check** | When enabled, skips the anomaly check if the data appears to be white noise (no meaningful signal) |
 | **Algorithm Parameters** | Optional algorithm-specific parameters in `a=1,b=2,c=3` format |
@@ -65,14 +65,14 @@ Runs an anomaly detection algorithm against a target attribute on a sliding sche
 
 ---
 
-## Periodic Time Window
+## Periodic Window
 
-Fires on the system wall clock at a fixed calendar interval, independent of when data arrives.
+Fires on the system wall clock at a fixed time interval, independent of when data arrives.
 
 ### When to Use
 
-- You need scheduled reports or summaries that land at predictable times — hourly, daily, per shift
-- Downstream systems (ERP, MES, dashboards) expect data on a fixed schedule
+- You need periodic reports or summaries that land at predictable times — hourly, daily, per shift
+- Downstream systems (ERP, MES, dashboards) expect data on a fixed period
 - You want to aggregate an entire shift, day, or week into a single KPI record
 - The calculation makes sense only over a complete time period, not a rolling window
 
@@ -80,16 +80,16 @@ Fires on the system wall clock at a fixed calendar interval, independent of when
 
 | Parameter | Description |
 |---|---|
-| **Period** | The calendar interval (e.g., every 1 hour, every 1 day) |
-| **Offset** | A delay after the period boundary before firing. For example, a 1-day period with a 2-hour offset fires at 02:00 each day — useful for generating daily reports after late-arriving data has had time to settle. |
+| **Period** | The time interval (e.g., every 1 hour, every 1 day) |
+| **Offset** | A delay after the period boundary before firing. For example, a 1-day period with a 6-hour offset fires at 06:00 each day — useful for generating daily reports after late-arriving data has had time to settle. |
 
 ### Examples
 
-**Daily production summary.** A report fires every day at 06:00 (period: 1 day, offset: 6 hours), aggregating total output, average yield, and downtime for the previous day. The plant manager finds the summary waiting in their dashboard each morning.
+**Daily production summary.** An analysis fires every day at 06:00 (period: 1 day, offset: 6 hours), aggregating total output, average yield, and downtime for the previous day. Managers can review the summary in their dashboard each morning without manual calculation.
 
 **Hourly OEE snapshot.** An OEE analysis fires at the top of each hour, computing availability, performance, and quality for the preceding hour. The results feed a trend chart that shows how OEE evolves across the shift.
 
-**Shift handover report.** A 12-hour period with an appropriate offset aligns exactly with shift boundaries. Each outgoing shift hands over a complete record — total units, faults, and average process temperature — without manual calculation.
+**Shift handover report.** A 12-hour period with an appropriate offset aligns exactly with shift boundaries. Each outgoing shift automatically generates a complete record — total units, faults, and average process temperature — without manual calculation.
 
 ---
 
@@ -134,7 +134,7 @@ Fires when the value of an integer-type attribute changes from one state to anot
 
 | Parameter | Description |
 |---|---|
-| **State** (required) | The integer attribute whose state changes trigger the analysis |
+| **State** (required) | The integer attribute whose state changes trigger the analysis. Multiple state attributes can be selected; when multiple are chosen, the system automatically creates an independent sub-analysis for each attribute. |
 
 ### Examples
 

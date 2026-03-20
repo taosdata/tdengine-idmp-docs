@@ -3,12 +3,12 @@ title: 指标 API
 sidebar_label: 指标 API
 ---
 
-`MetricResourceApi` 提供时序数据的读写操作，是 SDK 中最常用的模块之一。
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # 15.1.5.2 指标 API
+
+`MetricResourceApi` 提供时序数据的读写操作，是 SDK 中最常用的模块之一。
 
 ## 方法列表
 

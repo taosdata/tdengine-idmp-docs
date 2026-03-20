@@ -42,7 +42,7 @@ sidebar_label: 规划
 - **增长余量：** 按预期峰值元素数量的 1.5 倍规划资源，以容纳业务增长。
 
 :::note
-以上数据为参考指导，实际资源需求取决于建模复杂度和工作负载特征。TDengine TSDB 的容量规划请参考 TDengine TSDB 文档。
+以上数据为参考指导，实际资源需求取决于建模复杂度和工作负载特征。TDengine TSDB 的容量规划请参考 [TDengine TSDB 文档](https://docs.taosdata.com/operation/planning/)。
 :::
 
 ## 支持的操作系统

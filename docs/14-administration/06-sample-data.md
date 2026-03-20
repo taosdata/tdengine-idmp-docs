@@ -46,11 +46,13 @@ java -jar tda-generator-command.jar -f init.json
 java -jar tda-generator-command.jar -f init.json -c
 ```
 
-⚠️ **仅限测试环境使用**
+:::warning
+仅限测试环境使用。
+:::
 
 ### 图形界面方式运行
 
-在 IDMP 管理界面中，进入**示例数据**模块，选择或上传 JSON 配置文件，点击 **load** 或 **unload** 按钮完成操作。
+在 IDMP 管理界面中，进入**示例数据**模块，选择或上传 JSON 配置文件，点击 **保存** 或 **放弃** 按钮完成操作。
 
 ## 配置说明（JSON 配置文件）
 
@@ -126,7 +128,7 @@ java -jar tda-generator-command.jar -f init.json -c
 - db: TDengine 连接信息；
 - max_active: 连接池最大连接数；
 - min_idle: 连接池最小空闲连接数；
-- 其他参数请参考 TDengine JDBC 连接池配置说明。
+- 其他参数请参考 TDengine JDBC 连接池配置说明；
 
 ### databases - 数据库定义
 
