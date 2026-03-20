@@ -58,7 +58,7 @@ In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mo
 
 **Basic** fills each bar with a single solid color determined by the current threshold band, resulting in a clean and minimal look.
 
-![Basic display mode](../images/bar-gague-basic.png)
+![Basic display mode](../images/bar-gauge-basic.png)
 
 **Gradient** renders a smooth color transition from the low end to the high end of the bar, simultaneously conveying both the value magnitude and its position relative to thresholds.
 
