@@ -36,7 +36,7 @@ cd idmp-java-sdk
 mvn install -DskipTests
 ```
 
-**第二步——在项目的 `pom.xml` 中添加依赖：**
+**第二步——在项目的 `pom.xml` 中添加依赖：** 
 
 ```xml
 <dependency>
