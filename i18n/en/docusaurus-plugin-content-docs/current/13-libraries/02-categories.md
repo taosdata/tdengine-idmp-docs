@@ -27,7 +27,7 @@ Click **+** to create a new category. Fill in the following fields:
 | Field | Description |
 |---|---|
 | **Name** (required) | A unique name within its type. Accepts letters, numbers, underscores, hyphens, and spaces. |
-| **Type** | The object type this category applies to: `Element`, `Attribute`, `Analysis`, `Dashboard`, `Panel`, or `Event`. |
+| **Type** (required) | The object type this category applies to: `Element`, `Attribute`, `Analysis`, `Dashboard`, `Panel`, or `Event`. |
 | **Description** | Optional description. |
 
 Click **Save** to create the category.
