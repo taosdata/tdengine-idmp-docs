@@ -3,12 +3,12 @@ title: Authentication
 sidebar_label: Authentication
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 15.1.3 Authentication
 
 The IDMP SDK uses **Bearer Token (JWT)** for authentication. How you obtain a token depends on your deployment type.
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 ## Enterprise (Self-Hosted) Authentication
 

@@ -41,6 +41,8 @@ Notification Templates define the content of system-generated messages for event
 
 IDMP ships with built-in templates for common notification scenarios. Click a template name to view or edit its content. Templates support variable substitution to include dynamic values such as usernames, URLs, and event details.
 
+![notification template](./images/notify_template.png)
+
 ## Email Configuration
 
 Email Configuration defines the SMTP server that IDMP uses to send outbound email. Click the edit (pencil) icon to update the settings.
