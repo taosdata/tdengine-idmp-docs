@@ -69,7 +69,8 @@ log(current) * voltage + 10
 
 示例表达式：
 
-```text, 'Device', ${attributes['Device ID']}, ' voltage is ', CAST(${attributes['Voltage']} AS varchar), 'V')
+```text
+CONCAT('Device', ${attributes['Device ID']}, ' voltage is ', CAST(${attributes['Voltage']} AS varchar), 'V')
 ```
 
 :::note
