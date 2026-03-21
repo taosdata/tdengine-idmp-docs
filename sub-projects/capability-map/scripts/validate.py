@@ -16,13 +16,17 @@ Run from: sub-projects/capability-map/
 """
 
 import argparse
+import json
 import sys
 from pathlib import Path
 
 import yaml
+from jsonschema import Draft202012Validator
 
 from shared import (
     ALIASES_FILE,
+    ALIASES_SCHEMA,
+    CAPABILITY_SET_SCHEMA,
     DOC_ROOT,
     SECTION_MAP_FILE,
     SECTIONS_DIR,
@@ -91,6 +95,38 @@ def load_validated(path: Path, results: Results, label: str) -> dict | None:
     except yaml.YAMLError as e:
         results.error(f"{label} is not valid YAML: {e}")
         return None
+
+
+# ---------------------------------------------------------------------------
+# Check 0: JSON Schema validation
+# ---------------------------------------------------------------------------
+
+def _load_schema(schema_path: Path, results: Results) -> dict | None:
+    """Load a JSON Schema file."""
+    if not schema_path.exists():
+        results.error(f"schema file not found: {schema_path}")
+        return None
+    try:
+        return json.loads(schema_path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        results.error(f"schema file is not valid JSON: {schema_path}: {e}")
+        return None
+
+
+def check_schema(
+    data: dict,
+    schema_path: Path,
+    label: str,
+    results: Results,
+) -> None:
+    """Validate a parsed YAML document against a JSON Schema."""
+    schema = _load_schema(schema_path, results)
+    if schema is None:
+        return
+    validator = Draft202012Validator(schema)
+    for error in sorted(validator.iter_errors(data), key=lambda e: list(e.path)):
+        path = ".".join(str(p) for p in error.absolute_path) or "(root)"
+        results.error(f"[{label}] {path}: {error.message}")
 
 
 # ---------------------------------------------------------------------------
@@ -394,6 +430,13 @@ def main() -> int:
         return 1
 
     # --- Run checks ---
+    print("Checking JSON schemas...")
+    if taxonomy:
+        check_schema(taxonomy, CAPABILITY_SET_SCHEMA, "taxonomy", results)
+    aliases_data = load_validated(ALIASES_FILE, results, "aliases") if ALIASES_FILE.exists() else None
+    if aliases_data:
+        check_schema(aliases_data, ALIASES_SCHEMA, "aliases", results)
+
     print("Checking path and reference integrity...")
     check_path_integrity(manifest, section_map, results)
 

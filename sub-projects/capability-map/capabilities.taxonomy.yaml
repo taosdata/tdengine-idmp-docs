@@ -637,16 +637,16 @@ capabilities:
   parent: null
   notes: ''
 
-- id: element-level-access-control
-  name: Element-Level Access Control
+- id: role-based-access-control
+  name: Role-Based Access Control
   category: administration
   status: ga
   tags: []
   parent: null
   notes: ''
 
-- id: system-configuration
-  name: System Configuration
+- id: admin-console
+  name: Admin Console
   category: administration
   status: ga
   tags: []

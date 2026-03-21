@@ -19,6 +19,7 @@ TAXONOMY_FILE = SUBPROJECT / "capabilities.taxonomy.yaml"
 ALIASES_FILE = SUBPROJECT / "capabilities.aliases.yaml"
 SECTION_MAP_FILE = SUBPROJECT / "capabilities.section-map.yaml"
 SECTIONS_DIR = SUBPROJECT / ".sections"
+OTHER_CAP_SETS_DIR = SUBPROJECT / "other-cap-sets"
 DOC_ROOT = REPO_ROOT / "i18n" / "en" / "docusaurus-plugin-content-docs" / "current"
 DOCS_BASE_URL = "https://idmpdocs.taosdata.com"
 
@@ -237,6 +238,133 @@ def load_data() -> dict:
     }
 
 
+def load_comparison_data(
+    set_a_path: Path, set_b_path: Path, aliases_path: Path
+) -> dict:
+    """Load two capability sets and compute a three-group comparison.
+
+    Returns matched, only_in_a, only_in_b groups plus summary stats.
+    """
+    set_a = yaml.safe_load(set_a_path.read_text(encoding="utf-8"))
+    set_b = yaml.safe_load(set_b_path.read_text(encoding="utf-8"))
+    aliases_data = (
+        yaml.safe_load(aliases_path.read_text(encoding="utf-8"))
+        if aliases_path.exists()
+        else {}
+    )
+
+    caps_a = set_a.get("capabilities", [])
+    caps_b = set_b.get("capabilities", [])
+    cap_by_id_a = {c["id"]: c for c in caps_a}
+    cat_by_id_a = {c["id"]: c for c in set_a.get("categories", [])}
+
+    # Build B category index; if the file has no categories list, derive from
+    # the freeform category labels used on capabilities (preserving order).
+    if set_b.get("categories"):
+        cat_by_id_b = {c["id"]: c for c in set_b["categories"]}
+    else:
+        seen: dict[str, None] = {}
+        for c in caps_b:
+            cat = c.get("category", "uncategorized")
+            seen.setdefault(cat, None)
+        cat_by_id_b = {
+            cid: {"id": cid, "name": cid.replace("-", " ").title()}
+            for cid in seen
+        }
+
+    alias_to_canonical = _flatten_aliases(aliases_data.get("aliases", {}))
+
+    # Resolve each B cap against A
+    matched = []
+    only_in_b = []
+    matched_a_ids: set[str] = set()
+
+    for cap_b in caps_b:
+        raw_id = cap_b["id"]
+        if raw_id in cap_by_id_a:
+            resolved = raw_id
+        elif raw_id in alias_to_canonical and alias_to_canonical[raw_id] in cap_by_id_a:
+            resolved = alias_to_canonical[raw_id]
+        else:
+            only_in_b.append(cap_b)
+            continue
+        matched.append(
+            {"cap_a": cap_by_id_a[resolved], "cap_b": cap_b, "resolved_id": resolved}
+        )
+        matched_a_ids.add(resolved)
+
+    only_in_a = [c for c in caps_a if c["id"] not in matched_a_ids]
+
+    # --- Stats ---
+    required_caps = [m for m in caps_b if m.get("status") == "required"]
+    nice_caps = [m for m in caps_b if m.get("status") == "nice-to-have"]
+    required_met = sum(
+        1 for m in matched if m["cap_b"].get("status") == "required"
+    )
+    nice_met = sum(
+        1 for m in matched if m["cap_b"].get("status") == "nice-to-have"
+    )
+    required_total = len(required_caps)
+    nice_total = len(nice_caps)
+
+    compare_stats = {
+        "total_a": len(caps_a),
+        "total_b": len(caps_b),
+        "matched_count": len(matched),
+        "only_a_count": len(only_in_a),
+        "only_b_count": len(only_in_b),
+        "required_total": required_total,
+        "required_met": required_met,
+        "required_missing": required_total - required_met,
+        "coverage_pct": (
+            round(100 * required_met / required_total) if required_total else 0
+        ),
+        "nice_total": nice_total,
+        "nice_met": nice_met,
+    }
+
+    # --- Group by category ---
+    # Build per-category lists for B-side (matched + missing)
+    b_categories_order = list(cat_by_id_b.keys())
+    req_by_cat: dict[str, list] = defaultdict(list)
+    for m in matched:
+        cat = m["cap_b"].get("category", "uncategorized")
+        req_by_cat[cat].append({**m, "match": True})
+    for cap_b in only_in_b:
+        cat = cap_b.get("category", "uncategorized")
+        req_by_cat[cat].append({"cap_b": cap_b, "match": False})
+
+    # Group only_in_a by A's categories
+    a_categories_order = list(cat_by_id_a.keys())
+    product_only_by_cat: dict[str, list] = defaultdict(list)
+    for cap_a in only_in_a:
+        cat = cap_a.get("category", "uncategorized")
+        product_only_by_cat[cat].append(cap_a)
+
+    return {
+        "set_a_meta": {
+            "name": set_a.get("name", "Set A"),
+            "kind": set_a.get("kind", ""),
+            "date": set_a.get("date", ""),
+        },
+        "set_b_meta": {
+            "name": set_b.get("name", "Set B"),
+            "kind": set_b.get("kind", ""),
+            "date": set_b.get("date", ""),
+        },
+        "matched": matched,
+        "only_in_a": only_in_a,
+        "only_in_b": only_in_b,
+        "compare_stats": compare_stats,
+        "req_by_cat": dict(req_by_cat),
+        "cat_by_id_b": cat_by_id_b,
+        "b_categories_order": b_categories_order,
+        "product_only_by_cat": dict(product_only_by_cat),
+        "cat_by_id_a_compare": cat_by_id_a,
+        "a_categories_order": a_categories_order,
+    }
+
+
 # ---------------------------------------------------------------------------
 # Routes
 # ---------------------------------------------------------------------------
@@ -353,6 +481,14 @@ def doc_view(file_path: str):
         external_url=external_url,
         **data,
     )
+
+
+@app.route("/compare")
+def compare_view():
+    set_b_file = OTHER_CAP_SETS_DIR / "jnj-required-capabilities.yaml"
+    data = load_data()
+    comparison = load_comparison_data(TAXONOMY_FILE, set_b_file, ALIASES_FILE)
+    return render_template("compare.html", **data, **comparison)
 
 
 # ---------------------------------------------------------------------------

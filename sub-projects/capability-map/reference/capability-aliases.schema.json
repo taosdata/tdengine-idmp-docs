@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "capability-aliases.schema.json",
+  "title": "Capability Aliases",
+  "description": "Maps non-canonical IDs from AI extraction to canonical capability IDs, and lists ignored IDs.",
+  "type": "object",
+  "required": ["aliases", "ignored"],
+  "additionalProperties": false,
+  "properties": {
+    "aliases": {
+      "type": "object",
+      "description": "Canonical capability ID → list of non-canonical aliases.",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^[a-z][a-z0-9-]*$"
+        },
+        "minItems": 1
+      },
+      "propertyNames": {
+        "pattern": "^[a-z][a-z0-9-]*$"
+      }
+    },
+    "ignored": {
+      "type": "array",
+      "description": "Extracted IDs that are not capabilities.",
+      "items": {
+        "type": "object",
+        "required": ["id", "reason"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9-]*$",
+            "description": "The extracted ID to ignore."
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Why this ID is not a capability."
+          }
+        }
+      }
+    }
+  }
+}

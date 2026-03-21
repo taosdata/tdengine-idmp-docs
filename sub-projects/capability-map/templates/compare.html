@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% block title %}Compare — Capability Explorer{% endblock %}
+{% block content %}
+<h1>Capability Set Comparison</h1>
+<p style="margin-bottom: 20px; color: var(--text-muted);">
+  Comparing <strong>{{ set_a_meta.name }}</strong> ({{ set_a_meta.kind }})
+  vs <strong>{{ set_b_meta.name }}</strong> ({{ set_b_meta.kind }})
+</p>
+
+<div class="cards">
+  <div class="card">
+    <div class="value">{{ compare_stats.required_total }}</div>
+    <div class="label">Required</div>
+  </div>
+  <div class="card">
+    <div class="value" style="color: var(--green);">{{ compare_stats.required_met }}</div>
+    <div class="label">Met</div>
+  </div>
+  <div class="card">
+    <div class="value" style="color: var(--orange);">{{ compare_stats.required_missing }}</div>
+    <div class="label">Missing</div>
+  </div>
+  <div class="card">
+    <div class="value" style="color: var(--green);">{{ compare_stats.coverage_pct }}%</div>
+    <div class="label">Coverage</div>
+    <div class="coverage-bar"><div class="fill" style="width: {{ compare_stats.coverage_pct }}%;"></div></div>
+  </div>
+  <div class="card">
+    <div class="value">{{ compare_stats.nice_met }} / {{ compare_stats.nice_total }}</div>
+    <div class="label">Nice-to-Have Met</div>
+  </div>
+  <div class="card">
+    <div class="value" style="color: var(--gray);">{{ compare_stats.only_a_count }}</div>
+    <div class="label">Product-Only</div>
+  </div>
+</div>
+
+<h2>Requirement Coverage</h2>
+<p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 12px;">
+  Capabilities from <strong>{{ set_b_meta.name }}</strong>, grouped by category.
+</p>
+
+{% for cat_id in b_categories_order %}
+{% set items = req_by_cat.get(cat_id, []) %}
+{% if items %}
+<details class="category-section" open>
+  <summary>
+    {{ cat_by_id_b[cat_id].name if cat_id in cat_by_id_b else cat_id }}
+    <span class="count">({{ items | length }})</span>
+  </summary>
+  <div class="category-body">
+    <table>
+      <thead>
+        <tr>
+          <th>Requirement</th>
+          <th>Req. Status</th>
+          <th>Product Status</th>
+          <th>Match</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in items %}
+        <tr>
+          <td>
+            {% if item.match %}
+            <a href="/capability/{{ item.resolved_id }}">{{ item.cap_b.name }}</a>
+            {% else %}
+            {{ item.cap_b.name }}
+            {% endif %}
+          </td>
+          <td><span class="badge status-{{ item.cap_b.status | default('unknown') | replace(' ', '-') }}">{{ item.cap_b.status | default('—') }}</span></td>
+          <td>
+            {% if item.match %}
+            <span class="badge status-{{ item.cap_a.status | default('unknown') }}">{{ item.cap_a.status | default('—') }}</span>
+            {% else %}
+            —
+            {% endif %}
+          </td>
+          <td>
+            {% if item.match %}
+            <span class="match-yes">✓</span>
+            {% else %}
+            <span class="match-no">✗</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</details>
+{% endif %}
+{% endfor %}
+
+{# Handle uncategorized items #}
+{% set uncat = req_by_cat.get('uncategorized', []) %}
+{% if uncat %}
+<details class="category-section" open>
+  <summary>Uncategorized <span class="count">({{ uncat | length }})</span></summary>
+  <div class="category-body">
+    <table>
+      <thead>
+        <tr><th>Requirement</th><th>Req. Status</th><th>Product Status</th><th>Match</th></tr>
+      </thead>
+      <tbody>
+        {% for item in uncat %}
+        <tr>
+          <td>
+            {% if item.match %}
+            <a href="/capability/{{ item.resolved_id }}">{{ item.cap_b.name }}</a>
+            {% else %}
+            {{ item.cap_b.name }}
+            {% endif %}
+          </td>
+          <td><span class="badge status-{{ item.cap_b.status | default('unknown') | replace(' ', '-') }}">{{ item.cap_b.status | default('—') }}</span></td>
+          <td>
+            {% if item.match %}
+            <span class="badge status-{{ item.cap_a.status | default('unknown') }}">{{ item.cap_a.status | default('—') }}</span>
+            {% else %}
+            —
+            {% endif %}
+          </td>
+          <td>
+            {% if item.match %}
+            <span class="match-yes">✓</span>
+            {% else %}
+            <span class="match-no">✗</span>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</details>
+{% endif %}
+
+{% if only_in_a %}
+<h2>Product-Only Capabilities <span class="count" style="font-weight: 400; color: var(--text-muted); font-size: 0.85em;">({{ compare_stats.only_a_count }})</span></h2>
+<p style="font-size: 0.9em; color: var(--text-muted); margin-bottom: 12px;">
+  Capabilities in <strong>{{ set_a_meta.name }}</strong> not requested by {{ set_b_meta.name }}.
+</p>
+
+{% for cat_id in a_categories_order %}
+{% set items = product_only_by_cat.get(cat_id, []) %}
+{% if items %}
+<details class="category-section">
+  <summary>
+    {{ cat_by_id_a_compare[cat_id].name if cat_id in cat_by_id_a_compare else cat_id }}
+    <span class="count">({{ items | length }})</span>
+  </summary>
+  <div class="category-body">
+    <table>
+      <thead>
+        <tr><th>Capability</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        {% for cap in items %}
+        <tr>
+          <td><a href="/capability/{{ cap.id }}">{{ cap.name }}</a></td>
+          <td><span class="badge status-{{ cap.status | default('unknown') }}">{{ cap.status | default('—') }}</span></td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</details>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endblock %}

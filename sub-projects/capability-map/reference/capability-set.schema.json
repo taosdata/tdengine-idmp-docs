@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "capability-set.schema.json",
+  "title": "Capability Set",
+  "description": "A portable YAML/JSON format for describing a collection of capabilities.",
+  "type": "object",
+  "required": ["version", "kind", "name", "capabilities"],
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Schema version.",
+      "const": "1.0"
+    },
+    "kind": {
+      "type": "string",
+      "description": "What this set represents.",
+      "enum": ["product", "release", "roadmap", "requirement", "comparison"]
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Human-readable label for the set."
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief context explaining the set's purpose or scope."
+    },
+    "date": {
+      "type": "string",
+      "description": "ISO 8601 date when the set was authored or captured.",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+    },
+    "categories": {
+      "type": "array",
+      "description": "Optional groupings for capabilities within this set.",
+      "items": {
+        "type": "object",
+        "required": ["id", "name"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9-]*$",
+            "description": "Kebab-case category identifier."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Human-readable display name."
+          }
+        }
+      }
+    },
+    "capabilities": {
+      "type": "array",
+      "description": "The capabilities in this set.",
+      "items": {
+        "type": "object",
+        "required": ["id", "name"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "^[a-z][a-z0-9-]*$",
+            "description": "Kebab-case identifier, unique within the set."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Human-readable display name."
+          },
+          "status": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Lifecycle stage. Interpretation depends on kind."
+          },
+          "category": {
+            "type": "string",
+            "description": "Category ID. Should reference a categories entry if defined."
+          },
+          "tags": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Freeform labels for additional classification."
+          },
+          "parent": {
+            "type": ["string", "null"],
+            "description": "ID of a parent capability for hierarchy."
+          },
+          "notes": {
+            "type": "string",
+            "description": "Free-form context."
+          }
+        }
+      }
+    }
+  }
+}

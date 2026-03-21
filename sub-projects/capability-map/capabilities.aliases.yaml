@@ -39,7 +39,8 @@ aliases:
     - sso-authentication
     - sso
   role-based-access-control:
-    - rbac    
+    - rbac
+    - element-level-access-control
   admin-console:
     - system-configuration
 

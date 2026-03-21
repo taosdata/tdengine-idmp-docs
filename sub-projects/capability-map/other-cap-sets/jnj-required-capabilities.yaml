@@ -1,0 +1,712 @@
+# J&J Data Historian RFI — Required Capability Set
+#
+# Derived from: JnJ_RFI_Requirements.md
+# Method: Each numbered requirement item was tested against the capability
+# definition (reference/capability-definition.md). Items that represent
+# something the system can do — a task, function, or behavior that a user
+# can use or an administrator can configure — are included below.
+#
+# ── Excluded sections (not capabilities) ──────────────────────────────────
+#
+# § 1.1 Deployment Options (items 1–7)
+#   Deployment topology descriptions, not system actions. The system either
+#   supports a deployment model or it doesn't — that is an architecture
+#   attribute, not a user/admin-facing capability.
+#
+# § 1.3.4 Architecture mapping to J&J use case
+#   A deliverable / sizing exercise, not a capability.
+#
+# § 3.1 Capacity & Performance (items 1–4)
+#   Performance benchmarks and sizing limits — measurable attributes, not
+#   independently usable functions.
+#
+# § 3.7 Compliance Documentation (items 1–2)
+#   Documentation deliverables, not system capabilities.
+#
+# § 3.8 Partnerships
+#   Business relationship, not a system capability.
+#
+# § 4.6.2 Training requirements
+#   Vendor service, not a system capability.
+#
+# § 6.1 Cloud Platforms (items 1–4)
+#   Platform support declarations — same reasoning as deployment options.
+#
+# § 6.3 Environment Management (items 1–2)
+#   Operational practice / deployment topology, not a system function.
+#
+# § 6.4 SaaS Operations (items 1–3)
+#   Vendor operational practices, not system capabilities.
+#
+# § 7.1.3 Validation matrix
+#   A documentation deliverable.
+#
+# § 7.5 Validation Documentation / GAMP 5 (items 1–6)
+#   Documentation deliverables (URS, FRS, IQ, OQ, PQ, templates).
+#
+# § 7.6 Change Control (items 1–3)
+#   Vendor operational practices, not system capabilities.
+#
+# § 7.7 Vendor Validation Practices (items 1–2)
+#   Vendor quality processes, not system capabilities.
+#
+# § 8. Licensing & Cost (all items)
+#   Commercial terms and pricing structures.
+#
+# § 9. Vendor Profile (all items)
+#   Company information, qualifications, delivery capability, roadmap.
+#
+# § 10. Use Case Deliverables (all items)
+#   Submission artifacts and narrative requirements.
+# ──────────────────────────────────────────────────────────────────────────
+
+kind: requirement
+name: J&J Data Historian RFI
+description: >
+  Capabilities required by Johnson & Johnson for a pharmaceutical
+  manufacturing Data Historian platform, extracted from RFI ref
+  JNJ-DH-2026-RFI-01. Source repo: taosdata/tdengine-na-biz.git 
+date: 2026-03-20
+version: 1.0
+
+capabilities:
+
+# ── Architecture & Deployment ────────────────────────────────────────────
+
+- id: site-enterprise-replication
+  name: Site-Enterprise Data Replication
+  status: required
+  category: architecture
+  notes: "RFI §1.2.1 — Replication between site and enterprise layers"
+
+- id: autonomous-site-operation
+  name: Autonomous Site Operation
+  status: required
+  category: architecture
+  notes: "RFI §1.2.2 — Site-level operation continues during network disconnection"
+
+- id: site-enterprise-sync
+  name: Site-Enterprise Synchronization
+  status: required
+  category: architecture
+  notes: "RFI §1.2.3 — Periodic/continuous secure sync to enterprise historian"
+
+- id: store-and-forward
+  name: Store & Forward
+  status: required
+  category: architecture
+  notes: "RFI §1.2.4 — Buffered forwarding at site level"
+
+- id: horizontal-scalability
+  name: Horizontal Scalability
+  status: required
+  category: architecture
+  notes: "RFI §1.3.1 — Multi-site scaling, node expansion"
+
+- id: high-availability
+  name: High Availability
+  status: required
+  category: architecture
+  notes: "RFI §1.3.2 — Resilience and redundancy"
+
+- id: data-residency-control
+  name: Data Residency Control
+  status: required
+  category: architecture
+  notes: "RFI §1.3.3, §6.2.1 — Configurable data residency (e.g., EU-only)"
+
+- id: encryption-at-rest
+  name: Encryption at Rest
+  status: required
+  category: architecture
+  notes: "RFI §1.4.1, §3.6.3 — Data encryption on disk"
+
+- id: encryption-in-transit
+  name: Encryption in Transit
+  status: required
+  category: architecture
+  notes: "RFI §1.4.1, §3.6.3 — Data encryption over network"
+
+- id: encryption-key-management
+  name: Encryption Key Management
+  status: required
+  category: architecture
+  notes: "RFI §1.4.2, §6.2.2 — Key lifecycle management"
+
+- id: network-security
+  name: Network Security
+  status: required
+  category: architecture
+  notes: "RFI §1.4.3 — Network-level security mechanisms"
+
+- id: replication-data-protection
+  name: Replication Data Protection
+  status: required
+  category: architecture
+  notes: "RFI §1.4.4 — Data protection during replication/sync"
+
+# ── Data Collection ──────────────────────────────────────────────────────
+
+- id: dcs-ingestion
+  name: DCS Ingestion
+  status: required
+  category: data-collection
+  notes: "RFI §2.1.1 — Distributed Control System data collection"
+
+- id: scada-ingestion
+  name: SCADA Ingestion
+  status: required
+  category: data-collection
+  notes: "RFI §2.1.2"
+
+- id: plc-ingestion
+  name: PLC Ingestion
+  status: required
+  category: data-collection
+  notes: "RFI §2.1.3 — Programmable Logic Controller data collection"
+
+- id: bms-ingestion
+  name: BMS Ingestion
+  status: required
+  category: data-collection
+  notes: "RFI §2.1.4 — Building Management System data collection"
+
+- id: iot-device-ingestion
+  name: IoT Device Ingestion
+  status: required
+  category: data-collection
+  notes: "RFI §2.1.5"
+
+- id: lab-instrument-ingestion
+  name: Lab Instrument Ingestion
+  status: required
+  category: data-collection
+  notes: "RFI §2.1.6 — Floor scales, offline pH meters, etc."
+
+- id: opc-ua-connector
+  name: OPC UA Connector
+  status: required
+  category: data-collection
+  notes: "RFI §2.2.1"
+
+- id: opc-da-connector
+  name: OPC DA Connector
+  status: required
+  category: data-collection
+  notes: "RFI §2.2.2"
+
+- id: mqtt-ingestion
+  name: MQTT Ingestion
+  status: required
+  category: data-collection
+  notes: "RFI §2.2.3"
+
+- id: rest-ingestion
+  name: REST Ingestion
+  status: required
+  category: data-collection
+  notes: "RFI §2.2.4"
+
+- id: modbus-connector
+  name: Modbus Connector
+  status: required
+  category: data-collection
+  notes: "RFI §2.2.5"
+
+- id: sql-ingestion
+  name: SQL Ingestion
+  status: required
+  category: data-collection
+  notes: "RFI §2.2.6"
+
+- id: file-based-ingestion
+  name: File-Based Ingestion
+  status: required
+  category: data-collection
+  notes: "RFI §2.2.7"
+
+- id: proprietary-connectors
+  name: Proprietary Connectors
+  status: required
+  category: data-collection
+  notes: "RFI §2.2.8 — Vendor-specific protocol connectors"
+
+- id: continuous-data-acquisition
+  name: Continuous Data Acquisition
+  status: required
+  category: data-collection
+  notes: "RFI §2.3.1 — Continuous acquisition of process parameters"
+
+- id: batch-event-collection
+  name: Batch & Event Collection
+  status: required
+  category: data-collection
+  notes: "RFI §2.3.2 — Batch/event-based data collection"
+
+- id: alarm-event-handling
+  name: Alarm & Event Handling
+  status: required
+  category: data-collection
+  notes: "RFI §2.3.3, §2.3.4 — Alarm ingestion, storage (string/boolean with codes)"
+
+- id: high-frequency-capture
+  name: High-Frequency Data Capture
+  status: required
+  category: data-collection
+  notes: "RFI §2.3.5 — Maximum data points/sec"
+
+- id: edge-data-collection
+  name: Edge Data Collection
+  status: required
+  category: data-collection
+  notes: "RFI §2.4.1 — Edge-level collection mechanisms"
+
+- id: local-buffering
+  name: Local Buffering
+  status: required
+  category: data-collection
+  notes: "RFI §2.4.2, §2.4.3, §2.4.4 — Buffer during outages, sync after reconnect"
+
+- id: disconnected-data-distribution
+  name: Disconnected Data Distribution
+  status: required
+  category: data-collection
+  notes: "RFI §2.4.5 — Distribute data to critical site systems during disconnection"
+
+- id: collection-failover
+  name: Collection Failover
+  status: required
+  category: data-collection
+  notes: "RFI §2.5.1, §2.5.2 — Redundancy, automatic failover, recovery"
+
+- id: timestamp-accuracy
+  name: Timestamp Accuracy
+  status: required
+  category: data-collection
+  notes: "RFI §2.6.1, §2.6.2 — UTC storage, millisecond resolution"
+
+- id: time-synchronization
+  name: Time Synchronization
+  status: required
+  category: data-collection
+  notes: "RFI §2.6.3 — NTP/PTP compatibility across systems"
+
+- id: data-quality-tagging
+  name: Data Quality Tagging
+  status: required
+  category: data-collection
+  notes: "RFI §2.6.4, §2.6.5, §2.6.6 — Quality tags, validation, false reading prevention"
+
+- id: automation-vendor-integration
+  name: Automation Vendor Integration
+  status: required
+  category: data-collection
+  notes: "RFI §2.7.1 — Integration with major automation vendors"
+
+# ── Data Storage ─────────────────────────────────────────────────────────
+
+- id: storage-redundancy
+  name: Storage Redundancy
+  status: required
+  category: data-storage
+  notes: "RFI §3.2.1, §3.2.2 — Redundancy mechanisms, target ≥99.999% uptime"
+
+- id: rolling-upgrade
+  name: Rolling Upgrade
+  status: required
+  category: data-storage
+  notes: "RFI §3.2.3, §3.2.4 — No-downtime upgrades, uninterrupted data flow"
+
+- id: data-compression
+  name: Data Compression
+  status: required
+  category: data-storage
+  notes: "RFI §3.3.1 — Time-series data compression"
+
+- id: data-retention-policy
+  name: Data Retention Policy
+  status: required
+  category: data-storage
+  notes: "RFI §3.3.2, §3.3.4 — Configurable retention, regulatory compliance"
+
+- id: long-term-archiving
+  name: Long-Term Archiving
+  status: required
+  category: data-storage
+  notes: "RFI §3.3.3 — ≥10 year archival storage"
+
+- id: backup
+  name: Backup
+  status: required
+  category: data-storage
+  notes: "RFI §3.4.1 — Backup strategies"
+
+- id: disaster-recovery
+  name: Disaster Recovery
+  status: required
+  category: data-storage
+  notes: "RFI §3.4.2, §3.4.3, §3.4.5, §6.5.2 — DR mechanisms, no data loss, RTO targets"
+
+- id: backup-verification
+  name: Backup Verification
+  status: required
+  category: data-storage
+  notes: "RFI §3.4.4 — Data accuracy verification after restoration"
+
+- id: data-segregation
+  name: Data Segregation
+  status: required
+  category: data-storage
+  notes: "RFI §3.5.1 — Segregation by site, area, tenant"
+
+- id: metadata-tagging
+  name: Metadata Tagging
+  status: required
+  category: data-storage
+  notes: "RFI §3.5.2 — Batch number, line number, product code contextualization"
+
+- id: data-immutability
+  name: Data Immutability
+  status: required
+  category: data-storage
+  notes: "RFI §3.6.1 — Prevent modification after validation"
+
+- id: audit-trail
+  name: Audit Trail
+  status: required
+  category: data-storage
+  notes: "RFI §3.6.2, §7.2.1–4 — User, time, old/new values, reason for change, review/export"
+
+# ── Visualization & Reporting ────────────────────────────────────────────
+
+- id: web-visualization
+  name: Web Visualization
+  status: required
+  category: visualization
+  notes: "RFI §4.1.1 — Browser-based client"
+
+- id: mobile-visualization
+  name: Mobile Visualization
+  status: required
+  category: visualization
+  notes: "RFI §4.1.2 — Mobile device support"
+
+- id: desktop-client
+  name: Desktop Client
+  status: required
+  category: visualization
+  notes: "RFI §4.1.3"
+
+- id: dashboards
+  name: Dashboards
+  status: required
+  category: visualization
+  notes: "RFI §4.1.4, §4.2.5 — Native dashboards, KPIs, operator/engineer views"
+
+- id: real-time-trending
+  name: Real-Time Trending
+  status: required
+  category: visualization
+  notes: "RFI §4.2.1"
+
+- id: historical-trending
+  name: Historical Trending
+  status: required
+  category: visualization
+  notes: "RFI §4.2.2"
+
+- id: batch-visualization
+  name: Batch Visualization
+  status: required
+  category: visualization
+  notes: "RFI §4.2.3 — Batch data display"
+
+- id: alarm-event-visualization
+  name: Alarm & Event Visualization
+  status: required
+  category: visualization
+  notes: "RFI §4.2.4"
+
+- id: multi-site-comparison
+  name: Multi-Site Comparison
+  status: required
+  category: visualization
+  notes: "RFI §4.3.1, §4.3.2 — Cross-plant performance, yield, environmental comparison"
+
+- id: isa-95-contextualization
+  name: ISA-95 & ISA-88 Contextualization
+  status: required
+  category: visualization
+  notes: "RFI §4.3.3, §5.5.1 — Equipment/batch model contextualization"
+
+- id: electronic-signature
+  name: Electronic Signature
+  status: required
+  category: visualization
+  notes: "RFI §4.4.1, §7.3.1, §7.3.2 — E-signature support and workflows"
+
+- id: approval-workflow
+  name: Approval Workflow
+  status: required
+  category: visualization
+  notes: "RFI §4.4.2 — GMP-compliant approval workflows"
+
+- id: exception-reporting
+  name: Exception Reporting
+  status: required
+  category: visualization
+  notes: "RFI §4.4.3 — Exception-based reports"
+
+- id: power-bi-integration
+  name: Power BI Integration
+  status: required
+  category: visualization
+  notes: "RFI §4.5.1"
+
+- id: seeq-integration
+  name: Seeq Integration
+  status: required
+  category: visualization
+  notes: "RFI §4.5.2"
+
+- id: tableau-integration
+  name: Tableau Integration
+  status: required
+  category: visualization
+  notes: "RFI §4.5.3"
+
+- id: low-code-configuration
+  name: Low-Code Configuration
+  status: required
+  category: visualization
+  notes: "RFI §4.6.1 — Ease of configuration for end users"
+
+- id: multi-language-interface
+  name: Multi-Language Interface
+  status: required
+  category: visualization
+  notes: "RFI §4.6.3 — Localized UI"
+
+- id: predictive-analytics
+  name: Predictive Analytics
+  status: nice-to-have
+  category: visualization
+  tags: [ai]
+  notes: "RFI §4.7.1 — Predictive maintenance, anomaly detection, early warning (marked optional in RFI)"
+
+# ── Data Extraction & Enablement ─────────────────────────────────────────
+
+- id: rest-api
+  name: REST API
+  status: required
+  category: data-extraction
+  notes: "RFI §5.1.1"
+
+- id: sdk
+  name: SDK
+  status: required
+  category: data-extraction
+  notes: "RFI §5.1.2 — Client libraries / SDKs"
+
+- id: graphql-api
+  name: GraphQL API
+  status: required
+  category: data-extraction
+  notes: "RFI §5.1.3"
+
+- id: api-throttling
+  name: API Throttling
+  status: required
+  category: data-extraction
+  notes: "RFI §5.1.4 — Rate limiting / performance management"
+
+- id: opc-ua-publishing
+  name: OPC UA Publishing
+  status: required
+  category: data-extraction
+  notes: "RFI §5.2.1 — Outbound OPC UA"
+
+- id: mqtt-publishing
+  name: MQTT Publishing
+  status: required
+  category: data-extraction
+  notes: "RFI §5.2.2 — Outbound MQTT"
+
+- id: kafka-publishing
+  name: Kafka Publishing
+  status: required
+  category: data-extraction
+  notes: "RFI §5.2.3 — Outbound Kafka"
+
+- id: full-data-extraction
+  name: Full Data Extraction
+  status: required
+  category: data-extraction
+  notes: "RFI §5.3.1 — Bulk export"
+
+- id: incremental-extraction
+  name: Incremental Extraction
+  status: required
+  category: data-extraction
+  notes: "RFI §5.3.2 — Delta/change-based export"
+
+- id: real-time-streaming
+  name: Real-Time Streaming
+  status: required
+  category: data-extraction
+  notes: "RFI §5.3.3 — Continuous data streaming to consumers"
+
+- id: data-lake-replication
+  name: Data Lake Replication
+  status: required
+  category: data-extraction
+  notes: "RFI §5.3.4 — Extraction to independent TSDB or data lake"
+
+- id: extraction-integrity
+  name: Extraction Integrity
+  status: required
+  category: data-extraction
+  notes: "RFI §5.3.5, §5.3.6 — Contextual consistency and source sync during extraction"
+
+- id: mes-integration
+  name: MES Integration
+  status: required
+  category: data-extraction
+  notes: "RFI §5.4.1, §4.7.2"
+
+- id: lims-integration
+  name: LIMS Integration
+  status: required
+  category: data-extraction
+  notes: "RFI §5.4.2"
+
+- id: erp-sap-integration
+  name: ERP & SAP Integration
+  status: required
+  category: data-extraction
+  notes: "RFI §5.4.3"
+
+- id: cmms-integration
+  name: CMMS Integration
+  status: required
+  category: data-extraction
+  notes: "RFI §5.4.4"
+
+- id: cloud-platform-integration
+  name: Cloud Platform Integration
+  status: required
+  category: data-extraction
+  notes: "RFI §5.4.5 — Azure, AWS, GCP connectivity"
+
+- id: data-governance
+  name: Data Governance & Lineage
+  status: required
+  category: data-extraction
+  notes: "RFI §5.5.2 — Lineage tracking and governance"
+
+- id: data-traceability
+  name: Data Traceability
+  status: required
+  category: data-extraction
+  notes: "RFI §5.5.3 — Security and traceability mechanisms"
+
+- id: ai-ml-enablement
+  name: AI & ML Enablement
+  status: required
+  category: data-extraction
+  tags: [ai]
+  notes: "RFI §5.6.1 — Data access patterns supporting AI/ML workloads"
+
+- id: multi-site-aggregation
+  name: Multi-Site Aggregation
+  status: required
+  category: data-extraction
+  notes: "RFI §5.6.2 — Central access across sites"
+
+- id: legacy-historian-migration
+  name: Legacy Historian Migration
+  status: required
+  category: data-extraction
+  notes: "RFI §5.7.1 — Migration from AVEVA PI and other legacy historians"
+
+# ── Cloud & Hybrid ───────────────────────────────────────────────────────
+
+- id: on-premise-fallback
+  name: On-Premise Fallback
+  status: required
+  category: cloud-hybrid
+  notes: "RFI §6.2.3 — Continue operation on-prem when cloud is unavailable"
+
+- id: site-cloud-latency-handling
+  name: Site-Cloud Latency Handling
+  status: required
+  category: cloud-hybrid
+  notes: "RFI §6.5.1 — Latency and sync management between site and cloud"
+
+# ── Compliance & Validation ──────────────────────────────────────────────
+
+- id: cfr-part-11-compliance
+  name: 21 CFR Part 11 Compliance
+  status: required
+  category: compliance
+  notes: "RFI §7.1.1 — FDA electronic records/signatures regulation"
+
+- id: annex-11-compliance
+  name: EU Annex 11 Compliance
+  status: required
+  category: compliance
+  notes: "RFI §7.1.2 — EU computerized systems regulation"
+
+- id: alcoa-plus-adherence
+  name: ALCOA+ Data Integrity
+  status: required
+  category: compliance
+  notes: "RFI §7.1.4 — Attributable, Legible, Contemporaneous, Original, Accurate + Complete, Consistent, Enduring, Available"
+
+- id: audit-trail-export
+  name: Audit Trail Export
+  status: required
+  category: compliance
+  notes: "RFI §7.2.3 — Review and export of audit trail records"
+
+- id: reason-for-change
+  name: Reason for Change Enforcement
+  status: required
+  category: compliance
+  notes: "RFI §7.2.4 — Mandatory reason capture on data modification"
+
+- id: rbac
+  name: Role-Based Access Control
+  status: required
+  category: compliance
+  notes: "RFI §7.4.1 — RBAC"
+
+- id: ldap-integration
+  name: LDAP Integration
+  status: required
+  category: compliance
+  notes: "RFI §7.4.2"
+
+- id: active-directory-integration
+  name: Active Directory Integration
+  status: required
+  category: compliance
+  notes: "RFI §7.4.3"
+
+- id: sso
+  name: SSO
+  status: required
+  category: compliance
+  notes: "RFI §7.4.4 — Single sign-on"
+
+- id: mfa
+  name: MFA
+  status: required
+  category: compliance
+  notes: "RFI §7.4.5 — Multi-factor authentication"
+
+- id: per-tag-security
+  name: Per-Tag Security
+  status: required
+  category: compliance
+  notes: "RFI §7.4.6 — Tag-level access control granularity"
