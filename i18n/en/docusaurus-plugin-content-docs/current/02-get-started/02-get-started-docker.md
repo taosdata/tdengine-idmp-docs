@@ -75,7 +75,7 @@ TDengine IDMP is offered as a Docker Compose setup to make deployment easy. This
      ```shell
      docker compose -f docker-compose-tdgpt.yml up -d
      ```
-   
+
    These commands pull the required Docker images and spin up TDengine TSDB and TDengine IDMP containers.
 
 </TabItem>
@@ -140,7 +140,7 @@ Commonly encountered issues are described as follows:
    ```
 
    **Solution:** This indicates that Docker is not running. Ensure that you have started the Docker Desktop application and that it is operating normally, then run the Docker Compose command again.
-   
+
 1. **Issue:** When you run the `docker compose up` command, the following error occurs:
 
    ```text
