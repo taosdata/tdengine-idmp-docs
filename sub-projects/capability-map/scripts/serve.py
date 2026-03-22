@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Capability Inventory Explorer — Flask web UI."""
 
+import base64
 import os
 import re
 from collections import defaultdict
@@ -8,7 +9,7 @@ from pathlib import Path
 
 import markdown as md
 import yaml
-from flask import Flask, abort, jsonify, render_template
+from flask import Flask, Response, abort, jsonify, render_template, request
 
 # ---------------------------------------------------------------------------
 # Paths
@@ -36,6 +37,34 @@ app = Flask(
     static_folder=str(SUBPROJECT / "static"),
 )
 app.jinja_env.filters["section_path"] = lambda sid: sid.replace("#", "/")
+
+
+# ---------------------------------------------------------------------------
+# Basic auth gate
+# ---------------------------------------------------------------------------
+
+_APP_PASSWORD = os.environ.get("APP_PASSWORD")
+
+
+@app.before_request
+def check_auth():
+    """Require HTTP Basic Auth when APP_PASSWORD env var is set."""
+    if not _APP_PASSWORD:
+        return  # No password configured — allow all requests (local dev)
+    auth = request.headers.get("Authorization", "")
+    if auth.startswith("Basic "):
+        try:
+            decoded = base64.b64decode(auth[6:]).decode("utf-8")
+            _, _, password = decoded.partition(":")
+            if password == _APP_PASSWORD:
+                return  # Authenticated
+        except Exception:
+            pass
+    return Response(
+        "Unauthorized",
+        401,
+        {"WWW-Authenticate": 'Basic realm="Capability Explorer"'},
+    )
 
 
 # ---------------------------------------------------------------------------

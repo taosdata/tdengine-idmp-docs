@@ -18,6 +18,7 @@ sub-projects/capability-map/
 │   └── index.py          # Serverless entry point (imports the Flask app)
 ├── vercel.json            # Build & routing config
 ├── requirements.txt       # Python deps (root-level, read by Vercel)
+├── .python-version        # Pins Python version for Vercel
 ├── scripts/
 │   └── serve.py           # Flask app
 ├── templates/             # Jinja2 templates

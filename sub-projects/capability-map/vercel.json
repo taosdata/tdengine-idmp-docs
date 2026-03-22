@@ -1,6 +1,4 @@
 {
-  "buildCommand": "",
-  "outputDirectory": "",
   "builds": [
     {
       "src": "api/index.py",
