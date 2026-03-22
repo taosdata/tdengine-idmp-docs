@@ -32,12 +32,27 @@ categories:
 - id: integration
   name: Integration with Other Systems
 capabilities:
+- id: active-event-tracking
+  name: Active Event Tracking
+  category: events
+  status: ga
+  tags: []
+  parent: event-browsing
+  notes: ''
 - id: admin-console
   name: Admin Console
   category: administration
   status: ga
   tags: []
   parent: null
+  notes: ''
+- id: ai-analysis-creation
+  name: AI Analysis Creation
+  category: ai-insights
+  status: ga
+  tags:
+  - ai
+  parent: ai-assisted-analysis
   notes: ''
 - id: ai-assisted-analysis
   name: AI-Assisted Analysis
@@ -71,8 +86,85 @@ capabilities:
   - ai
   parent: null
   notes: ''
+- id: analysis-calculation
+  name: Analysis Calculation
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
+- id: analysis-copy-paste
+  name: Analysis Copy/Paste
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
+- id: analysis-creation
+  name: Analysis Creation
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
+- id: analysis-event-generation
+  name: Analysis Event Generation
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
+- id: analysis-export
+  name: Analysis Export
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: analysis-management
+  name: Analysis Management
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
+- id: analysis-pause-resume
+  name: Analysis Pause/Resume
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
+- id: analysis-pre-filter
+  name: Analysis Pre-Filter
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
+- id: analysis-template-instantiation
+  name: Analysis Template Instantiation
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: analysis-templates
+  notes: ''
 - id: analysis-templates
   name: Analysis Templates
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
+- id: analysis-trigger-configuration
+  name: Analysis Trigger Configuration
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
+- id: analysis-trigger-types
+  name: Analysis Trigger Types
   category: real-time-analysis
   status: ga
   tags: []
@@ -93,6 +185,13 @@ capabilities:
   - ai
   parent: null
   notes: ''
+- id: anomaly-detection-analysis
+  name: Anomaly Detection Analysis
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
 - id: asset-list-panel
   name: Asset List Panel
   category: visualization
@@ -106,6 +205,34 @@ capabilities:
   status: ga
   tags: []
   parent: null
+  notes: ''
+- id: attribute-configuration
+  name: Attribute Configuration
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: element-attributes
+  notes: ''
+- id: attribute-copy-paste
+  name: Attribute Copy/Paste
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: element-attributes
+  notes: ''
+- id: attribute-data-reference
+  name: Attribute Data Reference
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: element-attributes
+  notes: ''
+- id: attribute-history-view
+  name: Attribute History View
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: element-attributes
   notes: ''
 - id: attribute-limits
   name: Attribute Limits
@@ -149,12 +276,33 @@ capabilities:
   tags: []
   parent: null
   notes: ''
+- id: calculated-value-capture
+  name: Calculated Value Capture
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
 - id: categories
   name: Categories
   category: libraries
   status: ga
   tags: []
   parent: null
+  notes: ''
+- id: category-management
+  name: Category Management
+  category: libraries
+  status: ga
+  tags: []
+  parent: categories
+  notes: ''
+- id: child-element-aggregation
+  name: Child Element Aggregation
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
   notes: ''
 - id: child-elements-aggregation
   name: Child Elements Aggregation
@@ -233,6 +381,13 @@ capabilities:
   tags: []
   parent: element-attributes
   notes: ''
+- id: data-quality-tracking
+  name: Data Quality Tracking
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: element-attributes
+  notes: ''
 - id: data-standardization
   name: Data Standardization
   category: data-modeling
@@ -246,6 +401,13 @@ capabilities:
   status: ga
   tags: []
   parent: client-sdk
+  notes: ''
+- id: element-level-events-view
+  name: Element Level Events View
+  category: events
+  status: ga
+  tags: []
+  parent: event-browsing
   notes: ''
 - id: element-attributes
   name: Element Attributes
@@ -282,6 +444,27 @@ capabilities:
   tags: []
   parent: null
   notes: ''
+- id: event-annotation
+  name: Event Annotation
+  category: events
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: event-attribute-templates
+  name: Event Attribute Templates
+  category: events
+  status: ga
+  tags: []
+  parent: event-templates
+  notes: ''
+- id: event-attribute-view
+  name: Event Attribute View
+  category: events
+  status: ga
+  tags: []
+  parent: event-browsing
+  notes: ''
 - id: event-browsing
   name: Event Browsing
   category: events
@@ -289,8 +472,43 @@ capabilities:
   tags: []
   parent: null
   notes: ''
+- id: event-deletion
+  name: Event Deletion
+  category: events
+  status: ga
+  tags: []
+  parent: event-browsing
+  notes: ''
+- id: event-detail-view
+  name: Event Detail View
+  category: events
+  status: ga
+  tags: []
+  parent: event-browsing
+  notes: ''
+- id: event-export
+  name: Event Export
+  category: events
+  status: ga
+  tags: []
+  parent: event-browsing
+  notes: ''
+- id: event-favorites
+  name: Event Favorites
+  category: events
+  status: ga
+  tags: []
+  parent: event-browsing
+  notes: ''
 - id: event-filter
   name: Event Filter
+  category: events
+  status: ga
+  tags: []
+  parent: event-browsing
+  notes: ''
+- id: event-filtering
+  name: Event Filtering
   category: events
   status: ga
   tags: []
@@ -303,9 +521,23 @@ capabilities:
   tags: []
   parent: null
   notes: ''
+- id: event-list-as-dashboard-panel
+  name: Event List as Dashboard Panel
+  category: visualization
+  status: ga
+  tags: []
+  parent: event-list-panel
+  notes: ''
 - id: event-list-panel
   name: Event List Panel
   category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: event-management
+  name: Event Management
+  category: events
   status: ga
   tags: []
   parent: null
@@ -316,6 +548,55 @@ capabilities:
   status: ga
   tags: []
   parent: null
+  notes: ''
+- id: event-naming-pattern
+  name: Event Naming Pattern
+  category: events
+  status: ga
+  tags: []
+  parent: event-templates
+  notes: ''
+- id: event-search
+  name: Event Search
+  category: events
+  status: ga
+  tags: []
+  parent: event-browsing
+  notes: ''
+- id: event-severity-classification
+  name: Event Severity Classification
+  category: events
+  status: ga
+  tags: []
+  parent: event-templates
+  notes: ''
+- id: event-template-configuration
+  name: Event Template Configuration
+  category: events
+  status: ga
+  tags: []
+  parent: event-templates
+  notes: ''
+- id: event-template-creation
+  name: Event Template Creation
+  category: events
+  status: ga
+  tags: []
+  parent: event-templates
+  notes: ''
+- id: event-template-inheritance
+  name: Event Template Inheritance
+  category: events
+  status: ga
+  tags: []
+  parent: event-templates
+  notes: ''
+- id: event-template-management
+  name: Event Template Management
+  category: events
+  status: ga
+  tags: []
+  parent: event-templates
   notes: ''
 - id: event-templates
   name: Event Templates
@@ -345,6 +626,13 @@ capabilities:
   tags: []
   parent: element-attributes
   notes: ''
+- id: formula-attribute
+  name: Formula Attribute
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: element-attributes
+  notes: ''
 - id: forecasting
   name: Forecasting
   category: ai-insights
@@ -360,6 +648,20 @@ capabilities:
   tags: []
   parent: null
   notes: ''
+- id: global-events-view
+  name: Global Events View
+  category: events
+  status: ga
+  tags: []
+  parent: event-browsing
+  notes: ''
+- id: historical-data-backfill
+  name: Historical Data Backfill
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
 - id: history-backfill
   name: History Backfill
   category: real-time-analysis
@@ -367,8 +669,8 @@ capabilities:
   tags: []
   parent: real-time-analysis
   notes: ''
-- id: in-app-notification
-  name: In-App Notification
+- id: in-app-notification-popup
+  name: In-App Notification Popup
   category: events
   status: ga
   tags: []
@@ -381,6 +683,20 @@ capabilities:
   tags:
   - ai
   parent: natural-language-queries
+  notes: ''
+- id: manual-data-entry
+  name: Manual Data Entry
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: element-attributes
+  notes: ''
+- id: manual-notification-trigger
+  name: Manual Notification Trigger
+  category: events
+  status: ga
+  tags: []
+  parent: event-notifications
   notes: ''
 - id: map-chart
   name: Map Chart
@@ -395,6 +711,13 @@ capabilities:
   status: ga
   tags: []
   parent: null
+  notes: ''
+- id: multi-event-trend-overlay
+  name: Multi-Event Trend Overlay
+  category: visualization
+  status: ga
+  tags: []
+  parent: trend-chart
   notes: ''
 - id: missing-data-imputation
   name: Missing Data Imputation
@@ -433,12 +756,61 @@ capabilities:
   tags: []
   parent: event-notifications
   notes: ''
+- id: notification-lifecycle
+  name: Notification Lifecycle
+  category: events
+  status: ga
+  tags: []
+  parent: event-notifications
+  notes: ''
+- id: notification-message-template
+  name: Notification Message Template
+  category: events
+  status: ga
+  tags: []
+  parent: event-notifications
+  notes: ''
+- id: notification-rate-limiting
+  name: Notification Rate Limiting
+  category: events
+  status: ga
+  tags: []
+  parent: event-notifications
+  notes: ''
+- id: notification-resend
+  name: Notification Resend
+  category: events
+  status: ga
+  tags: []
+  parent: event-notifications
+  notes: ''
+- id: notification-rule-configuration
+  name: Notification Rule Configuration
+  category: events
+  status: ga
+  tags: []
+  parent: notification-rules
+  notes: ''
+- id: notification-rule-template
+  name: Notification Rule Template
+  category: events
+  status: ga
+  tags: []
+  parent: notification-rules
+  notes: ''
 - id: notification-rules
   name: Notification Rules
   category: events
   status: ga
   tags: []
   parent: event-notifications
+  notes: ''
+- id: notification-severity-threshold
+  name: Notification Severity Threshold
+  category: events
+  status: ga
+  tags: []
+  parent: notification-rules
   notes: ''
 - id: panel-dashboard-templates
   name: Panel & Dashboard Templates
@@ -461,9 +833,30 @@ capabilities:
   tags: []
   parent: null
   notes: ''
+- id: out-of-order-data-recalculation
+  name: Out-of-Order Data Recalculation
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
+- id: periodic-window-trigger
+  name: Periodic Window Trigger
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
 - id: real-time-analysis
   name: Real-Time Analysis
   category: real-time-analysis
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: rest-api
+  name: REST API
+  category: integration
   status: ga
   tags: []
   parent: null
@@ -504,8 +897,57 @@ capabilities:
   tags: []
   parent: null
   notes: ''
+- id: sample-data-loading
+  name: Sample Data Loading
+  category: administration
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: saved-event-filters
+  name: Saved Event Filters
+  category: events
+  status: ga
+  tags: []
+  parent: event-browsing
+  notes: ''
 - id: sdk-authentication
   name: SDK Authentication
+  category: integration
+  status: ga
+  tags: []
+  parent: client-sdk
+  notes: ''
+- id: sdk-code-generation
+  name: SDK Code Generation
+  category: integration
+  status: ga
+  tags: []
+  parent: client-sdk
+  notes: ''
+- id: sdk-elements-api
+  name: SDK Elements API
+  category: integration
+  status: ga
+  tags: []
+  parent: client-sdk
+  notes: ''
+- id: sdk-error-handling
+  name: SDK Error Handling
+  category: integration
+  status: ga
+  tags: []
+  parent: client-sdk
+  notes: ''
+- id: sdk-events-api
+  name: SDK Events API
+  category: integration
+  status: ga
+  tags: []
+  parent: client-sdk
+  notes: ''
+- id: sdk-metrics-api
+  name: SDK Metrics API
   category: integration
   status: ga
   tags: []
@@ -525,6 +967,13 @@ capabilities:
   tags: []
   parent: null
   notes: ''
+- id: state-change-trigger
+  name: State Change Trigger
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
 - id: state-timeline-panel
   name: State Timeline Panel
   category: visualization
@@ -539,26 +988,12 @@ capabilities:
   tags: []
   parent: null
   notes: ''
-- id: system-backup
-  name: System Backup
-  category: administration
+- id: string-builder-attribute
+  name: String Builder Attribute
+  category: data-modeling
   status: ga
   tags: []
-  parent: null
-  notes: ''
-- id: system-recovery
-  name: System Recovery
-  category: administration
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-- id: system-restore
-  name: System Restore
-  category: administration
-  status: ga
-  tags: []
-  parent: null
+  parent: element-attributes
   notes: ''
 - id: table-panel
   name: Table Panel
@@ -567,12 +1002,47 @@ capabilities:
   tags: []
   parent: null
   notes: ''
+- id: tdengine-metric-attribute
+  name: TDengine Metric Attribute
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: element-attributes
+  notes: ''
+- id: tdengine-tag-attribute
+  name: TDengine Tag Attribute
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: element-attributes
+  notes: ''
+- id: test-event-generation
+  name: Test Event Generation
+  category: events
+  status: ga
+  tags: []
+  parent: event-generation
+  notes: ''
 - id: trend-chart
   name: Trend Chart
   category: visualization
   status: ga
   tags: []
   parent: null
+  notes: ''
+- id: unit-of-measure-conversion
+  name: Unit of Measure Conversion
+  category: libraries
+  status: ga
+  tags: []
+  parent: unit-of-measurement
+  notes: ''
+- id: unacknowledged-event-filter
+  name: Unacknowledged Event Filter
+  category: events
+  status: ga
+  tags: []
+  parent: event-browsing
   notes: ''
 - id: unit-of-measurement
   name: Unit of Measurement

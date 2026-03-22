@@ -15,18 +15,7 @@ aliases:
     - ai-generated-analyses
   llm-connection:
     - connecting-to-llm
-  # Data Modeling
-  element-search:
-    - element-filters
-  data-model-import-export:
-    - data-model-import-from-tsdb
-
   # Data Ingestion
-  data-import:
-    - csv-import
-    - easy-import
-    - opc-import
-    - map-stable-to-element
   data-collection:
     - data-ingestion
 
@@ -40,15 +29,8 @@ aliases:
     - sso
   role-based-access-control:
     - rbac
-    - element-level-access-control
   admin-console:
     - system-configuration
-  system-backup:
-    - backup
-  system-restore:
-    - restore
-  system-recovery:
-    - recovery
 
   # Client SDK
   client-sdk:
@@ -61,3 +43,17 @@ ignored:
   reason: Demo/seed data utility, not a product capability
 - id: backup-restore
   reason: Split into system-backup, system-restore, and system-recovery
+- id: csv-import
+  reason: Narrower than data-import (specific format); not a synonym
+- id: opc-import
+  reason: Narrower than data-import (OPC protocol specific); not a synonym
+- id: easy-import
+  reason: Uncertain mapping — may be a UI feature name; not confirmed synonym of data-import
+- id: map-stable-to-element
+  reason: Uncertain mapping — sounds like a modeling operation; not confirmed synonym of data-import
+- id: element-filters
+  reason: Different concept from element-search (filtering vs. searching); not a synonym
+- id: data-model-import-from-tsdb
+  reason: Narrower than data-model-import-export (import only, TSDB specific); not a synonym
+- id: element-level-access-control
+  reason: Narrower than role-based-access-control (element-scoped subset); not a synonym

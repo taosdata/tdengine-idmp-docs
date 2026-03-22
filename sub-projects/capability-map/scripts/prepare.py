@@ -48,9 +48,13 @@ ROADMAP_FILE = DOC_ROOT / "20-roadmap" / "index.md"
 EXTRACTION_PROMPT_CONTENT = """\
 # Capability Extraction Task
 
-Read `.sections/needs-extraction.yaml`. It lists the section IDs that need
-capability extraction. If `sections` is empty (`sections: []`), there is
-nothing to do.
+## Input
+
+Your work list is `.sections/needs-extraction.yaml`. Read this file first.
+It contains the list of section IDs that require capability extraction.
+If `sections` is empty (`sections: []`), there is nothing to do — stop here.
+
+## Resolving section directories
 
 For each `section_id` in `sections`, resolve its directory path under `.sections/`:
 - Split on `#`: the part before `#` is the name path; the part after is the slug.
@@ -61,9 +65,19 @@ Examples:
   `introduction#what-is-tdengine-idmp`  ->  `.sections/introduction/what-is-tdengine-idmp/`
   `data-modeling/index#overview`        ->  `.sections/data-modeling/index/overview/`
 
+## Per-section extraction
+
 For each resolved directory:
 
 1. Read `meta.yaml` and note the `content_hash` value.
+
+   An `extraction.yaml` may already exist in the directory. This is expected --
+   it is a stale file that `prepare.py` identified as outdated. Compare its
+   `content_hash` to the value in `meta.yaml`:
+   - If they differ (the normal case): re-extract and overwrite `extraction.yaml`.
+   - If they match (unexpected -- possibly updated by a concurrent run): skip
+     this section, log a note, and continue to the next.
+
 2. Read `section.md`.
 3. Identify capabilities -- things the system can do: tasks, functions, or
    behaviors available to users or administrators.
@@ -80,7 +94,9 @@ For each resolved directory:
 5. Write `extraction.yaml` in the same directory. Include `content_hash` as
    the first field.
 
-Output format for each `extraction.yaml`:
+## Output format
+
+For each `extraction.yaml`:
 
 ```yaml
 content_hash: "<value from meta.yaml>"
@@ -166,6 +182,9 @@ def find_sections_needing_extraction(
         try:
             data = yaml.safe_load(extraction.read_text(encoding="utf-8"))
             extraction_hash = (data or {}).get("content_hash")
+            # Normalise to str: YAML may parse a numeric-looking hash as int
+            if extraction_hash is not None:
+                extraction_hash = str(extraction_hash)
         except (yaml.YAMLError, OSError):
             extraction_hash = None
 

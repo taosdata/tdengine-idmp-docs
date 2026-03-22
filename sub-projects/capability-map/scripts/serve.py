@@ -76,7 +76,7 @@ def _flatten_aliases(grouped: dict[str, list[str]]) -> dict[str, str]:
     """Flatten grouped aliases (canonical → [aliases]) to alias → canonical lookup."""
     flat: dict[str, str] = {}
     for canonical, aliases in grouped.items():
-        for alias in aliases:
+        for alias in (aliases or []):
             flat[alias] = canonical
     return flat
 
@@ -267,6 +267,8 @@ def load_data() -> dict:
         "gaps": gaps,
         "orphaned": orphaned,
         "unmatched_details": unmatched_details,
+        "extraction_date": section_map.get("last_full_extraction", ""),
+        "extraction_commit": section_map.get("git_commit", ""),
     }
 
 

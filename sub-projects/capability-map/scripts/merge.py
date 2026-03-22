@@ -126,6 +126,13 @@ def build_section_map(
 
     Returns (section_entries, error_messages).
 
+    Each entry carries a temporary '_path' key indicating how it was resolved:
+      'extracted'    — fresh extraction.yaml accepted
+      'carry-forward'— same section_id and hash carried from old map
+      'remap'        — content matched a different section_id in old map (moved)
+      'pending'      — no extraction available
+      'skip'         — extraction.yaml present but hash mismatch; fell through
+
     Algorithm (per section in manifest):
       a. extraction.yaml exists AND meta.yaml content_hash matches manifest → use extraction
       b. no extraction.yaml but old map has entry with matching content_hash → carry forward
@@ -197,17 +204,21 @@ def build_section_map(
                     if caps is None:
                         errors.append(f"SKIP {sid}: extraction.yaml is structurally invalid")
                     else:
-                        new_entries.append(make_entry(caps, str(date.today())))
+                        entry = make_entry(caps, str(date.today()))
+                        entry["_path"] = "extracted"
+                        new_entries.append(entry)
                         consumed_old_ids.add(sid)
                         continue
 
         # --- Path b: carry forward (same section_id, matching hash in old map) ---
         old_entry = old_by_id.get(sid)
         if old_entry and old_entry.get("content_hash") == manifest_hash:
-            new_entries.append(make_entry(
+            entry = make_entry(
                 old_entry.get("capabilities", []),
                 old_entry.get("extracted_at"),
-            ))
+            )
+            entry["_path"] = "carry-forward"
+            new_entries.append(entry)
             consumed_old_ids.add(sid)
             continue
 
@@ -216,15 +227,19 @@ def build_section_map(
         if old_entry_by_hash and old_entry_by_hash.get("section_id") != sid:
             old_sid = old_entry_by_hash["section_id"]
             print(f"  REMAP: {old_sid} → {sid}", file=sys.stderr)
-            new_entries.append(make_entry(
+            entry = make_entry(
                 old_entry_by_hash.get("capabilities", []),
                 old_entry_by_hash.get("extracted_at"),
-            ))
+            )
+            entry["_path"] = f"remap:{old_sid}"
+            new_entries.append(entry)
             consumed_old_ids.add(sid)
             continue
 
         # --- Path d: no extraction yet ---
-        new_entries.append(make_entry([], None))
+        entry = make_entry([], None)
+        entry["_path"] = "pending"
+        new_entries.append(entry)
 
     # --- Warn about dropped sections (in old map but not in manifest) ---
     if old_map:
@@ -250,6 +265,17 @@ def build_section_map(
 # ---------------------------------------------------------------------------
 
 def main() -> int:
+    import argparse
+    parser = argparse.ArgumentParser(
+        description="Rebuild capabilities.section-map.yaml from extraction results.",
+    )
+    parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Show what would be written without touching any files; always exits 0",
+    )
+    args = parser.parse_args()
+
     manifest_path = SECTIONS_DIR / "manifest.yaml"
     if not manifest_path.exists():
         print("ERROR: .sections/manifest.yaml not found. Run parse.py first.", file=sys.stderr)
@@ -271,8 +297,16 @@ def main() -> int:
         print(f"  ERROR: {err}", file=sys.stderr)
 
     # Summary stats
-    n_extracted = sum(1 for e in entries if e["extracted_at"] is not None)
-    n_pending = sum(1 for e in entries if e["extracted_at"] is None)
+    by_path: dict[str, list[str]] = {}
+    for e in entries:
+        p = e.get("_path", "pending")
+        key = "remap" if p.startswith("remap:") else p
+        by_path.setdefault(key, []).append(e["section_id"])
+
+    n_extracted = len(by_path.get("extracted", []))
+    n_carry = len(by_path.get("carry-forward", []))
+    n_remap = len(by_path.get("remap", []))
+    n_pending = len(by_path.get("pending", []))
     n_with_caps = sum(1 for e in entries if e["capabilities"])
 
     # Determine last_full_extraction
@@ -282,18 +316,93 @@ def main() -> int:
     if n_pending == 0:
         last_full = str(date.today())
 
+    if args.dry_run:
+        # Compare each new entry against the current section map to find actual changes
+        old_by_id_full: dict[str, dict] = {}
+        if old_map:
+            for e in old_map.get("sections", []):
+                old_by_id_full[e["section_id"]] = e
+
+        def entry_changed(new: dict, old: dict | None) -> bool:
+            if old is None:
+                return True
+            return (
+                new.get("capabilities") != old.get("capabilities")
+                or new.get("content_hash") != old.get("content_hash")
+                or new.get("extracted_at") != old.get("extracted_at")
+            )
+
+        new_sections, changed_sections, unchanged_sections, remapped_sections = [], [], [], []
+        for e in entries:
+            sid = e["section_id"]
+            path = e.get("_path", "pending")
+            old = old_by_id_full.get(sid)
+            if path.startswith("remap:"):
+                remapped_sections.append((path.split(":", 1)[1], sid))
+            elif old is None:
+                new_sections.append(sid)
+            elif entry_changed(e, old):
+                changed_sections.append(sid)
+            else:
+                unchanged_sections.append(sid)
+
+        n_new = len(new_sections)
+        n_changed = len(changed_sections)
+        n_unchanged = len(unchanged_sections)
+        n_remapped = len(remapped_sections)
+
+        print(f"[dry-run] Comparing against existing section map:")
+        print(f"  {n_new} new sections (not in current map)")
+        print(f"  {n_changed} changed (capabilities or hash differs)")
+        print(f"  {n_remapped} remapped (section moved)")
+        print(f"  {n_unchanged} unchanged — would not be rewritten")
+        if n_new or n_changed or n_remapped:
+            print(f"  → Would write {SECTION_MAP_FILE}")
+        else:
+            print(f"  → Section map is already up to date, nothing to write")
+
+        def _show(label: str, items: list, limit: int = 10) -> None:
+            print(f"\n  {label} ({len(items)}):")
+            for item in items[:limit]:
+                print(f"    {item}")
+            if len(items) > limit:
+                print(f"    ... and {len(items) - limit} more")
+
+        if new_sections:
+            _show("NEW", new_sections)
+        if changed_sections:
+            _show("CHANGED", changed_sections)
+        if remapped_sections:
+            print(f"\n  REMAPPED ({n_remapped}):")
+            for old_sid, new_sid in remapped_sections:
+                print(f"    {old_sid} → {new_sid}")
+        if n_pending:
+            _show("PENDING extraction", by_path.get("pending", []))
+        if errors:
+            print(f"\n  {len(errors)} error(s) — sections that would be skipped:")
+            for err in errors:
+                print(f"    {err}")
+        print("\n[dry-run] No files written.")
+        return 0
+
+    # Strip internal _path tags before writing
+    for e in entries:
+        e.pop("_path", None)
+
     section_map = {
         "version": SECTION_MAP_VERSION,
         "last_full_extraction": last_full,
         "prompt_version": PROMPT_VERSION,
+        "git_commit": manifest.get("parsed_git_commit"),
         "sections": sorted(entries, key=lambda e: e["section_id"]),
     }
 
     write_atomic(SECTION_MAP_FILE, dump_yaml(section_map))
 
     print(f"Written: {SECTION_MAP_FILE}")
-    print(f"  {len(entries)} sections total")
-    print(f"  {n_extracted} extracted, {n_pending} pending extraction")
+    print(f"  {len(entries)} sections total — "
+          f"{n_extracted} from extraction.yaml, {n_carry} carried forward, "
+          f"{n_remap} remapped, {n_pending} pending")
     print(f"  {n_with_caps} sections with at least one capability")
 
     if errors:

@@ -8,7 +8,18 @@
 </head>
 <body>
   <nav class="sidebar">
-    <div class="sidebar-header">Capability Explorer</div>
+    <div class="sidebar-header">
+      Capability Explorer
+      {% if extraction_date or extraction_commit %}
+      <div class="sidebar-meta">
+          Extracted on: 
+          {{ extraction_date }}
+          <br/>
+          {% if extraction_date and extraction_commit %} From Git: {% endif %}
+          {{ extraction_commit }}
+      </div>
+      {% endif %}
+    </div>
     <div class="search-box">
       <input type="text" id="global-search" placeholder="Search capabilities..." autocomplete="off">
       <div id="search-results" class="search-results"></div>

@@ -33,6 +33,7 @@ tbody tr:hover { background: #f8f9fa; }
   padding: 20px 16px; overflow-y: auto;
 }
 .sidebar-header { font-size: 1.1em; font-weight: 700; margin-bottom: 24px; }
+.sidebar-meta { font-size: 0.7em; font-weight: 400; color: #6c757d; margin-top: 4px; }
 .nav-links { list-style: none; }
 .nav-links li { margin-bottom: 4px; }
 .nav-links a { color: #adb5bd; display: block; padding: 6px 10px; border-radius: 4px; font-size: 0.95em; }

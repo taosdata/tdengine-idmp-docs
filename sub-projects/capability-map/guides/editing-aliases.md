@@ -2,12 +2,28 @@
 
 How to safely modify `capabilities.aliases.yaml`.
 
+## What is an alias?
+
+An alias is a **synonym** — a different name or phrasing for the exact same capability. Aliases are appropriate for:
+
+- Abbreviations (`rbac` → `role-based-access-control`)
+- Alternate phrasings (`connecting-to-llm` → `llm-connection`)
+- Rename artifacts — old canonical IDs that were renamed
+
+**Aliases are not appropriate for:**
+
+- Narrower or more specific concepts (`csv-import` is not an alias for `data-import`)
+- Broader or more general concepts
+- Related-but-distinct features (`element-filters` is not an alias for `element-search`)
+
+If an extracted ID does not clearly mean the same thing as a canonical capability, add it to `ignored` with a reason rather than mapping it as an alias.
+
 ## File structure
 
 ```yaml
 aliases:
   canonical-id:          # Must exist in capabilities.taxonomy.yaml
-    - extracted-alias-1
+    - extracted-alias-1  # Must be a synonym of canonical-id
     - extracted-alias-2
 ```
 
@@ -64,6 +80,7 @@ If the alias still appears in `capabilities.section-map.yaml`, it will surface a
 | Group key not in taxonomy | Schema validation error | Rename the key or add the capability to taxonomy |
 | Old canonical ID not added as alias after rename | Existing extractions become unmatched | Add old ID to the alias list |
 | Forgot to update `parent` references | Taxonomy integrity error (dangling parent) | Search taxonomy for `parent: old-id` |
+| Mapping a narrower/broader ID as an alias | Incorrect capability attribution in comparisons | Move the ID to `ignored` with a reason |
 
 ## Validation
 

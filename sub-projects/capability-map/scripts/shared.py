@@ -56,7 +56,7 @@ def flatten_aliases(grouped: dict[str, list[str]]) -> dict[str, str]:
     """
     flat: dict[str, str] = {}
     for canonical, aliases in grouped.items():
-        for alias in aliases:
+        for alias in (aliases or []):
             flat[alias] = canonical
     return flat
 
