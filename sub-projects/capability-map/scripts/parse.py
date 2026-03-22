@@ -558,8 +558,8 @@ def parse_all(
 def write_sections(records: list[dict], sections_dir: Path) -> None:
     """
     Write section.md and meta.yaml for every record under sections_dir.
-    Preserve existing extraction.yaml if content_hash is unchanged.
-    Delete stale extraction.yaml if content_hash changed.
+    Preserve existing extraction.yaml unconditionally (staleness is detected
+    by prepare.py via content_hash comparison, not by deletion here).
     Remove directories for sections that no longer exist.
     """
     # Build set of expected section directories (as sets of path parts)
@@ -588,21 +588,6 @@ def write_sections(records: list[dict], sections_dir: Path) -> None:
     for rec in records:
         section_dir = section_id_to_dir(rec['section_id'], sections_dir)
         section_dir.mkdir(parents=True, exist_ok=True)
-
-        # Check if content_hash changed (for extraction.yaml preservation/deletion)
-        existing_meta = section_dir / 'meta.yaml'
-        existing_extraction = section_dir / 'extraction.yaml'
-
-        if existing_meta.exists() and existing_extraction.exists():
-            try:
-                old_meta = yaml.safe_load(existing_meta.read_text(encoding='utf-8'))
-                if old_meta.get('content_hash') != rec['content_hash']:
-                    # Content changed — delete stale extraction
-                    existing_extraction.unlink()
-            except (yaml.YAMLError, OSError):
-                # If we can't read the old meta, delete extraction to be safe
-                if existing_extraction.exists():
-                    existing_extraction.unlink()
 
         # Write section.md
         (section_dir / 'section.md').write_text(rec['raw'], encoding='utf-8')
@@ -637,6 +622,24 @@ def _cleanup_empty_parents(directory: Path, stop_at: Path) -> None:
 # Manifest writing
 # ---------------------------------------------------------------------------
 
+def get_git_commit(repo_root: Path) -> str | None:
+    """Return the current HEAD commit hash, or None if unavailable."""
+    import subprocess
+    try:
+        result = subprocess.run(
+            ['git', 'rev-parse', '--short', 'HEAD'],
+            cwd=repo_root,
+            capture_output=True,
+            text=True,
+            timeout=5,
+        )
+        if result.returncode == 0:
+            return result.stdout.strip()
+    except (OSError, subprocess.TimeoutExpired):
+        pass
+    return None
+
+
 def write_manifest(
     records: list[dict],
     scope: dict,
@@ -647,6 +650,7 @@ def write_manifest(
     manifest = {
         'version': MANIFEST_VERSION,
         'parsed_at': str(date.today()),
+        'parsed_git_commit': get_git_commit(REPO_ROOT),
         'doc_root': str(doc_root.relative_to(REPO_ROOT)).replace('\\', '/'),
         'scope': scope,
         'total_files': len({r['file'] for r in records}),
@@ -659,6 +663,65 @@ def write_manifest(
     sections_dir.mkdir(parents=True, exist_ok=True)
     manifest_path = sections_dir / 'manifest.yaml'
     manifest_path.write_text(dump_yaml(manifest), encoding='utf-8')
+
+
+# ---------------------------------------------------------------------------
+# Dry-run mode
+# ---------------------------------------------------------------------------
+
+def dry_run_mode(records: list[dict], sections_dir: Path) -> int:
+    """Print what parse.py would do without writing any files."""
+    expected_dirs: set[Path] = {section_id_to_dir(r['section_id'], sections_dir) for r in records}
+
+    existing_dirs: set[Path] = set()
+    if sections_dir.exists():
+        for p in sections_dir.rglob('section.md'):
+            existing_dirs.add(p.parent)
+
+    to_remove = sorted(d for d in existing_dirs if d not in expected_dirs)
+
+    new_sections: list[str] = []
+    updated_sections: list[str] = []
+    unchanged_sections: list[str] = []
+    for rec in records:
+        section_dir = section_id_to_dir(rec['section_id'], sections_dir)
+        existing_meta = section_dir / 'meta.yaml'
+        if not existing_meta.exists():
+            new_sections.append(rec['section_id'])
+        else:
+            try:
+                old_meta = yaml.safe_load(existing_meta.read_text(encoding='utf-8'))
+                if old_meta.get('content_hash') != rec['content_hash']:
+                    updated_sections.append(rec['section_id'])
+                else:
+                    unchanged_sections.append(rec['section_id'])
+            except (yaml.YAMLError, OSError):
+                updated_sections.append(rec['section_id'])
+
+    print(f"[dry-run] Would write {len(new_sections)} new, {len(updated_sections)} updated, "
+          f"{len(unchanged_sections)} unchanged sections")
+    if new_sections:
+        print(f"  NEW ({len(new_sections)}):")
+        for sid in new_sections[:10]:
+            print(f"    {sid}")
+        if len(new_sections) > 10:
+            print(f"    ... and {len(new_sections) - 10} more")
+    if updated_sections:
+        print(f"  UPDATED ({len(updated_sections)}):")
+        for sid in updated_sections[:10]:
+            print(f"    {sid}")
+        if len(updated_sections) > 10:
+            print(f"    ... and {len(updated_sections) - 10} more")
+    if to_remove:
+        print(f"  REMOVE ({len(to_remove)}) orphaned directories:")
+        for d in to_remove[:10]:
+            print(f"    {d.relative_to(sections_dir)}")
+        if len(to_remove) > 10:
+            print(f"    ... and {len(to_remove) - 10} more")
+    if not (new_sections or updated_sections or to_remove):
+        print("  Nothing to do — corpus is up to date.")
+    print("[dry-run] No files written.")
+    return 0
 
 
 # ---------------------------------------------------------------------------
@@ -740,6 +803,11 @@ def main() -> int:
         help='CI mode: compare against existing manifest, exit 1 if stale',
     )
     parser.add_argument(
+        '--dry-run',
+        action='store_true',
+        help='Show what would be written or removed without touching any files',
+    )
+    parser.add_argument(
         '--include',
         nargs='+',
         metavar='CHAPTER',
@@ -756,12 +824,21 @@ def main() -> int:
     include = args.include if args.include else DEFAULT_INCLUDE
     exclude = args.exclude if args.exclude else DEFAULT_EXCLUDE
 
+    if args.check and args.dry_run:
+        print("ERROR: --check and --dry-run are mutually exclusive", file=sys.stderr)
+        return 1
+
     if args.check:
         return check_mode(DOC_ROOT, include, exclude, SECTIONS_DIR)
 
-    # Normal mode: regenerate .sections/
+    # Parse docs (needed for both dry-run and normal mode)
     print(f"Parsing docs from: {DOC_ROOT}")
     records, scope = parse_all(DOC_ROOT, include, exclude)
+
+    if args.dry_run:
+        total_files = len({r['file'] for r in records})
+        print(f"Parsed {total_files} files, {len(records)} sections")
+        return dry_run_mode(records, SECTIONS_DIR)
 
     total_files = len({r['file'] for r in records})
     print(f"Parsed {total_files} files, {len(records)} sections")

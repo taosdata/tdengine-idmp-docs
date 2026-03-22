@@ -36,6 +36,8 @@ from shared import (
     VALID_RELATIONS,
     VALID_STATUSES,
     flatten_aliases,
+    load_yaml,
+    section_id_to_dir,
 )
 
 
@@ -399,6 +401,37 @@ def check_coverage(
 
 
 # ---------------------------------------------------------------------------
+# Check 5: Extraction hash stamp cross-check
+# ---------------------------------------------------------------------------
+
+def check_extraction_hash_stamps(manifest: dict, sections_dir: Path, results: Results) -> None:
+    """Verify extraction.yaml.content_hash matches manifest for all extracted sections.
+
+    A wrong hash stamp (e.g. written by an agent error) would be accepted by merge.py
+    but cause prepare.py to miss future re-extractions when section content changes.
+    """
+    for entry in manifest.get("sections", []):
+        sid = entry["section_id"]
+        manifest_hash = entry["content_hash"]
+        section_dir = section_id_to_dir(sid, sections_dir)
+        extraction = section_dir / "extraction.yaml"
+
+        if not extraction.exists():
+            continue  # Not yet extracted — not a validation error
+
+        ext_data = load_yaml(extraction) or {}
+        extraction_hash = ext_data.get("content_hash")
+
+        if extraction_hash is None:
+            results.warn(f"{sid}: extraction.yaml missing content_hash field")
+        elif extraction_hash != manifest_hash:
+            results.error(
+                f"{sid}: extraction.yaml content_hash ({extraction_hash!r}) does not match "
+                f"manifest ({manifest_hash!r}) — wrong hash stamp"
+            )
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -442,6 +475,9 @@ def main() -> int:
 
     print("Checking cross-consistency (content hashes)...")
     check_cross_consistency(manifest, section_map, results)
+
+    print("Checking extraction hash stamps...")
+    check_extraction_hash_stamps(manifest, SECTIONS_DIR, results)
 
     if taxonomy:
         print("Checking taxonomy integrity...")

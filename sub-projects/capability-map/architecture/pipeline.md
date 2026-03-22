@@ -14,8 +14,9 @@ Four-stage pipeline that extracts capability references from documentation and p
         │
         ▼
   ┌────────────┐   .sections/extraction-prompt.md
-  │ prepare.py │──▶  status report (stdout)
-  └────────────┘     draft taxonomy (--bootstrap, first run only)
+  │ prepare.py │──▶  .sections/needs-extraction.yaml
+  └────────────┘     status report (stdout)
+                     draft taxonomy (--bootstrap, first run only)
         │
         ▼
   ┌────────────┐   .sections/**/extraction.yaml
@@ -47,8 +48,9 @@ Splits in-scope Markdown files into sections at H2/H3 boundaries. No AI.
 
 - Section IDs are deterministic (`{stripped_filename}#{heading_slug}`) and stable across file moves and renumbering — see [design-decisions.md](design-decisions.md) #2
 - Content hashes (SHA-256 prefix) enable change detection
-- Preserves existing `extraction.yaml` files if the section's content hash is unchanged; deletes them if content changed
+- Preserves existing `extraction.yaml` files unconditionally; staleness is detected later via `content_hash` in `extraction.yaml` (see Stage 2)
 - Removes directories for sections that no longer exist in docs
+- `--dry-run` prints what would be written or removed without touching any files; always exits 0
 - Deterministic: same docs → identical output
 
 ## Stage 2: prepare.py — Extraction Prep
@@ -57,32 +59,35 @@ Reports which sections need AI extraction and writes the prompt file. No AI, no 
 
 **Reads:** `.sections/manifest.yaml`, `capabilities.section-map.yaml` (if exists)
 
-**Writes:** `.sections/extraction-prompt.md` (on first run or when forced), status summary to stdout
+**Writes:** `.sections/extraction-prompt.md` (rewritten automatically when content changes), `.sections/needs-extraction.yaml` (work queue for the AI agent), status summary to stdout
 
 **Key behaviors:**
 
-- A section needs extraction if its directory has no `extraction.yaml`
+- A section needs extraction if its `extraction.yaml` is absent, or if `extraction.yaml.content_hash` does not match the manifest hash (content changed since last extraction)
 - Detects prompt version changes in the section map; triggers full re-extraction if the version advanced
+- Prompt file is rewritten automatically on content change — no manual deletion required
 - `--force` deletes all `extraction.yaml` files to force a complete re-extraction
+- `--dry-run` prints what would happen without writing any files; always exits 0
 - `--bootstrap` generates a draft taxonomy by clustering extracted capability IDs, inferring categories from chapter structure, and pulling planned items from the roadmap — used only on first run
 - `--check` (CI mode) exits non-zero if any sections need extraction, without modifying anything
 
 ## Stage 3: AI Extraction (manual)
 
-The operator directs an AI agent to read `.sections/extraction-prompt.md` and process sections. The agent walks `.sections/`, reads each `section.md` that has no `extraction.yaml`, and writes `extraction.yaml` in the same directory.
+The operator directs an AI agent to read `.sections/extraction-prompt.md` and process sections. The agent reads `.sections/needs-extraction.yaml` for the explicit list of sections to process. For each, it reads `meta.yaml` for the `content_hash`, reads `section.md`, and writes `extraction.yaml` with the hash embedded as the first field.
 
 Each extraction is independent: one section in, one file out. This makes the step naturally incremental — if the agent is interrupted, completed sections are preserved and a re-run picks up where it left off.
 
 **Output format** (`extraction.yaml`):
 
 ```yaml
+content_hash: "<value from meta.yaml>"
 capabilities:
   - id: "kebab-case-id"
     relation: "defined"      # or "referenced"
     confidence: "high"       # or "medium" or "low"
 ```
 
-Sections with no capabilities produce `capabilities: []`.
+Sections with no capabilities produce `content_hash: "..."` and `capabilities: []`.
 
 ## Stage 4: merge.py — Result Collection
 
@@ -113,7 +118,7 @@ Checks structural integrity and coverage. No modifications to any file.
 |---|---|
 | Schema | Taxonomy and aliases conform to their JSON schemas |
 | Path integrity | Section map entries reference real doc files; section IDs exist in manifest |
-| Hash consistency | Content hashes in section map match manifest (detects stale merges) |
+| Hash consistency | Content hashes in section map match manifest (detects stale merges); `extraction.yaml.content_hash` matches manifest (detects wrong agent hash stamps) |
 | Taxonomy integrity | No duplicate IDs, valid statuses, category/parent references resolve, no circular parents, alias keys exist in taxonomy |
 | Coverage | Unmatched extracted IDs, capabilities with no defined sections, weak (low-confidence-only) definitions |
 
@@ -125,7 +130,7 @@ The pipeline is designed for incremental use after the initial full extraction:
 
 | What changed | What re-runs |
 |---|---|
-| Doc content edited | `parse.py` detects hash change → deletes stale `extraction.yaml` → AI re-extracts affected sections → `merge.py` carries forward unchanged sections |
+| Doc content edited | `parse.py` regenerates `section.md` and `meta.yaml`; `prepare.py` detects staleness via `content_hash` in `extraction.yaml` → AI re-extracts affected sections → `merge.py` carries forward unchanged sections |
 | Doc file moved/renamed | `parse.py` updates paths → `merge.py` remaps by content hash (no re-extraction) |
 | Doc file deleted | `parse.py` removes section directory → `merge.py` drops it from section map |
 | Taxonomy edited | Only `validate.py` needed (taxonomy is independently maintained) |
@@ -137,7 +142,7 @@ The pipeline is designed for incremental use after the initial full extraction:
 
 **Partial extraction** — handled naturally by per-section independence. Completed sections are merged; incomplete ones fall through to carry-forward or pending status.
 
-**Stale extractions** — two layers of protection: `parse.py` deletes `extraction.yaml` for changed content; `merge.py` independently verifies hash consistency before merging.
+**Stale extractions** — two layers of protection: `prepare.py` detects staleness via `content_hash` before extraction (scheduling gate); `merge.py` independently verifies hash consistency after extraction (correctness gate).
 
 **Section map corruption** — run `parse.py` then `prepare.py --force` for a clean slate. The taxonomy is unaffected since it's independently maintained.
 
@@ -146,6 +151,7 @@ The pipeline is designed for incremental use after the initial full extraction:
 | File | Written by | Committed |
 |---|---|---|
 | `.sections/**` | `parse.py` + AI agent | No (git-ignored) |
+| `.sections/needs-extraction.yaml` | `prepare.py` | No (git-ignored) |
 | `capabilities.section-map.yaml` | `merge.py` | Yes |
 | `capabilities.taxonomy.yaml` | Human (or `prepare.py --bootstrap` for draft) | Yes |
 | `capabilities.aliases.yaml` | Human (or `prepare.py --bootstrap` for draft) | Yes |

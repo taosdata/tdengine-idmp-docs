@@ -286,7 +286,7 @@ def main() -> int:
         "version": SECTION_MAP_VERSION,
         "last_full_extraction": last_full,
         "prompt_version": PROMPT_VERSION,
-        "sections": entries,
+        "sections": sorted(entries, key=lambda e: e["section_id"]),
     }
 
     write_atomic(SECTION_MAP_FILE, dump_yaml(section_map))

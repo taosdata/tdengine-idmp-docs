@@ -2,7 +2,6 @@ version: '1.0'
 kind: product
 name: TDengine IDMP
 date: '2026-03-20'
-
 categories:
 - id: platform
   name: Platform
@@ -32,619 +31,7 @@ categories:
   name: Administration
 - id: integration
   name: Integration with Other Systems
-
 capabilities:
-# ── AI-Powered Insights ────────────────────────────────────────────────────
-- id: anomaly-detection
-  name: Anomaly Detection
-  category: ai-insights
-  status: ga
-  tags: [ai]
-  parent: null
-  notes: ''
-
-- id: forecasting
-  name: Forecasting
-  category: ai-insights
-  status: ga
-  tags: [ai]
-  parent: null
-  notes: ''
-
-- id: root-cause-analysis
-  name: Root Cause Analysis
-  category: ai-insights
-  status: ga
-  tags: [ai]
-  parent: null
-  notes: ''
-
-- id: missing-data-imputation
-  name: Missing Data Imputation
-  category: ai-insights
-  status: ga
-  tags: [ai]
-  parent: null
-  notes: ''
-
-- id: ai-composite-metrics
-  name: AI Composite Metrics
-  category: ai-insights
-  status: ga
-  tags: [ai]
-  parent: null
-  notes: ''
-
-- id: natural-language-queries
-  name: Natural Language Queries
-  category: ai-insights
-  status: ga
-  tags: [ai]
-  parent: null
-  notes: ''
-
-- id: llm-connection
-  name: LLM Connection
-  category: ai-insights
-  status: ga
-  tags: [ai]
-  parent: natural-language-queries
-  notes: ''
-
-- id: voice-input
-  name: Voice Input
-  category: ai-insights
-  status: ga
-  tags: [ai]
-  parent: natural-language-queries
-  notes: ''
-
-- id: ai-generated-panels
-  name: AI Generated Panels
-  category: ai-insights
-  status: ga
-  tags: [ai]
-  parent: null
-  notes: ''
-
-- id: ai-panel-insights
-  name: AI Panel Insights
-  category: ai-insights
-  status: ga
-  tags: [ai]
-  parent: null
-  notes: ''
-
-- id: zero-query-intelligence
-  name: Zero-Query Intelligence
-  category: ai-insights
-  status: ga
-  tags: [ai]
-  parent: null
-  notes: ''
-
-- id: ai-assisted-analysis
-  name: AI-Assisted Analysis
-  category: ai-insights
-  status: ga
-  tags: [ai]
-  parent: real-time-analysis
-  notes: ''
-
-# ── Real-Time Analysis ─────────────────────────────────────────────────────
-- id: real-time-analysis
-  name: Real-Time Analysis
-  category: real-time-analysis
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: analysis-templates
-  name: Analysis Templates
-  category: real-time-analysis
-  status: ga
-  tags: []
-  parent: real-time-analysis
-  notes: ''
-
-- id: child-elements-aggregation
-  name: Child Elements Aggregation
-  category: real-time-analysis
-  status: ga
-  tags: []
-  parent: real-time-analysis
-  notes: ''
-
-- id: history-backfill
-  name: History Backfill
-  category: real-time-analysis
-  status: ga
-  tags: []
-  parent: real-time-analysis
-  notes: ''
-
-# ── Industrial Data Modeling ───────────────────────────────────────────────
-- id: asset-modeling
-  name: Asset Modeling
-  category: data-modeling
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: element-attributes
-  name: Element Attributes
-  category: data-modeling
-  status: ga
-  tags: []
-  parent: asset-modeling
-  notes: ''
-
-- id: attribute-templates
-  name: Attribute Templates
-  category: data-modeling
-  status: ga
-  tags: []
-  parent: asset-modeling
-  notes: ''
-
-- id: attribute-limits
-  name: Attribute Limits
-  category: data-modeling
-  status: ga
-  tags: []
-  parent: element-attributes
-  notes: ''
-
-- id: data-reference-binding
-  name: Data Reference Binding
-  category: data-modeling
-  status: ga
-  tags: []
-  parent: element-attributes
-  notes: ''
-
-- id: expression-editor
-  name: Expression Editor
-  category: data-modeling
-  status: ga
-  tags: []
-  parent: element-attributes
-  notes: ''
-
-- id: element-search
-  name: Element Search
-  category: data-modeling
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: data-contextualization
-  name: Data Contextualization
-  category: data-modeling
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: data-standardization
-  name: Data Standardization
-  category: data-modeling
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: data-model-import-export
-  name: Data Model Import/Export
-  category: data-modeling
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-# ── Event Management ───────────────────────────────────────────────────────
-- id: event-templates
-  name: Event Templates
-  category: events
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: event-browsing
-  name: Event Browsing
-  category: events
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: event-filter
-  name: Event Filter
-  category: events
-  status: ga
-  tags: []
-  parent: event-browsing
-  notes: ''
-
-- id: event-generation
-  name: Event Generation
-  category: events
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: event-acknowledgment
-  name: Event Acknowledgment
-  category: events
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: event-notifications
-  name: Event Notifications
-  category: events
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: notification-rules
-  name: Notification Rules
-  category: events
-  status: ga
-  tags: []
-  parent: event-notifications
-  notes: ''
-
-- id: notification-contact-points
-  name: Notification Contact Points
-  category: events
-  status: ga
-  tags: []
-  parent: event-notifications
-  notes: ''
-
-- id: notification-escalation
-  name: Notification Escalation
-  category: events
-  status: ga
-  tags: []
-  parent: event-notifications
-  notes: ''
-
-- id: notification-delivery-history
-  name: Notification Delivery History
-  category: events
-  status: ga
-  tags: []
-  parent: event-notifications
-  notes: ''
-
-- id: in-app-notification
-  name: In-App Notification
-  category: events
-  status: ga
-  tags: []
-  parent: event-notifications
-  notes: ''
-
-# ── Visualization & Dashboards ─────────────────────────────────────────────
-- id: dashboards
-  name: Dashboards
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: panel-dashboard-templates
-  name: Panel & Dashboard Templates
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: scheduled-reports
-  name: Scheduled Reports
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: dashboard-sharing
-  name: Dashboard Sharing
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: trend-chart
-  name: Trend Chart
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: event-trend-panel
-  name: Event Trend Panel
-  category: visualization
-  status: ga
-  tags: []
-  parent: trend-chart
-  notes: ''
-
-- id: bar-chart
-  name: Bar Chart
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: pie-chart
-  name: Pie Chart
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: scatter-chart
-  name: Scatter Chart
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: gauge-chart
-  name: Gauge Chart
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: bar-gauge
-  name: Bar Gauge
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: map-chart
-  name: Map Chart
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: stat-value-panel
-  name: Stat Value Panel
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: table-panel
-  name: Table Panel
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: rich-text-panel
-  name: Rich Text Panel
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: asset-list-panel
-  name: Asset List Panel
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: event-list-panel
-  name: Event List Panel
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: state-timeline-panel
-  name: State Timeline Panel
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: status-history-panel
-  name: Status History Panel
-  category: visualization
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-# ── Integration with Other Systems ─────────────────────────────────────────
-- id: panel-embedding
-  name: Panel Embedding
-  category: integration
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: client-sdk
-  name: Client SDK
-  category: integration
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: sdk-authentication
-  name: SDK Authentication
-  category: integration
-  status: ga
-  tags: []
-  parent: client-sdk
-  notes: ''
-
-- id: element-api
-  name: Element API
-  category: integration
-  status: ga
-  tags: []
-  parent: client-sdk
-  notes: ''
-
-- id: mcp-interface
-  name: MCP Interface
-  category: integration
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-# ── Canvas Panels ──────────────────────────────────────────────────────────
-- id: canvas-panel
-  name: Canvas Panel
-  category: canvas
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: canvas-anchor-points
-  name: Canvas Anchor Points
-  category: canvas
-  status: ga
-  tags: []
-  parent: canvas-panel
-  notes: ''
-
-# ── Data Ingestion ─────────────────────────────────────────────────────────
-- id: data-collection
-  name: Data Collection
-  category: data-ingestion
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: connection-management
-  name: Connection Management
-  category: data-ingestion
-  status: ga
-  tags: []
-  parent: data-collection
-  notes: ''
-
-- id: data-import
-  name: Data Import
-  category: data-ingestion
-  status: ga
-  tags: []
-  parent: data-collection
-  notes: ''
-
-# ── Collaboration ──────────────────────────────────────────────────────────
-- id: annotations
-  name: Annotations
-  category: collaboration
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: data-export
-  name: Data Export
-  category: collaboration
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-# ── Libraries & Reference Data ─────────────────────────────────────────────
-- id: enumeration-sets
-  name: Enumeration Sets
-  category: libraries
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: unit-of-measurement
-  name: Unit of Measurement
-  category: libraries
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: categories
-  name: Categories
-  category: libraries
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: element-templates
-  name: Element Templates
-  category: libraries
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-# ── Administration ─────────────────────────────────────────────────────────
-- id: user-management
-  name: User Management
-  category: administration
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: single-sign-on
-  name: Single Sign-On
-  category: administration
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
-- id: role-based-access-control
-  name: Role-Based Access Control
-  category: administration
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
 - id: admin-console
   name: Admin Console
   category: administration
@@ -652,7 +39,506 @@ capabilities:
   tags: []
   parent: null
   notes: ''
-
+- id: ai-assisted-analysis
+  name: AI-Assisted Analysis
+  category: ai-insights
+  status: ga
+  tags:
+  - ai
+  parent: real-time-analysis
+  notes: ''
+- id: ai-composite-metrics
+  name: AI Composite Metrics
+  category: ai-insights
+  status: ga
+  tags:
+  - ai
+  parent: null
+  notes: ''
+- id: ai-generated-panels
+  name: AI Generated Panels
+  category: ai-insights
+  status: ga
+  tags:
+  - ai
+  parent: null
+  notes: ''
+- id: ai-panel-insights
+  name: AI Panel Insights
+  category: ai-insights
+  status: ga
+  tags:
+  - ai
+  parent: null
+  notes: ''
+- id: analysis-templates
+  name: Analysis Templates
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
+- id: annotations
+  name: Annotations
+  category: collaboration
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: anomaly-detection
+  name: Anomaly Detection
+  category: ai-insights
+  status: ga
+  tags:
+  - ai
+  parent: null
+  notes: ''
+- id: asset-list-panel
+  name: Asset List Panel
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: asset-modeling
+  name: Asset Modeling
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: attribute-limits
+  name: Attribute Limits
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: element-attributes
+  notes: ''
+- id: attribute-templates
+  name: Attribute Templates
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: asset-modeling
+  notes: ''
+- id: bar-chart
+  name: Bar Chart
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: bar-gauge
+  name: Bar Gauge
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: canvas-anchor-points
+  name: Canvas Anchor Points
+  category: canvas
+  status: ga
+  tags: []
+  parent: canvas-panel
+  notes: ''
+- id: canvas-panel
+  name: Canvas Panel
+  category: canvas
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: categories
+  name: Categories
+  category: libraries
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: child-elements-aggregation
+  name: Child Elements Aggregation
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
+- id: client-sdk
+  name: Client SDK
+  category: integration
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: connection-management
+  name: Connection Management
+  category: data-ingestion
+  status: ga
+  tags: []
+  parent: data-collection
+  notes: ''
+- id: dashboard-sharing
+  name: Dashboard Sharing
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: dashboards
+  name: Dashboards
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: data-collection
+  name: Data Collection
+  category: data-ingestion
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: data-contextualization
+  name: Data Contextualization
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: data-export
+  name: Data Export
+  category: collaboration
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: data-import
+  name: Data Import
+  category: data-ingestion
+  status: ga
+  tags: []
+  parent: data-collection
+  notes: ''
+- id: data-model-import-export
+  name: Data Model Import/Export
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: data-reference-binding
+  name: Data Reference Binding
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: element-attributes
+  notes: ''
+- id: data-standardization
+  name: Data Standardization
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: element-api
+  name: Element API
+  category: integration
+  status: ga
+  tags: []
+  parent: client-sdk
+  notes: ''
+- id: element-attributes
+  name: Element Attributes
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: asset-modeling
+  notes: ''
+- id: element-search
+  name: Element Search
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: element-templates
+  name: Element Templates
+  category: libraries
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: enumeration-sets
+  name: Enumeration Sets
+  category: libraries
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: event-acknowledgment
+  name: Event Acknowledgment
+  category: events
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: event-browsing
+  name: Event Browsing
+  category: events
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: event-filter
+  name: Event Filter
+  category: events
+  status: ga
+  tags: []
+  parent: event-browsing
+  notes: ''
+- id: event-generation
+  name: Event Generation
+  category: events
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: event-list-panel
+  name: Event List Panel
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: event-notifications
+  name: Event Notifications
+  category: events
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: event-templates
+  name: Event Templates
+  category: events
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: event-trend-panel
+  name: Event Trend Panel
+  category: visualization
+  status: ga
+  tags: []
+  parent: trend-chart
+  notes: ''
+- id: excel-add-in
+  name: Excel Add-in
+  category: excel
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: expression-editor
+  name: Expression Editor
+  category: data-modeling
+  status: ga
+  tags: []
+  parent: element-attributes
+  notes: ''
+- id: forecasting
+  name: Forecasting
+  category: ai-insights
+  status: ga
+  tags:
+  - ai
+  parent: null
+  notes: ''
+- id: gauge-chart
+  name: Gauge Chart
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: history-backfill
+  name: History Backfill
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: real-time-analysis
+  notes: ''
+- id: in-app-notification
+  name: In-App Notification
+  category: events
+  status: ga
+  tags: []
+  parent: event-notifications
+  notes: ''
+- id: llm-connection
+  name: LLM Connection
+  category: ai-insights
+  status: ga
+  tags:
+  - ai
+  parent: natural-language-queries
+  notes: ''
+- id: map-chart
+  name: Map Chart
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: mcp-interface
+  name: MCP Interface
+  category: integration
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: missing-data-imputation
+  name: Missing Data Imputation
+  category: ai-insights
+  status: ga
+  tags:
+  - ai
+  parent: null
+  notes: ''
+- id: natural-language-queries
+  name: Natural Language Queries
+  category: ai-insights
+  status: ga
+  tags:
+  - ai
+  parent: null
+  notes: ''
+- id: notification-contact-points
+  name: Notification Contact Points
+  category: events
+  status: ga
+  tags: []
+  parent: event-notifications
+  notes: ''
+- id: notification-delivery-history
+  name: Notification Delivery History
+  category: events
+  status: ga
+  tags: []
+  parent: event-notifications
+  notes: ''
+- id: notification-escalation
+  name: Notification Escalation
+  category: events
+  status: ga
+  tags: []
+  parent: event-notifications
+  notes: ''
+- id: notification-rules
+  name: Notification Rules
+  category: events
+  status: ga
+  tags: []
+  parent: event-notifications
+  notes: ''
+- id: panel-dashboard-templates
+  name: Panel & Dashboard Templates
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: panel-embedding
+  name: Panel Embedding
+  category: integration
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: pie-chart
+  name: Pie Chart
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: real-time-analysis
+  name: Real-Time Analysis
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: rich-text-panel
+  name: Rich Text Panel
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: role-based-access-control
+  name: Role-Based Access Control
+  category: administration
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: root-cause-analysis
+  name: Root Cause Analysis
+  category: ai-insights
+  status: ga
+  tags:
+  - ai
+  parent: null
+  notes: ''
+- id: scatter-chart
+  name: Scatter Chart
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: scheduled-reports
+  name: Scheduled Reports
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: sdk-authentication
+  name: SDK Authentication
+  category: integration
+  status: ga
+  tags: []
+  parent: client-sdk
+  notes: ''
+- id: single-sign-on
+  name: Single Sign-On
+  category: administration
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: stat-value-panel
+  name: Stat Value Panel
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: state-timeline-panel
+  name: State Timeline Panel
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: status-history-panel
+  name: Status History Panel
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
 - id: system-backup
   name: System Backup
   category: administration
@@ -660,15 +546,6 @@ capabilities:
   tags: []
   parent: null
   notes: ''
-
-- id: system-restore
-  name: System Restore
-  category: administration
-  status: ga
-  tags: []
-  parent: null
-  notes: ''
-
 - id: system-recovery
   name: System Recovery
   category: administration
@@ -676,12 +553,54 @@ capabilities:
   tags: []
   parent: null
   notes: ''
-
-# ── Excel Add-in ───────────────────────────────────────────────────────────
-- id: excel-add-in
-  name: Excel Add-in
-  category: excel
+- id: system-restore
+  name: System Restore
+  category: administration
   status: ga
   tags: []
+  parent: null
+  notes: ''
+- id: table-panel
+  name: Table Panel
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: trend-chart
+  name: Trend Chart
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: unit-of-measurement
+  name: Unit of Measurement
+  category: libraries
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: user-management
+  name: User Management
+  category: administration
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: voice-input
+  name: Voice Input
+  category: ai-insights
+  status: ga
+  tags:
+  - ai
+  parent: natural-language-queries
+  notes: ''
+- id: zero-query-intelligence
+  name: Zero-Query Intelligence
+  category: ai-insights
+  status: ga
+  tags:
+  - ai
   parent: null
   notes: ''

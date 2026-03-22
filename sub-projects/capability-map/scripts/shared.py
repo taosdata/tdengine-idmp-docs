@@ -22,6 +22,7 @@ SECTIONS_DIR = SUBPROJECT_DIR / ".sections"
 SECTION_MAP_FILE = SUBPROJECT_DIR / "capabilities.section-map.yaml"
 TAXONOMY_FILE = SUBPROJECT_DIR / "capabilities.taxonomy.yaml"
 ALIASES_FILE = SUBPROJECT_DIR / "capabilities.aliases.yaml"
+NEEDS_EXTRACTION_FILE = SECTIONS_DIR / "needs-extraction.yaml"
 CAPABILITY_SET_SCHEMA = SUBPROJECT_DIR / "reference" / "capability-set.schema.json"
 ALIASES_SCHEMA = SUBPROJECT_DIR / "reference" / "capability-aliases.schema.json"
 
