@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Capability Inventory Explorer — Flask web UI."""
 
+import os
 import re
 from collections import defaultdict
 from pathlib import Path
@@ -13,7 +14,9 @@ from flask import Flask, abort, jsonify, render_template
 # Paths
 # ---------------------------------------------------------------------------
 
-SUBPROJECT = Path(__file__).resolve().parents[1]
+# SUBPROJECT_ROOT env var allows Vercel (or other deploy targets) to override
+# the project root when the file layout differs from the local repo.
+SUBPROJECT = Path(os.environ.get("SUBPROJECT_ROOT", Path(__file__).resolve().parents[1]))
 REPO_ROOT = SUBPROJECT.parents[1]
 TAXONOMY_FILE = SUBPROJECT / "capabilities.taxonomy.yaml"
 ALIASES_FILE = SUBPROJECT / "capabilities.aliases.yaml"
@@ -456,6 +459,8 @@ def api_section(section_path: str):
 @app.route("/doc/<path:file_path>")
 def doc_view(file_path: str):
     """Render a full source markdown doc file."""
+    if not DOC_ROOT.is_dir():
+        abort(404)  # DOC_ROOT unavailable (e.g. Vercel deployment)
     abs_path = DOC_ROOT / file_path
     if not abs_path.exists() or not abs_path.is_file():
         abort(404)

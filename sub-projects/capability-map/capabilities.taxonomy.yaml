@@ -653,8 +653,24 @@ capabilities:
   parent: null
   notes: ''
 
-- id: backup-restore
-  name: Backup & Restore
+- id: system-backup
+  name: System Backup
+  category: administration
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+
+- id: system-restore
+  name: System Restore
+  category: administration
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+
+- id: system-recovery
+  name: System Recovery
   category: administration
   status: ga
   tags: []

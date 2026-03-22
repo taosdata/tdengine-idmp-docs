@@ -40,24 +40,22 @@ UNMATCHED: trend-chart-axis-config
   Confidence: high
 ```
 
-Apply the decision tree, then update the taxonomy:
-1. **Alias** → add the ID to an existing capability's `aliases` list
-2. **New capability** → create a new entry with `parent: null`
-3. **New sub-capability** → create a new entry with `parent: <parent-id>`
-4. **Not a capability** → add to `ignored` with a `reason`
+Apply the decision tree, then update the appropriate file:
+1. **Alias** → add the ID under its canonical key in `capabilities.aliases.yaml` (see [editing-aliases.md](editing-aliases.md))
+2. **New capability** → create a new entry in `capabilities.taxonomy.yaml` with `parent: null`
+3. **New sub-capability** → create a new entry in `capabilities.taxonomy.yaml` with `parent: <parent-id>`
+4. **Not a capability** → add to `ignored` in `capabilities.aliases.yaml` with a `reason`
 
 Re-run `validate.py` to confirm the unmatched list is resolved.
 
 ## When a new product version ships
 
 1. Update `status` from `planned` → `ga` (or `beta`) for capabilities that shipped
-2. Set `since` to the version number (reference `21-release-history/` docs)
-3. Add new `planned` entries from `20-roadmap/index.md`
-4. Update `roadmap_ref` for any planning changes
+2. Add new `planned` entries from `20-roadmap/index.md`
 
 ## When capabilities are reorganized
 
-- **Rename**: update `id` and `name`; update any `parent` references and `aliases` pointing to the old ID
-- **Merge**: combine `aliases` lists, remove the deprecated entry (or set `status: deprecated`)
-- **Split**: create new entries, redistribute aliases, update `parent` references
+- **Rename**: see [editing-aliases.md](editing-aliases.md) — update taxonomy `id`, `parent` references, and alias group keys
+- **Merge**: move aliases from the deprecated entry to the surviving one, set `status: deprecated` on the old entry
+- **Split**: create new entries, redistribute alias mappings, update `parent` references
 - **Retire**: set `status: deprecated` — do not delete (serves as historical record)

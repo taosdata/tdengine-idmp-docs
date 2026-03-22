@@ -43,9 +43,21 @@ aliases:
     - element-level-access-control
   admin-console:
     - system-configuration
+  system-backup:
+    - backup
+  system-restore:
+    - restore
+  system-recovery:
+    - recovery
+
+  # Client SDK
+  client-sdk:
+    - sdk
 
 ignored:
 - id: deployment-architecture
   reason: Informational overview of system architecture, not a user/admin capability
 - id: sample-data
   reason: Demo/seed data utility, not a product capability
+- id: backup-restore
+  reason: Split into system-backup, system-restore, and system-recovery
