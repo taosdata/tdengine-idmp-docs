@@ -3,12 +3,12 @@ title: 认证
 sidebar_label: 认证
 ---
 
-IDMP SDK 使用 **Bearer Token（JWT）** 进行认证。获取 Token 的方式取决于您的部署类型。
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # 15.1.3 认证
+
+IDMP SDK 使用 **Bearer Token（JWT）** 进行认证。获取 Token 的方式取决于您的部署类型。
 
 ## 企业版（自托管）认证
 

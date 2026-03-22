@@ -3,14 +3,14 @@ title: Error Handling
 sidebar_label: Error Handling
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 15.1.7 Error Handling
 
 ## Exception Type
 
 The SDK wraps all API errors in a single `ApiException` class. You can retrieve the HTTP status code and the server-side error message from it.
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">

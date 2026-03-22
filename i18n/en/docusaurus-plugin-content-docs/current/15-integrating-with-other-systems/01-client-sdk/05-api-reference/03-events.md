@@ -3,12 +3,12 @@ title: Events API
 sidebar_label: Events API
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 15.1.5.3 Events API
 
 `EventResourceApi` provides query and management operations on events.
-
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
 
 ## Method List
 
@@ -74,5 +74,5 @@ event_api = idmp_sdk.EventResourceApi(api_client)
 </Tabs>
 
 :::note
-For the complete method signatures and parameters, refer to the OpenAPI spec file (`idmp-v1.0.14.1.json`) included in the SDK package, or browse the Swagger UI at `/swagger-ui.html` on your IDMP server.
+For the complete method signatures and parameters, refer to the OpenAPI spec file (`idmp-v1.0.14.3.json`) included in the SDK package, or browse the Swagger UI at `/swagger-ui.html` on your IDMP server.
 :::

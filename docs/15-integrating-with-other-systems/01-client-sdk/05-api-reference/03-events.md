@@ -3,12 +3,12 @@ title: 事件 API
 sidebar_label: 事件 API
 ---
 
-`EventResourceApi` 提供事件的查询和管理操作。
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 # 15.1.5.3 事件 API
+
+`EventResourceApi` 提供事件的查询和管理操作。
 
 ## 方法列表
 
@@ -74,5 +74,5 @@ event_api = idmp_sdk.EventResourceApi(api_client)
 </Tabs>
 
 :::note
-完整的方法签名和参数请参考 SDK 包中的 OpenAPI 规范文件（`idmp-v1.0.14.1.json`），或在您的 IDMP 服务器上访问 `/swagger-ui.html` 浏览 Swagger UI。
+完整的方法签名和参数请参考 SDK 包中的 OpenAPI 规范文件（`idmp-v1.0.14.3.json`），或在您的 IDMP 服务器上访问 `/swagger-ui.html` 浏览 Swagger UI。
 :::

@@ -19,7 +19,6 @@ English | [简体中文](README-CN.md)
   - [4. Directory Structure](#4-directory-structure)
   - [5. Contribution](#5-contribution)
   - [6. Community Support](#6-community-support)
-  - [7. License](#7-license)
 
 ---
 
@@ -40,7 +39,6 @@ git clone git@github.com:taosdata/tdengine-idmp-docs.git
 ### 2.2 Install mise
 
 This project uses [mise](https://github.com/jdx/mise) as the dev tool version manager and [just](https://github.com/casey/just/) as the command runner. `mise` is a polyglot dev tool version manager, it reads [mise.toml](./mise.toml) and automatically installs the correct versions of  [Node.js](https://nodejs.org/) and [pnpm](https://pnpm.io/) used in this project.
-
 
 Install mise on Linux/macOS (For other OS, please refer to mise's [Getting Started](https://mise.jdx.dev/getting-started.html) documentation):
 
@@ -103,6 +101,22 @@ just start
 just start-en
 ```
 
+> **Using pnpm directly**: If you don't use `just`, you can run the equivalent commands with `pnpm`:
+>
+> ```bash
+> # Install dependencies
+> pnpm install
+>
+> # Start Chinese preview (default)
+> pnpm run start:local
+>
+> # Start English preview
+> pnpm run start:local:en
+>
+> # Clear generated assets, caches, and build artifacts
+> pnpm run clear
+> ```
+
 ### 3.2 Production Build
 
 Use the following command to build static files for production into the `build` directory. The generated content can be deployed using any static content hosting service. We use [Azure Static Web Apps](https://azure.microsoft.com/en-us/services/app-service/static/) to deploy the IDMP documentation service.
@@ -118,6 +132,16 @@ just build
 ```bash
 just serve
 ```
+
+> **Using pnpm directly**:
+>
+> ```bash
+> # Build documentation
+> pnpm build
+>
+> # Preview the production build locally
+> pnpm serve
+> ```
 
 ### 3.3 Production Deployment
 
@@ -143,7 +167,7 @@ After code is merged into the main branch, GitHub Actions will automatically tri
 
 ## 5. Contribution
 
-Contributions to TDengine IDMP documentation are welcome! Please submit a Pull Request or report issues.
+Contributions to TDengine IDMP documentation are welcome! When contributing, please follow the [TDengine IDMP Documentation Writing Guide](./docs-guide.md) and submit a Pull Request.
 
 ## 6. Community Support
 
