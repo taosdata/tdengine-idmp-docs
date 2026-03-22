@@ -1,6 +1,6 @@
 # Data Contracts
 
-Schemas, field definitions, and consumer join algorithm for the three committed data files.
+Schemas, field definitions, and consumer join algorithm for the three committed data files, plus the intermediate manifest used between pipeline stages.
 
 ## `capabilities.taxonomy.yaml` — capability set
 
@@ -62,6 +62,34 @@ Maps non-canonical IDs (produced by AI extraction) to canonical capability IDs, 
 | `capabilities[].id` | AI agent | Extracted capability identifier |
 | `capabilities[].relation` | AI agent | `defined` or `referenced` |
 | `capabilities[].confidence` | AI agent | `high`, `medium`, or `low` |
+
+## `.sections/manifest.yaml` — section manifest (git-ignored)
+
+Written by `parse.py`, consumed by `merge.py` and `validate.py`. The authoritative list of all current sections — used for change detection, carry-forward decisions, and hash consistency checks. See [pipeline.md](pipeline.md) for how each stage uses it.
+
+### Top-level fields
+
+| Field | Description |
+|---|---|
+| `version` | Schema version (currently `1.0`) |
+| `parsed_at` | ISO 8601 date of last `parse.py` run |
+| `doc_root` | Relative path to the documentation root |
+| `scope` | Include/exclude chapter lists that were applied |
+| `total_files` | Number of source doc files parsed |
+| `total_sections` | Number of sections produced |
+
+### Entry fields
+
+Each entry in the `sections` list:
+
+| Field | Description |
+|---|---|
+| `section_id` | Stable identity, same as in the section map |
+| `content_hash` | SHA-256 prefix of section content; `merge.py` compares this against extraction results and the previous section map to decide carry-forward vs re-extraction |
+
+Full section metadata (file path, heading, anchor, etc.) lives in each section's `meta.yaml` file within `.sections/`, not in the manifest. The manifest is intentionally minimal — just IDs and hashes — so that diffing between runs is cheap.
+
+The manifest is deterministic: running `parse.py` twice on the same docs produces identical output.
 
 ## Enum definitions
 
