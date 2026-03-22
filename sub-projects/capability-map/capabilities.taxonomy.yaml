@@ -500,13 +500,6 @@ capabilities:
   tags: []
   parent: event-browsing
   notes: ''
-- id: event-filter
-  name: Event Filter
-  category: events
-  status: ga
-  tags: []
-  parent: event-browsing
-  notes: ''
 - id: event-filtering
   name: Event Filtering
   category: events

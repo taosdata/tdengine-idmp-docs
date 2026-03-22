@@ -32,6 +32,10 @@ aliases:
   admin-console:
     - system-configuration
 
+  # Events
+  event-filtering:
+    - event-filter
+
   # Client SDK
   client-sdk:
     - sdk
