@@ -11,6 +11,8 @@ The Bar Gauge displays a value as a filled bar against a configurable scale, sim
 
 Multiple metrics render as multiple bars stacked in the panel, making the Bar Gauge effective for comparing several similar measurements side by side.
 
+![Retro LCD display mode](../images/bar-gauge-lcd.png)
+
 ## When to Use
 
 Use the Bar Gauge when:
@@ -36,18 +38,35 @@ In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mo
 
 ### Graph Settings
 
+![Bar Gauge configuration panel](../images/bar-gauge-config.png)
+
 | Setting | Description |
 |---|---|
 | **Title** | Chart title |
 | **Subtitle** | Secondary title |
-| **Orientation** | Horizontal (bar fills left to right) or Vertical (bar fills bottom to top) |
+| **Orientation** | **Horizontal** (bar fills left to right) or **Vertical** (bar fills bottom to top) |
+| **Show Time** | **On** (display a timestamp on the bar) or **Off** |
 | **Display Mode** | Visual style: **Gradient** (smooth color transition), **Basic** (solid fill), **Retro LCD** (segmented display) |
-| **Value Display** | Where the numeric value is shown: **Value Color** (overlaid on bar, colored to match threshold), **Text Color** (overlaid, plain text), **Hidden** |
-| **Name Placement** | Metric name position: **Auto** (beside the bar) or **Hidden** |
-| **Bar size** | **Auto** (bar fills available space) or **Manual** (fixed pixel size) |
+| **Value Display** | Numeric value color style: **Data Color** (overlaid on bar, colored to match threshold), **Text Color** (overlaid, plain text), **Hidden** |
+| **Name Placement** | Metric name position: **Auto**, **Top**, **Left**, or **Hidden** |
+| **Bar Size** | **Auto** (bar fills available space) or **Manual** (fixed pixel size) |
 | **Min** | Minimum value of the scale (default 0) |
 | **Max** | Maximum value of the scale (default 1) |
 | **Decimals** | Number of decimal places shown |
+
+#### Display Mode
+
+**Basic** fills each bar with a single solid color determined by the current threshold band, resulting in a clean and minimal look.
+
+![Basic display mode](../images/bar-gauge-basic.png)
+
+**Gradient** renders a smooth color transition from the low end to the high end of the bar, simultaneously conveying both the value magnitude and its position relative to thresholds.
+
+![Gradient display mode](../images/bar-gauge-gradient.png)
+
+**Retro LCD** splits the bar into discrete segments that mimic the appearance of a liquid-crystal display, suited for dashboards with an industrial instrument aesthetic.
+
+![Retro LCD display mode](../images/bar-gauge-lcd.png)
 
 #### Thresholds
 
