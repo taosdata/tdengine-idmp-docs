@@ -1,9 +1,9 @@
 ---
-title: Model Management
-sidebar_label: Model Management
+title: Statistical Testing
+sidebar_label: Statistical Testing
 ---
 
-# 9.10 Model Management
+# 9.8 Statistical Testing
 
 :::note Coming Soon
 This section is under development. Content will be published in a future release.

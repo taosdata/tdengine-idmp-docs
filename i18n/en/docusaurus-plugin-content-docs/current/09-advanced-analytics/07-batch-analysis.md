@@ -1,9 +1,9 @@
 ---
-title: Association Rules
-sidebar_label: Association Rules
+title: Batch Analysis
+sidebar_label: Batch Analysis
 ---
 
-# 9.8 Association Rules
+# 9.7 Batch Analysis
 
 :::note Coming Soon
 This section is under development. Content will be published in a future release.

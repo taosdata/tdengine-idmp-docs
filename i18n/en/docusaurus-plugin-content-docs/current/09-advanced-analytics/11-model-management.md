@@ -1,9 +1,9 @@
 ---
-title: Machine Learning
-sidebar_label: Machine Learning
+title: Model Management
+sidebar_label: Model Management
 ---
 
-# 9.9 Machine Learning
+# 9.11 Model Management
 
 :::note Coming Soon
 This section is under development. Content will be published in a future release.
