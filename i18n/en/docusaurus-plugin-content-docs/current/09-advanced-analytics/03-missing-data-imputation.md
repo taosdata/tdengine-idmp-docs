@@ -71,7 +71,7 @@ A chemical plant relies on natural gas flow data for daily energy accounting and
 1. Open the **Trend Chart panel** containing the `Natural Gas Flow` attribute. In view mode, the communication outage shows up clearly as a flat gap in the signal.
 2. Click the **Impute** icon in the toolbar to enter imputation mode.
 3. Click and drag to select the missing time range. IDMP calls TDgpt, which analyzes the flow pattern immediately before and after the gap, estimates what the signal most likely measured during the outage, and fills in the values.
-4. The imputed values appear overlaid in a distinct style. After confirming the estimates look reasonable, the imputation is accepted.
+4. The imputed values appear overlaid in a distinct style. Once the result looks reasonable, accept the imputation.
 
 **Outcome**
 

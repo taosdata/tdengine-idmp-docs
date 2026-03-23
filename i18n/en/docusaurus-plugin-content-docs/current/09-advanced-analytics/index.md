@@ -7,7 +7,7 @@ sidebar_label: Advanced Analytics
 
 Analytics is a capability that runs throughout TDengine IDMP. Beyond basic visualization, IDMP provides a comprehensive suite of advanced analytical capabilities for industrial time-series data, including time-series forecasting, anomaly detection, missing data imputation, clustering, regression, correlation analysis, batch analysis, statistical testing, association rules, machine learning, and model management.
 
-These advanced capabilities help industrial users develop a deeper understanding of equipment behavior, uncover hidden patterns in their data, and make more accurate data-driven decisions. We are continuously expanding the advanced analytics offering and plan to release ready-to-use analysis templates and applications tailored to specific industrial scenarios.
+These advanced capabilities help industrial users develop a deeper understanding of equipment behavior, uncover hidden patterns in their data, and make more accurate data-driven decisions. IDMP is continuously expanding its advanced analytics offering and plans to release ready-to-use analysis templates and applications tailored to specific industrial scenarios.
 
 Rather than packaging these capabilities as standalone applications, IDMP embeds each one directly within the relevant analysis panel or page — so users can apply advanced analytics right where they need it, without switching context.
 

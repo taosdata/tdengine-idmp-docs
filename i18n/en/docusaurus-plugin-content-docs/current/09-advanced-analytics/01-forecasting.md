@@ -13,7 +13,7 @@ The fundamental idea behind time-series forecasting is simple: **learn from the 
 
 A forecasting algorithm analyzes a window of historical data to extract the underlying patterns in a signal — its trend direction, cyclic behavior, seasonal rhythms, and noise characteristics. It then assumes those patterns will continue to hold over a future horizon, and uses them to generate a sequence of predicted values.
 
-This is more than simple linear extrapolation. Modern forecasting algorithms can capture complex nonlinear dynamics: the daily peaks and troughs in electricity consumption, the gradual degradation of equipment performance over time, or the seasonal swings in production load. How accurate a forecast turns out to be depends on data quality, the length and completeness of the historical record, and how well the chosen algorithm fits the signal's underlying behavior.
+This is more than simple linear extrapolation. Modern forecasting algorithms can capture complex nonlinear dynamics: the daily peaks and troughs in electricity consumption, the gradual degradation of equipment performance over time, or the seasonal swings in production load. Forecast accuracy depends on data quality, the length and completeness of the historical record, and how well the chosen algorithm fits the signal's underlying behavior.
 
 ## Supported Algorithms
 
