@@ -20,8 +20,8 @@ TDengine IDMP 的高级分析能力来源于内置的时序 AI 分析引擎 TDgp
 - **[时序预测](./01-forecasting.md)** — 基于历史时序数据预测未来趋势
 - **[异常检测](./02-anomaly-detection.md)** — 识别时序数据中的异常模式与离群值
 - **[缺失数据填补](./03-missing-data-imputation.md)** — 对时序数据中的缺口进行智能填充
-- **[聚类](./04-clustering.md)** — 对设备、时段或行为模式进行无监督分组
-- **[回归](./05-regression.md)** — 建立属性之间的定量关系模型
+- **[聚类分析](./04-clustering.md)** — 对设备、时段或行为模式进行无监督分组
+- **[回归分析](./05-regression.md)** — 建立属性之间的定量关系模型
 - **[相关分析](./06-correlation-analysis.md)** — 度量多个属性或设备之间的相关性
 - **[批次分析](./07-batch-analysis.md)** — 对生产批次数据进行对比与统计分析
 - **[统计检验](./08-statistical-testing.md)** — 对时序数据进行假设检验与显著性分析
