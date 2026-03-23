@@ -48,15 +48,23 @@ ROADMAP_FILE = DOC_ROOT / "20-roadmap" / "index.md"
 EXTRACTION_PROMPT_CONTENT = """\
 # Capability Extraction Task
 
+## Before you start — read these reference files
+
+1. `reference/capability-definition.md` — what a capability is, naming rules,
+   alias/ignored rules, defined vs referenced classification, and how to
+   handle new IDs that are not yet in the taxonomy.
+2. `capabilities.taxonomy.yaml` — the current capability taxonomy; prefer these IDs when they match.
+3. `capabilities.aliases.yaml` — alias and ignored-ID mappings.
+
 ## Input
 
-Your work list is `.sections/needs-extraction.yaml`. Read this file first.
+Your work list is `.sections/needs-extraction.yaml`. Read this file.
 It contains the list of section IDs that require capability extraction.
 If `sections` is empty (`sections: []`), there is nothing to do — stop here.
 
 ## Resolving section directories
 
-For each `section_id` in `sections`, resolve its directory path under `.sections/`:
+For each `section_id` in `sections`, resolve its directory under `.sections/`:
 - Split on `#`: the part before `#` is the name path; the part after is the slug.
 - Replace any `/` in the name path with directory separators.
 - Directory: `.sections/<name_path>/<slug>/`
@@ -71,39 +79,25 @@ For each resolved directory:
 
 1. Read `meta.yaml` and note the `content_hash` value.
 
-   An `extraction.yaml` may already exist in the directory. This is expected --
-   it is a stale file that `prepare.py` identified as outdated. Compare its
-   `content_hash` to the value in `meta.yaml`:
+   An `extraction.yaml` may already exist in the directory — it is a stale
+   file that `prepare.py` identified as outdated. Compare its `content_hash`
+   to the value in `meta.yaml`:
    - If they differ (the normal case): re-extract and overwrite `extraction.yaml`.
-   - If they match (unexpected -- possibly updated by a concurrent run): skip
+   - If they match (unexpected — possibly updated by a concurrent run): skip
      this section, log a note, and continue to the next.
 
 2. Read `section.md`.
-3. Identify capabilities -- things the system can do: tasks, functions, or
-   behaviors available to users or administrators.
-   Examples: "trend-chart", "element-search", "sso-authentication".
-   Do NOT treat navigation instructions, UI layout descriptions, or
-   references to external systems as capabilities.
-4. For each capability, classify the relation:
-   - "defined" -- this section explains what the capability is, how it works,
-     or how to use/configure it.
-   - "referenced" -- this section meaningfully depends on or integrates with
-     the capability, but does not define it.
-   Do NOT mark incidental mentions (navigation links, see-also footnotes)
-   as referenced.
-5. Write `extraction.yaml` in the same directory. Include `content_hash` as
-   the first field.
+3. Identify capabilities and classify each relation per `capability-definition.md`.
+4. Write `extraction.yaml` in the same directory.
 
 ## Output format
-
-For each `extraction.yaml`:
 
 ```yaml
 content_hash: "<value from meta.yaml>"
 capabilities:
-  - id: "short-lowercase-hyphenated-id"
-    relation: "defined"     # or "referenced"
-    confidence: "high"      # or "medium" or "low"
+  - id: "capability-id"    # prefer taxonomy IDs; new IDs allowed — see capability-definition.md
+    relation: "defined"    # or "referenced" — see capability-definition.md
+    confidence: "high"     # or "medium" or "low"
 ```
 
 If a section contains no capabilities:
@@ -532,10 +526,15 @@ def main() -> int:
 
     # --- Prompt version check (normal and --force modes only) ---
     if not args.check and not args.dry_run and check_prompt_version(section_map):
+        existing = sum(1 for _ in SECTIONS_DIR.rglob("extraction.yaml"))
         print(
             f"Prompt version changed (section map: {section_map.get('prompt_version')!r} → current: {PROMPT_VERSION!r}). "
-            "Deleting all extraction.yaml files for full re-extraction."
+            f"This will delete all {existing} extraction.yaml files for full re-extraction."
         )
+        confirm = input("Type 'yes' to confirm deletion, or anything else to abort: ").strip().lower()
+        if confirm != "yes":
+            print("Aborted. No files deleted.")
+            return 1
         deleted = delete_all_extractions(SECTIONS_DIR)
         print(f"Deleted {deleted} extraction.yaml files.")
         write_prompt_if_needed(EXTRACTION_PROMPT_FILE, force=True)
@@ -551,15 +550,23 @@ def main() -> int:
 
     # --- Dry-run mode ---
     if args.dry_run:
-        print(f"[dry-run] {len(needs)} of {total} sections need extraction")
-        if needs:
-            print("  Would write to needs-extraction.yaml:")
-            for sid in needs[:10]:
-                print(f"    {sid}")
-            if len(needs) > 10:
-                print(f"    ... and {len(needs) - 10} more")
+        if check_prompt_version(section_map):
+            existing = sum(1 for _ in SECTIONS_DIR.rglob("extraction.yaml"))
+            print(
+                f"[dry-run] Prompt version changed "
+                f"(section map: {section_map.get('prompt_version')!r} → current: {PROMPT_VERSION!r}). "
+                f"Would delete all {existing} extraction.yaml files and re-extract all {total} sections."
+            )
         else:
-            print("  Nothing to do — all sections up to date.")
+            print(f"[dry-run] {len(needs)} of {total} sections need extraction")
+            if needs:
+                print("  Would write to needs-extraction.yaml:")
+                for sid in needs[:10]:
+                    print(f"    {sid}")
+                if len(needs) > 10:
+                    print(f"    ... and {len(needs) - 10} more")
+            else:
+                print("  Nothing to do — all sections up to date.")
         prompt_path = EXTRACTION_PROMPT_FILE
         current = prompt_path.read_text(encoding="utf-8") if prompt_path.exists() else None
         if current != EXTRACTION_PROMPT_CONTENT:

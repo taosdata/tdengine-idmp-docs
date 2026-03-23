@@ -87,10 +87,25 @@ All taxonomy fields are human-owned. The AI extraction pipeline proposes candida
 
 The section map (`capabilities.section-map.yaml`) records how capabilities relate to documentation:
 
-- **`defined`** — the section is the primary documentation for that capability; this is where the capability is explained.
-- **`referenced`** — the section mentions the capability in passing, usually in the context of another capability.
+- **`defined`** — use this when EITHER:
+  - (a) A reader could learn from this section, or its direct references or links, how to use or configure the capability well enough to apply it. Introductory overviews that merely name or describe that a capability exists without operational detail are NOT sufficient.
+  - (b) This is the primary organizing section for the capability — it ties together multiple components (setup, configuration, execution, etc.) through structure or links, such that a reader would understand the capability as a whole by reading it and following its references. No single linked sub-section needs to be fully self-contained; the overview itself supplies the connective understanding.
+- **`referenced`** — the section meaningfully depends on or integrates with the capability, but does not define it.
+
+Do NOT mark incidental mentions (navigation links, see-also footnotes) as `referenced`.
 
 A capability with no `defined` sections is a coverage gap. A capability with no sections at all is orphaned.
+
+## Using taxonomy IDs during extraction
+
+When extracting capabilities from a section, match against `capabilities.taxonomy.yaml` and `capabilities.aliases.yaml`:
+
+- If a concept matches a taxonomy ID exactly → use it.
+- If a concept matches an alias in `capabilities.aliases.yaml` → use the canonical ID the alias maps to.
+- If a concept is listed in the `ignored` list in `capabilities.aliases.yaml` → do not emit it.
+- If a concept seems like a capability but has no matching taxonomy ID or alias → emit it using the naming convention below, with `confidence: "low"`. It will be reviewed by a human and either added to the taxonomy, mapped as an alias, or ignored.
+
+The taxonomy reflects the documentation that exists today. New IDs are expected as documentation grows — the extraction pipeline is designed to surface them for human review.
 
 ## Naming convention
 
@@ -122,13 +137,4 @@ Capability names should be consistent across the taxonomy, release notes, roadma
 
 4. **No type suffixes.** Do not append `-capability`, `-feature`, or `-function` to IDs.
 
-### Current names to normalize
-
-Applying the convention above, the following existing names should be updated:
-
-| Current name | Issue | Suggested name | Suggested id |
-|---|---|---|---|
-| Exporting Data | Gerund form | Data Export | `data-export` |
-| Connecting to LLM | Gerund form | LLM Connection | `llm-connection` |
-
-All other current names already conform to the convention.
+All names in `capabilities.taxonomy.yaml` should conform to the convention above. If you notice a violation during extraction, add a `# TODO` comment rather than silently using a non-canonical form.

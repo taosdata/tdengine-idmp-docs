@@ -33,7 +33,11 @@ ALIASES_SCHEMA = SUBPROJECT_DIR / "reference" / "capability-aliases.schema.json"
 MANIFEST_VERSION = "1.0"
 SECTION_MAP_VERSION = "1.0"
 TAXONOMY_VERSION = "1.0"
-PROMPT_VERSION = "1.0"
+
+# Prompt v1.1: added stricter definition for "defined" capabilities
+# Prompt v1.2: referred to the stricter capability definition document.
+# Prompt v1.3: simplified prompt to reference static docs; new IDs explicitly allowed.
+PROMPT_VERSION = "1.4"
 
 # ---------------------------------------------------------------------------
 # Enums

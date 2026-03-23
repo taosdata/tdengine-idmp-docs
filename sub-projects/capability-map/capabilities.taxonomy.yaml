@@ -1,7 +1,7 @@
 version: '1.0'
 kind: product
 name: TDengine IDMP
-date: '2026-03-20'
+date: '2026-03-22'
 categories:
 - id: platform
   name: Platform
@@ -325,6 +325,13 @@ capabilities:
   tags: []
   parent: data-collection
   notes: ''
+- id: count-window-trigger
+  name: Count Window Trigger
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: analysis-trigger-types
+  notes: ''
 - id: dashboard-sharing
   name: Dashboard Sharing
   category: visualization
@@ -366,6 +373,13 @@ capabilities:
   status: ga
   tags: []
   parent: data-collection
+  notes: ''
+- id: data-input-trigger
+  name: Data Input Trigger
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: analysis-trigger-types
   notes: ''
 - id: data-model-import-export
   name: Data Model Import/Export
@@ -605,6 +619,13 @@ capabilities:
   tags: []
   parent: trend-chart
   notes: ''
+- id: event-window-trigger
+  name: Event Window Trigger
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: analysis-trigger-types
+  notes: ''
 - id: excel-add-in
   name: Excel Add-in
   category: excel
@@ -805,8 +826,22 @@ capabilities:
   tags: []
   parent: notification-rules
   notes: ''
+- id: panel-advanced-sql
+  name: Panel Advanced SQL
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
 - id: panel-dashboard-templates
   name: Panel & Dashboard Templates
+  category: visualization
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: panel-data-links
+  name: Panel Data Links
   category: visualization
   status: ga
   tags: []
@@ -946,6 +981,13 @@ capabilities:
   tags: []
   parent: client-sdk
   notes: ''
+- id: session-window-trigger
+  name: Session Window Trigger
+  category: real-time-analysis
+  status: ga
+  tags: []
+  parent: analysis-trigger-types
+  notes: ''
 - id: single-sign-on
   name: Single Sign-On
   category: administration
@@ -987,6 +1029,20 @@ capabilities:
   status: ga
   tags: []
   parent: element-attributes
+  notes: ''
+- id: system-backup
+  name: System Backup
+  category: administration
+  status: ga
+  tags: []
+  parent: null
+  notes: ''
+- id: system-restore
+  name: System Restore
+  category: administration
+  status: ga
+  tags: []
+  parent: null
   notes: ''
 - id: table-panel
   name: Table Panel

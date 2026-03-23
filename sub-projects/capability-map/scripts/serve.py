@@ -25,7 +25,7 @@ SECTION_MAP_FILE = SUBPROJECT / "capabilities.section-map.yaml"
 SECTIONS_DIR = SUBPROJECT / ".sections"
 OTHER_CAP_SETS_DIR = SUBPROJECT / "other-cap-sets"
 DOC_ROOT = REPO_ROOT / "i18n" / "en" / "docusaurus-plugin-content-docs" / "current"
-DOCS_BASE_URL = "https://idmpdocs.taosdata.com"
+DOCS_BASE_URL = "https://idmpdocs.tdengine.com/en"
 
 # ---------------------------------------------------------------------------
 # Flask app
