@@ -5,7 +5,7 @@ sidebar_label: Missing Data Imputation
 
 # 9.3 Missing Data Imputation
 
-Gaps in industrial time-series data are unavoidable. Sensors go offline, networks drop, hardware fails, transmission delays accumulate — any of these can leave stretches of a signal with no recorded values. Powered by **TDgpt**, IDMP intelligently fills those gaps by estimating what the signal most likely would have measured, ensuring that downstream analytics, averages, and KPI calculations are not distorted by missing data.
+Gaps in industrial time-series data are unavoidable. Sensors go offline, networks drop, hardware fails, transmission delays accumulate — any of these can leave stretches of a signal with no recorded values. Powered by **TDgpt**, IDMP intelligently fills those gaps by learning from the surrounding signal history and estimating what the sensor most likely would have measured, keeping downstream analytics, cumulative totals, and KPI calculations accurate and complete.
 
 ## How It Works
 
@@ -14,6 +14,15 @@ The core idea behind imputation is: **reason from what is known to fill in what 
 TDgpt exposes its imputation capability through the `IMPUTATION()` SQL function. The function requires evenly spaced timestamps; for production data with irregular intervals, normalize the data first using a window aggregation such as `INTERVAL` before calling imputation.
 
 TDgpt imputation is a complement to TDengine's native interpolation functions (`INTERP`, `FILL`). Native interpolation uses simple strategies — linear, forward-fill, backward-fill — and works well for short, predictable gaps. TDgpt imputation applies learned signal knowledge and is better suited to longer gaps, irregular signals, or situations where simple interpolation would produce unrealistic values.
+
+## Application Scenarios
+
+Missing data imputation is most valuable in the following situations:
+
+- **Statistical completeness for continuous metrics:** For attributes like energy consumption, production volume, or flow rate that are summed or averaged over time, gaps directly distort the result. Imputation restores a complete series and eliminates the bias.
+- **Input quality for forecasting and trend analysis:** Most forecasting and trend algorithms expect a gap-free input. Filling gaps upstream improves model quality and forecast accuracy.
+- **Audit trails and compliance records:** In scenarios requiring a complete equipment operating log — regulatory compliance, quality traceability — imputation provides defensible estimated values that maintain record continuity.
+- **Multi-attribute alignment:** When multiple time series need to be analyzed jointly, a gap in one attribute disrupts alignment and joint calculations. Imputation ensures all attributes share a consistent time axis.
 
 ## Supported Algorithms
 
@@ -32,7 +41,7 @@ When calling through the `IMPUTATION()` SQL function, only the **Moment** (TDtsf
 
 ## How to Use
 
-Missing data imputation is triggered from the **Trend Chart panel** toolbar and is available in both view mode and edit mode.
+Missing data imputation is triggered from the **Trend Chart** and **Event Trend Chart** panel toolbars and is available in both view mode and edit mode.
 
 ### Imputing in View Mode
 
@@ -51,16 +60,7 @@ Imputed values are overlaid on the chart in a visually distinct style, making it
 
 The panel editor toolbar also exposes the **Impute** control. Clicking it enters imputation mode within the panel preview, letting you evaluate the visual result in real time before saving any configuration changes — no need to switch to view mode first.
 
-## Application Scenarios
-
-Missing data imputation is most valuable in the following situations:
-
-- **Statistical completeness for continuous metrics:** For attributes like energy consumption, production volume, or flow rate that are summed or averaged over time, gaps directly distort the result. Imputation restores a complete series and eliminates the bias.
-- **Input quality for forecasting and trend analysis:** Most forecasting and trend algorithms expect a gap-free input. Filling gaps upstream improves model quality and forecast accuracy.
-- **Audit trails and compliance records:** In scenarios requiring a complete equipment operating log — regulatory compliance, quality traceability — imputation provides defensible estimated values that maintain record continuity.
-- **Multi-attribute alignment:** When multiple time series need to be analyzed jointly, a gap in one attribute disrupts alignment and joint calculations. Imputation ensures all attributes share a consistent time axis.
-
-### Example: Repairing a Gas Flow Meter Gap Caused by a Network Outage
+## Example
 
 **Background**
 

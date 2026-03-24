@@ -15,6 +15,35 @@ A forecasting algorithm analyzes a window of historical data to extract the unde
 
 This is more than simple linear extrapolation. Modern forecasting algorithms can capture complex nonlinear dynamics: the daily peaks and troughs in electricity consumption, the gradual degradation of equipment performance over time, or the seasonal swings in production load. Forecast accuracy depends on data quality, the length and completeness of the historical record, and how well the chosen algorithm fits the signal's underlying behavior.
 
+## Application Scenarios
+
+Time-series forecasting has broad practical value across industrial domains:
+
+**Energy and Power**
+
+- Forecast electricity consumption over the next 24 hours or longer to support grid dispatch and load balancing
+- Forecast solar or wind generation output to plan ahead for storage dispatch or backup capacity
+
+**Equipment Health Metrics**
+
+- Predict trends in temperature, vibration, or pressure to anticipate when a threshold breach might occur
+- Forecast equipment energy consumption or efficiency trends to support energy optimization and performance benchmarking
+
+**Production and Supply Chain**
+
+- Forecast tank levels or warehouse inventory to plan replenishment or transfers in advance
+- Forecast production line throughput and output to support scheduling
+
+**Environment and Utilities**
+
+- Forecast influent flow at a wastewater treatment plant to adjust treatment capacity ahead of time
+- Forecast temperature and humidity changes inside a facility to pre-condition HVAC or dehumidification equipment
+
+**Process Industry**
+
+- Predict key parameter trends in chemical reaction processes
+- Forecast operating parameters for boilers, compressors, and similar equipment
+
 ## Supported Algorithms
 
 TDgpt ships with a broad selection of forecasting algorithms spanning statistical models, machine learning, and deep learning:
@@ -108,36 +137,7 @@ If no forecast has been configured for the attributes in the panel, clicking **S
 
 ![Forecast configuration dialog](./images/forecast-new.png)
 
-## Application Scenarios
-
-Time-series forecasting has broad practical value across industrial domains:
-
-**Energy and Power**
-
-- Forecast electricity consumption over the next 24 hours or longer to support grid dispatch and load balancing
-- Forecast solar or wind generation output to plan ahead for storage dispatch or backup capacity
-
-**Equipment Health Metrics**
-
-- Predict trends in temperature, vibration, or pressure to anticipate when a threshold breach might occur
-- Forecast equipment energy consumption or efficiency trends to support energy optimization and performance benchmarking
-
-**Production and Supply Chain**
-
-- Forecast tank levels or warehouse inventory to plan replenishment or transfers in advance
-- Forecast production line throughput and output to support scheduling
-
-**Environment and Utilities**
-
-- Forecast influent flow at a wastewater treatment plant to adjust treatment capacity ahead of time
-- Forecast temperature and humidity changes inside a facility to pre-condition HVAC or dehumidification equipment
-
-**Process Industry**
-
-- Predict key parameter trends in chemical reaction processes
-- Forecast operating parameters for boilers, compressors, and similar equipment
-
-### Example: Forecasting Daily Influent Flow at a Wastewater Treatment Plant
+## Example
 
 **Background**
 

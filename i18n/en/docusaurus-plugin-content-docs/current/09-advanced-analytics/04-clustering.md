@@ -5,7 +5,7 @@ sidebar_label: Clustering
 
 # 9.4 Clustering
 
-Clustering is a widely used exploratory analysis technique in industrial data science. IDMP supports clustering directly within Scatter Chart panels, automatically grouping data points into natural clusters — with no labels or prior knowledge required. The result is an intuitive visual picture of how operating states, load patterns, or behavioral modes are distributed across your data, providing a foundation for condition identification, fault attribution, and optimization decisions.
+Clustering is a widely used exploratory analysis technique in industrial data science. IDMP supports clustering directly within Scatter Chart panels, automatically grouping data points into natural clusters — with no labels or prior knowledge required. The result gives users an intuitive visual picture of how operating states, process modes, or behavioral patterns are distributed across their data, providing a foundation for condition identification, fault attribution, and optimization decisions.
 
 ## How It Works
 
@@ -16,6 +16,15 @@ Formally, clustering algorithms optimize for two things simultaneously: minimizi
 Unlike classification, clustering requires no predefined category labels and no labeled examples. The algorithm discovers structure purely from the data itself. This makes clustering especially well-suited to industrial scenarios where you know operating states vary but don't yet know how many distinct states exist or what characterizes each one.
 
 In IDMP, clustering takes the two attributes assigned to the X and Y axes of a Scatter Chart as its input, grouping data points in two-dimensional space. The resulting clusters are rendered as color-coded regions directly on the chart, making the grouping structure immediately visible and easy to interpret in terms of the underlying physical quantities.
+
+## Application Scenarios
+
+Clustering delivers practical value across a broad range of industrial use cases:
+
+- **Equipment condition identification:** Cluster rotating equipment data by vibration, temperature, or current to automatically distinguish normal operation from degraded or abnormal states — establishing a data-driven baseline for predictive maintenance
+- **Process grouping:** Cluster process parameters to surface the operating windows associated with good product quality versus those linked to defects, supporting process optimization and quality control
+- **Load pattern discovery:** Cluster energy consumption or electrical load data by time period to identify characteristic usage patterns — workday vs. holiday, peak vs. off-peak — supporting demand response and energy efficiency programs
+- **Fleet health stratification:** Cluster a population of similar assets by their operating characteristics to automatically stratify them by health level, supporting prioritized maintenance and asset management decisions
 
 ## Supported Algorithms
 
@@ -59,16 +68,7 @@ The current entry point for clustering is the Scatter Chart panel's data transfo
 The same data transformation settings also offer a **Regression Analysis** option for fitting curves to scatter data. For full Scatter Chart panel configuration details, see the [Scatter Chart](../04-visualization/02-chart-types/12-scatter-chart.md) chapter.
 :::
 
-## Application Scenarios
-
-Clustering delivers practical value across a broad range of industrial use cases:
-
-- **Equipment condition identification:** Cluster rotating equipment data by vibration, temperature, or current to automatically distinguish normal operation from degraded or abnormal states — establishing a data-driven baseline for predictive maintenance
-- **Process grouping:** Cluster process parameters to surface the operating windows associated with good product quality versus those linked to defects, supporting process optimization and quality control
-- **Load pattern discovery:** Cluster energy consumption or electrical load data by time period to identify characteristic usage patterns — workday vs. holiday, peak vs. off-peak — supporting demand response and energy efficiency programs
-- **Fleet health stratification:** Cluster a population of similar assets by their operating characteristics to automatically stratify them by health level, supporting prioritized maintenance and asset management decisions
-
-### Example: Clustering Wind Turbine Power Curves to Spot Abnormal Operation
+## Example
 
 **Background**
 

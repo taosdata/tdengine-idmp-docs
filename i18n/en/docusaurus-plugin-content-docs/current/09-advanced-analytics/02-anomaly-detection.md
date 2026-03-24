@@ -23,6 +23,40 @@ The current version analyzes each attribute independently — building a model f
 
 Upcoming releases will extend detection across multiple signals simultaneously. **Multi-metric anomaly localization** will automatically surface the small number of outlying series from a large group of similar signals — for example, pinpointing which turbines among a fleet of 100 are behaving abnormally. **Multivariate anomaly detection** will model the joint distribution of multiple attributes for a single asset, catching compound faults that no single variable would reveal on its own — such as a case where temperature looks normal, but vibration and current are both shifting in a coordinated way.
 
+## Application Scenarios
+
+Anomaly detection delivers practical value across a wide range of industrial settings:
+
+**Energy and Power**
+
+- Detect sudden shifts or gradual drift in transformer current and voltage signals — early indicators of insulation aging or short-circuit risk
+- Identify abnormal generation output from solar or wind assets to pinpoint component failures or shading events
+
+**Equipment Condition Monitoring**
+
+- Detect vibration and temperature anomalies in rotating equipment — motors, pumps, compressors — to catch bearing wear or imbalance early
+- Identify unusual pressure patterns in hydraulic systems that may indicate valve or piping leaks
+
+**Manufacturing**
+
+- Monitor line speed, cycle time, and yield for unexpected fluctuations that signal process deviations
+- Detect anomalies in injection molding, stamping, or other process parameters to support quality control and root-cause analysis
+
+**Process Industry**
+
+- Flag abnormal combinations of temperature, pressure, and flow in chemical processes before they develop into safety or quality incidents
+- Detect declining boiler combustion efficiency to support energy diagnosis
+
+**Environment and Utilities**
+
+- Catch sudden changes in wastewater influent quality that may indicate illegal industrial discharge
+- Identify anomalous energy consumption spikes in building systems to locate malfunctioning HVAC or lighting equipment
+
+**IT Infrastructure**
+
+- Monitor CPU, memory, and network traffic for anomalies to support operational alerts and capacity management
+- Detect irregular data reporting frequencies from industrial gateways or edge nodes as early signs of communication failures
+
 ## Supported Algorithms
 
 TDgpt provides several anomaly detection algorithms across statistical, density-based, machine learning, deep learning, and foundation model categories:
@@ -67,45 +101,13 @@ Steps:
 
 Once saved, the system continuously monitors the selected attribute. When TDgpt identifies an anomalous window, the analysis triggers and writes the anomaly start and end times to the output attribute. If event generation is enabled, an event record covering that window is also created automatically.
 
+Anomaly events can then be reviewed in the element's **Events** tab, or visualized in an **Event Trend Chart** panel — where the anomalous time ranges are overlaid on the raw signal curve, making it straightforward to compare the signal's behavior inside and outside the anomalous windows and quickly narrow down the root cause.
+
 :::note
 For a complete description of the analysis configuration workflow — including trigger parameters, calculation settings, and event options — see the [Real-Time Analysis](../07-real-time-analysis/02-creating-analysis.md) chapter.
 :::
 
-## Application Scenarios
-
-Anomaly detection delivers practical value across a wide range of industrial settings:
-
-**Energy and Power**
-
-- Detect sudden shifts or gradual drift in transformer current and voltage signals — early indicators of insulation aging or short-circuit risk
-- Identify abnormal generation output from solar or wind assets to pinpoint component failures or shading events
-
-**Equipment Condition Monitoring**
-
-- Detect vibration and temperature anomalies in rotating equipment — motors, pumps, compressors — to catch bearing wear or imbalance early
-- Identify unusual pressure patterns in hydraulic systems that may indicate valve or piping leaks
-
-**Manufacturing**
-
-- Monitor line speed, cycle time, and yield for unexpected fluctuations that signal process deviations
-- Detect anomalies in injection molding, stamping, or other process parameters to support quality control and root-cause analysis
-
-**Process Industry**
-
-- Flag abnormal combinations of temperature, pressure, and flow in chemical processes before they develop into safety or quality incidents
-- Detect declining boiler combustion efficiency to support energy diagnosis
-
-**Environment and Utilities**
-
-- Catch sudden changes in wastewater influent quality that may indicate illegal industrial discharge
-- Identify anomalous energy consumption spikes in building systems to locate malfunctioning HVAC or lighting equipment
-
-**IT Infrastructure**
-
-- Monitor CPU, memory, and network traffic for anomalies to support operational alerts and capacity management
-- Detect irregular data reporting frequencies from industrial gateways or edge nodes as early signs of communication failures
-
-### Example: Detecting Barrel Temperature Anomalies on Injection Molding Machines
+## Example
 
 **Background**
 

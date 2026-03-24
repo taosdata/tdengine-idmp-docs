@@ -17,6 +17,15 @@ Unlike clustering, regression is a **supervised** modeling approach: you specify
 
 In IDMP, regression analysis uses the Scatter Chart as its canvas: the X axis carries the independent variable, the Y axis carries the dependent variable, and the fitted curve is overlaid on the scatter of data points — making the quantitative relationship immediately readable in physical terms.
 
+## Application Scenarios
+
+Regression analysis delivers practical value across a range of industrial domains:
+
+- **Energy modeling:** Fit a regression between production load and electricity consumption to quantify the energy intensity per unit of output — establishing a baseline for energy benchmarking and efficiency tracking
+- **Equipment performance curves:** Fit pump or compressor flow-to-power curves to detect efficiency degradation and support condition-based maintenance decisions
+- **Process parameter impact:** Quantify how a process input (mold temperature, injection pressure, feed rate) influences a quality output, supporting data-driven process optimization
+- **Wear and remaining-life estimation:** Fit the relationship between cumulative runtime and a wear indicator such as vibration amplitude or temperature rise, to extrapolate when maintenance will be needed
+
 ## Supported Algorithms
 
 IDMP supports three classic curve types, covering linear and common nonlinear function shapes:
@@ -55,16 +64,7 @@ The current entry point for regression is the Scatter Chart panel's data transfo
 The same data transformation settings also offer a **Data Aggregation** option for clustering scatter data. For full Scatter Chart panel configuration details, see the [Scatter Chart](../04-visualization/02-chart-types/12-scatter-chart.md) chapter.
 :::
 
-## Application Scenarios
-
-Regression analysis delivers practical value across a range of industrial domains:
-
-- **Energy modeling:** Fit a regression between production load and electricity consumption to quantify the energy intensity per unit of output — establishing a baseline for energy benchmarking and efficiency tracking
-- **Equipment performance curves:** Fit pump or compressor flow-to-power curves to detect efficiency degradation and support condition-based maintenance decisions
-- **Process parameter impact:** Quantify how a process input (mold temperature, injection pressure, feed rate) influences a quality output, supporting data-driven process optimization
-- **Wear and remaining-life estimation:** Fit the relationship between cumulative runtime and a wear indicator such as vibration amplitude or temperature rise, to extrapolate when maintenance will be needed
-
-### Example: Fitting a Chiller Setpoint-to-Power Curve for Energy Benchmarking
+## Example
 
 **Background**
 

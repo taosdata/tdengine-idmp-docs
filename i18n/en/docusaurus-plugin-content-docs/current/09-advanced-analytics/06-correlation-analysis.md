@@ -21,6 +21,35 @@ Reliable correlation results depend on data quality. The two columns being compa
 
 One further consideration: the Pearson correlation coefficient only captures linear relationships. When a time lag exists between variables — for example, when a change upstream takes time to propagate and appear in a downstream metric — the synchronous correlation coefficient will underestimate the true strength of the relationship. In these cases, use `TLCC` to analyze the lagged cross-correlation.
 
+## Application Scenarios
+
+Correlation analysis delivers practical value across a broad range of industrial domains:
+
+**Energy and Power**
+
+- Compute correlations between electrical load and weather variables such as temperature and solar irradiance to select key features for load forecasting models
+- Compare power output curves across turbines in a wind farm to identify units whose behavior diverges from the fleet baseline
+
+**Equipment Condition Monitoring**
+
+- Track correlations between vibration, temperature, and current signals on rotating equipment; a sudden drop in previously tight correlations often signals a developing fault
+- Analyze lagged correlations between upstream process parameters and downstream quality metrics to quantify propagation delays and support closed-loop control tuning
+
+**Manufacturing**
+
+- Compute correlations between process parameters — injection temperature, hold pressure, cooling rate — and yield rate to quickly identify the variables most worth optimizing
+- Compare cycle time signals across production lines to detect lines drifting from the standard rhythm
+
+**Process Industry**
+
+- Analyze the relationship between raw material composition and product quality metrics to guide formulation adjustments and incoming material screening
+- Examine how utility consumption — steam, cooling water, compressed air — correlates with process load to support energy scheduling and capacity planning
+
+**Environment and Utilities**
+
+- Correlate water quality indicators from individual feed branches against the combined effluent to help trace pollution sources
+- Quantify how outdoor climate variables drive building heating and cooling loads, providing a data-backed basis for dynamic energy benchmarking
+
 ## Supported Methods
 
 IDMP exposes three correlation analysis methods through built-in TDengine SQL functions:
@@ -97,39 +126,10 @@ SELECT TLCC(col1, col2, 'lag_start=-12, lag_end=0') FROM foo;
 Future releases will introduce visual interfaces for correlation analysis within IDMP, including:
 
 - Select multiple attributes and generate a **Correlation Heatmap** showing the full pairwise correlation matrix at a glance
-- Trigger correlation analysis directly from a Trend Chart or Scatter Chart panel, with results overlaid on the current view
+- Trigger correlation analysis directly from a Trend Chart, Event Trend Chart, or Scatter Chart panel, with results overlaid on the current view
 - Track correlation over time using a sliding window, monitoring how the relationship between variables evolves
 
-## Application Scenarios
-
-Correlation analysis delivers practical value across a broad range of industrial domains:
-
-**Energy and Power**
-
-- Compute correlations between electrical load and weather variables such as temperature and solar irradiance to select key features for load forecasting models
-- Compare power output curves across turbines in a wind farm to identify units whose behavior diverges from the fleet baseline
-
-**Equipment Condition Monitoring**
-
-- Track correlations between vibration, temperature, and current signals on rotating equipment; a sudden drop in previously tight correlations often signals a developing fault
-- Analyze lagged correlations between upstream process parameters and downstream quality metrics to quantify propagation delays and support closed-loop control tuning
-
-**Manufacturing**
-
-- Compute correlations between process parameters — injection temperature, hold pressure, cooling rate — and yield rate to quickly identify the variables most worth optimizing
-- Compare cycle time signals across production lines to detect lines drifting from the standard rhythm
-
-**Process Industry**
-
-- Analyze the relationship between raw material composition and product quality metrics to guide formulation adjustments and incoming material screening
-- Examine how utility consumption — steam, cooling water, compressed air — correlates with process load to support energy scheduling and capacity planning
-
-**Environment and Utilities**
-
-- Correlate water quality indicators from individual feed branches against the combined effluent to help trace pollution sources
-- Quantify how outdoor climate variables drive building heating and cooling loads, providing a data-backed basis for dynamic energy benchmarking
-
-### Example: Validating the Relationship Between Outdoor Temperature and HVAC Energy Consumption
+## Example
 
 **Background**
 
