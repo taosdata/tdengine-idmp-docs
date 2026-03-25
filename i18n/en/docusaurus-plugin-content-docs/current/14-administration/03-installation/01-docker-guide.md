@@ -12,7 +12,7 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
 ## 14.3.1.1 Prerequisites
 
 1. Install Docker Engine 20.10 or later on your local machine. For instructions, see [Install Docker Engine](https://docs.docker.com/engine/install/) in the Docker documentation.
-1. Install Docker Compose 1.29.2 or later on your local machine. For instructions, see [Overview of installing Docker Compose](https://docs.docker.com/compose/install/) in the Docker documentation.
+1. Install Docker Compose V2 (Docker Compose plugin). For instructions, see [Overview of installing Docker Compose](https://docs.docker.com/compose/install/) in the Docker documentation.
 1. Install Git on your local machine. For more information, see the [Git website](https://git-scm.com/).
 
 ## 14.3.1.2 Install TDengine TSDB-Enterprise and TDengine IDMP
@@ -135,7 +135,7 @@ IDMP supports HTTPS with default port 6034. The built-in test certificate is bou
 1. Stop the IDMP service separately:
 
     ```bash
-    docker compose down tdengine-idmp
+    docker compose stop tdengine-idmp && docker compose rm -f tdengine-idmp
     ```
   
 2. Start the IDMP service and pull the latest image:

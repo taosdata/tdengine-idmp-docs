@@ -58,7 +58,7 @@ Install Ansible as described in the [official documentation](https://docs.ansibl
    ansible_ssh_pass={{ vault_ssh_password }}
    ```
 
-   - `tdengine_idmp_servers]` and `[tdengine_servers]`: Define host groups for TDengine IDMP services and TDengine TSDB-Enterprise services, respectively.
+   - `[tdengine_idmp_servers]` and `[tdengine_servers]`: Define host groups for TDengine IDMP services and TDengine TSDB-Enterprise services, respectively.
 
      `idmp_server1`, `idmp_server2`, `tsdb_server1`, and `tsdb_server2` are host aliases, while ansible_host specifies the actual IP address.
    - `[tdengine_idmp_servers:vars]` and `[tdengine_servers:vars]`: Define variables for each host group.
@@ -74,7 +74,7 @@ Install Ansible as described in the [official documentation](https://docs.ansibl
    ansible-vault edit inventory/group_vars/public.yml
    ```
 
-   When prompted for the Vault password, enter: taosdata
+   When prompted for the Vault password, enter the Vault password you set.
 
    In this file, configure the username and password used by Ansible to access the servers.
 
@@ -99,7 +99,7 @@ Install Ansible as described in the [official documentation](https://docs.ansibl
    ansible-playbook playbooks/tdengine-idmp.yml --ask-vault-pass -e deploy_tdengine=true
    ```
 
-   When prompted for the Vault password, enter: taosdata
+   When prompted for the Vault password, enter the Vault password you set.
 
 5. Access the service
 

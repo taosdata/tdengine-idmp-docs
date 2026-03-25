@@ -5,12 +5,14 @@ sidebar_label: 使用 Docker 部署
 
 import GatewayBasePathConfig from './common/_gateway-base-path.md'
 
+# 14.3.1 使用 Docker 部署
+
 本指南介绍如何使用 Docker/Docker Compose 的方式，实现 TDengine IDMP 和 TDengine TSDB-Enterprise 服务的搭建。
 
 ## 14.3.1.1 前置条件
 
 1. 本文适用 Docker 20.10 以上版本
-1. 本文适用 Docker Compose v1.29.2 以上版本
+1. 本文适用 Docker Compose v2（Docker Compose 插件）以上版本
 1. 所需 Docker 内存大于等于 10GB
 
 ## 14.3.1.2 部署 TDengine TSDB-Enterprise 和 TDengine IDMP 服务
@@ -136,7 +138,7 @@ docker compose -f docker-compose-tdgpt.yml down -v
 1. 单独停止 IDMP 服务：
 
     ```bash
-    docker compose down tdengine-idmp
+    docker compose stop tdengine-idmp && docker compose rm -f tdengine-idmp
     ```
   
 2. 启动 IDMP 服务并拉取最新镜像：

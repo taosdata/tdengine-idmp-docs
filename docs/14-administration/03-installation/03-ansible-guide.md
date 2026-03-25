@@ -5,6 +5,8 @@ sidebar_label: 使用 Ansible 部署
 
 import GatewayBasePathConfig from './common/_gateway-base-path.md'
 
+# 14.3.3 使用 Ansible 部署
+
 Ansible 是一个开源的自动化工具，用于配置管理、应用部署、云服务编排等。本指南介绍如何使用 Ansible 实现 TDengine IDMP 的自动化部署。通过这套工具，可以轻松地在多台服务器上完成 TDengine IDMP 的安装和配置。
 
 ## 14.3.3.1 前置条件
@@ -72,7 +74,7 @@ ansible_ssh_pass={{ vault_ssh_password }}
 ansible-vault edit inventory/group_vars/public.yml
 ```
 
-当系统提示输入 `Vault password` 时，请输入 Vault 密码：`taosdata`
+当系统提示输入 `Vault password` 时，请输入您设置的 Vault 密码。
 
 在该文件中，配置 Ansible 访问服务器时所用的用户名和密码信息。
 
@@ -97,7 +99,7 @@ ansible-playbook playbooks/tdengine-idmp.yml --ask-vault-pass
 ansible-playbook playbooks/tdengine-idmp.yml --ask-vault-pass -e deploy_tdengine=true
 ```
 
-当系统提示输入 `Vault password` 时，请输入 Vault 密码：`taosdata`
+当系统提示输入 `Vault password` 时，请输入您设置的 Vault 密码。
 
 ### 5. 访问服务
 

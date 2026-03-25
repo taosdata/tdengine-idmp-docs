@@ -10,7 +10,7 @@ The TDengine IDMP configuration file is `application.yml`, located at:
 - **Linux/macOS**: `/usr/local/taos/idmp/config/application.yml`
 - **Windows**: `C:\TDengine\idmp\config\application.yml`
 
-## Basic Configuration
+## 14.3.5.1 Basic Configuration
 
 ### HTTP/HTTPS Service Configuration
 

@@ -17,7 +17,7 @@ Attributes give context to raw data. Instead of querying a database column by it
 
 The **Data Reference Type** determines where an attribute's value comes from. There are four types:
 
-### 1. TDengine Metric
+### 3.2.2.1 TDengine Metric
 
 References a metric column (a time-series measurement column) in a TDengine TSDB table. The attribute value is read in real time as new data is ingested. Use this type for any value that changes over time — temperature, pressure, flow rate, current, voltage, and so on.
 
@@ -41,7 +41,7 @@ Example: `TDengine/idmp_sample_utility/em-12/current:quality`
 The data type of the quality column must be INT.
 :::
 
-### 2. TDengine Tag
+### 3.2.2.2 TDengine Tag
 
 References a tag value in a TDengine TSDB table. Tags are static metadata fields attached to a table (such as device ID, location, or installation floor). Use this type for attributes whose values come from TSDB tags rather than time-series columns.
 
@@ -53,7 +53,7 @@ ConnectionName/DatabaseName/TableName/TagName
 
 Example: `TDengine/idmp_sample_utility/em-17/location`
 
-### 3. Formula
+### 3.2.2.3 Formula
 
 A calculated attribute whose value is derived from an expression referencing other attributes of the same element. The expression is converted to a TDengine SQL expression and executed against TDengine TSDB. The output must be numeric.
 
@@ -69,7 +69,7 @@ The special replacement parameter `TIME` is available — it is substituted with
 Formula attributes can only reference attributes of the same element. To use a value from another element, add a new attribute to the current element that maps to the same data source.
 :::
 
-### 4. String Builder
+### 3.2.2.4 String Builder
 
 Similar to Formula but the output is a string. The input can be any attribute of the current element (not limited to numeric types). Common functions include:
 

@@ -7,6 +7,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import GatewayBasePathConfig from './common/_gateway-base-path.md'
 
+# 14.3.2 使用安装包部署
+
 ## 14.3.2.1 先决条件
 
 :::warning
@@ -24,7 +26,7 @@ TDengine IDMP 的运行需要以下基础依赖：
 
 ## 14.3.2.2 安装
 
-请根据您的操作系统类型，选择合适的安装方式，安装 TDengine IDMP。详见[通过安装包快速体验](../../../get-started/get-started-installer/)。
+请根据您的操作系统类型，选择合适的安装方式，安装 TDengine IDMP。详见[通过安装包快速体验](../../02-get-started/03-get-started-installer.md)。
 
 ### 常见错误
 
