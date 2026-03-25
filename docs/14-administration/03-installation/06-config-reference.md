@@ -1,5 +1,6 @@
 ---
 title: 配置文件参考
+sidebar_label: 配置文件参考
 ---
 
 # 14.3.5 TDengine IDMP 配置文件参考

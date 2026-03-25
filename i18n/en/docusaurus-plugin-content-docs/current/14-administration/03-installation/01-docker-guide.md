@@ -1,5 +1,6 @@
 ---
 title: Docker Deployment
+sidebar_label: Docker Deployment
 ---
 
 # 14.3.1 Docker Deployment
@@ -223,7 +224,7 @@ TDengine IDMP requires TDengine TSDB-Enterprise 3.3.7.0 or later. If your enviro
 
    :::info Complete Configuration Reference
 
-    For complete IDMP configuration file documentation, please refer to: [TDengine IDMP Configuration File Reference](/operation/installation/config-reference/)
+    For complete IDMP configuration file documentation, please refer to: [TDengine IDMP Configuration File Reference](/administration/installation/config-reference/)
 
    :::
 

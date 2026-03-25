@@ -1,5 +1,6 @@
 ---
 title: Ansible Deployment
+sidebar_label: Ansible Deployment
 ---
 
 # 14.3.3 Ansible Deployment

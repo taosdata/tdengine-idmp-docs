@@ -1,5 +1,6 @@
 ---
 title: Local Deployment
+sidebar_label: Local Deployment
 ---
 
 # 14.3.2 Local Deployment
@@ -68,7 +69,7 @@ Do not start TDengine IDMP until you have configured the TDengine TSDB-Enterpris
 
    :::info Complete Configuration Reference
 
-   - For complete IDMP configuration file documentation, please refer to: [TDengine IDMP Configuration File Reference](/operation/installation/config-reference/).
+   - For complete IDMP configuration file documentation, please refer to: [TDengine IDMP Configuration File Reference](/administration/installation/config-reference/).
    - <GatewayBasePathConfig />
 
    :::

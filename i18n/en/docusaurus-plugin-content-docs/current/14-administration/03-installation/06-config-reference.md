@@ -1,8 +1,9 @@
 ---
 title: Configuration File Reference
+sidebar_label: Configuration File Reference
 ---
 
-# TDengine IDMP Configuration File Reference
+# 14.3.5 TDengine IDMP Configuration File Reference
 
 The TDengine IDMP configuration file is `application.yml`, located at:
 

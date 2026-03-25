@@ -1,6 +1,9 @@
-import GatewayBasePathConfig from './common/_gateway-base-path.md'
+---
+title: 使用 Docker 部署
+sidebar_label: 使用 Docker 部署
+---
 
-# 14.3.1 使用 Docker 部署
+import GatewayBasePathConfig from './common/_gateway-base-path.md'
 
 本指南介绍如何使用 Docker/Docker Compose 的方式，实现 TDengine IDMP 和 TDengine TSDB-Enterprise 服务的搭建。
 
@@ -225,7 +228,7 @@ tda:
 
 :::info 完整配置参考
 
-如需查看完整的 IDMP 配置文件说明，请参考：[TDengine IDMP 配置文件参考](/operation/installation/config-reference/)
+如需查看完整的 IDMP 配置文件说明，请参考：[TDengine IDMP 配置文件参考](/administration/installation/config-reference/)
 
 :::
 

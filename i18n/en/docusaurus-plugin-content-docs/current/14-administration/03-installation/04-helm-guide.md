@@ -1,5 +1,6 @@
 ---
 title: Helm Deployment
+sidebar_label: Helm Deployment
 ---
 
 # 14.3.4 Helm Deployment

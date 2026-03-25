@@ -1,8 +1,11 @@
+---
+title: 使用安装包部署
+sidebar_label: 使用安装包部署
+---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import GatewayBasePathConfig from './common/_gateway-base-path.md'
-
-# 14.3.2 使用安装包部署
 
 ## 14.3.2.1 先决条件
 
@@ -64,7 +67,7 @@ tda:
 
 :::info 完整配置参考
 
-- 如需查看完整的 IDMP 配置文件说明，请参考：[TDengine IDMP 配置文件参考](/operation/installation/config-reference/)
+- 如需查看完整的 IDMP 配置文件说明，请参考：[TDengine IDMP 配置文件参考](/administration/installation/config-reference/)
 - <GatewayBasePathConfig />
 
 :::

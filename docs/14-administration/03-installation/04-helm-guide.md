@@ -1,6 +1,9 @@
-import GatewayBasePathConfig from './common/_gateway-base-path.md'
+---
+title: 使用 Helm 部署
+sidebar_label: 使用 Helm 部署
+---
 
-# 14.3.4 使用 Helm 部署
+import GatewayBasePathConfig from './common/_gateway-base-path.md'
 
 Helm 是 Kubernetes 的包管理工具，用于简化 Kubernetes 应用程序的部署、配置和管理。本指南介绍如何在 Kubernetes 上通过 Helm Chart 部署 TDengine IDMP 服务。
 
