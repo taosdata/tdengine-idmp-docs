@@ -21,15 +21,21 @@ To enable HTTPS, add the following to the IDMP configuration file (`application.
 ```yaml
 quarkus:
   http:
-    port: 6042
-    ssl-port: 6034
-    insecure-requests: enabled
+    port: 6042          # IDMP HTTP service port
+    ssl-port: 6034      # IDMP HTTPS service port
+    insecure-requests: enabled  # Allow HTTP and HTTPS to work simultaneously
     ssl:
-      enabled: true
+      enabled: true     # Enable SSL/HTTPS
       certificate:
-        files: /usr/local/taos/idmp/config/certbundle.pem
-        key-files: /usr/local/taos/idmp/config/privkey.pem
+        files: /usr/local/taos/idmp/config/certbundle.pem   # Certificate file path
+        key-files: /usr/local/taos/idmp/config/privkey.pem  # Private key file path
 ```
+
+:::info Full Configuration Reference
+
+For the complete IDMP configuration file documentation, see [Configuration File Reference](../14-administration/03-installation/06-config-reference.md).
+
+:::
 
 **Built-in test certificate.** IDMP ships with a test certificate valid for 3 months, bound to the domain `idmp.tdengine.net`. This certificate is suitable for evaluation and testing. It is not recommended for production use.
 
@@ -50,6 +56,7 @@ Hosts file locations:
 |---|---|
 | **Excel version** | Excel 2016 or later (Windows or macOS) |
 | **Permissions** | Administrator rights required on Windows |
+| **Network** | Requires access to download the installation script and connect to the IDMP service |
 | **Node.js** | Node.js 22.3 or later required on Windows if logging is enabled |
 
 ## Installation

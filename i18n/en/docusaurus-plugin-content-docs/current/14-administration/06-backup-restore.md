@@ -3,7 +3,7 @@ title: Backup and Restore
 sidebar_label: Backup and Restore
 ---
 
-# 14.5 Backup and Restore
+# 14.6 Backup and Restore
 
 TDengine IDMP supports scheduled automated backups. Backups can be used to restore the system to a prior state after data loss or corruption.
 

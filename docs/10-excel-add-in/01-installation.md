@@ -21,15 +21,21 @@ Excel 插件仅通过 **HTTPS** 连接 IDMP。安装前，请确保 IDMP 的 HTT
 ```yaml
 quarkus:
   http:
-    port: 6042
-    ssl-port: 6034
-    insecure-requests: enabled
+    port: 6042          # IDMP HTTP 服务端口
+    ssl-port: 6034      # IDMP HTTPS 服务端口
+    insecure-requests: enabled  # 允许 HTTP 和 HTTPS 同时工作
     ssl:
-      enabled: true
+      enabled: true     # 启用 SSL/HTTPS
       certificate:
-        files: /usr/local/taos/idmp/config/certbundle.pem
-        key-files: /usr/local/taos/idmp/config/privkey.pem
+        files: /usr/local/taos/idmp/config/certbundle.pem   # 证书文件路径
+        key-files: /usr/local/taos/idmp/config/privkey.pem  # 私钥文件路径
 ```
+
+:::info 完整配置参考
+
+如需查看完整的 IDMP 配置文件说明，请参考[配置文件参考](../14-administration/03-installation/06-config-reference.md)。
+
+:::
 
 **内置测试证书：** IDMP 附带一个有效期为 3 个月的测试证书，绑定到域名 `idmp.tdengine.net`。该证书适用于评估和测试，不建议在生产环境中使用。
 
@@ -50,6 +56,7 @@ hosts 文件位置：
 |---|---|
 | **Excel 版本** | Excel 2016 及更高版本（Windows 或 macOS） |
 | **权限** | Windows 上需要管理员权限 |
+| **网络连接** | 需要能够访问下载安装脚本并连接 IDMP 服务 |
 | **Node.js** | 启用日志记录时，Windows 上需要 Node.js 22.3 或更高版本 |
 
 ## 安装

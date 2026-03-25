@@ -3,7 +3,7 @@ title: Sample Data
 sidebar_label: Sample Data
 ---
 
-# 14.6 Sample Data
+# 14.7 Sample Data
 
 The Sample Data feature lets users load a pre-built business scenario into TDengine IDMP with a single click — no real data source required. During loading, the tool automatically creates the data model from a JSON configuration file and inserts simulated time-series data directly into the TDengine time-series database. The system ships with several industry scenario packages out of the box, and users can build their own custom packages to match any business situation.
 

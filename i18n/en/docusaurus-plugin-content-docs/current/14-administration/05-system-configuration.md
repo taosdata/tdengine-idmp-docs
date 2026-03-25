@@ -3,7 +3,7 @@ title: System Configuration
 sidebar_label: System Configuration
 ---
 
-# 14.4 System Configuration
+# 14.5 System Configuration
 
 System Configuration is accessed from **Admin Console → System Configuration**. It has four sections: Basic Configuration, Notification Contact Point, Notification Template, and Email Configuration.
 

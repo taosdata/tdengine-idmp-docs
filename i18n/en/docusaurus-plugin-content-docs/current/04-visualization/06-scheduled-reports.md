@@ -57,4 +57,4 @@ A **Notification Contact Point** is a delivery channel — an email address list
 
 Contact points are selected by name from the dropdown when configuring a rule. If no contact points appear in the dropdown, they must be created in the notification configuration section before scheduled report rules can be activated.
 
-See [System Configuration](../14-administration/04-system-configuration.md) for instructions on creating and managing notification contact points.
+See [System Configuration](../14-administration/05-system-configuration.md) for instructions on creating and managing notification contact points.

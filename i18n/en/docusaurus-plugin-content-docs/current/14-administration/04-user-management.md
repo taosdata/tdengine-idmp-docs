@@ -3,7 +3,7 @@ title: User Management
 sidebar_label: User Management
 ---
 
-# 14.3 User Management
+# 14.4 User Management
 
 User management is accessed from **Admin Console → User Management**. It covers users, roles, and single sign-on (SSO) configuration.
 

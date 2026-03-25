@@ -57,4 +57,4 @@ sidebar_label: 定时报告
 
 配置规则时，从下拉列表中按名称选择联系点。如果下拉列表中没有联系点，则必须先在通知配置部分创建，才能激活定时报告规则。
 
-请参阅[系统配置](../14-administration/04-system-configuration.md)，了解创建和管理通知联系点的说明。
+请参阅[系统配置](../14-administration/05-system-configuration.md)，了解创建和管理通知联系点的说明。
