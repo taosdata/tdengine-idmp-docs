@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # 15.1.1 Installation
 
-## Prerequisites
+## 15.1.1.1 Prerequisites
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -24,7 +24,7 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 </Tabs>
 
-## Installing the SDK
+## 15.1.1.2 Installing the SDK
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -70,7 +70,7 @@ pip install .
 </TabItem>
 </Tabs>
 
-## Verifying the Installation
+## 15.1.1.3 Verifying the Installation
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -92,7 +92,7 @@ python -c "import idmp_sdk; print('SDK installed successfully')"
 </TabItem>
 </Tabs>
 
-## Private Repository Setup
+## 15.1.1.4 Private Repository Setup
 
 If your development environment has no internet access, host the SDK in a private repository:
 

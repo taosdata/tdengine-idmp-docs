@@ -9,9 +9,9 @@ TDengine IDMP supports scheduled automated backups. Backups can be used to resto
 
 Backup and restore is accessed from **Admin Console → Data Backup** and **Admin Console → Data Recovery**.
 
-## Data Backup
+## 14.6.1 Data Backup
 
-### Configuring Backup
+### 14.6.1.1 Configuring Backup
 
 Click the edit (pencil) icon on the Data Backup page to configure backup settings:
 
@@ -23,7 +23,7 @@ Click the edit (pencil) icon on the Data Backup page to configure backup setting
 
 Click **Save** to apply the configuration.
 
-### Managing Backups
+### 14.6.1.2 Managing Backups
 
 After configuring backup, use the toolbar buttons to control the backup process:
 
@@ -39,7 +39,7 @@ The page shows the current **Backup Status** (e.g., Running, Stopped) and a **Ba
 | **Backup File** | Filename of the backup archive |
 | **Backup Detail** | Additional details or error information |
 
-## Data Recovery
+## 14.6.2 Data Recovery
 
 Data recovery is a manual procedure performed at the server level. The recovery steps are displayed on the **Admin Console → Data Recovery** page.
 

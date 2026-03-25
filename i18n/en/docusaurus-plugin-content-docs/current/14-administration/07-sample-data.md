@@ -11,9 +11,9 @@ This feature is especially valuable for system integrators and pre-sales enginee
 
 Sample Data is accessed from **Admin Console → Sample Data**.
 
-## Usage Instructions
+## 14.7.1 Usage Instructions
 
-### Command-Line Mode
+### 14.7.1.1 Command-Line Mode
 
 #### Environment Requirements
 
@@ -48,15 +48,15 @@ java -jar tda-generator-command.jar -f init.json -c
 
 ⚠️ **For testing environments only**
 
-### GUI Mode
+### 14.7.1.2 GUI Mode
 
 In the IDMP management console, navigate to the **Sample Data** module. Upload or select a JSON configuration file, then click **Load** or **Unload**.
 
-## Configuration Guide (JSON)
+## 14.7.2 Configuration Guide (JSON)
 
 The JSON file is the single source of truth for sample data generation.
 
-### Overall Structure
+### 14.7.2.1 Overall Structure
 
 ```json
 {
@@ -70,7 +70,7 @@ The JSON file is the single source of truth for sample data generation.
 }
 ```
 
-### info — Sample Data Information
+### 14.7.2.2 info — Sample Data Information
 
 Used only for display in the IDMP UI.
 
@@ -88,7 +88,7 @@ Used only for display in the IDMP UI.
 - description: Scenario description
 - file: Must match the filename
 
-### TDasset — IDMP Connection
+### 14.7.2.3 TDasset — IDMP Connection
 
 Effective only in command-line mode.
 
@@ -104,7 +104,7 @@ Effective only in command-line mode.
 - user: IDMP username
 - password: IDMP login password
 
-### datasource — TDengine Connection
+### 14.7.2.4 datasource — TDengine Connection
 
 ```json
 {
@@ -130,7 +130,7 @@ Effective only in command-line mode.
 - min_idle: Minimum idle connections in pool
 - Other parameters refer to TDengine JDBC connection pool documentation
 
-### databases — Database Definition
+### 14.7.2.5 databases — Database Definition
 
 ```json
 {
@@ -153,7 +153,7 @@ Effective only in command-line mode.
 - keep: Data retention days (default: 3650)
 - Other parameters refer to TDengine database creation documentation
 
-### templates — Element Template Configuration
+### 14.7.2.6 templates — Element Template Configuration
 
 #### Super Table Template (Leaf Nodes)
 
@@ -277,7 +277,7 @@ Effective only in command-line mode.
 - level: Number of path template levels
 - namingPattern: Naming rule
 
-### tree_root — Element Tree Root Node
+### 14.7.2.7 tree_root — Element Tree Root Node
 
 ```json
 {
@@ -289,7 +289,7 @@ Effective only in command-line mode.
 
 - visible: Whether the root node is visible
 
-### trees — Element Tree and Child Table Generation
+### 14.7.2.8 trees — Element Tree and Child Table Generation
 
 ```json
 {
@@ -320,7 +320,7 @@ This section:
 - Automatically creates sub-tables
 - Automatically binds TAG values
 
-## Usage Recommendations
+## 14.7.3 Usage Recommendations
 
 - One JSON file per sample scenario
 - Use consistent prefixes for template names

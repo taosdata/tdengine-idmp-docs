@@ -5,7 +5,7 @@ sidebar_label: Planning
 
 # 14.2 Planning
 
-## Hardware Requirements
+## 14.2.1 Hardware Requirements
 
 The minimum hardware requirements to run TDengine IDMP are:
 
@@ -15,7 +15,7 @@ The minimum hardware requirements to run TDengine IDMP are:
 
 For production deployments, size resources based on the number of elements (assets) managed:
 
-### IDMP Service Resources
+### 14.2.1.1 IDMP Service Resources
 
 | Element Scale | CPU | Memory | Disk | Typical Use Case |
 |:---:|:---:|:---:|:---:|:---|
@@ -25,7 +25,7 @@ For production deployments, size resources based on the number of elements (asse
 | 500,000 – 1,000,000 | 32 cores | 64 GB | 500 GB | Large production |
 | > 1,000,000 | 64+ cores | 128+ GB | 1 TB+ | Very large production |
 
-### External Dependency Resources
+### 14.2.1.2 External Dependency Resources
 
 When element scale is large, plan dedicated resources for external dependency components:
 
@@ -35,7 +35,7 @@ When element scale is large, plan dedicated resources for external dependency co
 | MySQL | 4 cores / 8 GB | 8 cores / 16 GB | 16 cores / 32 GB (primary-replica) |
 | DFS | 100 GB | 500 GB | 1 TB+ |
 
-### Planning Guidelines
+### 14.2.1.3 Planning Guidelines
 
 - **Disk type:** Use SSDs in production for significantly better query and import/export performance.
 - **Network bandwidth:** For large-scale deployments, use 10 Gbps internal networking to support data collection and query throughput.
@@ -45,7 +45,7 @@ When element scale is large, plan dedicated resources for external dependency co
 These figures are reference guidelines. Actual resource needs depend on modeling complexity and workload characteristics. For TDengine TSDB capacity planning, refer to the [TDengine TSDB documentation](https://docs.tdengine.com/operations-and-maintenance/system-requirements/).
 :::
 
-## Supported Operating Systems
+## 14.2.2 Supported Operating Systems
 
 | OS | Supported Versions | x86_64 | arm64 |
 |:---:|:---:|:---:|:---:|
@@ -55,7 +55,7 @@ These figures are reference guidelines. Actual resource needs depend on modeling
 | macOS | 13, 14, 15 | Yes | Yes |
 | Windows | 10, 11, Server 2019+ | Yes | Yes |
 
-## Software Prerequisites
+## 14.2.3 Software Prerequisites
 
 | Dependency | Version |
 |---|---|
@@ -65,7 +65,7 @@ These figures are reference guidelines. Actual resource needs depend on modeling
 | TDengine TSDB Enterprise | 3.3.7.0 or later |
 | SMTP mail service | Required for email notifications; deploy internally if the server cannot reach the internet |
 
-## Network Ports
+## 14.2.4 Network Ports
 
 TDengine IDMP uses the following ports by default:
 
@@ -79,7 +79,7 @@ TDengine IDMP uses the following ports by default:
 
 Ensure the external ports (6042 and 6034) are open in the firewall. Keep internal ports accessible only within the private network.
 
-## Installation Directory
+## 14.2.5 Installation Directory
 
 TDengine IDMP installs by default under `/usr/local/taos/idmp`. The directory structure is:
 

@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 IDMP SDK 使用 **Bearer Token（JWT）** 进行认证。获取 Token 的方式取决于您的部署类型。
 
-## 企业版（自托管）认证
+## 15.1.3.1 企业版（自托管）认证
 
 对于自托管部署，通过调用登录端点并提供用户名和密码来获取 Token。
 
@@ -58,7 +58,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 </TabItem>
 </Tabs>
 
-## 云服务认证
+## 15.1.3.2 云服务认证
 
 云服务每次请求需要两个 Token：`Authorization`（Bearer Token）和 `Access-token`。
 
@@ -116,7 +116,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 </TabItem>
 </Tabs>
 
-## Token 有效期与刷新
+## 15.1.3.3 Token 有效期与刷新
 
 | 部署方式 | Token 有效期 | 刷新方法 |
 |---|---|---|
@@ -127,7 +127,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 将 Token 获取和刷新封装在工具函数中。收到 `401 Unauthorized` 响应时自动触发刷新。
 :::
 
-## 安全最佳实践
+## 15.1.3.4 安全最佳实践
 
 - **切勿**在源代码中硬编码 Token、用户名或密码。
 - 将凭据存储在环境变量或密钥管理工具中（Vault、AWS Secrets Manager 等）。

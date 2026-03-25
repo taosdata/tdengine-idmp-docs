@@ -7,17 +7,17 @@ sidebar_label: Data Model Import and Export
 
 IDMP's Import/Export feature in the Management Console lets you transfer your data model — elements, element templates, event templates, UOM categories, and libraries — between IDMP instances. This is useful for replicating a configuration from a development environment to production, or for sharing a standard asset model across multiple deployments.
 
-## Accessing Import/Export
+## 11.4.1 Accessing Import/Export
 
 Navigate to **Management Console → Import/Export**.
 
 The main page shows a history table of all past import and export operations, with columns for **Created at**, **Status**, **Name**, and **Reason**. Use the **Categories** and **Import** filter buttons to switch between viewing export and import history.
 
-## Exporting the Data Model
+## 11.4.2 Exporting the Data Model
 
 Click the **Export** icon (download arrow) in the top-right corner to open the export configuration form.
 
-### Selecting Resources
+### 11.4.2.1 Selecting Resources
 
 The export form has two selectors:
 
@@ -28,7 +28,7 @@ The export form has two selectors:
 
 As you make selections, the **Selected Resources** tree preview updates to show exactly what will be included in the export — elements, their templates, event templates, UOM categories, and individual units of measure.
 
-### Export Summary
+### 11.4.2.2 Export Summary
 
 At the bottom of the form, a summary table confirms the counts of each resource type to be exported:
 
@@ -43,11 +43,11 @@ At the bottom of the form, a summary table confirms the counts of each resource 
 
 Click **Confirm** to generate and download the export file. Click **Discard** to cancel.
 
-## Importing a Data Model
+## 11.4.3 Importing a Data Model
 
 Click the **Import** icon (upload arrow) in the top-right corner to open the import form.
 
-### Import Fields
+### 11.4.3.1 Import Fields
 
 | Field | Description |
 |---|---|
@@ -58,7 +58,7 @@ Click the **Import** icon (upload arrow) in the top-right corner to open the imp
 
 Click **Confirm** to start the import. The operation runs in the background and its progress and result appear in the history table on the main Import/Export page.
 
-## Typical Workflow
+## 11.4.4 Typical Workflow
 
 A typical cross-instance deployment workflow looks like this:
 

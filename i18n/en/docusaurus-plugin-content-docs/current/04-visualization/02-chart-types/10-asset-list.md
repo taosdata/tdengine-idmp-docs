@@ -5,13 +5,13 @@ sidebar_label: Asset List
 
 # 4.2.10 Asset List
 
-## Overview
+## 4.2.10.1 Overview
 
 The Asset List panel displays elements in a tabular grid, showing management attributes and the latest measurement values for each element. It is created by saving a filtered element search result or a parent element's child-element list, and can be placed on an element's panel list or added to a dashboard.
 
 ![Asset List panel showing elements with attributes and latest values](../images/table-asset-panel.png)
 
-## When to Use
+## 4.2.10.2 When to Use
 
 Use the Asset List panel when:
 
@@ -19,7 +19,7 @@ Use the Asset List panel when:
 - You want to monitor current measurement values across multiple elements of the same template side by side
 - You need a compact inventory or status board for a fleet of devices, meters, or machines
 
-## Configuration
+## 4.2.10.3 Configuration
 
 ### Saving an Asset List Panel
 
@@ -46,7 +46,7 @@ Open the panel editor to configure:
 | **Asset Type (Template)** | Required. Filters the list to elements of the selected template. Only when a template is selected can template-specific attribute columns be added. |
 | **Display Fields** | Configurable set of columns and their display order. Includes IDMP management attributes (Name, Path, Description, Template, Categories) and reference attributes (TDengine Tags and TDengine Metrics). |
 
-## Example Scenarios
+## 4.2.10.4 Example Scenarios
 
 **Fleet status board.** A site manager saves an Asset List panel showing all pumps at a site, with columns for operating status, flow rate, and last maintenance date. The panel is added to the site dashboard, giving the manager a live status board for the entire pump fleet without opening individual element pages.
 

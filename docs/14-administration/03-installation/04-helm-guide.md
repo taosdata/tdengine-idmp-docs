@@ -1,16 +1,16 @@
 import GatewayBasePathConfig from './common/_gateway-base-path.md'
 
-# 使用 Helm 部署
+# 14.3.4 使用 Helm 部署
 
 Helm 是 Kubernetes 的包管理工具，用于简化 Kubernetes 应用程序的部署、配置和管理。本指南介绍如何在 Kubernetes 上通过 Helm Chart 部署 TDengine IDMP 服务。
 
-## 前置条件
+## 14.3.4.1 前置条件
 
 1. 本文适用 Kubernetes v1.24 以上版本
 1. 已安装 Helm 3
 1. （可选）如需启用持久化存储，需配置 PersistentVolume 供应器
 
-## 安装 Helm
+## 14.3.4.2 安装 Helm
 
 如未安装 Helm，可执行以下命令安装：
 
@@ -21,14 +21,14 @@ chmod +x get_helm.sh
 ./get_helm.sh
 ```
 
-## 获取 TDengine IDMP Chart
+## 14.3.4.3 获取 TDengine IDMP Chart
 
 ```bash
 git clone https://github.com/taosdata/tdengine-idmp-deployment.git
 cd tdengine-idmp-deployment/helm
 ```
 
-## 部署 TDengine IDMP 服务
+## 14.3.4.4 部署 TDengine IDMP 服务
 
 :::info
 

@@ -93,7 +93,7 @@ Use `CONCAT()` to join strings — the `+` operator cannot be used for string co
 
 Every attribute has the following configurable properties:
 
-### Basic fields
+### 3.2.3.1 Basic fields
 
 | Property | Description |
 |---|---|
@@ -110,7 +110,7 @@ Every attribute has the following configurable properties:
 | **Data Reference Setting** | The path to the TDengine TSDB data source in the format `ConnectionName/DatabaseName/TableName/ColumnName`, optionally with a quality column suffix as `.../ColumnName:QualityColumnName` |
 | **Path** | The full path of the attribute within the asset model (read-only, auto-generated) |
 
-### Limits Configuration
+### 3.2.3.2 Limits Configuration
 
 Define operational thresholds for the attribute. Each limit has a name and a numeric value:
 
@@ -126,7 +126,7 @@ Define operational thresholds for the attribute. Each limit has a name and a num
 
 Each limit entry also has an optional **Attribute** field — you can link a limit to another attribute rather than a fixed value, allowing dynamic limits that change based on real-time conditions.
 
-### Forecast Configuration
+### 3.2.3.3 Forecast Configuration
 
 Configure AI-based forecasting for this attribute:
 
@@ -136,11 +136,11 @@ Configure AI-based forecasting for this attribute:
 | **External** | Connect to an external forecasting service via a configured endpoint |
 | **None** | No forecasting (default) |
 
-### Additional Properties
+### 3.2.3.4 Additional Properties
 
 Free-form key-value pairs for storing any custom metadata specific to the attribute (e.g., instrument tag, calibration date, sensor model). Click **+** to add a new entry.
 
-### Configuration flags
+### 3.2.3.5 Configuration flags
 
 | Flag | Description |
 |---|---|
@@ -181,13 +181,13 @@ To add a new attribute to an element:
 
 There are two ways to edit an attribute:
 
-### Method 1: From the attribute detail view
+### 3.2.6.1 Method 1: From the attribute detail view
 
 1. Click the attribute name in the list to open its detail view.
 2. Click the **Edit** icon (pencil) in the toolbar.
 3. Modify the desired fields and click **Save**.
 
-### Method 2: From the attributes list ⋮ menu
+### 3.2.6.2 Method 2: From the attributes list ⋮ menu
 
 1. In the Attributes list, click the **⋮** menu on the attribute row.
 2. Select **Edit**.
@@ -197,13 +197,13 @@ There are two ways to edit an attribute:
 
 There are two ways to delete an attribute:
 
-### Method 1: From the attribute detail view
+### 3.2.7.1 Method 1: From the attribute detail view
 
 1. Open the attribute detail view by clicking the attribute name.
 2. Click the **Delete** icon (trash) in the top-right toolbar.
 3. Confirm the deletion.
 
-### Method 2: From the attributes list ⋮ menu
+### 3.2.7.2 Method 2: From the attributes list ⋮ menu
 
 1. In the Attributes list, click the **⋮** menu on the attribute row.
 2. Select **Delete** and confirm.
@@ -229,7 +229,7 @@ The **⋮** menu in the attributes list also provides the following operations:
 
 The Expression Editor is a shared UI component used wherever expressions are configured in IDMP — including Formula and String Builder attribute definitions, analysis output attributes, and analysis trigger conditions (pre-filter and event window expressions). It opens as a dialog when you click on an expression input field.
 
-### Where Expressions Are Used
+### 3.2.9.1 Where Expressions Are Used
 
 | Location | Purpose |
 |---|---|
@@ -239,11 +239,11 @@ The Expression Editor is a shared UI component used wherever expressions are con
 | **Analysis** — Trigger, Pre-filter | Filters data rows before the trigger evaluates |
 | **Analysis** — Event Window trigger, Start/Stop conditions | Defines when the event window opens and closes |
 
-### Expression Editor Layout
+### 3.2.9.2 Expression Editor Layout
 
 The dialog has three panels:
 
-### Attribute panel (left)
+### 3.2.9.3 Attribute panel (left)
 
 Browse and insert the element's attributes into the expression. Attributes are organized into groups:
 
@@ -256,7 +256,7 @@ Browse and insert the element's attributes into the expression. Attributes are o
 
 A **Filter** field at the top lets you search by name. Click an attribute or parameter to insert it at the cursor position in the expression.
 
-### Expression editor (center)
+### 3.2.9.4 Expression editor (center)
 
 A code editor where you write the expression. An operator shortcut bar at the top provides one-click insertion of common operators:
 
@@ -264,11 +264,11 @@ A code editor where you write the expression. An operator shortcut bar at the to
 +  -  *  /  =  <  >  >=  <=  !=  <>  &  |
 ```
 
-### Function panel (right)
+### 3.2.9.5 Function panel (right)
 
 Browse and insert functions by category. A **Filter** field lets you search by function name. Click a function name to insert it at the cursor position.
 
-### Function Categories
+### 3.2.9.6 Function Categories
 
 | Category | Example functions |
 |---|---|
@@ -280,7 +280,7 @@ Browse and insert functions by category. A **Filter** field lets you search by f
 | **Selection Functions** | MAX, MIN, FIRST, LAST, LAST\_ROW, TOP, BOTTOM, UNIQUE, MODE, SAMPLE, ... |
 | **Time-Series Specific Functions** | MAVG, DERIVATIVE, DIFF, IRATE, CSUM, INTERP, TWA, STATECOUNT, STATEDURATION, ... |
 
-### Evaluating an Expression
+### 3.2.9.7 Evaluating an Expression
 
 Where supported (Formula and String Builder attribute definitions), the editor includes an **Evaluate** button and an **Evaluate Result** display at the bottom of the center panel. Click **Evaluate** to run the expression against the element's current data and verify the result before saving.
 
@@ -290,14 +290,14 @@ Click **Save** in the dialog to apply the expression, or **Cancel** to discard c
 
 An **attribute template** defines a standard attribute — including its name, data type, unit of measure, and data reference binding — as part of an [element template](./01-elements.md#316-element-templates). When an element is created from the template, all of its attribute templates are instantiated automatically, with substitution strings resolved to the actual values for that element.
 
-### Creating an Attribute Template
+### 3.2.8.1 Creating an Attribute Template
 
 1. In **Libraries**, open the element template you want to add attributes to.
 2. Click the **Attribute Template** tab at the top of the template detail page.
 3. Click **+** to open the attribute template creation form.
 4. Fill in the attribute fields and configure the data reference binding (see below).
 
-### Attribute Template Fields
+### 3.2.8.2 Attribute Template Fields
 
 | Field | Description |
 |---|---|
@@ -315,7 +315,7 @@ An **attribute template** defines a standard attribute — including its name, d
 | **Limits Configuration** | Optional Hi/Lo alarm limit thresholds |
 | **Forecast Configuration** | Optional TDgpt forecasting configuration for this attribute |
 
-### Data Reference Binding
+### 3.2.8.3 Data Reference Binding
 
 The **Data Reference Type** determines how the attribute is connected to time-series data in TDengine TSDB:
 

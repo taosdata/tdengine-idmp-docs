@@ -5,13 +5,13 @@ sidebar_label: Status History
 
 # 4.2.9 Status History
 
-## Overview
+## 4.2.9.1 Overview
 
 The Status History panel displays a grid of colored cells where each column represents a time bucket and each row represents a metric. It provides a compact, calendar-style view of state patterns across multiple dimensions simultaneously — ideal for spotting recurring patterns, shifts, or periods of abnormal behavior across a long time range.
 
 ![Status History panel example](../images/status-history-panel.png)
 
-## When to Use
+## 4.2.9.2 When to Use
 
 Use the Status History panel when:
 
@@ -21,7 +21,7 @@ Use the Status History panel when:
 
 For a continuous band showing every state transition in detail, use the State Timeline instead.
 
-## Configuration
+## 4.2.9.3 Configuration
 
 ### Edit Mode Toolbar
 
@@ -67,7 +67,7 @@ Value mappings translate raw data values into display text and cell colors. Clic
 
 Each mapping rule can specify an optional **Display Text** and a **Color**. Rules are evaluated top-to-bottom; the first match wins.
 
-## Example Scenarios
+## 4.2.9.4 Example Scenarios
 
 **Weekly alarm heatmap.** Ten alarm signals are added as rows. A 1-hour sliding window produces 168 columns (one per hour over 7 days). Value mappings set 0 → gray and 1 → red. The resulting grid shows at a glance which devices were in alarm and at what hours throughout the week.
 

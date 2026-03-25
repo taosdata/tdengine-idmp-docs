@@ -11,9 +11,9 @@ sidebar_label: 示例数据
 
 示例数据功能通过**管理控制台 → 示例数据**访问。
 
-## 使用方式说明
+## 14.7.1 使用方式说明
 
-### 命令行方式运行
+### 14.7.1.1 命令行方式运行
 
 #### 运行环境要求
 
@@ -50,13 +50,13 @@ java -jar tda-generator-command.jar -f init.json -c
 仅限测试环境使用。
 :::
 
-### 图形界面方式运行
+### 14.7.1.2 图形界面方式运行
 
 在 IDMP 管理界面中，进入**示例数据**模块，选择或上传 JSON 配置文件，点击 **保存** 或 **放弃** 按钮完成操作。
 
-## 配置说明（JSON 配置文件）
+## 14.7.2 配置说明（JSON 配置文件）
 
-### JSON 整体结构
+### 14.7.2.1 JSON 整体结构
 
 ```json
 {
@@ -70,7 +70,7 @@ java -jar tda-generator-command.jar -f init.json -c
 }
 ```
 
-### info - 示例数据场景信息说明
+### 14.7.2.2 info - 示例数据场景信息说明
 
 仅在 IDMP 示例数据界面展示。
 
@@ -88,7 +88,7 @@ java -jar tda-generator-command.jar -f init.json -c
 - description: 场景描述；
 - file: 保持与文件名称一致；
 
-### TDasset - IDMP 连接配置
+### 14.7.2.3 TDasset - IDMP 连接配置
 
 仅在 **命令行模式** 下生效。
 
@@ -104,7 +104,7 @@ java -jar tda-generator-command.jar -f init.json -c
 - user: IDMP 用户名；
 - password: IDMP 登录密码；
 
-### datasource - TDengine 连接配置
+### 14.7.2.4 datasource - TDengine 连接配置
 
 ```json
 {
@@ -130,7 +130,7 @@ java -jar tda-generator-command.jar -f init.json -c
 - min_idle: 连接池最小空闲连接数；
 - 其他参数请参考 TDengine JDBC 连接池配置说明；
 
-### databases - 数据库定义
+### 14.7.2.5 databases - 数据库定义
 
 ```json
 {
@@ -153,7 +153,7 @@ java -jar tda-generator-command.jar -f init.json -c
 - keep: 数据存储天数，默认 3650 天；
 - 其他参数请参考 TDengine 数据库创建说明；
 
-### templates - 元素模板配置（模型数据）
+### 14.7.2.6 templates - 元素模板配置（模型数据）
 
 #### 超级表模板（叶子节点）
 
@@ -277,7 +277,7 @@ java -jar tda-generator-command.jar -f init.json -c
 - level: 路径模板层级数；
 - namingPattern: 命名规则；
 
-### tree_root - 元素树根节点
+### 14.7.2.7 tree_root - 元素树根节点
 
 ```json
 {
@@ -289,7 +289,7 @@ java -jar tda-generator-command.jar -f init.json -c
 
 - visible: 根节点是否可见；
 
-### trees - 元素树与子表生成（核心）
+### 14.7.2.8 trees - 元素树与子表生成（核心）
 
 ```json
 {
@@ -320,7 +320,7 @@ java -jar tda-generator-command.jar -f init.json -c
 - 自动创建子表
 - 自动绑定 TAG 值
 
-## 使用建议
+## 14.7.3 使用建议
 
 - 一个 JSON 对应一个示例场景
 - 模板名称建议使用统一前缀

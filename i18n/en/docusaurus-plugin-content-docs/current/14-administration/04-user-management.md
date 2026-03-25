@@ -7,11 +7,11 @@ sidebar_label: User Management
 
 User management is accessed from **Admin Console → User Management**. It covers users, roles, and single sign-on (SSO) configuration.
 
-## Users
+## 14.4.1 Users
 
 TDengine IDMP uses email addresses as user IDs. The first user to activate or register the system automatically becomes the Super Admin.
 
-### Inviting Users
+### 14.4.1.1 Inviting Users
 
 To add a new user, go to **Admin Console → User Management → Users** and click **+** in the top-right corner. Fill in the following fields:
 
@@ -34,7 +34,7 @@ The users list shows:
 | **Roles** | Assigned roles |
 | **Description** | Optional description |
 
-### Controlling Element Access per Role Assignment
+### 14.4.1.2 Controlling Element Access per Role Assignment
 
 When assigning a role to a user, you can also restrict which elements that user can access under that role. This is done through the **Resource Configuration** dialog, opened by clicking the **Elements Allowed to Access** column for a role row.
 
@@ -59,7 +59,7 @@ Built-in roles available for assignment:
 | **Process Engineers** | Process optimization and analysis |
 | **Super Admin** | Full system administration |
 
-### Password Reset
+### 14.4.1.3 Password Reset
 
 Any user can reset their own password from the login page by clicking **Forgot Password**. A reset link is sent by email. For security, the Super Admin cannot reset another user's password.
 
@@ -67,7 +67,7 @@ Any user can reset their own password from the login page by clicking **Forgot P
 Ensure `tda.server-url` in `config/application.yml` is set to an externally accessible URL or IP address. If it is not configured correctly, invited users will not be able to follow the email link to access IDMP.
 :::
 
-## Roles
+## 14.4.2 Roles
 
 IDMP uses role-based access control (RBAC). Each role grants view, add, delete, and edit permissions on one or more resource types. A user can hold multiple roles; their effective permissions are the union of all assigned roles.
 
@@ -75,17 +75,17 @@ The system includes several built-in roles. You can also create custom roles by 
 
 **Resources covered by role permissions include:** Element Templates, AI features, Event Templates, Enumeration Sets, Analyses, External Tables, Email Configuration, Notification Rule Templates, Dashboard Templates, Data Backup, Dashboards, Elements, OAuth, Users, Roles, UOM, Panel Templates, Data In, and more.
 
-### Element-Level Access Control
+### 14.4.2.1 Element-Level Access Control
 
 Because elements are organized in a tree hierarchy, element access is controlled separately from other permissions. Even if a role grants access to elements in general, each user's element visibility is further narrowed down to specific top-level nodes configured during invitation or user editing.
 
 Elements that a user cannot access are completely invisible in the asset tree — they do not appear even as collapsed nodes. Attributes, analyses, events, panels, and dashboards linked to inaccessible elements are equally hidden, ensuring strong data isolation between teams, sites, or business units.
 
-## Single Sign-On (OAuth 2.0)
+## 14.4.3 Single Sign-On (OAuth 2.0)
 
 IDMP supports OAuth 2.0 SSO. OAuth configurations are managed under **Admin Console → User Management → OAuth**.
 
-### Creating an OAuth Configuration
+### 14.4.3.1 Creating an OAuth Configuration
 
 Click **+** to add a new OAuth provider. Fill in the following fields:
 
@@ -104,7 +104,7 @@ Click **+** to add a new OAuth provider. Fill in the following fields:
 | **Custom Mapping Rules** | When CUSTOM | JSON object defining JSONPath expressions to extract `name`, `email`, and optional fields. |
 | **Roles** | Yes | Roles assigned to users who log in through this OAuth provider. |
 
-### Custom Mapping Rules
+### 14.4.3.2 Custom Mapping Rules
 
 When **User Info Mapping Type** is `CUSTOM`, provide a JSON object mapping field names to JSONPath expressions:
 
@@ -120,7 +120,7 @@ When **User Info Mapping Type** is `CUSTOM`, provide a JSON object mapping field
 
 The `name` and `email` fields are required. All others are optional.
 
-### Setup Steps
+### 14.4.3.3 Setup Steps
 
 1. Register your application in the OAuth provider's developer console and obtain the Client ID, Client Secret, and configure the Redirect URL.
 2. In IDMP, go to **Admin Console → User Management → OAuth** and click **+**.

@@ -7,11 +7,11 @@ sidebar_label: AI Panel Insights
 
 AI Panel Insights generates a natural language narrative for an individual panel — describing what the data shows, identifying notable patterns, and highlighting anomalies or trends that may warrant attention.
 
-## How to Access
+## 8.3.1 How to Access
 
 Open any panel (either AI-generated or manually created) from an element's **Panels** tab. In the panel toolbar, click the **AI Insights** button (the sparkle or AI icon). The system queries the LLM with the panel's current data and returns a text summary displayed alongside the visualization.
 
-## What the Insight Contains
+## 8.3.2 What the Insight Contains
 
 The insight describes the panel's data in plain language. For a trend chart showing voltage over the past 24 hours, the insight might note the overall range, identify a peak or dip, and flag whether the values remain within normal operating limits. For a statistics panel, it might compare the current reading against the historical average.
 

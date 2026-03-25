@@ -53,15 +53,15 @@ This mechanism standardizes the user-facing presentation of data even when diffe
 
 Templates are the most powerful tool for ensuring consistent structure across similar assets. IDMP provides templates at multiple levels:
 
-### Element templates
+### 3.4.4.1 Element templates
 
 Define a standard asset structure for each asset class (e.g., Pump, Meter, Boiler). An element template pre-configures the full set of standard attributes — with their names, data types, units, limits, and descriptions — that every asset of that class should have. When a new element is created from a template, all standard attributes are added automatically.
 
-### Attribute templates
+### 3.4.4.2 Attribute templates
 
 Individual attribute definitions can be saved to the template library and reused across multiple elements or element templates. This ensures that common attributes (e.g., `ActivePower`, `OperatingStatus`) are defined consistently everywhere they appear.
 
-### Other template types
+### 3.4.4.3 Other template types
 
 IDMP also provides templates for analyses, panels, dashboards, events, and notifications — ensuring that operational logic and visualizations are standardized across the same asset class, not just the data model.
 

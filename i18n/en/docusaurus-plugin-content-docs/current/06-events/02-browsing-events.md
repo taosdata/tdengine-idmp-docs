@@ -11,7 +11,7 @@ Events can be browsed from two places: the **global Events view** in the main na
 
 The global events view provides a system-level event management interface with search, filtering, and export capabilities for centralized monitoring and management of events across all elements. Click **Events** in the top navigation bar to open the system-wide events list. This view shows all events across all elements that the current user has permission to access.
 
-### Toolbar
+### 6.2.1.1 Toolbar
 
 The toolbar provides search, filtering, and data export functions for the event list.
 
@@ -23,7 +23,7 @@ The toolbar provides search, filtering, and data export functions for the event 
 | **Export CSV** | Export the current filtered event list as a CSV file |
 | **Save as Panel** | Save the current event list as a panel so it can be added to a dashboard |
 
-### Filters
+### 6.2.1.2 Filters
 
 The following filter controls support narrowing the event list by acknowledgment status, category, and template.
 
@@ -31,14 +31,14 @@ The following filter controls support narrowing the event list by acknowledgment
 - **Categories:** Filter by event category tag
 - **Template:** Filter by event template
 
-### Left Sidebar
+### 6.2.1.3 Left Sidebar
 
 The left sidebar provides quick access to favorite events and saved event filters.
 
 - **Favorites Events:** Individual events that have been marked as favorites for quick access. Any event can be added to favorites.
 - **Event Filters:** Saved filter configurations (see [Saved Event Filters](#623-saved-event-filters) below)
 
-### Event List Columns
+### 6.2.1.4 Event List Columns
 
 The event list displays key information for each event in a table format. The columns are described below.
 
@@ -56,7 +56,7 @@ The event list displays key information for each event in a table format. The co
 | **Reason Code** | Reason code if set |
 | **Description** | Description text |
 
-### Row Actions
+### 6.2.1.5 Row Actions
 
 Each event row provides a context menu with actions for viewing details, sending notifications, acknowledging events, trend analysis, and deletion. Hover over any event row to reveal the **⋮** (more) menu on the right. Click it to expand the following options:
 

@@ -13,9 +13,9 @@ Lines are used to represent the flow of materials, signal transmission, or logic
 
 Through line animations, you can visually display the real-time flow status of materials.
 
-## Drawing Lines
+## 5.3.1 Drawing Lines
 
-### Pen Drawing Lines
+### 5.3.1.1 Pen Drawing Lines
 
 Select a line type, then click the pen to activate drawing with that line type.
 
@@ -41,25 +41,25 @@ Press the shortcut key Ctrl, click the left mouse button to draw, right-click to
 
 Line type selected as straight line, select the pen, left-click to draw the starting point, hold down the shortcut keys Ctrl+Shift, move the mouse angle (in increments of 15°), left-click to draw the second point, right-click to end drawing.
 
-### Pencil Drawing Lines
+### 5.3.1.2 Pencil Drawing Lines
 
 You can use the pencil to draw any type of line. Click "Pencil" to activate the pencil tool, press the left mouse button on the canvas to start drawing, and the line will be drawn according to the mouse movement trajectory. Release the mouse button to end drawing.
 
-### Connecting Symbols with Lines
+### 5.3.1.3 Connecting Symbols with Lines
 
 When the mouse hovers over a symbol, anchor points are activated. Press the mouse on an anchor point and drag it to the anchor point of another symbol. Release the mouse to draw a curve between the two symbol anchor points.
 
-### Convert Line to Symbol
+### 5.3.1.4 Convert Line to Symbol
 
 Right-click on the line and select "Convert to Node".
 
-## Cutting/Merging Lines
+## 5.3.2 Cutting/Merging Lines
 
 Cutting lines: Select the line, move the mouse to the anchor point where you want to break the line, click, and press the S key.
 
 Merging lines: When connecting lines, drag the connection end of the currently selected line to align with the connection end of another line, press the Alt key, release the mouse, and then release the Alt key.
 
-## Line Styles
+## 5.3.3 Line Styles
 
 After selecting a line, you can set the appearance style of the line in the property configuration area on the right:
 
@@ -76,7 +76,7 @@ After selecting a line, you can set the appearance style of the line in the prop
 - Shadow color, shadow blur, shadow X offset, shadow Y offset
 - Border color, border width (≥0)
 
-## Line Animations
+## 5.3.4 Line Animations
 
 IDMP has built-in three animation effects for lines, making the visuals more dynamic.
 

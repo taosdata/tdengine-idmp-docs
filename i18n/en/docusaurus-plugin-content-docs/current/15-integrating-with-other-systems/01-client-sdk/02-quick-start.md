@@ -12,14 +12,14 @@ import TabItem from '@theme/TabItem';
 Complete [Installation](./01-installation.md) first. This guide takes about 5 minutes and walks you through your first API call.
 :::
 
-## Goal
+## 15.1.2.1 Goal
 
 By the end of this page you will be able to:
 
 1. Log in with a username and password to obtain an access token
 2. Use the token to query the element list
 
-## Step 1 — Configure the Connection
+## 15.1.2.2 Step 1 — Configure the Connection
 
 Store the server address and credentials in environment variables to avoid hardcoding secrets in source code:
 
@@ -29,7 +29,7 @@ export IDMP_USERNAME=your_username
 export IDMP_PASSWORD=your_password
 ```
 
-## Step 2 — Log In and Obtain a Token
+## 15.1.2.3 Step 2 — Log In and Obtain a Token
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -86,7 +86,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 </TabItem>
 </Tabs>
 
-## Step 3 — Query the Element List
+## 15.1.2.4 Step 3 — Query the Element List
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -128,7 +128,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 </TabItem>
 </Tabs>
 
-## Next Steps
+## 15.1.2.5 Next Steps
 
 - Understand all authentication options including cloud service auth → [Authentication](./03-authentication.md)
 - Understand the core objects in the SDK → [Core Concepts](./04-core-concepts.md)

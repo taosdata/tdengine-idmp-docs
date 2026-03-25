@@ -2,17 +2,19 @@
 title: Helm Deployment
 ---
 
+# 14.3.4 Helm Deployment
+
 import GatewayBasePathConfig from './common/_gateway-base-path.md'
 
 Helm is a package manager for Kubernetes that simplifies the deployment, configuration, and management of Kubernetes applications. This guide introduces how to deploy the TDengine IDMP service on Kubernetes using a Helm Chart.
 
-## Prerequisites
+## 14.3.4.1 Prerequisites
 
 1. Install Kubernetes v1.24 or later.
 1. Install Helm 3.
 1. (Optional) To persist data, configure a PersistentVolume.
 
-## Install Helm
+## 14.3.4.2 Install Helm
 
 Run the following command to install Helm:
 
@@ -23,14 +25,14 @@ chmod +x get_helm.sh
 ./get_helm.sh
 ```
 
-## Obtain the TDengine IDMP Helm chart
+## 14.3.4.3 Obtain the TDengine IDMP Helm chart
 
 ```bash
 git clone https://github.com/taosdata/tdengine-idmp-deployment.git
 cd tdengine-idmp-deployment/helm
 ```
 
-## Install TDengine IDMP
+## 14.3.4.4 Install TDengine IDMP
 
 :::info
 

@@ -40,7 +40,7 @@ The Calculation section defines what the analysis computes and where the results
 
 The Event section controls whether the analysis generates an event each time it fires. This section is disabled by default. Enable it by checking the **Generate** checkbox. See [Generating Events](./05-generating-events.md) for full details.
 
-## Saving and Discarding
+## 7.2.5 Saving and Discarding
 
 Click **Save** to create the analysis. If **Enable analysis upon creation** was checked, the analysis starts running immediately and appears in the list with **Running** status.
 

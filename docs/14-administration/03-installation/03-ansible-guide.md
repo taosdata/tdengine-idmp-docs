@@ -1,20 +1,20 @@
 import GatewayBasePathConfig from './common/_gateway-base-path.md'
 
-# 使用 Ansible 部署
+# 14.3.3 使用 Ansible 部署
 
 Ansible 是一个开源的自动化工具，用于配置管理、应用部署、云服务编排等。本指南介绍如何使用 Ansible 实现 TDengine IDMP 的自动化部署。通过这套工具，可以轻松地在多台服务器上完成 TDengine IDMP 的安装和配置。
 
-## 前置条件
+## 14.3.3.1 前置条件
 
 1. 本文适用 Ansible 2.10 以上版本
 1. 本文适用 Python 3.6 以上版本
 1. 所有目标服务器可以通过 SSH 访问
 
-## 安装 Ansible
+## 14.3.3.2 安装 Ansible
 
 如未安装 Ansible，请参考 [Ansible 官方安装指南](https://docs.ansible.com/ansible/latest/installation_guide/index.html)。
 
-## 部署 TDengine IDMP 服务
+## 14.3.3.3 部署 TDengine IDMP 服务
 
 :::info
 

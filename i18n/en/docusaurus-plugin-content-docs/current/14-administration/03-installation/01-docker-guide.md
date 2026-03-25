@@ -2,17 +2,19 @@
 title: Docker Deployment
 ---
 
+# 14.3.1 Docker Deployment
+
 import GatewayBasePathConfig from './common/_gateway-base-path.md'
 
 This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise using Docker and Docker Compose.
 
-## Prerequisites
+## 14.3.1.1 Prerequisites
 
 1. Install Docker Engine 20.10 or later on your local machine. For instructions, see [Install Docker Engine](https://docs.docker.com/engine/install/) in the Docker documentation.
 1. Install Docker Compose 1.29.2 or later on your local machine. For instructions, see [Overview of installing Docker Compose](https://docs.docker.com/compose/install/) in the Docker documentation.
 1. Install Git on your local machine. For more information, see the [Git website](https://git-scm.com/).
 
-## Install TDengine TSDB-Enterprise and TDengine IDMP
+## 14.3.1.2 Install TDengine TSDB-Enterprise and TDengine IDMP
 
 ### 1. Clone the repository
 
@@ -141,7 +143,7 @@ IDMP supports HTTPS with default port 6034. The built-in test certificate is bou
     docker compose up tdengine-idmp --pull always -d
     ```
 
-## Install TDengine IDMP
+## 14.3.1.3 Install TDengine IDMP
 
 :::important
 
@@ -261,7 +263,7 @@ IDMP supports HTTPS with default port 6034. The built-in test certificate is bou
 
    Data will not be retained after stopping the service. To persist data, mount a data volume.
 
-## Troubleshooting
+## 14.3.1.4 Troubleshooting
 
 ### 1. The container `tdengine-idmp` is in an `unhealthy` state, or the IDMP page displays the error `Python Server unhealthy`
 

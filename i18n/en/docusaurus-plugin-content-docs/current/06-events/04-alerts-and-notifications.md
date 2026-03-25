@@ -11,7 +11,7 @@ When an analysis generates an event, TDengine IDMP can automatically send a noti
 
 Contact points are the foundational delivery channels of the notification system, configured and managed at the system level. A **contact point** defines the specific delivery target for notifications, and notification rules on individual elements reference contact points to specify the notification delivery channel.
 
-### Managing Contact Points
+### 6.4.1.1 Managing Contact Points
 
 Contact points are managed centrally in **Admin Console → System Configuration → Notification Contact Point**.
 
@@ -34,7 +34,7 @@ Contact points are shared across the system. The same contact point can be refer
 
 Notification rules define element-level event notification policies, including notification channels, resend mechanisms, and escalation paths. A **notification rule** defines how and to whom notifications are sent when an event occurs on a specific element. Each element has exactly one notification rule, shared by all events generated on that element.
 
-### Configuring a Notification Rule
+### 6.4.2.1 Configuring a Notification Rule
 
 The notification rule configuration is accessed from the element's Events tab toolbar. Navigate to the target element in the asset tree, open its **Events** tab, and click the **Notification Rule** icon in the toolbar (the icon showing a document with a bell, second from the right). The system opens the Notification Rule dialog showing the current configuration.
 
@@ -56,7 +56,7 @@ The dialog also has a **Preview Message** button for viewing how the rendered me
 
 The notification system follows a complete lifecycle from initial delivery through resend, escalation, and termination. Understanding the notification lifecycle helps configure the appropriate resend and escalation settings.
 
-### Notification Flow
+### 6.4.3.1 Notification Flow
 
 The notification flow describes the automated notification delivery logic executed by the system after an event is generated. When an analysis generates an event:
 
@@ -71,15 +71,15 @@ The notification flow describes the automated notification delivery logic execut
 
 4. **Notification Stops** — Once the event is acknowledged or closed, no further notifications are sent for that event.
 
-### Active Events
+### 6.4.3.2 Active Events
 
 An active event is one that has occurred but has not yet been closed. Active events continue to trigger re-notifications according to the notification rule. The event list marks active events to make them easy to identify. Once closed, the system stops all automatic notifications for that event.
 
-### In-App Notification Pop-up
+### 6.4.3.3 In-App Notification Pop-up
 
 When an event is generated, IDMP displays an in-app **New Event Notification** pop-up in the bottom-right corner of the screen, enabling all logged-in users to stay informed of newly occurred events in real time. The pop-up appears regardless of which page the user is currently viewing. It displays the event name, start time, end time, and severity level, along with the current count of **Unacknowledged Events** in the system. Click the **×** button to dismiss it.
 
-### Delivery History
+### 6.4.3.4 Delivery History
 
 Delivery history provides a complete notification audit trail. Every notification attempt — successful or failed — is logged in the **Notification Record** section of the event detail page. This log includes the contact point name, timestamp, and delivery status.
 

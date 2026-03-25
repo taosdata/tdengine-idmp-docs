@@ -15,11 +15,11 @@ The **Data In Task** tab lists all configured ingestion tasks for a connection, 
 
 The toolbar provides controls to start, stop, delete, import, and export tasks, as well as a refresh button and settings.
 
-### Creating a Task
+### 12.2.1.1 Creating a Task
 
 Click **+** to create a new task. Configure the following sections:
 
-### General Information
+### 12.2.1.2 General Information
 
 | Field | Description |
 |---|---|
@@ -27,11 +27,11 @@ Click **+** to create a new task. Configure the following sections:
 | **Type** | The data source protocol (see task types below) |
 | **Target** (required) | The destination TDengine database. Click **+ Create Database** to create a new one. |
 
-### Connection Configuration
+### 12.2.1.3 Connection Configuration
 
 Configuration fields vary by task type. Two common examples are shown below.
 
-### Example: OPC-UA
+### 12.2.1.4 Example: OPC-UA
 
 OPC-UA (OPC Unified Architecture) is a widely used industrial protocol for connecting PLCs, sensors, and SCADA systems.
 
@@ -75,7 +75,7 @@ Click **Check Connection** to verify before proceeding.
 | **Point Update Mode** | How point metadata updates are handled |
 | **Point Update Interval** | Interval in seconds to check for point changes (default: 600) |
 
-### Example: SparkplugB (MQTT)
+### 12.2.1.5 Example: SparkplugB (MQTT)
 
 SparkplugB is an MQTT-based protocol widely used in IIoT deployments.
 
@@ -102,7 +102,7 @@ Click **Submit** to create the task.
 The Data In feature is powered by TDengine TSDB's data ingestion engine. For complete documentation of all task types and their configuration fields, refer to the [TDengine TSDB documentation](https://docs.tdengine.com).
 :::
 
-### Supported Task Types
+### 12.2.1.6 Supported Task Types
 
 IDMP supports ingesting data from the following source types:
 

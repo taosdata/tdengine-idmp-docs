@@ -2,14 +2,14 @@
 title: 配置文件参考
 ---
 
-# TDengine IDMP 配置文件参考
+# 14.3.5 TDengine IDMP 配置文件参考
 
 TDengine IDMP 的配置文件为 `application.yml`，默认位置：
 
 - **Linux/macOS**: `/usr/local/taos/idmp/config/application.yml`
 - **Windows**: `C:\TDengine\idmp\config\application.yml`
 
-## 基础配置
+## 14.3.5.1 基础配置
 
 ### HTTP/HTTPS 服务配置
 

@@ -2,13 +2,15 @@
 title: Local Deployment
 ---
 
+# 14.3.2 Local Deployment
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import GatewayBasePathConfig from './common/_gateway-base-path.md'
 
 This document describes how to install TDengine IDMP on your local machine.
 
-## Prerequisites
+## 14.3.2.1 Prerequisites
 
 - Ensure that your local machine meets the minimum requirements for TDengine IDMP. For details, see [Planning Your Deployment](../02-planning.md).
 - Install TDengine TSDB-Enterprise version 3.3.7.0 or higher. For instructions, see [Deploy TDengine TSDB-Enterprise Enterprise](https://docs.tdengine.com/operations-and-maintenance/deploy-your-cluster/).
@@ -16,7 +18,7 @@ This document describes how to install TDengine IDMP on your local machine.
 - Install glibc 2.25 or later.
 - On Debian and Ubuntu systems, install the `python3-venv` package.
 
-## Install TDengine IDMP
+## 14.3.2.2 Install TDengine IDMP
 
 Select your operating system to display the appropriate installation procedure.
 
@@ -38,7 +40,7 @@ Do not start TDengine IDMP until you have configured the TDengine TSDB-Enterpris
 
 :::
 
-## Configure TSDB Connection
+## 14.3.2.3 Configure TSDB Connection
 
 1. Configure the TDengine TSDB-Enterprise connection in TDengine IDMP:
 
@@ -82,7 +84,7 @@ Do not start TDengine IDMP until you have configured the TDengine TSDB-Enterpris
 
    If the connection is successful, the list of databases in TDengine TSDB-Enterprise will be displayed.
 
-## Start TDengine IDMP
+## 14.3.2.4 Start TDengine IDMP
 
 <Tabs>
 
@@ -191,7 +193,7 @@ Once TDengine IDMP starts successfully, it includes the following three services
 - `tdengine-idmp-chat`: Handles AI-related tasks and analytics.
 - `tdengine-idmp`: The core service responsible for managing and providing data access.
 
-## Uninstall TDengine IDMP
+## 14.3.2.5 Uninstall TDengine IDMP
 
 <Tabs>
 <TabItem label="Linux-Generic" value="targz">
@@ -245,7 +247,7 @@ Alternatively, you can uninstall TDengine IDMP through **Control Panel** → **P
 </TabItem>
 </Tabs>
 
-## Upgrade Instructions
+## 14.3.2.6 Upgrade Instructions
 
 TDengine IDMP recommends using the official installation script for upgrades. The script will automatically detect the existing installation environment and select the appropriate upgrade mode to ensure the safety of your data and configuration files. Details are as follows:
 

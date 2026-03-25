@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # 15.1.7 Error Handling
 
-## Exception Type
+## 15.1.7.1 Exception Type
 
 The SDK wraps all API errors in a single `ApiException` class. You can retrieve the HTTP status code and the server-side error message from it.
 
@@ -44,7 +44,7 @@ except ApiException as e:
 </TabItem>
 </Tabs>
 
-## Common Error Codes
+## 15.1.7.2 Common Error Codes
 
 | HTTP Status | Meaning | Common Cause | Recommended Action |
 |---|---|---|---|
@@ -55,7 +55,7 @@ except ApiException as e:
 | 429 | Too many requests | API rate limit exceeded | Reduce request frequency; add retry with backoff |
 | 500 | Internal server error | Server-side exception | Retry later, or contact the administrator |
 
-## Recommended Retry Pattern
+## 15.1.7.3 Recommended Retry Pattern
 
 For `429` (rate limiting) and `5xx` (server errors), use **exponential backoff**:
 
@@ -123,7 +123,7 @@ interface ApiCall<T> {
 </TabItem>
 </Tabs>
 
-## Debugging Tips
+## 15.1.7.4 Debugging Tips
 
 - On `401`, check first whether the token has expired — do not assume a code bug.
 - On `400`, print the full `responseBody`. The server typically includes a specific description of which parameter is invalid.

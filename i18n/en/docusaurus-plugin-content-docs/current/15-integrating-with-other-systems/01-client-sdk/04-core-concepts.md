@@ -7,7 +7,7 @@ sidebar_label: Core Concepts
 
 SDK objects map one-to-one with IDMP product concepts. Understanding these mappings helps you quickly locate the API you need.
 
-## Object Mapping
+## 15.1.4.1 Object Mapping
 
 | SDK Class / Module | IDMP Concept | Description |
 |---|---|---|
@@ -20,7 +20,7 @@ SDK objects map one-to-one with IDMP product concepts. Understanding these mappi
 | `UserResourceApi` | User | User management and authentication |
 | `UomResourceApi` | UOM | Unit of measurement classes and conversions |
 
-## Data Access Hierarchy
+## 15.1.4.2 Data Access Hierarchy
 
 IDMP SDK data access follows this hierarchy:
 
@@ -36,7 +36,7 @@ Element
 2. Use the element ID to query its attribute list (`AttributeResourceApi`).
 3. Use the attribute ID to query time-series data (`MetricResourceApi`).
 
-## Pagination
+## 15.1.4.3 Pagination
 
 All list endpoints support pagination. The response format is:
 
@@ -56,7 +56,7 @@ Control pagination with the `pageNum` and `pageSize` query parameters:
 result = element_api.api_v1_elements_get(page_num=1, page_size=50)
 ```
 
-## Request and Response Structure
+## 15.1.4.4 Request and Response Structure
 
 All API responses follow a consistent format:
 
@@ -70,7 +70,7 @@ All API responses follow a consistent format:
 
 When `code` is non-zero, the SDK raises an `ApiException`. See [Error Handling](./07-error-handling.md) for details.
 
-## Time Format
+## 15.1.4.5 Time Format
 
 All time parameters and return values use **Unix timestamps in milliseconds** (UTC).
 

@@ -10,9 +10,9 @@ import TabItem from '@theme/TabItem';
 
 The TDengine IDMP Excel Add-In allows you to retrieve time-series data and element attributes directly inside Microsoft Excel, without writing any code or SQL.
 
-## Prerequisites
+## 10.1.1 Prerequisites
 
-### HTTPS Requirement
+### 10.1.1.1 HTTPS Requirement
 
 The Excel Add-In connects to IDMP over **HTTPS only**. Before installing, ensure that the IDMP HTTPS service is enabled and accessible (default port: **6034**).
 
@@ -50,7 +50,7 @@ Hosts file locations:
 - **Linux / macOS:** `/etc/hosts`
 - **Windows:** `C:\Windows\System32\drivers\etc\hosts`
 
-### System Requirements
+### 10.1.1.2 System Requirements
 
 | Requirement | Details |
 |---|---|
@@ -59,7 +59,7 @@ Hosts file locations:
 | **Network** | Requires access to download the installation script and connect to the IDMP service |
 | **Node.js** | Node.js 22.3 or later required on Windows if logging is enabled |
 
-## Installation
+## 10.1.2 Installation
 
 <Tabs>
 <TabItem value="macos" label="macOS">
@@ -115,7 +115,7 @@ PowerShell must be run as Administrator. Excel will be force-closed during insta
 </TabItem>
 </Tabs>
 
-## Enabling and Disabling Logging
+## 10.1.3 Enabling and Disabling Logging
 
 To toggle logging independently of installation:
 
@@ -144,7 +144,7 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 </TabItem>
 </Tabs>
 
-## Uninstallation
+## 10.1.4 Uninstallation
 
 <Tabs>
 <TabItem value="macos" label="macOS">
