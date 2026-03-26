@@ -12,14 +12,14 @@ import TabItem from '@theme/TabItem';
 
 # 15.1.2 快速开始
 
-## 目标
+## 15.1.2.1 目标
 
 完成本页后，您将能够：
 
 1. 使用用户名和密码登录以获取访问 Token
 2. 使用 Token 查询元素列表
 
-## 第一步——配置连接
+## 15.1.2.2 第一步——配置连接
 
 将服务器地址和凭据存储在环境变量中，避免在源代码中硬编码敏感信息：
 
@@ -29,7 +29,7 @@ export IDMP_USERNAME=your_username
 export IDMP_PASSWORD=your_password
 ```
 
-## 第二步——登录并获取 Token
+## 15.1.2.3 第二步——登录并获取 Token
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -86,7 +86,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 </TabItem>
 </Tabs>
 
-## 第三步——查询元素列表
+## 15.1.2.4 第三步——查询元素列表
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -128,7 +128,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 </TabItem>
 </Tabs>
 
-## 后续步骤
+## 15.1.2.5 后续步骤
 
 - 了解所有认证选项，包括云服务认证 → [认证](./03-authentication.md)
 - 了解 SDK 中的核心对象 → [核心概念](./04-core-concepts.md)

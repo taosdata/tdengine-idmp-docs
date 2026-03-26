@@ -9,7 +9,7 @@ Root Cause Analysis (RCA) is an AI-powered investigative feature that, given an 
 
 This feature uses the **Deep Thinking Model** configured in Connection Management to perform multi-step reasoning over your time-series data, operational knowledge, and publicly available technical references.
 
-## How to Access
+## 8.10.1 How to Access
 
 RCA is accessed from the **event detail page**:
 
@@ -19,7 +19,7 @@ RCA is accessed from the **event detail page**:
 
 The Root Cause Analysis panel opens on the right side of the event detail page.
 
-## What Happens When You Start RCA
+## 8.10.2 What Happens When You Start RCA
 
 The analysis runs as an automated multi-step workflow:
 
@@ -34,7 +34,7 @@ The analysis runs as an automated multi-step workflow:
 
 The panel streams the workflow progress in real time so you can follow each step as it executes.
 
-## The RCA Report
+## 8.10.3 The RCA Report
 
 The final report is a structured document that includes:
 
@@ -44,7 +44,7 @@ The final report is a structured document that includes:
 - **Root Cause Hypotheses** — The AI's ranked hypotheses about what caused the event, with supporting evidence from the data
 - **Recommendations** — Suggested corrective or preventive actions
 
-## Panel Controls
+## 8.10.4 Panel Controls
 
 | Control | Description |
 |---|---|

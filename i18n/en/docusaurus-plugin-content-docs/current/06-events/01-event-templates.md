@@ -20,7 +20,7 @@ Event templates are managed centrally in Libraries and can be referenced by any 
 
 Event template configuration consists of three parts — general settings, event naming pattern, and template inheritance — which together define the event's identification, naming convention, and hierarchical relationships between templates.
 
-### General Settings
+### 6.1.2.1 General Settings
 
 The following fields define the basic properties and behavioral rules of the event template.
 
@@ -37,13 +37,13 @@ The following fields define the basic properties and behavioral rules of the eve
 | **Minimum Notification Interval** | The minimum time between consecutive notifications for events from the same analysis. Prevents notification overload when an analysis fires events frequently — for example, if set to 20 minutes, only one notification is sent per 20-minute window regardless of how many events trigger |
 | **Description** | Free-text description of the template's purpose |
 
-### Event Naming Pattern
+### 6.1.2.2 Event Naming Pattern
 
 The Event Naming Pattern defines how names are constructed for events generated from this template. Enter static text and insert placeholder variables by clicking the **+** icon on the right side of the field. Available variables include element name, analysis name, start time, end time, and others.
 
 For best results, include the element name, analysis name, and start time in the pattern — this makes every event name self-descriptive: `{elementName} - {analysisName} - {startTime}`.
 
-### Template Inheritance
+### 6.1.2.3 Template Inheritance
 
 Event templates support a hierarchical inheritance mechanism, allowing sub-templates to extend and customize the configuration of a parent template. When creating a template, you can select a **Base Template** from which the new template inherits configuration. Sub-templates can extend the base template's attribute schema and override individual settings.
 

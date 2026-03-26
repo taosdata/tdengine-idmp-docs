@@ -9,7 +9,7 @@ In industrial and IoT environments, measurements collected from different device
 
 UOM is managed under **Libraries → UOM**.
 
-## UOM Classes
+## 13.3.1 UOM Classes
 
 IDMP organizes units into **UOM classes** — groups of units that measure the same physical quantity. Each class has a **canonical unit** (the base unit used internally for conversions) and optionally one or more **base UOM classes** (for derived quantities such as Pressure = Mass / (Length × Time²)).
 
@@ -41,7 +41,7 @@ IDMP ships with the following built-in UOM classes:
 
 You can extend this list by adding custom UOM classes.
 
-## Viewing Units in a Class
+## 13.3.2 Viewing Units in a Class
 
 Click any UOM class name to see its individual units. The unit list shows:
 
@@ -56,7 +56,7 @@ Click any UOM class name to see its individual units. The unit list shows:
 
 A **Quantity** field at the top lets you enter a reference amount to preview conversions across all units in the class.
 
-## Creating a Custom UOM Class
+## 13.3.3 Creating a Custom UOM Class
 
 Click **+** on the UOM list page to create a new class. Fill in:
 
@@ -70,7 +70,7 @@ Click **+** on the UOM list page to create a new class. Fill in:
 
 Click **Save** to create the class.
 
-## Adding a Custom Unit to a Class
+## 13.3.4 Adding a Custom Unit to a Class
 
 Open a UOM class and click **+** to add a new unit. Fill in:
 
@@ -85,7 +85,7 @@ Open a UOM class and click **+** to add a new unit. Fill in:
 
 Click **Save** to add the unit.
 
-## Assigning UOM to Attributes
+## 13.3.5 Assigning UOM to Attributes
 
 Each attribute can be configured with:
 
@@ -95,11 +95,11 @@ Each attribute can be configured with:
 
 When the default UOM and display UOM differ, IDMP automatically converts the stored value to the display unit.
 
-## Automatic Unit Conversion in Formulas
+## 13.3.6 Automatic Unit Conversion in Formulas
 
 When attributes with UOM assignments participate in formula expressions, IDMP applies unit conversion rules automatically. This ensures that calculated results are physically meaningful.
 
-### Addition and Subtraction
+### 13.3.6.1 Addition and Subtraction
 
 For `A + B` or `A - B`:
 
@@ -107,7 +107,7 @@ For `A + B` or `A - B`:
 - If A and B belong to the same UOM class but have different units, IDMP converts B's unit to A's unit before computing.
 - If one operand has a UOM and the other does not, the unitless operand is treated as having the same unit as the other.
 
-### Multiplication and Division
+### 13.3.6.2 Multiplication and Division
 
 For `A * B` or `A / B`:
 
@@ -118,7 +118,7 @@ For `A * B` or `A / B`:
 
 **Example:** Attribute A has unit `cm` (Length), attribute B has unit `m²` (Area). The formula `A * B` converts A to meters, multiplies by B, and produces a result in `m³` (Volume).
 
-### Comparison and Bitwise Operators
+### 13.3.6.3 Comparison and Bitwise Operators
 
 For operators `=`, `<>`, `>`, `<`, `>=`, `<=`, `|`, `&`:
 
@@ -126,7 +126,7 @@ For operators `=`, `<>`, `>`, `<`, `>=`, `<=`, `|`, `&`:
 - If one operand has UOM and the other does not, UOM is ignored.
 - If both operands have UOM and belong to the same class with different units, the right operand is converted to the left operand's unit before the operation.
 
-### Functions
+### 13.3.6.4 Functions
 
 The result of a function applied to an attribute carries the same UOM as the function's first argument. For example, `SIN(A)` has the same UOM as A.
 

@@ -43,6 +43,36 @@ Ask the user for:
 - No indentation before #
 - Only ONE level-1 heading per document
 
+### 4.1 Section Numbering (MUST follow)
+
+All headings (H1/H2/H3) must carry dot-separated section numbers matching the document's position in the chapter hierarchy.
+
+**Format:**
+- H1: `# 14.3 安装部署` / `# 14.3 Installation`
+- H2: `## 14.3.1 前置条件` / `## 14.3.1 Prerequisites`
+- H3: `### 14.3.1.1 使用 Docker 部署` / `### 14.3.1.1 Docker Deployment`
+
+**Depth limit:** Maximum **4 dot-separated segments** (e.g. `14.3.1.1`). If a heading would exceed 4 segments, leave it **unnumbered**.
+
+**Sidebar label rule:** Files with Docusaurus front matter must use `sidebar_label` with the **plain title (no number)** to prevent the `numberPrefixParser` from duplicating the number in the sidebar. The H1 on the page still carries the full section number.
+
+```markdown
+---
+title: 使用 Docker 部署
+sidebar_label: 使用 Docker 部署
+---
+
+import GatewayBasePathConfig from './common/_gateway-base-path.md'
+
+# 14.3.1 使用 Docker 部署
+```
+
+**Skip numbering for:**
+- `index.md` and `00-index.md` files
+- `common/` include fragments
+- Chapters 19 (glossary), 20 (roadmap), 21 (release-history)
+- Files without a numbered H1 (the script only numbers H2/H3 when H1 already has a number)
+
 ### 5. Chinese-English Mixed Text
 - Add space between Chinese and English: `使用 Java SDK` ✅
 - Add space between Chinese and numbers: `版本 3.0` ✅
@@ -334,6 +364,52 @@ See `CHEATSHEET.md` for quick reference of common scenarios.
 # 另一个一级标题   ← 只能有一个 #
 ```
 
+### 1.5 标题序号规范（Section Numbering）
+
+所有正文文档的 H1/H2/H3 标题必须添加章节序号，序号格式为点分隔整数，与文档在章节层次中的位置对应。
+
+**规则：**
+- 最多 4 个点分隔段（例如 `14.3.1.1`），超过 4 段的标题不编号
+- `index.md`、`common/` 片段、第 19/20/21 章（词汇表/路线图/发版历史）跳过编号
+- 文件有 front matter 时，`sidebar_label` 使用不含序号的纯标题，H1 保留序号
+
+**序号推导示例：**
+
+| 文件路径 | H1 序号 | H2 格式 | H3 格式 |
+|---------|---------|---------|---------|
+| `docs/14-administration/03-installation/01-docker-guide.md` | `14.3.1` | `14.3.1.1`、`14.3.1.2` | `14.3.1.1.1`（超 4 段→不编号） |
+| `docs/03-data-modeling/02-attributes.md` | `3.2` | `3.2.1`、`3.2.2` | `3.2.2.1`、`3.2.2.2` |
+| `docs/14-administration/03-installation/06-config-reference.md` | `14.3.5`（3 段） | `14.3.5.1`（4 段，可编号） | 超 4 段→不编号 |
+
+```markdown
+✅ 正确（docs/14-administration/03-installation/02-install-guide.md）：
+---
+title: 使用安装包部署
+sidebar_label: 使用安装包部署
+---
+
+# 14.3.2 使用安装包部署
+
+## 14.3.2.1 先决条件
+
+### 不编号（H3 会达到第 5 段，超限）
+
+❌ 错误：
+# 使用安装包部署        ← H1 缺少序号
+## 先决条件             ← H2 缺少序号
+```
+
+**自动检查脚本（可在会话文件中找到）：**
+
+```python
+# 核心检测逻辑
+# H2 需要编号条件：H1 段数 ≤ 3
+# H3 需要编号条件：H1 段数 ≤ 2
+segs = len(h1_num.split('.'))
+if segs <= 3 and h2 not numbered: → 问题
+if segs <= 2 and h3 not numbered: → 问题
+```
+
 ---
 
 ## 二、代码块规范（markdownlint）
@@ -615,6 +691,8 @@ SDK = "SDK"
 在提交 PR 前，确认以下事项：
 
 - [ ] 标题使用 `#` 号，后面有空格
+- [ ] **H1/H2/H3 标题已添加章节序号**（最多 4 段，超限不编号）
+- [ ] **有 front matter 的文件：`sidebar_label` 不含序号，H1 保留序号**
 - [ ] 代码块使用反引号，并指定了语言
 - [ ] 中英文之间有空格
 - [ ] 中文使用全角标点

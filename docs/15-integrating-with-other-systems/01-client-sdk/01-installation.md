@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # 15.1.1 安装
 
-## 前置条件
+## 15.1.1.1 前置条件
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -24,7 +24,7 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 </Tabs>
 
-## 安装 SDK
+## 15.1.1.2 安装 SDK
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -70,7 +70,7 @@ pip install .
 </TabItem>
 </Tabs>
 
-## 验证安装
+## 15.1.1.3 验证安装
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -92,7 +92,7 @@ python -c "import idmp_sdk; print('SDK installed successfully')"
 </TabItem>
 </Tabs>
 
-## 私有仓库配置
+## 15.1.1.4 私有仓库配置
 
 若开发环境无法访问互联网，可将 SDK 托管在私有仓库中：
 

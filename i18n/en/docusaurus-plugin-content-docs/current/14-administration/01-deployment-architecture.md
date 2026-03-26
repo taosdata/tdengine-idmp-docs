@@ -7,7 +7,7 @@ sidebar_label: Deployment Architecture
 
 TDengine IDMP supports three typical deployment topologies: **Single Instance**, **HA Minimal**, and **HA Complex**. Each topology is suited to different scale and availability requirements.
 
-## Overview
+## 14.1.1 Overview
 
 A TDengine IDMP deployment typically consists of the following layers:
 
@@ -17,7 +17,7 @@ A TDengine IDMP deployment typically consists of the following layers:
 - **External dependencies (by scenario):** Redis, MySQL, distributed file system, and optionally Elasticsearch, Kafka, and Apollo.
 - **Network boundary:** A firewall separates the data collection side from the service side. Cross-boundary communication should open the minimum required ports.
 
-## Single Instance
+## 14.1.2 Single Instance
 
 The single-instance topology targets rapid delivery and low operational complexity. It is suitable for PoC evaluations, demonstrations, small-scale deployments, or air-gapped environments.
 
@@ -38,7 +38,7 @@ TDengine IDMP runs as a single process and serves both the web UI and REST API. 
 - Scaling to multiple instances typically requires adding an API Gateway or load balancer.
 - Uses embedded H2 database, local file system, and internal caching instead of external MySQL, DFS, and Redis.
 
-## HA Minimal
+## 14.1.3 HA Minimal
 
 The HA Minimal topology targets a production-ready baseline with manageable complexity. It introduces an API Gateway as the unified external entry point, so only the gateway is exposed externally. IDMP can be scaled to multiple instances behind the gateway.
 
@@ -58,7 +58,7 @@ The HA Minimal topology targets a production-ready baseline with manageable comp
 - Suitable for deployments that want standardized gateway governance before expanding capabilities.
 - Uses internal Lucene instead of Elasticsearch; uses Redis message queue instead of Kafka; uses internal service configuration instead of Apollo.
 
-## HA Complex
+## 14.1.4 HA Complex
 
 The HA Complex topology targets medium-to-large production environments with enterprise integration requirements. IDMP runs as a highly available multi-instance cluster behind the API Gateway. A complete set of peripheral dependencies is introduced to support asynchronous decoupling, centralized search, dynamic configuration, and service governance.
 
@@ -77,9 +77,9 @@ The HA Complex topology targets medium-to-large production environments with ent
 - Full peripheral stack supports centralized search (Elasticsearch), async messaging (Kafka), and dynamic configuration (Apollo).
 - Higher deployment and operational complexity; suitable for environments with strict reliability, audit, and scalability requirements.
 
-## Key Components
+## 14.1.5 Key Components
 
-### API Gateway
+### 14.1.5.1 API Gateway
 
 The API Gateway is the unified entry point between external clients and internal services.
 
@@ -91,7 +91,7 @@ The API Gateway is the unified entry point between external clients and internal
 | **Traffic governance** | Rate limiting, circuit breaking, retry, timeout, canary releases |
 | **Observability** | Centralized access logs, metrics, and distributed tracing |
 
-### External Dependencies
+### 14.1.5.2 External Dependencies
 
 | Component | Role | Single-instance replacement |
 |---|---|---|
@@ -102,7 +102,7 @@ The API Gateway is the unified entry point between external clients and internal
 | **Kafka** | Async messaging and event bus (decoupling, task orchestration, notifications) | Internal message queue (single instance) or Redis MQ (HA Minimal) |
 | **Apollo** | Configuration center (dynamic config, version management) | Internal service configuration |
 
-## Deployment Recommendations
+## 14.1.6 Deployment Recommendations
 
 1. **Use Single Instance for PoC; use HA for production.** Start with Single Instance for quick validation; prefer HA Minimal for production and evolve to HA Complex as requirements grow.
 

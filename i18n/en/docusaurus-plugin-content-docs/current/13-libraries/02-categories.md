@@ -9,7 +9,7 @@ sidebar_label: Categories
 
 Categories are managed under **Libraries → Categories**.
 
-## The Category List
+## 13.2.1 The Category List
 
 The list shows all defined categories with the following columns:
 
@@ -20,7 +20,7 @@ The list shows all defined categories with the following columns:
 
 Each category also has a **Type** that determines which kind of object it can be applied to. The list is organized by object type. Click a category name to edit it. Use the **⋮** menu on a row to edit or delete it.
 
-## Creating a Category
+## 13.2.2 Creating a Category
 
 Click **+** to create a new category. Fill in the following fields:
 
@@ -32,7 +32,7 @@ Click **+** to create a new category. Fill in the following fields:
 
 Click **Save** to create the category.
 
-## Using Categories
+## 13.2.3 Using Categories
 
 When creating or editing an object (element, attribute, event, panel, dashboard, or analysis), you can assign one or more categories to it in the **Category** field. Categories must match the object type — for example, only categories of type **Element** appear when editing an element.
 
@@ -42,6 +42,6 @@ Once assigned, categories appear as filter options throughout IDMP:
 - In **Dashboards** and **Events** lists, filter by category to find relevant panels or events quickly.
 - In **Libraries**, categories help organize large sets of element templates and event templates.
 
-## Editing and Deleting
+## 13.2.4 Editing and Deleting
 
 To edit a category, click its name. To delete it, use the **⋮** menu. Deleting a category does not affect the objects it was assigned to — the category tag is simply removed from those objects.

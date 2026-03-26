@@ -7,7 +7,7 @@ sidebar_label: Calculation
 
 The Calculation section (section 3 of the analysis form) defines what the analysis computes and where it stores the results. It contains four parts: **Apply Calculation On**, **Rollup On Window**, **Output Timestamp**, and **Output Attributes**.
 
-## Apply Calculation On
+## 7.4.1 Apply Calculation On
 
 **Apply Calculation On** determines the data scope for the calculation — whether the calculation runs on the current element's own attributes or aggregates data across its child elements.
 
@@ -27,7 +27,7 @@ When **Child Elements Aggregation** is selected, two additional fields appear:
 **Child Elements Aggregation** is only available when the element contains child elements. On leaf elements, this option is disabled and only **Element Self** is available.
 :::
 
-## Rollup On Window
+## 7.4.2 Rollup On Window
 
 The **Rollup On Window** checkbox (enabled by default) controls whether the calculation is aggregated over a time window.
 
@@ -35,7 +35,7 @@ When enabled, the **Interval** field specifies the length of the aggregation win
 
 When disabled, the calculation runs over individual data points without windowed aggregation — suitable for row-level calculations or transformations.
 
-## Output Timestamp
+## 7.4.3 Output Timestamp
 
 The **Output Timestamp** dropdown specifies which timestamp is written to the output attribute for each result row:
 
@@ -46,7 +46,7 @@ The **Output Timestamp** dropdown specifies which timestamp is written to the ou
 
 The **Offset** field adds a time offset (number + unit, default 0 seconds) to the selected window boundary. This can be useful to shift the output timestamp for display alignment.
 
-## Output Attributes
+## 7.4.4 Output Attributes
 
 The **Output Attributes** table maps calculation expressions to element attributes (and optionally event attributes when event generation is enabled).
 

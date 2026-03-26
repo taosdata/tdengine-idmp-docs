@@ -7,9 +7,9 @@ sidebar_label: Symbol
 
 Symbols are the basic units that make up the monitoring screen, just like Lego blocks. Each device icon and closed shape is a symbol. By combining different symbols, you can build a complete industrial monitoring system.
 
-## Appearance Settings
+## 5.2.1 Appearance Settings
 
-### Symbol Style
+### 5.2.1.1 Symbol Style
 
 Angle: Set the sharpness or roundness of corners, value range: 0~1
 
@@ -19,19 +19,19 @@ Progress: Any closed shape can be used as a progress bar: rectangle, circle, SVG
 
 ![Symbol Progress Property](./images/canvas-05.gif)
 
-### Image Appearance Style
+### 5.2.1.2 Image Appearance Style
 
 You can upload images as the appearance or background image of the symbol.
 
-### Font Icon Appearance Style
+### 5.2.1.3 Font Icon Appearance Style
 
 You can set the font, size, color, style, weight, line height, position, etc. of the text displayed on the symbol.
 
-## Event
+## 5.2.2 Event
 
 Creating configurations involves defining events, including event types, event actions, and trigger conditions. Event types include mouse enter, mouse leave, selection, etc., but the most important is "symbol attribute value change." The attributes of a symbol can be bound to an IDMP element's attribute, and when a trigger condition for this value is met, a specified event action can be triggered. Event actions include starting animations, stopping animations, etc., but the most important action is "setting symbol attributes," which can change the display of the symbol, such as its color, background color, displayed text, etc.
 
-### Adding Events
+### 5.2.2.1 Adding Events
 
 Add the corresponding events to achieve the corresponding event behaviors. Tip: Some event behaviors only show effects when viewing and cannot be displayed during editing.
 
@@ -43,7 +43,7 @@ The following figure shows two events set for the symbols on the canvas: when th
 
 ![Symbol Events](./images/canvas-06.gif)
 
-### Conditional Triggers
+### 5.2.2.2 Conditional Triggers
 
 You can add trigger conditions to events. The most commonly used trigger condition is "relational operation," which allows logical judgments on the attributes of symbols, including value, progress, status, and text (other attributes do not support logical judgments).
 
@@ -51,30 +51,30 @@ The following figure shows that the event is triggered only when the symbol text
 
 ![Conditional Triggers](./images/canvas-07.gif)
 
-## Animation Effects
+## 5.2.3 Animation Effects
 
 IDMP has many built-in symbol animation effects and also allows frame-by-frame custom animations.
 
-### Symbol Animation
+### 5.2.3.1 Symbol Animation
 
 Add animations and mouse tips to symbols, set animation duration, animation effects, number of loops, next animation tag, whether to play automatically, and whether to maintain animation state.
 
-### Built-in Animation
+### 5.2.3.2 Built-in Animation
 
 None, bounce up and down, bounce left and right, heartbeat, success, warning, error, show off, rotate, custom.
 
-### Custom Animation
+### 5.2.3.3 Custom Animation
 
 Create frame-by-frame custom animations by adding animation frames.
 
-### Mouse Tips
+### 5.2.3.4 Mouse Tips
 
 Display mouse tip information when the mouse hovers over a symbol. Two methods are supported:
 
 1. Write mouse tips using Markdown syntax
 2. Write Mark functions to display the return value of the function
 
-## Symbol Grouping and States
+## 5.2.4 Symbol Grouping and States
 
 You can select multiple shapes on the canvas, then right-click and choose Group/Group as State. You can splice and combine them in any way you want, and perform symbol processing operations on any sub-symbols within the grouped symbols, which is conducive to symbol reuse.
 
@@ -82,7 +82,7 @@ Two or more symbols grouped as a state is a very effective way of representation
 
 ![States](./images/canvas-08.gif)
 
-## Symbol Attributes
+## 5.2.5 Symbol Attributes
 
 Symbols have many attributes, including color, text font, font color, progress, etc. These common attributes can be directly set manually in the appearance settings. However, you can automatically control the following symbol attributes through configuration: background color, color, text color, text, X, Y, height, width, visibility, progress value, progress color, value, state, rotation, disabled, etc.
 
