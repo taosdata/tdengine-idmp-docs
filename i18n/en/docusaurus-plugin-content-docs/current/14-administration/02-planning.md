@@ -13,13 +13,15 @@ The minimum hardware requirements to run TDengine IDMP are:
 - **Memory:** 10 GB
 - **Disk:** 50 GB free space
 
-For production deployments, size resources based on the number of elements (assets) managed:
+Typically, an 8-core server with 16 GB of memory will be sufficient to run TDengine TSDB and TDengine IDMP up to 10,000 elements.
+
+For production deployments, size resources based on the number of elements (assets) managed.
 
 ### 14.2.1.1 IDMP Service Resources
 
 | Element Scale | CPU | Memory | Disk | Typical Use Case |
 |:---:|:---:|:---:|:---:|:---|
-| < 10,000 | 4 cores | 10 GB | 50 GB | PoC / demo / small projects |
+| < 10,000 | 4 cores | 16 GB | 50 GB | PoC / demo / small projects |
 | 10,000 – 100,000 | 8 cores | 16 GB | 100 GB | Small to medium production |
 | 100,000 – 500,000 | 16 cores | 32 GB | 200 GB | Medium production |
 | 500,000 – 1,000,000 | 32 cores | 64 GB | 500 GB | Large production |
