@@ -29,4 +29,4 @@ A microphone button is also available for voice input.
 
 Regardless of which method you used, the result is the same: the analysis creation form opens pre-filled. You can review every field and adjust any value before saving. Click **Save** to create the analysis. If **Enable analysis upon creation** is checked, the analysis starts running immediately.
 
-For a full reference on the analysis form, trigger types, and calculation options, see [Chapter 7: Real-Time Analysis](../07-real-time-analysis/index.md).
+For a full reference on the analysis form, trigger types, and calculation options, see [Chapter 7: Real-Time Intelligent Analysis and Response](../07-real-time-analysis/index.md).

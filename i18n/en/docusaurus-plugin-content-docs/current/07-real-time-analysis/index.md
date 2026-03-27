@@ -1,9 +1,9 @@
 ---
-title: Real-Time Analysis
-sidebar_label: Real-Time Analysis
+title: Real-Time Intelligent Analysis and Response
+sidebar_label: Real-Time Intelligent Analysis and Response
 ---
 
-# 7 Real-Time Analysis
+# 7. Real-Time Intelligent Analysis and Response
 
 Real-time analysis is one of the most important capabilities in TDengine IDMP. It is the engine that turns raw time-series data into operational intelligence — continuously running calculations on live sensor streams, detecting anomalies, computing KPIs, and generating events when conditions are met. With built-in AI assistance, analyses can be created from a natural language description, and anomalies can be detected without writing any detection rules.
 

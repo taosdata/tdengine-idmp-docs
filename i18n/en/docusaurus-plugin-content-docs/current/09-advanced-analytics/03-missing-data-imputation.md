@@ -45,20 +45,33 @@ Missing data imputation is triggered from the **Trend Chart** and **Event Trend 
 
 ### Imputing in View Mode
 
-Steps:
+**Step 1: Identify the gap**
 
-1. Open the **Trend Chart panel** containing the attribute with missing data.
-2. Click the **Impute** icon in the view mode toolbar to enter imputation mode.
-3. **Click and drag** on the chart to select the gap region you want to fill. IDMP calls TDgpt to estimate values for the selected time range and fills them in.
-4. To undo an imputation, click the **Reset Imputation** icon in the toolbar to remove all imputed values from the current chart view.
+Open the **Trend Chart panel** containing the attribute with missing data. Gaps appear as blank segments on the chart, making it straightforward to locate the time range that needs to be addressed.
 
-![Imputation entry point and result in the Trend Chart panel](./images/imputation.png)
+![Trend Chart showing a missing data gap](./images/imputation-01.png)
 
-Imputed values are overlaid on the chart in a visually distinct style, making it easy to compare the original signal (with its gap) against the completed view side by side.
+**Step 2: Select the time range and configure the algorithm**
+
+Click the **Imputation** button in the panel toolbar to enter imputation mode. **Click and drag** on the chart to select the time range to fill — extend the selection slightly beyond the gap on both sides so the algorithm can draw on real measurements from before and after the missing window. When you release, an **algorithm configuration dialog** appears, where you can choose the most appropriate algorithm for your signal — Mean, IEM, LSTM, or Moment.
+
+![Selecting the imputation range and configuring the algorithm](./images/imputation-02.png)
+
+**Step 3: Review the imputed values**
+
+After you confirm the configuration, IDMP calls TDgpt to estimate the missing values. The newly generated data is overlaid on the chart **highlighted in red**, clearly distinguished from the original measurements, so you can verify the result before committing. If the result looks off, click **Reset Imputation** to discard the imputation and try a different time range or algorithm. When the result looks good, click **Save** to write the imputed values to storage.
+
+![Imputation preview — newly generated values highlighted in red](./images/imputation-03.png)
+
+**Step 4: Confirm the final result**
+
+Once saved, the imputed data is written to the data store and the trend chart displays a smooth, continuous curve with the gap resolved.
+
+![Trend Chart after saving — gap resolved](./images/imputation-04.png)
 
 ### Previewing in Edit Mode
 
-The panel editor toolbar also exposes the **Impute** control. Clicking it enters imputation mode within the panel preview, letting you evaluate the visual result in real time before saving any configuration changes — no need to switch to view mode first.
+The panel editor toolbar also exposes the **Imputation** control. Clicking it enters imputation mode within the panel preview, letting you evaluate the visual result in real time before saving any configuration changes — no need to switch to view mode first.
 
 ## Example
 
@@ -69,7 +82,7 @@ A chemical plant relies on natural gas flow data for daily energy accounting and
 **Steps**
 
 1. Open the **Trend Chart panel** containing the `Natural Gas Flow` attribute. In view mode, the communication outage shows up clearly as a flat gap in the signal.
-2. Click the **Impute** icon in the toolbar to enter imputation mode.
+2. Click the **Imputation** button in the toolbar to enter imputation mode.
 3. Click and drag to select the missing time range. IDMP calls TDgpt, which analyzes the flow pattern immediately before and after the gap, estimates what the signal most likely measured during the outage, and fills in the values.
 4. The imputed values appear overlaid in a distinct style. Once the result looks reasonable, accept the imputation.
 

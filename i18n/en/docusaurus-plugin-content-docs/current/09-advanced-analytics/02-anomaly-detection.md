@@ -104,7 +104,7 @@ Once saved, the system continuously monitors the selected attribute. When TDgpt 
 Anomaly events can then be reviewed in the element's **Events** tab, or visualized in an **Event Trend Chart** panel — where the anomalous time ranges are overlaid on the raw signal curve, making it straightforward to compare the signal's behavior inside and outside the anomalous windows and quickly narrow down the root cause.
 
 :::note
-For a complete description of the analysis configuration workflow — including trigger parameters, calculation settings, and event options — see the [Real-Time Analysis](../07-real-time-analysis/02-creating-analysis.md) chapter.
+For a complete description of the analysis configuration workflow — including trigger parameters, calculation settings, and event options — see the [Real-Time Intelligent Analysis and Response](../07-real-time-analysis/02-creating-analysis.md) chapter.
 :::
 
 ## Example

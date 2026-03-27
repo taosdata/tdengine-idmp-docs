@@ -5,7 +5,7 @@ sidebar_label: Advanced Analytics
 
 # 9. Advanced Analytics
 
-Analytics is a capability that runs throughout TDengine IDMP. Beyond basic visualization, IDMP provides a comprehensive suite of advanced analytical capabilities for industrial time-series data, including time-series forecasting, anomaly detection, missing data imputation, clustering, regression, correlation analysis, batch event analysis, statistical testing, association rules, machine learning, and model management.
+Analytics is a capability that runs throughout TDengine IDMP. Beyond basic visualization, IDMP provides a comprehensive suite of advanced analytical capabilities for industrial time-series data, including time-series forecasting, anomaly detection, missing data imputation, clustering, regression, correlation analysis, batch event analysis, association rules, machine learning, and model management.
 
 These advanced capabilities help industrial users develop a deeper understanding of equipment behavior, uncover hidden patterns in their data, and make more accurate data-driven decisions. IDMP is continuously expanding its advanced analytics offering and plans to release ready-to-use analysis templates and applications tailored to specific industrial scenarios.
 
@@ -24,7 +24,6 @@ This chapter brings together the various advanced analytics capabilities distrib
 - **[Regression](./05-regression.md)** — Build quantitative relationship models between attributes
 - **[Correlation Analysis](./06-correlation-analysis.md)** — Measure correlations across multiple attributes or devices
 - **[Batch Event Analysis](./07-batch-event-analysis.md)** — Compare and analyze production batch data through IDMP's event analysis capabilities
-- **[Statistical Testing](./08-statistical-testing.md)** — Hypothesis testing and significance analysis on time-series data
 - **[Association Rules](./09-association-rules.md)** — Discover co-occurrence patterns between events and attributes
 - **[Machine Learning](./10-machine-learning.md)** — Train and apply custom machine learning models on industrial data
 - **[Model Management](./11-model-management.md)** — Centrally manage, deploy, and monitor analytical models

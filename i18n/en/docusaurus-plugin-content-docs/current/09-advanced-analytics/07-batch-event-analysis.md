@@ -119,6 +119,16 @@ After batch events are generated, they can be explored through the event view fo
 
 In the element's **Events** tab, browse the full history of batch records for the equipment, with filtering by time range, event type, and other criteria. Click a single batch event to view its complete record — start and end times, duration, aggregated summary metrics, and custom attribute values.
 
+**Ad Hoc Events**
+
+Beyond system-generated or manually entered batch events, IDMP also supports creating **ad hoc events** on the fly — no template or trigger configuration required. Users can flexibly combine time ranges with attribute conditions to instantly define and generate events of interest. Specifically, users can either select a time range directly on the chart, or layer on attribute rules (such as a parameter exceeding or falling below a threshold, or an attribute matching a specific state) to precisely isolate time windows that meet particular operating conditions.
+
+Ad hoc events participate in analysis on equal footing with formal batch event records, and can be overlaid alongside existing batch data in the same chart for direct comparison. This capability is especially useful in the following situations:
+
+- **Exploratory analysis:** Before a full batch management workflow is in place, use flexible condition combinations to quickly define time ranges of interest and start comparing them immediately
+- **Supplementary comparison:** When a process anomaly is spotted, combine time range and parameter conditions to precisely lock onto that window, then place it next to nearby normal batches or a golden batch to isolate the difference
+- **Hypothesis validation:** After adjusting process parameters, instantly define ad hoc events for post-change time windows and compare them against pre-change batches on the spot to validate the improvement
+
 **Trend Chart Overlay Comparison**
 
 In a Trend Chart panel, overlay batch time ranges on process parameter curves to visualize how each parameter evolved during the batch. Select multiple batches to overlay their curves in the same chart for side-by-side comparison, quickly identifying process differences, parameter drift, and anomalous fluctuations between batches.
@@ -162,7 +172,7 @@ The figure above shows envelope analysis. The gray area represents the parameter
 Through the combined use of these analysis methods, users can gain deep insights into batch differences from multiple perspectives, identify key process factors affecting quality, and provide data support for process optimization and quality control.
 
 :::note
-Event template management — including custom attribute definitions, naming rules, and severity configuration — is done in **Foundation Library → Event Templates**. For the full analysis configuration reference, see the [Real-Time Analysis](../07-real-time-analysis/02-creating-analysis.md) chapter. For the full events reference, see the [Events](../06-events/) chapter.
+Event template management — including custom attribute definitions, naming rules, and severity configuration — is done in **Foundation Library → Event Templates**. For the full analysis configuration reference, see the [Real-Time Intelligent Analysis and Response](../07-real-time-analysis/02-creating-analysis.md) chapter. For the full events reference, see the [Events](../06-events/) chapter.
 :::
 
 ## Example
