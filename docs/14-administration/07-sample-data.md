@@ -69,7 +69,7 @@ java -jar tda-generator-command.jar -f init.json -c
   "trees": {}
 }
 ```
-整个 JSON 配置文件包含五大块，Info 用于描述模拟的场景，TDasset 用于描述 IDMP 的链接信息，datasource 用于描述 时序数据库 TSDB 的链接信息，databased 用户描述数据库的配置，templates 列出元素模版的定义，trees 描述整个元素的树状结构。
+整个 JSON 配置文件包含五大块，Info 用于描述模拟的场景，TDasset 用于描述 IDMP 的链接信息，datasource 用于描述时序数据库 TSDB 的链接信息，databases 用于描述数据库的配置，templates 列出元素模版的定义，trees 描述整个模拟场景的元素树状结构。
 
 ### 14.7.2.2 info - 示例数据场景信息说明
 
@@ -260,7 +260,7 @@ java -jar tda-generator-command.jar -f init.json -c
 
 ### 14.7.2.7 trees - 元素树
 
-这里描述整个树状结构，每个节点可以指定元素模版template, 子节点用 children 来描述。
+这里描述整个树状结构，每个节点可以指定元素模版template, 子节点用 children 来描述。如果用元素模版，需要使用 values 来指定命名规则中的 KEYWORD1。
 
 ```json
 {
@@ -289,14 +289,10 @@ java -jar tda-generator-command.jar -f init.json -c
 
 - visible: 根节点是否可见；
 - template: 使用的模板名称；与 templates 中定义的模板名称保持一致；
-- values: 为模板中的命名关键字赋值；支持范围生成，如 em[1,5] 表示 em1 至 em5, 系统就会用模版自动生成5个元素。
+- values: 为模板中的命名关键字 KEYWORD1 赋值；支持范围生成，如 em[1,5] 表示 em1 至 em5, 系统就会用模版自动生成5个元素。
 - children: 子节点列表；
 
-该配置用于：
-
-- 构建元素树
-- 自动创建子表
-- 自动绑定 TAG 值
+该配置用于创建元素，并构建整个元素的树状结构。
 
 ### 14.7.2.8 完整示例
 
