@@ -5,15 +5,15 @@ sidebar_label: 示例数据
 
 # 14.7 示例数据
 
-示例数据功能允许用户将预置的业务场景一键加载到 TDengine IDMP 中，无需连接真实数据源，即可完整体验系统的各项功能。加载过程中，工具会根据 JSON 配置文件自动创建数据模型，并将模拟的时序数据写入 TDengine 时序数据库。系统安装包中内置了若干典型行业场景的示例数据包；同时，用户也可以根据自己的业务需求构建自定义示例数据包。
+示例数据功能可将预置的业务场景一键加载到 TDengine IDMP 中。无需连接真实数据源，即可完整体验系统各项能力。加载过程中，工具会根据 JSON 配置文件自动创建设备模型，并将模拟的时序数据写入 TDengine 时序数据库。系统安装包内置了若干典型行业场景的示例数据包；也可根据实际业务需求构建自定义示例数据包。
 
-这一功能尤其适合系统集成商和售前工程师使用：在充分了解客户业务场景后，他们可以快速搭建一个贴近客户实际情况的演示环境，帮助客户直观验证 IDMP 的功能与价值，大幅缩短从需求确认到功能验证的周期。
+该功能尤其适用于系统集成商和售前工程师。在充分了解客户业务场景后，可快速搭建贴近客户实际情况的演示环境，帮助客户直观验证 IDMP 的功能与价值，显著缩短从需求确认到功能验证的周期。
 
-示例数据功能通过**管理控制台 → 示例数据**访问。
+可通过 **管理控制台 → 示例数据** 访问该功能。
 
-## 14.7.1 使用方式说明
+## 14.7.1 使用说明
 
-### 14.7.1.1 命令行方式运行
+### 14.7.1.1 命令行方式
 
 #### 运行环境要求
 
@@ -50,11 +50,11 @@ java -jar tda-generator-command.jar -f init.json -c
 仅限测试环境使用。
 :::
 
-### 14.7.1.2 图形界面方式运行
+### 14.7.1.2 图形界面方式
 
 在 IDMP 管理界面中，进入**示例数据**模块，选择或上传 JSON 配置文件，点击 **保存** 或 **放弃** 按钮完成操作。
 
-## 14.7.2 配置说明（JSON 配置文件）
+## 14.7.2 配置说明（JSON 文件）
 
 ### 14.7.2.1 JSON 整体结构
 
@@ -65,14 +65,13 @@ java -jar tda-generator-command.jar -f init.json -c
   "datasource": {},
   "databases": [],
   "templates": [],
-  "tree_root": {},
   "trees": []
 }
 ```
 
 ### 14.7.2.2 info - 示例数据场景信息说明
 
-仅在 IDMP 示例数据界面展示。
+仅用于在 IDMP 示例数据界面中展示。
 
 ```json
 {
@@ -125,7 +124,7 @@ java -jar tda-generator-command.jar -f init.json -c
 }
 ```
 
-- db: TDengine 连接信息；
+- db: TDengine 连接信息，如果使用页面方式操作，则无需配置此项；
 - max_active: 连接池最大连接数；
 - min_idle: 连接池最小空闲连接数；
 - 其他参数请参考 TDengine JDBC 连接池配置说明；
@@ -144,7 +143,7 @@ java -jar tda-generator-command.jar -f init.json -c
 }
 ```
 
-- name: 数据库名称；
+- name: 数据库名称，如果配置缺省，将自动生成数据库名称。
 - drop: 是否删除已存在数据库，建议仅测试环境使用；
 - vgroups: 数据库中初始 vgroup 的数目；
 - precision: 时间精度，默认 ms；
@@ -153,9 +152,7 @@ java -jar tda-generator-command.jar -f init.json -c
 - keep: 数据存储天数，默认 3650 天；
 - 其他参数请参考 TDengine 数据库创建说明；
 
-### 14.7.2.6 templates - 元素模板配置（模型数据）
-
-#### 超级表模板（叶子节点）
+### 14.7.2.6 templates - 元素模板配置
 
 ```json
 {
@@ -181,7 +178,6 @@ java -jar tda-generator-command.jar -f init.json -c
   },
   "super_tables": [
     {
-      "db": "idmp_sample_utility",
       "name": "electricity_meters",
       "start_timestamp": null,
       "time_step": 600000,
@@ -201,33 +197,33 @@ java -jar tda-generator-command.jar -f init.json -c
           "displayDigits": 2,
           "fun": "4*sin(x)+random(2)+4"
         }
-      ]
-    }
-  ],
-  "tags": [
-    {
-      "name": "location",
-      "title": "地址",
-      "description": "地址信息",
-      "namingPattern": "${KEYWORD1}",
-      "type": "Varchar",
-      "length": 50,
-      "location": {
-        "altitude": {
-          "min": -10985,
-          "max": 10000
-        },
-        "latitude": {
-          "min": -90,
-          "max": 90
-        },
-        "longitude": {
-          "min": -180,
-          "max": 180
+      ],
+      "tags": [
+        {
+          "name": "location",
+          "title": "地址",
+          "description": "地址信息",
+          "namingPattern": "${KEYWORD1}",
+          "type": "Varchar",
+          "length": 50,
+          "location": {
+            "altitude": {
+              "min": -10985,
+              "max": 10000
+            },
+            "latitude": {
+              "min": -90,
+              "max": 90
+            },
+            "longitude": {
+              "min": -180,
+              "max": 180
+            }
+          },
+          "tdType": "tag",
+          "tree": true
         }
-      },
-      "tdType": "tag",
-      "tree": true
+      ]
     }
   ]
 }
@@ -239,11 +235,10 @@ java -jar tda-generator-command.jar -f init.json -c
 - keywordsDesc: 命名关键字说明；
 - location: 元素位置属性范围配置；通过 altitude、latitude、longitude 三个字段配置；
 - super_tables: 超级表列表配置；
-  - db: 所属数据库名称；
   - name: 超级表名称；
-  - start_timestamp: 数据写入起始时间戳，null 表示以 4 天前时间开始；
+  - start_timestamp: 数据写入起始时间戳，null 表示从 4 天前开始写入；
   - time_step: 数据时间步进，单位毫秒；
-  - non_stop_mode: no 固定数量数据生成，写满 insert_rows 后停止；yes 持续数据生成（实时模拟）；
+  - non_stop_mode: false 表示按固定行数生成数据；true 表示持续生成数据，用于实时模拟；
   - insert_rows: 需要写入的数据总行数；
   - batch_insert_num: 每批次写入数据行数；
   - insert_interval: 每批次写入间隔时间，单位毫秒，0 表示无间隔；
@@ -259,50 +254,26 @@ java -jar tda-generator-command.jar -f init.json -c
     - fun: 数据生成函数，支持基本数学函数与 random() 函数，x 表示时间变量；
   - tags: 元素标签列表配置，同指标类似；
 
-#### 路径模板（非叶子节点）
+### 14.7.2.7 trees - 元素树与子表生成
 
 ```json
 {
-  "name": "location-#LEVEL-#ID",
-  "level": 3,
-  "description": "这是树的路径模板信息",
-  "namingPattern": "${KEYWORD1}",
-  "keywordsDesc": {
-    "KEYWORD1": "name"
-  }
-}
-```
-
-- name: #LEVEL 由 level 控制创建路径模板数量，#ID 表示引用 info 配置中 id；
-- level: 路径模板层级数；
-- namingPattern: 命名规则；
-
-### 14.7.2.7 tree_root - 元素树根节点
-
-```json
-{
-  "tag_name": "location",
   "value": "公共事业",
-  "visible": "true"
-}
-```
-
-- visible: 根节点是否可见；
-
-### 14.7.2.8 trees - 元素树与子表生成（核心）
-
-```json
-{
-  "template": "location-1-smart_meters",
-  "values": "北京",
+  "visible": "true",
   "children": [
     {
-      "template": "location-2-smart_meters",
-      "values": "海淀",
+      "template": "location-1-smart_meters",
+      "values": "北京",
       "children": [
         {
-          "template": "智能电表",
-          "values": "em[1,5]"
+          "template": "location-2-smart_meters",
+          "values": "海淀",
+          "children": [
+            {
+              "template": "智能电表",
+              "values": "em[1,5]"
+            }
+          ]
         }
       ]
     }
@@ -310,15 +281,665 @@ java -jar tda-generator-command.jar -f init.json -c
 }
 ```
 
+- visible: 根节点是否可见；
 - template: 使用的模板名称；与 templates 中定义的模板名称保持一致；
 - values: 为模板中的命名关键字赋值；支持范围生成，如 em[1,5] 表示 em1 至 em5；
 - children: 子节点列表；
 
-作用：
+该配置用于：
 
 - 构建元素树
 - 自动创建子表
 - 自动绑定 TAG 值
+
+### 14.7.2.8 完整示例
+
+<details>
+<summary>展开查看完整 JSON 示例</summary>
+
+```json
+{
+  "info": {
+    "id": "smart_meters",
+    "name": "公共事业",
+    "description": "智能表计监控系统通过实时采集电表、水表数据，实现能源消耗的精细化管理和异常预警。系统支持区域用量分析、异常检测和用量预测，帮助优化资源配置，降低运营成本，提升公共服务质量。",
+    "file": "smart_meters.json",
+    "image": "smart_meters.png"
+  },
+  "TDasset": {
+    "url": "http://127.0.0.1:6042",
+    "user": "",
+    "password": ""
+  },
+  "datasource": {
+    "db": {
+      "host": "127.0.0.1",
+      "port": 6041,
+      "user": "root",
+      "password": "taosdata",
+      "version": "3.3.6.0",
+      "useTokenForAuth": false,
+      "enableSsl": false
+    },
+    "max_active": 10,
+    "min_idle": 3,
+    "max_lifetime": 1800000,
+    "idle_timeout": 600000,
+    "keep_alive_time": 30000,
+    "connection_timeout": 30000,
+    "validation_timeout": 5000,
+    "validation_query": "SELECT 1"
+  },
+  "databases": [
+    {
+      "name": "idmp_sample_utility",
+      "drop": "yes",
+      "buffer": 10,
+      "cachesize": "",
+      "cachemodel": "'none'",
+      "comp": null,
+      "duration": "10d",
+      "wal_fsync_period": 3000,
+      "maxrows": 4096,
+      "minrows": 100,
+      "stt_trigger": 2,
+      "keep": "3650d,3650d,3650d",
+      "pages": 256,
+      "pagesize": 4,
+      "precision": "ms",
+      "replica": 1,
+      "wal_level": 1,
+      "vgroups": 1,
+      "single_stable": 0,
+      "table_prefix": 0,
+      "table_suffix": 0,
+      "tsdb_pagesize": 4,
+      "wal_retention_period": 3600,
+      "wal_retention_size": 0,
+      "keep_time_offset": 0,
+      "compact_interval": "0d",
+      "compact_time_range": "0d,0d",
+      "compact_time_offset": "0h",
+      "dnodes": ""
+    }
+  ],
+  "templates": [
+    {
+      "name": "智能电表",
+      "description": "这是智能电表信息",
+      "namingPattern": "${KEYWORD1}",
+      "keywordsDesc": {
+        "KEYWORD1": "child table name"
+      },
+      "location": {
+        "altitude": {
+          "min": -10985,
+          "max": 10000
+        },
+        "latitude": {
+          "min": -90,
+          "max": 90
+        },
+        "longitude": {
+          "min": -180,
+          "max": 180
+        }
+      },
+      "leaf": true,
+      "super_tables": [
+        {
+          "name": "electricity_meters",
+          "start_timestamp": null,
+          "time_step": 600000,
+          "non_stop_mode": false,
+          "slice_size": 10,
+          "insert_rows": 1440,
+          "batch_insert_num": 500,
+          "insert_interval": 0,
+          "metrics": [
+            {
+              "name": "current",
+              "title": "电流",
+              "description": "电流信息",
+              "type": "Float",
+              "tdType": "metric",
+              "uomClass": "电流",
+              "uom": "A",
+              "displayDigits": 2,
+              "fun": "4*sin(x)+random(2)+4"
+            },
+            {
+              "name": "voltage",
+              "title": "电压",
+              "description": "电压信息",
+              "type": "Int",
+              "tdType": "metric",
+              "uomClass": "电压",
+              "uom": "V",
+              "fun": "10*sin(x)+10*random(4)+200"
+            },
+            {
+              "name": "power",
+              "title": "功率",
+              "description": "功率信息",
+              "type": "Float",
+              "tdType": "metric",
+              "uomClass": "功率",
+              "uom": "W",
+              "defaultValue": 100
+            },
+            {
+              "name": "phase",
+              "title": "相位",
+              "description": "相位信息",
+              "type": "Float",
+              "tdType": "metric",
+              "displayDigits": 2,
+              "traits": [
+                {
+                  "traitType": "Limits",
+                  "traitLimitsType": "Minimum",
+                  "defaultValue": "0"
+                },
+                {
+                  "traitType": "Limits",
+                  "traitLimitsType": "Maximum",
+                  "defaultValue": "1"
+                }
+              ]
+            }
+          ],
+          "tags": [
+            {
+              "name": "location",
+              "title": "地址",
+              "description": "地址信息",
+              "namingPattern": "${KEYWORD1}",
+              "type": "Varchar",
+              "length": 50,
+              "location": {
+                "altitude": {
+                  "min": -10985,
+                  "max": 10000
+                },
+                "latitude": {
+                  "min": -90,
+                  "max": 90
+                },
+                "longitude": {
+                  "min": -180,
+                  "max": 180
+                }
+              },
+              "tdType": "tag",
+              "tree": true
+            },
+            {
+              "name": "unit",
+              "title": "单元",
+              "description": "单元信息",
+              "type": "tinyint",
+              "tdType": "tag"
+            },
+            {
+              "name": "floor",
+              "title": "楼层",
+              "description": "楼层信息",
+              "type": "tinyint",
+              "tdType": "tag"
+            },
+            {
+              "name": "device_id",
+              "title": "设备ID",
+              "description": "设备ID信息",
+              "type": "Nchar",
+              "length": 20,
+              "tdType": "tag"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "智能水表",
+      "description": "这是智能水表信息",
+      "namingPattern": "${KEYWORD1}",
+      "keywordsDesc": {
+        "KEYWORD1": "child table name"
+      },
+      "location": {
+        "altitude": {
+          "min": -10985,
+          "max": 10000
+        },
+        "latitude": {
+          "min": -90,
+          "max": 90
+        },
+        "longitude": {
+          "min": -180,
+          "max": 180
+        }
+      },
+      "leaf": true,
+      "super_tables": [
+        {
+          "name": "water_meters_01",
+          "start_timestamp": "2025-06-10 20:00:00.000",
+          "time_step": 600000,
+          "non_stop_mode": false,
+          "slice_size": 10,
+          "insert_rows": 1440,
+          "batch_insert_num": 500,
+          "insert_interval": 0,
+          "metrics": [
+            {
+              "name": "rate",
+              "title": "流量",
+              "description": "流量信息",
+              "type": "Float",
+              "tdType": "metric",
+              "uomClass": "体积流量",
+              "uom": "l/s",
+              "displayDigits": 2,
+              "fun": "4*sin(x)+random(2)+4"
+            },
+            {
+              "name": "pressure",
+              "title": "水压",
+              "description": "水压信息",
+              "type": "Int",
+              "tdType": "metric",
+              "uomClass": "压力",
+              "uom": "kPa",
+              "traits": [
+                {
+                  "traitType": "Limits",
+                  "traitLimitsType": "Minimum",
+                  "defaultValue": "0"
+                },
+                {
+                  "traitType": "Limits",
+                  "traitLimitsType": "Maximum",
+                  "defaultValue": "400"
+                }
+              ]
+            }
+          ],
+          "tags": [
+            {
+              "name": "location",
+              "title": "地址",
+              "description": "地址信息",
+              "namingPattern": "${KEYWORD1}",
+              "column": "$(databases[0]).$(super_tables[1]).location",
+              "location": {
+                "altitude": {
+                  "min": -10985,
+                  "max": 10000
+                },
+                "latitude": {
+                  "min": -90,
+                  "max": 90
+                },
+                "longitude": {
+                  "min": -180,
+                  "max": 180
+                }
+              },
+              "type": "Varchar",
+              "length": 50,
+              "tdType": "tag",
+              "tree": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "location-1-smart_meters",
+      "description": "这是树的路径模板信息",
+      "namingPattern": "${KEYWORD1}",
+      "keywordsDesc": {
+        "KEYWORD1": "name"
+      }
+    },
+    {
+      "name": "location-2-smart_meters",
+      "description": "这是树的路径模板信息",
+      "namingPattern": "${KEYWORD1}",
+      "keywordsDesc": {
+        "KEYWORD1": "name"
+      }
+    },
+    {
+      "name": "location-3-smart_meters",
+      "description": "这是树的路径模板信息",
+      "namingPattern": "${KEYWORD1}",
+      "keywordsDesc": {
+        "KEYWORD1": "name"
+      }
+    },
+    {
+      "name": "location-4-smart_meters",
+      "description": "这是树的路径模板信息",
+      "namingPattern": "${KEYWORD1}",
+      "keywordsDesc": {
+        "KEYWORD1": "name"
+      }
+    }
+  ],
+  "trees": {
+    "value": "公共事业",
+    "visible": true,
+    "children": [
+      {
+        "template": "location-1-smart_meters",
+        "values": "北京",
+        "children": [
+          {
+            "template": "location-2-smart_meters",
+            "values": "海淀",
+            "children": [
+              {
+                "template": "location-3-smart_meters",
+                "values": "西三旗街道",
+                "children": [
+                  {
+                    "template": "智能电表",
+                    "child_table_names": "em-[1,2]",
+                    "values": "em-[1,2]",
+                    "unit": [
+                      1,
+                      2
+                    ],
+                    "floor": [
+                      2,
+                      2
+                    ],
+                    "device_id": "em20250220001000[1,2]"
+                  }
+                ]
+              },
+              {
+                "template": "location-3-smart_meters",
+                "values": "上地街道",
+                "children": [
+                  {
+                    "template": "智能电表",
+                    "child_table_names": "em-3",
+                    "values": "em-3",
+                    "unit": [
+                      1
+                    ],
+                    "floor": [
+                      2
+                    ],
+                    "device_id": "em202502200010003"
+                  }
+                ]
+              },
+              {
+                "template": "location-3-smart_meters",
+                "values": "五道口街道",
+                "children": [
+                  {
+                    "template": "智能电表",
+                    "child_table_names": "em-4",
+                    "values": "em-4",
+                    "unit": [
+                      1
+                    ],
+                    "floor": [
+                      2
+                    ],
+                    "device_id": "em202502200010004"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "template": "location-2-smart_meters",
+            "values": "朝阳",
+            "children": [
+              {
+                "template": "location-3-smart_meters",
+                "values": "望京街道",
+                "children": [
+                  {
+                    "template": "智能电表",
+                    "child_table_names": "em-[11,15]",
+                    "values": "em-[11,15]",
+                    "unit": [
+                      11,
+                      11,
+                      11,
+                      11,
+                      1
+                    ],
+                    "floor": [
+                      11,
+                      12,
+                      13,
+                      14,
+                      15
+                    ],
+                    "device_id": [
+                      "em202502200010011",
+                      "em202502200010012",
+                      "em202502200010013",
+                      "em202502200010014",
+                      "em202502200010015"
+                    ]
+                  }
+                ]
+              },
+              {
+                "template": "location-3-smart_meters",
+                "values": "三元桥街道",
+                "children": [
+                  {
+                    "template": "智能电表",
+                    "child_table_names": "em-10",
+                    "values": "em-10",
+                    "unit": [
+                      1
+                    ],
+                    "floor": [
+                      2
+                    ],
+                    "device_id": "em202502200010010"
+                  },
+                  {
+                    "template": "智能水表",
+                    "child_table_names": "wm-1",
+                    "values": "wm-1",
+                    "device_id": "wm20250220001001"
+                  }
+                ]
+              },
+              {
+                "template": "location-3-smart_meters",
+                "values": "国贸街道",
+                "children": [
+                  {
+                    "template": "智能电表",
+                    "child_table_names": "em-[6,9]",
+                    "values": "em-[6,9]",
+                    "unit": [
+                      1,
+                      1,
+                      1,
+                      1
+                    ],
+                    "floor": [
+                      2,
+                      2,
+                      2,
+                      2
+                    ],
+                    "device_id": "em20250220001000[6,9]"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "template": "location-2-smart_meters",
+            "values": "东城",
+            "children": [
+              {
+                "template": "智能电表",
+                "child_table_names": "em-[16,17]",
+                "values": "em-[16,17]",
+                "unit": [
+                  1,
+                  1
+                ],
+                "floor": [
+                  2,
+                  2
+                ],
+                "device_id": "em2025022000100[16,17]"
+              }
+            ]
+          },
+          {
+            "template": "location-2-smart_meters",
+            "values": "西城",
+            "children": [
+              {
+                "template": "智能水表",
+                "child_table_names": "wm-2",
+                "values": "wm-2",
+                "device_id": "wm20250220001002"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "template": "location-1-smart_meters",
+        "values": "河南",
+        "children": [
+          {
+            "template": "location-2-smart_meters",
+            "values": "郑州",
+            "children": [
+              {
+                "template": "智能电表",
+                "child_table_names": "em-[18,19]",
+                "values": "em-[18,19]",
+                "unit": [
+                  1,
+                  1
+                ],
+                "floor": [
+                  2,
+                  2
+                ],
+                "device_id": "em2025022000100[18,19]"
+              }
+            ]
+          },
+          {
+            "template": "location-2-smart_meters",
+            "values": "开封",
+            "children": [
+              {
+                "template": "智能电表",
+                "child_table_names": "em-20",
+                "values": "em-20",
+                "unit": [
+                  1
+                ],
+                "floor": [
+                  2
+                ],
+                "device_id": "em202502200010020"
+              }
+            ]
+          },
+          {
+            "template": "location-2-smart_meters",
+            "values": "洛阳",
+            "children": [
+              {
+                "template": "智能电表",
+                "child_table_names": "em-21",
+                "values": "em-21",
+                "unit": [
+                  1
+                ],
+                "floor": [
+                  2
+                ],
+                "device_id": "em202502200010021"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "template": "location-1-smart_meters",
+        "values": "河北",
+        "children": [
+          {
+            "template": "location-2-smart_meters",
+            "values": "石家庄",
+            "children": [
+              {
+                "template": "智能电表",
+                "child_table_names": "em-22",
+                "values": "em-22",
+                "unit": [
+                  1
+                ],
+                "floor": [
+                  2
+                ],
+                "device_id": "em202502200010021"
+              }
+            ]
+          },
+          {
+            "template": "location-2-smart_meters",
+            "values": "保定[1,2]",
+            "children": [
+              {
+                "template": "location-3-smart_meters",
+                "values": "清苑区",
+                "children": [
+                  {
+                    "template": "智能电表",
+                    "child_table_names": "em-[23,24]",
+                    "values": "em-[23,24]",
+                    "unit": [
+                      1,
+                      1
+                    ],
+                    "floor": [
+                      2,
+                      2
+                    ],
+                    "device_id": [
+                      "em202502200010023",
+                      "em202502200010024"
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+</details>
 
 ## 14.7.3 使用建议
 
