@@ -5,7 +5,7 @@ sidebar_label: Sample Data
 
 # 14.7 Sample Data
 
-The Sample Data feature loads a prebuilt business scenario into TDengine IDMP with a single click. No real data source is required to experience the full product workflow. During loading, the tool automatically creates the data model from a JSON configuration file and writes simulated time-series data into the TDengine time-series database. The system includes several typical industry scenario packages out of the box, and custom packages can also be built to match specific business requirements.
+The Sample Data feature loads a prebuilt business scenario into TDengine IDMP with a single click. No real data source is required to experience the full product workflow. During loading, the tool automatically creates the data model from a JSON configuration file and writes simulated time-series data into the TDengine time-series database. The system includes several typical industry scenario packages out of the box, and users can also build custom packages to match specific business requirements.
 
 This feature is especially useful for system integrators and pre-sales engineers. After understanding a customer's operational environment, they can quickly assemble a demo that closely matches the customer's real scenario, helping the customer verify the relevant IDMP capabilities and value earlier in the evaluation cycle.
 
@@ -52,7 +52,7 @@ For testing environments only.
 
 ### 14.7.1.2 GUI Mode
 
-In the IDMP management interface, open the **Sample Data** module, select or upload a JSON configuration file, then click **Save** or **Abandon** to complete the operation.
+In the IDMP management interface, open the **Sample Data** module, select or upload a JSON configuration file, then click **Save** or **Cancel** to complete the operation.
 
 ## 14.7.2 Configuration Guide (JSON)
 
@@ -65,7 +65,7 @@ In the IDMP management interface, open the **Sample Data** module, select or upl
   "datasource": {},
   "databases": [],
   "templates": [],
-  "trees": []
+  "trees": {}
 }
 ```
 
@@ -907,7 +907,7 @@ This section:
                 "floor": [
                   2
                 ],
-                "device_id": "em202502200010022"
+                "device_id": "em202502200010023"
               }
             ]
           },

@@ -5,7 +5,7 @@ sidebar_label: 示例数据
 
 # 14.7 示例数据
 
-示例数据功能可将预置的业务场景一键加载到 TDengine IDMP 中。无需连接真实数据源，即可完整体验系统各项能力。加载过程中，工具会根据 JSON 配置文件自动创建设备模型，并将模拟的时序数据写入 TDengine 时序数据库。系统安装包内置了若干典型行业场景的示例数据包；也可根据实际业务需求构建自定义示例数据包。
+示例数据功能可将预置的业务场景一键加载到 TDengine IDMP 中。无需连接真实数据源，即可完整体验系统各项能力。加载过程中，工具会根据 JSON 配置文件自动创建设备模型，并将模拟的时序数据写入 TDengine 时序数据库。系统安装包内置了若干典型行业场景的示例数据包，用户也可根据实际业务需求构建自定义示例数据包。
 
 该功能尤其适用于系统集成商和售前工程师。在充分了解客户业务场景后，可快速搭建贴近客户实际情况的演示环境，帮助客户直观验证 IDMP 的功能与价值，显著缩短从需求确认到功能验证的周期。
 
@@ -52,7 +52,7 @@ java -jar tda-generator-command.jar -f init.json -c
 
 ### 14.7.1.2 图形界面方式
 
-在 IDMP 管理界面中，进入**示例数据**模块，选择或上传 JSON 配置文件，点击 **保存** 或 **放弃** 按钮完成操作。
+在 IDMP 管理界面中，进入**示例数据**模块，选择或上传 JSON 配置文件，点击 **保存** 或 **取消** 按钮完成操作。
 
 ## 14.7.2 配置说明（JSON 文件）
 
@@ -65,7 +65,7 @@ java -jar tda-generator-command.jar -f init.json -c
   "datasource": {},
   "databases": [],
   "templates": [],
-  "trees": []
+  "trees": {}
 }
 ```
 
@@ -124,7 +124,7 @@ java -jar tda-generator-command.jar -f init.json -c
 }
 ```
 
-- db: TDengine 连接信息，如果使用页面方式操作，则无需配置此项；
+- db: TDengine 连接信息，如果使用页面方式操作，则无需配置此项
 - max_active: 连接池最大连接数；
 - min_idle: 连接池最小空闲连接数；
 - 其他参数请参考 TDengine JDBC 连接池配置说明；
@@ -143,7 +143,7 @@ java -jar tda-generator-command.jar -f init.json -c
 }
 ```
 
-- name: 数据库名称，如果配置缺省，将自动生成数据库名称。
+- name: 数据库名称，如果配置缺省，将自动生成数据库名称
 - drop: 是否删除已存在数据库，建议仅测试环境使用；
 - vgroups: 数据库中初始 vgroup 的数目；
 - precision: 时间精度，默认 ms；
