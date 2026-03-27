@@ -24,9 +24,9 @@ This chapter brings together the various advanced analytics capabilities distrib
 - **[Regression](./05-regression.md)** — Build quantitative relationship models between attributes
 - **[Correlation Analysis](./06-correlation-analysis.md)** — Measure correlations across multiple attributes or devices
 - **[Batch Event Analysis](./07-batch-event-analysis.md)** — Compare and analyze production batch data through IDMP's event analysis capabilities
-- **[Association Rules](./09-association-rules.md)** — Discover co-occurrence patterns between events and attributes
-- **[Machine Learning](./10-machine-learning.md)** — Train and apply custom machine learning models on industrial data
-- **[Model Management](./11-model-management.md)** — Centrally manage, deploy, and monitor analytical models
+- **[Association Rules](./08-association-rules.md)** — Discover co-occurrence patterns between events and attributes
+- **[Machine Learning](./09-machine-learning.md)** — Train and apply custom machine learning models on industrial data
+- **[Model Management](./10-model-management.md)** — Centrally manage, deploy, and monitor analytical models
 
 import DocCardList from '@theme/DocCardList';
 

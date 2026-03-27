@@ -24,9 +24,9 @@ TDengine IDMP 的高级分析能力来源于内置的时序 AI 分析引擎 TDgp
 - **[回归分析](./05-regression.md)** — 建立属性之间的定量关系模型
 - **[相关分析](./06-correlation-analysis.md)** — 度量多个属性或设备之间的相关性
 - **[批次事件分析](./07-batch-event-analysis.md)** — 利用事件分析能力对生产批次数据进行对比与深度分析
-- **[关联规则](./09-association-rules.md)** — 挖掘事件与属性之间的共现规律
-- **[机器学习](./10-machine-learning.md)** — 在工业数据上训练和应用自定义机器学习模型
-- **[模型管理](./11-model-management.md)** — 统一管理、部署和监控分析模型
+- **[关联规则](./08-association-rules.md)** — 挖掘事件与属性之间的共现规律
+- **[机器学习](./09-machine-learning.md)** — 在工业数据上训练和应用自定义机器学习模型
+- **[模型管理](./10-model-management.md)** — 统一管理、部署和监控分析模型
 
 import DocCardList from '@theme/DocCardList';
 
