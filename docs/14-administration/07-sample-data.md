@@ -5,14 +5,15 @@ sidebar_label: 示例数据
 
 # 14.7 示例数据
 
-示例数据功能可将预置的业务场景一键加载到 TDengine IDMP 中。无需连接真实数据源，即可完整体验系统各项能力。加载过程中，工具会根据 JSON 配置文件自动创建设备模型，并将模拟的时序数据写入 TDengine 时序数据库。系统安装包内置了若干典型行业场景的示例数据包，用户也可根据实际业务需求构建自己的 JSON 配置文件。
+示例数据功能可将预置的业务场景一键加载到 TDengine IDMP 中。无需连接真实数据源，即可完整体验系统各项能力。加载过程中，工具会根据 JSON 配置文件自动创建设备模型，并将模拟的时序数据写入 TDengine 时序数据库。系统安装包内置了若干典型行业场景的示例数据包，也可根据实际业务需求编写相应的 JSON 配置文件。
 
-该功能尤其适用于系统集成商和售前工程师。在充分了解客户业务场景后，可快速搭建贴近客户实际情况的演示环境，帮助客户直观验证 IDMP 的功能与价值，显著缩短从需求确认到功能验证的周期。你需要做的是根据场景，创建 JSON 配置文件，也可以借助 AI 工具，用自然语言自动生成配置文件。
+该功能尤其适用于系统集成商和售前工程师。在充分了解客户业务场景后，可快速搭建贴近客户实际情况的演示环境，帮助客户直观验证 IDMP 的功能与价值，显著缩短从需求确认到功能验证的周期。使用时，需要根据场景编写 JSON 配置文件，也可以借助 AI 工具通过自然语言生成配置文件。
 
 可通过 **管理控制台 → 示例数据** 访问该功能。
 
 ## 14.7.1 使用说明
-下面的说明中，假设你的 JSON 配置文件名为 init.json
+
+以下说明假设 JSON 配置文件名为 init.json。
 
 ### 14.7.1.1 命令行方式
 
@@ -69,7 +70,8 @@ java -jar tda-generator-command.jar -f init.json -c
   "trees": {}
 }
 ```
-整个 JSON 配置文件包含五大块，Info 用于描述模拟的场景，TDasset 用于描述 IDMP 的链接信息，datasource 用于描述时序数据库 TSDB 的链接信息，databases 用于描述数据库的配置，templates 列出元素模版的定义，trees 描述整个模拟场景的元素树状结构。
+
+整个 JSON 配置文件包含 6 个部分：`info` 用于描述模拟场景，`TDasset` 用于描述 IDMP 的连接信息，`datasource` 用于描述时序数据库 TSDB 的连接信息，`databases` 用于描述数据库配置，`templates` 用于定义元素模板，`trees` 用于描述整个模拟场景的元素树结构。
 
 ### 14.7.2.2 info - 示例数据场景信息说明
 
@@ -88,7 +90,7 @@ java -jar tda-generator-command.jar -f init.json -c
 - name: 场景名称，保持在示例数据列表中唯一；
 - description: 场景描述；
 - file: 保持与文件名称一致；
-- image: 展示示例场景列表时，显示的图片
+- image: 展示示例场景列表时显示的图片；
 
 ### 14.7.2.3 TDasset - IDMP 连接配置
 
@@ -156,7 +158,8 @@ java -jar tda-generator-command.jar -f init.json -c
 - 其他参数请参考 TDengine 数据库创建说明；
 
 ### 14.7.2.6 templates - 元素模板配置
-元素模版的配置包含两部分，1：通用信息( 名字、命名规则、位置等）；2：属性列表，由 super_tables 来描述，先描述如何生成模拟数据，然后描述 metric 与 tag. 对于 metric, 还可以指定生成模拟数据的函数。
+
+元素模板配置包含两部分：1. 通用信息，如名称、命名规则和位置信息；2. 属性列表，由 `super_tables` 描述，包括模拟数据生成方式以及 `metric` 和 `tag` 的定义。其中，`metric` 还可以指定模拟数据生成函数。
 
 ```json
 {
@@ -260,7 +263,7 @@ java -jar tda-generator-command.jar -f init.json -c
 
 ### 14.7.2.7 trees - 元素树
 
-这里描述整个树状结构，每个节点可以指定元素模版template, 子节点用 children 来描述。如果用元素模版，需要使用 values 来指定命名规则中的 KEYWORD1。
+此处描述整个树状结构。每个节点均可指定元素模板 `template`，子节点通过 `children` 描述。使用元素模板时，需要通过 `values` 为命名规则中的 `KEYWORD1` 赋值。
 
 ```json
 {
@@ -289,7 +292,7 @@ java -jar tda-generator-command.jar -f init.json -c
 
 - visible: 根节点是否可见；
 - template: 使用的模板名称；与 templates 中定义的模板名称保持一致；
-- values: 为模板中的命名关键字 KEYWORD1 赋值；支持范围生成，如 em[1,5] 表示 em1 至 em5, 系统就会用模版自动生成5个元素。
+- values: 为模板中的命名关键字 `KEYWORD1` 赋值；支持范围生成，如 `em[1,5]` 表示从 `em1` 到 `em5`，系统会依据模板自动生成 5 个元素。
 - children: 子节点列表；
 
 该配置用于创建元素，并构建整个元素的树状结构。
@@ -651,14 +654,8 @@ java -jar tda-generator-command.jar -f init.json -c
                     "template": "智能电表",
                     "child_table_names": "em-[1,2]",
                     "values": "em-[1,2]",
-                    "unit": [
-                      1,
-                      2
-                    ],
-                    "floor": [
-                      2,
-                      2
-                    ],
+                    "unit": [1, 2],
+                    "floor": [2, 2],
                     "device_id": "em20250220001000[1,2]"
                   }
                 ]
@@ -671,12 +668,8 @@ java -jar tda-generator-command.jar -f init.json -c
                     "template": "智能电表",
                     "child_table_names": "em-3",
                     "values": "em-3",
-                    "unit": [
-                      1
-                    ],
-                    "floor": [
-                      2
-                    ],
+                    "unit": [1],
+                    "floor": [2],
                     "device_id": "em202502200010003"
                   }
                 ]
@@ -689,12 +682,8 @@ java -jar tda-generator-command.jar -f init.json -c
                     "template": "智能电表",
                     "child_table_names": "em-4",
                     "values": "em-4",
-                    "unit": [
-                      1
-                    ],
-                    "floor": [
-                      2
-                    ],
+                    "unit": [1],
+                    "floor": [2],
                     "device_id": "em202502200010004"
                   }
                 ]
@@ -713,20 +702,8 @@ java -jar tda-generator-command.jar -f init.json -c
                     "template": "智能电表",
                     "child_table_names": "em-[11,15]",
                     "values": "em-[11,15]",
-                    "unit": [
-                      11,
-                      11,
-                      11,
-                      11,
-                      1
-                    ],
-                    "floor": [
-                      11,
-                      12,
-                      13,
-                      14,
-                      15
-                    ],
+                    "unit": [11, 11, 11, 11, 1],
+                    "floor": [11, 12, 13, 14, 15],
                     "device_id": [
                       "em202502200010011",
                       "em202502200010012",
@@ -745,12 +722,8 @@ java -jar tda-generator-command.jar -f init.json -c
                     "template": "智能电表",
                     "child_table_names": "em-10",
                     "values": "em-10",
-                    "unit": [
-                      1
-                    ],
-                    "floor": [
-                      2
-                    ],
+                    "unit": [1],
+                    "floor": [2],
                     "device_id": "em202502200010010"
                   },
                   {
@@ -769,18 +742,8 @@ java -jar tda-generator-command.jar -f init.json -c
                     "template": "智能电表",
                     "child_table_names": "em-[6,9]",
                     "values": "em-[6,9]",
-                    "unit": [
-                      1,
-                      1,
-                      1,
-                      1
-                    ],
-                    "floor": [
-                      2,
-                      2,
-                      2,
-                      2
-                    ],
+                    "unit": [1, 1, 1, 1],
+                    "floor": [2, 2, 2, 2],
                     "device_id": "em20250220001000[6,9]"
                   }
                 ]
@@ -795,14 +758,8 @@ java -jar tda-generator-command.jar -f init.json -c
                 "template": "智能电表",
                 "child_table_names": "em-[16,17]",
                 "values": "em-[16,17]",
-                "unit": [
-                  1,
-                  1
-                ],
-                "floor": [
-                  2,
-                  2
-                ],
+                "unit": [1, 1],
+                "floor": [2, 2],
                 "device_id": "em2025022000100[16,17]"
               }
             ]
@@ -833,14 +790,8 @@ java -jar tda-generator-command.jar -f init.json -c
                 "template": "智能电表",
                 "child_table_names": "em-[18,19]",
                 "values": "em-[18,19]",
-                "unit": [
-                  1,
-                  1
-                ],
-                "floor": [
-                  2,
-                  2
-                ],
+                "unit": [1, 1],
+                "floor": [2, 2],
                 "device_id": "em2025022000100[18,19]"
               }
             ]
@@ -853,12 +804,8 @@ java -jar tda-generator-command.jar -f init.json -c
                 "template": "智能电表",
                 "child_table_names": "em-20",
                 "values": "em-20",
-                "unit": [
-                  1
-                ],
-                "floor": [
-                  2
-                ],
+                "unit": [1],
+                "floor": [2],
                 "device_id": "em202502200010020"
               }
             ]
@@ -871,12 +818,8 @@ java -jar tda-generator-command.jar -f init.json -c
                 "template": "智能电表",
                 "child_table_names": "em-21",
                 "values": "em-21",
-                "unit": [
-                  1
-                ],
-                "floor": [
-                  2
-                ],
+                "unit": [1],
+                "floor": [2],
                 "device_id": "em202502200010021"
               }
             ]
@@ -895,12 +838,8 @@ java -jar tda-generator-command.jar -f init.json -c
                 "template": "智能电表",
                 "child_table_names": "em-22",
                 "values": "em-22",
-                "unit": [
-                  1
-                ],
-                "floor": [
-                  2
-                ],
+                "unit": [1],
+                "floor": [2],
                 "device_id": "em202502200010021"
               }
             ]
@@ -917,18 +856,9 @@ java -jar tda-generator-command.jar -f init.json -c
                     "template": "智能电表",
                     "child_table_names": "em-[23,24]",
                     "values": "em-[23,24]",
-                    "unit": [
-                      1,
-                      1
-                    ],
-                    "floor": [
-                      2,
-                      2
-                    ],
-                    "device_id": [
-                      "em202502200010023",
-                      "em202502200010024"
-                    ]
+                    "unit": [1, 1],
+                    "floor": [2, 2],
+                    "device_id": ["em202502200010023", "em202502200010024"]
                   }
                 ]
               }
