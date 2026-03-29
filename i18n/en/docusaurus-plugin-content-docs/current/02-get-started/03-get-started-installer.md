@@ -37,8 +37,8 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 1. Run the following commands to install TDengine IDMP:
 
    ```bash
-   tar -zxvf tdengine-idmp-enterprise-1.0.14.5-linux-generic.tar.gz && \
-   cd tdengine-idmp-enterprise-1.0.14.5 && \
+   tar -zxvf tdengine-idmp-enterprise-1.0.15.0-linux-generic.tar.gz && \
+   cd tdengine-idmp-enterprise-1.0.15.0 && \
    sudo ./install.sh
    ```
 
@@ -87,7 +87,7 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 1. Run the following command to install TDengine IDMP:
 
    ```bash
-   sudo rpm -ivh --nodeps tdengine-idmp-enterprise-1.0.14.5-linux-generic.rpm
+   sudo rpm -ivh --nodeps tdengine-idmp-enterprise-1.0.15.0-linux-generic.rpm
    ```
 
    :::tip
@@ -135,7 +135,7 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 1. Run the following command to install TDengine IDMP:
 
    ```bash
-   sudo dpkg -i tdengine-idmp-enterprise-1.0.14.5-linux-generic.deb
+   sudo dpkg -i tdengine-idmp-enterprise-1.0.15.0-linux-generic.deb
    ```
 
    :::tip
@@ -183,7 +183,7 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 1. Run the following command to install TDengine IDMP:
 
    ```bash
-   sudo installer -pkg tdengine-idmp-enterprise-1.0.14.5-macos-generic.pkg -target /
+   sudo installer -pkg tdengine-idmp-enterprise-1.0.15.0-macos-generic.pkg -target /
    ```
 
    :::tip
