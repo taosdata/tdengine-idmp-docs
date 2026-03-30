@@ -147,6 +147,28 @@ The multi-swimlane view plots each event's curves in separate subplots, with eac
 
 The figure above shows event comparison in multi-swimlane layout. Each attribute occupies a separate row, arranged vertically, making it easy to inspect each event's process curve shape individually and quickly identify characteristic patterns of anomalous events.
 
+**Event Line Analysis**
+
+The event analysis panel offers multiple display modes for attribute trends and event overlays. By default, events are overlaid directly on the attribute trend chart using a darker background.
+
+Users can also click the **Enable Event Line Mode** action in the toolbar. In this mode, events appear as separate colored lines above the attribute trend chart. When hovering over an event line, the system reveals key information for that event. This mode is especially useful when investigating many different event types at once.
+
+![Event line analysis](./images/event-trend-line.png)
+
+**Time Series Forecasting**
+
+The event analysis panel integrates time series forecasting capabilities. Users can click the **Forecast** icon in the toolbar, select the attribute to forecast, configure the forecasting algorithm and parameters, and generate forecast data with one click.
+
+![Forecast analysis](./images/event-trend-forecast.png)
+
+**Missing Value Imputation**
+
+The event analysis panel also includes missing value imputation capabilities. Users can click the **Missing Value Imputation** icon in the toolbar, select the time window to impute, configure the imputation algorithm and parameters, and generate imputed data with one click. They can then choose to reset or save the imputed results.
+
+![Missing value imputation](./images/event-trend-imputation.png)
+
+![Missing value imputation save](./images/event-trend-imputation-save.png)
+
 **Time Alignment**
 
 Time alignment aligns the start points of multiple events to the same moment (such as t=0), enabling direct comparison of process parameters at the same relative time points across different events. This eliminates the effect of actual event occurrence time differences, focusing on the internal process itself. Time alignment is particularly suited for analyzing parameter performance during relative time periods such as "first 2 hours from start" or "mid-reaction phase."
