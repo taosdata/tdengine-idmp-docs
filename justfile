@@ -1,5 +1,5 @@
 # TDengine IDMP Documentation
-shell := "powershell"
+
 # default recipe: list all available recipes
 default:
     @just --list
