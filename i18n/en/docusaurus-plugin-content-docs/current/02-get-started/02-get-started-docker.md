@@ -44,6 +44,16 @@ TDengine IDMP is offered as a Docker Compose setup to make deployment easy. This
 
    The required images will be pulled automatically if not already present locally.
 
+   If you want to install a specific version, execute the following
+   
+   ```bash
+   cd tdengine-idmp-deployment/docker
+   export TZ="UTC"
+   chmod +x idmp.sh
+   IDMP_TAG=1.0.14.4 ./idmp.sh start
+   ```
+   remember to replace "1.0.14.4" with the version number you want
+   
    :::note
    Set the `TZ` environment variable to match your environment. `UTC` is a good default for server environments. All containers in the Compose stack inherit this setting — an incorrect timezone will cause analysis triggers and event timestamps to be misaligned.
    :::
