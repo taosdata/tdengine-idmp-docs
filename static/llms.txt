@@ -1,0 +1,126 @@
+# TDengine IDMP Documentation
+
+> TDengine IDMP (Industrial Data Management Platform) is an AI-native industrial data management platform designed to manage, analyze, and extract business insights from industrial operational data. It works in tandem with TDengine TSDB (a high-performance time-series database) to provide asset modeling, data contextualization, real-time analytics, visualization, event management, and AI-powered insights.
+
+## Getting Started
+
+- [Introduction](https://idmpdocs.taosdata.com/01-introduction): Product overview, architecture, core concepts (Elements, Attributes, Events, Panels, Dashboards, Insights, Templates), and comparison with traditional historians like PI System.
+- [Quick Start (Cloud)](https://idmpdocs.taosdata.com/02-get-started/01-get-started-cloud): Get started with TDengine IDMP on the cloud.
+- [Quick Start (Docker)](https://idmpdocs.taosdata.com/02-get-started/02-get-started-docker): Deploy TDengine IDMP using Docker.
+- [Quick Start (Installer)](https://idmpdocs.taosdata.com/02-get-started/03-get-started-installer): Install TDengine IDMP using the installer package.
+- [Experiencing IDMP](https://idmpdocs.taosdata.com/02-get-started/04-experiencing-idmp): Walkthrough of key features after installation.
+
+## Data Modeling
+
+- [Elements](https://idmpdocs.taosdata.com/03-data-modeling/01-elements): The fundamental unit of the asset model — how to create and organize elements in a hierarchical tree structure.
+- [Attributes](https://idmpdocs.taosdata.com/03-data-modeling/02-attributes): Define data dimensions on elements, including static values, dynamic time-series references, and derived attributes.
+- [Data Contextualization](https://idmpdocs.taosdata.com/03-data-modeling/03-data-contextualization): Attach metadata and business context to raw sensor data.
+- [Data Standardization](https://idmpdocs.taosdata.com/03-data-modeling/04-data-standardization): Normalize data across systems using engineering units, enumeration sets, and templates.
+- [Finding Elements](https://idmpdocs.taosdata.com/03-data-modeling/05-finding-elements): Search and navigate the asset tree.
+
+## Visualization
+
+- [Panels](https://idmpdocs.taosdata.com/04-visualization/01-panels): Create trend charts, gauges, tables, status timelines, maps, and other visualization components.
+- [Chart Types](https://idmpdocs.taosdata.com/04-visualization/02-chart-types): Reference for all supported chart and panel types.
+- [Panel Insights](https://idmpdocs.taosdata.com/04-visualization/03-panel-insights): AI-generated interpretations attached to individual panels.
+- [Dashboards](https://idmpdocs.taosdata.com/04-visualization/04-dashboards): Compose multiple panels into cohesive operational views per element.
+- [Sharing](https://idmpdocs.taosdata.com/04-visualization/05-sharing): Share dashboards with team members or embed them externally.
+- [Scheduled Reports](https://idmpdocs.taosdata.com/04-visualization/06-scheduled-reports): Automatically export and distribute dashboards on a schedule.
+- [Panel & Dashboard Templates](https://idmpdocs.taosdata.com/04-visualization/07-panel-dashboard-templates): Reusable visualization structures for consistent asset monitoring.
+
+## Canvas Panels
+
+- [Canvas Panels](https://idmpdocs.taosdata.com/05-canvas-panels): Build custom interactive schematic diagrams with live data overlays.
+
+## Events
+
+- [Event Templates](https://idmpdocs.taosdata.com/06-events/01-event-templates): Define reusable event structures for operational occurrences.
+- [Browsing Events](https://idmpdocs.taosdata.com/06-events/02-browsing-events): Navigate and filter event history across elements.
+- [Event Detail](https://idmpdocs.taosdata.com/06-events/03-event-detail): Inspect individual event records with associated data snapshots.
+- [Alerts and Notifications](https://idmpdocs.taosdata.com/06-events/04-alerts-and-notifications): Configure alert rules and notification routing.
+- [Acknowledgment](https://idmpdocs.taosdata.com/06-events/05-acknowledgment): Acknowledge events and track operational responses.
+- [Trend Analysis](https://idmpdocs.taosdata.com/06-events/06-trend-analysis): Analyze time-series trends correlated with events.
+- [Root Cause Analysis](https://idmpdocs.taosdata.com/06-events/07-root-cause-analysis): Investigate contributing factors to operational events.
+
+## Real-Time Analysis
+
+- [Browsing Analyses](https://idmpdocs.taosdata.com/07-real-time-analysis/01-browsing-analyses): View configured real-time analyses for elements.
+- [Creating Analysis](https://idmpdocs.taosdata.com/07-real-time-analysis/02-creating-analysis): Define real-time analytics rules on element attributes.
+- [Trigger Types](https://idmpdocs.taosdata.com/07-real-time-analysis/03-trigger-types): Configure periodic, event-driven, or threshold-based analysis triggers.
+- [Calculation](https://idmpdocs.taosdata.com/07-real-time-analysis/04-calculation): Define formulas and expressions for derived metrics.
+- [Generating Events](https://idmpdocs.taosdata.com/07-real-time-analysis/05-generating-events): Automatically create event records from analysis conditions.
+- [AI Analysis](https://idmpdocs.taosdata.com/07-real-time-analysis/06-ai-analysis): Use AI to automatically generate analysis rules from data patterns.
+- [Analysis Templates](https://idmpdocs.taosdata.com/07-real-time-analysis/07-analysis-templates): Reusable analysis configurations for standardized monitoring.
+
+## AI-Powered Insights
+
+- [Connecting to LLM](https://idmpdocs.taosdata.com/08-ai-powered-insights/01-connecting-to-llm): Configure the connection to a large language model provider.
+- [AI-Generated Panels](https://idmpdocs.taosdata.com/08-ai-powered-insights/02-ai-generated-panels): Automatically generate relevant panels based on element data and context (Proactive Push).
+- [AI Panel Insights](https://idmpdocs.taosdata.com/08-ai-powered-insights/03-ai-panel-insights): AI-generated narratives and interpretations for individual panels.
+- [AI-Generated Analyses](https://idmpdocs.taosdata.com/08-ai-powered-insights/04-ai-generated-analyses): Automatically create real-time analysis rules using AI.
+- [AI Composite Metrics](https://idmpdocs.taosdata.com/08-ai-powered-insights/05-ai-composite-metrics): AI-derived aggregated KPIs across multiple attributes.
+- [Natural Language Queries](https://idmpdocs.taosdata.com/08-ai-powered-insights/06-natural-language-queries): Ask questions about operational data in plain language (AI Q&A / Smart Data Query).
+- [Anomaly Detection](https://idmpdocs.taosdata.com/08-ai-powered-insights/07-anomaly-detection): Automatically identify abnormal patterns in time-series data.
+- [Forecasting](https://idmpdocs.taosdata.com/08-ai-powered-insights/08-forecasting): Predict future values and trends based on historical data.
+- [Missing Data Imputation](https://idmpdocs.taosdata.com/08-ai-powered-insights/09-missing-data-imputation): Fill gaps in time-series data using intelligent interpolation.
+- [Root Cause Analysis](https://idmpdocs.taosdata.com/08-ai-powered-insights/10-root-cause-analysis): AI-assisted investigation of anomalies and failures.
+
+## Advanced Analytics
+
+- [Advanced Analytics](https://idmpdocs.taosdata.com/09-advanced-analytics): Batch analysis, trend comparison, clustering, regression, and other statistical methods.
+
+## Excel Add-in
+
+- [Excel Add-in](https://idmpdocs.taosdata.com/10-excel-add-in): Access and analyze IDMP data directly within Microsoft Excel.
+
+## Collaboration
+
+- [Collaboration](https://idmpdocs.taosdata.com/11-collaboration): Team-based workflows, access control, and shared workspaces.
+
+## Data Ingestion
+
+- [Connections](https://idmpdocs.taosdata.com/12-data-ingestion/01-connections): Configure connections to TDengine TSDB and other time-series data sources.
+- [Data In](https://idmpdocs.taosdata.com/12-data-ingestion/02-data-in): Ingest data into IDMP from various sources.
+- [Building Data Models from TSDB](https://idmpdocs.taosdata.com/12-data-ingestion/03-building-data-models-from-tsdb): Automatically synchronize asset topology from TDengine TSDB.
+
+## Libraries
+
+- [Libraries](https://idmpdocs.taosdata.com/13-libraries): Manage engineering unit sets, enumeration sets, and other shared reference data.
+
+## Administration
+
+- [Deployment Architecture](https://idmpdocs.taosdata.com/14-administration/01-deployment-architecture): Understand IDMP deployment topologies and component relationships.
+- [Planning](https://idmpdocs.taosdata.com/14-administration/02-planning): Capacity planning and pre-installation checklist.
+- [Installation](https://idmpdocs.taosdata.com/14-administration/03-installation): Install and configure TDengine IDMP in various environments.
+- [User Management](https://idmpdocs.taosdata.com/14-administration/04-user-management): Create and manage users, roles, and permissions.
+- [System Configuration](https://idmpdocs.taosdata.com/14-administration/05-system-configuration): Configure system-level settings and preferences.
+- [Backup & Restore](https://idmpdocs.taosdata.com/14-administration/06-backup-restore): Back up and restore IDMP configuration and data.
+- [Sample Data](https://idmpdocs.taosdata.com/14-administration/07-sample-data): Load sample datasets for testing and demonstration.
+
+## Integration
+
+- [Client SDKs](https://idmpdocs.taosdata.com/15-integrating-with-other-systems/01-client-sdk): Java, Python, and other client SDKs for programmatic access to IDMP.
+- [MCP Interface](https://idmpdocs.taosdata.com/15-integrating-with-other-systems/02-mcp-interface): Model Context Protocol interface for AI agent access to industrial data.
+- [Embedding Panels](https://idmpdocs.taosdata.com/15-integrating-with-other-systems/03-embedding-panels): Embed IDMP panels and dashboards into external web applications.
+
+## Best Practices
+
+- [Best Practices](https://idmpdocs.taosdata.com/16-best-practices): Recommended patterns for data modeling, analysis configuration, and large-scale deployments.
+
+## Tutorials
+
+- [Tutorials](https://idmpdocs.taosdata.com/17-tutorials): Step-by-step guides for common workflows and use cases.
+
+## Troubleshooting
+
+- [Troubleshooting](https://idmpdocs.taosdata.com/18-troubleshooting): Diagnose and resolve common issues with installation, connectivity, and performance.
+
+## Reference
+
+- [Glossary](https://idmpdocs.taosdata.com/19-glossary): Definitions of key terms and concepts used throughout IDMP.
+- [Roadmap](https://idmpdocs.taosdata.com/20-roadmap): Planned features and future development directions.
+- [Release History](https://idmpdocs.taosdata.com/21-release-history): Changelog and version history for TDengine IDMP.
+
+## English Documentation
+
+- [English Documentation Home](https://idmpdocs.taosdata.com/en/): Full documentation in English covering all the same topics listed above, accessible with the `/en/` prefix.
