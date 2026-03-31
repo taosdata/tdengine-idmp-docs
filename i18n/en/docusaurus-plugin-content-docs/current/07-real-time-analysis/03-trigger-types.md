@@ -34,6 +34,18 @@ Fires on a fixed sliding time interval based on event time — the timestamps of
 
 **Vibration trending.** A rotating equipment monitor computes RMS vibration over a 1-minute sliding window every 15 seconds. A gradual upward trend in the output signals developing bearing wear days before a fault occurs.
 
+**OEE calculation with 5-minute raw data.** A production line sends raw runtime, scheduled runtime, actual rate, ideal rate, good count, and total count data every 5 minutes.
+
+You configure the analysis as:
+-  **Trigger Type:** Sliding Window 
+-  **Sliding:** 5 minutes 
+-  **Rollup On Window > Interval:** 1 hour 
+
+What this means:
+-  The analysis is triggered every 5 minutes.
+-  Each time it runs, it calculates OEE using the most recent 1 hour of data.
+-  The output is therefore a rolling 1-hour OEE, refreshed every 5 minutes.
+
 ---
 
 ## 7.3.2 Anomaly Detection
