@@ -74,5 +74,5 @@ event_api = idmp_sdk.EventResourceApi(api_client)
 </Tabs>
 
 :::note
-完整的方法签名和参数请参考 SDK 包中的 OpenAPI 规范文件（`idmp-v1.0.14.5.json`），或在您的 IDMP 服务器上访问 `/swagger-ui.html` 浏览 Swagger UI。
+完整的方法签名和参数请参考 SDK 包中的 OpenAPI 规范文件（`idmp-v1.0.15.2.json`），或在您的 IDMP 服务器上访问 `/swagger-ui.html` 浏览 Swagger UI。
 :::
