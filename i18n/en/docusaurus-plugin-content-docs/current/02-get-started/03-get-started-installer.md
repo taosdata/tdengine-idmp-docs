@@ -17,9 +17,7 @@ Ensure the following prerequisites are in place before installing:
 
 - TDengine TSDB-Enterprise 3.3.7.0 or later — must be installed and running. See [Deploy from Package](https://docs.tdengine.com/get-started/deploy-from-package/).
 - Java 21 or later
-- glibc 2.25 or later (Linux only)
-- Python 3.12
-- On Debian/Ubuntu: the `python3-venv` package
+- glibc 2.28 or later
 - SMTP email service (required for alert notifications; deploy internally if internet access is unavailable)
 - A correctly configured system timezone. Refer to your operating system's user manual for instructions.
 
@@ -32,13 +30,14 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 
 1. Download the installation package from the following link:
 
-   <PkgList productName="TDengine IDMP-Enterprise" platform="Linux-Generic" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Generic" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Generic" arch="arm64" pkgType="Server" />
 
-1. Run the following commands to install TDengine IDMP:
+2. Run the following commands to extract and install (using x64 architecture as an example):
 
    ```bash
-   tar -zxvf tdengine-idmp-enterprise-1.0.15.0-linux-generic.tar.gz && \
-   cd tdengine-idmp-enterprise-1.0.15.0 && \
+   tar zxvf tdengine-idmp-enterprise-1.0.15.0-linux-x64.tar.gz
+   cd tdengine-idmp-enterprise-1.0.15.0
    sudo ./install.sh
    ```
 
@@ -82,12 +81,13 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 
 1. Download the installation package from the following link:
 
-   <PkgList productName="TDengine IDMP-Enterprise" platform="Linux-Red Hat" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Red Hat" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Red Hat" arch="arm64" pkgType="Server" />
 
-1. Run the following command to install TDengine IDMP:
+2. Run the following command to install the rpm package (using x64 architecture as an example):
 
    ```bash
-   sudo rpm -ivh --nodeps tdengine-idmp-enterprise-1.0.15.0-linux-generic.rpm
+   sudo rpm -ivh --nodeps tdengine-idmp-enterprise-1.0.15.0-linux-x64.rpm
    ```
 
    :::tip
@@ -130,12 +130,13 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 
 1. Download the installation package from the following link:
 
-   <PkgList productName="TDengine IDMP-Enterprise" platform="Linux-Ubuntu" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Ubuntu" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Ubuntu" arch="arm64" pkgType="Server" />
 
-1. Run the following command to install TDengine IDMP:
+2. Run the following command to install the deb package (using x64 architecture as an example):
 
    ```bash
-   sudo dpkg -i tdengine-idmp-enterprise-1.0.15.0-linux-generic.deb
+   sudo dpkg -i tdengine-idmp-enterprise-1.0.15.0-linux-x64.deb
    ```
 
    :::tip
@@ -178,12 +179,12 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 
 1. Download the installation package from the following link:
 
-   <PkgList productName="TDengine IDMP-Enterprise" platform="macOS" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="macOS" arch="arm64" pkgType="Server" />
 
 1. Run the following command to install TDengine IDMP:
 
    ```bash
-   sudo installer -pkg tdengine-idmp-enterprise-1.0.15.0-macos-generic.pkg -target /
+   sudo installer -pkg tdengine-idmp-enterprise-1.0.15.0-macos-arm64.pkg -target /
    ```
 
    :::tip
@@ -237,7 +238,6 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
    :::info Dependencies
    TDengine IDMP on Windows requires:
    - Java 21 or higher, with the `java` command available in the system PATH environment variable
-   - Python 3.12
    - To verify that Java is properly configured, run `java -version` in the command prompt
    :::
 

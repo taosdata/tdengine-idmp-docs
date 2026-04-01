@@ -17,9 +17,7 @@ TDengine IDMP 支持在 Linux、macOS 或 Windows 机器上进行本地安装。
 
 - TDengine TSDB-Enterprise 3.3.7.0 或更高版本——必须已安装并运行。参见 [使用安装包部署](https://docs.taosdata.com/get-started/package/)。
 - Java 21 或更高版本
-- glibc 2.25 或更高版本（仅 Linux）
-- Python 3.12
-- Debian/Ubuntu 系统需安装 `python3-venv` 包
+- glibc 2.28 或更高版本
 - SMTP 邮件服务（告警通知所必需；如无法访问公网，需在内网部署）
 - 已正确配置的系统时区。请参考操作系统的用户手册进行设置。
 
@@ -30,14 +28,15 @@ TDengine IDMP 支持在 Linux、macOS 或 Windows 机器上进行本地安装。
 <Tabs>
 <TabItem label="Linux - tar.gz 安装" value="tar">
 
-1. 请点击以下链接获取最新版本的 `tar.gz` 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
+1. 请点击以下链接获取最新版本的 `tar.gz` 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。请根据操作系统架构选择对应的安装包。
 
    <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Generic" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Generic" arch="arm64" pkgType="Server" />
 
-2. 执行以下命令，解压并安装：
+2. 执行以下命令，解压并安装，以 x64 架构为例：
 
    ```bash
-   tar zxvf tdengine-idmp-enterprise-1.0.15.0-linux-generic.tar.gz
+   tar zxvf tdengine-idmp-enterprise-1.0.15.0-linux-x64.tar.gz
    cd tdengine-idmp-enterprise-1.0.15.0
    sudo ./install.sh
    ```
@@ -51,14 +50,15 @@ TDengine IDMP 支持在 Linux、macOS 或 Windows 机器上进行本地安装。
 </TabItem>
 <TabItem label="Debian/Ubuntu - deb 安装" value="deb">
 
-1. 请点击以下链接获取最新版本的 `.deb` 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
+1. 请点击以下链接获取最新版本的 `.deb` 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。请根据操作系统架构选择对应的安装包。
 
    <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Ubuntu" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Ubuntu" arch="arm64" pkgType="Server" />
 
-2. 执行以下命令，安装 deb 包：
+2. 执行以下命令，安装 deb 包，以 x64 架构为例：
 
    ```bash
-   sudo dpkg -i tdengine-idmp-enterprise-1.0.15.0-linux-generic.deb
+   sudo dpkg -i tdengine-idmp-enterprise-1.0.15.0-linux-x64.deb
    ```
 
 3. TDengine IDMP 的默认安装路径为 `/usr/local/taos/idmp`，安装成功后，可以看到终端展示 "TDengine IDMP has been installed successfully!"。
@@ -70,14 +70,15 @@ TDengine IDMP 支持在 Linux、macOS 或 Windows 机器上进行本地安装。
 </TabItem>
 <TabItem label="CentOS/RHEL - rpm 安装" value="rpm">
 
-1. 请点击以下链接获取最新版本的 `.rpm` 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
+1. 请点击以下链接获取最新版本的 `.rpm` 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。请根据操作系统架构选择对应的安装包。
 
    <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Red Hat" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Red Hat" arch="arm64" pkgType="Server" />
 
-2. 执行以下命令，安装 rpm 包：
+2. 执行以下命令，安装 rpm 包，以 x64 架构为例：
 
    ```bash
-   sudo rpm -ivh --nodeps tdengine-idmp-enterprise-1.0.15.0-linux-generic.rpm
+   sudo rpm -ivh --nodeps tdengine-idmp-enterprise-1.0.15.0-linux-x64.rpm
    ```
 
 3. TDengine IDMP 的默认安装路径为 `/usr/local/taos/idmp`，安装成功后，可以看到终端展示 "TDengine IDMP has been installed successfully!"。
@@ -89,9 +90,9 @@ TDengine IDMP 支持在 Linux、macOS 或 Windows 机器上进行本地安装。
 </TabItem>
 <TabItem label="macOS 安装" value="macos">
 
-1. 请点击以下链接获取最新版本的 macOS 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
+1. 请点击以下链接获取最新版本的 macOS 安装包（仅支持 arm64 架构）。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
 
-   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="macOS" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="macOS" arch="arm64" pkgType="Server" />
 
 2. 双击安装包，按照提示完成安装。
 
