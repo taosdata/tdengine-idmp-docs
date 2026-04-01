@@ -19,6 +19,22 @@ TDengine IDMP is offered as a Docker Compose setup to make deployment easy. This
 
 ## 2.2.2 Procedure
 
+:::tip
+Deploying TDengine IDMP via Docker requires pulling images from Docker Hub. If you cannot access Docker Hub, you can download the container image files from the [TDengine Download Center](https://tdengine.com/downloads/), then run the following commands to load the images (using x64 architecture as an example):
+
+```bash
+docker load -i tdengine-tsdb-enterprise-docker-<version>-linux-x64.tar.gz
+docker load -i tdengine-idmp-enterprise-docker-<version>-linux-x64.tar.gz
+docker load -i tdengine-idmp-ai-enterprise-docker-<version>-linux-x64.tar.gz
+
+docker tag tdengine/tsdb-ee-amd64:<version> tdengine/tsdb-ee:latest
+docker tag tdengine/idmp-ee-amd64:<version> tdengine/idmp-ee:latest
+docker tag tdengine/idmp-ai-ee-amd64:<version> tdengine/idmp-ai-ee:latest
+```
+
+After the images are loaded successfully, proceed with the following steps.
+:::
+
 <Tabs>
 <TabItem value="Linux">
 
@@ -41,6 +57,8 @@ TDengine IDMP is offered as a Docker Compose setup to make deployment easy. This
 
    - **Standard** — TDengine TSDB Enterprise + IDMP
    - **Full** — TDengine TSDB Enterprise + IDMP + TDgpt (adds AI/ML algorithms for time-series forecasting and anomaly detection)
+
+   The AI service is deployed as an independent image `tdengine/idmp-ai-ee`. The Docker Compose configuration will automatically include this service.
 
    The required images will be pulled automatically if not already present locally.
 
