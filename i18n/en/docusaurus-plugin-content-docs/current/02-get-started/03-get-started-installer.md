@@ -30,8 +30,7 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 
 1. Download the installation package from the following link:
 
-   <PkgList productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Generic" arch="x64" pkgType="Server" />
-   <PkgList productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Generic" arch="arm64" pkgType="Server" />
+   <PkgList productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Generic" />
 
 2. Run the following commands to extract and install (using x64 architecture as an example):
 
@@ -81,8 +80,7 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 
 1. Download the installation package from the following link:
 
-   <PkgList productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Red Hat" arch="x64" pkgType="Server" />
-   <PkgList productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Red Hat" arch="arm64" pkgType="Server" />
+   <PkgList productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Red Hat" />
 
 2. Run the following command to install the rpm package (using x64 architecture as an example):
 
@@ -130,8 +128,7 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 
 1. Download the installation package from the following link:
 
-   <PkgList productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Ubuntu" arch="x64" pkgType="Server" />
-   <PkgList productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Ubuntu" arch="arm64" pkgType="Server" />
+   <PkgList productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Ubuntu" />
 
 2. Run the following command to install the deb package (using x64 architecture as an example):
 
@@ -179,7 +176,7 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 
 1. Download the installation package from the following link:
 
-   <PkgList productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="macOS" arch="arm64" pkgType="Server" />
+   <PkgList productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="macOS" />
 
 1. Run the following command to install TDengine IDMP:
 
