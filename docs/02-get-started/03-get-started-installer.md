@@ -17,7 +17,7 @@ TDengine IDMP 支持在 Linux、macOS 或 Windows 机器上进行本地安装。
 
 - TDengine TSDB-Enterprise 3.3.7.0 或更高版本——必须已安装并运行。参见 [使用安装包部署](https://docs.taosdata.com/get-started/package/)。
 - Java 21 或更高版本
-- glibc 2.28 或更高版本
+- glibc 2.28 或更高版本（仅 Linux）
 - SMTP 邮件服务（告警通知所必需；如无法访问公网，需在内网部署）
 - 已正确配置的系统时区。请参考操作系统的用户手册进行设置。
 
