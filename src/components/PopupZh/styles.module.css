@@ -28,6 +28,7 @@
   width: 400px;
   height: 290px;
   overflow: hidden;
+    padding: 24px 28px;
 }
 
 /* @keyframes modalSlideIn {
@@ -41,13 +42,8 @@
   }
 } */
 
-/* 内容区域 */
-.modalContent {
-  padding: 24px 28px;
-}
-
 /* 顶部标题栏 */
-.topBar {
+.popupTitle {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -231,7 +227,7 @@ p.formRequired {
 }
 
 /* 成功提示容器 */
-.successContainer {
+.messageContainer {
   position: absolute;
   top: 50%;
   left: 50%;
