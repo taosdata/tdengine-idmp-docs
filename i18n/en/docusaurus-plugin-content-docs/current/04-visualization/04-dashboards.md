@@ -103,7 +103,31 @@ There are three ways to populate a dashboard:
 
 **Add from panel view mode.** When viewing any panel in full view mode, open the panel card's **⋮** menu and select a dashboard action, or navigate to the Dashboards tab and use the panel library to drag it onto the canvas.
 
-## 4.4.5 The Global Dashboards View
+## 4.4.5 Dashboard View Mode
+
+Click **View** on a dashboard card to open the dashboard in full view mode.
+
+### View Mode Toolbar
+
+| Control | Description |
+|---|---|
+| **Back to List** | Return to the Dashboards tab |
+| **Edit** | Open the dashboard editor |
+| **Favorite** | Mark this dashboard as a favorite for quick access |
+| **Time picker** | Set the time range for all panels in the dashboard |
+| **Zoom out** | Expand the time range to the next level |
+| **Refresh** | Reload all panel data |
+| **Auto-refresh** | Set an automatic refresh interval |
+| **Share** | Generate a time-limited shareable link to this dashboard view |
+| **Data Zoom** | Enable data zoom mode to select a time range on charts |
+| **Full Screen** | Expand the dashboard to fill the browser window |
+| **Annotations** | Open the annotations panel to add text annotations to this dashboard |
+
+### Annotations
+
+Annotations let users attach text notes to a dashboard. The workflow is the same as panel annotations — see [4.1.5 Annotations](./01-panels.md#415-annotations) for details.
+
+## 4.4.6 The Global Dashboards View
 
 The **Dashboards** item in the main navigation bar opens the global dashboards list, which shows all dashboards across every element in the system.
 
