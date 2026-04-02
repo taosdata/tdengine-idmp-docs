@@ -38,11 +38,11 @@ mvn install -DskipTests
 
 **第二步——在项目的 `pom.xml` 中添加依赖**：
 
-```xml
+```xml idmp-ee-sdk
 <dependency>
   <groupId>com.taosdata</groupId>
   <artifactId>idmp-sdk</artifactId>
-  <version>1.0.15.2</version>
+  <version>{{VERSION}}</version>
 </dependency>
 ```
 
