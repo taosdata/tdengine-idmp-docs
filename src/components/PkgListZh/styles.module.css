@@ -1,0 +1,19 @@
+.packageItem {
+  color: var(--ifm-link-color);
+  -webkit-text-decoration: var(--ifm-link-decoration);
+  text-decoration: var(--ifm-link-decoration);
+  transition: color var(--ifm-transition-fast)var(--ifm-transition-timing-default);
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1rem;
+  text-align: left;
+  font-family: var(--ifm-font-family-base);
+  cursor: pointer
+}
+
+.packageItem:hover {
+  color: var(--ifm-link-hover-color);
+  text-decoration: var(--ifm-link-hover-decoration);
+}

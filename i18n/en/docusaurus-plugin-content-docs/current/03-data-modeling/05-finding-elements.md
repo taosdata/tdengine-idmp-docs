@@ -40,7 +40,7 @@ TDengine IDMP provides a unified **Search** dialog for finding elements, attribu
 
 To open the Search dialog, click the **search icon** (magnifying glass) at the top right of the Elements panel header in the sidebar.
 
-### Choosing what to search
+### 3.5.3.1 Choosing what to search
 
 Use the radio buttons at the top of the dialog to select the type of object to search for:
 
@@ -52,13 +52,13 @@ Use the radio buttons at the top of the dialog to select the type of object to s
 | **Panel** | Panels by name |
 | **Event** | Events by name |
 
-### Running a basic search
+### 3.5.3.2 Running a basic search
 
 Type a keyword in the search box and press **Enter** or click **Search**. The results are displayed in a temporary **Filter Results** view showing the matching items with their Name, Path, Description, Template, and Categories.
 
 Click any result row to navigate directly to that element. To save the search for later reuse, click the **Save As** button in the Filter Results toolbar — see [3.5.5](#355-element-filters).
 
-### Advanced filters
+### 3.5.3.3 Advanced filters
 
 Click **Advanced** to expand additional filter fields. For **Element** searches:
 
@@ -95,11 +95,11 @@ To remove an element from favorites, select it and click the star icon again to 
 
 **Element Filters** are saved searches — reusable queries that you can run at any time to display a filtered subset of elements. They are listed in the **Element Filters** section at the bottom of the left sidebar.
 
-### Saving a search as an Element Filter
+### 3.5.5.1 Saving a search as an Element Filter
 
 After running a search (see [3.5.3](#353-searching)), click the **Save As** button on the left side of the Filter Results toolbar. Enter a name and confirm. The filter is added to the **Element Filters** list in the sidebar and can be re-run at any time.
 
-### Working with filter results
+### 3.5.5.2 Working with filter results
 
 The **Filter Results** view shows the matched elements in a table (Name, Path, Description, Template, Categories). The toolbar provides the following actions:
 
@@ -113,7 +113,7 @@ The **Filter Results** view shows the matched elements in a table (Name, Path, D
 | **Export Current List as CSV** | Right side | Export the result list as a CSV file |
 | **Select Columns** | Right side | Toggle which columns are shown in the results table |
 
-### Re-running a saved filter
+### 3.5.5.3 Re-running a saved filter
 
 Click any filter name in the **Element Filters** list in the sidebar to re-run it and view the current matching elements.
 

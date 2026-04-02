@@ -3,11 +3,11 @@ title: Administration
 sidebar_label: Administration
 ---
 
-# 14 Administration
-
 import DocCardList from '@theme/DocCardList';
 
-This chapter covers the administrative aspects of TDengine IDMP, including deployment architecture, capacity planning, user management, system configuration, and backup and recovery.
+# 14 Administration
+
+This chapter covers the administrative aspects of TDengine IDMP, including deployment architecture, capacity planning, installation, user management, system configuration, and backup and recovery.
 
 The Admin Console is accessed by clicking the avatar in the top-right corner and selecting **Admin Console**.
 
@@ -15,6 +15,7 @@ The Admin Console is accessed by clicking the avatar in the top-right corner and
 |---|---|
 | **Deployment Architecture** | Overview of single-instance and high-availability deployment topologies |
 | **Planning** | Hardware requirements, OS support, port assignments, and directory layout |
+| **Installation** | Detailed guides for Docker, installer package, Ansible, Helm, and other deployment methods. For Excel Add-In installation, see [Chapter 10](../10-excel-add-in/01-installation.md). |
 | **User Management** | Users, roles, permissions, and single sign-on (SSO) via OAuth 2.0 |
 | **System Configuration** | Basic settings, notification contact points, notification templates, and email server |
 | **Backup and Restore** | Configuring automated backups and restoring data from a backup |

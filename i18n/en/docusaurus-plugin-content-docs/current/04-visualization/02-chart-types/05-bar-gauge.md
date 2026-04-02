@@ -5,13 +5,15 @@ sidebar_label: Bar Gauge
 
 # 4.2.5 Bar Gauge
 
-## Overview
+## 4.2.5.1 Overview
 
 The Bar Gauge displays a value as a filled bar against a configurable scale, similar to a thermometer or progress bar. Color thresholds along the bar visually segment the scale into zones, making it easy to see how far into a range a value has progressed.
 
 Multiple metrics render as multiple bars stacked in the panel, making the Bar Gauge effective for comparing several similar measurements side by side.
 
-## When to Use
+![Retro LCD display mode](../images/bar-gauge-lcd.png)
+
+## 4.2.5.2 When to Use
 
 Use the Bar Gauge when:
 
@@ -22,7 +24,7 @@ Use the Bar Gauge when:
 
 For a single large numeric value without a scale reference, use the Stat Value panel. For a dial-style gauge, use the Gauge Chart.
 
-## Configuration
+## 4.2.5.3 Configuration
 
 ### Edit Mode Toolbar
 
@@ -36,18 +38,35 @@ In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mo
 
 ### Graph Settings
 
+![Bar Gauge configuration panel](../images/bar-gauge-config.png)
+
 | Setting | Description |
 |---|---|
 | **Title** | Chart title |
 | **Subtitle** | Secondary title |
-| **Orientation** | Horizontal (bar fills left to right) or Vertical (bar fills bottom to top) |
+| **Orientation** | **Horizontal** (bar fills left to right) or **Vertical** (bar fills bottom to top) |
+| **Show Time** | **On** (display a timestamp on the bar) or **Off** |
 | **Display Mode** | Visual style: **Gradient** (smooth color transition), **Basic** (solid fill), **Retro LCD** (segmented display) |
-| **Value Display** | Where the numeric value is shown: **Value Color** (overlaid on bar, colored to match threshold), **Text Color** (overlaid, plain text), **Hidden** |
-| **Name Placement** | Metric name position: **Auto** (beside the bar) or **Hidden** |
-| **Bar size** | **Auto** (bar fills available space) or **Manual** (fixed pixel size) |
+| **Value Display** | Numeric value color style: **Data Color** (overlaid on bar, colored to match threshold), **Text Color** (overlaid, plain text), **Hidden** |
+| **Name Placement** | Metric name position: **Auto**, **Top**, **Left**, or **Hidden** |
+| **Bar Size** | **Auto** (bar fills available space) or **Manual** (fixed pixel size) |
 | **Min** | Minimum value of the scale (default 0) |
 | **Max** | Maximum value of the scale (default 1) |
 | **Decimals** | Number of decimal places shown |
+
+#### Display Mode
+
+**Basic** fills each bar with a single solid color determined by the current threshold band, resulting in a clean and minimal look.
+
+![Basic display mode](../images/bar-gauge-basic.png)
+
+**Gradient** renders a smooth color transition from the low end to the high end of the bar, simultaneously conveying both the value magnitude and its position relative to thresholds.
+
+![Gradient display mode](../images/bar-gauge-gradient.png)
+
+**Retro LCD** splits the bar into discrete segments that mimic the appearance of a liquid-crystal display, suited for dashboards with an industrial instrument aesthetic.
+
+![Retro LCD display mode](../images/bar-gauge-lcd.png)
 
 #### Thresholds
 
@@ -58,7 +77,7 @@ Thresholds define color bands along the bar. Each threshold specifies a value an
 | **Thresholds** | Click **+ Add threshold** to define a boundary value and its color |
 | **Thresholds Mode** | **Absolute** (threshold values are raw data values) or **Percentage** (threshold values are percentages of the Min–Max range) |
 
-## Example Scenarios
+## 4.2.5.4 Example Scenarios
 
 **Tank fill levels.** Five storage tanks each have a fill-level metric. All five are added to a single Bar Gauge panel with Horizontal orientation. Thresholds at 20% (red), 50% (yellow), and 80% (green) give operators an instant view of which tanks need attention.
 

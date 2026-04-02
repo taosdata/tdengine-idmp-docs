@@ -7,13 +7,13 @@ sidebar_label: Connecting to LLM
 
 Most AI features in IDMP — panel generation, analysis suggestions, AI Chat, root cause analysis — require a connection to an external Large Language Model (LLM). IDMP uses an OpenAI-compatible interface, so any LLM provider or self-hosted model that exposes an OpenAI-compatible API can be used.
 
-## Built-In Trial Connection
+## 8.1.1 Built-In Trial Connection
 
 IDMP ships with a built-in trial AI connection that is active for 15 days after installation. During the trial period, all LLM-dependent AI features work immediately without any configuration. Once the trial expires, you must configure your own AI connection to continue using these features.
 
 TDgpt-based features (anomaly detection, forecasting, missing data imputation) are independent of the LLM connection. They require the TDgpt module to be installed alongside IDMP.
 
-## Configuring an AI Connection
+## 8.1.2 Configuring an AI Connection
 
 AI connections are managed in the **Connection Management** section of the system settings, alongside TDengine data connections.
 
@@ -34,7 +34,7 @@ To add or edit an AI connection:
 4. Click **Test Connection** to verify the endpoint and credentials.
 5. Click **Save**.
 
-## Two Model Configuration
+## 8.1.3 Two Model Configuration
 
 IDMP uses two separate models from the same AI connection:
 
@@ -43,6 +43,6 @@ IDMP uses two separate models from the same AI connection:
 
 In the AI Chat interface, users can toggle **Deep Thinking** mode to route their query to the Deep Thinking Model instead of the Q&A Model.
 
-## Local Deployment
+## 8.1.4 Local Deployment
 
 For organizations running a self-hosted LLM (such as a locally deployed Ollama or vLLM instance), set the **API Endpoint** to the local service URL and leave the **API Key** blank if the service does not require authentication. As long as the service exposes an OpenAI-compatible API, all IDMP AI features work without modification.

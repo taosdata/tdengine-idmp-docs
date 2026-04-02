@@ -3,14 +3,14 @@ title: 错误处理
 sidebar_label: 错误处理
 ---
 
-# 15.1.7 错误处理
-
-## 异常类型
-
-SDK 将所有 API 错误统一封装为 `ApiException`，您可以从中获取 HTTP 状态码和服务端返回的错误消息。
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+# 15.1.7 错误处理
+
+## 15.1.7.1 异常类型
+
+SDK 将所有 API 错误统一封装为 `ApiException`，您可以从中获取 HTTP 状态码和服务端返回的错误消息。
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -44,7 +44,7 @@ except ApiException as e:
 </TabItem>
 </Tabs>
 
-## 常见错误码
+## 15.1.7.2 常见错误码
 
 | HTTP 状态码 | 含义 | 常见原因 | 建议处理方式 |
 |---|---|---|---|
@@ -55,7 +55,7 @@ except ApiException as e:
 | 429 | 请求过于频繁 | 超出 API 限流阈值 | 降低请求频率，加入重试等待 |
 | 500 | 服务器内部错误 | 服务端异常 | 稍后重试，或联系管理员 |
 
-## 推荐的重试模式
+## 15.1.7.3 推荐的重试模式
 
 对于 `429`（限流）和 `5xx`（服务端错误），建议使用**指数退避**重试：
 
@@ -123,7 +123,7 @@ interface ApiCall<T> {
 </TabItem>
 </Tabs>
 
-## 调试建议
+## 15.1.7.4 调试建议
 
 - 收到 `401` 时，优先检查 Token 是否已过期，而不是检查代码逻辑。
 - 收到 `400` 时，打印完整的 `responseBody`，服务端通常会在其中说明具体哪个参数有问题。

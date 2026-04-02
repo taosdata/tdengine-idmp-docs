@@ -7,7 +7,7 @@ sidebar_label: Connecting Excel to IDMP
 
 After installing the Excel Add-In, you need to open it in Excel and sign in to your IDMP instance before you can retrieve data.
 
-## Opening the Add-In
+## 10.2.1 Opening the Add-In
 
 The TDengine IDMP Add-In is an Office Web Add-In. After installation it does not automatically appear as a ribbon tab — you need to activate it from **My Add-ins** the first time.
 
@@ -28,7 +28,7 @@ The TDengine IDMP task pane opens on the right side of the Excel window.
 After the first activation, Excel may remember the add-in and show a **TDengine IDMP** button directly in the **Home** tab or a dedicated ribbon tab on subsequent sessions. If the add-in disappears after restarting Excel, repeat the steps above to re-open it from **My Add-ins**.
 :::
 
-## Add-In Not Showing in My Add-ins
+## 10.2.2 Add-In Not Showing in My Add-ins
 
 If **TDengine IDMP** does not appear in the **My Add-ins** list after installation:
 
@@ -36,7 +36,7 @@ If **TDengine IDMP** does not appear in the **My Add-ins** list after installati
 - **Check for a security block (Windows)** — files downloaded from the internet may be blocked by Windows. If the installation script downloaded any files, right-click each file, select **Properties**, and check **Unblock** at the bottom of the General tab.
 - **Verify the installation completed** — re-run the installation command from [Installing the Excel Add-In](./01-installation.md) and check for error output.
 
-## Signing In
+## 10.2.3 Signing In
 
 Once the task pane is open:
 
@@ -46,7 +46,7 @@ Once the task pane is open:
 
 Once connected, the task pane displays your IDMP asset hierarchy and allows you to browse elements and their attributes.
 
-## Connection Requirements
+## 10.2.4 Connection Requirements
 
 - The IDMP server must be reachable from the machine running Excel.
 - HTTPS must be configured on the IDMP server (see [Installing the Excel Add-In](./01-installation.md) for HTTPS setup).

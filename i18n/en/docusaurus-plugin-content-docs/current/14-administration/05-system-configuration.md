@@ -3,11 +3,11 @@ title: System Configuration
 sidebar_label: System Configuration
 ---
 
-# 14.4 System Configuration
+# 14.5 System Configuration
 
 System Configuration is accessed from **Admin Console → System Configuration**. It has four sections: Basic Configuration, Notification Contact Point, Notification Template, and Email Configuration.
 
-## Basic Configuration
+## 14.5.1 Basic Configuration
 
 Basic Configuration contains system-wide settings:
 
@@ -20,7 +20,7 @@ Basic Configuration contains system-wide settings:
 
 Click the edit (pencil) icon to modify these settings.
 
-## Notification Contact Point
+## 14.5.2 Notification Contact Point
 
 A **Notification Contact Point** defines a destination that IDMP sends notifications to. Multiple contact points can be configured. The first user to activate the system has their email address automatically added as a contact point.
 
@@ -35,13 +35,15 @@ To create a contact point, click **+** and fill in:
 
 Because Webhook is supported, virtually any notification destination can be configured — including Teams, DingTalk, PagerDuty, and other systems that accept HTTP callbacks.
 
-## Notification Template
+## 14.5.3 Notification Template
 
 Notification Templates define the content of system-generated messages for events such as user invitations, password resets, and alert notifications.
 
 IDMP ships with built-in templates for common notification scenarios. Click a template name to view or edit its content. Templates support variable substitution to include dynamic values such as usernames, URLs, and event details.
 
-## Email Configuration
+![notification template](./images/notify_template.png)
+
+## 14.5.4 Email Configuration
 
 Email Configuration defines the SMTP server that IDMP uses to send outbound email. Click the edit (pencil) icon to update the settings.
 
@@ -57,7 +59,7 @@ Email Configuration defines the SMTP server that IDMP uses to send outbound emai
 
 IDMP sends email for several purposes: system activation (verification code), user invitations, password resets, and event alert notifications. By default, IDMP uses a TDengine-provided mail service.
 
-### Using MailHog for Air-Gapped Environments
+### 14.5.4.1 Using MailHog for Air-Gapped Environments
 
 If the IDMP server cannot reach the internet, you can deploy [MailHog](https://github.com/mailhog/MailHog) internally as a lightweight SMTP relay for development and testing:
 

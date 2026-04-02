@@ -51,7 +51,7 @@ Dashboards can also be created from a panel's view mode: use **Save to Dashboard
 
 The dashboard editor has three areas: a left panel library, a center canvas, and a right settings panel.
 
-### Editor Toolbar
+### 4.4.3.1 Editor Toolbar
 
 | Control | Description |
 |---|---|
@@ -65,7 +65,7 @@ The dashboard editor has three areas: a left panel library, a center canvas, and
 | **Auto-refresh** | Set an automatic refresh interval (Off, 5s, 10s, 30s, 1m, etc.) |
 | **Full Screen** | Expand the dashboard to fill the browser window |
 
-### Left Panel: Panel Library
+### 4.4.3.2 Left Panel: Panel Library
 
 The left panel shows the panels available for this element, organized in a tree:
 
@@ -74,7 +74,7 @@ The left panel shows the panels available for this element, organized in a tree:
 
 To add a panel to the canvas, drag it from the library onto the grid.
 
-### Center: Grid Canvas
+### 4.4.3.3 Center: Grid Canvas
 
 The canvas is a 12-column grid. Panels are placed by dragging from the library or by using the **+** toolbar button. Once placed on the canvas, panels can be:
 
@@ -84,7 +84,7 @@ The canvas is a 12-column grid. Panels are placed by dragging from the library o
 
 Panels render their live data on the canvas according to the dashboard's current time range setting.
 
-### Right Panel: Dashboard Settings
+### 4.4.3.4 Right Panel: Dashboard Settings
 
 | Field | Description |
 |---|---|

@@ -13,7 +13,7 @@ This page covers the common features shared across all panel types: browsing, cr
 
 Navigate to any element in the asset tree and click the **Panels** tab to access its panels.
 
-### Browsing Panels
+### 4.1.1.1 Browsing Panels
 
 The toolbar above the panel grid provides three controls:
 
@@ -27,7 +27,7 @@ On the right side of the toolbar:
 - **Grid icon:** Adjust the card grid density.
 - **Refresh:** Reload the panel list.
 
-### AI-Suggested Panels
+### 4.1.1.2 AI-Suggested Panels
 
 When the AI toggle is active, powered by **Zero Query Intelligence**, the system generates panel suggestions alongside your saved panels. Each suggestion card shows a preview and a panel title. You can:
 
@@ -40,7 +40,7 @@ A **+ More Suggestions** card at the end of the list requests additional AI-gene
 
 At the bottom of the panel list, a text input lets you describe a panel in natural language: "Tell me what panel you want and I'll build it for you." Click **Ask AI** to generate the described panel.
 
-### Saved Panels
+### 4.1.1.3 Saved Panels
 
 Saved panels appear as cards with a live thumbnail preview. Hover over a card to reveal the **⋮** (more) menu, which provides the following actions:
 
@@ -71,7 +71,7 @@ To create a panel from an AI suggestion, click **⋮** → **Generate** on any s
 
 Clicking **View** on a panel card opens the panel in full view mode. The panel occupies the main content area with the element hierarchy on the left.
 
-### View Mode Toolbar
+### 4.1.3.1 View Mode Toolbar
 
 The following controls appear in the view mode toolbar for every panel type:
 
@@ -97,7 +97,7 @@ Additional toolbar controls that are specific to a panel type are documented in 
 
 Click **Edit** in view mode, or **⋮** → **Edit** on a panel card, to open the panel editor. The editor is divided into three panels.
 
-### Edit Mode Toolbar
+### 4.1.4.1 Edit Mode Toolbar
 
 The following controls appear in the edit mode toolbar for every panel type:
 
@@ -113,11 +113,11 @@ The following controls appear in the edit mode toolbar for every panel type:
 
 Additional toolbar controls that are specific to a panel type are documented in each panel type's section.
 
-### Left Panel: Data Source
+### 4.1.4.2 Left Panel: Data Source
 
 The left panel controls which data is available to the panel. Two radio buttons at the top determine the data source mode: **Element** and **Child Elements Grouping**.
 
-### Element mode
+### 4.1.4.3 Element mode
 
 The panel draws data from the current element and any of its descendant child elements. The left panel shows two sections:
 
@@ -126,17 +126,17 @@ The panel draws data from the current element and any of its descendant child el
 
 To add an attribute, double-click it in the tree to add it to the Metrics table. Alternatively, hover over an attribute to reveal the **⋮** menu, then choose **Add to Metric** or **Add to Dimension**.
 
-### Child Elements Grouping mode
+### 4.1.4.4 Child Elements Grouping mode
 
 The panel aggregates data across all child elements of a selected element template. Instead of navigating to individual child elements, you select an **element template** from the dropdown (for example, "Electricity meter" or "Water meter"). The tree then shows all Metrics and Tags that the element template has, allowing you to build a panel that displays aggregated or grouped values across every child element of that template simultaneously.
 
-### Center Panel: Preview and Data Configuration
+### 4.1.4.5 Center Panel: Preview and Data Configuration
 
 The upper portion of the center panel shows a live preview of the chart, updated as you make changes. Below the chart is a minimap for navigation.
 
 Below the minimap is the data configuration area, divided into two collapsible sections:
 
-### Metrics
+### 4.1.4.6 Metrics
 
 The Metrics section defines the data series plotted on the chart. The header row provides three additional controls:
 
@@ -158,7 +158,7 @@ Each row in the Metrics table represents one data series:
 
 Use the action icons at the end of each row to edit or delete a metric.
 
-### Dimensions
+### 4.1.4.7 Dimensions
 
 The Dimensions section defines grouping dimensions for aggregate queries. This is used when grouping data by a categorical field (similar to SQL GROUP BY). Each dimension row has:
 
@@ -170,7 +170,7 @@ The Dimensions section defines grouping dimensions for aggregate queries. This i
 | **Group By** | Whether to include this dimension in GROUP BY |
 | **Order By** | Sort order |
 
-### Advanced SQL Mode
+### 4.1.4.8 Advanced SQL Mode
 
 The **Advanced** toggle at the bottom of the data configuration area switches to a raw SQL editor. In advanced mode you can add multiple SQL queries — each appears as a separate query block — and all results are displayed together in the same panel.
 
@@ -186,7 +186,7 @@ After entering a SQL statement, click **Validate** to check whether it is valid 
 - **Time Column:** Select which result column to use as the time axis. Deselect to treat the query result as non-time-series.
 - **Dimensions:** Select one or more result columns to treat as dimension (grouping) columns rather than metric values.
 
-### Template variables
+### 4.1.4.9 Template variables
 
 Advanced SQL supports four built-in template variables that are substituted at query time:
 
@@ -206,13 +206,13 @@ Additional controls on each query block:
 - **Format:** Click the format icon to auto-format the SQL statement.
 - **Enable / Disable:** Toggle a query block on or off without deleting it, useful for temporarily excluding a query from the panel.
 
-### Right Panel: Visualization Settings
+### 4.1.4.10 Right Panel: Visualization Settings
 
 The right panel contains all visual configuration for the chart. At the top is the **panel type selector** — a dropdown listing all available panel types. Changing the type re-renders the preview with the new visualization while preserving the data configuration.
 
 The visualization settings are organized into collapsible sections. The following three sections appear for every panel type:
 
-### General
+### 4.1.4.11 General
 
 | Field | Description |
 |---|---|
@@ -220,11 +220,11 @@ The visualization settings are organized into collapsible sections. The followin
 | **Description** | An optional description shown on hover or in exports |
 | **Categories** | One or more tags for organizing and filtering panels in the Panels list |
 
-### Data Links
+### 4.1.4.12 Data Links
 
 Define clickable links attached to data points. Each link specifies a label and a URL, which can include template variables referencing the data point's time or value. Clicking a data point in the chart opens the configured link.
 
-### Notification Rule
+### 4.1.4.13 Notification Rule
 
 Configure a scheduled report delivery rule on this panel. See [Scheduled Reports](./06-scheduled-reports.md) for details.
 

@@ -7,7 +7,7 @@ sidebar_label: AI-Generated Analyses
 
 IDMP can automatically suggest and configure real-time analyses for an element based on its template, attributes, and collected data. This lowers the barrier to analysis creation: instead of manually configuring trigger conditions, expressions, and output attributes, you can start from an AI-generated configuration and save it with a single click.
 
-## Where to Find AI-Suggested Analyses
+## 8.4.1 Where to Find AI-Suggested Analyses
 
 AI analysis suggestions appear in the **Analyses** tab of any element in the Explorer. The tab includes an AI panel (visible by default, toggled with the **AI** button in the toolbar) that displays a **Suggested Analyses** list — powered by **Zero Query Intelligence**, analyses that the system has already generated based on the element's context.
 
@@ -17,7 +17,7 @@ For an electricity meter element, the system might suggest:
 - Detecting anomalies on current using TDgpt
 - Calculating the average power factor over a 15-minute sliding window
 
-## Two Ways to Use AI Analysis
+## 8.4.2 Two Ways to Use AI Analysis
 
 **Use a system suggestion.** Click any item in the Suggested Analyses list. The AI generates a fully configured analysis form pre-filled with a name, trigger type, calculation expression, and output attribute. Review and click **Save**.
 
@@ -25,7 +25,7 @@ For an electricity meter element, the system might suggest:
 
 A microphone button is also available for voice input.
 
-## After AI Generation
+## 8.4.3 After AI Generation
 
 Regardless of which method you used, the result is the same: the analysis creation form opens pre-filled. You can review every field and adjust any value before saving. Click **Save** to create the analysis. If **Enable analysis upon creation** is checked, the analysis starts running immediately.
 

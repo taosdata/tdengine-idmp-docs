@@ -7,13 +7,13 @@ sidebar_label: AI Composite Metrics
 
 Composite Metrics is an AI-generated library of business KPIs for your asset hierarchy. Based on your element templates, collected data, and industry context, the AI produces a curated set of domain-relevant metrics for each asset group — complete with calculation formulas, TDengine SQL, business meaning, and industry aliases. This gives engineers a ready reference for what to measure and how to compute it, without requiring data science expertise.
 
-## Where to Find Composite Metrics
+## 8.5.1 Where to Find Composite Metrics
 
 Composite Metrics is located in **Libraries** → **Composite Metrics** in the left sidebar.
 
 The top-level list shows one entry per asset tree group (for example, "Oil Field" or "Utilities"), along with the number of metrics generated and the last update time. Click any group to open its metric list.
 
-## Metric List
+## 8.5.2 Metric List
 
 Each metric in the list has the following columns:
 
@@ -26,7 +26,7 @@ Each metric in the list has the following columns:
 
 Click any metric to open its full detail view.
 
-## Metric Detail
+## 8.5.3 Metric Detail
 
 Each metric detail view shows:
 
@@ -48,7 +48,7 @@ Each metric detail view shows:
 | **Aggregate Function** | Whether the metric uses an aggregate function |
 | **Nested Subquery** | Whether the SQL requires a nested subquery |
 
-## Actions
+## 8.5.4 Actions
 
 The metric list toolbar provides the following actions:
 
@@ -59,7 +59,7 @@ The metric list toolbar provides the following actions:
 | **Regenerate** | Ask the AI to re-generate the composite metrics for this group. Use this after adding more element data, descriptions, or attributes to improve the quality of suggestions. Regeneration typically takes 5 to 10 minutes. |
 | **Select Columns** | Choose which columns are visible in the metric list. Use this to focus on the fields most relevant to your current review. |
 
-## How the AI Generates Metrics
+## 8.5.5 How the AI Generates Metrics
 
 The AI analyzes each asset tree group — examining the element templates, attribute names, units, and collected time-series data — and produces metrics that are relevant for that type of asset in its industry context. For an electricity meter group, it produces metrics like load factor, voltage stability index, and phase unbalance score. For an oil well group, it produces metrics like production efficiency, water cut ratio, and pressure decline rate.
 

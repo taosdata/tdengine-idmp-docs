@@ -3,12 +3,12 @@ title: Installation
 sidebar_label: Installation
 ---
 
-# 15.1.1 Installation
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Prerequisites
+# 15.1.1 Installation
+
+## 15.1.1.1 Prerequisites
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -24,7 +24,7 @@ import TabItem from '@theme/TabItem';
 </TabItem>
 </Tabs>
 
-## Installing the SDK
+## 15.1.1.2 Installing the SDK
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -36,13 +36,13 @@ cd idmp-java-sdk
 mvn install -DskipTests
 ```
 
-### Step 2 — Add the dependency to your project's `pom.xml`
+**Step 2 — Add the dependency to your project's `pom.xml`**
 
 ```xml
 <dependency>
   <groupId>com.taosdata</groupId>
   <artifactId>idmp-sdk</artifactId>
-  <version>1.0.14.2</version>
+  <version>1.0.15.2</version>
 </dependency>
 ```
 
@@ -70,7 +70,7 @@ pip install .
 </TabItem>
 </Tabs>
 
-## Verifying the Installation
+## 15.1.1.3 Verifying the Installation
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -92,7 +92,7 @@ python -c "import idmp_sdk; print('SDK installed successfully')"
 </TabItem>
 </Tabs>
 
-## Private Repository Setup
+## 15.1.1.4 Private Repository Setup
 
 If your development environment has no internet access, host the SDK in a private repository:
 

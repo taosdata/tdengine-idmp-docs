@@ -3,14 +3,14 @@ title: Authentication
 sidebar_label: Authentication
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 15.1.3 Authentication
 
 The IDMP SDK uses **Bearer Token (JWT)** for authentication. How you obtain a token depends on your deployment type.
 
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
-## Enterprise (Self-Hosted) Authentication
+## 15.1.3.1 Enterprise (Self-Hosted) Authentication
 
 For self-hosted deployments, obtain a token by calling the login endpoint with a username and password.
 
@@ -58,7 +58,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 </TabItem>
 </Tabs>
 
-## Cloud Service Authentication
+## 15.1.3.2 Cloud Service Authentication
 
 The cloud service requires two tokens on each request: `Authorization` (Bearer Token) and `Access-token`.
 
@@ -116,7 +116,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 </TabItem>
 </Tabs>
 
-## Token Lifetime and Refresh
+## 15.1.3.3 Token Lifetime and Refresh
 
 | Deployment | Token Lifetime | How to Refresh |
 |---|---|---|
@@ -127,7 +127,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 Wrap token acquisition and refresh in a utility function. Trigger a refresh automatically when you receive a `401 Unauthorized` response.
 :::
 
-## Security Best Practices
+## 15.1.3.4 Security Best Practices
 
 - **Never** hardcode tokens, usernames, or passwords in source code.
 - Store credentials in environment variables or a secrets manager (Vault, AWS Secrets Manager, etc.).

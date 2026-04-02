@@ -5,19 +5,19 @@ sidebar_label: Events
 
 # 6 Events
 
-An event in TDengine IDMP is a discrete operational occurrence with a defined start time, end time, and duration — the digital record that something happened. A pump tripped, a temperature exceeded its limit, a batch phase completed, a maintenance window began. This concept is equivalent to **event frames** in OSIsoft PI System, one of the most powerful ideas in industrial data management.
+An event in TDengine IDMP is a discrete operational occurrence with a defined start time, end time, and duration — the digital record that something happened. A pump tripped, a temperature exceeded its limit, a batch phase completed, a maintenance window began. This concept is equivalent to **event frames** in AVEVA PI System, one of the most powerful ideas in industrial data management.
 
-Raw sensor streams tell you what a value was at a given moment; events tell you what was happening operationally — and for how long. Instead of searching through millions of data points to find when a compressor ran in surge, you query the structured event record that already captured it.
+Raw sensor streams provide a measurement value at a given moment; events record what was happening operationally — and for how long. Instead of searching through millions of data points to find when a compressor ran in surge, querying the structured event record that already captured it is sufficient.
 
 ## Events in the AI Era
 
-Events matter even more as AI becomes central to industrial operations. AI and machine learning systems work best when data is structured and contextualized — and that is exactly what events provide. Instead of feeding a model millions of raw sensor readings, you give it structured records: "Compressor Surge, Start: 10:23:15, Duration: 12 seconds, Severity: High." That context is what turns signal data into something a model can reason about.
+Events matter even more as AI becomes central to industrial operations. AI and machine learning systems work best when data is structured and contextualized — and that is exactly the capability that events provide. Compared to feeding a model millions of raw sensor readings, providing structured records is far more effective: "Compressor Surge, Start: 10:23:15, Duration: 12 seconds, Severity: High." That context is what turns signal data into something a model can reason about.
 
-Events directly enable the industrial AI use cases that matter most: training predictive maintenance models, powering anomaly detection, performing root cause analysis, and driving AI agents that can reason about what is happening in a plant. Every one of these requires knowing not just what values were measured, but what operational conditions those values represented — and for how long. Events are the bridge between continuous time-series data and the operational intelligence that AI systems need to be useful.
+Events directly enable the industrial AI use cases that matter most: training predictive maintenance models, powering anomaly detection, performing root cause analysis, and driving AI agents that can reason about what is happening in a plant. All of these require not just measurement values, but an understanding of the operational conditions those values represented — and for how long. Events are the bridge between continuous time-series data and the operational intelligence that AI systems need to be useful.
 
 ## Event Lifecycle
 
-Events in TDengine IDMP are always generated automatically by analysis rules associated with an element. The full lifecycle is:
+Events in TDengine IDMP are always generated automatically by analysis rules associated with an element, following a standardized lifecycle from template definition to event creation and notification delivery.
 
 ```text
 Event Template (defined in Libraries)
@@ -33,7 +33,7 @@ Every event must be based on an **event template**, which defines the naming pat
 
 ## Standard Event Fields
 
-Every event carries the following standard fields:
+Every event carries the following standard fields, which describe the event's time range, associated objects, severity, and current processing status.
 
 | Field | Description |
 |---|---|
@@ -48,11 +48,13 @@ Every event carries the following standard fields:
 | **Description** | Free-text description |
 | **Associated Element** | The element that generated this event |
 | **Associated Analysis** | The analysis rule that triggered this event |
-| **Status** | Whether the event has been acknowledged |
+| **Status** | Acknowledgment status of the event (Unacknowledged / Acknowledged) |
 
 In addition to these standard fields, an event can carry **custom attributes** — named values recorded at the time of the event, such as the peak temperature during an exceedance or the batch ID at the time of a fault. Custom attributes are defined in the event template.
 
 ## What's Covered in This Chapter
+
+This chapter covers the complete event management workflow, from template definition to event browsing, detail viewing, alert notifications, acknowledgment, and trend analysis.
 
 - **[Event Templates](./01-event-templates.md)** — Creating and managing event templates in Libraries
 - **[Browsing Events](./02-browsing-events.md)** — The global events view, element-level events, and filtering

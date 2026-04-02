@@ -3,9 +3,9 @@ title: Client SDK
 sidebar_label: Client SDK
 ---
 
-# 15.1 Client SDK
-
 import DocCardList from '@theme/DocCardList';
+
+# 15.1 Client SDK
 
 The TDengine IDMP SDK gives you programmatic access to the full data asset: elements, attributes, time-series metrics, and events. The SDK is auto-generated from IDMP's OpenAPI specification and is natively available in **Java** and **Python**. For other languages, the OpenAPI spec can be used with [OpenAPI Generator](https://openapi-generator.tech/) to produce a client in any supported language.
 
@@ -26,8 +26,8 @@ Version and compatibility information will be published here when the SDK reache
 Download the SDK package from the [TDengine Download Center](https://www.taosdata.com/download-center). The package has the following structure:
 
 ```bash
-idmp-sdk-1.0.14.2/
-  ├── idmp-v1.0.14.2.json         # OpenAPI spec — use this to generate SDKs for other languages
+idmp-sdk-1.0.15.2/
+  ├── idmp-v1.0.15.2.json         # OpenAPI spec — use this to generate SDKs for other languages
   ├── idmp-java-sdk/              # Java SDK source and compiled JAR
   └── idmp-python-sdk/            # Python SDK source
 ```
@@ -48,7 +48,7 @@ wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.6.0
 ```bash
 # Example: generate a Go SDK
 java -jar openapi-generator-cli.jar generate \
-  -i idmp-v1.0.14.2.json \
+  -i idmp-v1.0.15.2.json \
   -g go \
   -o idmp-go-sdk \
   --skip-validate-spec

@@ -5,11 +5,13 @@ sidebar_label: Status History
 
 # 4.2.9 Status History
 
-## Overview
+## 4.2.9.1 Overview
 
 The Status History panel displays a grid of colored cells where each column represents a time bucket and each row represents a metric. It provides a compact, calendar-style view of state patterns across multiple dimensions simultaneously — ideal for spotting recurring patterns, shifts, or periods of abnormal behavior across a long time range.
 
-## When to Use
+![Status History panel example](../images/status-history-panel.png)
+
+## 4.2.9.2 When to Use
 
 Use the Status History panel when:
 
@@ -19,7 +21,7 @@ Use the Status History panel when:
 
 For a continuous band showing every state transition in detail, use the State Timeline instead.
 
-## Configuration
+## 4.2.9.3 Configuration
 
 ### Edit Mode Toolbar
 
@@ -33,20 +35,39 @@ In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mo
 
 ### Graph Settings
 
+![Status History configuration panel](../images/status-history-config.png)
+
 | Setting | Description |
 |---|---|
 | **Title** | Chart title |
 | **Subtitle** | Secondary title |
-| **Value Mapping** | Click **+ Edit Value Mappings** to define how data values map to display colors and labels. For example: 0 → "Off" (gray), 1 → "Running" (green), 2 → "Fault" (red). |
+| **Value Mapping** | Define how data values map to display colors and labels — see section below |
 | **Border Width** | Width of the borders between cells (slider) |
 | **Row Height** | Relative height of each row (slider) |
 | **Column Width** | Width of each time-bucket column (slider) |
 | **Fill Opacity** | Transparency of the cell fill color, 0–1 |
-| **Rotate Labels** | Rotation of X-axis time labels |
+| **Rotate Labels** | Rotation of X-axis time labels: -90°, -45°, 0°, 45°, or 90° |
+| **Label Interval** | Display density of X-axis time labels: **Auto**, **Small**, **Medium**, **Large** |
 
 The time bucket size is controlled by the **Sliding Window** setting in the data configuration. For example, a 1-hour sliding window produces one column per hour.
 
-## Example Scenarios
+#### Value Mapping
+
+Value mappings translate raw data values into display text and cell colors. Click **+ Edit Value Mappings** to open the mapping editor, which supports five condition types:
+
+![Edit Value Mappings dialog](../images/status-history-valuemapping.png)
+
+| Condition Type | Description |
+|---|---|
+| **Value** | Match a specific text or numeric value |
+| **Range** | Match a numeric range by specifying upper and lower bounds |
+| **Regex** | Match a regular expression and replace the displayed text |
+| **Special Value** | Match special states such as null, NaN, boolean, or empty values |
+| **Other Values** | Catch-all rule that matches any value not covered by earlier rules |
+
+Each mapping rule can specify an optional **Display Text** and a **Color**. Rules are evaluated top-to-bottom; the first match wins.
+
+## 4.2.9.4 Example Scenarios
 
 **Weekly alarm heatmap.** Ten alarm signals are added as rows. A 1-hour sliding window produces 168 columns (one per hour over 7 days). Value mappings set 0 → gray and 1 → red. The resulting grid shows at a glance which devices were in alarm and at what hours throughout the week.
 
