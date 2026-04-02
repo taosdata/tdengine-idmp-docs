@@ -35,9 +35,19 @@ To create a new event template:
 
 ### Event Naming Pattern
 
-Every event generated from a template receives a name constructed from the **Event Naming Pattern**. Enter static text and insert placeholder variables by clicking the **+** icon on the right side of the field. Available variables include element name, analysis name, start time, end time, and others.
+Every event generated from a template receives a name constructed from the **Event Naming Pattern**. Enter static text and insert placeholder variables by clicking the **+** icon on the right side of the field. Available variables include:
 
-For best results, include the element name, analysis name, and start time in the pattern — this makes every event name self-descriptive: `{elementName} - {analysisName} - {startTime}`.
+| Variable | Description |
+|---|---|
+| `${Element#name}` | Name of the element that triggered the event |
+| `${Analysis#name}` | Name of the analysis that triggered the event |
+| `${EventTemplate#name}` | Event template name |
+| `${startTime}` | Event start time |
+| `${endTime}` | Event end time |
+| `${createTime}` | Event creation time |
+| `${attributes["AttrName"]#value}` | The current value of an element attribute. `AttrName` is a placeholder that you **must manually replace with an actual attribute name** that exists on the element. For example, if the element has an attribute named `location`, write `${attributes["location"]#value}` — the system resolves it to the attribute's actual value when generating the event. |
+
+For best results, include the element name, analysis name, and start time in the pattern — this makes every event name self-descriptive: `${Element#name} - ${Analysis#name} - ${startTime}`.
 
 ### Template Inheritance
 
