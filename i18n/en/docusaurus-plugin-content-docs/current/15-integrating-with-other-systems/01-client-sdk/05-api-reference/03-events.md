@@ -5,6 +5,7 @@ sidebar_label: Events API
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import IdmpSdkVersion from "/src/components/IdmpSdkVersion";
 
 # 15.1.5.3 Events API
 
@@ -74,5 +75,5 @@ event_api = idmp_sdk.EventResourceApi(api_client)
 </Tabs>
 
 :::note
-For the complete method signatures and parameters, refer to the OpenAPI spec file (`idmp-v1.0.15.2.json`) included in the SDK package, or browse the Swagger UI at `/swagger-ui.html` on your IDMP server.
+For the complete method signatures and parameters, refer to the OpenAPI spec file (<code>idmp-v<IdmpSdkVersion />.json</code>) included in the SDK package, or browse the Swagger UI at `/swagger-ui.html` on your IDMP server.
 :::
