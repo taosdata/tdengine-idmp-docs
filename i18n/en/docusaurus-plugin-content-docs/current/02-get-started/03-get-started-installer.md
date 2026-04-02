@@ -30,13 +30,13 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 
 1. Download the installation package from the following link:
 
-   <PkgList productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Generic" />
+   <PkgList productName="TDengine IDMP-Enterprise" platform="Linux-Generic" />
 
 2. Run the following commands to extract and install (using x64 architecture as an example):
 
-   ```bash
-   tar zxvf tdengine-idmp-enterprise-1.0.15.0-linux-x64.tar.gz
-   cd tdengine-idmp-enterprise-1.0.15.0
+   ```bash idmp-ee
+   tar zxvf tdengine-idmp-enterprise-{{VERSION}}-linux-x64.tar.gz
+   cd tdengine-idmp-enterprise-{{VERSION}}
    sudo ./install.sh
    ```
 
@@ -80,12 +80,12 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 
 1. Download the installation package from the following link:
 
-   <PkgList productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Red Hat" />
+   <PkgList productName="TDengine IDMP-Enterprise" platform="Linux-Red Hat" />
 
 2. Run the following command to install the rpm package (using x64 architecture as an example):
 
-   ```bash
-   sudo rpm -ivh --nodeps tdengine-idmp-enterprise-1.0.15.0-linux-x64.rpm
+   ```bash idmp-ee
+   sudo rpm -ivh --nodeps tdengine-idmp-enterprise-{{VERSION}}-linux-x64.rpm
    ```
 
    :::tip
@@ -128,12 +128,12 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 
 1. Download the installation package from the following link:
 
-   <PkgList productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="Linux-Ubuntu" />
+   <PkgList productName="TDengine IDMP-Enterprise" platform="Linux-Ubuntu" />
 
 2. Run the following command to install the deb package (using x64 architecture as an example):
 
-   ```bash
-   sudo dpkg -i tdengine-idmp-enterprise-1.0.15.0-linux-x64.deb
+   ```bash idmp-ee
+   sudo dpkg -i tdengine-idmp-enterprise-{{VERSION}}-linux-x64.deb
    ```
 
    :::tip
@@ -176,12 +176,12 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 
 1. Download the installation package from the following link:
 
-   <PkgList productName="TDengine IDMP-Enterprise" version="1.0.15.0" platform="macOS" />
+   <PkgList productName="TDengine IDMP-Enterprise" platform="macOS" />
 
 1. Run the following command to install TDengine IDMP:
 
-   ```bash
-   sudo installer -pkg tdengine-idmp-enterprise-1.0.15.0-macos-arm64.pkg -target /
+   ```bash idmp-ee
+   sudo installer -pkg tdengine-idmp-enterprise-{{VERSION}}-macos-arm64.pkg -target /
    ```
 
    :::tip
