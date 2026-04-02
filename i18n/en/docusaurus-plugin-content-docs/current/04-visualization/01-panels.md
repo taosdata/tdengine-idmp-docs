@@ -89,6 +89,7 @@ The following controls appear in the view mode toolbar for every panel type:
 | **Full Screen** | Expand the panel to fill the browser window |
 | **Open in New Window** | Open this panel in a separate browser window |
 | **Panel Insights** | Open the AI-generated insight report for this panel |
+| **Annotations** | Open the annotations panel to add text annotations to this panel |
 
 Additional toolbar controls that are specific to a panel type are documented in each panel type's section.
 
@@ -229,7 +230,26 @@ Configure a scheduled report delivery rule on this panel. See [Scheduled Reports
 
 Additional settings sections — Graph, Axis, Limits, Legend, and others — are panel-type-specific and documented in each panel type's section.
 
-## 4.1.5 Organizing Panels
+## 4.1.5 Annotations
+
+Annotations let users attach text notes to a panel — for example, marking the cause of an anomaly, recording a maintenance action, or leaving contextual notes for team members.
+
+### Adding an Annotation
+
+1. In panel view mode, click the **Annotations** button in the toolbar to open the annotations panel.
+2. Click the **+** button at the bottom to expand the input box.
+3. Type the annotation content (Markdown formatting is supported).
+4. Press **Enter** to submit, or **Shift+Enter** for a new line.
+
+### Editing an Annotation
+
+Hover over an annotation and click the **Edit** icon. After modifying the content, click **Save** to save the changes, or click **Cancel** to discard them.
+
+### Deleting an Annotation
+
+Hover over an annotation and click the **Delete** icon, then confirm in the confirmation dialog.
+
+## 4.1.6 Organizing Panels
 
 **Categories** are free-form text tags assigned to a panel in the General settings. They appear in the Categories filter dropdown on the Panels tab, letting users quickly find panels by function or system area (e.g., Electrical, Mechanical, Quality).
 
