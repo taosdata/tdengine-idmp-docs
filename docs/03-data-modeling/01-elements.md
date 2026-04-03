@@ -17,16 +17,20 @@ sidebar_label: 元素与数据目录
 
 在资产树中选中某个元素后，**通用标签页**会显示以下信息：
 
-| 字段 | 说明 |
-|---|---|
-| **名称** | 元素在其父级范围内的唯一标识符 |
-| **路径** | 该元素在资产树中的完整层次路径（例如 `/Elements/Utilities/California/San Diego County/Chula Vista/em-10`） |
-| **模板** | 该元素所基于的元素模板。点击模板名称可跳转到模板定义页。 |
-| **类别** | 用于分组和筛选元素的一个或多个用户自定义类别标签 |
-| **默认属性** | 在汇总视图中显示该元素时默认展示的属性 |
-| **描述** | 对该资产所代表内容的自由文本描述 |
-| **位置** | 物理资产的 GPS 坐标：经度、纬度和海拔。用于基于地图的可视化。 |
-| **附加特性** | 用于存储该元素特有的自定义元数据的自由键值对，如制造商、型号、序列号、安装日期或维护联系人 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>字段</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong></td><td>元素在其父级范围内的唯一标识符</td></tr>
+<tr><td><strong>路径</strong></td><td>该元素在资产树中的完整层次路径（例如 <code>/Elements/Utilities/California/San Diego County/Chula Vista/em-10</code>）</td></tr>
+<tr><td><strong>模板</strong></td><td>该元素所基于的元素模板。点击模板名称可跳转到模板定义页。</td></tr>
+<tr><td><strong>类别</strong></td><td>用于分组和筛选元素的一个或多个用户自定义类别标签</td></tr>
+<tr><td><strong>默认属性</strong></td><td>在汇总视图中显示该元素时默认展示的属性</td></tr>
+<tr><td><strong>描述</strong></td><td>对该资产所代表内容的自由文本描述</td></tr>
+<tr><td><strong>位置</strong></td><td>物理资产的 GPS 坐标：经度、纬度和海拔。用于基于地图的可视化。</td></tr>
+<tr><td><strong>附加特性</strong></td><td>用于存储该元素特有的自定义元数据的自由键值对，如制造商、型号、序列号、安装日期或维护联系人</td></tr>
+</tbody>
+</table>
 
 通用标签页主要字段下方还包含以下可展开区域：
 
@@ -89,12 +93,16 @@ sidebar_label: 元素与数据目录
 
 资产树支持**同时维护多棵层级树**，每棵树从不同的业务视角呈现同一批资产：
 
-| 视角 | 示例层级 |
-|---|---|
-| 组织架构 | 集团 → 工厂 → 产线 → 设备 |
-| 地理位置 | 区域 → 站点 → 厂房 → 区域 → 设备 |
-| 设备类型 | 风机 → 变频器 → 传感器 |
-| 功能分类 | 公用工程 → 电表 → 相位测量 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>视角</th><th>示例层级</th></tr></thead>
+<tbody>
+<tr><td>组织架构</td><td>集团 → 工厂 → 产线 → 设备</td></tr>
+<tr><td>地理位置</td><td>区域 → 站点 → 厂房 → 区域 → 设备</td></tr>
+<tr><td>设备类型</td><td>风机 → 变频器 → 传感器</td></tr>
+<tr><td>功能分类</td><td>公用工程 → 电表 → 相位测量</td></tr>
+</tbody>
+</table>
 
 一台物理设备——例如一台泵——可以同时出现在地理层级树和功能设备层级树中。两个视图指向同一个元素及其数据，不存在任何重复。这是通过*元素引用*实现的。详情参见 [3.1.7 元素引用](#317-元素引用)。
 
@@ -188,14 +196,18 @@ sidebar_label: 元素与数据目录
 
 由于一个模板会被多个元素共用，模板中的字段值不能硬编码。IDMP 提供**替换字符串**，在创建元素时会被解析为实际值。常用替换字符串包括：
 
-| 替换字符串 | 解析为 |
-|---|---|
-| `${Template#name}` | 模板名称 |
-| `${Element#name}` | 元素名称 |
-| `${Attribute#name}` | 属性名称 |
-| `${attributes["AttrName"]#value}` | 指定属性的当前值 |
-| `${startTime}` | 事件开始时间 |
-| `${endTime}` | 事件结束时间 |
+<table>
+<colgroup><col style="width:20em"/><col/></colgroup>
+<thead><tr><th>替换字符串</th><th>解析为</th></tr></thead>
+<tbody>
+<tr><td><code>${Template#name}</code></td><td>模板名称</td></tr>
+<tr><td><code>${Element#name}</code></td><td>元素名称</td></tr>
+<tr><td><code>${Attribute#name}</code></td><td>属性名称</td></tr>
+<tr><td><code>${attributes["AttrName"]#value}</code></td><td>指定属性的当前值</td></tr>
+<tr><td><code>${startTime}</code></td><td>事件开始时间</td></tr>
+<tr><td><code>${endTime}</code></td><td>事件结束时间</td></tr>
+</tbody>
+</table>
 
 您无需记忆这些字符串——凡是可以使用替换字符串的地方，IDMP 都会显示 **+** 选择器，列出该字段所有适用的替换字符串。
 
@@ -203,42 +215,54 @@ sidebar_label: 元素与数据目录
 
 ### 3.1.6.3 关键模板设置
 
-| 设置 | 说明 |
-|---|---|
-| **仅用作基础模板** | 若启用，该模板只能作为其他模板的父模板，不能直接用于创建元素。 |
-| **允许扩展** | 若启用，从该模板创建的元素可以在模板定义的基础上添加自定义属性、分析或面板。若禁用，则不允许任何自定义。 |
-| **元素命名模式** | 由固定字符串和替换字符串组成的模式，用于决定从此模板创建的每个元素的自动生成名称。例如，`DEV-${KEYWORD1}` 会将元素命名为 `DEV-smeter-1` 等。 |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>仅用作基础模板</strong></td><td>若启用，该模板只能作为其他模板的父模板，不能直接用于创建元素。</td></tr>
+<tr><td><strong>允许扩展</strong></td><td>若启用，从该模板创建的元素可以在模板定义的基础上添加自定义属性、分析或面板。若禁用，则不允许任何自定义。</td></tr>
+<tr><td><strong>元素命名模式</strong></td><td>由固定字符串和替换字符串组成的模式，用于决定从此模板创建的每个元素的自动生成名称。例如，<code>DEV-${KEYWORD1}</code> 会将元素命名为 <code>DEV-smeter-1</code> 等。</td></tr>
+</tbody>
+</table>
 
 ### 3.1.6.4 通用标签页字段
 
 打开元素模板时，**通用标签页**显示：
 
-| 字段 | 说明 |
-|---|---|
-| **模板名称** | 模板的名称 |
-| **描述** | 可选描述 |
-| **基础模板** | 本模板继承的父模板（如有） |
-| **类别** | 类别标签 |
-| **默认属性** | 在汇总视图中显示元素时默认展示的属性 |
-| **元素命名模式** | 使用替换字符串的自动生成名称模式（如 `${KEYWORD1}`） |
-| **仅用作基础模板** | 若为 true，该模板不能直接用于创建元素，只能作为其他模板的基础模板 |
-| **允许扩展** | 若为 true，元素可以在模板定义的基础上添加自定义属性、分析或面板 |
-| **位置** | 元素继承的默认 GPS 坐标（海拔、纬度、经度） |
-| **关键字** | 为该模板定义的自定义 KEYWORD 替换字符串，每个字符串附带在创建元素时展示的描述性帮助文本 |
-| **关联文档** | 附加到模板的文件，由 AI 引擎索引 |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>字段</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>模板名称</strong></td><td>模板的名称</td></tr>
+<tr><td><strong>描述</strong></td><td>可选描述</td></tr>
+<tr><td><strong>基础模板</strong></td><td>本模板继承的父模板（如有）</td></tr>
+<tr><td><strong>类别</strong></td><td>类别标签</td></tr>
+<tr><td><strong>默认属性</strong></td><td>在汇总视图中显示元素时默认展示的属性</td></tr>
+<tr><td><strong>元素命名模式</strong></td><td>使用替换字符串的自动生成名称模式（如 <code>${KEYWORD1}</code>）</td></tr>
+<tr><td><strong>仅用作基础模板</strong></td><td>若为 true，该模板不能直接用于创建元素，只能作为其他模板的基础模板</td></tr>
+<tr><td><strong>允许扩展</strong></td><td>若为 true，元素可以在模板定义的基础上添加自定义属性、分析或面板</td></tr>
+<tr><td><strong>位置</strong></td><td>元素继承的默认 GPS 坐标（海拔、纬度、经度）</td></tr>
+<tr><td><strong>关键字</strong></td><td>为该模板定义的自定义 KEYWORD 替换字符串，每个字符串附带在创建元素时展示的描述性帮助文本</td></tr>
+<tr><td><strong>关联文档</strong></td><td>附加到模板的文件，由 AI 引擎索引</td></tr>
+</tbody>
+</table>
 
 ### 3.1.6.5 元素模板包含的内容
 
 模板创建后，其详情页会显示以下选项卡。每个选项卡管理一类子模板，这些子模板在每次从此模板创建元素时自动实例化：
 
-| 选项卡 | 说明 |
-|---|---|
-| **通用** | 上述元素级别设置 |
-| **属性模板** | 标准属性集，包括 TDengine TSDB 数据引用绑定。参见[属性模板](./02-attributes.md#属性模板)。 |
-| **面板模板** | 为每个元素自动创建的标准面板（趋势图、仪表、报表等）。参见[面板与仪表板模板](../04-visualization/07-panel-dashboard-templates.md)。 |
-| **分析模板** | 在该类型每个元素上运行的可复用分析规则。参见[分析模板](../07-real-time-analysis/07-analysis-templates.md)。 |
-| **仪表板模板** | 与每个元素自动关联的标准仪表板。参见[面板与仪表板模板](../04-visualization/07-panel-dashboard-templates.md)。 |
-| **通知规则模板** | 应用于从此模板创建的元素的默认通知规则，包括联系点、重发间隔、升级设置和消息模板。 |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>选项卡</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>通用</strong></td><td>上述元素级别设置</td></tr>
+<tr><td><strong>属性模板</strong></td><td>标准属性集，包括 TDengine TSDB 数据引用绑定。参见<a href="./02-attributes.md#属性模板">属性模板</a>。</td></tr>
+<tr><td><strong>面板模板</strong></td><td>为每个元素自动创建的标准面板（趋势图、仪表、报表等）。参见<a href="../04-visualization/07-panel-dashboard-templates.md">面板与仪表板模板</a>。</td></tr>
+<tr><td><strong>分析模板</strong></td><td>在该类型每个元素上运行的可复用分析规则。参见<a href="../07-real-time-analysis/07-analysis-templates.md">分析模板</a>。</td></tr>
+<tr><td><strong>仪表板模板</strong></td><td>与每个元素自动关联的标准仪表板。参见<a href="../04-visualization/07-panel-dashboard-templates.md">面板与仪表板模板</a>。</td></tr>
+<tr><td><strong>通知规则模板</strong></td><td>应用于从此模板创建的元素的默认通知规则，包括联系点、重发间隔、升级设置和消息模板。</td></tr>
+</tbody>
+</table>
 
 ### 3.1.6.6 创建元素模板
 
@@ -263,11 +287,15 @@ DEV-${KEYWORD1}
 
 在 `Smart Meter` 模板上创建三个属性模板：
 
-| 属性 | 数据引用类型 | 数据引用设置 |
-|---|---|---|
-| Current | TDengine 指标 | `TDengine/smdb/${KEYWORD1}/current` |
-| Voltage | TDengine 指标 | `TDengine/smdb/${KEYWORD1}/voltage` |
-| Model | TDengine 标签 | `TDengine/smdb/${KEYWORD1}/model` |
+<table>
+<colgroup><col style="width:6em"/><col/><col/></colgroup>
+<thead><tr><th>属性</th><th>数据引用类型</th><th>数据引用设置</th></tr></thead>
+<tbody>
+<tr><td>Current</td><td>TDengine 指标</td><td><code>TDengine/smdb/${KEYWORD1}/current</code></td></tr>
+<tr><td>Voltage</td><td>TDengine 指标</td><td><code>TDengine/smdb/${KEYWORD1}/voltage</code></td></tr>
+<tr><td>Model</td><td>TDengine 标签</td><td><code>TDengine/smdb/${KEYWORD1}/model</code></td></tr>
+</tbody>
+</table>
 
 对于每个属性，将**数据引用类型**设置为 **TDengine 指标**或 **TDengine 标签**，然后打开数据引用设置弹窗。选择 TDengine 连接和数据库 `smdb`，在**表名模式**字段中点击 **+** 并选择 `KEYWORD1`，填入列名（`current`、`voltage` 或 `model`）。输入一个示例子表名，点击**检查**以验证绑定是否正确。
 

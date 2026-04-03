@@ -46,10 +46,14 @@ sidebar_label: 根因分析
 
 ## 8.10.4 面板控件
 
-| 控件 | 说明 |
-|---|---|
-| **刷新图标** | 为该事件重新运行根因分析 |
-| **关闭（X）** | 关闭根因分析面板，返回标准事件详情视图 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>刷新图标</strong></td><td>为该事件重新运行根因分析</td></tr>
+<tr><td><strong>关闭（X）</strong></td><td>关闭根因分析面板，返回标准事件详情视图</td></tr>
+</tbody>
+</table>
 
 :::note
 根因分析是 TDengine IDMP 1.0.14 中引入的新功能。未来版本计划增加更多根因分析入口（例如从仪表板和 AI 问答界面发起）。

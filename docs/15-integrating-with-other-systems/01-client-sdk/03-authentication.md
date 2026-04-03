@@ -69,11 +69,15 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 3. 刷新页面，找到任意后端 API 请求（如 `/api/v1/permissions/menus`）。
 4. 复制以下三个值：
 
-| 项目 | 说明 |
-|---|---|
-| 请求 URL 主机 | 格式：`https://<instance-id>.idmp.taosdata.com` |
-| `Access-token` 请求头 | 云服务专用认证 Token |
-| `Authorization` 请求头 | Bearer Token——使用不含 `Bearer` 前缀的值 |
+<table>
+<colgroup><col style="width:13em"/><col/></colgroup>
+<thead><tr><th>项目</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>请求 URL 主机</td><td>格式：<code>https://<instance-id>.idmp.taosdata.com</code></td></tr>
+<tr><td><code>Access-token</code> 请求头</td><td>云服务专用认证 Token</td></tr>
+<tr><td><code>Authorization</code> 请求头</td><td>Bearer Token——使用不含 <code>Bearer</code> 前缀的值</td></tr>
+</tbody>
+</table>
 
 5. 将这些值设置为环境变量：
 
@@ -118,10 +122,14 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 
 ## 15.1.3.3 Token 有效期与刷新
 
-| 部署方式 | Token 有效期 | 刷新方法 |
-|---|---|---|
-| 企业版（自托管） | 在服务器端配置（参见 `application.yml`） | 再次调用登录端点获取新 Token |
-| 云服务 | 由浏览器会话控制 | 通过浏览器重新登录，并从开发者工具中复制新 Token |
+<table>
+<colgroup><col style="width:11em"/><col/><col/></colgroup>
+<thead><tr><th>部署方式</th><th>Token 有效期</th><th>刷新方法</th></tr></thead>
+<tbody>
+<tr><td>企业版（自托管）</td><td>在服务器端配置（参见 <code>application.yml</code>）</td><td>再次调用登录端点获取新 Token</td></tr>
+<tr><td>云服务</td><td>由浏览器会话控制</td><td>通过浏览器重新登录，并从开发者工具中复制新 Token</td></tr>
+</tbody>
+</table>
 
 :::tip
 将 Token 获取和刷新封装在工具函数中。收到 `401 Unauthorized` 响应时自动触发刷新。

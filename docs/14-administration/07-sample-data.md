@@ -19,12 +19,16 @@ sidebar_label: 示例数据
 
 #### 运行环境要求
 
-| 组件          | 要求             |
-| ------------- | ---------------- |
-| Java          | JDK 8 及以上     |
-| TDengine      | 已部署并可访问   |
-| IDMP          | 已部署并可访问   |
-| JSON 配置文件 | 示例数据描述文件 |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>组件</th><th>要求</th></tr></thead>
+<tbody>
+<tr><td>Java</td><td>JDK 8 及以上</td></tr>
+<tr><td>TDengine</td><td>已部署并可访问</td></tr>
+<tr><td>IDMP</td><td>已部署并可访问</td></tr>
+<tr><td>JSON 配置文件</td><td>示例数据描述文件</td></tr>
+</tbody>
+</table>
 
 #### 工具位置说明
 

@@ -13,10 +13,14 @@ sidebar_label: 分类
 
 列表显示所有已定义的分类，包含以下列：
 
-| 列 | 说明 |
-|---|---|
-| **名称** | 分类名称 |
-| **描述** | 可选描述 |
+<table>
+<colgroup><col style="width:5em"/><col/></colgroup>
+<thead><tr><th>列</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong></td><td>分类名称</td></tr>
+<tr><td><strong>描述</strong></td><td>可选描述</td></tr>
+</tbody>
+</table>
 
 每个分类还有一个**类型**，决定它可以应用于哪种对象。列表按对象类型组织。点击分类名称可编辑。使用行上的 **⋮** 菜单可编辑或删除。
 
@@ -24,11 +28,15 @@ sidebar_label: 分类
 
 点击 **+** 创建新分类。填写以下字段：
 
-| 字段 | 说明 |
-|---|---|
-| **名称**（必填） | 在其类型范围内的唯一名称。支持字母、数字、下划线、连字符和空格。 |
-| **类型**（必填） | 此分类适用的对象类型：`元素`、`属性`、`分析`、`仪表板`、`面板`或`事件`。 |
-| **描述** | 可选描述。 |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>字段</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong>（必填）</td><td>在其类型范围内的唯一名称。支持字母、数字、下划线、连字符和空格。</td></tr>
+<tr><td><strong>类型</strong>（必填）</td><td>此分类适用的对象类型：<code>元素</code>、<code>属性</code>、<code>分析</code>、<code>仪表板</code>、<code>面板</code>或<code>事件</code>。</td></tr>
+<tr><td><strong>描述</strong></td><td>可选描述。</td></tr>
+</tbody>
+</table>
 
 点击**保存**创建分类。
 

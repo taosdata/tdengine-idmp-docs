@@ -28,10 +28,14 @@ sidebar_label: 富文本
 
 除[通用编辑模式控件](../01-panels.md#414-面板编辑模式)外，富文本面板还增加了以下控件：
 
-| 控件 | 说明 |
-|---|---|
-| **保存为图片** | 将当前面板内容下载为 PNG 图片 |
-| **全屏** | 将编辑器扩展为填满浏览器窗口 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>保存为图片</strong></td><td>将当前面板内容下载为 PNG 图片</td></tr>
+<tr><td><strong>全屏</strong></td><td>将编辑器扩展为填满浏览器窗口</td></tr>
+</tbody>
+</table>
 
 ### 内容编辑器
 
@@ -55,11 +59,15 @@ sidebar_label: 富文本
 
 ![富文本面板背景图片配置](../images/text-config.png)
 
-| 设置 | 说明 |
-|---|---|
-| **背景颜色** | 面板的背景颜色 |
-| **背景图布局** | 背景图的定位方式：无、覆盖、适应或平铺 |
-| **背景图** | 上传图片文件作为面板背景 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>背景颜色</strong></td><td>面板的背景颜色</td></tr>
+<tr><td><strong>背景图布局</strong></td><td>背景图的定位方式：无、覆盖、适应或平铺</td></tr>
+<tr><td><strong>背景图</strong></td><td>上传图片文件作为面板背景</td></tr>
+</tbody>
+</table>
 
 ## 4.2.15.4 使用示例
 

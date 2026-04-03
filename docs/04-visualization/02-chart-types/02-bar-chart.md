@@ -30,11 +30,15 @@ sidebar_label: 柱状图
 
 除[通用编辑模式控件](../01-panels.md#414-面板编辑模式)外，柱状图还增加了以下控件：
 
-| 控件 | 说明 |
-|---|---|
-| **保存为图片** | 将当前预览下载为 PNG 图片 |
-| **全屏** | 将编辑器预览扩展为填满浏览器窗口 |
-| **解读面板** | 对当前预览数据运行 AI 分析 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>保存为图片</strong></td><td>将当前预览下载为 PNG 图片</td></tr>
+<tr><td><strong>全屏</strong></td><td>将编辑器预览扩展为填满浏览器窗口</td></tr>
+<tr><td><strong>解读面板</strong></td><td>对当前预览数据运行 AI 分析</td></tr>
+</tbody>
+</table>
 
 ### 图形设置
 
@@ -52,12 +56,16 @@ sidebar_label: 柱状图
 
 如果未设置柱体宽度，图表会根据整体宽度和柱体数量自动计算——这种自适应行为在大多数情况下效果良好。只有在固定分辨率屏幕上需要精确间距时才设置固定宽度。
 
-| 设置 | 说明 |
-|---|---|
-| **布局方向** | 垂直（柱体向上延伸）或水平（柱体向右延伸） |
-| **柱体宽度** | 单个柱体的宽度（滑块；留空则自动计算） |
-| **柱体透明度** | 柱体的透明度，0–1 |
-| **系列堆叠** | 堆叠多个指标：无、同符号、全部、正值、负值 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>布局方向</strong></td><td>垂直（柱体向上延伸）或水平（柱体向右延伸）</td></tr>
+<tr><td><strong>柱体宽度</strong></td><td>单个柱体的宽度（滑块；留空则自动计算）</td></tr>
+<tr><td><strong>柱体透明度</strong></td><td>柱体的透明度，0–1</td></tr>
+<tr><td><strong>系列堆叠</strong></td><td>堆叠多个指标：无、同符号、全部、正值、负值</td></tr>
+</tbody>
+</table>
 
 #### 标签
 
@@ -71,10 +79,14 @@ sidebar_label: 柱状图
 
 ![降低标签间隔以减少密度](../images/bar-interval.png)
 
-| 设置 | 说明 |
-|---|---|
-| **标签旋转** | 坐标轴标签的旋转角度 |
-| **标签间隔** | 标签密度：自动、小、中、大 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>标签旋转</strong></td><td>坐标轴标签的旋转角度</td></tr>
+<tr><td><strong>标签间隔</strong></td><td>标签密度：自动、小、中、大</td></tr>
+</tbody>
+</table>
 
 ### 坐标轴设置
 
@@ -90,11 +102,15 @@ Y 轴可以配置名称和单位标签：
 
 ![双 Y 轴显示不同量程的两个指标](../images/bar-bothY.png)
 
-| 设置 | 说明 |
-|---|---|
-| **左 Y 轴标题** | 左 Y 轴的标签 |
-| **数值范围** | Y 轴的最小值和最大值（留空 = 自动缩放） |
-| **右坐标轴** | 启用右侧辅助 Y 轴 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>左 Y 轴标题</strong></td><td>左 Y 轴的标签</td></tr>
+<tr><td><strong>数值范围</strong></td><td>Y 轴的最小值和最大值（留空 = 自动缩放）</td></tr>
+<tr><td><strong>右坐标轴</strong></td><td>启用右侧辅助 Y 轴</td></tr>
+</tbody>
+</table>
 
 ### 边界值设置
 
@@ -108,11 +124,15 @@ Y 轴可以配置名称和单位标签：
 
 ![带统计数据的表格模式图例](../images/bar-legend.png)
 
-| 设置 | 说明 |
-|---|---|
-| **显示** | 显示模式：列表、表格或隐藏 |
-| **位置** | 放置位置：底部或右侧 |
-| **图例值** | 在表格模式下显示的统计数据：最新值、最小值、最大值、平均值、总计等 |
+<table>
+<colgroup><col style="width:6em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>显示</strong></td><td>显示模式：列表、表格或隐藏</td></tr>
+<tr><td><strong>位置</strong></td><td>放置位置：底部或右侧</td></tr>
+<tr><td><strong>图例值</strong></td><td>在表格模式下显示的统计数据：最新值、最小值、最大值、平均值、总计等</td></tr>
+</tbody>
+</table>
 
 ## 4.2.2.4 使用示例
 

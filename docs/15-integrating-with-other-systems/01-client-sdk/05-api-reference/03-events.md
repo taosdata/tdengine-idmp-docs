@@ -13,12 +13,16 @@ import IdmpSdkVersion from "/src/components/IdmpSdkVersion";
 
 ## 方法列表
 
-| 方法 | HTTP | 说明 |
-|---|---|---|
-| `apiV1EventsGet` | GET /api/v1/events | 分页查询事件列表 |
-| `apiV1EventsIdGet` | GET /api/v1/events/\{id\} | 根据 ID 获取单个事件 |
-| `apiV1EventsIdAcknowledgePut` | PUT /api/v1/events/\{id\}/acknowledge | 确认事件 |
-| `apiV1EventsIdResolvePut` | PUT /api/v1/events/\{id\}/resolve | 解决事件 |
+<table>
+<colgroup><col style="width:17em"/><col/><col/></colgroup>
+<thead><tr><th>方法</th><th>HTTP</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><code>apiV1EventsGet</code></td><td>GET /api/v1/events</td><td>分页查询事件列表</td></tr>
+<tr><td><code>apiV1EventsIdGet</code></td><td>GET /api/v1/events/\{id\}</td><td>根据 ID 获取单个事件</td></tr>
+<tr><td><code>apiV1EventsIdAcknowledgePut</code></td><td>PUT /api/v1/events/\{id\}/acknowledge</td><td>确认事件</td></tr>
+<tr><td><code>apiV1EventsIdResolvePut</code></td><td>PUT /api/v1/events/\{id\}/resolve</td><td>解决事件</td></tr>
+</tbody>
+</table>
 
 ---
 
@@ -28,15 +32,19 @@ import IdmpSdkVersion from "/src/components/IdmpSdkVersion";
 
 ### 参数
 
-| 名称 | 类型 | 必填 | 说明 |
-|---|---|---|---|
-| from | long | 否 | 开始时间，Unix 毫秒时间戳 |
-| to | long | 否 | 结束时间，Unix 毫秒时间戳 |
-| status | string | 否 | 事件状态：`active`、`acknowledged`、`resolved` |
-| severity | string | 否 | 严重级别：`critical`、`warning`、`info` |
-| elementId | string | 否 | 按元素 ID 过滤 |
-| pageNum | integer | 否 | 页码 |
-| pageSize | integer | 否 | 每页记录数 |
+<table>
+<colgroup><col style="width:7em"/><col/><col/><col/></colgroup>
+<thead><tr><th>名称</th><th>类型</th><th>必填</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>from</td><td>long</td><td>否</td><td>开始时间，Unix 毫秒时间戳</td></tr>
+<tr><td>to</td><td>long</td><td>否</td><td>结束时间，Unix 毫秒时间戳</td></tr>
+<tr><td>status</td><td>string</td><td>否</td><td>事件状态：<code>active</code>、<code>acknowledged</code>、<code>resolved</code></td></tr>
+<tr><td>severity</td><td>string</td><td>否</td><td>严重级别：<code>critical</code>、<code>warning</code>、<code>info</code></td></tr>
+<tr><td>elementId</td><td>string</td><td>否</td><td>按元素 ID 过滤</td></tr>
+<tr><td>pageNum</td><td>integer</td><td>否</td><td>页码</td></tr>
+<tr><td>pageSize</td><td>integer</td><td>否</td><td>每页记录数</td></tr>
+</tbody>
+</table>
 
 ### 示例
 

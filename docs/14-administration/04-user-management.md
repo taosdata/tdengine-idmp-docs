@@ -15,24 +15,32 @@ TDengine IDMP 使用电子邮件地址作为用户 ID。首位激活或注册系
 
 添加新用户时，请前往**管理控制台 → 用户管理 → 用户**，点击右上角的 **+** 按钮，填写以下字段：
 
-| 字段 | 说明 |
-|---|---|
-| **邮箱** | 新用户的电子邮件地址（用作登录 ID） |
-| **角色** | 分配的一个或多个角色，每个角色可配置可访问的元素范围 |
+<table>
+<colgroup><col style="width:5em"/><col/></colgroup>
+<thead><tr><th>字段</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>邮箱</strong></td><td>新用户的电子邮件地址（用作登录 ID）</td></tr>
+<tr><td><strong>角色</strong></td><td>分配的一个或多个角色，每个角色可配置可访问的元素范围</td></tr>
+</tbody>
+</table>
 
 被邀请的用户将收到一封电子邮件，其中包含设置个人信息和密码的链接。
 
 用户列表显示以下信息：
 
-| 列 | 说明 |
-|---|---|
-| **名** | 用户名字 |
-| **姓** | 用户姓氏 |
-| **电话号码** | 可选电话号码 |
-| **邮箱** | 电子邮件地址（用作用户 ID） |
-| **状态** | 账户状态（如：已激活、已邀请） |
-| **角色** | 已分配的角色 |
-| **描述** | 可选描述 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>列</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名</strong></td><td>用户名字</td></tr>
+<tr><td><strong>姓</strong></td><td>用户姓氏</td></tr>
+<tr><td><strong>电话号码</strong></td><td>可选电话号码</td></tr>
+<tr><td><strong>邮箱</strong></td><td>电子邮件地址（用作用户 ID）</td></tr>
+<tr><td><strong>状态</strong></td><td>账户状态（如：已激活、已邀请）</td></tr>
+<tr><td><strong>角色</strong></td><td>已分配的角色</td></tr>
+<tr><td><strong>描述</strong></td><td>可选描述</td></tr>
+</tbody>
+</table>
 
 ### 14.4.1.2 按角色分配控制元素访问权限
 
@@ -49,15 +57,19 @@ TDengine IDMP 使用电子邮件地址作为用户 ID。首位激活或注册系
 
 可供分配的内置角色：
 
-| 角色 | 典型用途 |
-|---|---|
-| **工厂经理与主管** | 生产资产的运营监管 |
-| **IT/OT 系统管理员** | 基础设施与系统配置 |
-| **维护人员** | 设备维护与工单管理 |
-| **数据分析师** | 数据探索、仪表盘与报表 |
-| **运营人员** | 日常工厂操作 |
-| **工艺工程师** | 工艺优化与分析 |
-| **超级管理员** | 完整的系统管理权限 |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>角色</th><th>典型用途</th></tr></thead>
+<tbody>
+<tr><td><strong>工厂经理与主管</strong></td><td>生产资产的运营监管</td></tr>
+<tr><td><strong>IT/OT 系统管理员</strong></td><td>基础设施与系统配置</td></tr>
+<tr><td><strong>维护人员</strong></td><td>设备维护与工单管理</td></tr>
+<tr><td><strong>数据分析师</strong></td><td>数据探索、仪表盘与报表</td></tr>
+<tr><td><strong>运营人员</strong></td><td>日常工厂操作</td></tr>
+<tr><td><strong>工艺工程师</strong></td><td>工艺优化与分析</td></tr>
+<tr><td><strong>超级管理员</strong></td><td>完整的系统管理权限</td></tr>
+</tbody>
+</table>
 
 ### 14.4.1.3 密码重置
 
@@ -89,20 +101,24 @@ IDMP 支持 OAuth 2.0 单点登录。OAuth 配置通过**管理控制台 → 用
 
 点击 **+** 添加新的 OAuth 提供商，填写以下字段：
 
-| 字段 | 必填 | 说明 |
-|---|:---:|---|
-| **图标** | 是 | 提供商 Logo 图片（PNG、JPG 或 SVG），显示在登录页面。 |
-| **名称** | 是 | OAuth 选项的显示名称（如 `GitHub`、`TAOS`）。 |
-| **客户端 ID** | 是 | 在 OAuth 提供商处注册的应用程序标识符。 |
-| **客户端密钥** | 是 | 从 OAuth 提供商开发者控制台获取的密钥。 |
-| **授权 URL** | 是 | OAuth 2.0 授权端点 URL（`http://` 或 `https://`）。 |
-| **Token URL** | 是 | Token 交换端点 URL（`http://` 或 `https://`）。 |
-| **用户信息 URL** | 是 | 获取用户档案信息的端点。 |
-| **回调 URL** | 是 | 在提供商处注册的回调 URL（如 `http://localhost:6042/login/back`），必须与注册值完全匹配。 |
-| **范围（Scope）** | 否 | 请求的权限范围（如 `openid email profile`）。 |
-| **用户信息映射类型** | 是 | 从提供商响应中提取用户字段的方式：`GITHUB`、`LARK` 或 `CUSTOM`。 |
-| **自定义映射规则** | CUSTOM 时必填 | 定义 JSONPath 表达式以提取 `name`、`email` 及可选字段的 JSON 对象。 |
-| **角色** | 是 | 通过该 OAuth 提供商登录的用户所分配的角色。 |
+<table>
+<colgroup><col style="width:11em"/><col/><col/></colgroup>
+<thead><tr><th>字段</th><th>必填</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>图标</strong></td><td>是</td><td>提供商 Logo 图片（PNG、JPG 或 SVG），显示在登录页面。</td></tr>
+<tr><td><strong>名称</strong></td><td>是</td><td>OAuth 选项的显示名称（如 <code>GitHub</code>、<code>TAOS</code>）。</td></tr>
+<tr><td><strong>客户端 ID</strong></td><td>是</td><td>在 OAuth 提供商处注册的应用程序标识符。</td></tr>
+<tr><td><strong>客户端密钥</strong></td><td>是</td><td>从 OAuth 提供商开发者控制台获取的密钥。</td></tr>
+<tr><td><strong>授权 URL</strong></td><td>是</td><td>OAuth 2.0 授权端点 URL（<code>http://</code> 或 <code>https://</code>）。</td></tr>
+<tr><td><strong>Token URL</strong></td><td>是</td><td>Token 交换端点 URL（<code>http://</code> 或 <code>https://</code>）。</td></tr>
+<tr><td><strong>用户信息 URL</strong></td><td>是</td><td>获取用户档案信息的端点。</td></tr>
+<tr><td><strong>回调 URL</strong></td><td>是</td><td>在提供商处注册的回调 URL（如 <code>http://localhost:6042/login/back</code>），必须与注册值完全匹配。</td></tr>
+<tr><td><strong>范围（Scope）</strong></td><td>否</td><td>请求的权限范围（如 <code>openid email profile</code>）。</td></tr>
+<tr><td><strong>用户信息映射类型</strong></td><td>是</td><td>从提供商响应中提取用户字段的方式：<code>GITHUB</code>、<code>LARK</code> 或 <code>CUSTOM</code>。</td></tr>
+<tr><td><strong>自定义映射规则</strong></td><td>CUSTOM 时必填</td><td>定义 JSONPath 表达式以提取 <code>name</code>、<code>email</code> 及可选字段的 JSON 对象。</td></tr>
+<tr><td><strong>角色</strong></td><td>是</td><td>通过该 OAuth 提供商登录的用户所分配的角色。</td></tr>
+</tbody>
+</table>
 
 ### 14.4.3.2 自定义映射规则
 

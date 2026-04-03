@@ -30,20 +30,28 @@ sidebar_label: 散点图
 
 除[通用查看模式控件](../01-panels.md#413-面板查看模式)外，散点图还增加了以下控件：
 
-| 控件 | 说明 |
-|---|---|
-| **禁用采样** | 获取原始数据而不进行降采样，确保所有数据点均被绘制 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>禁用采样</strong></td><td>获取原始数据而不进行降采样，确保所有数据点均被绘制</td></tr>
+</tbody>
+</table>
 
 ### 编辑模式工具栏
 
 除[通用编辑模式控件](../01-panels.md#414-面板编辑模式)外，散点图还增加了以下控件：
 
-| 控件 | 说明 |
-|---|---|
-| **禁用采样** | 在预览中切换原始数据模式 |
-| **保存为图片** | 将当前预览下载为 PNG 图片 |
-| **全屏** | 将编辑器预览扩展为填满浏览器窗口 |
-| **解读面板** | 对当前预览数据运行 AI 分析 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>禁用采样</strong></td><td>在预览中切换原始数据模式</td></tr>
+<tr><td><strong>保存为图片</strong></td><td>将当前预览下载为 PNG 图片</td></tr>
+<tr><td><strong>全屏</strong></td><td>将编辑器预览扩展为填满浏览器窗口</td></tr>
+<tr><td><strong>解读面板</strong></td><td>对当前预览数据运行 AI 分析</td></tr>
+</tbody>
+</table>
 
 ### 图形设置
 
@@ -71,14 +79,18 @@ sidebar_label: 散点图
 
 ![调整标签间隔降低密度](../images/scatter-interval.png)
 
-| 设置 | 说明 |
-|---|---|
-| **样式** | 数据点的符号形状（圆形、心形、笑脸等） |
-| **点大小** | 每个点的大小（滑块，默认 6） |
-| **散点透明度** | 点的透明度，取值 0–1 |
-| **特殊点位** | 用独特标记突出显示最大值/最小值或其他特定点 |
-| **标签旋转** | X 轴标签的旋转角度 |
-| **标签间隔** | X 轴标签的密度 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>样式</strong></td><td>数据点的符号形状（圆形、心形、笑脸等）</td></tr>
+<tr><td><strong>点大小</strong></td><td>每个点的大小（滑块，默认 6）</td></tr>
+<tr><td><strong>散点透明度</strong></td><td>点的透明度，取值 0–1</td></tr>
+<tr><td><strong>特殊点位</strong></td><td>用独特标记突出显示最大值/最小值或其他特定点</td></tr>
+<tr><td><strong>标签旋转</strong></td><td>X 轴标签的旋转角度</td></tr>
+<tr><td><strong>标签间隔</strong></td><td>X 轴标签的密度</td></tr>
+</tbody>
+</table>
 
 ### 数据转换设置
 
@@ -92,11 +104,15 @@ sidebar_label: 散点图
 
 ![带回归曲线的散点图](../images/scatter-analysis.png)
 
-| 数据转换类型 | 说明 |
-|---|---|
-| **关闭** | 不进行转换，直接绘制原始数据点 |
-| **数据聚合** | 对数据点进行分组并显示聚合聚类 |
-| **回归分析** | 对数据拟合回归曲线（线性、指数或多项式） |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>数据转换类型</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>关闭</strong></td><td>不进行转换，直接绘制原始数据点</td></tr>
+<tr><td><strong>数据聚合</strong></td><td>对数据点进行分组并显示聚合聚类</td></tr>
+<tr><td><strong>回归分析</strong></td><td>对数据拟合回归曲线（线性、指数或多项式）</td></tr>
+</tbody>
+</table>
 
 ### 坐标轴设置
 
@@ -126,11 +142,15 @@ sidebar_label: 散点图
 
 ![表格模式下带统计值的散点图图例](../images/scatter-legend.png)
 
-| 设置 | 说明 |
-|---|---|
-| **显示** | 显示模式：列表、表格或隐藏 |
-| **位置** | 位置：底部或右侧 |
-| **图例值** | 表格模式下显示的统计值：最新值、最小值、最大值、均值、求和等 |
+<table>
+<colgroup><col style="width:6em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>显示</strong></td><td>显示模式：列表、表格或隐藏</td></tr>
+<tr><td><strong>位置</strong></td><td>位置：底部或右侧</td></tr>
+<tr><td><strong>图例值</strong></td><td>表格模式下显示的统计值：最新值、最小值、最大值、均值、求和等</td></tr>
+</tbody>
+</table>
 
 ## 4.2.12.4 使用示例
 

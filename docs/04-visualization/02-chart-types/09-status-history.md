@@ -27,27 +27,35 @@ sidebar_label: 状态历史图
 
 除[通用编辑模式控件](../01-panels.md#414-面板编辑模式)外，状态历史图还增加了以下控件：
 
-| 控件 | 说明 |
-|---|---|
-| **保存为图片** | 将当前预览下载为 PNG 图片 |
-| **全屏** | 将编辑器预览扩展为填满浏览器窗口 |
-| **解读面板** | 对当前预览数据运行 AI 分析 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>保存为图片</strong></td><td>将当前预览下载为 PNG 图片</td></tr>
+<tr><td><strong>全屏</strong></td><td>将编辑器预览扩展为填满浏览器窗口</td></tr>
+<tr><td><strong>解读面板</strong></td><td>对当前预览数据运行 AI 分析</td></tr>
+</tbody>
+</table>
 
 ### 图形设置
 
 ![状态历史图配置面板](../images/status-history-config.png)
 
-| 设置 | 说明 |
-|---|---|
-| **标题** | 图表标题 |
-| **副标题** | 次级标题 |
-| **值映射** | 定义数据值与显示颜色和标签的对应关系，详见下节 |
-| **边框宽度** | 单元格之间边框的宽度（滑块） |
-| **行高** | 每行的相对高度（滑块） |
-| **列宽** | 每个时间桶列的宽度（滑块） |
-| **填充透明度** | 单元格填充颜色的透明度，取值 0–1 |
-| **标签旋转** | X 轴时间标签的旋转角度，可选 -90°、-45°、0°、45°、90° |
-| **标签间隔** | X 轴时间标签的显示密度：**自动**、**小**、**中**、**大** |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>标题</strong></td><td>图表标题</td></tr>
+<tr><td><strong>副标题</strong></td><td>次级标题</td></tr>
+<tr><td><strong>值映射</strong></td><td>定义数据值与显示颜色和标签的对应关系，详见下节</td></tr>
+<tr><td><strong>边框宽度</strong></td><td>单元格之间边框的宽度（滑块）</td></tr>
+<tr><td><strong>行高</strong></td><td>每行的相对高度（滑块）</td></tr>
+<tr><td><strong>列宽</strong></td><td>每个时间桶列的宽度（滑块）</td></tr>
+<tr><td><strong>填充透明度</strong></td><td>单元格填充颜色的透明度，取值 0–1</td></tr>
+<tr><td><strong>标签旋转</strong></td><td>X 轴时间标签的旋转角度，可选 -90°、-45°、0°、45°、90°</td></tr>
+<tr><td><strong>标签间隔</strong></td><td>X 轴时间标签的显示密度：<strong>自动</strong>、<strong>小</strong>、<strong>中</strong>、<strong>大</strong></td></tr>
+</tbody>
+</table>
 
 时间桶的大小由数据配置中的**滑动窗口**设置控制。例如，1 小时的滑动窗口每小时生成一列。
 
@@ -57,13 +65,17 @@ sidebar_label: 状态历史图
 
 ![编辑值映射弹窗](../images/status-history-valuemapping.png)
 
-| 条件类型 | 说明 |
-|---|---|
-| **值** | 匹配特定文本值 |
-| **范围** | 匹配数值范围，指定上下界 |
-| **正则表达式** | 匹配正则表达式并替换显示文本 |
-| **特殊值** | 匹配 null、NaN、布尔值、空值等特殊状态 |
-| **其他值** | 兜底规则，匹配所有未被前面规则覆盖的值 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>条件类型</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>值</strong></td><td>匹配特定文本值</td></tr>
+<tr><td><strong>范围</strong></td><td>匹配数值范围，指定上下界</td></tr>
+<tr><td><strong>正则表达式</strong></td><td>匹配正则表达式并替换显示文本</td></tr>
+<tr><td><strong>特殊值</strong></td><td>匹配 null、NaN、布尔值、空值等特殊状态</td></tr>
+<tr><td><strong>其他值</strong></td><td>兜底规则，匹配所有未被前面规则覆盖的值</td></tr>
+</tbody>
+</table>
 
 每条映射规则可指定**显示文本**（可选）和**颜色**。规则按从上到下的顺序匹配，第一个命中的规则生效。
 

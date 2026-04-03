@@ -13,11 +13,15 @@ sidebar_label: 枚举集
 
 列表显示所有已定义的枚举集，包含以下列：
 
-| 列 | 说明 |
-|---|---|
-| **名称** | 枚举集名称 |
-| **值类型** | 原始值的数值数据类型 |
-| **描述** | 可选描述 |
+<table>
+<colgroup><col style="width:6em"/><col/></colgroup>
+<thead><tr><th>列</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong></td><td>枚举集名称</td></tr>
+<tr><td><strong>值类型</strong></td><td>原始值的数值数据类型</td></tr>
+<tr><td><strong>描述</strong></td><td>可选描述</td></tr>
+</tbody>
+</table>
 
 点击枚举集名称可查看或编辑。使用行上的 **⋮** 菜单可编辑或删除。
 
@@ -25,20 +29,28 @@ sidebar_label: 枚举集
 
 点击 **+** 创建新枚举集。填写以下字段：
 
-| 字段 | 说明 |
-|---|---|
-| **名称**（必填） | 唯一名称。支持字母、数字、下划线、连字符和空格。 |
-| **值类型** | 原始值的数据类型。选项：`TinyInt`（默认）、`SmallInt`、`Int`、`BigInt`、`TinyInt Unsigned`、`SmallInt Unsigned`、`Int Unsigned`、`BigInt Unsigned`、`Float`、`Double`、`Boolean`、`Varchar`、`Nchar`、`Timestamp`。 |
-| **描述** | 枚举集的可选描述。 |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>字段</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong>（必填）</td><td>唯一名称。支持字母、数字、下划线、连字符和空格。</td></tr>
+<tr><td><strong>值类型</strong></td><td>原始值的数据类型。选项：<code>TinyInt</code>（默认）、<code>SmallInt</code>、<code>Int</code>、<code>BigInt</code>、<code>TinyInt Unsigned</code>、<code>SmallInt Unsigned</code>、<code>Int Unsigned</code>、<code>BigInt Unsigned</code>、<code>Float</code>、<code>Double</code>、<code>Boolean</code>、<code>Varchar</code>、<code>Nchar</code>、<code>Timestamp</code>。</td></tr>
+<tr><td><strong>描述</strong></td><td>枚举集的可选描述。</td></tr>
+</tbody>
+</table>
 
 然后在**枚举值**表中点击 **+** 添加一个或多个枚举值：
 
-| 字段 | 说明 |
-|---|---|
-| **名称**（必填） | 显示标签。支持字母、数字、下划线和连字符。 |
-| **值**（必填） | 此标签映射到的原始数值。 |
-| **描述** | 此枚举值的可选描述。 |
-| **父级** | 可选的父枚举值。用于将相关值分组在一个共同父级下，便于过滤和浏览。 |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>字段</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong>（必填）</td><td>显示标签。支持字母、数字、下划线和连字符。</td></tr>
+<tr><td><strong>值</strong>（必填）</td><td>此标签映射到的原始数值。</td></tr>
+<tr><td><strong>描述</strong></td><td>此枚举值的可选描述。</td></tr>
+<tr><td><strong>父级</strong></td><td>可选的父枚举值。用于将相关值分组在一个共同父级下，便于过滤和浏览。</td></tr>
+</tbody>
+</table>
 
 点击**确认**添加枚举值，然后点击**保存**保存枚举集。
 

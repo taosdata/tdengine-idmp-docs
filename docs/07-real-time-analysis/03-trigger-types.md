@@ -22,9 +22,13 @@ sidebar_label: 触发类型
 
 ### 7.3.1.2 参数
 
-| 参数 | 说明 |
-|---|---|
-| **滑动时长** | 两次触发之间的时间间隔（例如每 1 分钟、每 10 秒） |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>参数</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>滑动时长</strong></td><td>两次触发之间的时间间隔（例如每 1 分钟、每 10 秒）</td></tr>
+</tbody>
+</table>
 
 ### 7.3.1.3 示例
 
@@ -49,13 +53,17 @@ sidebar_label: 触发类型
 
 ### 7.3.2.2 参数
 
-| 参数 | 说明 |
-|---|---|
-| **滑动时长** | 运行异常检测的频率 |
-| **目标**（必填） | 要分析异常的属性，支持选择多个。选择多个目标时，系统将为每个目标属性自动创建一个独立的子分析。 |
-| **算法**（必填） | 应用的异常检测算法 |
-| **白噪声数据检查** | 启用时，若数据表现为白噪声（无有意义信号），则跳过异常检查 |
-| **算法参数** | 可选的算法特定参数，格式为 `a=1,b=2,c=3` |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>参数</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>滑动时长</strong></td><td>运行异常检测的频率</td></tr>
+<tr><td><strong>目标</strong>（必填）</td><td>要分析异常的属性，支持选择多个。选择多个目标时，系统将为每个目标属性自动创建一个独立的子分析。</td></tr>
+<tr><td><strong>算法</strong>（必填）</td><td>应用的异常检测算法</td></tr>
+<tr><td><strong>白噪声数据检查</strong></td><td>启用时，若数据表现为白噪声（无有意义信号），则跳过异常检查</td></tr>
+<tr><td><strong>算法参数</strong></td><td>可选的算法特定参数，格式为 <code>a=1,b=2,c=3</code></td></tr>
+</tbody>
+</table>
 
 ### 7.3.2.3 示例
 
@@ -78,10 +86,14 @@ sidebar_label: 触发类型
 
 ### 7.3.3.2 参数
 
-| 参数 | 说明 |
-|---|---|
-| **定时** | 时间间隔（例如每 1 小时、每 1 天） |
-| **偏移** | 定时边界后延迟触发的时间。例如，1 天定时加 6 小时偏移，则每天 06:00 触发——适合在迟到数据沉降后生成日报。 |
+<table>
+<colgroup><col style="width:5em"/><col/></colgroup>
+<thead><tr><th>参数</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>定时</strong></td><td>时间间隔（例如每 1 小时、每 1 天）</td></tr>
+<tr><td><strong>偏移</strong></td><td>定时边界后延迟触发的时间。例如，1 天定时加 6 小时偏移，则每天 06:00 触发——适合在迟到数据沉降后生成日报。</td></tr>
+</tbody>
+</table>
 
 ### 7.3.3.3 示例
 
@@ -106,9 +118,13 @@ sidebar_label: 触发类型
 
 ### 7.3.4.2 参数
 
-| 参数 | 说明 |
-|---|---|
-| **目标** | 触发分析的属性（其新数据写入触发分析）。留空则在任意属性有新数据时触发。 |
+<table>
+<colgroup><col style="width:5em"/><col/></colgroup>
+<thead><tr><th>参数</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>目标</strong></td><td>触发分析的属性（其新数据写入触发分析）。留空则在任意属性有新数据时触发。</td></tr>
+</tbody>
+</table>
 
 ### 7.3.4.3 示例
 
@@ -132,9 +148,13 @@ sidebar_label: 触发类型
 
 ### 7.3.5.2 参数
 
-| 参数 | 说明 |
-|---|---|
-| **状态**（必填） | 状态变化触发分析的整型属性，支持选择多个。选择多个状态属性时，系统将为每个属性自动创建一个独立的子分析。 |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>参数</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>状态</strong>（必填）</td><td>状态变化触发分析的整型属性，支持选择多个。选择多个状态属性时，系统将为每个属性自动创建一个独立的子分析。</td></tr>
+</tbody>
+</table>
 
 ### 7.3.5.3 示例
 
@@ -161,11 +181,15 @@ sidebar_label: 触发类型
 
 ### 7.3.6.2 参数
 
-| 参数 | 说明 |
-|---|---|
-| **开始触发 — 表达式**（必填） | 计算结果为正值时开启事件窗口的条件表达式 |
-| **开始触发 — 持续时长** | 开始条件必须持续为真的最短时长，超过此时长后窗口方可开启。用于防止瞬时噪声引起误触发。 |
-| **结束触发 — 表达式**（必填） | 计算结果为正值时关闭事件窗口并触发分析的条件表达式 |
+<table>
+<colgroup><col style="width:15em"/><col/></colgroup>
+<thead><tr><th>参数</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>开始触发 — 表达式</strong>（必填）</td><td>计算结果为正值时开启事件窗口的条件表达式</td></tr>
+<tr><td><strong>开始触发 — 持续时长</strong></td><td>开始条件必须持续为真的最短时长，超过此时长后窗口方可开启。用于防止瞬时噪声引起误触发。</td></tr>
+<tr><td><strong>结束触发 — 表达式</strong>（必填）</td><td>计算结果为正值时关闭事件窗口并触发分析的条件表达式</td></tr>
+</tbody>
+</table>
 
 两个表达式均可通过**评估**按钮在保存前基于当前数据进行验证。
 
@@ -192,9 +216,13 @@ sidebar_label: 触发类型
 
 ### 7.3.7.2 参数
 
-| 参数 | 说明 |
-|---|---|
-| **不活动间隔** | 数据缺失多长时间后认为会话结束并触发 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>参数</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>不活动间隔</strong></td><td>数据缺失多长时间后认为会话结束并触发</td></tr>
+</tbody>
+</table>
 
 ### 7.3.7.3 示例
 
@@ -219,10 +247,14 @@ sidebar_label: 触发类型
 
 ### 7.3.8.2 参数
 
-| 参数 | 说明 |
-|---|---|
-| **目标** | 计数新记录的具体属性。留空则统计所有属性的新记录数。 |
-| **计数** | 触发分析所需累积的新记录数量 |
+<table>
+<colgroup><col style="width:5em"/><col/></colgroup>
+<thead><tr><th>参数</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>目标</strong></td><td>计数新记录的具体属性。留空则统计所有属性的新记录数。</td></tr>
+<tr><td><strong>计数</strong></td><td>触发分析所需累积的新记录数量</td></tr>
+</tbody>
+</table>
 
 ### 7.3.8.3 示例
 

@@ -65,21 +65,25 @@ helm install tdengine-idmp . --set key=value
 
 下表列出了部署 TDengine IDMP 时常用的 Helm 参数。您可以通过 `--set key=value` 或编辑 `values.yaml` 文件进行自定义。
 
-| 参数                      | 描述                                       | 默认值                  |
-|--------------------------|-------------------------------------------|------------------------|
-| `replicaCount`           | 副本数量                                   | `1`                    |
-| `image.repository`       | 镜像仓库                                   | `tdengine/idmp-ee` |
-| `image.tag`              | 镜像标签                                   | `latest`               |
-| `image.pullPolicy`       | 镜像拉取策略                               | `IfNotPresent`         |
-| `service.type`           | Kubernetes 服务类型                        | `ClusterIP`            |
-| `service.port`           | 服务端口                                   | `6042`                 |
-| `resources`              | 资源请求和限制                             | `{}`                   |
-| `persistence.enabled`    | 启用持久化存储                             | `false`                |
-| `persistence.size`       | 持久卷大小                                 | `2Gi`                  |
-| `persistence.storageClass`| 持久卷的存储类                            | `""`                   |
-| `nodeSelector`           | Pod 分配的节点选择器                       | `{}`                   |
-| `tolerations`            | Pod 分配的容忍设置                         | `[]`                   |
-| `affinity`               | Pod 分配的亲和性规则                       | `{}`                   |
+<table>
+<colgroup><col style="width:16em"/><col/><col/></colgroup>
+<thead><tr><th>参数</th><th>描述</th><th>默认值</th></tr></thead>
+<tbody>
+<tr><td><code>replicaCount</code></td><td>副本数量</td><td><code>1</code></td></tr>
+<tr><td><code>image.repository</code></td><td>镜像仓库</td><td><code>tdengine/idmp-ee</code></td></tr>
+<tr><td><code>image.tag</code></td><td>镜像标签</td><td><code>latest</code></td></tr>
+<tr><td><code>image.pullPolicy</code></td><td>镜像拉取策略</td><td><code>IfNotPresent</code></td></tr>
+<tr><td><code>service.type</code></td><td>Kubernetes 服务类型</td><td><code>ClusterIP</code></td></tr>
+<tr><td><code>service.port</code></td><td>服务端口</td><td><code>6042</code></td></tr>
+<tr><td><code>resources</code></td><td>资源请求和限制</td><td><code>{}</code></td></tr>
+<tr><td><code>persistence.enabled</code></td><td>启用持久化存储</td><td><code>false</code></td></tr>
+<tr><td><code>persistence.size</code></td><td>持久卷大小</td><td><code>2Gi</code></td></tr>
+<tr><td><code>persistence.storageClass</code></td><td>持久卷的存储类</td><td><code>""</code></td></tr>
+<tr><td><code>nodeSelector</code></td><td>Pod 分配的节点选择器</td><td><code>{}</code></td></tr>
+<tr><td><code>tolerations</code></td><td>Pod 分配的容忍设置</td><td><code>[]</code></td></tr>
+<tr><td><code>affinity</code></td><td>Pod 分配的亲和性规则</td><td><code>{}</code></td></tr>
+</tbody>
+</table>
 
 ### 3. 访问服务
 

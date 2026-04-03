@@ -29,11 +29,15 @@ sidebar_label: 状态时间线图
 
 除[通用编辑模式控件](../01-panels.md#414-面板编辑模式)外，状态时间线图还增加了以下控件：
 
-| 控件 | 说明 |
-|---|---|
-| **保存为图片** | 将当前预览下载为 PNG 图片 |
-| **全屏** | 将编辑器预览扩展为填满浏览器窗口 |
-| **解读面板** | 对当前预览数据运行 AI 分析 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>保存为图片</strong></td><td>将当前预览下载为 PNG 图片</td></tr>
+<tr><td><strong>全屏</strong></td><td>将编辑器预览扩展为填满浏览器窗口</td></tr>
+<tr><td><strong>解读面板</strong></td><td>对当前预览数据运行 AI 分析</td></tr>
+</tbody>
+</table>
 
 ### 图形设置
 
@@ -41,15 +45,19 @@ sidebar_label: 状态时间线图
 
 ![状态时间线图线条样式设置](../images/state-timeline-style.png)
 
-| 设置 | 说明 |
-|---|---|
-| **标题** | 图表标题 |
-| **副标题** | 次级标题 |
-| **线条宽度** | 每个状态分段周围边框的宽度（0 = 无边框） |
-| **行高** | 每条色带的相对高度（默认 0.3） |
-| **填充透明度** | 状态颜色填充的透明度，取值 0–1 |
-| **标签旋转** | X 轴时间标签的旋转角度 |
-| **标签间隔** | X 轴标签的密度 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>标题</strong></td><td>图表标题</td></tr>
+<tr><td><strong>副标题</strong></td><td>次级标题</td></tr>
+<tr><td><strong>线条宽度</strong></td><td>每个状态分段周围边框的宽度（0 = 无边框）</td></tr>
+<tr><td><strong>行高</strong></td><td>每条色带的相对高度（默认 0.3）</td></tr>
+<tr><td><strong>填充透明度</strong></td><td>状态颜色填充的透明度，取值 0–1</td></tr>
+<tr><td><strong>标签旋转</strong></td><td>X 轴时间标签的旋转角度</td></tr>
+<tr><td><strong>标签间隔</strong></td><td>X 轴标签的密度</td></tr>
+</tbody>
+</table>
 
 状态颜色和标签由**值映射**配置决定，您可以将每个值（如 0、1、"运行中"）映射到对应的显示颜色和文字标签。
 
@@ -65,11 +73,15 @@ sidebar_label: 状态时间线图
 
 ![状态时间线图图例](../images/state-timeline-legend.png)
 
-| 设置 | 说明 |
-|---|---|
-| **显示** | 显示模式：列表、表格或隐藏 |
-| **位置** | 位置：底部或右侧 |
-| **图例值** | 表格模式下显示的统计值 |
+<table>
+<colgroup><col style="width:6em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>显示</strong></td><td>显示模式：列表、表格或隐藏</td></tr>
+<tr><td><strong>位置</strong></td><td>位置：底部或右侧</td></tr>
+<tr><td><strong>图例值</strong></td><td>表格模式下显示的统计值</td></tr>
+</tbody>
+</table>
 
 ## 4.2.8.4 使用示例
 

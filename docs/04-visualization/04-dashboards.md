@@ -25,13 +25,17 @@ TDengine IDMP 中的仪表板是自由布局的画布，可将多个面板组合
 
 列表以以下列显示该元素所有已保存的仪表板：
 
-| 列 | 说明 |
-|---|---|
-| **名称** | 仪表板名称 |
-| **路径** | 该仪表板所属的元素路径 |
-| **描述** | 可选描述 |
-| **模板** | 该仪表板是否从模板创建 |
-| **分类** | 分配给该仪表板的分类标签 |
+<table>
+<colgroup><col style="width:5em"/><col/></colgroup>
+<thead><tr><th>列</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong></td><td>仪表板名称</td></tr>
+<tr><td><strong>路径</strong></td><td>该仪表板所属的元素路径</td></tr>
+<tr><td><strong>描述</strong></td><td>可选描述</td></tr>
+<tr><td><strong>模板</strong></td><td>该仪表板是否从模板创建</td></tr>
+<tr><td><strong>分类</strong></td><td>分配给该仪表板的分类标签</td></tr>
+</tbody>
+</table>
 
 将鼠标悬停在某行上，可显示查看、编辑或删除该仪表板的操作按钮。
 
@@ -53,17 +57,21 @@ TDengine IDMP 中的仪表板是自由布局的画布，可将多个面板组合
 
 ### 4.4.3.1 编辑器工具栏
 
-| 控件 | 说明 |
-|---|---|
-| **返回** | 返回仪表板标签页 |
-| **保存** | 保存仪表板的所有更改 |
-| **放弃** | 放弃更改 |
-| **+（新建面板并插入）** | 打开面板编辑器创建新面板并添加到此仪表板 |
-| **时间选择器** | 设置仪表板所有面板的时间范围 |
-| **缩小** | 将时间范围扩展到下一级别 |
-| **刷新** | 重新加载所有面板数据 |
-| **自动刷新** | 设置自动刷新间隔（关闭、5 秒、10 秒、30 秒、1 分钟等） |
-| **全屏** | 将仪表板扩展为填满浏览器窗口 |
+<table>
+<colgroup><col style="width:12em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>返回</strong></td><td>返回仪表板标签页</td></tr>
+<tr><td><strong>保存</strong></td><td>保存仪表板的所有更改</td></tr>
+<tr><td><strong>放弃</strong></td><td>放弃更改</td></tr>
+<tr><td><strong>+（新建面板并插入）</strong></td><td>打开面板编辑器创建新面板并添加到此仪表板</td></tr>
+<tr><td><strong>时间选择器</strong></td><td>设置仪表板所有面板的时间范围</td></tr>
+<tr><td><strong>缩小</strong></td><td>将时间范围扩展到下一级别</td></tr>
+<tr><td><strong>刷新</strong></td><td>重新加载所有面板数据</td></tr>
+<tr><td><strong>自动刷新</strong></td><td>设置自动刷新间隔（关闭、5 秒、10 秒、30 秒、1 分钟等）</td></tr>
+<tr><td><strong>全屏</strong></td><td>将仪表板扩展为填满浏览器窗口</td></tr>
+</tbody>
+</table>
 
 ### 4.4.3.2 左侧面板：面板库
 
@@ -86,12 +94,16 @@ TDengine IDMP 中的仪表板是自由布局的画布，可将多个面板组合
 
 ### 4.4.3.4 右侧面板：仪表板设置
 
-| 字段 | 说明 |
-|---|---|
-| **名称** | 仪表板标题（必填） |
-| **描述** | 仪表板的可选描述 |
-| **分类** | 用于筛选和组织仪表板的一个或多个标签 |
-| **通知规则** | 在仪表板级别配置告警规则 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>字段</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong></td><td>仪表板标题（必填）</td></tr>
+<tr><td><strong>描述</strong></td><td>仪表板的可选描述</td></tr>
+<tr><td><strong>分类</strong></td><td>用于筛选和组织仪表板的一个或多个标签</td></tr>
+<tr><td><strong>通知规则</strong></td><td>在仪表板级别配置告警规则</td></tr>
+</tbody>
+</table>
 
 ## 4.4.4 向仪表板添加面板
 
@@ -118,12 +130,16 @@ TDengine IDMP 中的仪表板是自由布局的画布，可将多个面板组合
 
 仪表板列表显示以下列：
 
-| 列 | 说明 |
-|---|---|
-| **名称** | 仪表板名称 |
-| **描述** | 可选描述 |
-| **模板** | 该仪表板是否从模板创建 |
-| **分类** | 分配给该仪表板的分类标签 |
+<table>
+<colgroup><col style="width:5em"/><col/></colgroup>
+<thead><tr><th>列</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong></td><td>仪表板名称</td></tr>
+<tr><td><strong>描述</strong></td><td>可选描述</td></tr>
+<tr><td><strong>模板</strong></td><td>该仪表板是否从模板创建</td></tr>
+<tr><td><strong>分类</strong></td><td>分配给该仪表板的分类标签</td></tr>
+</tbody>
+</table>
 
 工具栏提供搜索字段、导出列表的 CSV 下载按钮以及列表偏好设置齿轮。
 

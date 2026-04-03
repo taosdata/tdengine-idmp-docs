@@ -11,15 +11,19 @@ sidebar_label: 导出数据
 
 CSV 导出选项在 IDMP 的每个表格视图中均可使用，包括：
 
-| 视图 | 导出内容 |
-|---|---|
-| **元素浏览器 — 子元素列表** | 所选元素下的子元素列表 |
-| **元素浏览器 — 属性列表** | 所选元素的属性值和元数据 |
-| **事件列表** | 包含时间戳、严重级别和状态的已过滤事件记录 |
-| **事件过滤结果** | 符合事件搜索条件的事件 |
-| **属性过滤结果** | 符合搜索条件的属性元数据 |
-| **资产过滤结果** | 符合搜索条件的元素元数据 |
-| **分析结果** | 已保存分析查询的输出行 |
+<table>
+<colgroup><col style="width:14em"/><col/></colgroup>
+<thead><tr><th>视图</th><th>导出内容</th></tr></thead>
+<tbody>
+<tr><td><strong>元素浏览器 — 子元素列表</strong></td><td>所选元素下的子元素列表</td></tr>
+<tr><td><strong>元素浏览器 — 属性列表</strong></td><td>所选元素的属性值和元数据</td></tr>
+<tr><td><strong>事件列表</strong></td><td>包含时间戳、严重级别和状态的已过滤事件记录</td></tr>
+<tr><td><strong>事件过滤结果</strong></td><td>符合事件搜索条件的事件</td></tr>
+<tr><td><strong>属性过滤结果</strong></td><td>符合搜索条件的属性元数据</td></tr>
+<tr><td><strong>资产过滤结果</strong></td><td>符合搜索条件的元素元数据</td></tr>
+<tr><td><strong>分析结果</strong></td><td>已保存分析查询的输出行</td></tr>
+</tbody>
+</table>
 
 ## 11.3.2 如何导出
 

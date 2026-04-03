@@ -44,6 +44,12 @@ td {
   text-align: left;
 }
 
+/* Prevent label column (first column) from wrapping character-by-character */
+table td:first-child,
+table th:first-child {
+  white-space: nowrap;
+}
+
 td,
 th {
   padding: 0.5em;

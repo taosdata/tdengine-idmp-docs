@@ -15,13 +15,17 @@ sidebar_label: 浏览事件
 
 工具栏提供事件列表的搜索、筛选和数据导出功能。
 
-| 控件 | 说明 |
-|---|---|
-| **搜索** | 按名称或其他文本搜索事件 |
-| **列选择器** | 显示或隐藏可选列。**路径**列（元素层次路径）默认隐藏 |
-| **刷新** | 重新加载事件列表 |
-| **导出 CSV** | 将当前过滤后的事件列表导出为 CSV 文件 |
-| **保存为面板** | 将当前事件列表保存为面板，可添加到仪表板中 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>搜索</strong></td><td>按名称或其他文本搜索事件</td></tr>
+<tr><td><strong>列选择器</strong></td><td>显示或隐藏可选列。<strong>路径</strong>列（元素层次路径）默认隐藏</td></tr>
+<tr><td><strong>刷新</strong></td><td>重新加载事件列表</td></tr>
+<tr><td><strong>导出 CSV</strong></td><td>将当前过滤后的事件列表导出为 CSV 文件</td></tr>
+<tr><td><strong>保存为面板</strong></td><td>将当前事件列表保存为面板，可添加到仪表板中</td></tr>
+</tbody>
+</table>
 
 ### 6.2.1.2 过滤器
 
@@ -42,31 +46,39 @@ sidebar_label: 浏览事件
 
 事件列表以表格形式展示各事件的关键信息，各列含义如下。
 
-| 列 | 说明 |
-|---|---|
-| **S** | 严重程度指示图标 |
-| **A** | 确认状态图标 |
-| **名称** | 事件名称——点击可打开事件详情页 |
-| **持续时长** | 从开始到结束的时间间隔 |
-| **开始时间** | 事件开始时间戳 |
-| **结束时间** | 事件结束时间戳（事件仍处于活动中则为空） |
-| **类别** | 类别标签 |
-| **模板** | 事件模板名称 |
-| **严重程度** | 严重等级标签 |
-| **原因代码** | 原因代码（如已设置） |
-| **描述** | 描述文本 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>列</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>S</strong></td><td>严重程度指示图标</td></tr>
+<tr><td><strong>A</strong></td><td>确认状态图标</td></tr>
+<tr><td><strong>名称</strong></td><td>事件名称——点击可打开事件详情页</td></tr>
+<tr><td><strong>持续时长</strong></td><td>从开始到结束的时间间隔</td></tr>
+<tr><td><strong>开始时间</strong></td><td>事件开始时间戳</td></tr>
+<tr><td><strong>结束时间</strong></td><td>事件结束时间戳（事件仍处于活动中则为空）</td></tr>
+<tr><td><strong>类别</strong></td><td>类别标签</td></tr>
+<tr><td><strong>模板</strong></td><td>事件模板名称</td></tr>
+<tr><td><strong>严重程度</strong></td><td>严重等级标签</td></tr>
+<tr><td><strong>原因代码</strong></td><td>原因代码（如已设置）</td></tr>
+<tr><td><strong>描述</strong></td><td>描述文本</td></tr>
+</tbody>
+</table>
 
 ### 6.2.1.5 行操作
 
 每个事件行提供上下文操作菜单，支持查看详情、发送通知、确认事件、趋势图分析和删除等操作。将鼠标悬停在任意事件行上，右侧会显示 **⋮**（更多）菜单。点击展开以下选项：
 
-| 操作 | 说明 |
-|---|---|
-| **查看** | 打开事件详情页 |
-| **发送通知** | 手动为此事件向已配置的联系途径触发通知 |
-| **确认** | 确认事件 |
-| **趋势图分析** | 打开关联元素在事件时间范围内的趋势图 |
-| **删除** | 删除事件记录 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>操作</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>查看</strong></td><td>打开事件详情页</td></tr>
+<tr><td><strong>发送通知</strong></td><td>手动为此事件向已配置的联系途径触发通知</td></tr>
+<tr><td><strong>确认</strong></td><td>确认事件</td></tr>
+<tr><td><strong>趋势图分析</strong></td><td>打开关联元素在事件时间范围内的趋势图</td></tr>
+<tr><td><strong>删除</strong></td><td>删除事件记录</td></tr>
+</tbody>
+</table>
 
 ## 6.2.2 元素级事件
 
@@ -81,11 +93,15 @@ sidebar_label: 浏览事件
 
 元素级事件标签页的过滤器、列和行操作与全局事件视图相同。工具栏包含所有相同控件，外加三个特定于此场景的额外控件：
 
-| 控件 | 说明 |
-|---|---|
-| **包含子元素** | 切换开关，位于**仅显示未确认**右侧。启用后，事件列表将扩展显示当前元素所有下级子元素的事件，便于全面查看整条产线或站点的事件 |
-| **生成测试事件数据** | 在此元素上创建测试事件，用于开发和验证 |
-| **通知规则** | 打开此元素的通知规则配置——参见[告警与通知](./04-alerts-and-notifications.md) |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>包含子元素</strong></td><td>切换开关，位于<strong>仅显示未确认</strong>右侧。启用后，事件列表将扩展显示当前元素所有下级子元素的事件，便于全面查看整条产线或站点的事件</td></tr>
+<tr><td><strong>生成测试事件数据</strong></td><td>在此元素上创建测试事件，用于开发和验证</td></tr>
+<tr><td><strong>通知规则</strong></td><td>打开此元素的通知规则配置——参见<a href="./04-alerts-and-notifications.md">告警与通知</a></td></tr>
+</tbody>
+</table>
 
 ## 6.2.3 已保存事件过滤器
 

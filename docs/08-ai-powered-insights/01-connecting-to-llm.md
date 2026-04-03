@@ -23,13 +23,17 @@ AI 连接在系统设置的**连接管理**部分进行管理，与 TDengine 数
 2. 点击 **+ 添加连接**，选择 **AI** 连接类型。
 3. 填写连接字段：
 
-| 字段 | 说明 |
-|---|---|
-| **连接名称** | 用于标识此 AI 连接的唯一名称 |
-| **API 端点** | OpenAI 兼容 API 的基础 URL（例如 `https://api.openai.com/v1`） |
-| **API 密钥** | API 的身份验证密钥。对于不需要身份验证的本地部署，留空即可。 |
-| **问答模型** | 用于标准自然语言查询及面板/分析生成的模型（例如 `gpt-4o`） |
-| **深度思考模型** | 用于需要扩展推理的复杂分析任务的模型，例如根因分析（例如 `o1` 或 `o3`） |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>字段</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>连接名称</strong></td><td>用于标识此 AI 连接的唯一名称</td></tr>
+<tr><td><strong>API 端点</strong></td><td>OpenAI 兼容 API 的基础 URL（例如 <code>https://api.openai.com/v1</code>）</td></tr>
+<tr><td><strong>API 密钥</strong></td><td>API 的身份验证密钥。对于不需要身份验证的本地部署，留空即可。</td></tr>
+<tr><td><strong>问答模型</strong></td><td>用于标准自然语言查询及面板/分析生成的模型（例如 <code>gpt-4o</code>）</td></tr>
+<tr><td><strong>深度思考模型</strong></td><td>用于需要扩展推理的复杂分析任务的模型，例如根因分析（例如 <code>o1</code> 或 <code>o3</code>）</td></tr>
+</tbody>
+</table>
 
 4. 点击**测试连接**以验证端点和凭证。
 5. 点击**保存**。

@@ -44,14 +44,18 @@ sidebar_label: 面板
 
 已保存面板以带有实时缩略图预览的卡片形式显示。将鼠标悬停在卡片上可显示 **⋮**（更多）菜单，提供以下操作：
 
-| 操作 | 说明 |
-|---|---|
-| **查看** | 以全视图模式打开面板 |
-| **编辑** | 打开面板编辑器 |
-| **复制** | 在同一元素上创建面板的副本 |
-| **转换为模板** | 将此面板的配置保存为面板模板 |
-| **在新窗口中打开** | 在单独的浏览器窗口中打开面板 |
-| **删除** | 永久删除该面板 |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>操作</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>查看</strong></td><td>以全视图模式打开面板</td></tr>
+<tr><td><strong>编辑</strong></td><td>打开面板编辑器</td></tr>
+<tr><td><strong>复制</strong></td><td>在同一元素上创建面板的副本</td></tr>
+<tr><td><strong>转换为模板</strong></td><td>将此面板的配置保存为面板模板</td></tr>
+<tr><td><strong>在新窗口中打开</strong></td><td>在单独的浏览器窗口中打开面板</td></tr>
+<tr><td><strong>删除</strong></td><td>永久删除该面板</td></tr>
+</tbody>
+</table>
 
 ## 4.1.2 创建面板
 
@@ -75,20 +79,24 @@ sidebar_label: 面板
 
 每种面板类型的查看模式工具栏都包含以下控件：
 
-| 控件 | 说明 |
-|---|---|
-| **返回列表** | 返回面板选项卡 |
-| **编辑** | 打开面板编辑器 |
-| **收藏** | 将此面板标记为收藏以便快速访问 |
-| **时间选择器** | 选择图表的时间范围（如过去 7 天）。点击下拉箭头可选择预设范围或自定义范围。 |
-| **缩小** | 将时间范围扩展到下一级别 |
-| **刷新** | 立即重新加载图表数据 |
-| **自动刷新** | 设置自动刷新间隔（关闭、5 秒、10 秒、30 秒、1 分钟等） |
-| **保存为图片** | 将当前图表下载为 PNG 图片 |
-| **分享** | 生成指向此面板视图的限时分享链接 |
-| **全屏** | 将面板扩展为填满浏览器窗口 |
-| **在新窗口中打开** | 在单独的浏览器窗口中打开此面板 |
-| **解读面板** | 打开此面板的 AI 生成解读报告 |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>返回列表</strong></td><td>返回面板选项卡</td></tr>
+<tr><td><strong>编辑</strong></td><td>打开面板编辑器</td></tr>
+<tr><td><strong>收藏</strong></td><td>将此面板标记为收藏以便快速访问</td></tr>
+<tr><td><strong>时间选择器</strong></td><td>选择图表的时间范围（如过去 7 天）。点击下拉箭头可选择预设范围或自定义范围。</td></tr>
+<tr><td><strong>缩小</strong></td><td>将时间范围扩展到下一级别</td></tr>
+<tr><td><strong>刷新</strong></td><td>立即重新加载图表数据</td></tr>
+<tr><td><strong>自动刷新</strong></td><td>设置自动刷新间隔（关闭、5 秒、10 秒、30 秒、1 分钟等）</td></tr>
+<tr><td><strong>保存为图片</strong></td><td>将当前图表下载为 PNG 图片</td></tr>
+<tr><td><strong>分享</strong></td><td>生成指向此面板视图的限时分享链接</td></tr>
+<tr><td><strong>全屏</strong></td><td>将面板扩展为填满浏览器窗口</td></tr>
+<tr><td><strong>在新窗口中打开</strong></td><td>在单独的浏览器窗口中打开此面板</td></tr>
+<tr><td><strong>解读面板</strong></td><td>打开此面板的 AI 生成解读报告</td></tr>
+</tbody>
+</table>
 
 特定面板类型的附加工具栏控件在各面板类型章节中单独说明。
 
@@ -100,15 +108,19 @@ sidebar_label: 面板
 
 每种面板类型的编辑模式工具栏都包含以下控件：
 
-| 控件 | 说明 |
-|---|---|
-| **返回列表** | 返回面板选项卡（提示保存或放弃更改） |
-| **保存** | 保存对面板的所有更改 |
-| **放弃** | 放弃更改并返回查看模式 |
-| **时间选择器** | 选择预览时间范围 |
-| **缩小** | 将预览时间范围扩展到下一级别 |
-| **刷新** | 重新加载预览数据 |
-| **自动刷新** | 为预览设置自动刷新间隔 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>返回列表</strong></td><td>返回面板选项卡（提示保存或放弃更改）</td></tr>
+<tr><td><strong>保存</strong></td><td>保存对面板的所有更改</td></tr>
+<tr><td><strong>放弃</strong></td><td>放弃更改并返回查看模式</td></tr>
+<tr><td><strong>时间选择器</strong></td><td>选择预览时间范围</td></tr>
+<tr><td><strong>缩小</strong></td><td>将预览时间范围扩展到下一级别</td></tr>
+<tr><td><strong>刷新</strong></td><td>重新加载预览数据</td></tr>
+<tr><td><strong>自动刷新</strong></td><td>为预览设置自动刷新间隔</td></tr>
+</tbody>
+</table>
 
 特定面板类型的附加工具栏控件在各面板类型章节中单独说明。
 
@@ -145,15 +157,19 @@ sidebar_label: 面板
 
 指标表中的每一行代表一个数据系列：
 
-| 列 | 说明 |
-|---|---|
-| **名称** | 此系列在图表图例中的显示标签 |
-| **表达式** | 聚合表达式（如 `avg(attribute)`、`max(attribute)`） |
-| **计量单位** | 显示的计量单位。留空则使用属性配置的单位。 |
-| **过滤条件** | 应用于此系列的可选过滤条件 |
-| **时间偏移** | 通过时间量偏移此系列，用于历史对比叠加。输入数字并选择单位。 |
-| **预测** | 此系列的 AI 预测配置。设为"无"则不预测，或配置预测模型。 |
-| **排序** | 查询结果的排序顺序 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>列</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong></td><td>此系列在图表图例中的显示标签</td></tr>
+<tr><td><strong>表达式</strong></td><td>聚合表达式（如 <code>avg(attribute)</code>、<code>max(attribute)</code>）</td></tr>
+<tr><td><strong>计量单位</strong></td><td>显示的计量单位。留空则使用属性配置的单位。</td></tr>
+<tr><td><strong>过滤条件</strong></td><td>应用于此系列的可选过滤条件</td></tr>
+<tr><td><strong>时间偏移</strong></td><td>通过时间量偏移此系列，用于历史对比叠加。输入数字并选择单位。</td></tr>
+<tr><td><strong>预测</strong></td><td>此系列的 AI 预测配置。设为"无"则不预测，或配置预测模型。</td></tr>
+<tr><td><strong>排序</strong></td><td>查询结果的排序顺序</td></tr>
+</tbody>
+</table>
 
 使用每行末尾的操作图标来编辑或删除指标。
 
@@ -161,13 +177,17 @@ sidebar_label: 面板
 
 维度部分定义聚合查询的分组维度。当需要按分类字段对数据进行分组时使用（类似于 SQL GROUP BY）。每个维度行包含：
 
-| 列 | 说明 |
-|---|---|
-| **名称** | 此维度的显示标签 |
-| **表达式** | 分组表达式 |
-| **过滤条件** | 此维度的过滤条件 |
-| **分组** | 是否将此维度包含在 GROUP BY 中 |
-| **排序** | 排序顺序 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>列</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong></td><td>此维度的显示标签</td></tr>
+<tr><td><strong>表达式</strong></td><td>分组表达式</td></tr>
+<tr><td><strong>过滤条件</strong></td><td>此维度的过滤条件</td></tr>
+<tr><td><strong>分组</strong></td><td>是否将此维度包含在 GROUP BY 中</td></tr>
+<tr><td><strong>排序</strong></td><td>排序顺序</td></tr>
+</tbody>
+</table>
 
 ### 4.1.4.8 高级 SQL 模式
 
@@ -175,10 +195,14 @@ sidebar_label: 面板
 
 每个查询块都有一个**查询类型**选择器：
 
-| 查询类型 | 说明 |
-|---|---|
-| **TDengine** | 使用与当前元素或元素模板关联的 TDengine 连接执行 |
-| **事件** | 查询系统生成的事件 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>查询类型</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>TDengine</strong></td><td>使用与当前元素或元素模板关联的 TDengine 连接执行</td></tr>
+<tr><td><strong>事件</strong></td><td>查询系统生成的事件</td></tr>
+</tbody>
+</table>
 
 输入完整的 SQL 语句后，点击**验证**检查其是否合法可执行。成功时按钮旁边会显示绿色图标。验证成功后，可使用两个附加选择器：
 
@@ -189,12 +213,16 @@ sidebar_label: 面板
 
 高级 SQL 支持四个内置模板变量，在查询时会被替换：
 
-| 变量 | 替换内容 |
-|---|---|
-| `${FROM_TIME}` | 面板时间选择器的开始时间 |
-| `${TO_TIME}` | 面板时间选择器的结束时间 |
-| `${Element#fullVirtualTable}` | 当前元素的完整虚拟表名 |
-| `${Element#name}` | 当前元素的名称 |
+<table>
+<colgroup><col style="width:17em"/><col/></colgroup>
+<thead><tr><th>变量</th><th>替换内容</th></tr></thead>
+<tbody>
+<tr><td><code>${FROM_TIME}</code></td><td>面板时间选择器的开始时间</td></tr>
+<tr><td><code>${TO_TIME}</code></td><td>面板时间选择器的结束时间</td></tr>
+<tr><td><code>${Element#fullVirtualTable}</code></td><td>当前元素的完整虚拟表名</td></tr>
+<tr><td><code>${Element#name}</code></td><td>当前元素的名称</td></tr>
+</tbody>
+</table>
 
 :::tip
 四个变量在 SQL 编辑器中均支持自动补全：输入 `FROM_TIME`、`TO_TIME` 或 `ELEMENT`，编辑器会自动补全为完整变量语法。`${FROM_TIME}` 和 `${TO_TIME}` 会根据上下文自动添加或省略引号——无需手动添加。`${Element#fullVirtualTable}` 会自动处理反引号。`${Element#name}` 会被解析为纯字符串——在字符串比较中使用时需在其周围添加单引号。
@@ -213,11 +241,15 @@ sidebar_label: 面板
 
 ### 4.1.4.11 通用
 
-| 字段 | 说明 |
-|---|---|
-| **名称** | 显示在图表顶部的面板标题 |
-| **描述** | 可选描述，在悬停或导出时显示 |
-| **分类** | 一个或多个用于在面板列表中组织和过滤面板的标签 |
+<table>
+<colgroup><col style="width:5em"/><col/></colgroup>
+<thead><tr><th>字段</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong></td><td>显示在图表顶部的面板标题</td></tr>
+<tr><td><strong>描述</strong></td><td>可选描述，在悬停或导出时显示</td></tr>
+<tr><td><strong>分类</strong></td><td>一个或多个用于在面板列表中组织和过滤面板的标签</td></tr>
+</tbody>
+</table>
 
 ### 4.1.4.12 数据链接
 

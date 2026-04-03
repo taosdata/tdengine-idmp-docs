@@ -29,11 +29,15 @@ sidebar_label: 仪表盘
 
 除[通用编辑模式控件](../01-panels.md#414-面板编辑模式)外，仪表盘还增加了以下控件：
 
-| 控件 | 说明 |
-|---|---|
-| **保存为图片** | 将当前预览下载为 PNG 图片 |
-| **全屏** | 将编辑器预览扩展为填满浏览器窗口 |
-| **解读面板** | 对当前预览数据运行 AI 分析 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>保存为图片</strong></td><td>将当前预览下载为 PNG 图片</td></tr>
+<tr><td><strong>全屏</strong></td><td>将编辑器预览扩展为填满浏览器窗口</td></tr>
+<tr><td><strong>解读面板</strong></td><td>对当前预览数据运行 AI 分析</td></tr>
+</tbody>
+</table>
 
 ### 图形设置
 
@@ -41,14 +45,18 @@ sidebar_label: 仪表盘
 
 ![带阈值标签和指标名称的仪表盘](../images/gauge-items.png)
 
-| 设置 | 说明 |
-|---|---|
-| **标题** | 显示在面板上方的图表标题 |
-| **布局方向** | 显示多个仪表盘时的布局方向：水平或垂直 |
-| **显示阈值标签** | 开关：在表盘弧线周围显示阈值数值 |
-| **显示名称** | 开关：在表盘下方显示指标名称 |
-| **名称字体大小** | 指标名称标签的字体大小（默认 16） |
-| **数值字体大小** | 表盘中心数值的字体大小（默认 48） |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>标题</strong></td><td>显示在面板上方的图表标题</td></tr>
+<tr><td><strong>布局方向</strong></td><td>显示多个仪表盘时的布局方向：水平或垂直</td></tr>
+<tr><td><strong>显示阈值标签</strong></td><td>开关：在表盘弧线周围显示阈值数值</td></tr>
+<tr><td><strong>显示名称</strong></td><td>开关：在表盘下方显示指标名称</td></tr>
+<tr><td><strong>名称字体大小</strong></td><td>指标名称标签的字体大小（默认 16）</td></tr>
+<tr><td><strong>数值字体大小</strong></td><td>表盘中心数值的字体大小（默认 48）</td></tr>
+</tbody>
+</table>
 
 ### 边界值设置
 

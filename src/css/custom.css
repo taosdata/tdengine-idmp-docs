@@ -130,6 +130,12 @@ caption {
   caption-side: bottom
 }
 
+/* Prevent label/field-name column from wrapping in reference tables */
+.markdown table td:first-child,
+.markdown table th:first-child {
+  white-space: nowrap !important;
+}
+
 .navbar {
   background-blend-mode: normal;
   background-color: var(--accent);
