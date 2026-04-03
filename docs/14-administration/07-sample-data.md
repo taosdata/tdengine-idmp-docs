@@ -159,7 +159,7 @@ java -jar tda-generator-command.jar -f init.json -c
 
 ### 14.7.2.6 templates - 元素模板配置
 
-元素模板配置包含两部分：1. 通用信息，如名称、命名规则和位置信息；2. 属性列表，由 `super_tables` 描述，包括模拟数据生成方式以及 `metric` 和 `tag` 的定义。其中，`metric` 还可以指定模拟数据生成函数。
+元素模板配置包含两部分：1. 通用信息，如名称、命名规则和位置信息；2. 属性列表，由 `super_tables` 描述，包括模拟数据生成方式、CSV 数据源配置以及 `metric` 和 `tag` 的定义。其中，`metric` 还可以指定模拟数据生成函数。
 
 ```json
 {
@@ -261,7 +261,37 @@ java -jar tda-generator-command.jar -f init.json -c
     - fun: 数据生成函数，支持基本数学函数与 random() 函数，x 表示时间变量；
   - tags: 元素标签列表配置，同指标类似；
 
-### 14.7.2.7 trees - 元素树
+### 14.7.2.7 csv - CSV 数据源配置
+
+当 `super_tables` 中的数据来自已有 CSV 文件而非按公式生成时，可在超级表节点下增加 `csv` 配置。CSV 模式仅切换数据来源，`metrics`、`tags` 和 `trees` 的定义方式保持不变。
+
+```json
+{
+  "name": "vehicles",
+  "csv": {
+    "file": "csv/vehicles.csv",
+    "timestamp_column": "ts",
+    "sub_table_column": "sub_table_name"
+  },
+  "metrics": [
+    {
+      "name": "speed",
+      "title": "速度",
+      "description": "速度信息",
+      "type": "SmallInt",
+      "tdType": "metric"
+    }
+  ]
+}
+```
+
+- file: CSV 文件路径；支持绝对路径和相对路径；缺省时默认读取 `<超级表名称>.csv`；
+- timestamp_column: 时间列名称；缺省值为 `ts`；该列值将直接作为写入时间戳；
+- sub_table_column: 子表名称列；必填；列值用于决定写入目标子表，CSV 表头中必须存在该列；
+- CSV 表头至少应包含 `timestamp_column`、`sub_table_column` 以及所有 `metrics.name` 对应的列名；多余列可以保留，但当前导入流程不会使用；
+- 启用 CSV 模式后，`start_timestamp`、`time_step`、`non_stop_mode`、`insert_rows`、`batch_insert_num` 和 `insert_interval` 无需再配置，实际写入时间和数据量以 CSV 内容为准；
+
+### 14.7.2.8 trees - 元素树
 
 此处描述整个树状结构。每个节点均可指定元素模板 `template`，子节点通过 `children` 描述。使用元素模板时，需要通过 `values` 为命名规则中的 `KEYWORD1` 赋值。
 
@@ -297,7 +327,7 @@ java -jar tda-generator-command.jar -f init.json -c
 
 该配置用于创建元素，并构建整个元素的树状结构。
 
-### 14.7.2.8 完整示例
+### 14.7.2.9 完整示例
 
 <details>
 <summary>展开查看完整 JSON 示例</summary>
