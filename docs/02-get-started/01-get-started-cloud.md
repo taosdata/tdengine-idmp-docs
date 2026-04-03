@@ -9,7 +9,7 @@ TDengine Cloud 是面向工业大数据的全托管云服务，基于 Amazon Web
 
 ## 2.1.1 创建 TDengine Cloud 账户
 
-1. 在浏览器中访问 [cloud.tdengine.com](https://cloud.tdengine.com)。
+1. 在浏览器中访问 [cloud.taosdata.com](https://cloud.taosdata.com)。
 2. 在**注册**区域，填写邮箱地址和组织名称。
 3. 点击**获取验证码**，然后输入发送至邮箱的验证码。
 
