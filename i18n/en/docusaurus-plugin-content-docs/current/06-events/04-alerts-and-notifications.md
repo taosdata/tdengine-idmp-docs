@@ -5,7 +5,7 @@ sidebar_label: Alerts and Notifications
 
 # 6.4 Alerts and Notifications
 
-When an analysis generates an event, TDengine IDMP can automatically send a notification to configured contact points — email addresses, webhooks, messaging platforms, or other channels. This chapter describes how to set up contact points, configure notification rules on elements, and understand how the notification system behaves.
+When an analysis generates an event, TDengine IDMP can automatically send a notification to configured contact points — via email, Feishu, WeCom (Enterprise WeChat), DingTalk, Slack, Microsoft Teams, and other channels. This chapter describes how to set up contact points, configure notification rules on elements, and understand how the notification system behaves.
 
 ## 6.4.1 Contact Points
 
@@ -17,14 +17,23 @@ Contact points are managed centrally in **Admin Console → System Configuration
 
 The contact point list displays the following information:
 
-| Column | Description |
-|---|---|
-| **Name** | A descriptive name for this contact point (e.g., `Jeff_default_contact_point`) |
-| **Type** | The delivery channel type (e.g., EMAIL, webhook, Feishu) |
-| **Address** | The recipient address or endpoint URL |
-| **Description** | Optional description |
+| Column          | Description                                                                        |
+| --------------- | ---------------------------------------------------------------------------------- |
+| **Name**        | A descriptive name for this contact point (e.g., `Jeff_default_contact_point`)     |
+| **Type**        | The delivery channel type (Email, Feishu, WeCom, DingTalk, Slack, Microsoft Teams) |
+| **Address**     | The recipient address or endpoint URL                                              |
+| **Description** | Optional description                                                               |
 
-To create a new contact point, click **+** and fill in the name, type, address, and description fields. The available types depend on the integrations configured for your IDMP instance.
+To create a new contact point, click **+** and fill in the name, type, address, and description fields. The following channel types are supported:
+
+| Channel Type                  | Description                                                                        |
+| ----------------------------- | ---------------------------------------------------------------------------------- |
+| **Email**                     | Sends notifications via email. Requires selecting recipient users from the system. |
+| **Feishu**                    | Sends notifications via a Feishu custom bot webhook.                               |
+| **WeCom (Enterprise WeChat)** | Sends notifications via a WeCom group bot webhook.                                 |
+| **DingTalk**                  | Sends notifications via a DingTalk custom bot webhook.                             |
+| **Slack**                     | Sends notifications via a Slack Incoming Webhook.                                  |
+| **Microsoft Teams**           | Sends notifications via a Microsoft Teams Workflow Webhook.                        |
 
 :::tip
 Contact points are shared across the system. The same contact point can be referenced by notification rules on many different elements. Create one contact point per recipient or channel, then reuse it wherever needed.
@@ -40,15 +49,15 @@ The notification rule configuration is accessed from the element's Events tab to
 
 Click **Edit** in the dialog to modify the settings. The configurable parameters are:
 
-| Parameter | Description |
-|---|---|
-| **Contact Point** (required) | The primary delivery channel for event notifications. Select from the pre-configured contact points. |
-| **Resend Interval** (required) | How often to re-send a notification for an active, unacknowledged event. For example, set to 1 hour to alert operators every hour until the event is acknowledged or closed. |
-| **Escalation Contact Point** | An additional contact point to notify if the event remains unacknowledged for longer than the escalation interval. Used to alert supervisors or on-call staff when first-line operators have not responded. |
-| **Escalation Interval** | How long an event must remain unacknowledged before the escalation contact point is notified. |
-| **Max Resend Count** | The maximum number of times a single event can trigger a re-notification. Prevents indefinite re-sending for long-running events. |
-| **Message** | The notification message body. Supports variable substitution — for example `{elementName}`, `{eventName}`, `{startTime}`, `{severityLevel}`, `{eventUrl}` — to include event-specific information in each notification. |
-| **Event Template** | Per-template minimum severity threshold. For each event template listed, specify the lowest severity level that will trigger a notification. Events below the configured severity are suppressed. |
+| Parameter                      | Description                                                                                                                                                                                                              |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Contact Point** (required)   | The primary delivery channel for event notifications. Select from the pre-configured contact points.                                                                                                                     |
+| **Resend Interval** (required) | How often to re-send a notification for an active, unacknowledged event. For example, set to 1 hour to alert operators every hour until the event is acknowledged or closed.                                             |
+| **Escalation Contact Point**   | An additional contact point to notify if the event remains unacknowledged for longer than the escalation interval. Used to alert supervisors or on-call staff when first-line operators have not responded.              |
+| **Escalation Interval**        | How long an event must remain unacknowledged before the escalation contact point is notified.                                                                                                                            |
+| **Max Resend Count**           | The maximum number of times a single event can trigger a re-notification. Prevents indefinite re-sending for long-running events.                                                                                        |
+| **Message**                    | The notification message body. Supports variable substitution — for example `{elementName}`, `{eventName}`, `{startTime}`, `{severityLevel}`, `{eventUrl}` — to include event-specific information in each notification. |
+| **Event Template**             | Per-template minimum severity threshold. For each event template listed, specify the lowest severity level that will trigger a notification. Events below the configured severity are suppressed.                        |
 
 The dialog also has a **Preview Message** button for viewing how the rendered message looks, and a **Send Message** button for manually dispatching a notification immediately.
 
