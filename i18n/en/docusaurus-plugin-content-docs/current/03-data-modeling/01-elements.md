@@ -121,7 +121,6 @@ Every element in the catalog is more than a name. Each node carries:
 
 This richness is what distinguishes a data catalog from a simple folder structure. The catalog does not merely tell you *where* data lives — it tells you *what it means*, *who owns it*, and *how to interpret it*.
 
-
 ## 3.1.3 Creating Elements
 
 New elements are always created as children of an existing parent element. There are three ways to do this:
