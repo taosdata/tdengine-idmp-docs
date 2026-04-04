@@ -41,13 +41,17 @@ If the problem persists, follow the steps below to collect frontend and backend 
 
 For a locally installed deployment, log files are located at the following paths:
 
-| Component | Log File Path |
-| --- | --- |
-| TDengine IDMP | `/var/log/taos/tda.log` |
-| TDengine IDMP error log | `/var/log/taos/tda-error.log` |
-| TDengine IDMP AI | `/var/log/taos/idmp-ai.log` |
-| TDengine IDMP AI error log | `/var/log/taos/idmp-ai-error.log` |
-| TDengine TSDB-Enterprise | `/var/log/taos/taosdlog.*` |
+<table>
+<colgroup><col style="width:17em"/><col/></colgroup>
+<thead><tr><th>Component</th><th>Log File Path</th></tr></thead>
+<tbody>
+<tr><td>TDengine IDMP</td><td><code>/var/log/taos/tda.log</code></td></tr>
+<tr><td>TDengine IDMP error log</td><td><code>/var/log/taos/tda-error.log</code></td></tr>
+<tr><td>TDengine IDMP AI</td><td><code>/var/log/taos/idmp-ai.log</code></td></tr>
+<tr><td>TDengine IDMP AI error log</td><td><code>/var/log/taos/idmp-ai-error.log</code></td></tr>
+<tr><td>TDengine TSDB-Enterprise</td><td><code>/var/log/taos/taosdlog.*</code></td></tr>
+</tbody>
+</table>
 
 ### Docker Deployment
 

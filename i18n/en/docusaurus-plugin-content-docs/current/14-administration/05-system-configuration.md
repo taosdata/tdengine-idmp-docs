@@ -11,12 +11,16 @@ System Configuration is accessed from **Admin Console → System Configuration**
 
 Basic Configuration contains system-wide settings:
 
-| Setting | Description |
-|---|---|
-| **Language** | Default display language for the interface |
-| **Enable User Behavior Collection** | Whether to collect anonymized usage data for product improvement |
-| **Upload Crash Reports** | Whether to automatically upload crash reports |
-| **Auto Refresh Elements Explorer** | Whether the asset explorer automatically refreshes when elements change |
+<table>
+<colgroup><col style="width:20em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Language</strong></td><td>Default display language for the interface</td></tr>
+<tr><td><strong>Enable User Behavior Collection</strong></td><td>Whether to collect anonymized usage data for product improvement</td></tr>
+<tr><td><strong>Upload Crash Reports</strong></td><td>Whether to automatically upload crash reports</td></tr>
+<tr><td><strong>Auto Refresh Elements Explorer</strong></td><td>Whether the asset explorer automatically refreshes when elements change</td></tr>
+</tbody>
+</table>
 
 Click the edit (pencil) icon to modify these settings.
 
@@ -26,12 +30,16 @@ A **Notification Contact Point** defines a destination that IDMP sends notificat
 
 To create a contact point, click **+** and fill in:
 
-| Field | Description |
-|---|---|
-| **Name** | A unique name for this contact point |
-| **Notify Type** | The delivery channel: `Email`, `Feishu`, or `Webhook` |
-| **Address** | The target address — email address, Feishu webhook URL, or HTTP endpoint |
-| **Description** | Optional description |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>A unique name for this contact point</td></tr>
+<tr><td><strong>Notify Type</strong></td><td>The delivery channel: <code>Email</code>, <code>Feishu</code>, or <code>Webhook</code></td></tr>
+<tr><td><strong>Address</strong></td><td>The target address — email address, Feishu webhook URL, or HTTP endpoint</td></tr>
+<tr><td><strong>Description</strong></td><td>Optional description</td></tr>
+</tbody>
+</table>
 
 Because Webhook is supported, virtually any notification destination can be configured — including Teams, DingTalk, PagerDuty, and other systems that accept HTTP callbacks.
 
@@ -47,15 +55,19 @@ IDMP ships with built-in templates for common notification scenarios. Click a te
 
 Email Configuration defines the SMTP server that IDMP uses to send outbound email. Click the edit (pencil) icon to update the settings.
 
-| Field | Description |
-|---|---|
-| **Host** | SMTP server hostname or IP address |
-| **Port** | SMTP server port (e.g., 465 for TLS, 587 for STARTTLS, 25 for unencrypted) |
-| **Username** | SMTP authentication username |
-| **Password** | SMTP authentication password |
-| **Sender** | The "From" email address used in outgoing messages |
-| **Enable TLS** | Whether to use TLS encryption for the SMTP connection |
-| **Enable Authentication** | Whether SMTP authentication is required |
+<table>
+<colgroup><col style="width:14em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Host</strong></td><td>SMTP server hostname or IP address</td></tr>
+<tr><td><strong>Port</strong></td><td>SMTP server port (e.g., 465 for TLS, 587 for STARTTLS, 25 for unencrypted)</td></tr>
+<tr><td><strong>Username</strong></td><td>SMTP authentication username</td></tr>
+<tr><td><strong>Password</strong></td><td>SMTP authentication password</td></tr>
+<tr><td><strong>Sender</strong></td><td>The "From" email address used in outgoing messages</td></tr>
+<tr><td><strong>Enable TLS</strong></td><td>Whether to use TLS encryption for the SMTP connection</td></tr>
+<tr><td><strong>Enable Authentication</strong></td><td>Whether SMTP authentication is required</td></tr>
+</tbody>
+</table>
 
 IDMP sends email for several purposes: system activation (verification code), user invitations, password resets, and event alert notifications. By default, IDMP uses a TDengine-provided mail service.
 
@@ -69,12 +81,16 @@ docker run -d -p 1025:1025 -p 8025:8025 --name mailhog mailhog/mailhog:v1.0.1
 
 After starting MailHog, configure Email Configuration with:
 
-| Field | Value |
-|---|---|
-| Host | Host machine IP (or service name if in the same Docker Compose network) |
-| Port | `1025` |
-| Username / Password | Any value (MailHog disables authentication by default) |
-| Enable TLS / Enable Authentication | Unchecked |
-| Sender | Any valid email format (e.g., `support@example.com`) |
+<table>
+<colgroup><col style="width:21em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td>Host</td><td>Host machine IP (or service name if in the same Docker Compose network)</td></tr>
+<tr><td>Port</td><td><code>1025</code></td></tr>
+<tr><td>Username / Password</td><td>Any value (MailHog disables authentication by default)</td></tr>
+<tr><td>Enable TLS / Enable Authentication</td><td>Unchecked</td></tr>
+<tr><td>Sender</td><td>Any valid email format (e.g., <code>support@example.com</code>)</td></tr>
+</tbody>
+</table>
 
 Access the MailHog web interface at `http://<server-ip>:8025` to view captured emails.

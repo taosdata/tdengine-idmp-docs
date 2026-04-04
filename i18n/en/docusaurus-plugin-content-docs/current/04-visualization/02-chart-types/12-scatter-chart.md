@@ -30,20 +30,28 @@ For continuous line-based trend analysis, use the Trend Chart. For discrete stat
 
 In addition to the [common view mode controls](../01-panels.md#413-panel-view-mode), the Scatter Chart adds:
 
-| Control | Description |
-|---|---|
-| **Disable Sampling** | Fetch raw data without downsampling to ensure all individual data points are plotted |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Disable Sampling</strong></td><td>Fetch raw data without downsampling to ensure all individual data points are plotted</td></tr>
+</tbody>
+</table>
 
 ### Edit Mode Toolbar
 
 In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Scatter Chart adds:
 
-| Control | Description |
-|---|---|
-| **Disable Sampling** | Toggle raw data mode for the preview |
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Disable Sampling</strong></td><td>Toggle raw data mode for the preview</td></tr>
+<tr><td><strong>Save as Image</strong></td><td>Download the current preview as a PNG image</td></tr>
+<tr><td><strong>Full Screen</strong></td><td>Expand the editor preview to fill the browser window</td></tr>
+<tr><td><strong>Panel Insights</strong></td><td>Run AI analysis on the current preview data</td></tr>
+</tbody>
+</table>
 
 ### Graph Settings
 
@@ -71,14 +79,18 @@ When data is dense, axis labels can overlap. Use **Rotate Labels** and **Label I
 
 ![Label interval reduced to lower density](../images/scatter-interval.png)
 
-| Setting | Description |
-|---|---|
-| **Style** | Symbol shape for data points (circle, heart, smiley, and others) |
-| **Symbol Size** | Size of each dot (slider, default 6) |
-| **Scatter Opacity** | Transparency of dots, 0–1 |
-| **Special Point** | Highlight max/min or other specific points with a distinct marker |
-| **Rotate Labels** | Rotation angle for X-axis labels |
-| **Label Interval** | Density of X-axis labels |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Style</strong></td><td>Symbol shape for data points (circle, heart, smiley, and others)</td></tr>
+<tr><td><strong>Symbol Size</strong></td><td>Size of each dot (slider, default 6)</td></tr>
+<tr><td><strong>Scatter Opacity</strong></td><td>Transparency of dots, 0–1</td></tr>
+<tr><td><strong>Special Point</strong></td><td>Highlight max/min or other specific points with a distinct marker</td></tr>
+<tr><td><strong>Rotate Labels</strong></td><td>Rotation angle for X-axis labels</td></tr>
+<tr><td><strong>Label Interval</strong></td><td>Density of X-axis labels</td></tr>
+</tbody>
+</table>
 
 ### Transform Settings
 
@@ -92,11 +104,15 @@ The Scatter Chart has a unique Transform section for analytical functions:
 
 ![Scatter chart with regression curve overlaid](../images/scatter-analysis.png)
 
-| Transform Function Type | Description |
-|---|---|
-| **Off** | No transform; raw data points are plotted |
-| **Data Aggregation** | Groups data points and displays aggregated clusters |
-| **Regression Analysis** | Fits a regression curve (linear, exponential, or polynomial) to the data |
+<table>
+<colgroup><col style="width:15em"/><col/></colgroup>
+<thead><tr><th>Transform Function Type</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Off</strong></td><td>No transform; raw data points are plotted</td></tr>
+<tr><td><strong>Data Aggregation</strong></td><td>Groups data points and displays aggregated clusters</td></tr>
+<tr><td><strong>Regression Analysis</strong></td><td>Fits a regression curve (linear, exponential, or polynomial) to the data</td></tr>
+</tbody>
+</table>
 
 ### Axis Settings
 
@@ -126,11 +142,15 @@ In Table mode, the legend shows summary statistics. When placed on the Right wit
 
 ![Scatter chart legend in table mode with statistics](../images/scatter-legend.png)
 
-| Setting | Description |
-|---|---|
-| **Show** | Display mode: List, Table, or Hidden |
-| **Placement** | Position: Bottom or Right |
-| **Legend Values** | Statistics shown in Table mode: Last, Min, Max, Mean, Sum, etc. |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Show</strong></td><td>Display mode: List, Table, or Hidden</td></tr>
+<tr><td><strong>Placement</strong></td><td>Position: Bottom or Right</td></tr>
+<tr><td><strong>Legend Values</strong></td><td>Statistics shown in Table mode: Last, Min, Max, Mean, Sum, etc.</td></tr>
+</tbody>
+</table>
 
 ## 4.2.12.4 Example Scenarios
 

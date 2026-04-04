@@ -25,12 +25,18 @@ Imputation is configured directly from a Trend Chart panel. Open a Trend Chart t
 
 ## 8.9.3 Supported TDgpt Algorithms
 
-| Algorithm | Characteristics |
-|---|---|
-| **MEAN** | Fills gaps with the local mean of surrounding values — fast and robust for stable signals |
-| **IEM** | Iterative expectation-maximization — suitable for correlated multivariate signals |
-| **LSTM** | PyTorch LSTM model — captures temporal dependencies for complex, non-stationary signals |
-| **TDtsfm** | TDengine's time-series foundation model |
+The following algorithms are available when TDgpt imputation is enabled, each suited to different signal characteristics and gap lengths.
+
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>Algorithm</th><th>Characteristics</th></tr></thead>
+<tbody>
+<tr><td><strong>MEAN</strong></td><td>Fills gaps with the local mean of surrounding values — fast and robust for stable signals</td></tr>
+<tr><td><strong>IEM</strong></td><td>Iterative expectation-maximization — suitable for correlated multivariate signals</td></tr>
+<tr><td><strong>LSTM</strong></td><td>PyTorch LSTM model — captures temporal dependencies for complex, non-stationary signals</td></tr>
+<tr><td><strong>TDtsfm</strong></td><td>TDengine's time-series foundation model</td></tr>
+</tbody>
+</table>
 
 ## 8.9.4 Viewing and Toggling Imputation in a Trend Chart
 

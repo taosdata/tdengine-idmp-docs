@@ -17,12 +17,16 @@ Scheduled report delivery is configured in the **Notification Rule** section of 
 2. In the right settings panel, scroll to **Notification Rule** and click **+** to add a new rule.
 3. Configure the rule fields:
 
-| Field | Description |
-|---|---|
-| **Frequency** | How often to send the report: **Single** (once only), **Daily**, **Weekly**, or **Monthly** |
-| **Job Start Time** | The date and time of the first (or only) delivery. Required. |
-| **End Date** | The date on which the recurring schedule stops. Optional — if left blank, the schedule runs indefinitely. |
-| **Notification Contact Point** | The notification channel(s) that will receive the report. Select one or more pre-configured contact points from the dropdown. Required. |
+<table>
+<colgroup><col style="width:17em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Frequency</strong></td><td>How often to send the report: <strong>Single</strong> (once only), <strong>Daily</strong>, <strong>Weekly</strong>, or <strong>Monthly</strong></td></tr>
+<tr><td><strong>Job Start Time</strong></td><td>The date and time of the first (or only) delivery. Required.</td></tr>
+<tr><td><strong>End Date</strong></td><td>The date on which the recurring schedule stops. Optional — if left blank, the schedule runs indefinitely.</td></tr>
+<tr><td><strong>Notification Contact Point</strong></td><td>The notification channel(s) that will receive the report. Select one or more pre-configured contact points from the dropdown. Required.</td></tr>
+</tbody>
+</table>
 
 4. Click **+** again to add additional rules with different frequencies or recipients.
 5. Click **Save** to save the panel and activate the schedule.

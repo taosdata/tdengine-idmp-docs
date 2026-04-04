@@ -17,12 +17,16 @@ Sample Data is accessed from **Admin Console → Sample Data**.
 
 #### Environment Requirements
 
-| Component | Requirement               |
-| --------- | ------------------------- |
-| Java      | JDK 8 or later            |
-| TDengine  | Installed and accessible  |
-| IDMP      | Installed and accessible  |
-| JSON File | Sample data configuration |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>Component</th><th>Requirement</th></tr></thead>
+<tbody>
+<tr><td>Java</td><td>JDK 8 or later</td></tr>
+<tr><td>TDengine</td><td>Installed and accessible</td></tr>
+<tr><td>IDMP</td><td>Installed and accessible</td></tr>
+<tr><td>JSON File</td><td>Sample data configuration</td></tr>
+</tbody>
+</table>
 
 #### Tool Location
 
@@ -951,6 +955,8 @@ This section:
 </details>
 
 ## 14.7.3 Usage Recommendations
+
+Adhering to the following practices helps keep sample data configurations maintainable and prevents accidental data loss in shared environments.
 
 - One JSON file per sample scenario
 - Use consistent prefixes for template names

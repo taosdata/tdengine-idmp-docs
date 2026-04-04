@@ -29,24 +29,32 @@ For values that need context against a scale or range, use the Gauge Chart or Ba
 
 In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Stat Value adds:
 
-| Control | Description |
-|---|---|
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Save as Image</strong></td><td>Download the current preview as a PNG image</td></tr>
+<tr><td><strong>Full Screen</strong></td><td>Expand the editor preview to fill the browser window</td></tr>
+<tr><td><strong>Panel Insights</strong></td><td>Run AI analysis on the current preview data</td></tr>
+</tbody>
+</table>
 
 ### Graph Settings
 
-| Setting | Description |
-|---|---|
-| **Orientation** | **Horizontal** (label and value side by side) or **Vertical** (label above value) |
-| **Display Time** | **On:** show the timestamp of the displayed value below the number. **Off:** show the value only. |
-| **Title Text size** | Font size for the metric name label (default 16) |
-| **Title Text color** | Color of the label text |
-| **Value Text size** | Font size for the numeric value (default 48) |
-| **Value Text color** | Color of the value text |
-| **Background Color** | Panel background color |
-| **Width** | Fixed pixel width for the panel (leave blank for automatic sizing) |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Orientation</strong></td><td><strong>Horizontal</strong> (label and value side by side) or <strong>Vertical</strong> (label above value)</td></tr>
+<tr><td><strong>Display Time</strong></td><td><strong>On:</strong> show the timestamp of the displayed value below the number. <strong>Off:</strong> show the value only.</td></tr>
+<tr><td><strong>Title Text size</strong></td><td>Font size for the metric name label (default 16)</td></tr>
+<tr><td><strong>Title Text color</strong></td><td>Color of the label text</td></tr>
+<tr><td><strong>Value Text size</strong></td><td>Font size for the numeric value (default 48)</td></tr>
+<tr><td><strong>Value Text color</strong></td><td>Color of the value text</td></tr>
+<tr><td><strong>Background Color</strong></td><td>Panel background color</td></tr>
+<tr><td><strong>Width</strong></td><td>Fixed pixel width for the panel (leave blank for automatic sizing)</td></tr>
+</tbody>
+</table>
 
 ## 4.2.7.4 Example Scenarios
 

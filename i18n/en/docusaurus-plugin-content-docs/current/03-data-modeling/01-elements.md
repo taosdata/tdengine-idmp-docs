@@ -17,16 +17,20 @@ An element is a digital representation of a real-world asset or logical grouping
 
 When you select an element in the asset tree, the **General** tab displays the following information:
 
-| Field | Description |
-|---|---|
-| **Name** | The element's unique identifier within its parent scope |
-| **Path** | The full hierarchical path to this element in the asset tree (for example, `/Elements/Utilities/California/San Diego County/Chula Vista/em-10`) |
-| **Template** | The element template this element is based on. Click the template name to navigate to the template definition. |
-| **Categories** | One or more user-defined category tags for grouping and filtering elements |
-| **Default Attribute** | The attribute shown by default when this element is displayed in a summary view |
-| **Description** | A free-text description of what this asset represents |
-| **Location** | The GPS coordinates of the physical asset: Longitude, Latitude, and Altitude. Used for map-based visualizations. |
-| **Additional Attributes** | Free-form key-value pairs for any custom metadata specific to this element, such as manufacturer, model number, serial number, installation date, or maintenance contact |
+<table>
+<colgroup><col style="width:14em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>The element's unique identifier within its parent scope</td></tr>
+<tr><td><strong>Path</strong></td><td>The full hierarchical path to this element in the asset tree (for example, <code>/Elements/Utilities/California/San Diego County/Chula Vista/em-10</code>)</td></tr>
+<tr><td><strong>Template</strong></td><td>The element template this element is based on. Click the template name to navigate to the template definition.</td></tr>
+<tr><td><strong>Categories</strong></td><td>One or more user-defined category tags for grouping and filtering elements</td></tr>
+<tr><td><strong>Default Attribute</strong></td><td>The attribute shown by default when this element is displayed in a summary view</td></tr>
+<tr><td><strong>Description</strong></td><td>A free-text description of what this asset represents</td></tr>
+<tr><td><strong>Location</strong></td><td>The GPS coordinates of the physical asset: Longitude, Latitude, and Altitude. Used for map-based visualizations.</td></tr>
+<tr><td><strong>Additional Attributes</strong></td><td>Free-form key-value pairs for any custom metadata specific to this element, such as manufacturer, model number, serial number, installation date, or maintenance contact</td></tr>
+</tbody>
+</table>
 
 Below the main fields, the General tab contains the following expandable sections:
 
@@ -89,12 +93,16 @@ The root of the asset tree — the top-level element with no parent — typicall
 
 The asset tree supports **multiple simultaneous hierarchies**, each reflecting a different business perspective on the same underlying assets:
 
-| Perspective | Example hierarchy |
-|---|---|
-| Organizational | Company → Factory → Production Line → Equipment |
-| Geographic | Region → Site → Building → Zone → Device |
-| Equipment type | Turbine → Inverter → Sensor |
-| Functional | Utility → Power Meter → Phase Measurement |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Perspective</th><th>Example hierarchy</th></tr></thead>
+<tbody>
+<tr><td>Organizational</td><td>Company → Factory → Production Line → Equipment</td></tr>
+<tr><td>Geographic</td><td>Region → Site → Building → Zone → Device</td></tr>
+<tr><td>Equipment type</td><td>Turbine → Inverter → Sensor</td></tr>
+<tr><td>Functional</td><td>Utility → Power Meter → Phase Measurement</td></tr>
+</tbody>
+</table>
 
 A single physical asset — for example, a pump — can appear in a geographic hierarchy *and* a functional equipment hierarchy at the same time. Both views point to the same element and its data; nothing is duplicated. This is achieved through *element references*. See [3.1.7 Element References](#317-element-references) for details.
 
@@ -189,14 +197,18 @@ Templates support inheritance. You can create a base template (for example, "Mot
 
 Because a template is shared across many elements, field values inside a template cannot be hardcoded. IDMP provides **substitution strings** that are resolved to the actual values when an element is created. Common substitution strings include:
 
-| Substitution string | Resolves to |
-|---|---|
-| `${Template#name}` | The template name |
-| `${Element#name}` | The element name |
-| `${Attribute#name}` | The attribute name |
-| `${attributes["AttrName"]#value}` | The current value of the named attribute |
-| `${startTime}` | The event start time |
-| `${endTime}` | The event end time |
+<table>
+<colgroup><col style="width:20em"/><col/></colgroup>
+<thead><tr><th>Substitution string</th><th>Resolves to</th></tr></thead>
+<tbody>
+<tr><td><code>${Template#name}</code></td><td>The template name</td></tr>
+<tr><td><code>${Element#name}</code></td><td>The element name</td></tr>
+<tr><td><code>${Attribute#name}</code></td><td>The attribute name</td></tr>
+<tr><td><code>${attributes["AttrName"]#value}</code></td><td>The current value of the named attribute</td></tr>
+<tr><td><code>${startTime}</code></td><td>The event start time</td></tr>
+<tr><td><code>${endTime}</code></td><td>The event end time</td></tr>
+</tbody>
+</table>
 
 You do not need to memorize these — wherever substitution strings are valid, IDMP shows a **+** picker that lists all applicable strings for that field.
 
@@ -204,42 +216,54 @@ In addition to system-provided strings, you can define custom **KEYWORD** substi
 
 ### 3.1.6.3 Key Template Settings
 
-| Setting | Description |
-|---|---|
-| **Base Template Only** | If enabled, this template can only be used as a parent for other templates, not to create elements directly. |
-| **Allow Extension** | If enabled, elements created from this template can have additional custom attributes, analyses, or panels added on top of the template-defined ones. If disabled, no customization is permitted. |
-| **Element Naming Pattern** | A pattern — composed of fixed strings and substitution strings — that determines the auto-generated name for each element created from this template. For example, `DEV-${KEYWORD1}` would name elements like `DEV-smeter-1`. |
+<table>
+<colgroup><col style="width:15em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Base Template Only</strong></td><td>If enabled, this template can only be used as a parent for other templates, not to create elements directly.</td></tr>
+<tr><td><strong>Allow Extension</strong></td><td>If enabled, elements created from this template can have additional custom attributes, analyses, or panels added on top of the template-defined ones. If disabled, no customization is permitted.</td></tr>
+<tr><td><strong>Element Naming Pattern</strong></td><td>A pattern — composed of fixed strings and substitution strings — that determines the auto-generated name for each element created from this template. For example, <code>DEV-${KEYWORD1}</code> would name elements like <code>DEV-smeter-1</code>.</td></tr>
+</tbody>
+</table>
 
 ### 3.1.6.4 General Tab Fields
 
 When you open an element template, the **General** tab shows:
 
-| Field | Description |
-|---|---|
-| **Template Name** | The name of the template |
-| **Description** | Optional description |
-| **Base Template** | The parent template this one inherits from, if any |
-| **Categories** | Category tags |
-| **Default Attribute** | The attribute shown by default when an element is displayed in summary views |
-| **Element Naming Pattern** | The auto-generated name pattern using substitution strings (e.g., `${KEYWORD1}`) |
-| **Base Template Only** | If true, this template cannot be used to create elements directly — only as a base for other templates |
-| **Allow Extension** | If true, elements may have custom attributes, analyses, or panels added beyond what the template defines |
-| **Location** | Default GPS coordinates (Altitude, Latitude, Longitude) inherited by elements |
-| **Keywords** | Custom KEYWORD substitution strings defined for this template, each with a descriptive help text shown at element creation time |
-| **Related Documents** | Files attached to the template, indexed by the AI engine |
+<table>
+<colgroup><col style="width:15em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Template Name</strong></td><td>The name of the template</td></tr>
+<tr><td><strong>Description</strong></td><td>Optional description</td></tr>
+<tr><td><strong>Base Template</strong></td><td>The parent template this one inherits from, if any</td></tr>
+<tr><td><strong>Categories</strong></td><td>Category tags</td></tr>
+<tr><td><strong>Default Attribute</strong></td><td>The attribute shown by default when an element is displayed in summary views</td></tr>
+<tr><td><strong>Element Naming Pattern</strong></td><td>The auto-generated name pattern using substitution strings (e.g., <code>${KEYWORD1}</code>)</td></tr>
+<tr><td><strong>Base Template Only</strong></td><td>If true, this template cannot be used to create elements directly — only as a base for other templates</td></tr>
+<tr><td><strong>Allow Extension</strong></td><td>If true, elements may have custom attributes, analyses, or panels added beyond what the template defines</td></tr>
+<tr><td><strong>Location</strong></td><td>Default GPS coordinates (Altitude, Latitude, Longitude) inherited by elements</td></tr>
+<tr><td><strong>Keywords</strong></td><td>Custom KEYWORD substitution strings defined for this template, each with a descriptive help text shown at element creation time</td></tr>
+<tr><td><strong>Related Documents</strong></td><td>Files attached to the template, indexed by the AI engine</td></tr>
+</tbody>
+</table>
 
 ### 3.1.6.5 What an Element Template Contains
 
 Once a template is created, its detail page shows the following tabs. Each tab manages one category of sub-template that is automatically instantiated for every element created from this template:
 
-| Tab | Description |
-|---|---|
-| **General** | The element-level settings described above |
-| **Attribute Template** | The standard set of attributes, including TDengine TSDB data reference bindings. See [Attribute Templates](./02-attributes.md#attribute-templates). |
-| **Panel Template** | Standard panels (Trend Chart, Gauge, Table, etc.) auto-created for each element. See [Panel and Dashboard Templates](../04-visualization/07-panel-dashboard-templates.md). |
-| **Analysis Template** | Reusable analysis rules that run on every element of this type. See [Analysis Templates](../07-real-time-analysis/07-analysis-templates.md). |
-| **Dashboard Template** | Standard dashboards auto-associated with each element. See [Panel and Dashboard Templates](../04-visualization/07-panel-dashboard-templates.md). |
-| **Notification Rule Template** | The default notification rule applied to elements created from this template, including contact point, resend interval, escalation settings, and message template. |
+<table>
+<colgroup><col style="width:17em"/><col/></colgroup>
+<thead><tr><th>Tab</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>General</strong></td><td>The element-level settings described above</td></tr>
+<tr><td><strong>Attribute Template</strong></td><td>The standard set of attributes, including TDengine TSDB data reference bindings. See <a href="./02-attributes.md#attribute-templates">Attribute Templates</a>.</td></tr>
+<tr><td><strong>Panel Template</strong></td><td>Standard panels (Trend Chart, Gauge, Table, etc.) auto-created for each element. See <a href="../04-visualization/07-panel-dashboard-templates.md">Panel and Dashboard Templates</a>.</td></tr>
+<tr><td><strong>Analysis Template</strong></td><td>Reusable analysis rules that run on every element of this type. See <a href="../07-real-time-analysis/07-analysis-templates.md">Analysis Templates</a>.</td></tr>
+<tr><td><strong>Dashboard Template</strong></td><td>Standard dashboards auto-associated with each element. See <a href="../04-visualization/07-panel-dashboard-templates.md">Panel and Dashboard Templates</a>.</td></tr>
+<tr><td><strong>Notification Rule Template</strong></td><td>The default notification rule applied to elements created from this template, including contact point, resend interval, escalation settings, and message template.</td></tr>
+</tbody>
+</table>
 
 ### 3.1.6.6 Creating an Element Template
 
@@ -264,11 +288,15 @@ DEV-${KEYWORD1}
 
 Create three attribute templates on the `Smart Meter` template:
 
-| Attribute | Data Reference Type | Data Reference Setting |
-|---|---|---|
-| Current | TDengine Metric | `TDengine/smdb/${KEYWORD1}/current` |
-| Voltage | TDengine Metric | `TDengine/smdb/${KEYWORD1}/voltage` |
-| Model | TDengine Tag | `TDengine/smdb/${KEYWORD1}/model` |
+<table>
+<colgroup><col style="width:7em"/><col/><col/></colgroup>
+<thead><tr><th>Attribute</th><th>Data Reference Type</th><th>Data Reference Setting</th></tr></thead>
+<tbody>
+<tr><td>Current</td><td>TDengine Metric</td><td><code>TDengine/smdb/${KEYWORD1}/current</code></td></tr>
+<tr><td>Voltage</td><td>TDengine Metric</td><td><code>TDengine/smdb/${KEYWORD1}/voltage</code></td></tr>
+<tr><td>Model</td><td>TDengine Tag</td><td><code>TDengine/smdb/${KEYWORD1}/model</code></td></tr>
+</tbody>
+</table>
 
 For each attribute, set the **Data Reference Type** to **TDengine Metric** or **TDengine Tag**, then open the Data Reference Setting dialog. Select the TDengine connection and database `smdb`. In the **Table Name Pattern** field, click **+** and select `KEYWORD1`. Enter the column name (`current`, `voltage`, or `model`). Click **Check** with a sample child table name to verify the binding.
 

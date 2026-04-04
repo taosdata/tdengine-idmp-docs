@@ -69,11 +69,15 @@ The cloud service requires two tokens on each request: `Authorization` (Bearer T
 3. Refresh the page and locate any backend API request (e.g., `/api/v1/permissions/menus`).
 4. Copy the following three values:
 
-| Item | Description |
-|---|---|
-| Request URL host | Format: `https://<instance-id>.idmp.taosdata.com` |
-| `Access-token` request header | Cloud service-specific authentication token |
-| `Authorization` request header | Bearer Token — use the value without the `Bearer` prefix |
+<table>
+<colgroup><col style="width:18em"/><col/></colgroup>
+<thead><tr><th>Item</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>Request URL host</td><td>Format: <code>https://<instance-id>.idmp.taosdata.com</code></td></tr>
+<tr><td><code>Access-token</code> request header</td><td>Cloud service-specific authentication token</td></tr>
+<tr><td><code>Authorization</code> request header</td><td>Bearer Token — use the value without the <code>Bearer</code> prefix</td></tr>
+</tbody>
+</table>
 
 5. Set the values as environment variables:
 
@@ -118,16 +122,24 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 
 ## 15.1.3.3 Token Lifetime and Refresh
 
-| Deployment | Token Lifetime | How to Refresh |
-|---|---|---|
-| Enterprise (self-hosted) | Configured on the server (see `application.yml`) | Call the login endpoint again to get a new token |
-| Cloud service | Controlled by the browser session | Log in through the browser again and copy new tokens from DevTools |
+Token lifetime differs between deployment types; the table below summarizes the default behavior and the recommended refresh strategy for each.
+
+<table>
+<colgroup><col style="width:16em"/><col/><col/></colgroup>
+<thead><tr><th>Deployment</th><th>Token Lifetime</th><th>How to Refresh</th></tr></thead>
+<tbody>
+<tr><td>Enterprise (self-hosted)</td><td>Configured on the server (see <code>application.yml</code>)</td><td>Call the login endpoint again to get a new token</td></tr>
+<tr><td>Cloud service</td><td>Controlled by the browser session</td><td>Log in through the browser again and copy new tokens from DevTools</td></tr>
+</tbody>
+</table>
 
 :::tip
 Wrap token acquisition and refresh in a utility function. Trigger a refresh automatically when you receive a `401 Unauthorized` response.
 :::
 
 ## 15.1.3.4 Security Best Practices
+
+The following practices should be applied in all production integrations to protect credentials and reduce exposure to unauthorized access.
 
 - **Never** hardcode tokens, usernames, or passwords in source code.
 - Store credentials in environment variables or a secrets manager (Vault, AWS Secrets Manager, etc.).

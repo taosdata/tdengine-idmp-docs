@@ -7,12 +7,16 @@ sidebar_label: Toolbox
 
 ## 5.6.1 Pen
 
+The Pen tool draws precise vector paths by placing anchor points one click at a time.
+
 1. Start: Left click
 2. Pause: Right click or enter
 3. End: esc
 4. Close/Unclose: enter
 
 ## 5.6.2 Pencil
+
+The Pencil tool draws freehand paths by tracking the cursor movement while the mouse button is held.
 
 1. Start: Continuous left drag
 2. Pause: Release left button

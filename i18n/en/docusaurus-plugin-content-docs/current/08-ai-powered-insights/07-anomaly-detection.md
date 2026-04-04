@@ -25,11 +25,15 @@ To create an anomaly detection analysis:
 2. In the **Trigger** section, select **Anomaly Detection** as the trigger type.
 3. Configure the Anomaly Detection trigger fields:
 
-| Field | Description |
-|---|---|
-| **Attribute** | The element attribute to monitor for anomalies |
-| **Algorithm** | The anomaly detection algorithm to apply (see below) |
-| **Window** | The time window over which the algorithm evaluates each data segment |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Attribute</strong></td><td>The element attribute to monitor for anomalies</td></tr>
+<tr><td><strong>Algorithm</strong></td><td>The anomaly detection algorithm to apply (see below)</td></tr>
+<tr><td><strong>Window</strong></td><td>The time window over which the algorithm evaluates each data segment</td></tr>
+</tbody>
+</table>
 
 4. Complete the **Calculation** and **Event** sections as with any other analysis type.
 5. Click **Save**.
@@ -38,13 +42,17 @@ To create an anomaly detection analysis:
 
 TDgpt includes multiple anomaly detection algorithms backed by different ML frameworks:
 
-| Algorithm | Framework | Characteristics |
-|---|---|---|
-| **IQR** | Statistical | Interquartile range — simple, fast, works well for univariate signals with clear outliers |
-| **LOF** | scikit-learn | Local Outlier Factor — density-based, effective for detecting point anomalies |
-| **Isolation Forest** | scikit-learn | Tree-based, robust to high-dimensional data and varying anomaly density |
-| **LSTM-AD** | PyTorch | LSTM-based sequence model — captures temporal dependencies, suitable for seasonal or periodic signals |
-| **TDtsfm** | TDengine | TDengine's own time-series foundation model, pre-trained on industrial time-series data |
+<table>
+<colgroup><col style="width:11em"/><col/><col/></colgroup>
+<thead><tr><th>Algorithm</th><th>Framework</th><th>Characteristics</th></tr></thead>
+<tbody>
+<tr><td><strong>IQR</strong></td><td>Statistical</td><td>Interquartile range — simple, fast, works well for univariate signals with clear outliers</td></tr>
+<tr><td><strong>LOF</strong></td><td>scikit-learn</td><td>Local Outlier Factor — density-based, effective for detecting point anomalies</td></tr>
+<tr><td><strong>Isolation Forest</strong></td><td>scikit-learn</td><td>Tree-based, robust to high-dimensional data and varying anomaly density</td></tr>
+<tr><td><strong>LSTM-AD</strong></td><td>PyTorch</td><td>LSTM-based sequence model — captures temporal dependencies, suitable for seasonal or periodic signals</td></tr>
+<tr><td><strong>TDtsfm</strong></td><td>TDengine</td><td>TDengine's own time-series foundation model, pre-trained on industrial time-series data</td></tr>
+</tbody>
+</table>
 
 The appropriate algorithm depends on the nature of the signal and the type of anomaly you expect. For most industrial sensor streams, IQR or Isolation Forest provide a good starting point.
 

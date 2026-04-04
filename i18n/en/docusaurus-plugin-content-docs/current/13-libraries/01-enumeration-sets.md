@@ -13,11 +13,15 @@ Enumeration sets are managed under **Libraries → Enumeration Sets**.
 
 The list shows all defined enumeration sets with the following columns:
 
-| Column | Description |
-|---|---|
-| **Name** | Enumeration set name |
-| **Value Type** | The numeric data type of the raw values |
-| **Description** | Optional description |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>Column</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>Enumeration set name</td></tr>
+<tr><td><strong>Value Type</strong></td><td>The numeric data type of the raw values</td></tr>
+<tr><td><strong>Description</strong></td><td>Optional description</td></tr>
+</tbody>
+</table>
 
 Click an enumeration set name to view or edit it. Use the **⋮** menu on a row to edit or delete it.
 
@@ -25,20 +29,28 @@ Click an enumeration set name to view or edit it. Use the **⋮** menu on a row 
 
 Click **+** to create a new enumeration set. Fill in the following fields:
 
-| Field | Description |
-|---|---|
-| **Name** (required) | A unique name. Accepts letters, numbers, underscores, hyphens, and spaces. |
-| **Value Type** | The data type of the raw values. Options: `TinyInt` (default), `SmallInt`, `Int`, `BigInt`, `TinyInt Unsigned`, `SmallInt Unsigned`, `Int Unsigned`, `BigInt Unsigned`, `Float`, `Double`, `Boolean`, `Varchar`, `Nchar`, `Timestamp`. |
-| **Description** | Optional description of the enumeration set. |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong> (required)</td><td>A unique name. Accepts letters, numbers, underscores, hyphens, and spaces.</td></tr>
+<tr><td><strong>Value Type</strong></td><td>The data type of the raw values. Options: <code>TinyInt</code> (default), <code>SmallInt</code>, <code>Int</code>, <code>BigInt</code>, <code>TinyInt Unsigned</code>, <code>SmallInt Unsigned</code>, <code>Int Unsigned</code>, <code>BigInt Unsigned</code>, <code>Float</code>, <code>Double</code>, <code>Boolean</code>, <code>Varchar</code>, <code>Nchar</code>, <code>Timestamp</code>.</td></tr>
+<tr><td><strong>Description</strong></td><td>Optional description of the enumeration set.</td></tr>
+</tbody>
+</table>
 
 Then add one or more enumeration values in the **Value** table by clicking **+** in the table:
 
-| Field | Description |
-|---|---|
-| **Name** (required) | The display label. Accepts letters, numbers, underscores, and hyphens. |
-| **Value** (required) | The raw numeric value this label maps to. |
-| **Description** | Optional description of this enumeration value. |
-| **Parent** | Optional parent enumeration value. Use this to group related values under a common parent for easier filtering and browsing. |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong> (required)</td><td>The display label. Accepts letters, numbers, underscores, and hyphens.</td></tr>
+<tr><td><strong>Value</strong> (required)</td><td>The raw numeric value this label maps to.</td></tr>
+<tr><td><strong>Description</strong></td><td>Optional description of this enumeration value.</td></tr>
+<tr><td><strong>Parent</strong></td><td>Optional parent enumeration value. Use this to group related values under a common parent for easier filtering and browsing.</td></tr>
+</tbody>
+</table>
 
 Click **Confirm** to add the value, then **Save** to save the enumeration set.
 

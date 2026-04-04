@@ -29,11 +29,15 @@ For continuous numeric signals, use the Trend Chart. For a compact grid view of 
 
 In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the State Timeline adds:
 
-| Control | Description |
-|---|---|
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Save as Image</strong></td><td>Download the current preview as a PNG image</td></tr>
+<tr><td><strong>Full Screen</strong></td><td>Expand the editor preview to fill the browser window</td></tr>
+<tr><td><strong>Panel Insights</strong></td><td>Run AI analysis on the current preview data</td></tr>
+</tbody>
+</table>
 
 ### Graph Settings
 
@@ -41,15 +45,19 @@ The appearance of each state band is controlled by the following settings:
 
 ![State timeline style settings showing border, height, and fill options](../images/state-timeline-style.png)
 
-| Setting | Description |
-|---|---|
-| **Title** | Chart title |
-| **Subtitle** | Secondary title |
-| **Border Width** | Width of the border drawn around each state segment (0 = no border) |
-| **Row Height** | Relative height of each band (default 0.3) |
-| **Fill Opacity** | Transparency of the state color fill, 0–1 |
-| **Rotate Labels** | Rotation of X-axis time labels |
-| **Label Interval** | Density of X-axis labels |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Title</strong></td><td>Chart title</td></tr>
+<tr><td><strong>Subtitle</strong></td><td>Secondary title</td></tr>
+<tr><td><strong>Border Width</strong></td><td>Width of the border drawn around each state segment (0 = no border)</td></tr>
+<tr><td><strong>Row Height</strong></td><td>Relative height of each band (default 0.3)</td></tr>
+<tr><td><strong>Fill Opacity</strong></td><td>Transparency of the state color fill, 0–1</td></tr>
+<tr><td><strong>Rotate Labels</strong></td><td>Rotation of X-axis time labels</td></tr>
+<tr><td><strong>Label Interval</strong></td><td>Density of X-axis labels</td></tr>
+</tbody>
+</table>
 
 State colors and labels are determined by the **Value Mapping** configuration, where you map each value (e.g., 0, 1, "Running") to a display color and text label.
 
@@ -65,11 +73,15 @@ The legend identifies each state color. In Table mode it can also show summary s
 
 ![State timeline legend](../images/state-timeline-legend.png)
 
-| Setting | Description |
-|---|---|
-| **Show** | Display mode: List, Table, or Hidden |
-| **Placement** | Position: Bottom or Right |
-| **Legend Values** | Statistics shown in Table mode |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Show</strong></td><td>Display mode: List, Table, or Hidden</td></tr>
+<tr><td><strong>Placement</strong></td><td>Position: Bottom or Right</td></tr>
+<tr><td><strong>Legend Values</strong></td><td>Statistics shown in Table mode</td></tr>
+</tbody>
+</table>
 
 ## 4.2.8.4 Example Scenarios
 

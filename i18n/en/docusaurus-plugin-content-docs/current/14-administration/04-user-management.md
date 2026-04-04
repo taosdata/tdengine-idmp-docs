@@ -15,24 +15,32 @@ TDengine IDMP uses email addresses as user IDs. The first user to activate or re
 
 To add a new user, go to **Admin Console → User Management → Users** and click **+** in the top-right corner. Fill in the following fields:
 
-| Field | Description |
-|---|---|
-| **Email** | The new user's email address (used as their login ID) |
-| **Roles** | One or more roles to assign, each with a configurable set of accessible elements |
+<table>
+<colgroup><col style="width:5em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Email</strong></td><td>The new user's email address (used as their login ID)</td></tr>
+<tr><td><strong>Roles</strong></td><td>One or more roles to assign, each with a configurable set of accessible elements</td></tr>
+</tbody>
+</table>
 
 The invited user receives an email with a link to set their personal information and password.
 
 The users list shows:
 
-| Column | Description |
-|---|---|
-| **First Name** | User's first name |
-| **Last Name** | User's last name |
-| **Phone Number** | Optional phone number |
-| **Email** | Email address (used as the user ID) |
-| **Status** | Account status (e.g., Active, Invited) |
-| **Roles** | Assigned roles |
-| **Description** | Optional description |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>Column</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>First Name</strong></td><td>User's first name</td></tr>
+<tr><td><strong>Last Name</strong></td><td>User's last name</td></tr>
+<tr><td><strong>Phone Number</strong></td><td>Optional phone number</td></tr>
+<tr><td><strong>Email</strong></td><td>Email address (used as the user ID)</td></tr>
+<tr><td><strong>Status</strong></td><td>Account status (e.g., Active, Invited)</td></tr>
+<tr><td><strong>Roles</strong></td><td>Assigned roles</td></tr>
+<tr><td><strong>Description</strong></td><td>Optional description</td></tr>
+</tbody>
+</table>
 
 ### 14.4.1.2 Controlling Element Access per Role Assignment
 
@@ -49,15 +57,19 @@ A user can hold multiple roles, each with its own element access configuration. 
 
 Built-in roles available for assignment:
 
-| Role | Typical Use |
-|---|---|
-| **Plant Managers and Supervisors** | Operational oversight across production assets |
-| **IT/OT System Administrators** | Infrastructure and system configuration |
-| **Maintenance Personnel** | Equipment maintenance and work orders |
-| **Data Analysts** | Data exploration, dashboards, and reporting |
-| **Operations Personnel** | Day-to-day plant operations |
-| **Process Engineers** | Process optimization and analysis |
-| **Super Admin** | Full system administration |
+<table>
+<colgroup><col style="width:19em"/><col/></colgroup>
+<thead><tr><th>Role</th><th>Typical Use</th></tr></thead>
+<tbody>
+<tr><td><strong>Plant Managers and Supervisors</strong></td><td>Operational oversight across production assets</td></tr>
+<tr><td><strong>IT/OT System Administrators</strong></td><td>Infrastructure and system configuration</td></tr>
+<tr><td><strong>Maintenance Personnel</strong></td><td>Equipment maintenance and work orders</td></tr>
+<tr><td><strong>Data Analysts</strong></td><td>Data exploration, dashboards, and reporting</td></tr>
+<tr><td><strong>Operations Personnel</strong></td><td>Day-to-day plant operations</td></tr>
+<tr><td><strong>Process Engineers</strong></td><td>Process optimization and analysis</td></tr>
+<tr><td><strong>Super Admin</strong></td><td>Full system administration</td></tr>
+</tbody>
+</table>
 
 ### 14.4.1.3 Password Reset
 
@@ -89,20 +101,24 @@ IDMP supports OAuth 2.0 SSO. OAuth configurations are managed under **Admin Cons
 
 Click **+** to add a new OAuth provider. Fill in the following fields:
 
-| Field | Required | Description |
-|---|:---:|---|
-| **Icon** | Yes | Provider logo image (PNG, JPG, or SVG). Shown on the login page. |
-| **Name** | Yes | Display name for the OAuth option (e.g., `GitHub`, `TAOS`). |
-| **Client ID** | Yes | Application identifier registered with the OAuth provider. |
-| **Client Secret** | Yes | Secret key obtained from the OAuth provider's developer console. |
-| **Authorize URL** | Yes | The OAuth 2.0 authorization endpoint URL (`http://` or `https://`). |
-| **Token URL** | Yes | The token exchange endpoint URL (`http://` or `https://`). |
-| **User Info URL** | Yes | The endpoint for retrieving user profile information. |
-| **Redirect URL** | Yes | The callback URL registered with the provider (e.g., `http://localhost:6042/login/back`). Must exactly match the registered value. |
-| **Scope** | No | Permission scopes requested (e.g., `openid email profile`). |
-| **User Info Mapping Type** | Yes | How to extract user fields from the provider's response: `GITHUB`, `LARK`, or `CUSTOM`. |
-| **Custom Mapping Rules** | When CUSTOM | JSON object defining JSONPath expressions to extract `name`, `email`, and optional fields. |
-| **Roles** | Yes | Roles assigned to users who log in through this OAuth provider. |
+<table>
+<colgroup><col style="width:15em"/><col/><col/></colgroup>
+<thead><tr><th>Field</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Icon</strong></td><td>Yes</td><td>Provider logo image (PNG, JPG, or SVG). Shown on the login page.</td></tr>
+<tr><td><strong>Name</strong></td><td>Yes</td><td>Display name for the OAuth option (e.g., <code>GitHub</code>, <code>TAOS</code>).</td></tr>
+<tr><td><strong>Client ID</strong></td><td>Yes</td><td>Application identifier registered with the OAuth provider.</td></tr>
+<tr><td><strong>Client Secret</strong></td><td>Yes</td><td>Secret key obtained from the OAuth provider's developer console.</td></tr>
+<tr><td><strong>Authorize URL</strong></td><td>Yes</td><td>The OAuth 2.0 authorization endpoint URL (<code>http://</code> or <code>https://</code>).</td></tr>
+<tr><td><strong>Token URL</strong></td><td>Yes</td><td>The token exchange endpoint URL (<code>http://</code> or <code>https://</code>).</td></tr>
+<tr><td><strong>User Info URL</strong></td><td>Yes</td><td>The endpoint for retrieving user profile information.</td></tr>
+<tr><td><strong>Redirect URL</strong></td><td>Yes</td><td>The callback URL registered with the provider (e.g., <code>http://localhost:6042/login/back</code>). Must exactly match the registered value.</td></tr>
+<tr><td><strong>Scope</strong></td><td>No</td><td>Permission scopes requested (e.g., <code>openid email profile</code>).</td></tr>
+<tr><td><strong>User Info Mapping Type</strong></td><td>Yes</td><td>How to extract user fields from the provider's response: <code>GITHUB</code>, <code>LARK</code>, or <code>CUSTOM</code>.</td></tr>
+<tr><td><strong>Custom Mapping Rules</strong></td><td>When CUSTOM</td><td>JSON object defining JSONPath expressions to extract <code>name</code>, <code>email</code>, and optional fields.</td></tr>
+<tr><td><strong>Roles</strong></td><td>Yes</td><td>Roles assigned to users who log in through this OAuth provider.</td></tr>
+</tbody>
+</table>
 
 ### 14.4.3.2 Custom Mapping Rules
 

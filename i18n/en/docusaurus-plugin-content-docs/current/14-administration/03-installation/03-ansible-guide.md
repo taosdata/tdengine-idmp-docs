@@ -11,6 +11,8 @@ Ansible is an open-source automation tool used for configuration management, app
 
 ## 14.3.3.1 Prerequisites
 
+The following software must be installed and the target servers must be accessible before running the Ansible playbooks.
+
 1. Install Ansible 2.10 or later.
 1. Install Python 3.6 or later.
 1. Ensure that all servers can be accessed with SSH.

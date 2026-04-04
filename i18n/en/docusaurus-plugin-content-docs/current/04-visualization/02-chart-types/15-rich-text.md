@@ -28,10 +28,14 @@ Use the Rich Text panel when:
 
 In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Rich Text panel adds:
 
-| Control | Description |
-|---|---|
-| **Save as Image** | Download the current panel content as a PNG image |
-| **Full Screen** | Expand the editor to fill the browser window |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Save as Image</strong></td><td>Download the current panel content as a PNG image</td></tr>
+<tr><td><strong>Full Screen</strong></td><td>Expand the editor to fill the browser window</td></tr>
+</tbody>
+</table>
 
 ### Content Editor
 
@@ -55,11 +59,15 @@ The editor supports:
 
 ![Rich text panel background image configuration](../images/text-config.png)
 
-| Setting | Description |
-|---|---|
-| **Background Color** | Background color of the panel |
-| **Background Image Layout** | How a background image is positioned: None, Cover, Contain, or Tile |
-| **Background Image** | Upload an image file to use as the panel background |
+<table>
+<colgroup><col style="width:15em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Background Color</strong></td><td>Background color of the panel</td></tr>
+<tr><td><strong>Background Image Layout</strong></td><td>How a background image is positioned: None, Cover, Contain, or Tile</td></tr>
+<tr><td><strong>Background Image</strong></td><td>Upload an image file to use as the panel background</td></tr>
+</tbody>
+</table>
 
 ## 4.2.15.4 Example Scenarios
 

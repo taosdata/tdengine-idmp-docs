@@ -52,12 +52,16 @@ Hosts file locations:
 
 ### 10.1.1.2 System Requirements
 
-| Requirement | Details |
-|---|---|
-| **Excel version** | Excel 2016 or later (Windows or macOS) |
-| **Permissions** | Administrator rights required on Windows |
-| **Network** | Requires access to download the installation script and connect to the IDMP service |
-| **Node.js** | Node.js 22.3 or later required on Windows if logging is enabled |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Requirement</th><th>Details</th></tr></thead>
+<tbody>
+<tr><td><strong>Excel version</strong></td><td>Excel 2016 or later (Windows or macOS)</td></tr>
+<tr><td><strong>Permissions</strong></td><td>Administrator rights required on Windows</td></tr>
+<tr><td><strong>Network</strong></td><td>Requires access to download the installation script and connect to the IDMP service</td></tr>
+<tr><td><strong>Node.js</strong></td><td>Node.js 22.3 or later required on Windows if logging is enabled</td></tr>
+</tbody>
+</table>
 
 ## 10.1.2 Installation
 
@@ -74,11 +78,15 @@ Replace `https://idmp.tdengine.net:6034` with your actual IDMP HTTPS address.
 
 **Parameters:**
 
-| Parameter | Description |
-|---|---|
-| `--force-close` | Force-closes Excel during installation. Save your work before running. |
-| `--url` | The IDMP HTTPS service address |
-| `--enable-logging` | Enables installation and runtime logging |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>--force-close</code></td><td>Force-closes Excel during installation. Save your work before running.</td></tr>
+<tr><td><code>--url</code></td><td>The IDMP HTTPS service address</td></tr>
+<tr><td><code>--enable-logging</code></td><td>Enables installation and runtime logging</td></tr>
+</tbody>
+</table>
 
 Log file location: `~/Library/Containers/com.microsoft.Excel/Data/tdengine_eai.log`
 
@@ -99,12 +107,16 @@ Replace `https://idmp.tdengine.net:6034` with your actual IDMP HTTPS address.
 
 **Parameters:**
 
-| Parameter | Description |
-|---|---|
-| `-Action Install` | Runs the installation |
-| `-ForceCloseExcel` | Force-closes Excel during installation. Save your work before running. |
-| `-Url` | The IDMP HTTPS service address |
-| `-EnableLogging` | Enables installation and runtime logging |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>-Action Install</code></td><td>Runs the installation</td></tr>
+<tr><td><code>-ForceCloseExcel</code></td><td>Force-closes Excel during installation. Save your work before running.</td></tr>
+<tr><td><code>-Url</code></td><td>The IDMP HTTPS service address</td></tr>
+<tr><td><code>-EnableLogging</code></td><td>Enables installation and runtime logging</td></tr>
+</tbody>
+</table>
 
 Log file location: `C:\Users\<your-username>\AppData\Roaming\Microsoft\AddIns\VueOfficeAddin\Logs\tdengine_eai.log`
 

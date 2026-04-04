@@ -280,6 +280,8 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 
 ## 2.3.3 Activate and Initialize the System
 
+Activation registers the installation with a valid email address and completes the initial system setup.
+
 1. In a web browser, access TDengine IDMP at `http://ip:6042`.
 2. Under **Activate TDengine IDMP**, enter your email address and organization.
 3. Click **Get Code** and enter the code sent to your email address.
@@ -292,6 +294,8 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 5. In the **Privacy Settings** dialog, select which diagnostic information you want to share with TDengine, then click **Agree**.
 
 ## 2.3.4 Enter Account Information
+
+The following steps configure the profile for the initial administrator account.
 
 1. Enter your name, phone number, position, and password.
 

@@ -11,6 +11,8 @@ Helm is a package manager for Kubernetes that simplifies the deployment, configu
 
 ## 14.3.4.1 Prerequisites
 
+The following components must be in place before deploying TDengine IDMP with the Helm chart.
+
 1. Install Kubernetes v1.24 or later.
 1. Install Helm 3.
 1. (Optional) To persist data, configure a PersistentVolume.
@@ -63,21 +65,25 @@ cd tdengine-idmp-deployment/helm
 
 The Helm parameters used to deploy TDengine IDMP are described as follows: You can set these parameters on the command line or in a values file.
 
-| Parameter                      | Description                                       | Default                  |
-|--------------------------|-------------------------------------------|------------------------|
-| `replicaCount`           | Number of replicas                                   | `1`                    |
-| `image.repository`       | Image repository                                   | `tdengine/idmp-ee` |
-| `image.tag`              | Image tag                                   | `latest`               |
-| `image.pullPolicy`       | Image pull policy                               | `IfNotPresent`         |
-| `service.type`           | Kubernetes service type                        | `ClusterIP`            |
-| `service.port`           | Service port                                   | `6042`                 |
-| `resources`              | Resource requests and limits                             | `{}`                   |
-| `persistence.enabled`    | Whether persistence is enabled                             | `false`                |
-| `persistence.size`       | Size of persistent volume                                 | `2Gi`                  |
-| `persistence.storageClass`| Persistent volume class                            | `""`                   |
-| `nodeSelector`           | Node selector for pod allocation                       | `{}`                   |
-| `tolerations`            | Tolerance for pod allocation                         | `[]`                   |
-| `affinity`               | Affinity for pod allocation                      | `{}`                   |
+<table>
+<colgroup><col style="width:16em"/><col/><col/></colgroup>
+<thead><tr><th>Parameter</th><th>Description</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><code>replicaCount</code></td><td>Number of replicas</td><td><code>1</code></td></tr>
+<tr><td><code>image.repository</code></td><td>Image repository</td><td><code>tdengine/idmp-ee</code></td></tr>
+<tr><td><code>image.tag</code></td><td>Image tag</td><td><code>latest</code></td></tr>
+<tr><td><code>image.pullPolicy</code></td><td>Image pull policy</td><td><code>IfNotPresent</code></td></tr>
+<tr><td><code>service.type</code></td><td>Kubernetes service type</td><td><code>ClusterIP</code></td></tr>
+<tr><td><code>service.port</code></td><td>Service port</td><td><code>6042</code></td></tr>
+<tr><td><code>resources</code></td><td>Resource requests and limits</td><td><code>{}</code></td></tr>
+<tr><td><code>persistence.enabled</code></td><td>Whether persistence is enabled</td><td><code>false</code></td></tr>
+<tr><td><code>persistence.size</code></td><td>Size of persistent volume</td><td><code>2Gi</code></td></tr>
+<tr><td><code>persistence.storageClass</code></td><td>Persistent volume class</td><td><code>""</code></td></tr>
+<tr><td><code>nodeSelector</code></td><td>Node selector for pod allocation</td><td><code>{}</code></td></tr>
+<tr><td><code>tolerations</code></td><td>Tolerance for pod allocation</td><td><code>[]</code></td></tr>
+<tr><td><code>affinity</code></td><td>Affinity for pod allocation</td><td><code>{}</code></td></tr>
+</tbody>
+</table>
 
 1. Access the service
 

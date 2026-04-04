@@ -9,12 +9,16 @@ For users who already have data in TDengine TSDB, IDMP can automatically build t
 
 IDMP provides four approaches, all accessible from the TDengine connection detail page under **Admin Console → Connections → [connection name]**:
 
-| Tab | Best for |
-|---|---|
-| **Easy Import** | Well-structured TSDB data with hierarchical location tags — fastest path to a complete model |
-| **Map STable to Element** | Data without location tags, or when mapping multiple supertables to one element template |
-| **Import from CSV** | Bulk configuration via a CSV file, especially for single-column data models with many supertables |
-| **Import from OPC** | OPC-structured data already in TSDB |
+<table>
+<colgroup><col style="width:14em"/><col/></colgroup>
+<thead><tr><th>Tab</th><th>Best for</th></tr></thead>
+<tbody>
+<tr><td><strong>Easy Import</strong></td><td>Well-structured TSDB data with hierarchical location tags — fastest path to a complete model</td></tr>
+<tr><td><strong>Map STable to Element</strong></td><td>Data without location tags, or when mapping multiple supertables to one element template</td></tr>
+<tr><td><strong>Import from CSV</strong></td><td>Bulk configuration via a CSV file, especially for single-column data models with many supertables</td></tr>
+<tr><td><strong>Import from OPC</strong></td><td>OPC-structured data already in TSDB</td></tr>
+</tbody>
+</table>
 
 ## 12.3.1 Easy Import
 
@@ -50,17 +54,21 @@ IDMP internally creates virtual supertables and virtual tables to merge data fro
 
 Click **+ Add New Asset Model** to configure a new mapping. The form includes:
 
-| Field | Description |
-|---|---|
-| **Database** | The source TDengine database |
-| **Supertable** | The source supertable |
-| **Element Template** (required) | The element template to map to. Must be created in Libraries before starting. |
-| **Element Name** (required) | Expression defining the element name. Click **+** to insert substitution strings (e.g., tag values). Click the preview icon to verify the result. |
-| **Element Path** (required) | Expression defining the element's location in the asset tree. Use dots to separate hierarchy levels, e.g., `${location}.${rack}`. Click the preview icon to verify. |
-| **Element Category** | Optional category tag for the created elements |
-| **Tags** | Map each supertable tag to an attribute template on the element template, or select **None** to discard it |
-| **Metrics** | Map each supertable metric column to an attribute template, or select **None** to discard it |
-| **Subtable Filter** | Optional filter expression to include only matching child tables |
+<table>
+<colgroup><col style="width:17em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Database</strong></td><td>The source TDengine database</td></tr>
+<tr><td><strong>Supertable</strong></td><td>The source supertable</td></tr>
+<tr><td><strong>Element Template</strong> (required)</td><td>The element template to map to. Must be created in Libraries before starting.</td></tr>
+<tr><td><strong>Element Name</strong> (required)</td><td>Expression defining the element name. Click <strong>+</strong> to insert substitution strings (e.g., tag values). Click the preview icon to verify the result.</td></tr>
+<tr><td><strong>Element Path</strong> (required)</td><td>Expression defining the element's location in the asset tree. Use dots to separate hierarchy levels, e.g., <code>${location}.${rack}</code>. Click the preview icon to verify.</td></tr>
+<tr><td><strong>Element Category</strong></td><td>Optional category tag for the created elements</td></tr>
+<tr><td><strong>Tags</strong></td><td>Map each supertable tag to an attribute template on the element template, or select <strong>None</strong> to discard it</td></tr>
+<tr><td><strong>Metrics</strong></td><td>Map each supertable metric column to an attribute template, or select <strong>None</strong> to discard it</td></tr>
+<tr><td><strong>Subtable Filter</strong></td><td>Optional filter expression to include only matching child tables</td></tr>
+</tbody>
+</table>
 
 Click **Finish** to create the asset model. Each asset model covers one supertable-to-template mapping. For a complete single-column data model, create one asset model per supertable (or per subset of metrics).
 
@@ -105,21 +113,29 @@ Use this approach when OPC-structured data is already stored in TDengine TSDB an
 
 The **Import from OPC** tab shows the following configuration per database:
 
-| Field | Description |
-|---|---|
-| **Database** | The source TDengine database |
-| **Parent Element** | An optional existing element to root the imported elements under |
-| **Ignore** | Check to skip this database |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Database</strong></td><td>The source TDengine database</td></tr>
+<tr><td><strong>Parent Element</strong></td><td>An optional existing element to root the imported elements under</td></tr>
+<tr><td><strong>Ignore</strong></td><td>Check to skip this database</td></tr>
+</tbody>
+</table>
 
 For each supertable in the database, configure:
 
-| Column | Description |
-|---|---|
-| Checkbox | Include or exclude this supertable |
-| **Super Table Name** | The supertable to import |
-| **Path** | The tag column whose value represents the OPC node path |
-| **Data Column** | The metric column containing the data values |
-| **Quality Column** | Optional tag or column containing the data quality value |
-| **Path Level** | The depth offset within the path hierarchy |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>Column</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>Checkbox</td><td>Include or exclude this supertable</td></tr>
+<tr><td><strong>Super Table Name</strong></td><td>The supertable to import</td></tr>
+<tr><td><strong>Path</strong></td><td>The tag column whose value represents the OPC node path</td></tr>
+<tr><td><strong>Data Column</strong></td><td>The metric column containing the data values</td></tr>
+<tr><td><strong>Quality Column</strong></td><td>Optional tag or column containing the data quality value</td></tr>
+<tr><td><strong>Path Level</strong></td><td>The depth offset within the path hierarchy</td></tr>
+</tbody>
+</table>
 
 Navigate between databases using **Previous Database** and **Next Database**, then click **Finish** to create the import task.

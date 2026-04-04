@@ -15,33 +15,41 @@ The General tab displays all standard event field information and provides entry
 
 The General tab toolbar provides the following action controls.
 
-| Control | Description |
-|---|---|
-| **Back to List** | Return to the events list |
-| **Ack** | Acknowledge the event |
-| **Favorite** | Mark this event as a favorite for quick access from the left sidebar |
-| **Root Cause Analysis** | Open a root cause analysis view for this event |
-| **Trend Chart Analysis** | Open a trend chart for the event's time range on its associated element |
-| **Resend** | Manually resend a notification for this event to its configured contact points |
+<table>
+<colgroup><col style="width:14em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Back to List</strong></td><td>Return to the events list</td></tr>
+<tr><td><strong>Ack</strong></td><td>Acknowledge the event</td></tr>
+<tr><td><strong>Favorite</strong></td><td>Mark this event as a favorite for quick access from the left sidebar</td></tr>
+<tr><td><strong>Root Cause Analysis</strong></td><td>Open a root cause analysis view for this event</td></tr>
+<tr><td><strong>Trend Chart Analysis</strong></td><td>Open a trend chart for the event's time range on its associated element</td></tr>
+<tr><td><strong>Resend</strong></td><td>Manually resend a notification for this event to its configured contact points</td></tr>
+</tbody>
+</table>
 
 ### 6.3.1.2 Fields
 
 The General tab displays the following standard event fields, covering the event's time, associated objects, and status information.
 
-| Field | Description |
-|---|---|
-| **Name** | Event name, generated from the naming pattern of the event template |
-| **Template** | The event template used to create this event |
-| **Severity Level** | The severity category |
-| **Reason Code** | The reason code, if set |
-| **Categories** | Category tags |
-| **Description** | Free-text description |
-| **Start Time** | When the event began |
-| **End Time** | When the event ended (blank if still active) |
-| **Duration** | Elapsed time from start to end |
-| **Associated Element** | The element on which the triggering analysis runs — click to navigate to it |
-| **Associated Analysis** | The analysis rule that generated this event — click to navigate to it |
-| **Status** | Acknowledgment status (Unacknowledged / Acknowledged) |
+<table>
+<colgroup><col style="width:13em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>Event name, generated from the naming pattern of the event template</td></tr>
+<tr><td><strong>Template</strong></td><td>The event template used to create this event</td></tr>
+<tr><td><strong>Severity Level</strong></td><td>The severity category</td></tr>
+<tr><td><strong>Reason Code</strong></td><td>The reason code, if set</td></tr>
+<tr><td><strong>Categories</strong></td><td>Category tags</td></tr>
+<tr><td><strong>Description</strong></td><td>Free-text description</td></tr>
+<tr><td><strong>Start Time</strong></td><td>When the event began</td></tr>
+<tr><td><strong>End Time</strong></td><td>When the event ended (blank if still active)</td></tr>
+<tr><td><strong>Duration</strong></td><td>Elapsed time from start to end</td></tr>
+<tr><td><strong>Associated Element</strong></td><td>The element on which the triggering analysis runs — click to navigate to it</td></tr>
+<tr><td><strong>Associated Analysis</strong></td><td>The analysis rule that generated this event — click to navigate to it</td></tr>
+<tr><td><strong>Status</strong></td><td>Acknowledgment status (Unacknowledged / Acknowledged)</td></tr>
+</tbody>
+</table>
 
 ### 6.3.1.3 Expandable Sections
 
@@ -67,21 +75,29 @@ The Attributes tab displays the event's custom attributes — the named values r
 
 The Attributes tab toolbar provides the following action controls.
 
-| Control | Description |
-|---|---|
-| **Back to List** | Return to the events list |
-| **Categories** | Filter the attribute list by category |
-| **Refresh** | Reload the attribute values |
-| **Select Columns** | Show or hide columns in the attribute table |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Back to List</strong></td><td>Return to the events list</td></tr>
+<tr><td><strong>Categories</strong></td><td>Filter the attribute list by category</td></tr>
+<tr><td><strong>Refresh</strong></td><td>Reload the attribute values</td></tr>
+<tr><td><strong>Select Columns</strong></td><td>Show or hide columns in the attribute table</td></tr>
+</tbody>
+</table>
 
 ### 6.3.2.2 Attribute Table
 
 The attribute table lists all custom attributes of the event and their values. Each attribute row shows:
 
-| Column | Description |
-|---|---|
-| **Name** | Attribute name, as defined in the event template |
-| **Value** | The value recorded at event creation time |
-| **Value Type** | The data type of the value |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>Column</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>Attribute name, as defined in the event template</td></tr>
+<tr><td><strong>Value</strong></td><td>The value recorded at event creation time</td></tr>
+<tr><td><strong>Value Type</strong></td><td>The data type of the value</td></tr>
+</tbody>
+</table>
 
 These attributes are defined by the event template and populated by the analysis that triggered the event. Attribute values are read-only — they are set when the event is created and cannot be modified.

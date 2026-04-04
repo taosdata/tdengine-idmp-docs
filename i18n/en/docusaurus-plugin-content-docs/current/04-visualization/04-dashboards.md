@@ -25,13 +25,17 @@ On the right side:
 
 The list displays all saved dashboards for the element with these columns:
 
-| Column | Description |
-|---|---|
-| **Name** | Dashboard name |
-| **Path** | The element path this dashboard belongs to |
-| **Description** | Optional description |
-| **Template** | Whether this dashboard was created from a template |
-| **Categories** | Category tags assigned to this dashboard |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>Column</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>Dashboard name</td></tr>
+<tr><td><strong>Path</strong></td><td>The element path this dashboard belongs to</td></tr>
+<tr><td><strong>Description</strong></td><td>Optional description</td></tr>
+<tr><td><strong>Template</strong></td><td>Whether this dashboard was created from a template</td></tr>
+<tr><td><strong>Categories</strong></td><td>Category tags assigned to this dashboard</td></tr>
+</tbody>
+</table>
 
 Hover over a row to reveal action buttons for viewing, editing, or deleting the dashboard.
 
@@ -53,17 +57,21 @@ The dashboard editor has three areas: a left panel library, a center canvas, and
 
 ### 4.4.3.1 Editor Toolbar
 
-| Control | Description |
-|---|---|
-| **Back** | Return to the Dashboards tab |
-| **Save** | Save all changes to the dashboard |
-| **Discard** | Discard changes |
-| **+ (Create New Panel and Insert)** | Open the panel editor to create a new panel and add it to this dashboard |
-| **Time picker** | Set the time range for all panels in the dashboard |
-| **Zoom out** | Expand the time range to the next level |
-| **Refresh** | Reload all panel data |
-| **Auto-refresh** | Set an automatic refresh interval (Off, 5s, 10s, 30s, 1m, etc.) |
-| **Full Screen** | Expand the dashboard to fill the browser window |
+<table>
+<colgroup><col style="width:20em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Back</strong></td><td>Return to the Dashboards tab</td></tr>
+<tr><td><strong>Save</strong></td><td>Save all changes to the dashboard</td></tr>
+<tr><td><strong>Discard</strong></td><td>Discard changes</td></tr>
+<tr><td><strong>+ (Create New Panel and Insert)</strong></td><td>Open the panel editor to create a new panel and add it to this dashboard</td></tr>
+<tr><td><strong>Time picker</strong></td><td>Set the time range for all panels in the dashboard</td></tr>
+<tr><td><strong>Zoom out</strong></td><td>Expand the time range to the next level</td></tr>
+<tr><td><strong>Refresh</strong></td><td>Reload all panel data</td></tr>
+<tr><td><strong>Auto-refresh</strong></td><td>Set an automatic refresh interval (Off, 5s, 10s, 30s, 1m, etc.)</td></tr>
+<tr><td><strong>Full Screen</strong></td><td>Expand the dashboard to fill the browser window</td></tr>
+</tbody>
+</table>
 
 ### 4.4.3.2 Left Panel: Panel Library
 
@@ -86,12 +94,16 @@ Panels render their live data on the canvas according to the dashboard's current
 
 ### 4.4.3.4 Right Panel: Dashboard Settings
 
-| Field | Description |
-|---|---|
-| **Name** | The dashboard title (required) |
-| **Description** | Optional description for the dashboard |
-| **Categories** | One or more tags for filtering and organizing dashboards |
-| **Notification Rule** | Configure an alerting rule at the dashboard level |
+<table>
+<colgroup><col style="width:12em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>The dashboard title (required)</td></tr>
+<tr><td><strong>Description</strong></td><td>Optional description for the dashboard</td></tr>
+<tr><td><strong>Categories</strong></td><td>One or more tags for filtering and organizing dashboards</td></tr>
+<tr><td><strong>Notification Rule</strong></td><td>Configure an alerting rule at the dashboard level</td></tr>
+</tbody>
+</table>
 
 ## 4.4.4 Adding Panels to a Dashboard
 
@@ -118,12 +130,16 @@ The left sidebar of the global view organizes navigation into six sections:
 
 The dashboard list displays the following columns:
 
-| Column | Description |
-|---|---|
-| **Name** | Dashboard name |
-| **Description** | Optional description |
-| **Template** | Whether this dashboard was created from a template |
-| **Categories** | Category tags assigned to this dashboard |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>Column</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>Dashboard name</td></tr>
+<tr><td><strong>Description</strong></td><td>Optional description</td></tr>
+<tr><td><strong>Template</strong></td><td>Whether this dashboard was created from a template</td></tr>
+<tr><td><strong>Categories</strong></td><td>Category tags assigned to this dashboard</td></tr>
+</tbody>
+</table>
 
 The toolbar provides a search field, a CSV download button to export the list, and a settings gear for list preferences.
 

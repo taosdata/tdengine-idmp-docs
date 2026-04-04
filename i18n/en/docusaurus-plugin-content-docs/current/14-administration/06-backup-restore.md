@@ -15,11 +15,15 @@ Backup and restore is accessed from **Admin Console → Data Backup** and **Admi
 
 Click the edit (pencil) icon on the Data Backup page to configure backup settings:
 
-| Field | Description |
-|---|---|
-| **Backup Mode** | Backup schedule: run at a fixed hourly interval, or at a specific time each day |
-| **Retention Number of Files** | How many backup files to keep. Older files are deleted when the limit is exceeded. Set this based on available disk space. |
-| **Backup Directory** | The directory path on the server where backup files are stored |
+<table>
+<colgroup><col style="width:16em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Backup Mode</strong></td><td>Backup schedule: run at a fixed hourly interval, or at a specific time each day</td></tr>
+<tr><td><strong>Retention Number of Files</strong></td><td>How many backup files to keep. Older files are deleted when the limit is exceeded. Set this based on available disk space.</td></tr>
+<tr><td><strong>Backup Directory</strong></td><td>The directory path on the server where backup files are stored</td></tr>
+</tbody>
+</table>
 
 Click **Save** to apply the configuration.
 
@@ -32,12 +36,16 @@ After configuring backup, use the toolbar buttons to control the backup process:
 
 The page shows the current **Backup Status** (e.g., Running, Stopped) and a **Backup Records** table listing all generated backup files:
 
-| Column | Description |
-|---|---|
-| **Backup Time** | When the backup was created |
-| **Result** | Backup outcome (success or failure) |
-| **Backup File** | Filename of the backup archive |
-| **Backup Detail** | Additional details or error information |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Column</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Backup Time</strong></td><td>When the backup was created</td></tr>
+<tr><td><strong>Result</strong></td><td>Backup outcome (success or failure)</td></tr>
+<tr><td><strong>Backup File</strong></td><td>Filename of the backup archive</td></tr>
+<tr><td><strong>Backup Detail</strong></td><td>Additional details or error information</td></tr>
+</tbody>
+</table>
 
 ## 14.6.2 Data Recovery
 

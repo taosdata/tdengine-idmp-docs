@@ -24,18 +24,22 @@ Event template configuration consists of three parts — general settings, event
 
 The following fields define the basic properties and behavioral rules of the event template.
 
-| Field | Description |
-|---|---|
-| **Name** | Unique identifier for the template |
-| **Category** | Tag for organizing templates (e.g., "Base Template" or a custom category) |
-| **Base Template Only** | If enabled, this template cannot be directly used to create events — it can only serve as a parent for other templates |
-| **Severity Level** | Default severity for events created from this template: Critical, Major, Minor, Warning, or Normal |
-| **Allow Extension** | If enabled, other templates can inherit from this template |
-| **Allow Acknowledgment** | If enabled, events created from this template require human acknowledgment. Unacknowledged active events will continue to trigger re-notifications according to the element's notification rule |
-| **Reason Code** | An optional enumeration set that classifies the cause of the event. Must be defined in advance under **Libraries → Enumerations** |
-| **Reason Code Value** | A specific value within the reason code enumeration, providing a more detailed cause description |
-| **Minimum Notification Interval** | The minimum time between consecutive notifications for events from the same analysis. Prevents notification overload when an analysis fires events frequently — for example, if set to 20 minutes, only one notification is sent per 20-minute window regardless of how many events trigger |
-| **Description** | Free-text description of the template's purpose |
+<table>
+<colgroup><col style="width:18em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>Unique identifier for the template</td></tr>
+<tr><td><strong>Category</strong></td><td>Tag for organizing templates (e.g., "Base Template" or a custom category)</td></tr>
+<tr><td><strong>Base Template Only</strong></td><td>If enabled, this template cannot be directly used to create events — it can only serve as a parent for other templates</td></tr>
+<tr><td><strong>Severity Level</strong></td><td>Default severity for events created from this template: Critical, Major, Minor, Warning, or Normal</td></tr>
+<tr><td><strong>Allow Extension</strong></td><td>If enabled, other templates can inherit from this template</td></tr>
+<tr><td><strong>Allow Acknowledgment</strong></td><td>If enabled, events created from this template require human acknowledgment. Unacknowledged active events will continue to trigger re-notifications according to the element's notification rule</td></tr>
+<tr><td><strong>Reason Code</strong></td><td>An optional enumeration set that classifies the cause of the event. Must be defined in advance under <strong>Libraries → Enumerations</strong></td></tr>
+<tr><td><strong>Reason Code Value</strong></td><td>A specific value within the reason code enumeration, providing a more detailed cause description</td></tr>
+<tr><td><strong>Minimum Notification Interval</strong></td><td>The minimum time between consecutive notifications for events from the same analysis. Prevents notification overload when an analysis fires events frequently — for example, if set to 20 minutes, only one notification is sent per 20-minute window regardless of how many events trigger</td></tr>
+<tr><td><strong>Description</strong></td><td>Free-text description of the template's purpose</td></tr>
+</tbody>
+</table>
 
 ### 6.1.2.2 Event Naming Pattern
 
@@ -55,14 +59,18 @@ Event attribute templates define the custom attributes that events can carry, re
 
 For each attribute, configure:
 
-| Field | Description |
-|---|---|
-| **Name** | Attribute name |
-| **Category** | Optional tag |
-| **Data Type** | The value type (numeric, string, etc.) |
-| **Default Value** | Value used if the analysis does not write to this attribute |
-| **Constant** | If enabled, the value cannot be changed after creation |
-| **Hidden** | If enabled, the attribute is not shown in normal event views |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>Attribute name</td></tr>
+<tr><td><strong>Category</strong></td><td>Optional tag</td></tr>
+<tr><td><strong>Data Type</strong></td><td>The value type (numeric, string, etc.)</td></tr>
+<tr><td><strong>Default Value</strong></td><td>Value used if the analysis does not write to this attribute</td></tr>
+<tr><td><strong>Constant</strong></td><td>If enabled, the value cannot be changed after creation</td></tr>
+<tr><td><strong>Hidden</strong></td><td>If enabled, the attribute is not shown in normal event views</td></tr>
+</tbody>
+</table>
 
 When configuring an analysis, the output of a calculation can be written to any attribute defined in the event template. This supports capturing computed values — like the average value during a window, or the maximum exceedance — directly in the event record.
 

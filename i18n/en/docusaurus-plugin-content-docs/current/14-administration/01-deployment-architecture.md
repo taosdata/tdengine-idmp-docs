@@ -83,26 +83,36 @@ The HA Complex topology targets medium-to-large production environments with ent
 
 The API Gateway is the unified entry point between external clients and internal services.
 
-| Responsibility | Description |
-|---|---|
-| **Unified entry** | Exposes a single address/port externally; backend services are not directly exposed |
-| **Routing and load balancing** | Distributes requests across IDMP and TSDB instances |
-| **Security** | TLS termination, unified authentication (Token/SSO), IP access control |
-| **Traffic governance** | Rate limiting, circuit breaking, retry, timeout, canary releases |
-| **Observability** | Centralized access logs, metrics, and distributed tracing |
+<table>
+<colgroup><col style="width:17em"/><col/></colgroup>
+<thead><tr><th>Responsibility</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Unified entry</strong></td><td>Exposes a single address/port externally; backend services are not directly exposed</td></tr>
+<tr><td><strong>Routing and load balancing</strong></td><td>Distributes requests across IDMP and TSDB instances</td></tr>
+<tr><td><strong>Security</strong></td><td>TLS termination, unified authentication (Token/SSO), IP access control</td></tr>
+<tr><td><strong>Traffic governance</strong></td><td>Rate limiting, circuit breaking, retry, timeout, canary releases</td></tr>
+<tr><td><strong>Observability</strong></td><td>Centralized access logs, metrics, and distributed tracing</td></tr>
+</tbody>
+</table>
 
 ### 14.1.5.2 External Dependencies
 
-| Component | Role | Single-instance replacement |
-|---|---|---|
-| **Redis** | Caching, short-lived state, distributed locks | Internal cache and lock |
-| **MySQL** | Relational metadata (users, permissions, tasks, configuration) | Embedded H2 database |
-| **Distributed File System** | File/object persistence (metadata, graphics, import/export files) | Local file system |
-| **Elasticsearch** | Centralized index management and full-text search | Internal Lucene |
-| **Kafka** | Async messaging and event bus (decoupling, task orchestration, notifications) | Internal message queue (single instance) or Redis MQ (HA Minimal) |
-| **Apollo** | Configuration center (dynamic config, version management) | Internal service configuration |
+<table>
+<colgroup><col style="width:15em"/><col/><col/></colgroup>
+<thead><tr><th>Component</th><th>Role</th><th>Single-instance replacement</th></tr></thead>
+<tbody>
+<tr><td><strong>Redis</strong></td><td>Caching, short-lived state, distributed locks</td><td>Internal cache and lock</td></tr>
+<tr><td><strong>MySQL</strong></td><td>Relational metadata (users, permissions, tasks, configuration)</td><td>Embedded H2 database</td></tr>
+<tr><td><strong>Distributed File System</strong></td><td>File/object persistence (metadata, graphics, import/export files)</td><td>Local file system</td></tr>
+<tr><td><strong>Elasticsearch</strong></td><td>Centralized index management and full-text search</td><td>Internal Lucene</td></tr>
+<tr><td><strong>Kafka</strong></td><td>Async messaging and event bus (decoupling, task orchestration, notifications)</td><td>Internal message queue (single instance) or Redis MQ (HA Minimal)</td></tr>
+<tr><td><strong>Apollo</strong></td><td>Configuration center (dynamic config, version management)</td><td>Internal service configuration</td></tr>
+</tbody>
+</table>
 
 ## 14.1.6 Deployment Recommendations
+
+The following guidelines summarize best practices for selecting a topology and managing the deployment over time.
 
 1. **Use Single Instance for PoC; use HA for production.** Start with Single Instance for quick validation; prefer HA Minimal for production and evolve to HA Complex as requirements grow.
 

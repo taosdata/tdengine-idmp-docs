@@ -13,13 +13,17 @@ The form is divided into four numbered sections that you complete in order: **Ge
 
 The General Information section (section 1 of the analysis form) defines the analysis's identification and global behavior options, including naming, categorization, and activation policy.
 
-| Field | Description |
-|---|---|
-| **Name** (required) | A unique name for this analysis. Use concise and descriptive naming — for example, "Hourly Max Voltage" or "Compressor Efficiency". |
-| **Categories** | Optional category tags to organize and filter analyses. You can create new tags inline. |
-| **Enable analysis upon creation** | When checked (default), the analysis starts running immediately after it is saved. Uncheck to create the analysis in a paused state. |
-| **Recalculate for out-of-order data** | When checked, if data arrives late (with a timestamp earlier than already-processed data), the analysis re-runs for the affected window. Useful when sensor data may arrive delayed or out of sequence. |
-| **Description** | Optional free-text description of what this analysis computes and why. |
+<table>
+<colgroup><col style="width:21em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong> (required)</td><td>A unique name for this analysis. Use concise and descriptive naming — for example, "Hourly Max Voltage" or "Compressor Efficiency".</td></tr>
+<tr><td><strong>Categories</strong></td><td>Optional category tags to organize and filter analyses. You can create new tags inline.</td></tr>
+<tr><td><strong>Enable analysis upon creation</strong></td><td>When checked (default), the analysis starts running immediately after it is saved. Uncheck to create the analysis in a paused state.</td></tr>
+<tr><td><strong>Recalculate for out-of-order data</strong></td><td>When checked, if data arrives late (with a timestamp earlier than already-processed data), the analysis re-runs for the affected window. Useful when sensor data may arrive delayed or out of sequence.</td></tr>
+<tr><td><strong>Description</strong></td><td>Optional free-text description of what this analysis computes and why.</td></tr>
+</tbody>
+</table>
 
 ## 7.2.2 Trigger
 

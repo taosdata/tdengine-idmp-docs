@@ -30,11 +30,15 @@ For continuous time-series data where the trend shape matters, use the Trend Cha
 
 In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Bar Chart adds:
 
-| Control | Description |
-|---|---|
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Save as Image</strong></td><td>Download the current preview as a PNG image</td></tr>
+<tr><td><strong>Full Screen</strong></td><td>Expand the editor preview to fill the browser window</td></tr>
+<tr><td><strong>Panel Insights</strong></td><td>Run AI analysis on the current preview data</td></tr>
+</tbody>
+</table>
 
 ### Graph Settings
 
@@ -52,12 +56,16 @@ The Bar Chart supports **Vertical** (default) and **Horizontal** layouts. Horizo
 
 If Bar Width is left unset, the chart automatically sizes bars based on the available width and the number of bars — this adaptive behavior works well in most cases. Only set a fixed width when displaying on a fixed-resolution screen where precise spacing is required.
 
-| Setting | Description |
-|---|---|
-| **Orientation** | Vertical (bars extend up) or Horizontal (bars extend right) |
-| **Bar Width** | Width of individual bars (slider; leave unset for auto) |
-| **Bar Opacity** | Transparency of bars, 0–1 |
-| **Stack Series** | Stack multiple metrics: None, Same Sign, All, Positive, Negative |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Orientation</strong></td><td>Vertical (bars extend up) or Horizontal (bars extend right)</td></tr>
+<tr><td><strong>Bar Width</strong></td><td>Width of individual bars (slider; leave unset for auto)</td></tr>
+<tr><td><strong>Bar Opacity</strong></td><td>Transparency of bars, 0–1</td></tr>
+<tr><td><strong>Stack Series</strong></td><td>Stack multiple metrics: None, Same Sign, All, Positive, Negative</td></tr>
+</tbody>
+</table>
 
 #### Labels
 
@@ -71,10 +79,14 @@ When category labels are long or numerous, they can overlap on the axis. Two set
 
 ![Label interval reduced to lower density](../images/bar-interval.png)
 
-| Setting | Description |
-|---|---|
-| **Rotate Labels** | Rotation angle for axis labels |
-| **Label Interval** | Label density: Auto, Small, Medium, Large |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Rotate Labels</strong></td><td>Rotation angle for axis labels</td></tr>
+<tr><td><strong>Label Interval</strong></td><td>Label density: Auto, Small, Medium, Large</td></tr>
+</tbody>
+</table>
 
 ### Axis Settings
 
@@ -90,11 +102,15 @@ When two metrics with very different scales are plotted together, the smaller si
 
 ![Dual Y axis showing two metrics at different scales](../images/bar-bothY.png)
 
-| Setting | Description |
-|---|---|
-| **Left Y Axis Title** | Label for the left Y axis |
-| **Value Range** | Min and Max for the Y axis (blank = auto-scale) |
-| **Right Y Axis** | Enable a secondary Y axis on the right |
+<table>
+<colgroup><col style="width:12em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Left Y Axis Title</strong></td><td>Label for the left Y axis</td></tr>
+<tr><td><strong>Value Range</strong></td><td>Min and Max for the Y axis (blank = auto-scale)</td></tr>
+<tr><td><strong>Right Y Axis</strong></td><td>Enable a secondary Y axis on the right</td></tr>
+</tbody>
+</table>
 
 ### Limits Settings
 
@@ -108,11 +124,15 @@ In Table mode, the legend can display summary statistics alongside each series:
 
 ![Legend in table mode with statistics](../images/bar-legend.png)
 
-| Setting | Description |
-|---|---|
-| **Show** | Display mode: List, Table, or Hidden |
-| **Placement** | Position: Bottom or Right |
-| **Legend Values** | Statistics shown in Table mode: Last, Min, Max, Mean, Sum, etc. |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Show</strong></td><td>Display mode: List, Table, or Hidden</td></tr>
+<tr><td><strong>Placement</strong></td><td>Position: Bottom or Right</td></tr>
+<tr><td><strong>Legend Values</strong></td><td>Statistics shown in Table mode: Last, Min, Max, Mean, Sum, etc.</td></tr>
+</tbody>
+</table>
 
 ## 4.2.2.4 Example Scenarios
 

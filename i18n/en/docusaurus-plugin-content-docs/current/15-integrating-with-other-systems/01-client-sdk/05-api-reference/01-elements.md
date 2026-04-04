@@ -12,13 +12,19 @@ import TabItem from '@theme/TabItem';
 
 ## Method List
 
-| Method | HTTP | Description |
-|---|---|---|
-| `apiV1ElementsGet` | GET /api/v1/elements | Paginated query of the element list |
-| `apiV1ElementsIdGet` | GET /api/v1/elements/\{id\} | Get a single element by ID |
-| `apiV1ElementsPost` | POST /api/v1/elements | Create an element |
-| `apiV1ElementsIdPut` | PUT /api/v1/elements/\{id\} | Update an element |
-| `apiV1ElementsIdDelete` | DELETE /api/v1/elements/\{id\} | Delete an element |
+The following methods are available on `ElementResourceApi`.
+
+<table>
+<colgroup><col style="width:14em"/><col/><col/></colgroup>
+<thead><tr><th>Method</th><th>HTTP</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>apiV1ElementsGet</code></td><td>GET /api/v1/elements</td><td>Paginated query of the element list</td></tr>
+<tr><td><code>apiV1ElementsIdGet</code></td><td>GET /api/v1/elements/\{id\}</td><td>Get a single element by ID</td></tr>
+<tr><td><code>apiV1ElementsPost</code></td><td>POST /api/v1/elements</td><td>Create an element</td></tr>
+<tr><td><code>apiV1ElementsIdPut</code></td><td>PUT /api/v1/elements/\{id\}</td><td>Update an element</td></tr>
+<tr><td><code>apiV1ElementsIdDelete</code></td><td>DELETE /api/v1/elements/\{id\}</td><td>Delete an element</td></tr>
+</tbody>
+</table>
 
 ---
 
@@ -28,12 +34,16 @@ Returns a paginated list of elements accessible to the current user, with option
 
 ### Parameters
 
-| Name | Type | Required | Default | Description |
-|---|---|---|---|---|
-| pageNum | integer | No | 1 | Page number, 1-based |
-| pageSize | integer | No | 20 | Records per page |
-| parentId | string | No | — | Filter by parent element ID |
-| name | string | No | — | Fuzzy search by element name |
+<table>
+<colgroup><col style="width:7em"/><col/><col/><col/><col/></colgroup>
+<thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Default</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>pageNum</td><td>integer</td><td>No</td><td>1</td><td>Page number, 1-based</td></tr>
+<tr><td>pageSize</td><td>integer</td><td>No</td><td>20</td><td>Records per page</td></tr>
+<tr><td>parentId</td><td>string</td><td>No</td><td>—</td><td>Filter by parent element ID</td></tr>
+<tr><td>name</td><td>string</td><td>No</td><td>—</td><td>Fuzzy search by element name</td></tr>
+</tbody>
+</table>
 
 **Returns:** `PageOfBasicElementDTO`
 
@@ -71,9 +81,13 @@ for elem in result.data:
 
 ### Parameters
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| id | string | Yes | Element ID |
+<table>
+<colgroup><col style="width:5em"/><col/><col/><col/></colgroup>
+<thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>id</td><td>string</td><td>Yes</td><td>Element ID</td></tr>
+</tbody>
+</table>
 
 **Returns:** `ElementDTO`
 

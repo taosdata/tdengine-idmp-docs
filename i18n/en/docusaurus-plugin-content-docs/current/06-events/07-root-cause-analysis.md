@@ -27,11 +27,15 @@ AI generates a structured, easy-to-understand, and business-insightful analysis 
 
 The root cause analysis view supports the following interactive operations:
 
-| Operation | Description |
-|---|---|
-| **Expand/Collapse Analysis** | Click the **Root Cause Analysis** button to expand or collapse the analysis area |
-| **Resize Area** | Drag the left border of the root cause analysis area to change its width |
-| **Regenerate** | Click the **Regenerate** button to regenerate the root cause analysis report |
+<table>
+<colgroup><col style="width:16em"/><col/></colgroup>
+<thead><tr><th>Operation</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Expand/Collapse Analysis</strong></td><td>Click the <strong>Root Cause Analysis</strong> button to expand or collapse the analysis area</td></tr>
+<tr><td><strong>Resize Area</strong></td><td>Drag the left border of the root cause analysis area to change its width</td></tr>
+<tr><td><strong>Regenerate</strong></td><td>Click the <strong>Regenerate</strong> button to regenerate the root cause analysis report</td></tr>
+</tbody>
+</table>
 
 :::note
 Root cause analysis relies on the correlation configuration between events. It is recommended to clearly define event dependencies in event templates and analysis rules to obtain more accurate root cause analysis results.

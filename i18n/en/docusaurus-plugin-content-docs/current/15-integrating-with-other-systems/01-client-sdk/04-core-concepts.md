@@ -9,16 +9,22 @@ SDK objects map one-to-one with IDMP product concepts. Understanding these mappi
 
 ## 15.1.4.1 Object Mapping
 
-| SDK Class / Module | IDMP Concept | Description |
-|---|---|---|
-| `ApiClient` | — | SDK entry point; manages connection, authentication, and request dispatch |
-| `ElementResourceApi` | Element | Nodes in the asset tree: equipment, systems, areas |
-| `AttributeResourceApi` | Attribute | Named properties of an element; can be bound to time-series data or static values |
-| `MetricResourceApi` | Metric | Time-series data stream from an attribute's historical and real-time data |
-| `EventResourceApi` | Event | Alarm or state-change records triggered by analysis rules |
-| `PanelResourceApi` | Panel | Visualization chart associated with an element |
-| `UserResourceApi` | User | User management and authentication |
-| `UomResourceApi` | UOM | Unit of measurement classes and conversions |
+Each SDK class corresponds directly to an IDMP product concept, as described in the table below.
+
+<table>
+<colgroup><col style="width:14em"/><col/><col/></colgroup>
+<thead><tr><th>SDK Class / Module</th><th>IDMP Concept</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>ApiClient</code></td><td>—</td><td>SDK entry point; manages connection, authentication, and request dispatch</td></tr>
+<tr><td><code>ElementResourceApi</code></td><td>Element</td><td>Nodes in the asset tree: equipment, systems, areas</td></tr>
+<tr><td><code>AttributeResourceApi</code></td><td>Attribute</td><td>Named properties of an element; can be bound to time-series data or static values</td></tr>
+<tr><td><code>MetricResourceApi</code></td><td>Metric</td><td>Time-series data stream from an attribute's historical and real-time data</td></tr>
+<tr><td><code>EventResourceApi</code></td><td>Event</td><td>Alarm or state-change records triggered by analysis rules</td></tr>
+<tr><td><code>PanelResourceApi</code></td><td>Panel</td><td>Visualization chart associated with an element</td></tr>
+<tr><td><code>UserResourceApi</code></td><td>User</td><td>User management and authentication</td></tr>
+<tr><td><code>UomResourceApi</code></td><td>UOM</td><td>Unit of measurement classes and conversions</td></tr>
+</tbody>
+</table>
 
 ## 15.1.4.2 Data Access Hierarchy
 

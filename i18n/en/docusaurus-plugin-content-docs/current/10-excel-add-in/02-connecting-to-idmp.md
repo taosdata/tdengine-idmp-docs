@@ -48,6 +48,8 @@ Once connected, the task pane displays your IDMP asset hierarchy and allows you 
 
 ## 10.2.4 Connection Requirements
 
+The following conditions must be met for the Excel Add-In to establish a successful connection to an IDMP instance.
+
 - The IDMP server must be reachable from the machine running Excel.
 - HTTPS must be configured on the IDMP server (see [Installing the Excel Add-In](./01-installation.md) for HTTPS setup).
 - Your IDMP account must have at least read access to the elements and attributes you want to retrieve.

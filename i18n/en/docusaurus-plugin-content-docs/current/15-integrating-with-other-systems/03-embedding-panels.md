@@ -9,6 +9,8 @@ IDMP panels and dashboards can be embedded directly into external web applicatio
 
 ## 15.3.1 Getting the Embed Link
 
+An embed link is generated from within IDMP and carries a configurable expiry duration that controls how long the link remains valid.
+
 1. Log in to IDMP and navigate to the **Dashboards** or **Panels** view.
 2. Open the dashboard or panel you want to embed.
 3. Click the **Share** button in the top-right corner.

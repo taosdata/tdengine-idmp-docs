@@ -11,6 +11,8 @@ This guide explains how to install TDengine IDMP and TDengine TSDB-Enterprise us
 
 ## 14.3.1.1 Prerequisites
 
+The following tools must be installed and available on the host before proceeding with the Docker-based deployment.
+
 1. Install Docker Engine 20.10 or later on your local machine. For instructions, see [Install Docker Engine](https://docs.docker.com/engine/install/) in the Docker documentation.
 1. Install Docker Compose V2 (Docker Compose plugin). For instructions, see [Overview of installing Docker Compose](https://docs.docker.com/compose/install/) in the Docker documentation.
 1. Install Git on your local machine. For more information, see the [Git website](https://git-scm.com/).

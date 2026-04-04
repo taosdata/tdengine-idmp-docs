@@ -21,10 +21,14 @@ Click the **Export** icon (download arrow) in the top-right corner to open the e
 
 The export form has two selectors:
 
-| Selector | What it selects |
-|---|---|
-| **Select Elements** | One or more root elements from the asset tree. IDMP includes the selected elements and all resources they depend on. |
-| **Select Libraries** | One or more library entries (element templates, UOM categories, etc.) to include independently of any elements. |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>Selector</th><th>What it selects</th></tr></thead>
+<tbody>
+<tr><td><strong>Select Elements</strong></td><td>One or more root elements from the asset tree. IDMP includes the selected elements and all resources they depend on.</td></tr>
+<tr><td><strong>Select Libraries</strong></td><td>One or more library entries (element templates, UOM categories, etc.) to include independently of any elements.</td></tr>
+</tbody>
+</table>
 
 As you make selections, the **Selected Resources** tree preview updates to show exactly what will be included in the export — elements, their templates, event templates, UOM categories, and individual units of measure.
 
@@ -32,14 +36,18 @@ As you make selections, the **Selected Resources** tree preview updates to show 
 
 At the bottom of the form, a summary table confirms the counts of each resource type to be exported:
 
-| Resource | Description |
-|---|---|
-| **Elements Count** | Number of elements selected |
-| **Element Templates Count** | Number of element templates pulled in |
-| **Event Templates Count** | Number of event templates pulled in |
-| **Categories Count** | Number of UOM categories pulled in |
-| **UOMs Count** | Number of units of measure pulled in |
-| **Total Resources Count** | Total number of resources in the export |
+<table>
+<colgroup><col style="width:15em"/><col/></colgroup>
+<thead><tr><th>Resource</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Elements Count</strong></td><td>Number of elements selected</td></tr>
+<tr><td><strong>Element Templates Count</strong></td><td>Number of element templates pulled in</td></tr>
+<tr><td><strong>Event Templates Count</strong></td><td>Number of event templates pulled in</td></tr>
+<tr><td><strong>Categories Count</strong></td><td>Number of UOM categories pulled in</td></tr>
+<tr><td><strong>UOMs Count</strong></td><td>Number of units of measure pulled in</td></tr>
+<tr><td><strong>Total Resources Count</strong></td><td>Total number of resources in the export</td></tr>
+</tbody>
+</table>
 
 Click **Confirm** to generate and download the export file. Click **Discard** to cancel.
 
@@ -49,12 +57,16 @@ Click the **Import** icon (upload arrow) in the top-right corner to open the imp
 
 ### 11.4.3.1 Import Fields
 
-| Field | Description |
-|---|---|
-| **Metadata File** (required) | The data model file produced by a previous IDMP export. Click **Select Metadata File** to upload it. |
-| **TSGen Configuration File** (optional) | An optional TDengine schema-generation configuration file to associate with the import. |
-| **Select Connections** (required) | The TDengine connection that imported elements will be bound to for time-series data storage. |
-| **Contact Point** (required) | The notification contact point to associate with imported event templates. |
+<table>
+<colgroup><col style="width:22em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Metadata File</strong> (required)</td><td>The data model file produced by a previous IDMP export. Click <strong>Select Metadata File</strong> to upload it.</td></tr>
+<tr><td><strong>TSGen Configuration File</strong> (optional)</td><td>An optional TDengine schema-generation configuration file to associate with the import.</td></tr>
+<tr><td><strong>Select Connections</strong> (required)</td><td>The TDengine connection that imported elements will be bound to for time-series data storage.</td></tr>
+<tr><td><strong>Contact Point</strong> (required)</td><td>The notification contact point to associate with imported event templates.</td></tr>
+</tbody>
+</table>
 
 Click **Confirm** to start the import. The operation runs in the background and its progress and result appear in the history table on the main Import/Export page.
 
