@@ -35,20 +35,24 @@ Every event must be based on an **event template**, which defines the naming pat
 
 Every event carries the following standard fields, which describe the event's time range, associated objects, severity, and current processing status.
 
-| Field | Description |
-|---|---|
-| **Name** | Display name generated from the naming pattern in the event template |
-| **Start Time** | When the event began |
-| **End Time** | When the event ended (blank if still active) |
-| **Duration** | Elapsed time between start and end |
-| **Template** | The event template this event was created from |
-| **Severity Level** | Severity category (Critical, Major, Minor, Warning, Normal) |
-| **Reason Code** | Optional code identifying the cause |
-| **Categories** | Tags for filtering and grouping |
-| **Description** | Free-text description |
-| **Associated Element** | The element that generated this event |
-| **Associated Analysis** | The analysis rule that triggered this event |
-| **Status** | Acknowledgment status of the event (Unacknowledged / Acknowledged) |
+<table>
+<colgroup><col style="width:13em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>Display name generated from the naming pattern in the event template</td></tr>
+<tr><td><strong>Start Time</strong></td><td>When the event began</td></tr>
+<tr><td><strong>End Time</strong></td><td>When the event ended (blank if still active)</td></tr>
+<tr><td><strong>Duration</strong></td><td>Elapsed time between start and end</td></tr>
+<tr><td><strong>Template</strong></td><td>The event template this event was created from</td></tr>
+<tr><td><strong>Severity Level</strong></td><td>Severity category (Critical, Major, Minor, Warning, Normal)</td></tr>
+<tr><td><strong>Reason Code</strong></td><td>Optional code identifying the cause</td></tr>
+<tr><td><strong>Categories</strong></td><td>Tags for filtering and grouping</td></tr>
+<tr><td><strong>Description</strong></td><td>Free-text description</td></tr>
+<tr><td><strong>Associated Element</strong></td><td>The element that generated this event</td></tr>
+<tr><td><strong>Associated Analysis</strong></td><td>The analysis rule that triggered this event</td></tr>
+<tr><td><strong>Status</strong></td><td>Acknowledgment status of the event (Unacknowledged / Acknowledged)</td></tr>
+</tbody>
+</table>
 
 In addition to these standard fields, an event can carry **custom attributes** — named values recorded at the time of the event, such as the peak temperature during an exceedance or the batch ID at the time of a fault. Custom attributes are defined in the event template.
 

@@ -17,12 +17,16 @@ sidebar_label: 告警与通知
 
 联系途径列表展示以下信息：
 
-| 列 | 说明 |
-|---|---|
-| **名称** | 该联系途径的描述性名称（例如 `Jeff_default_contact_point`） |
-| **类型** | 投递渠道类型（例如邮件、Webhook、飞书） |
-| **地址** | 收件人地址或端点 URL |
-| **描述** | 可选描述 |
+<table>
+<colgroup><col style="width:5em"/><col/></colgroup>
+<thead><tr><th>列</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong></td><td>该联系途径的描述性名称（例如 <code>Jeff_default_contact_point</code>）</td></tr>
+<tr><td><strong>类型</strong></td><td>投递渠道类型（例如邮件、Webhook、飞书）</td></tr>
+<tr><td><strong>地址</strong></td><td>收件人地址或端点 URL</td></tr>
+<tr><td><strong>描述</strong></td><td>可选描述</td></tr>
+</tbody>
+</table>
 
 点击 **+** 并填写名称、类型、地址和描述字段，即可创建新联系途径。可用类型取决于为您的 IDMP 实例配置的集成。
 
@@ -40,15 +44,19 @@ sidebar_label: 告警与通知
 
 在对话框中点击**编辑**以修改设置。可配置的参数如下：
 
-| 参数 | 说明 |
-|---|---|
-| **联系途径**（必填） | 事件通知的主要投递渠道。从预配置的联系途径中选择。 |
-| **重发间隔**（必填） | 对活动的未确认事件重新发送通知的频率。例如设置为 1 小时，则每小时提醒操作人员，直到事件被确认或关闭。 |
-| **升级联系途径** | 若事件在升级间隔内仍未被确认，向该联系途径额外发送通知。用于在一线操作人员未响应时通知主管或值班人员。 |
-| **升级间隔** | 事件未被确认多长时间后触发升级联系途径通知。 |
-| **最大重发次数** | 单个事件可触发重新通知的最大次数。防止长时间运行的事件无限重发。 |
-| **消息** | 通知消息正文。支持变量替换——例如 `{elementName}`、`{eventName}`、`{startTime}`、`{severityLevel}`、`{eventUrl}`——在每条通知中包含事件相关信息。 |
-| **事件模板** | 按模板设置最低严重程度阈值。对每个列出的事件模板，指定触发通知的最低严重等级。低于配置严重等级的事件将被抑制。 |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>参数</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>联系途径</strong>（必填）</td><td>事件通知的主要投递渠道。从预配置的联系途径中选择。</td></tr>
+<tr><td><strong>重发间隔</strong>（必填）</td><td>对活动的未确认事件重新发送通知的频率。例如设置为 1 小时，则每小时提醒操作人员，直到事件被确认或关闭。</td></tr>
+<tr><td><strong>升级联系途径</strong></td><td>若事件在升级间隔内仍未被确认，向该联系途径额外发送通知。用于在一线操作人员未响应时通知主管或值班人员。</td></tr>
+<tr><td><strong>升级间隔</strong></td><td>事件未被确认多长时间后触发升级联系途径通知。</td></tr>
+<tr><td><strong>最大重发次数</strong></td><td>单个事件可触发重新通知的最大次数。防止长时间运行的事件无限重发。</td></tr>
+<tr><td><strong>消息</strong></td><td>通知消息正文。支持变量替换——例如 <code>{elementName}</code>、<code>{eventName}</code>、<code>{startTime}</code>、<code>{severityLevel}</code>、<code>{eventUrl}</code>——在每条通知中包含事件相关信息。</td></tr>
+<tr><td><strong>事件模板</strong></td><td>按模板设置最低严重程度阈值。对每个列出的事件模板，指定触发通知的最低严重等级。低于配置严重等级的事件将被抑制。</td></tr>
+</tbody>
+</table>
 
 对话框还提供**预览消息**按钮用于查看渲染后的消息效果，以及**发送消息**按钮用于立即手动派发通知。
 

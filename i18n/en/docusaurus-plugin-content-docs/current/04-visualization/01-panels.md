@@ -44,14 +44,18 @@ At the bottom of the panel list, a text input lets you describe a panel in natur
 
 Saved panels appear as cards with a live thumbnail preview. Hover over a card to reveal the **⋮** (more) menu, which provides the following actions:
 
-| Action | Description |
-|---|---|
-| **View** | Open the panel in full view mode |
-| **Edit** | Open the panel editor |
-| **Copy** | Create a duplicate of the panel on the same element |
-| **Convert to Template** | Save this panel's configuration as a panel template |
-| **Open in New Window** | Open the panel in a separate browser window |
-| **Delete** | Remove the panel permanently |
+<table>
+<colgroup><col style="width:13em"/><col/></colgroup>
+<thead><tr><th>Action</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>View</strong></td><td>Open the panel in full view mode</td></tr>
+<tr><td><strong>Edit</strong></td><td>Open the panel editor</td></tr>
+<tr><td><strong>Copy</strong></td><td>Create a duplicate of the panel on the same element</td></tr>
+<tr><td><strong>Convert to Template</strong></td><td>Save this panel's configuration as a panel template</td></tr>
+<tr><td><strong>Open in New Window</strong></td><td>Open the panel in a separate browser window</td></tr>
+<tr><td><strong>Delete</strong></td><td>Remove the panel permanently</td></tr>
+</tbody>
+</table>
 
 ## 4.1.2 Creating a Panel
 
@@ -75,20 +79,24 @@ Clicking **View** on a panel card opens the panel in full view mode. The panel o
 
 The following controls appear in the view mode toolbar for every panel type:
 
-| Control | Description |
-|---|---|
-| **Back to List** | Return to the Panels tab |
-| **Edit** | Open the panel editor |
-| **Favorite** | Mark this panel as a favorite for quick access |
-| **Time picker** | Select the time range for the chart (e.g., Last 7 Days). Click the dropdown arrow for preset ranges or a custom range. |
-| **Zoom out** | Expand the time range to the next level |
-| **Refresh** | Reload the chart data immediately |
-| **Auto-refresh** | Set an automatic refresh interval (Off, 5s, 10s, 30s, 1m, etc.) |
-| **Save as Image** | Download the current chart as a PNG image |
-| **Share** | Generate a time-limited shareable link to this panel view |
-| **Full Screen** | Expand the panel to fill the browser window |
-| **Open in New Window** | Open this panel in a separate browser window |
-| **Panel Insights** | Open the AI-generated insight report for this panel |
+<table>
+<colgroup><col style="width:12em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Back to List</strong></td><td>Return to the Panels tab</td></tr>
+<tr><td><strong>Edit</strong></td><td>Open the panel editor</td></tr>
+<tr><td><strong>Favorite</strong></td><td>Mark this panel as a favorite for quick access</td></tr>
+<tr><td><strong>Time picker</strong></td><td>Select the time range for the chart (e.g., Last 7 Days). Click the dropdown arrow for preset ranges or a custom range.</td></tr>
+<tr><td><strong>Zoom out</strong></td><td>Expand the time range to the next level</td></tr>
+<tr><td><strong>Refresh</strong></td><td>Reload the chart data immediately</td></tr>
+<tr><td><strong>Auto-refresh</strong></td><td>Set an automatic refresh interval (Off, 5s, 10s, 30s, 1m, etc.)</td></tr>
+<tr><td><strong>Save as Image</strong></td><td>Download the current chart as a PNG image</td></tr>
+<tr><td><strong>Share</strong></td><td>Generate a time-limited shareable link to this panel view</td></tr>
+<tr><td><strong>Full Screen</strong></td><td>Expand the panel to fill the browser window</td></tr>
+<tr><td><strong>Open in New Window</strong></td><td>Open this panel in a separate browser window</td></tr>
+<tr><td><strong>Panel Insights</strong></td><td>Open the AI-generated insight report for this panel</td></tr>
+</tbody>
+</table>
 
 Additional toolbar controls that are specific to a panel type are documented in each panel type's section.
 
@@ -100,15 +108,19 @@ Click **Edit** in view mode, or **⋮** → **Edit** on a panel card, to open th
 
 The following controls appear in the edit mode toolbar for every panel type:
 
-| Control | Description |
-|---|---|
-| **Back to List** | Return to the Panels tab (prompts to save or discard changes) |
-| **Save** | Save all changes to the panel |
-| **Discard** | Discard changes and return to view mode |
-| **Time picker** | Select the preview time range |
-| **Zoom out** | Expand the preview time range to the next level |
-| **Refresh** | Reload the preview data |
-| **Auto-refresh** | Set an automatic refresh interval for the preview |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Back to List</strong></td><td>Return to the Panels tab (prompts to save or discard changes)</td></tr>
+<tr><td><strong>Save</strong></td><td>Save all changes to the panel</td></tr>
+<tr><td><strong>Discard</strong></td><td>Discard changes and return to view mode</td></tr>
+<tr><td><strong>Time picker</strong></td><td>Select the preview time range</td></tr>
+<tr><td><strong>Zoom out</strong></td><td>Expand the preview time range to the next level</td></tr>
+<tr><td><strong>Refresh</strong></td><td>Reload the preview data</td></tr>
+<tr><td><strong>Auto-refresh</strong></td><td>Set an automatic refresh interval for the preview</td></tr>
+</tbody>
+</table>
 
 Additional toolbar controls that are specific to a panel type are documented in each panel type's section.
 
@@ -145,15 +157,19 @@ The Metrics section defines the data series plotted on the chart. The header row
 
 Each row in the Metrics table represents one data series:
 
-| Column | Description |
-|---|---|
-| **Name** | The display label for this series in the chart legend |
-| **Expression** | The aggregation expression (e.g., `avg(attribute)`, `max(attribute)`) |
-| **UOM** | The display unit of measurement. Leave blank to use the attribute's configured unit. |
-| **Conditions** | Optional filter conditions applied to this series |
-| **Time Shift** | Offset this series by a time amount to overlay historical comparison. Enter a number and select the unit. |
-| **Prediction** | AI forecast configuration for this series. Set to None for no forecast, or configure a forecast model. |
-| **Order By** | Sort order for the query results |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>Column</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>The display label for this series in the chart legend</td></tr>
+<tr><td><strong>Expression</strong></td><td>The aggregation expression (e.g., <code>avg(attribute)</code>, <code>max(attribute)</code>)</td></tr>
+<tr><td><strong>UOM</strong></td><td>The display unit of measurement. Leave blank to use the attribute's configured unit.</td></tr>
+<tr><td><strong>Conditions</strong></td><td>Optional filter conditions applied to this series</td></tr>
+<tr><td><strong>Time Shift</strong></td><td>Offset this series by a time amount to overlay historical comparison. Enter a number and select the unit.</td></tr>
+<tr><td><strong>Prediction</strong></td><td>AI forecast configuration for this series. Set to None for no forecast, or configure a forecast model.</td></tr>
+<tr><td><strong>Order By</strong></td><td>Sort order for the query results</td></tr>
+</tbody>
+</table>
 
 Use the action icons at the end of each row to edit or delete a metric.
 
@@ -161,13 +177,17 @@ Use the action icons at the end of each row to edit or delete a metric.
 
 The Dimensions section defines grouping dimensions for aggregate queries. This is used when grouping data by a categorical field (similar to SQL GROUP BY). Each dimension row has:
 
-| Column | Description |
-|---|---|
-| **Name** | Display label for this dimension |
-| **Expression** | The grouping expression |
-| **Conditions** | Filter conditions for this dimension |
-| **Group By** | Whether to include this dimension in GROUP BY |
-| **Order By** | Sort order |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>Column</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>Display label for this dimension</td></tr>
+<tr><td><strong>Expression</strong></td><td>The grouping expression</td></tr>
+<tr><td><strong>Conditions</strong></td><td>Filter conditions for this dimension</td></tr>
+<tr><td><strong>Group By</strong></td><td>Whether to include this dimension in GROUP BY</td></tr>
+<tr><td><strong>Order By</strong></td><td>Sort order</td></tr>
+</tbody>
+</table>
 
 ### 4.1.4.8 Advanced SQL Mode
 
@@ -175,10 +195,14 @@ The **Advanced** toggle at the bottom of the data configuration area switches to
 
 Each query block has a **Query Type** selector:
 
-| Query Type | Description |
-|---|---|
-| **TDengine** | Executes against the TDengine connection associated with the current element or element template |
-| **Event** | Queries system-generated events |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>Query Type</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>TDengine</strong></td><td>Executes against the TDengine connection associated with the current element or element template</td></tr>
+<tr><td><strong>Event</strong></td><td>Queries system-generated events</td></tr>
+</tbody>
+</table>
 
 After entering a SQL statement, click **Validate** to check whether it is valid and executable. A green indicator appears next to the button on success. After validation, two additional selectors become available:
 
@@ -189,12 +213,16 @@ After entering a SQL statement, click **Validate** to check whether it is valid 
 
 Advanced SQL supports four built-in template variables that are substituted at query time:
 
-| Variable | Replaced with |
-|---|---|
-| `${FROM_TIME}` | The start time from the panel's time picker |
-| `${TO_TIME}` | The end time from the panel's time picker |
-| `${Element#fullVirtualTable}` | The full virtual table name of the current element |
-| `${Element#name}` | The name of the current element |
+<table>
+<colgroup><col style="width:17em"/><col/></colgroup>
+<thead><tr><th>Variable</th><th>Replaced with</th></tr></thead>
+<tbody>
+<tr><td><code>${FROM_TIME}</code></td><td>The start time from the panel's time picker</td></tr>
+<tr><td><code>${TO_TIME}</code></td><td>The end time from the panel's time picker</td></tr>
+<tr><td><code>${Element#fullVirtualTable}</code></td><td>The full virtual table name of the current element</td></tr>
+<tr><td><code>${Element#name}</code></td><td>The name of the current element</td></tr>
+</tbody>
+</table>
 
 :::tip
 All four variables support autocomplete in the SQL editor: type `FROM_TIME`, `TO_TIME`, or `ELEMENT` and the editor completes to the full variable syntax. `${FROM_TIME}` and `${TO_TIME}` automatically add or omit surrounding quotes based on context — do not add quotes manually. `${Element#fullVirtualTable}` automatically handles backtick quoting. `${Element#name}` resolves to a plain string — add single quotes around it when used in a string comparison.
@@ -213,11 +241,15 @@ The visualization settings are organized into collapsible sections. The followin
 
 ### 4.1.4.11 General
 
-| Field | Description |
-|---|---|
-| **Name** | The panel title displayed at the top of the chart |
-| **Description** | An optional description shown on hover or in exports |
-| **Categories** | One or more tags for organizing and filtering panels in the Panels list |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>The panel title displayed at the top of the chart</td></tr>
+<tr><td><strong>Description</strong></td><td>An optional description shown on hover or in exports</td></tr>
+<tr><td><strong>Categories</strong></td><td>One or more tags for organizing and filtering panels in the Panels list</td></tr>
+</tbody>
+</table>
 
 ### 4.1.4.12 Data Links
 

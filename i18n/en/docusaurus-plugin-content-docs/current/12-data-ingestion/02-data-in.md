@@ -21,11 +21,15 @@ Click **+** to create a new task. Configure the following sections:
 
 ### 12.2.1.2 General Information
 
-| Field | Description |
-|---|---|
-| **Name** (required) | A descriptive name for the task |
-| **Type** | The data source protocol (see task types below) |
-| **Target** (required) | The destination TDengine database. Click **+ Create Database** to create a new one. |
+<table>
+<colgroup><col style="width:12em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong> (required)</td><td>A descriptive name for the task</td></tr>
+<tr><td><strong>Type</strong></td><td>The data source protocol (see task types below)</td></tr>
+<tr><td><strong>Target</strong> (required)</td><td>The destination TDengine database. Click <strong>+ Create Database</strong> to create a new one.</td></tr>
+</tbody>
+</table>
 
 ### 12.2.1.3 Connection Configuration
 
@@ -37,16 +41,20 @@ OPC-UA (OPC Unified Architecture) is a widely used industrial protocol for conne
 
 #### Connection Configuration
 
-| Field | Description |
-|---|---|
-| **Server Endpoint** (required) | OPC-UA server address, e.g., `127.0.0.1:6666/OPCUA/ServerPath` |
-| **Failover Server Endpoints** | Backup server endpoints for high availability |
-| **Security Mode** | OPC-UA security mode (None, Sign, SignAndEncrypt) |
-| **Security Policy** | Encryption policy to use |
-| **Secure Channel Certificate** | Certificate file for secure channel |
-| **Certificate's Private Key** | Private key file for the certificate |
-| **Connect Timeout** | Connection timeout in seconds (default: 10) |
-| **Request Timeout** | Request timeout in seconds (default: 10) |
+<table>
+<colgroup><col style="width:17em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Server Endpoint</strong> (required)</td><td>OPC-UA server address, e.g., <code>127.0.0.1:6666/OPCUA/ServerPath</code></td></tr>
+<tr><td><strong>Failover Server Endpoints</strong></td><td>Backup server endpoints for high availability</td></tr>
+<tr><td><strong>Security Mode</strong></td><td>OPC-UA security mode (None, Sign, SignAndEncrypt)</td></tr>
+<tr><td><strong>Security Policy</strong></td><td>Encryption policy to use</td></tr>
+<tr><td><strong>Secure Channel Certificate</strong></td><td>Certificate file for secure channel</td></tr>
+<tr><td><strong>Certificate's Private Key</strong></td><td>Private key file for the certificate</td></tr>
+<tr><td><strong>Connect Timeout</strong></td><td>Connection timeout in seconds (default: 10)</td></tr>
+<tr><td><strong>Request Timeout</strong></td><td>Request timeout in seconds (default: 10)</td></tr>
+</tbody>
+</table>
 
 #### Authentication
 
@@ -56,24 +64,32 @@ Click **Check Connection** to verify before proceeding.
 
 #### Data Sets
 
-| Field | Description |
-|---|---|
-| **Root node ID** | Starting node for data point discovery, e.g., `ns=1;i=1001` |
-| **Namespaces** | OPC-UA namespaces to include (populated after connection check) |
-| **Node Class** | Type of OPC-UA nodes to collect (default: all) |
-| **Point ID Regex Pattern** | Filter data points by node ID pattern |
-| **Point Name Regex Pattern** | Filter data points by name pattern |
-| **Super Table Name** (required) | Target supertable name template (default: `opc_{type}`) |
-| **Value Column Name** | Column name for the value (default: `val`) |
-| **Timestamp** | Timestamp source (default: `original_ts`) |
+<table>
+<colgroup><col style="width:17em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Root node ID</strong></td><td>Starting node for data point discovery, e.g., <code>ns=1;i=1001</code></td></tr>
+<tr><td><strong>Namespaces</strong></td><td>OPC-UA namespaces to include (populated after connection check)</td></tr>
+<tr><td><strong>Node Class</strong></td><td>Type of OPC-UA nodes to collect (default: all)</td></tr>
+<tr><td><strong>Point ID Regex Pattern</strong></td><td>Filter data points by node ID pattern</td></tr>
+<tr><td><strong>Point Name Regex Pattern</strong></td><td>Filter data points by name pattern</td></tr>
+<tr><td><strong>Super Table Name</strong> (required)</td><td>Target supertable name template (default: <code>opc_{type}</code>)</td></tr>
+<tr><td><strong>Value Column Name</strong></td><td>Column name for the value (default: <code>val</code>)</td></tr>
+<tr><td><strong>Timestamp</strong></td><td>Timestamp source (default: <code>original_ts</code>)</td></tr>
+</tbody>
+</table>
 
 #### Collect
 
-| Field | Description |
-|---|---|
-| **Collect Mode** | `subscribe` (push) or `poll` (pull) |
-| **Point Update Mode** | How point metadata updates are handled |
-| **Point Update Interval** | Interval in seconds to check for point changes (default: 600) |
+<table>
+<colgroup><col style="width:14em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Collect Mode</strong></td><td><code>subscribe</code> (push) or <code>poll</code> (pull)</td></tr>
+<tr><td><strong>Point Update Mode</strong></td><td>How point metadata updates are handled</td></tr>
+<tr><td><strong>Point Update Interval</strong></td><td>Interval in seconds to check for point changes (default: 600)</td></tr>
+</tbody>
+</table>
 
 ### 12.2.1.5 Example: SparkplugB (MQTT)
 
@@ -81,18 +97,22 @@ SparkplugB is an MQTT-based protocol widely used in IIoT deployments.
 
 #### Connection Configuration
 
-| Field | Description |
-|---|---|
-| **Brokers** (required) | MQTT broker address(es), e.g., `mqtt://host:1883` |
-| **MQTT Protocol Version** | MQTT version to use |
-| **Client ID** | MQTT client identifier |
-| **Keep Alive** | Keep-alive interval in seconds |
-| **Username** | MQTT username |
-| **Password** | MQTT password |
-| **TLS Verification** | Enable TLS for the MQTT connection |
-| **Group ID** | Sparkplug group ID to subscribe to |
-| **Node Device List** | List of Sparkplug node/device IDs to collect |
-| **Message Type** | Sparkplug message types to process |
+<table>
+<colgroup><col style="width:14em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Brokers</strong> (required)</td><td>MQTT broker address(es), e.g., <code>mqtt://host:1883</code></td></tr>
+<tr><td><strong>MQTT Protocol Version</strong></td><td>MQTT version to use</td></tr>
+<tr><td><strong>Client ID</strong></td><td>MQTT client identifier</td></tr>
+<tr><td><strong>Keep Alive</strong></td><td>Keep-alive interval in seconds</td></tr>
+<tr><td><strong>Username</strong></td><td>MQTT username</td></tr>
+<tr><td><strong>Password</strong></td><td>MQTT password</td></tr>
+<tr><td><strong>TLS Verification</strong></td><td>Enable TLS for the MQTT connection</td></tr>
+<tr><td><strong>Group ID</strong></td><td>Sparkplug group ID to subscribe to</td></tr>
+<tr><td><strong>Node Device List</strong></td><td>List of Sparkplug node/device IDs to collect</td></tr>
+<tr><td><strong>Message Type</strong></td><td>Sparkplug message types to process</td></tr>
+</tbody>
+</table>
 
 An **Advanced Options** section is available for all task types for further tuning.
 
@@ -106,24 +126,28 @@ The Data In feature is powered by TDengine TSDB's data ingestion engine. For com
 
 IDMP supports ingesting data from the following source types:
 
-| Type | Description |
-|---|---|
-| **TDengine Data Subscription** | Subscribe to TDengine TMQ topics for real-time data ingestion |
-| **TDengine Query** | Pull data from TDengine via SQL queries on a schedule |
-| **PI** | OSIsoft PI System |
-| **PI Backfill** | Historical backfill from OSIsoft PI |
-| **OPC-UA** | OPC Unified Architecture |
-| **OPC-DA** | OPC Data Access |
-| **InfluxDB** | InfluxDB time-series database |
-| **OpenTSDB** | OpenTSDB time-series database |
-| **PostgreSQL** | PostgreSQL relational database |
-| **Oracle** | Oracle database |
-| **Microsoft SQL Server** | Microsoft SQL Server |
-| **MongoDB** | MongoDB document database |
-| **SparkplugB** | MQTT Sparkplug B protocol |
-| **KingHistorian** | KingHistorian industrial historian |
-| **Pulsar** | Apache Pulsar messaging |
-| **Pulsar-Tuya** | Pulsar with Tuya IoT platform integration |
+<table>
+<colgroup><col style="width:17em"/><col/></colgroup>
+<thead><tr><th>Type</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>TDengine Data Subscription</strong></td><td>Subscribe to TDengine TMQ topics for real-time data ingestion</td></tr>
+<tr><td><strong>TDengine Query</strong></td><td>Pull data from TDengine via SQL queries on a schedule</td></tr>
+<tr><td><strong>PI</strong></td><td>OSIsoft PI System</td></tr>
+<tr><td><strong>PI Backfill</strong></td><td>Historical backfill from OSIsoft PI</td></tr>
+<tr><td><strong>OPC-UA</strong></td><td>OPC Unified Architecture</td></tr>
+<tr><td><strong>OPC-DA</strong></td><td>OPC Data Access</td></tr>
+<tr><td><strong>InfluxDB</strong></td><td>InfluxDB time-series database</td></tr>
+<tr><td><strong>OpenTSDB</strong></td><td>OpenTSDB time-series database</td></tr>
+<tr><td><strong>PostgreSQL</strong></td><td>PostgreSQL relational database</td></tr>
+<tr><td><strong>Oracle</strong></td><td>Oracle database</td></tr>
+<tr><td><strong>Microsoft SQL Server</strong></td><td>Microsoft SQL Server</td></tr>
+<tr><td><strong>MongoDB</strong></td><td>MongoDB document database</td></tr>
+<tr><td><strong>SparkplugB</strong></td><td>MQTT Sparkplug B protocol</td></tr>
+<tr><td><strong>KingHistorian</strong></td><td>KingHistorian industrial historian</td></tr>
+<tr><td><strong>Pulsar</strong></td><td>Apache Pulsar messaging</td></tr>
+<tr><td><strong>Pulsar-Tuya</strong></td><td>Pulsar with Tuya IoT platform integration</td></tr>
+</tbody>
+</table>
 
 ## 12.2.2 Agents
 
@@ -133,12 +157,16 @@ The **Agent** tab lists the IDMP agent processes registered for this connection,
 
 The **Data Collection Agents** tab provides configuration guides for third-party agents that can write data directly into TDengine using standard protocols:
 
-| Agent | Description |
-|---|---|
-| **Prometheus** | Configure Prometheus remote write to push metrics into TDengine |
-| **Telegraf** | Configure Telegraf output plugin to write metrics to TDengine |
-| **InfluxDB Line Protocol** | Write data using the InfluxDB line protocol wire format |
-| **OpenTSDB JSON Protocol** | Write data using the OpenTSDB HTTP JSON API |
-| **OpenTSDB Telnet Protocol** | Write data using the OpenTSDB telnet interface |
+<table>
+<colgroup><col style="width:16em"/><col/></colgroup>
+<thead><tr><th>Agent</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Prometheus</strong></td><td>Configure Prometheus remote write to push metrics into TDengine</td></tr>
+<tr><td><strong>Telegraf</strong></td><td>Configure Telegraf output plugin to write metrics to TDengine</td></tr>
+<tr><td><strong>InfluxDB Line Protocol</strong></td><td>Write data using the InfluxDB line protocol wire format</td></tr>
+<tr><td><strong>OpenTSDB JSON Protocol</strong></td><td>Write data using the OpenTSDB HTTP JSON API</td></tr>
+<tr><td><strong>OpenTSDB Telnet Protocol</strong></td><td>Write data using the OpenTSDB telnet interface</td></tr>
+</tbody>
+</table>
 
 Click any card to view the configuration guide for that agent.

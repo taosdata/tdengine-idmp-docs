@@ -11,15 +11,19 @@ Throughout IDMP, any table or list view can be exported to a CSV file. This make
 
 The CSV export option is available on every tabular view in IDMP, including:
 
-| View | What is exported |
-|---|---|
-| **Explorer — Child element list** | The list of child elements under a selected element |
-| **Explorer — Attribute list** | Attribute values and metadata for a selected element |
-| **Events list** | Filtered event records including timestamps, severity, and status |
-| **Event Filter results** | Events matching criteria from an Event Search Criteria |
-| **Attribute Filter results** | Attribute metadata matching your search criteria |
-| **Asset Filter results** | Element metadata matching your search criteria |
-| **Analyses results** | Output rows from a saved analysis query |
+<table>
+<colgroup><col style="width:18em"/><col/></colgroup>
+<thead><tr><th>View</th><th>What is exported</th></tr></thead>
+<tbody>
+<tr><td><strong>Explorer — Child element list</strong></td><td>The list of child elements under a selected element</td></tr>
+<tr><td><strong>Explorer — Attribute list</strong></td><td>Attribute values and metadata for a selected element</td></tr>
+<tr><td><strong>Events list</strong></td><td>Filtered event records including timestamps, severity, and status</td></tr>
+<tr><td><strong>Event Filter results</strong></td><td>Events matching criteria from an Event Search Criteria</td></tr>
+<tr><td><strong>Attribute Filter results</strong></td><td>Attribute metadata matching your search criteria</td></tr>
+<tr><td><strong>Asset Filter results</strong></td><td>Element metadata matching your search criteria</td></tr>
+<tr><td><strong>Analyses results</strong></td><td>Output rows from a saved analysis query</td></tr>
+</tbody>
+</table>
 
 ## 11.3.2 How to Export
 

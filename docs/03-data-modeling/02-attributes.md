@@ -95,34 +95,42 @@ CONCAT('voltage of device ', ${attributes['Device ID']}, ' is ', CAST(${attribut
 
 ### 3.2.3.1 基础字段
 
-| 特性 | 说明 |
-|---|---|
-| **名称** | 属性在其元素内的唯一名称 |
-| **描述** | 对该属性所测量或代表内容的可读说明 |
-| **类别** | 用于在属性选项卡中对属性进行分组和筛选的一个或多个标签 |
-| **值类型** | 值的数据类型：`Float`、`Double`、`Int`、`BigInt`、`TinyInt`、`SmallInt`、`Bool`、`Nchar`、`Varchar`、`Timestamp` |
-| **默认值** | 当数据源无可用数据时返回的值 |
-| **计量单位分类** | 物理量类别（如电流、温度、压力）。选择计量单位分类后，默认计量单位和显示计量单位的可用选项会相应筛选。 |
-| **默认计量单位** | 属性值存储时使用的单位（如安培、°C、bar） |
-| **显示计量单位** | 在面板和仪表板中显示值时使用的单位，可以与默认计量单位不同——IDMP 会自动进行换算。 |
-| **显示精度** | 正数表示小数点后显示数字位数，负数代表显示有效数字位数。|
-| **数据引用类型** | 属性值的来源：TDengine 指标、TDengine 标签或无（参见 [3.2.2](#322-数据引用类型)） |
-| **数据引用设置** | 指向 TDengine TSDB 数据源的路径，格式为 `连接名/数据库名/表名/列名`，可选在列名后追加 `:质量列名` 指定质量列（例如 `连接名/数据库名/表名/值列:质量列`） |
-| **路径** | 属性在资产模型中的完整路径（只读，自动生成） |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>特性</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong></td><td>属性在其元素内的唯一名称</td></tr>
+<tr><td><strong>描述</strong></td><td>对该属性所测量或代表内容的可读说明</td></tr>
+<tr><td><strong>类别</strong></td><td>用于在属性选项卡中对属性进行分组和筛选的一个或多个标签</td></tr>
+<tr><td><strong>值类型</strong></td><td>值的数据类型：<code>Float</code>、<code>Double</code>、<code>Int</code>、<code>BigInt</code>、<code>TinyInt</code>、<code>SmallInt</code>、<code>Bool</code>、<code>Nchar</code>、<code>Varchar</code>、<code>Timestamp</code></td></tr>
+<tr><td><strong>默认值</strong></td><td>当数据源无可用数据时返回的值</td></tr>
+<tr><td><strong>计量单位分类</strong></td><td>物理量类别（如电流、温度、压力）。选择计量单位分类后，默认计量单位和显示计量单位的可用选项会相应筛选。</td></tr>
+<tr><td><strong>默认计量单位</strong></td><td>属性值存储时使用的单位（如安培、°C、bar）</td></tr>
+<tr><td><strong>显示计量单位</strong></td><td>在面板和仪表板中显示值时使用的单位，可以与默认计量单位不同——IDMP 会自动进行换算。</td></tr>
+<tr><td><strong>显示精度</strong></td><td>正数表示小数点后显示数字位数，负数代表显示有效数字位数。</td></tr>
+<tr><td><strong>数据引用类型</strong></td><td>属性值的来源：TDengine 指标、TDengine 标签或无（参见 <a href="#322-数据引用类型">3.2.2</a>）</td></tr>
+<tr><td><strong>数据引用设置</strong></td><td>指向 TDengine TSDB 数据源的路径，格式为 <code>连接名/数据库名/表名/列名</code>，可选在列名后追加 <code>:质量列名</code> 指定质量列（例如 <code>连接名/数据库名/表名/值列:质量列</code>）</td></tr>
+<tr><td><strong>路径</strong></td><td>属性在资产模型中的完整路径（只读，自动生成）</td></tr>
+</tbody>
+</table>
 
 ### 3.2.3.2 极限值配置
 
 为属性定义运行阈值。每个极限值有名称和数值：
 
-| 极限值 | 含义 |
-|---|---|
-| **最小值** | 物理上可能或可接受的最低值 |
-| **低低限** | 低低报警阈值——严重低值状态 |
-| **低限** | 低报警阈值——警告低值状态 |
-| **目标值** | 期望的设定点或正常运行值 |
-| **高限** | 高报警阈值——警告高值状态 |
-| **高高限** | 高高报警阈值——严重高值状态 |
-| **最大值** | 物理上可能或可接受的最高值 |
+<table>
+<colgroup><col style="width:6em"/><col/></colgroup>
+<thead><tr><th>极限值</th><th>含义</th></tr></thead>
+<tbody>
+<tr><td><strong>最小值</strong></td><td>物理上可能或可接受的最低值</td></tr>
+<tr><td><strong>低低限</strong></td><td>低低报警阈值——严重低值状态</td></tr>
+<tr><td><strong>低限</strong></td><td>低报警阈值——警告低值状态</td></tr>
+<tr><td><strong>目标值</strong></td><td>期望的设定点或正常运行值</td></tr>
+<tr><td><strong>高限</strong></td><td>高报警阈值——警告高值状态</td></tr>
+<tr><td><strong>高高限</strong></td><td>高高报警阈值——严重高值状态</td></tr>
+<tr><td><strong>最大值</strong></td><td>物理上可能或可接受的最高值</td></tr>
+</tbody>
+</table>
 
 每个极限值还有一个可选的**属性**字段——您可以将极限值关联到另一个属性而非固定数值，从而实现基于实时状态动态变化的极限值。
 
@@ -130,11 +138,15 @@ CONCAT('voltage of device ', ${attributes['Device ID']}, ' is ', CAST(${attribut
 
 为该属性配置基于 AI 的预测：
 
-| 选项 | 说明 |
-|---|---|
-| **TDgpt** | 使用 TDengine 内置的时序预测引擎（TDgpt）预测未来值 |
-| **外部** | 通过已配置的端点连接外部预测服务 |
-| **无** | 不启用预测（默认） |
+<table>
+<colgroup><col style="width:5em"/><col/></colgroup>
+<thead><tr><th>选项</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>TDgpt</strong></td><td>使用 TDengine 内置的时序预测引擎（TDgpt）预测未来值</td></tr>
+<tr><td><strong>外部</strong></td><td>通过已配置的端点连接外部预测服务</td></tr>
+<tr><td><strong>无</strong></td><td>不启用预测（默认）</td></tr>
+</tbody>
+</table>
 
 ### 3.2.3.4 附加特性
 
@@ -142,11 +154,15 @@ CONCAT('voltage of device ', ${attributes['Device ID']}, ' is ', CAST(${attribut
 
 ### 3.2.3.5 配置标志
 
-| 标志 | 说明 |
-|---|---|
-| **常量** | 将该属性标记为常量——其值不随时间变化 |
-| **隐藏** | 在默认属性列表中隐藏该属性。隐藏属性仅在启用**显示隐藏属性**开关时可见。 |
-| **不包含** | 将该属性排除在分析和 AI 生成洞察之外 |
+<table>
+<colgroup><col style="width:6em"/><col/></colgroup>
+<thead><tr><th>标志</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>常量</strong></td><td>将该属性标记为常量——其值不随时间变化</td></tr>
+<tr><td><strong>隐藏</strong></td><td>在默认属性列表中隐藏该属性。隐藏属性仅在启用<strong>显示隐藏属性</strong>开关时可见。</td></tr>
+<tr><td><strong>不包含</strong></td><td>将该属性排除在分析和 AI 生成洞察之外</td></tr>
+</tbody>
+</table>
 
 ## 3.2.4 浏览属性
 
@@ -216,14 +232,18 @@ CONCAT('voltage of device ', ${attributes['Device ID']}, ' is ', CAST(${attribut
 
 属性列表中的 **⋮** 菜单还提供以下操作：
 
-| 操作 | 说明 |
-|---|---|
-| **查看** | 打开属性详情视图 |
-| **复制** | 复制属性配置。复制的属性可粘贴为同一元素或其他元素上的新属性。 |
-| **上移 / 下移** | 在列表中调整属性顺序 |
-| **添加数据条目** | TDengine Metric 属性特有操作，手动录入一个测点，录入的数据将插入到属性引用的 TSDB 表中 |
-| **添加到趋势图** | 快速将该属性添加到新的趋势图面板 |
-| **历史值** | 查看该属性的历史时序数据 |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>操作</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>查看</strong></td><td>打开属性详情视图</td></tr>
+<tr><td><strong>复制</strong></td><td>复制属性配置。复制的属性可粘贴为同一元素或其他元素上的新属性。</td></tr>
+<tr><td><strong>上移 / 下移</strong></td><td>在列表中调整属性顺序</td></tr>
+<tr><td><strong>添加数据条目</strong></td><td>TDengine Metric 属性特有操作，手动录入一个测点，录入的数据将插入到属性引用的 TSDB 表中</td></tr>
+<tr><td><strong>添加到趋势图</strong></td><td>快速将该属性添加到新的趋势图面板</td></tr>
+<tr><td><strong>历史值</strong></td><td>查看该属性的历史时序数据</td></tr>
+</tbody>
+</table>
 
 ## 3.2.9 表达式编辑器
 
@@ -231,13 +251,17 @@ CONCAT('voltage of device ', ${attributes['Device ID']}, ' is ', CAST(${attribut
 
 ### 3.2.9.1 表达式的使用场景
 
-| 使用位置 | 用途 |
-|---|---|
-| **公式属性** — 数据引用设置 | 定义由同一元素其他属性推导而来的计算属性值 |
-| **字符串构建器属性** — 数据引用设置 | 通过字符串函数组合属性值，构建字符串 |
-| **分析** — 输出属性，表达式列 | 每次分析触发时，计算并写入元素或事件属性的结果 |
-| **分析** — 触发条件，预过滤 | 在触发条件评估前过滤数据行 |
-| **分析** — 事件窗口触发，开始/结束条件 | 定义事件窗口的开启和关闭时机 |
+<table>
+<colgroup><col style="width:20em"/><col/></colgroup>
+<thead><tr><th>使用位置</th><th>用途</th></tr></thead>
+<tbody>
+<tr><td><strong>公式属性</strong> — 数据引用设置</td><td>定义由同一元素其他属性推导而来的计算属性值</td></tr>
+<tr><td><strong>字符串构建器属性</strong> — 数据引用设置</td><td>通过字符串函数组合属性值，构建字符串</td></tr>
+<tr><td><strong>分析</strong> — 输出属性，表达式列</td><td>每次分析触发时，计算并写入元素或事件属性的结果</td></tr>
+<tr><td><strong>分析</strong> — 触发条件，预过滤</td><td>在触发条件评估前过滤数据行</td></tr>
+<tr><td><strong>分析</strong> — 事件窗口触发，开始/结束条件</td><td>定义事件窗口的开启和关闭时机</td></tr>
+</tbody>
+</table>
 
 ### 3.2.9.2 表达式编辑器布局
 
@@ -245,12 +269,16 @@ CONCAT('voltage of device ', ${attributes['Device ID']}, ' is ', CAST(${attribut
 
 **属性面板（左侧）** — 浏览并将元素属性插入表达式。属性按以下分组展示：
 
-| 分组 | 内容 |
-|---|---|
-| **指标** | 时序指标属性（如电流、电压、功率） |
-| **标签** | 标签（维度）属性——静态元数据字段 |
-| **其他属性** | 元素上定义的其他属性 |
-| **替换参数** | 系统级替换值，如 `TIME`（当前本地时间毫秒数）、当前元素名、属性名和模板名 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>分组</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td><strong>指标</strong></td><td>时序指标属性（如电流、电压、功率）</td></tr>
+<tr><td><strong>标签</strong></td><td>标签（维度）属性——静态元数据字段</td></tr>
+<tr><td><strong>其他属性</strong></td><td>元素上定义的其他属性</td></tr>
+<tr><td><strong>替换参数</strong></td><td>系统级替换值，如 <code>TIME</code>（当前本地时间毫秒数）、当前元素名、属性名和模板名</td></tr>
+</tbody>
+</table>
 
 顶部的**过滤**输入框可按名称搜索。点击属性或参数，将其插入表达式的光标位置。
 
@@ -264,15 +292,19 @@ CONCAT('voltage of device ', ${attributes['Device ID']}, ' is ', CAST(${attribut
 
 ### 3.2.9.3 函数分类
 
-| 分类 | 示例函数 |
-|---|---|
-| **数学函数** | ABS, CEIL, FLOOR, ROUND, SQRT, LOG, POW, SIN, COS, ... |
-| **字符串函数** | CONCAT, LENGTH, LOWER, UPPER, SUBSTR, TRIM, LTRIM, RTRIM, ... |
-| **转换函数** | CAST, TO\_ISO8601, TO\_TIMESTAMP, ... |
-| **时间和日期函数** | NOW, TODAY, TIMEZONE, TIMETRUNCATE, ... |
-| **聚合函数** | AVG, COUNT, SUM, STDDEV, STDDEV\_POP, PERCENTILE, SPREAD, ELAPSED, HISTOGRAM, ... |
-| **选择函数** | MAX, MIN, FIRST, LAST, LAST\_ROW, TOP, BOTTOM, UNIQUE, MODE, SAMPLE, ... |
-| **时序专用函数** | MAVG, DERIVATIVE, DIFF, IRATE, CSUM, INTERP, TWA, STATECOUNT, STATEDURATION, ... |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>分类</th><th>示例函数</th></tr></thead>
+<tbody>
+<tr><td><strong>数学函数</strong></td><td>ABS, CEIL, FLOOR, ROUND, SQRT, LOG, POW, SIN, COS, ...</td></tr>
+<tr><td><strong>字符串函数</strong></td><td>CONCAT, LENGTH, LOWER, UPPER, SUBSTR, TRIM, LTRIM, RTRIM, ...</td></tr>
+<tr><td><strong>转换函数</strong></td><td>CAST, TO\_ISO8601, TO\_TIMESTAMP, ...</td></tr>
+<tr><td><strong>时间和日期函数</strong></td><td>NOW, TODAY, TIMEZONE, TIMETRUNCATE, ...</td></tr>
+<tr><td><strong>聚合函数</strong></td><td>AVG, COUNT, SUM, STDDEV, STDDEV\_POP, PERCENTILE, SPREAD, ELAPSED, HISTOGRAM, ...</td></tr>
+<tr><td><strong>选择函数</strong></td><td>MAX, MIN, FIRST, LAST, LAST\_ROW, TOP, BOTTOM, UNIQUE, MODE, SAMPLE, ...</td></tr>
+<tr><td><strong>时序专用函数</strong></td><td>MAVG, DERIVATIVE, DIFF, IRATE, CSUM, INTERP, TWA, STATECOUNT, STATEDURATION, ...</td></tr>
+</tbody>
+</table>
 
 ### 3.2.9.4 评估表达式
 
@@ -293,31 +325,39 @@ CONCAT('voltage of device ', ${attributes['Device ID']}, ' is ', CAST(${attribut
 
 ### 3.2.10.2 属性模板字段
 
-| 字段 | 说明 |
-|---|---|
-| **名称** | 属性名称 |
-| **描述** | 可选描述 |
-| **配置** | 附加配置标志（如隐藏、常量） |
-| **类别** | 类别标签 |
-| **值类型** | 数据类型：Float、Int、Varchar、Bool 等 |
-| **默认值** | 可选默认值 |
-| **默认计量单位** | 存储时使用的计量单位 |
-| **显示计量单位** | UI 中显示时使用的计量单位（可与存储单位不同） |
-| **显示精度** | UI 中显示的小数位数 |
-| **数据引用类型** | 属性与 TDengine TSDB 数据的绑定方式（见下文） |
-| **数据引用设置** | 解析后的绑定路径，如 `TDengine/idmp_sample_utility/${KEYWORD1}/current` |
-| **极限值配置** | 可选的高/低报警阈值 |
-| **预测配置** | 可选的 TDgpt 预测配置 |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>字段</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong></td><td>属性名称</td></tr>
+<tr><td><strong>描述</strong></td><td>可选描述</td></tr>
+<tr><td><strong>配置</strong></td><td>附加配置标志（如隐藏、常量）</td></tr>
+<tr><td><strong>类别</strong></td><td>类别标签</td></tr>
+<tr><td><strong>值类型</strong></td><td>数据类型：Float、Int、Varchar、Bool 等</td></tr>
+<tr><td><strong>默认值</strong></td><td>可选默认值</td></tr>
+<tr><td><strong>默认计量单位</strong></td><td>存储时使用的计量单位</td></tr>
+<tr><td><strong>显示计量单位</strong></td><td>UI 中显示时使用的计量单位（可与存储单位不同）</td></tr>
+<tr><td><strong>显示精度</strong></td><td>UI 中显示的小数位数</td></tr>
+<tr><td><strong>数据引用类型</strong></td><td>属性与 TDengine TSDB 数据的绑定方式（见下文）</td></tr>
+<tr><td><strong>数据引用设置</strong></td><td>解析后的绑定路径，如 <code>TDengine/idmp_sample_utility/${KEYWORD1}/current</code></td></tr>
+<tr><td><strong>极限值配置</strong></td><td>可选的高/低报警阈值</td></tr>
+<tr><td><strong>预测配置</strong></td><td>可选的 TDgpt 预测配置</td></tr>
+</tbody>
+</table>
 
 ### 3.2.10.3 数据引用绑定
 
 **数据引用类型**决定属性如何连接到 TDengine TSDB 中的时序数据：
 
-| 数据引用类型 | 用途 |
-|---|---|
-| **无** | 无 TSDB 绑定——属性仅保存静态或计算值。 |
-| **TDengine 指标** | 将属性绑定到 TDengine 超级表中的时序指标列。 |
-| **TDengine 标签** | 将属性绑定到 TDengine 超级表中的标签列。 |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>数据引用类型</th><th>用途</th></tr></thead>
+<tbody>
+<tr><td><strong>无</strong></td><td>无 TSDB 绑定——属性仅保存静态或计算值。</td></tr>
+<tr><td><strong>TDengine 指标</strong></td><td>将属性绑定到 TDengine 超级表中的时序指标列。</td></tr>
+<tr><td><strong>TDengine 标签</strong></td><td>将属性绑定到 TDengine 超级表中的标签列。</td></tr>
+</tbody>
+</table>
 
 选择 **TDengine 指标**或 **TDengine 标签**后，通过指定 TDengine 连接、数据库、子表名（使用 `${KEYWORD1}` 等替换字符串，使每个元素绑定到各自的表）和列名来配置绑定。数据引用设置的形式为：
 

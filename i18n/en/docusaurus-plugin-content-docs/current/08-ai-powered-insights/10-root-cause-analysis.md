@@ -46,10 +46,16 @@ The final report is a structured document that includes:
 
 ## 8.10.4 Panel Controls
 
-| Control | Description |
-|---|---|
-| **Refresh icon** | Re-run the root cause analysis for this event |
-| **Close (X)** | Close the RCA panel and return to the standard event detail view |
+The RCA panel provides the following controls for managing the analysis session.
+
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Refresh icon</strong></td><td>Re-run the root cause analysis for this event</td></tr>
+<tr><td><strong>Close (X)</strong></td><td>Close the RCA panel and return to the standard event detail view</td></tr>
+</tbody>
+</table>
 
 :::note
 Root Cause Analysis is a new feature introduced in TDengine IDMP 1.0.14. Additional entry points for RCA (such as from dashboards and the AI Chat interface) are planned for future releases.

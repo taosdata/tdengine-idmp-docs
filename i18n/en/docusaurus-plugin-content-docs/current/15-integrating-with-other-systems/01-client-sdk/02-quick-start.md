@@ -130,6 +130,8 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 
 ## 15.1.2.5 Next Steps
 
+The following resources cover the topics most commonly needed after completing this quick start.
+
 - Understand all authentication options including cloud service auth → [Authentication](./03-authentication.md)
 - Understand the core objects in the SDK → [Core Concepts](./04-core-concepts.md)
 - Browse the full API reference → [API Reference](./05-api-reference/index.md)

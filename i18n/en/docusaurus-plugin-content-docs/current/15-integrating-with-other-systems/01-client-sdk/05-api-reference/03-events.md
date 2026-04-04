@@ -13,12 +13,18 @@ import IdmpSdkVersion from "/src/components/IdmpSdkVersion";
 
 ## Method List
 
-| Method | HTTP | Description |
-|---|---|---|
-| `apiV1EventsGet` | GET /api/v1/events | Paginated query of the event list |
-| `apiV1EventsIdGet` | GET /api/v1/events/\{id\} | Get a single event by ID |
-| `apiV1EventsIdAcknowledgePut` | PUT /api/v1/events/\{id\}/acknowledge | Acknowledge an event |
-| `apiV1EventsIdResolvePut` | PUT /api/v1/events/\{id\}/resolve | Resolve an event |
+The following methods are available on `EventResourceApi`.
+
+<table>
+<colgroup><col style="width:17em"/><col/><col/></colgroup>
+<thead><tr><th>Method</th><th>HTTP</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>apiV1EventsGet</code></td><td>GET /api/v1/events</td><td>Paginated query of the event list</td></tr>
+<tr><td><code>apiV1EventsIdGet</code></td><td>GET /api/v1/events/\{id\}</td><td>Get a single event by ID</td></tr>
+<tr><td><code>apiV1EventsIdAcknowledgePut</code></td><td>PUT /api/v1/events/\{id\}/acknowledge</td><td>Acknowledge an event</td></tr>
+<tr><td><code>apiV1EventsIdResolvePut</code></td><td>PUT /api/v1/events/\{id\}/resolve</td><td>Resolve an event</td></tr>
+</tbody>
+</table>
 
 ---
 
@@ -28,15 +34,19 @@ Returns a paginated list of events with optional filtering by time range, status
 
 ### Parameters
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| from | long | No | Start time, Unix millisecond timestamp |
-| to | long | No | End time, Unix millisecond timestamp |
-| status | string | No | Event status: `active`, `acknowledged`, `resolved` |
-| severity | string | No | Severity level: `critical`, `warning`, `info` |
-| elementId | string | No | Filter by element ID |
-| pageNum | integer | No | Page number |
-| pageSize | integer | No | Records per page |
+<table>
+<colgroup><col style="width:7em"/><col/><col/><col/></colgroup>
+<thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>from</td><td>long</td><td>No</td><td>Start time, Unix millisecond timestamp</td></tr>
+<tr><td>to</td><td>long</td><td>No</td><td>End time, Unix millisecond timestamp</td></tr>
+<tr><td>status</td><td>string</td><td>No</td><td>Event status: <code>active</code>, <code>acknowledged</code>, <code>resolved</code></td></tr>
+<tr><td>severity</td><td>string</td><td>No</td><td>Severity level: <code>critical</code>, <code>warning</code>, <code>info</code></td></tr>
+<tr><td>elementId</td><td>string</td><td>No</td><td>Filter by element ID</td></tr>
+<tr><td>pageNum</td><td>integer</td><td>No</td><td>Page number</td></tr>
+<tr><td>pageSize</td><td>integer</td><td>No</td><td>Records per page</td></tr>
+</tbody>
+</table>
 
 ### Example
 

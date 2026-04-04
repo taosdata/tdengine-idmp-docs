@@ -11,12 +11,16 @@ sidebar_label: 系统配置
 
 基本配置包含系统级设置：
 
-| 设置项 | 说明 |
-|---|---|
-| **语言** | 界面的默认显示语言 |
-| **启用用户行为采集** | 是否收集匿名使用数据以改进产品 |
-| **上传崩溃报告** | 是否自动上传崩溃报告 |
-| **自动刷新资源浏览器** | 元素变化时，资产浏览器是否自动刷新 |
+<table>
+<colgroup><col style="width:12em"/><col/></colgroup>
+<thead><tr><th>设置项</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>语言</strong></td><td>界面的默认显示语言</td></tr>
+<tr><td><strong>启用用户行为采集</strong></td><td>是否收集匿名使用数据以改进产品</td></tr>
+<tr><td><strong>上传崩溃报告</strong></td><td>是否自动上传崩溃报告</td></tr>
+<tr><td><strong>自动刷新资源浏览器</strong></td><td>元素变化时，资产浏览器是否自动刷新</td></tr>
+</tbody>
+</table>
 
 点击编辑（铅笔）图标可修改这些设置。
 
@@ -26,12 +30,16 @@ sidebar_label: 系统配置
 
 创建联系人时，点击 **+** 并填写以下信息：
 
-| 字段 | 说明 |
-|---|---|
-| **名称** | 该联系人的唯一名称 |
-| **通知类型** | 发送渠道：`邮件`、`飞书` 或 `Webhook` |
-| **地址** | 目标地址——电子邮件地址、飞书 Webhook URL 或 HTTP 端点 |
-| **描述** | 可选描述 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>字段</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong></td><td>该联系人的唯一名称</td></tr>
+<tr><td><strong>通知类型</strong></td><td>发送渠道：<code>邮件</code>、<code>飞书</code> 或 <code>Webhook</code></td></tr>
+<tr><td><strong>地址</strong></td><td>目标地址——电子邮件地址、飞书 Webhook URL 或 HTTP 端点</td></tr>
+<tr><td><strong>描述</strong></td><td>可选描述</td></tr>
+</tbody>
+</table>
 
 由于支持 Webhook，几乎任何通知目标均可配置，包括 Teams、钉钉、PagerDuty 以及其他接受 HTTP 回调的系统。
 
@@ -47,15 +55,19 @@ IDMP 内置了常见通知场景的模板。点击模板名称可查看或编辑
 
 邮件配置定义 IDMP 用于发送外发邮件的 SMTP 服务器。点击编辑（铅笔）图标更新设置。
 
-| 字段 | 说明 |
-|---|---|
-| **主机** | SMTP 服务器主机名或 IP 地址 |
-| **端口** | SMTP 服务器端口（如：465 用于 TLS，587 用于 STARTTLS，25 用于非加密） |
-| **用户名** | SMTP 认证用户名 |
-| **密码** | SMTP 认证密码 |
-| **发件人** | 外发邮件使用的"发件人"电子邮件地址 |
-| **启用 TLS** | 是否对 SMTP 连接使用 TLS 加密 |
-| **启用认证** | 是否需要 SMTP 认证 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>字段</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>主机</strong></td><td>SMTP 服务器主机名或 IP 地址</td></tr>
+<tr><td><strong>端口</strong></td><td>SMTP 服务器端口（如：465 用于 TLS，587 用于 STARTTLS，25 用于非加密）</td></tr>
+<tr><td><strong>用户名</strong></td><td>SMTP 认证用户名</td></tr>
+<tr><td><strong>密码</strong></td><td>SMTP 认证密码</td></tr>
+<tr><td><strong>发件人</strong></td><td>外发邮件使用的"发件人"电子邮件地址</td></tr>
+<tr><td><strong>启用 TLS</strong></td><td>是否对 SMTP 连接使用 TLS 加密</td></tr>
+<tr><td><strong>启用认证</strong></td><td>是否需要 SMTP 认证</td></tr>
+</tbody>
+</table>
 
 IDMP 在多种场景下发送邮件：系统激活（验证码）、用户邀请、密码重置和事件告警通知。默认情况下，IDMP 使用涛思数据提供的邮件服务。
 
@@ -69,12 +81,16 @@ docker run -d -p 1025:1025 -p 8025:8025 --name mailhog mailhog/mailhog:v1.0.1
 
 启动 MailHog 后，按以下信息配置邮件配置：
 
-| 字段 | 值 |
-|---|---|
-| 主机 | 宿主机 IP（或同一 Docker Compose 网络中的服务名） |
-| 端口 | `1025` |
-| 用户名 / 密码 | 任意值（MailHog 默认禁用认证） |
-| 启用 TLS / 启用认证 | 不勾选 |
-| 发件人 | 任意有效邮件格式（如 `support@example.com`） |
+<table>
+<colgroup><col style="width:12em"/><col/></colgroup>
+<thead><tr><th>字段</th><th>值</th></tr></thead>
+<tbody>
+<tr><td>主机</td><td>宿主机 IP（或同一 Docker Compose 网络中的服务名）</td></tr>
+<tr><td>端口</td><td><code>1025</code></td></tr>
+<tr><td>用户名 / 密码</td><td>任意值（MailHog 默认禁用认证）</td></tr>
+<tr><td>启用 TLS / 启用认证</td><td>不勾选</td></tr>
+<tr><td>发件人</td><td>任意有效邮件格式（如 <code>support@example.com</code>）</td></tr>
+</tbody>
+</table>
 
 在 `http://<服务器IP>:8025` 访问 MailHog Web 界面以查看捕获的邮件。

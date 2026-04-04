@@ -23,13 +23,17 @@ To add or edit an AI connection:
 2. Click **+ Add Connection** and select the **AI** connection type.
 3. Fill in the connection fields:
 
-| Field | Description |
-|---|---|
-| **Connection Name** | A unique name to identify this AI connection |
-| **API Endpoint** | The base URL of the OpenAI-compatible API (e.g., `https://api.openai.com/v1`) |
-| **API Key** | The authentication key for the API. Leave blank for local deployments that do not require authentication. |
-| **Q&A Model** | The model used for standard natural language queries and panel/analysis generation (e.g., `gpt-4o`) |
-| **Deep Thinking Model** | The model used for complex analytical tasks that require extended reasoning, such as root cause analysis (e.g., `o1` or `o3`) |
+<table>
+<colgroup><col style="width:13em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Connection Name</strong></td><td>A unique name to identify this AI connection</td></tr>
+<tr><td><strong>API Endpoint</strong></td><td>The base URL of the OpenAI-compatible API (e.g., <code>https://api.openai.com/v1</code>)</td></tr>
+<tr><td><strong>API Key</strong></td><td>The authentication key for the API. Leave blank for local deployments that do not require authentication.</td></tr>
+<tr><td><strong>Q&A Model</strong></td><td>The model used for standard natural language queries and panel/analysis generation (e.g., <code>gpt-4o</code>)</td></tr>
+<tr><td><strong>Deep Thinking Model</strong></td><td>The model used for complex analytical tasks that require extended reasoning, such as root cause analysis (e.g., <code>o1</code> or <code>o3</code>)</td></tr>
+</tbody>
+</table>
 
 4. Click **Test Connection** to verify the endpoint and credentials.
 5. Click **Save**.

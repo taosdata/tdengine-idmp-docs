@@ -29,11 +29,15 @@ For time-series trend analysis, use the Trend Chart. For non-geographic comparis
 
 In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Map Chart adds:
 
-| Control | Description |
-|---|---|
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Save as Image</strong></td><td>Download the current preview as a PNG image</td></tr>
+<tr><td><strong>Full Screen</strong></td><td>Expand the editor preview to fill the browser window</td></tr>
+<tr><td><strong>Panel Insights</strong></td><td>Run AI analysis on the current preview data</td></tr>
+</tbody>
+</table>
 
 ### Graph Settings
 
@@ -51,11 +55,15 @@ The color gradient for the choropleth is configured through the **Map Display** 
 
 ![Map display color scale configuration](../images/map-data.png)
 
-| Setting | Description |
-|---|---|
-| **Map GeoJSON** | Upload or edit the GeoJSON file defining region boundaries |
-| **Map Display** | Color scale: **Min** (value and color for the low end), **Middle** (color at midpoint), **Max** (value and color for the high end). Click color swatches to change them. |
-| **Display Labels** | Toggle: show region name labels on the map |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Map GeoJSON</strong></td><td>Upload or edit the GeoJSON file defining region boundaries</td></tr>
+<tr><td><strong>Map Display</strong></td><td>Color scale: <strong>Min</strong> (value and color for the low end), <strong>Middle</strong> (color at midpoint), <strong>Max</strong> (value and color for the high end). Click color swatches to change them.</td></tr>
+<tr><td><strong>Display Labels</strong></td><td>Toggle: show region name labels on the map</td></tr>
+</tbody>
+</table>
 
 ## 4.2.14.4 Example Scenarios
 

@@ -12,6 +12,8 @@ TDengine IDMP is offered as a Docker Compose setup to make deployment easy. This
 
 ## 2.2.1 Environment Requirements
 
+The following software and conditions must be in place before starting the Docker-based deployment.
+
 - Ensure that your local machine meets the minimum system requirements for TDengine IDMP. See [Planning](../14-administration/02-planning.md).
 - Install Git on your local machine. See [the official Git website](https://git-scm.com) to download the installer.
 - Install Docker Desktop on your local machine and ensure that it is running. See [the official Docker website](https://www.docker.com/) to download the installer.
@@ -109,6 +111,8 @@ TDengine IDMP is offered as a Docker Compose setup to make deployment easy. This
 5. In the **Privacy Settings** dialog, select which diagnostic information you want to share with TDengine, then click **Agree**.
 
 ## 2.2.4 Enter Account Information
+
+The following steps collect profile details for the initial administrator account.
 
 1. Enter your name, phone number, position, and password.
 

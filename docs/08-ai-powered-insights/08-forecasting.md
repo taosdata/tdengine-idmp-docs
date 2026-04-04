@@ -22,18 +22,26 @@ IDMP 支持由 **TDgpt** 驱动的 AI 时序预测。预测根据元素属性的
 3. 展开**预测配置**部分。
 4. 选择预测提供方：
 
-| 选项 | 说明 |
-|---|---|
-| **TDgpt** | 使用 TDengine 内置时序预测引擎。选择预测算法并配置预测范围（预测多远的未来）。 |
-| **外部** | 通过已配置的端点连接外部预测服务。 |
-| **无** | 不预测（默认）。 |
+<table>
+<colgroup><col style="width:5em"/><col/></colgroup>
+<thead><tr><th>选项</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>TDgpt</strong></td><td>使用 TDengine 内置时序预测引擎。选择预测算法并配置预测范围（预测多远的未来）。</td></tr>
+<tr><td><strong>外部</strong></td><td>通过已配置的端点连接外部预测服务。</td></tr>
+<tr><td><strong>无</strong></td><td>不预测（默认）。</td></tr>
+</tbody>
+</table>
 
 5. 选择 **TDgpt** 时，配置：
 
-| 字段 | 说明 |
-|---|---|
-| **算法** | 预测算法（见下文） |
-| **预测行数** | 要预测的未来数据点数量 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>字段</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>算法</strong></td><td>预测算法（见下文）</td></tr>
+<tr><td><strong>预测行数</strong></td><td>要预测的未来数据点数量</td></tr>
+</tbody>
+</table>
 
 6. 点击**保存**。
 
@@ -41,12 +49,16 @@ IDMP 支持由 **TDgpt** 驱动的 AI 时序预测。预测根据元素属性的
 
 TDgpt 提供多种预测算法：
 
-| 算法 | 特点 |
-|---|---|
-| **ARIMA** | 经典统计模型，适用于具有趋势和季节性成分的平稳时间序列 |
-| **HoltWinters** | 带趋势和季节性分解的指数平滑——适合规律性周期模式 |
-| **LSTM** | 基于 PyTorch 的 LSTM 神经网络——捕获复杂的非线性时序依赖关系 |
-| **TDtsfm** | TDengine 时序基础模型，在多样化工业时序数据上预训练，支持零样本和微调预测 |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>算法</th><th>特点</th></tr></thead>
+<tbody>
+<tr><td><strong>ARIMA</strong></td><td>经典统计模型，适用于具有趋势和季节性成分的平稳时间序列</td></tr>
+<tr><td><strong>HoltWinters</strong></td><td>带趋势和季节性分解的指数平滑——适合规律性周期模式</td></tr>
+<tr><td><strong>LSTM</strong></td><td>基于 PyTorch 的 LSTM 神经网络——捕获复杂的非线性时序依赖关系</td></tr>
+<tr><td><strong>TDtsfm</strong></td><td>TDengine 时序基础模型，在多样化工业时序数据上预训练，支持零样本和微调预测</td></tr>
+</tbody>
+</table>
 
 ## 8.8.3 在趋势图中查看和切换预测
 
@@ -57,6 +69,8 @@ TDgpt 提供多种预测算法：
 预测结果可通过 TDengine SQL 的 `FORECAST` 函数以编程方式访问，该函数返回配置的未来行数的预测值。
 
 ## 8.8.4 使用场景
+
+时序预测功能适用于多种工业场景，以下列举典型应用方向，供规划和配置时参考。
 
 - **能源管理：** 预测未来 24 小时的电力消耗，以优化负荷调度。
 - **预测性维护：** 预测温度或振动趋势，提前预判数值将何时突破阈值。

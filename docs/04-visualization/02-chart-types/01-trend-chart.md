@@ -32,26 +32,34 @@ sidebar_label: 趋势图
 
 除[通用查看模式控件](../01-panels.md#413-面板查看模式)外，趋势图还增加了以下控件：
 
-| 控件 | 说明 |
-|---|---|
-| **启用多泳道** | 将每个指标显示在各自的水平带中，而不是共享一个 Y 轴 |
-| **禁用采样** | 获取未降采样的原始数据。当需要查看每个单独数据点时使用。 |
-| **填补** | 进入填补模式。点击并拖动选择数据中的缺口；IDMP 使用基于 AI 的趋势估算填充该缺口。 |
-| **重置填补** | 移除当前图表上已应用的任何填补 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>启用多泳道</strong></td><td>将每个指标显示在各自的水平带中，而不是共享一个 Y 轴</td></tr>
+<tr><td><strong>禁用采样</strong></td><td>获取未降采样的原始数据。当需要查看每个单独数据点时使用。</td></tr>
+<tr><td><strong>填补</strong></td><td>进入填补模式。点击并拖动选择数据中的缺口；IDMP 使用基于 AI 的趋势估算填充该缺口。</td></tr>
+<tr><td><strong>重置填补</strong></td><td>移除当前图表上已应用的任何填补</td></tr>
+</tbody>
+</table>
 
 ### 编辑模式工具栏
 
 除[通用编辑模式控件](../01-panels.md#414-面板编辑模式)外，趋势图还增加了以下控件：
 
-| 控件 | 说明 |
-|---|---|
-| **禁用采样** | 为预览切换原始数据模式 |
-| **显示预测** | 在图表预览上叠加 AI 预测 |
-| **填补** | 在预览中进入填补模式 |
-| **重置填补** | 从预览中移除填补 |
-| **保存为图片** | 将当前预览下载为 PNG 图片 |
-| **全屏** | 将编辑器预览扩展为填满浏览器窗口 |
-| **解读面板** | 对当前预览数据运行 AI 分析 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>禁用采样</strong></td><td>为预览切换原始数据模式</td></tr>
+<tr><td><strong>显示预测</strong></td><td>在图表预览上叠加 AI 预测</td></tr>
+<tr><td><strong>填补</strong></td><td>在预览中进入填补模式</td></tr>
+<tr><td><strong>重置填补</strong></td><td>从预览中移除填补</td></tr>
+<tr><td><strong>保存为图片</strong></td><td>将当前预览下载为 PNG 图片</td></tr>
+<tr><td><strong>全屏</strong></td><td>将编辑器预览扩展为填满浏览器窗口</td></tr>
+<tr><td><strong>解读面板</strong></td><td>对当前预览数据运行 AI 分析</td></tr>
+</tbody>
+</table>
 
 ### 图形设置
 
@@ -69,13 +77,17 @@ sidebar_label: 趋势图
 
 **填充透明度**在每条折线下方绘制阴影区域。这对于累积量——能耗、产量——特别有效，填充区域强化了累积感。
 
-| 设置 | 说明 |
-|---|---|
-| **样式** | 折线渲染模式：折线、平滑曲线或阶梯 |
-| **线条样式** | 折线图案：实线、虚线或点线 |
-| **线条宽度** | 描边宽度（滑块） |
-| **线条透明度** | 折线的透明度，0–1 |
-| **填充透明度** | 每条折线下方的区域填充，0–1（0 = 无填充） |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>样式</strong></td><td>折线渲染模式：折线、平滑曲线或阶梯</td></tr>
+<tr><td><strong>线条样式</strong></td><td>折线图案：实线、虚线或点线</td></tr>
+<tr><td><strong>线条宽度</strong></td><td>描边宽度（滑块）</td></tr>
+<tr><td><strong>线条透明度</strong></td><td>折线的透明度，0–1</td></tr>
+<tr><td><strong>填充透明度</strong></td><td>每条折线下方的区域填充，0–1（0 = 无填充）</td></tr>
+</tbody>
+</table>
 
 #### 标签
 
@@ -93,10 +105,14 @@ sidebar_label: 趋势图
 
 ![降低标签间隔以减少密度](../images/trend-interval.png)
 
-| 设置 | 说明 |
-|---|---|
-| **标签旋转** | X 轴标签的旋转角度，–90° 至 +90° |
-| **标签间隔** | 标签密度：自动、小、中、大 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>标签旋转</strong></td><td>X 轴标签的旋转角度，–90° 至 +90°</td></tr>
+<tr><td><strong>标签间隔</strong></td><td>标签密度：自动、小、中、大</td></tr>
+</tbody>
+</table>
 
 #### 数据堆叠
 
@@ -106,10 +122,14 @@ sidebar_label: 趋势图
 
 在启用堆叠的同时开启填充透明度，可使累积效果在视觉上更加清晰。
 
-| 设置 | 说明 |
-|---|---|
-| **系列堆叠** | 堆叠模式：无、同符号、全部、正值、负值 |
-| **多泳道** | 将每个指标显示在各自的水平带中 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>系列堆叠</strong></td><td>堆叠模式：无、同符号、全部、正值、负值</td></tr>
+<tr><td><strong>多泳道</strong></td><td>将每个指标显示在各自的水平带中</td></tr>
+</tbody>
+</table>
 
 ### 坐标轴设置
 
@@ -129,11 +149,15 @@ sidebar_label: 趋势图
 
 ![双 Y 轴——每个指标使用各自的刻度](../images/trend-bothY.png)
 
-| 设置 | 说明 |
-|---|---|
-| **左 Y 轴标题** | 左 Y 轴的标签 |
-| **数值范围** | 左 Y 轴的最小值和最大值（留空 = 自动缩放） |
-| **右坐标轴** | 启用右侧辅助 Y 轴 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>左 Y 轴标题</strong></td><td>左 Y 轴的标签</td></tr>
+<tr><td><strong>数值范围</strong></td><td>左 Y 轴的最小值和最大值（留空 = 自动缩放）</td></tr>
+<tr><td><strong>右坐标轴</strong></td><td>启用右侧辅助 Y 轴</td></tr>
+</tbody>
+</table>
 
 ### 边界值设置
 
@@ -149,11 +173,15 @@ sidebar_label: 趋势图
 
 ![表格模式下显示每个系列最小值、最大值和平均值的图例](../images/trend-legend.png)
 
-| 设置 | 说明 |
-|---|---|
-| **显示** | 显示模式：列表、表格或隐藏 |
-| **位置** | 放置位置：底部或右侧 |
-| **图例值** | 在表格模式下显示的统计数据：最新值、最小值、最大值、平均值、总计等 |
+<table>
+<colgroup><col style="width:6em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>显示</strong></td><td>显示模式：列表、表格或隐藏</td></tr>
+<tr><td><strong>位置</strong></td><td>放置位置：底部或右侧</td></tr>
+<tr><td><strong>图例值</strong></td><td>在表格模式下显示的统计数据：最新值、最小值、最大值、平均值、总计等</td></tr>
+</tbody>
+</table>
 
 ## 4.2.1.4 使用示例
 

@@ -25,10 +25,14 @@ Together these integration points mean that IDMP data can flow freely into AI mo
 
 ## What This Chapter Covers
 
-| Section | Description |
-|---|---|
-| **Client SDK** | Java and Python SDKs for programmatic access to elements, metrics, and events |
-| **MCP Interface** | LLM agent integration via the Model Context Protocol *(coming soon)* |
-| **Embedding Panels and Dashboards** | Embed IDMP visualizations in external web applications |
+<table>
+<colgroup><col style="width:20em"/><col/></colgroup>
+<thead><tr><th>Section</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Client SDK</strong></td><td>Java and Python SDKs for programmatic access to elements, metrics, and events</td></tr>
+<tr><td><strong>MCP Interface</strong></td><td>LLM agent integration via the Model Context Protocol <em>(coming soon)</em></td></tr>
+<tr><td><strong>Embedding Panels and Dashboards</strong></td><td>Embed IDMP visualizations in external web applications</td></tr>
+</tbody>
+</table>
 
 <DocCardList />

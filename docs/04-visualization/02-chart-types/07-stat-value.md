@@ -29,24 +29,32 @@ sidebar_label: 统计值
 
 除[通用编辑模式控件](../01-panels.md#414-面板编辑模式)外，统计值还增加了以下控件：
 
-| 控件 | 说明 |
-|---|---|
-| **保存为图片** | 将当前预览下载为 PNG 图片 |
-| **全屏** | 将编辑器预览扩展为填满浏览器窗口 |
-| **解读面板** | 对当前预览数据运行 AI 分析 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>保存为图片</strong></td><td>将当前预览下载为 PNG 图片</td></tr>
+<tr><td><strong>全屏</strong></td><td>将编辑器预览扩展为填满浏览器窗口</td></tr>
+<tr><td><strong>解读面板</strong></td><td>对当前预览数据运行 AI 分析</td></tr>
+</tbody>
+</table>
 
 ### 图形设置
 
-| 设置 | 说明 |
-|---|---|
-| **布局** | **水平**（标签与数值并排）或**垂直**（标签在数值上方） |
-| **显示时间** | **开启：** 在数值下方显示该数据点的时间戳。**关闭：** 仅显示数值。 |
-| **名称字体大小** | 指标名称标签的字体大小（默认 16） |
-| **名称字体颜色** | 标签文字颜色 |
-| **数值字体大小** | 数值的字体大小（默认 48） |
-| **数值字体颜色** | 数值文字颜色 |
-| **背景颜色** | 面板背景颜色 |
-| **宽度** | 面板的固定像素宽度（留空则自动调整大小） |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>布局</strong></td><td><strong>水平</strong>（标签与数值并排）或<strong>垂直</strong>（标签在数值上方）</td></tr>
+<tr><td><strong>显示时间</strong></td><td><strong>开启：</strong> 在数值下方显示该数据点的时间戳。<strong>关闭：</strong> 仅显示数值。</td></tr>
+<tr><td><strong>名称字体大小</strong></td><td>指标名称标签的字体大小（默认 16）</td></tr>
+<tr><td><strong>名称字体颜色</strong></td><td>标签文字颜色</td></tr>
+<tr><td><strong>数值字体大小</strong></td><td>数值的字体大小（默认 48）</td></tr>
+<tr><td><strong>数值字体颜色</strong></td><td>数值文字颜色</td></tr>
+<tr><td><strong>背景颜色</strong></td><td>面板背景颜色</td></tr>
+<tr><td><strong>宽度</strong></td><td>面板的固定像素宽度（留空则自动调整大小）</td></tr>
+</tbody>
+</table>
 
 ## 4.2.7.4 使用示例
 

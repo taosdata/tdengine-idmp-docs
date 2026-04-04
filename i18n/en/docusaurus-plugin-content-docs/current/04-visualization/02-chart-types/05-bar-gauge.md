@@ -30,29 +30,37 @@ For a single large numeric value without a scale reference, use the Stat Value p
 
 In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Bar Gauge adds:
 
-| Control | Description |
-|---|---|
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Save as Image</strong></td><td>Download the current preview as a PNG image</td></tr>
+<tr><td><strong>Full Screen</strong></td><td>Expand the editor preview to fill the browser window</td></tr>
+<tr><td><strong>Panel Insights</strong></td><td>Run AI analysis on the current preview data</td></tr>
+</tbody>
+</table>
 
 ### Graph Settings
 
 ![Bar Gauge configuration panel](../images/bar-gauge-config.png)
 
-| Setting | Description |
-|---|---|
-| **Title** | Chart title |
-| **Subtitle** | Secondary title |
-| **Orientation** | **Horizontal** (bar fills left to right) or **Vertical** (bar fills bottom to top) |
-| **Show Time** | **On** (display a timestamp on the bar) or **Off** |
-| **Display Mode** | Visual style: **Gradient** (smooth color transition), **Basic** (solid fill), **Retro LCD** (segmented display) |
-| **Value Display** | Numeric value color style: **Data Color** (overlaid on bar, colored to match threshold), **Text Color** (overlaid, plain text), **Hidden** |
-| **Name Placement** | Metric name position: **Auto**, **Top**, **Left**, or **Hidden** |
-| **Bar Size** | **Auto** (bar fills available space) or **Manual** (fixed pixel size) |
-| **Min** | Minimum value of the scale (default 0) |
-| **Max** | Maximum value of the scale (default 1) |
-| **Decimals** | Number of decimal places shown |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Title</strong></td><td>Chart title</td></tr>
+<tr><td><strong>Subtitle</strong></td><td>Secondary title</td></tr>
+<tr><td><strong>Orientation</strong></td><td><strong>Horizontal</strong> (bar fills left to right) or <strong>Vertical</strong> (bar fills bottom to top)</td></tr>
+<tr><td><strong>Show Time</strong></td><td><strong>On</strong> (display a timestamp on the bar) or <strong>Off</strong></td></tr>
+<tr><td><strong>Display Mode</strong></td><td>Visual style: <strong>Gradient</strong> (smooth color transition), <strong>Basic</strong> (solid fill), <strong>Retro LCD</strong> (segmented display)</td></tr>
+<tr><td><strong>Value Display</strong></td><td>Numeric value color style: <strong>Data Color</strong> (overlaid on bar, colored to match threshold), <strong>Text Color</strong> (overlaid, plain text), <strong>Hidden</strong></td></tr>
+<tr><td><strong>Name Placement</strong></td><td>Metric name position: <strong>Auto</strong>, <strong>Top</strong>, <strong>Left</strong>, or <strong>Hidden</strong></td></tr>
+<tr><td><strong>Bar Size</strong></td><td><strong>Auto</strong> (bar fills available space) or <strong>Manual</strong> (fixed pixel size)</td></tr>
+<tr><td><strong>Min</strong></td><td>Minimum value of the scale (default 0)</td></tr>
+<tr><td><strong>Max</strong></td><td>Maximum value of the scale (default 1)</td></tr>
+<tr><td><strong>Decimals</strong></td><td>Number of decimal places shown</td></tr>
+</tbody>
+</table>
 
 #### Display Mode
 
@@ -72,10 +80,14 @@ In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mo
 
 Thresholds define color bands along the bar. Each threshold specifies a value and a color; the bar changes color as the value crosses each boundary:
 
-| Setting | Description |
-|---|---|
-| **Thresholds** | Click **+ Add threshold** to define a boundary value and its color |
-| **Thresholds Mode** | **Absolute** (threshold values are raw data values) or **Percentage** (threshold values are percentages of the Min–Max range) |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Thresholds</strong></td><td>Click <strong>+ Add threshold</strong> to define a boundary value and its color</td></tr>
+<tr><td><strong>Thresholds Mode</strong></td><td><strong>Absolute</strong> (threshold values are raw data values) or <strong>Percentage</strong> (threshold values are percentages of the Min–Max range)</td></tr>
+</tbody>
+</table>
 
 ## 4.2.5.4 Example Scenarios
 

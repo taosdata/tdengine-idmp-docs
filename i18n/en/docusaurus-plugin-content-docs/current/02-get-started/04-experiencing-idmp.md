@@ -68,6 +68,8 @@ The following steps use the **Utilities** scenario as an example. If you did not
 
 ## 2.4.3 Try AI-Generated Panels
 
+IDMP automatically generates panel recommendations for each element based on its attributes and historical data patterns.
+
 1. Select the element **Utilities** > **California** > **San Diego County** > **Chula Vista** > **em-10**.
 2. In the context tab bar, select **Panels**. Five AI-recommended panels are displayed. Click **+ More Suggestions** to generate additional options.
 3. You can also request a panel in natural language using the input box below the recommendations. For example:
@@ -79,6 +81,8 @@ The following steps use the **Utilities** scenario as an example. If you did not
 ![AI-generated panels](../assets/get-started-02.png)
 
 ## 2.4.4 Try AI-Powered Analysis
+
+IDMP suggests analysis configurations tailored to each element's attributes, which can be reviewed and saved with minimal manual effort.
 
 1. Select the element **Utilities** > **California** > **San Diego County** > **Chula Vista** > **em-10**.
 2. In the context tab bar, select **Analyses**. Three AI-recommended questions are displayed.

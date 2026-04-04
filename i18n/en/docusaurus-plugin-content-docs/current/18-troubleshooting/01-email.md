@@ -21,11 +21,15 @@ Use this page when any of the following symptoms are observed:
 
 Before troubleshooting, separate the email flow into three different success states so that an HTTP success response is not mistaken for final delivery.
 
-| Success state | Meaning | Typical evidence |
-| --- | --- | --- |
-| API call succeeded | The backend accepted the HTTP request | HTTP `200` or a successful business response |
-| Application send flow succeeded | The application entered the email sending flow | Success logs appear in the application logs |
-| Final delivery succeeded | The downstream mail system accepted and delivered the message | The mailbox shows the message, or the SMTP provider shows successful delivery |
+<table>
+<colgroup><col style="width:20em"/><col/><col/></colgroup>
+<thead><tr><th>Success state</th><th>Meaning</th><th>Typical evidence</th></tr></thead>
+<tbody>
+<tr><td>API call succeeded</td><td>The backend accepted the HTTP request</td><td>HTTP <code>200</code> or a successful business response</td></tr>
+<tr><td>Application send flow succeeded</td><td>The application entered the email sending flow</td><td>Success logs appear in the application logs</td></tr>
+<tr><td>Final delivery succeeded</td><td>The downstream mail system accepted and delivered the message</td><td>The mailbox shows the message, or the SMTP provider shows successful delivery</td></tr>
+</tbody>
+</table>
 
 The first two states do not guarantee that the message reached the inbox.
 
@@ -39,11 +43,15 @@ Start with a real API request so that the full delivery chain is exercised, inst
 
 Common endpoints are listed below:
 
-| Scenario | Method | Path |
-| --- | --- | --- |
-| Password reset email | `POST` | `/api/v1/users/password-reset-email` |
-| Registration verification code | `POST` | `/api/v1/users/send/register-code` |
-| Login verification code | `POST` | `/api/v1/users/send/verifycode` |
+<table>
+<colgroup><col style="width:19em"/><col/><col/></colgroup>
+<thead><tr><th>Scenario</th><th>Method</th><th>Path</th></tr></thead>
+<tbody>
+<tr><td>Password reset email</td><td><code>POST</code></td><td><code>/api/v1/users/password-reset-email</code></td></tr>
+<tr><td>Registration verification code</td><td><code>POST</code></td><td><code>/api/v1/users/send/register-code</code></td></tr>
+<tr><td>Login verification code</td><td><code>POST</code></td><td><code>/api/v1/users/send/verifycode</code></td></tr>
+</tbody>
+</table>
 
 Password reset example:
 

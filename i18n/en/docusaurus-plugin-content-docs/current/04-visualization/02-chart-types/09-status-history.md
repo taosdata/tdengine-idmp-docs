@@ -27,27 +27,35 @@ For a continuous band showing every state transition in detail, use the State Ti
 
 In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Status History adds:
 
-| Control | Description |
-|---|---|
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Save as Image</strong></td><td>Download the current preview as a PNG image</td></tr>
+<tr><td><strong>Full Screen</strong></td><td>Expand the editor preview to fill the browser window</td></tr>
+<tr><td><strong>Panel Insights</strong></td><td>Run AI analysis on the current preview data</td></tr>
+</tbody>
+</table>
 
 ### Graph Settings
 
 ![Status History configuration panel](../images/status-history-config.png)
 
-| Setting | Description |
-|---|---|
-| **Title** | Chart title |
-| **Subtitle** | Secondary title |
-| **Value Mapping** | Define how data values map to display colors and labels — see section below |
-| **Border Width** | Width of the borders between cells (slider) |
-| **Row Height** | Relative height of each row (slider) |
-| **Column Width** | Width of each time-bucket column (slider) |
-| **Fill Opacity** | Transparency of the cell fill color, 0–1 |
-| **Rotate Labels** | Rotation of X-axis time labels: -90°, -45°, 0°, 45°, or 90° |
-| **Label Interval** | Display density of X-axis time labels: **Auto**, **Small**, **Medium**, **Large** |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Title</strong></td><td>Chart title</td></tr>
+<tr><td><strong>Subtitle</strong></td><td>Secondary title</td></tr>
+<tr><td><strong>Value Mapping</strong></td><td>Define how data values map to display colors and labels — see section below</td></tr>
+<tr><td><strong>Border Width</strong></td><td>Width of the borders between cells (slider)</td></tr>
+<tr><td><strong>Row Height</strong></td><td>Relative height of each row (slider)</td></tr>
+<tr><td><strong>Column Width</strong></td><td>Width of each time-bucket column (slider)</td></tr>
+<tr><td><strong>Fill Opacity</strong></td><td>Transparency of the cell fill color, 0–1</td></tr>
+<tr><td><strong>Rotate Labels</strong></td><td>Rotation of X-axis time labels: -90°, -45°, 0°, 45°, or 90°</td></tr>
+<tr><td><strong>Label Interval</strong></td><td>Display density of X-axis time labels: <strong>Auto</strong>, <strong>Small</strong>, <strong>Medium</strong>, <strong>Large</strong></td></tr>
+</tbody>
+</table>
 
 The time bucket size is controlled by the **Sliding Window** setting in the data configuration. For example, a 1-hour sliding window produces one column per hour.
 
@@ -57,13 +65,17 @@ Value mappings translate raw data values into display text and cell colors. Clic
 
 ![Edit Value Mappings dialog](../images/status-history-valuemapping.png)
 
-| Condition Type | Description |
-|---|---|
-| **Value** | Match a specific text or numeric value |
-| **Range** | Match a numeric range by specifying upper and lower bounds |
-| **Regex** | Match a regular expression and replace the displayed text |
-| **Special Value** | Match special states such as null, NaN, boolean, or empty values |
-| **Other Values** | Catch-all rule that matches any value not covered by earlier rules |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Condition Type</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Value</strong></td><td>Match a specific text or numeric value</td></tr>
+<tr><td><strong>Range</strong></td><td>Match a numeric range by specifying upper and lower bounds</td></tr>
+<tr><td><strong>Regex</strong></td><td>Match a regular expression and replace the displayed text</td></tr>
+<tr><td><strong>Special Value</strong></td><td>Match special states such as null, NaN, boolean, or empty values</td></tr>
+<tr><td><strong>Other Values</strong></td><td>Catch-all rule that matches any value not covered by earlier rules</td></tr>
+</tbody>
+</table>
 
 Each mapping rule can specify an optional **Display Text** and a **Color**. Rules are evaluated top-to-bottom; the first match wins.
 

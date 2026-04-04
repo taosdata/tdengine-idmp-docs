@@ -13,12 +13,18 @@ import IdmpSdkVersion from "/src/components/IdmpSdkVersion";
 
 ## Method List
 
-| Method | HTTP | Description |
-|---|---|---|
-| `apiV1MetricsGet` | GET /api/v1/metrics | Query the metric list |
-| `apiV1MetricsIdHistoryGet` | GET /api/v1/metrics/\{id\}/history | Query historical data for a metric |
-| `apiV1MetricsIdLatestGet` | GET /api/v1/metrics/\{id\}/latest | Query the latest value of a metric |
-| `apiV1MetricsIdDataPost` | POST /api/v1/metrics/\{id\}/data | Write data to a metric |
+The following methods are available on `MetricResourceApi`.
+
+<table>
+<colgroup><col style="width:16em"/><col/><col/></colgroup>
+<thead><tr><th>Method</th><th>HTTP</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><code>apiV1MetricsGet</code></td><td>GET /api/v1/metrics</td><td>Query the metric list</td></tr>
+<tr><td><code>apiV1MetricsIdHistoryGet</code></td><td>GET /api/v1/metrics/\{id\}/history</td><td>Query historical data for a metric</td></tr>
+<tr><td><code>apiV1MetricsIdLatestGet</code></td><td>GET /api/v1/metrics/\{id\}/latest</td><td>Query the latest value of a metric</td></tr>
+<tr><td><code>apiV1MetricsIdDataPost</code></td><td>POST /api/v1/metrics/\{id\}/data</td><td>Write data to a metric</td></tr>
+</tbody>
+</table>
 
 ---
 
@@ -28,13 +34,17 @@ Returns metric data within a specified time range, with optional aggregation.
 
 ### Parameters
 
-| Name | Type | Required | Description |
-|---|---|---|---|
-| id | string | Yes | Metric ID |
-| from | long | Yes | Start time, Unix millisecond timestamp |
-| to | long | Yes | End time, Unix millisecond timestamp |
-| interval | string | No | Aggregation time window, e.g. `1m`, `1h`. Omit to return raw data. |
-| aggregate | string | No | Aggregation function: `avg`, `max`, `min`, `sum` |
+<table>
+<colgroup><col style="width:7em"/><col/><col/><col/></colgroup>
+<thead><tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td>id</td><td>string</td><td>Yes</td><td>Metric ID</td></tr>
+<tr><td>from</td><td>long</td><td>Yes</td><td>Start time, Unix millisecond timestamp</td></tr>
+<tr><td>to</td><td>long</td><td>Yes</td><td>End time, Unix millisecond timestamp</td></tr>
+<tr><td>interval</td><td>string</td><td>No</td><td>Aggregation time window, e.g. <code>1m</code>, <code>1h</code>. Omit to return raw data.</td></tr>
+<tr><td>aggregate</td><td>string</td><td>No</td><td>Aggregation function: <code>avg</code>, <code>max</code>, <code>min</code>, <code>sum</code></td></tr>
+</tbody>
+</table>
 
 **Returns:** `MetricDataDTO`
 

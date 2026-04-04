@@ -46,14 +46,20 @@ except ApiException as e:
 
 ## 15.1.7.2 Common Error Codes
 
-| HTTP Status | Meaning | Common Cause | Recommended Action |
-|---|---|---|---|
-| 400 | Bad request | Wrong parameter type or missing required field | Check request parameters |
-| 401 | Unauthenticated | Token missing or expired | Re-authenticate and obtain a new token |
-| 403 | Forbidden | Current user has no permission for this resource | Review user role and element access configuration |
-| 404 | Not found | Wrong ID or resource has been deleted | Verify the resource ID |
-| 429 | Too many requests | API rate limit exceeded | Reduce request frequency; add retry with backoff |
-| 500 | Internal server error | Server-side exception | Retry later, or contact the administrator |
+The table below lists the HTTP status codes most frequently returned by the IDMP API, along with their typical causes and recommended remediation steps.
+
+<table>
+<colgroup><col style="width:9em"/><col/><col/><col/></colgroup>
+<thead><tr><th>HTTP Status</th><th>Meaning</th><th>Common Cause</th><th>Recommended Action</th></tr></thead>
+<tbody>
+<tr><td>400</td><td>Bad request</td><td>Wrong parameter type or missing required field</td><td>Check request parameters</td></tr>
+<tr><td>401</td><td>Unauthenticated</td><td>Token missing or expired</td><td>Re-authenticate and obtain a new token</td></tr>
+<tr><td>403</td><td>Forbidden</td><td>Current user has no permission for this resource</td><td>Review user role and element access configuration</td></tr>
+<tr><td>404</td><td>Not found</td><td>Wrong ID or resource has been deleted</td><td>Verify the resource ID</td></tr>
+<tr><td>429</td><td>Too many requests</td><td>API rate limit exceeded</td><td>Reduce request frequency; add retry with backoff</td></tr>
+<tr><td>500</td><td>Internal server error</td><td>Server-side exception</td><td>Retry later, or contact the administrator</td></tr>
+</tbody>
+</table>
 
 ## 15.1.7.3 Recommended Retry Pattern
 
@@ -124,6 +130,8 @@ interface ApiCall<T> {
 </Tabs>
 
 ## 15.1.7.4 Debugging Tips
+
+The following techniques help diagnose issues efficiently during development and integration testing.
 
 - On `401`, check first whether the token has expired — do not assume a code bug.
 - On `400`, print the full `responseBody`. The server typically includes a specific description of which parameter is invalid.

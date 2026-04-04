@@ -21,11 +21,15 @@ sidebar_label: 邮件问题排查
 
 在开始排查前，需要先区分邮件发送链路中的三个“成功”层级，避免仅凭接口返回结果误判问题已经解决。
 
-| 成功层级 | 含义 | 典型证据 |
-| --- | --- | --- |
-| 接口调用成功 | HTTP 请求被后端接受 | 接口返回 `200` 或业务成功响应 |
-| 应用发送链路成功 | 应用已将消息送入邮件发送流程 | 日志中出现发信成功相关记录 |
-| 最终送达成功 | 邮件系统已接收并投递到收件方 | 收件箱实际可见，或 SMTP 服务商后台显示投递成功 |
+<table>
+<colgroup><col style="width:11em"/><col/><col/></colgroup>
+<thead><tr><th>成功层级</th><th>含义</th><th>典型证据</th></tr></thead>
+<tbody>
+<tr><td>接口调用成功</td><td>HTTP 请求被后端接受</td><td>接口返回 <code>200</code> 或业务成功响应</td></tr>
+<tr><td>应用发送链路成功</td><td>应用已将消息送入邮件发送流程</td><td>日志中出现发信成功相关记录</td></tr>
+<tr><td>最终送达成功</td><td>邮件系统已接收并投递到收件方</td><td>收件箱实际可见，或 SMTP 服务商后台显示投递成功</td></tr>
+</tbody>
+</table>
 
 仅满足前两层，并不表示邮件一定已经进入收件箱。
 
@@ -39,11 +43,15 @@ sidebar_label: 邮件问题排查
 
 常用接口如下：
 
-| 场景 | 方法 | 路径 |
-| --- | --- | --- |
-| 忘记密码邮件 | `POST` | `/api/v1/users/password-reset-email` |
-| 注册验证码 | `POST` | `/api/v1/users/send/register-code` |
-| 登录验证码 | `POST` | `/api/v1/users/send/verifycode` |
+<table>
+<colgroup><col style="width:9em"/><col/><col/></colgroup>
+<thead><tr><th>场景</th><th>方法</th><th>路径</th></tr></thead>
+<tbody>
+<tr><td>忘记密码邮件</td><td><code>POST</code></td><td><code>/api/v1/users/password-reset-email</code></td></tr>
+<tr><td>注册验证码</td><td><code>POST</code></td><td><code>/api/v1/users/send/register-code</code></td></tr>
+<tr><td>登录验证码</td><td><code>POST</code></td><td><code>/api/v1/users/send/verifycode</code></td></tr>
+</tbody>
+</table>
 
 忘记密码邮件测试示例如下：
 

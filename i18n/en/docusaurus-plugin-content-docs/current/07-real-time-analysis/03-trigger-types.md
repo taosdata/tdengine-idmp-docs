@@ -22,9 +22,13 @@ Fires on a fixed sliding time interval based on event time — the timestamps of
 
 ### 7.3.1.2 Parameters
 
-| Parameter | Description |
-|---|---|
-| **Sliding** | The interval between trigger firings (e.g., every 1 minute, every 10 seconds) |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Sliding</strong></td><td>The interval between trigger firings (e.g., every 1 minute, every 10 seconds)</td></tr>
+</tbody>
+</table>
 
 ### 7.3.1.3 Examples
 
@@ -49,13 +53,17 @@ Runs an anomaly detection algorithm against a target attribute on a sliding sche
 
 ### 7.3.2.2 Parameters
 
-| Parameter | Description |
-|---|---|
-| **Sliding** | How often to run the anomaly check |
-| **Target** (required) | The attribute to analyze for anomalies. Multiple targets can be selected; when multiple targets are chosen, the system automatically creates an independent sub-analysis for each target attribute. |
-| **Algorithm** (required) | The anomaly detection algorithm to apply |
-| **White Noise Data Check** | When enabled, skips the anomaly check if the data appears to be white noise (no meaningful signal) |
-| **Algorithm Parameters** | Optional algorithm-specific parameters in `a=1,b=2,c=3` format |
+<table>
+<colgroup><col style="width:15em"/><col/></colgroup>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Sliding</strong></td><td>How often to run the anomaly check</td></tr>
+<tr><td><strong>Target</strong> (required)</td><td>The attribute to analyze for anomalies. Multiple targets can be selected; when multiple targets are chosen, the system automatically creates an independent sub-analysis for each target attribute.</td></tr>
+<tr><td><strong>Algorithm</strong> (required)</td><td>The anomaly detection algorithm to apply</td></tr>
+<tr><td><strong>White Noise Data Check</strong></td><td>When enabled, skips the anomaly check if the data appears to be white noise (no meaningful signal)</td></tr>
+<tr><td><strong>Algorithm Parameters</strong></td><td>Optional algorithm-specific parameters in <code>a=1,b=2,c=3</code> format</td></tr>
+</tbody>
+</table>
 
 ### 7.3.2.3 Examples
 
@@ -78,10 +86,14 @@ Fires on the system wall clock at a fixed time interval, independent of when dat
 
 ### 7.3.3.2 Parameters
 
-| Parameter | Description |
-|---|---|
-| **Period** | The time interval (e.g., every 1 hour, every 1 day) |
-| **Offset** | A delay after the period boundary before firing. For example, a 1-day period with a 6-hour offset fires at 06:00 each day — useful for generating daily reports after late-arriving data has had time to settle. |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Period</strong></td><td>The time interval (e.g., every 1 hour, every 1 day)</td></tr>
+<tr><td><strong>Offset</strong></td><td>A delay after the period boundary before firing. For example, a 1-day period with a 6-hour offset fires at 06:00 each day — useful for generating daily reports after late-arriving data has had time to settle.</td></tr>
+</tbody>
+</table>
 
 ### 7.3.3.3 Examples
 
@@ -106,9 +118,13 @@ Fires whenever new data is written to a specific attribute — or any attribute 
 
 ### 7.3.4.2 Parameters
 
-| Parameter | Description |
-|---|---|
-| **Target** | The attribute whose new data writes trigger the analysis. Leave empty to trigger on any new data from any attribute. |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Target</strong></td><td>The attribute whose new data writes trigger the analysis. Leave empty to trigger on any new data from any attribute.</td></tr>
+</tbody>
+</table>
 
 ### 7.3.4.3 Examples
 
@@ -132,9 +148,13 @@ Fires when the value of an integer-type attribute changes from one state to anot
 
 ### 7.3.5.2 Parameters
 
-| Parameter | Description |
-|---|---|
-| **State** (required) | The integer attribute whose state changes trigger the analysis. Multiple state attributes can be selected; when multiple are chosen, the system automatically creates an independent sub-analysis for each attribute. |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>State</strong> (required)</td><td>The integer attribute whose state changes trigger the analysis. Multiple state attributes can be selected; when multiple are chosen, the system automatically creates an independent sub-analysis for each attribute.</td></tr>
+</tbody>
+</table>
 
 ### 7.3.5.3 Examples
 
@@ -161,11 +181,15 @@ Fires based on a user-defined start condition and stop condition, expressed as e
 
 ### 7.3.6.2 Parameters
 
-| Parameter | Description |
-|---|---|
-| **Start Trigger — Expression** (required) | A condition expression that, when it evaluates to a positive value, opens the event window |
-| **Start Trigger — True for** | A minimum duration the start condition must remain true before the window opens. Prevents false triggers from momentary noise. |
-| **Stop Trigger — Expression** (required) | A condition expression that, when it evaluates to a positive value, closes the event window and fires the analysis |
+<table>
+<colgroup><col style="width:23em"/><col/></colgroup>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Start Trigger — Expression</strong> (required)</td><td>A condition expression that, when it evaluates to a positive value, opens the event window</td></tr>
+<tr><td><strong>Start Trigger — True for</strong></td><td>A minimum duration the start condition must remain true before the window opens. Prevents false triggers from momentary noise.</td></tr>
+<tr><td><strong>Stop Trigger — Expression</strong> (required)</td><td>A condition expression that, when it evaluates to a positive value, closes the event window and fires the analysis</td></tr>
+</tbody>
+</table>
 
 Both expressions can be tested with the **Evaluate** button before saving.
 
@@ -192,9 +216,13 @@ Fires when there has been no new data on the element for a specified inactivity 
 
 ### 7.3.7.2 Parameters
 
-| Parameter | Description |
-|---|---|
-| **No Activity Interval** | How long data must be absent before the session is considered closed and the trigger fires |
+<table>
+<colgroup><col style="width:14em"/><col/></colgroup>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>No Activity Interval</strong></td><td>How long data must be absent before the session is considered closed and the trigger fires</td></tr>
+</tbody>
+</table>
 
 ### 7.3.7.3 Examples
 
@@ -219,10 +247,14 @@ Fires when a specified number of new records have been written to the element's 
 
 ### 7.3.8.2 Parameters
 
-| Parameter | Description |
-|---|---|
-| **Target** | The specific attribute to count new records for. Leave empty to count across all attributes. |
-| **Count** | The number of new records that must accumulate before the trigger fires |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Target</strong></td><td>The specific attribute to count new records for. Leave empty to count across all attributes.</td></tr>
+<tr><td><strong>Count</strong></td><td>The number of new records that must accumulate before the trigger fires</td></tr>
+</tbody>
+</table>
 
 ### 7.3.8.3 Examples
 

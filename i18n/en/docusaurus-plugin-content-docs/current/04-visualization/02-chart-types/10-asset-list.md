@@ -41,10 +41,14 @@ Open the panel editor to configure:
 
 ![Asset List panel configuration in edit mode](../images/table-asset-config.png)
 
-| Setting | Description |
-|---|---|
-| **Asset Type (Template)** | Required. Filters the list to elements of the selected template. Only when a template is selected can template-specific attribute columns be added. |
-| **Display Fields** | Configurable set of columns and their display order. Includes IDMP management attributes (Name, Path, Description, Template, Categories) and reference attributes (TDengine Tags and TDengine Metrics). |
+<table>
+<colgroup><col style="width:14em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Asset Type (Template)</strong></td><td>Required. Filters the list to elements of the selected template. Only when a template is selected can template-specific attribute columns be added.</td></tr>
+<tr><td><strong>Display Fields</strong></td><td>Configurable set of columns and their display order. Includes IDMP management attributes (Name, Path, Description, Template, Categories) and reference attributes (TDengine Tags and TDengine Metrics).</td></tr>
+</tbody>
+</table>
 
 ## 4.2.10.4 Example Scenarios
 

@@ -55,11 +55,15 @@ TDengine is built on two complementary components that together form a complete 
 
 Together, the two components address the three layers that any complete industrial data foundation must provide:
 
-| Layer | Capability | Component |
-|---|---|---|
-| Data Infrastructure | Real-time ingestion, high-throughput writes, scalable storage, high-performance queries | TDengine TSDB |
-| Data Semantics | Asset modeling, data contextualization, standardization, event management | TDengine IDMP |
-| Intelligence | Real-time analytics, AI-generated insights, natural language queries, anomaly detection, forecasting | TDengine IDMP + AI |
+<table>
+<colgroup><col style="width:13em"/><col/><col/></colgroup>
+<thead><tr><th>Layer</th><th>Capability</th><th>Component</th></tr></thead>
+<tbody>
+<tr><td>Data Infrastructure</td><td>Real-time ingestion, high-throughput writes, scalable storage, high-performance queries</td><td>TDengine TSDB</td></tr>
+<tr><td>Data Semantics</td><td>Asset modeling, data contextualization, standardization, event management</td><td>TDengine IDMP</td></tr>
+<tr><td>Intelligence</td><td>Real-time analytics, AI-generated insights, natural language queries, anomaly detection, forecasting</td><td>TDengine IDMP + AI</td></tr>
+</tbody>
+</table>
 
 The platform is designed to be open. It exposes an MCP (Model Context Protocol) interface so AI agents can access industrial data directly. It supports REST API, JDBC, ODBC, and client SDKs in Java and Python. Data can flow outward through Kafka, MQTT, and data subscription interfaces, so downstream AI systems, BI tools, and third-party applications can consume it in real time. This openness ensures that TDengine can serve as a hub in a broader industrial AI ecosystem rather than a closed silo.
 
@@ -85,16 +89,20 @@ Functionally, **TDengine TSDB + IDMP maps directly to this stack**: TDengine TSD
 
 The key differences reflect how the technology landscape has changed since traditional historians were designed:
 
-| Capability | Traditional Historians (e.g., PI System) | TDengine TSDB + IDMP |
-|---|---|---|
-| AI integration | Limited; requires third-party tools | Native; Zero-Query Intelligence, Chat BI |
-| Event rule | Manual configuration by OT engineers | Manual or AI-assisted; LLM can generate rules based on collected data |
-| Visualization | Display-focused | Insight-focused; AI generates and recommends panels |
-| Advanced analytics | Limited; requires third-party tools | Built-in batch analysis, forecasting, anomaly detection, imputation, clustering, regression, and more |
-| Scale | Typically up to one million of tags | Designed for billions of data points |
-| Data flow | Primarily inward (collect and store) | Bidirectional; data subscription allows real-time outflow to downstream systems |
-| Openness | Proprietary interfaces; limited export | REST API, JDBC, ODBC, Kafka, MQTT, MCP, open SDKs |
-| Deployment | Primarily Windows | Linux, containers, VMs, private cloud, cloud-native |
+<table>
+<colgroup><col style="width:12em"/><col/><col/></colgroup>
+<thead><tr><th>Capability</th><th>Traditional Historians (e.g., PI System)</th><th>TDengine TSDB + IDMP</th></tr></thead>
+<tbody>
+<tr><td>AI integration</td><td>Limited; requires third-party tools</td><td>Native; Zero-Query Intelligence, Chat BI</td></tr>
+<tr><td>Event rule</td><td>Manual configuration by OT engineers</td><td>Manual or AI-assisted; LLM can generate rules based on collected data</td></tr>
+<tr><td>Visualization</td><td>Display-focused</td><td>Insight-focused; AI generates and recommends panels</td></tr>
+<tr><td>Advanced analytics</td><td>Limited; requires third-party tools</td><td>Built-in batch analysis, forecasting, anomaly detection, imputation, clustering, regression, and more</td></tr>
+<tr><td>Scale</td><td>Typically up to one million of tags</td><td>Designed for billions of data points</td></tr>
+<tr><td>Data flow</td><td>Primarily inward (collect and store)</td><td>Bidirectional; data subscription allows real-time outflow to downstream systems</td></tr>
+<tr><td>Openness</td><td>Proprietary interfaces; limited export</td><td>REST API, JDBC, ODBC, Kafka, MQTT, MCP, open SDKs</td></tr>
+<tr><td>Deployment</td><td>Primarily Windows</td><td>Linux, containers, VMs, private cloud, cloud-native</td></tr>
+</tbody>
+</table>
 
 The current limitation of TDengine compared to mature historians is in data source connectivity. PI System supports a very wide range of industrial interfaces and protocols built up over decades. TDengine currently supports OPC-UA, OPC-DA, and MQTT natively, with additional sources supported through TDengine TSDB's data ingestion framework. This gap is narrowing with each release.
 

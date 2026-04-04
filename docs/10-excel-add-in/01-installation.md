@@ -52,12 +52,16 @@ hosts 文件位置：
 
 ### 10.1.1.2 系统要求
 
-| 要求 | 详情 |
-|---|---|
-| **Excel 版本** | Excel 2016 及更高版本（Windows 或 macOS） |
-| **权限** | Windows 上需要管理员权限 |
-| **网络连接** | 需要能够访问下载安装脚本并连接 IDMP 服务 |
-| **Node.js** | 启用日志记录时，Windows 上需要 Node.js 22.3 或更高版本 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>要求</th><th>详情</th></tr></thead>
+<tbody>
+<tr><td><strong>Excel 版本</strong></td><td>Excel 2016 及更高版本（Windows 或 macOS）</td></tr>
+<tr><td><strong>权限</strong></td><td>Windows 上需要管理员权限</td></tr>
+<tr><td><strong>网络连接</strong></td><td>需要能够访问下载安装脚本并连接 IDMP 服务</td></tr>
+<tr><td><strong>Node.js</strong></td><td>启用日志记录时，Windows 上需要 Node.js 22.3 或更高版本</td></tr>
+</tbody>
+</table>
 
 ## 10.1.2 安装
 
@@ -74,11 +78,15 @@ curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/in
 
 **参数说明：**
 
-| 参数 | 说明 |
-|---|---|
-| `--force-close` | 安装期间强制关闭 Excel。运行前请保存工作内容。 |
-| `--url` | IDMP HTTPS 服务地址 |
-| `--enable-logging` | 启用安装和运行时日志记录 |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>参数</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><code>--force-close</code></td><td>安装期间强制关闭 Excel。运行前请保存工作内容。</td></tr>
+<tr><td><code>--url</code></td><td>IDMP HTTPS 服务地址</td></tr>
+<tr><td><code>--enable-logging</code></td><td>启用安装和运行时日志记录</td></tr>
+</tbody>
+</table>
 
 日志文件位置：`~/Library/Containers/com.microsoft.Excel/Data/tdengine_eai.log`
 
@@ -99,12 +107,16 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 
 **参数说明：**
 
-| 参数 | 说明 |
-|---|---|
-| `-Action Install` | 执行安装 |
-| `-ForceCloseExcel` | 安装期间强制关闭 Excel。运行前请保存工作内容。 |
-| `-Url` | IDMP HTTPS 服务地址 |
-| `-EnableLogging` | 启用安装和运行时日志记录 |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>参数</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><code>-Action Install</code></td><td>执行安装</td></tr>
+<tr><td><code>-ForceCloseExcel</code></td><td>安装期间强制关闭 Excel。运行前请保存工作内容。</td></tr>
+<tr><td><code>-Url</code></td><td>IDMP HTTPS 服务地址</td></tr>
+<tr><td><code>-EnableLogging</code></td><td>启用安装和运行时日志记录</td></tr>
+</tbody>
+</table>
 
 日志文件位置：`C:\Users\<your-username>\AppData\Roaming\Microsoft\AddIns\VueOfficeAddin\Logs\tdengine_eai.log`
 

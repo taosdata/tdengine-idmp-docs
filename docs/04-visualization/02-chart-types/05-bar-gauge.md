@@ -30,29 +30,37 @@ sidebar_label: 条形仪表盘
 
 除[通用编辑模式控件](../01-panels.md#414-面板编辑模式)外，条形仪表盘还增加了以下控件：
 
-| 控件 | 说明 |
-|---|---|
-| **保存为图片** | 将当前预览下载为 PNG 图片 |
-| **全屏** | 将编辑器预览扩展为填满浏览器窗口 |
-| **解读面板** | 对当前预览数据运行 AI 分析 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>保存为图片</strong></td><td>将当前预览下载为 PNG 图片</td></tr>
+<tr><td><strong>全屏</strong></td><td>将编辑器预览扩展为填满浏览器窗口</td></tr>
+<tr><td><strong>解读面板</strong></td><td>对当前预览数据运行 AI 分析</td></tr>
+</tbody>
+</table>
 
 ### 图形设置
 
 ![条形仪表盘配置面板](../images/bar-gauge-config.png)
 
-| 设置 | 说明 |
-|---|---|
-| **标题** | 图表标题 |
-| **副标题** | 次要标题 |
-| **布局方向** | **水平**（条形从左向右填充）或**垂直**（条形从底部向上填充） |
-| **显示时间** | **开启**（在条形上显示时间戳）或**关闭** |
-| **显示模式** | 视觉样式：**渐变**（平滑颜色过渡）、**基础**（纯色填充）、**复古 LCD**（分段显示） |
-| **数值显示** | 数值颜色样式：**数据颜色**（叠加在条形上，颜色随阈值变化）、**文本颜色**（叠加，纯文本颜色）、**隐藏** |
-| **名称显示** | 指标名称位置：**自动**、**顶部**、**左侧**或**隐藏** |
-| **条形大小** | **自动**（条形填满可用空间）或**手动**（固定像素大小） |
-| **最小值** | 刻度的最小值（默认 0） |
-| **最大值** | 刻度的最大值（默认 1） |
-| **小数位数** | 显示的小数位数 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>标题</strong></td><td>图表标题</td></tr>
+<tr><td><strong>副标题</strong></td><td>次要标题</td></tr>
+<tr><td><strong>布局方向</strong></td><td><strong>水平</strong>（条形从左向右填充）或<strong>垂直</strong>（条形从底部向上填充）</td></tr>
+<tr><td><strong>显示时间</strong></td><td><strong>开启</strong>（在条形上显示时间戳）或<strong>关闭</strong></td></tr>
+<tr><td><strong>显示模式</strong></td><td>视觉样式：<strong>渐变</strong>（平滑颜色过渡）、<strong>基础</strong>（纯色填充）、<strong>复古 LCD</strong>（分段显示）</td></tr>
+<tr><td><strong>数值显示</strong></td><td>数值颜色样式：<strong>数据颜色</strong>（叠加在条形上，颜色随阈值变化）、<strong>文本颜色</strong>（叠加，纯文本颜色）、<strong>隐藏</strong></td></tr>
+<tr><td><strong>名称显示</strong></td><td>指标名称位置：<strong>自动</strong>、<strong>顶部</strong>、<strong>左侧</strong>或<strong>隐藏</strong></td></tr>
+<tr><td><strong>条形大小</strong></td><td><strong>自动</strong>（条形填满可用空间）或<strong>手动</strong>（固定像素大小）</td></tr>
+<tr><td><strong>最小值</strong></td><td>刻度的最小值（默认 0）</td></tr>
+<tr><td><strong>最大值</strong></td><td>刻度的最大值（默认 1）</td></tr>
+<tr><td><strong>小数位数</strong></td><td>显示的小数位数</td></tr>
+</tbody>
+</table>
 
 #### 显示模式
 
@@ -72,10 +80,14 @@ sidebar_label: 条形仪表盘
 
 阈值定义条形上的颜色带。每个阈值指定一个数值和一种颜色；当值越过每个边界时，条形会改变颜色：
 
-| 设置 | 说明 |
-|---|---|
-| **阈值** | 点击 **+ 添加阈值** 定义边界值及其颜色 |
-| **阈值模式** | **绝对值**（阈值为原始数据值）或**百分比**（阈值为最小值-最大值范围的百分比） |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>阈值</strong></td><td>点击 <strong>+ 添加阈值</strong> 定义边界值及其颜色</td></tr>
+<tr><td><strong>阈值模式</strong></td><td><strong>绝对值</strong>（阈值为原始数据值）或<strong>百分比</strong>（阈值为最小值-最大值范围的百分比）</td></tr>
+</tbody>
+</table>
 
 ## 4.2.5.4 使用示例
 

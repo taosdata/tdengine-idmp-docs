@@ -28,17 +28,25 @@ sidebar_label: 表格
 
 除[通用编辑模式控件](../01-panels.md#414-面板编辑模式)外，表格还增加了以下控件：
 
-| 控件 | 说明 |
-|---|---|
-| **保存为图片** | 将当前预览下载为 PNG 图片 |
-| **全屏** | 将编辑器预览扩展为填满浏览器窗口 |
-| **解读面板** | 对当前预览数据运行 AI 分析 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>保存为图片</strong></td><td>将当前预览下载为 PNG 图片</td></tr>
+<tr><td><strong>全屏</strong></td><td>将编辑器预览扩展为填满浏览器窗口</td></tr>
+<tr><td><strong>解读面板</strong></td><td>对当前预览数据运行 AI 分析</td></tr>
+</tbody>
+</table>
 
 ### 图形设置
 
-| 设置 | 说明 |
-|---|---|
-| **时间戳格式** | 时间戳列的显示格式（默认：`YYYY-MM-DD HH:mm:ss`） |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>时间戳格式</strong></td><td>时间戳列的显示格式（默认：<code>YYYY-MM-DD HH:mm:ss</code>）</td></tr>
+</tbody>
+</table>
 
 表格面板没有坐标轴、边界值或图例部分。
 

@@ -17,23 +17,31 @@ sidebar_label: 规划
 
 ### 14.2.1.1 IDMP 服务资源
 
-| 元素规模 | CPU | 内存 | 磁盘 | 典型使用场景 |
-|:---:|:---:|:---:|:---:|:---|
-| < 10,000 | 4 核 | 10 GB | 50 GB | PoC / 演示 / 小型项目 |
-| 10,000 – 100,000 | 8 核 | 16 GB | 100 GB | 小中型生产 |
-| 100,000 – 500,000 | 16 核 | 32 GB | 200 GB | 中型生产 |
-| 500,000 – 1,000,000 | 32 核 | 64 GB | 500 GB | 大型生产 |
-| > 1,000,000 | 64+ 核 | 128+ GB | 1 TB+ | 超大型生产 |
+<table>
+<colgroup><col style="width:13em"/><col/><col/><col/><col/></colgroup>
+<thead><tr><th>元素规模</th><th>CPU</th><th>内存</th><th>磁盘</th><th>典型使用场景</th></tr></thead>
+<tbody>
+<tr><td>< 10,000</td><td>4 核</td><td>10 GB</td><td>50 GB</td><td>PoC / 演示 / 小型项目</td></tr>
+<tr><td>10,000 – 100,000</td><td>8 核</td><td>16 GB</td><td>100 GB</td><td>小中型生产</td></tr>
+<tr><td>100,000 – 500,000</td><td>16 核</td><td>32 GB</td><td>200 GB</td><td>中型生产</td></tr>
+<tr><td>500,000 – 1,000,000</td><td>32 核</td><td>64 GB</td><td>500 GB</td><td>大型生产</td></tr>
+<tr><td>> 1,000,000</td><td>64+ 核</td><td>128+ GB</td><td>1 TB+</td><td>超大型生产</td></tr>
+</tbody>
+</table>
 
 ### 14.2.1.2 外部依赖资源
 
 当元素规模较大时，请为外部依赖组件规划专用资源：
 
-| 组件 | 1 万–10 万元素 | 10 万–50 万元素 | 50 万+元素 |
-|:---|:---:|:---:|:---:|
-| Redis | 2 核 / 4 GB | 4 核 / 8 GB | 8 核 / 16 GB（集群） |
-| MySQL | 4 核 / 8 GB | 8 核 / 16 GB | 16 核 / 32 GB（主从） |
-| 分布式文件系统 | 100 GB | 500 GB | 1 TB+ |
+<table>
+<colgroup><col style="width:10em"/><col/><col/><col/></colgroup>
+<thead><tr><th>组件</th><th>1 万–10 万元素</th><th>10 万–50 万元素</th><th>50 万+元素</th></tr></thead>
+<tbody>
+<tr><td>Redis</td><td>2 核 / 4 GB</td><td>4 核 / 8 GB</td><td>8 核 / 16 GB（集群）</td></tr>
+<tr><td>MySQL</td><td>4 核 / 8 GB</td><td>8 核 / 16 GB</td><td>16 核 / 32 GB（主从）</td></tr>
+<tr><td>分布式文件系统</td><td>100 GB</td><td>500 GB</td><td>1 TB+</td></tr>
+</tbody>
+</table>
 
 ### 14.2.1.3 规划指南
 
@@ -47,35 +55,51 @@ sidebar_label: 规划
 
 ## 14.2.2 支持的操作系统
 
-| 操作系统 | 支持版本 | x86_64 | arm64 |
-|:---:|:---:|:---:|:---:|
-| Ubuntu | 20.04、22.04 | 是 | 是 |
-| Debian | 10、11、12 | 是 | 是 |
-| CentOS | 8 | 是 | 是 |
-| macOS | 13、14、15 | 是 | 是 |
-| Windows | 10、11、Server 2019+ | 是 | 是 |
+TDengine IDMP 支持主流的 Linux、macOS 和 Windows 操作系统，以下列出各平台的支持版本及架构情况。
+
+<table>
+<colgroup><col style="width:7em"/><col/><col/><col/></colgroup>
+<thead><tr><th>操作系统</th><th>支持版本</th><th>x86_64</th><th>arm64</th></tr></thead>
+<tbody>
+<tr><td>Ubuntu</td><td>20.04、22.04</td><td>是</td><td>是</td></tr>
+<tr><td>Debian</td><td>10、11、12</td><td>是</td><td>是</td></tr>
+<tr><td>CentOS</td><td>8</td><td>是</td><td>是</td></tr>
+<tr><td>macOS</td><td>13、14、15</td><td>是</td><td>是</td></tr>
+<tr><td>Windows</td><td>10、11、Server 2019+</td><td>是</td><td>是</td></tr>
+</tbody>
+</table>
 
 ## 14.2.3 软件前置条件
 
-| 依赖项 | 版本 |
-|---|---|
-| Python | 3.12 |
-| Java | 21 或更高版本 |
-| glibc | 2.25 或更高版本 |
-| TDengine TSDB 企业版 | 3.3.7.0 或更高版本 |
-| SMTP 邮件服务 | 邮件通知所必需；若服务器无法访问互联网，请在内网自行部署 |
+安装 TDengine IDMP 前，请确认目标环境已满足以下软件依赖版本要求。
+
+<table>
+<colgroup><col style="width:13em"/><col/></colgroup>
+<thead><tr><th>依赖项</th><th>版本</th></tr></thead>
+<tbody>
+<tr><td>Python</td><td>3.12</td></tr>
+<tr><td>Java</td><td>21 或更高版本</td></tr>
+<tr><td>glibc</td><td>2.25 或更高版本</td></tr>
+<tr><td>TDengine TSDB 企业版</td><td>3.3.7.0 或更高版本</td></tr>
+<tr><td>SMTP 邮件服务</td><td>邮件通知所必需；若服务器无法访问互联网，请在内网自行部署</td></tr>
+</tbody>
+</table>
 
 ## 14.2.4 网络端口
 
 TDengine IDMP 默认使用以下端口：
 
-| 端口 | 协议 | 说明 |
-|---|---|---|
-| 6042 | HTTP | 外部端口——IDMP Web UI 和 REST API（浏览器和 API 访问） |
-| 6034 | HTTPS | 外部端口——安全访问 Web UI 和 REST API；生产环境推荐使用 |
-| 6038 | HTTP | 内部端口——内嵌 H2 数据库 Web 界面 |
-| 6039 | TCP | 内部端口——内嵌 H2 数据库监听器 |
-| 6040 | HTTP | 内部端口——内部聊天服务 API |
+<table>
+<colgroup><col style="width:5em"/><col/><col/></colgroup>
+<thead><tr><th>端口</th><th>协议</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>6042</td><td>HTTP</td><td>外部端口——IDMP Web UI 和 REST API（浏览器和 API 访问）</td></tr>
+<tr><td>6034</td><td>HTTPS</td><td>外部端口——安全访问 Web UI 和 REST API；生产环境推荐使用</td></tr>
+<tr><td>6038</td><td>HTTP</td><td>内部端口——内嵌 H2 数据库 Web 界面</td></tr>
+<tr><td>6039</td><td>TCP</td><td>内部端口——内嵌 H2 数据库监听器</td></tr>
+<tr><td>6040</td><td>HTTP</td><td>内部端口——内部聊天服务 API</td></tr>
+</tbody>
+</table>
 
 请确保防火墙开放外部端口（6042 和 6034），内部端口仅在私有网络内可访问。
 
@@ -83,17 +107,21 @@ TDengine IDMP 默认使用以下端口：
 
 TDengine IDMP 默认安装于 `/usr/local/taos/idmp`，目录结构如下：
 
-| 目录 | 说明 |
-|---|---|
-| `app` | 指向 `standalone/app` 的符号链接 |
-| `backend` | 后端服务二进制文件 |
-| `bin` | 启动/停止脚本 |
-| `chat` | 聊天服务文件 |
-| `config` | 服务配置文件（包含 `application.yml`） |
-| `data` | 数据文件（符号链接至 `/var/lib/taos`） |
-| `frontend` | 前端静态资源 |
-| `lib` | 后端库依赖 |
-| `logs` | 日志文件（符号链接至 `/var/log/taos`） |
-| `quarkus` | 后端服务框架文件 |
-| `service` | 系统服务配置 |
-| `standalone` | 前后端集成服务文件 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>目录</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><code>app</code></td><td>指向 <code>standalone/app</code> 的符号链接</td></tr>
+<tr><td><code>backend</code></td><td>后端服务二进制文件</td></tr>
+<tr><td><code>bin</code></td><td>启动/停止脚本</td></tr>
+<tr><td><code>chat</code></td><td>聊天服务文件</td></tr>
+<tr><td><code>config</code></td><td>服务配置文件（包含 <code>application.yml</code>）</td></tr>
+<tr><td><code>data</code></td><td>数据文件（符号链接至 <code>/var/lib/taos</code>）</td></tr>
+<tr><td><code>frontend</code></td><td>前端静态资源</td></tr>
+<tr><td><code>lib</code></td><td>后端库依赖</td></tr>
+<tr><td><code>logs</code></td><td>日志文件（符号链接至 <code>/var/log/taos</code>）</td></tr>
+<tr><td><code>quarkus</code></td><td>后端服务框架文件</td></tr>
+<tr><td><code>service</code></td><td>系统服务配置</td></tr>
+<tr><td><code>standalone</code></td><td>前后端集成服务文件</td></tr>
+</tbody>
+</table>

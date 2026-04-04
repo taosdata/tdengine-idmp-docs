@@ -17,12 +17,16 @@ Contact points are managed centrally in **Admin Console → System Configuration
 
 The contact point list displays the following information:
 
-| Column | Description |
-|---|---|
-| **Name** | A descriptive name for this contact point (e.g., `Jeff_default_contact_point`) |
-| **Type** | The delivery channel type (e.g., EMAIL, webhook, Feishu) |
-| **Address** | The recipient address or endpoint URL |
-| **Description** | Optional description |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>Column</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>A descriptive name for this contact point (e.g., <code>Jeff_default_contact_point</code>)</td></tr>
+<tr><td><strong>Type</strong></td><td>The delivery channel type (e.g., EMAIL, webhook, Feishu)</td></tr>
+<tr><td><strong>Address</strong></td><td>The recipient address or endpoint URL</td></tr>
+<tr><td><strong>Description</strong></td><td>Optional description</td></tr>
+</tbody>
+</table>
 
 To create a new contact point, click **+** and fill in the name, type, address, and description fields. The available types depend on the integrations configured for your IDMP instance.
 
@@ -40,15 +44,19 @@ The notification rule configuration is accessed from the element's Events tab to
 
 Click **Edit** in the dialog to modify the settings. The configurable parameters are:
 
-| Parameter | Description |
-|---|---|
-| **Contact Point** (required) | The primary delivery channel for event notifications. Select from the pre-configured contact points. |
-| **Resend Interval** (required) | How often to re-send a notification for an active, unacknowledged event. For example, set to 1 hour to alert operators every hour until the event is acknowledged or closed. |
-| **Escalation Contact Point** | An additional contact point to notify if the event remains unacknowledged for longer than the escalation interval. Used to alert supervisors or on-call staff when first-line operators have not responded. |
-| **Escalation Interval** | How long an event must remain unacknowledged before the escalation contact point is notified. |
-| **Max Resend Count** | The maximum number of times a single event can trigger a re-notification. Prevents indefinite re-sending for long-running events. |
-| **Message** | The notification message body. Supports variable substitution — for example `{elementName}`, `{eventName}`, `{startTime}`, `{severityLevel}`, `{eventUrl}` — to include event-specific information in each notification. |
-| **Event Template** | Per-template minimum severity threshold. For each event template listed, specify the lowest severity level that will trigger a notification. Events below the configured severity are suppressed. |
+<table>
+<colgroup><col style="width:17em"/><col/></colgroup>
+<thead><tr><th>Parameter</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Contact Point</strong> (required)</td><td>The primary delivery channel for event notifications. Select from the pre-configured contact points.</td></tr>
+<tr><td><strong>Resend Interval</strong> (required)</td><td>How often to re-send a notification for an active, unacknowledged event. For example, set to 1 hour to alert operators every hour until the event is acknowledged or closed.</td></tr>
+<tr><td><strong>Escalation Contact Point</strong></td><td>An additional contact point to notify if the event remains unacknowledged for longer than the escalation interval. Used to alert supervisors or on-call staff when first-line operators have not responded.</td></tr>
+<tr><td><strong>Escalation Interval</strong></td><td>How long an event must remain unacknowledged before the escalation contact point is notified.</td></tr>
+<tr><td><strong>Max Resend Count</strong></td><td>The maximum number of times a single event can trigger a re-notification. Prevents indefinite re-sending for long-running events.</td></tr>
+<tr><td><strong>Message</strong></td><td>The notification message body. Supports variable substitution — for example <code>{elementName}</code>, <code>{eventName}</code>, <code>{startTime}</code>, <code>{severityLevel}</code>, <code>{eventUrl}</code> — to include event-specific information in each notification.</td></tr>
+<tr><td><strong>Event Template</strong></td><td>Per-template minimum severity threshold. For each event template listed, specify the lowest severity level that will trigger a notification. Events below the configured severity are suppressed.</td></tr>
+</tbody>
+</table>
 
 The dialog also has a **Preview Message** button for viewing how the rendered message looks, and a **Send Message** button for manually dispatching a notification immediately.
 

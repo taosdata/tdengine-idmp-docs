@@ -40,13 +40,17 @@ sidebar_label: 问题排查
 
 如果您是通过本地安装方式部署的 TDengine IDMP，日志文件可以在以下位置找到：
 
-| 组件 | 日志文件路径 |
-| --- | --- |
-| TDengine IDMP 日志 | `/var/log/taos/tda.log` |
-| TDengine IDMP 错误日志 | `/var/log/taos/tda-error.log` |
-| TDengine IDMP AI 日志 | `/var/log/taos/idmp-ai.log` |
-| TDengine IDMP AI 错误日志 | `/var/log/taos/idmp-ai-error.log` |
-| TDengine TSDB-Enterprise 日志 | `/var/log/taos/taosdlog.*` |
+<table>
+<colgroup><col style="width:18em"/><col/></colgroup>
+<thead><tr><th>组件</th><th>日志文件路径</th></tr></thead>
+<tbody>
+<tr><td>TDengine IDMP 日志</td><td><code>/var/log/taos/tda.log</code></td></tr>
+<tr><td>TDengine IDMP 错误日志</td><td><code>/var/log/taos/tda-error.log</code></td></tr>
+<tr><td>TDengine IDMP AI 日志</td><td><code>/var/log/taos/idmp-ai.log</code></td></tr>
+<tr><td>TDengine IDMP AI 错误日志</td><td><code>/var/log/taos/idmp-ai-error.log</code></td></tr>
+<tr><td>TDengine TSDB-Enterprise 日志</td><td><code>/var/log/taos/taosdlog.*</code></td></tr>
+</tbody>
+</table>
 
 ### 容器化部署方式
 

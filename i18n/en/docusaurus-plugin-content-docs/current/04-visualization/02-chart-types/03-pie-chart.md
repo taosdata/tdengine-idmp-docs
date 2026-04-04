@@ -29,18 +29,26 @@ Avoid the Pie Chart when categories are numerous, when values are close in magni
 
 In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Pie Chart adds:
 
-| Control | Description |
-|---|---|
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Save as Image</strong></td><td>Download the current preview as a PNG image</td></tr>
+<tr><td><strong>Full Screen</strong></td><td>Expand the editor preview to fill the browser window</td></tr>
+<tr><td><strong>Panel Insights</strong></td><td>Run AI analysis on the current preview data</td></tr>
+</tbody>
+</table>
 
 ### Graph Settings
 
-| Setting | Description |
-|---|---|
-| **Title** | Chart title displayed above the pie |
-| **Subtitle** | Secondary title shown below the main title |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Title</strong></td><td>Chart title displayed above the pie</td></tr>
+<tr><td><strong>Subtitle</strong></td><td>Secondary title shown below the main title</td></tr>
+</tbody>
+</table>
 
 The Pie Chart has no Axis, Limits, or Legend sections. Slice labels and percentages are rendered directly on the chart.
 

@@ -15,13 +15,17 @@ The global events view provides a system-level event management interface with s
 
 The toolbar provides search, filtering, and data export functions for the event list.
 
-| Control | Description |
-|---|---|
-| **Search** | Search events by name or other text |
-| **Column selector** | Show or hide optional columns. The **Path** column (element hierarchy path) is hidden by default |
-| **Refresh** | Reload the events list |
-| **Export CSV** | Export the current filtered event list as a CSV file |
-| **Save as Panel** | Save the current event list as a panel so it can be added to a dashboard |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Search</strong></td><td>Search events by name or other text</td></tr>
+<tr><td><strong>Column selector</strong></td><td>Show or hide optional columns. The <strong>Path</strong> column (element hierarchy path) is hidden by default</td></tr>
+<tr><td><strong>Refresh</strong></td><td>Reload the events list</td></tr>
+<tr><td><strong>Export CSV</strong></td><td>Export the current filtered event list as a CSV file</td></tr>
+<tr><td><strong>Save as Panel</strong></td><td>Save the current event list as a panel so it can be added to a dashboard</td></tr>
+</tbody>
+</table>
 
 ### 6.2.1.2 Filters
 
@@ -42,31 +46,39 @@ The left sidebar provides quick access to favorite events and saved event filter
 
 The event list displays key information for each event in a table format. The columns are described below.
 
-| Column | Description |
-|---|---|
-| **S** | Severity level indicator icon |
-| **A** | Acknowledgment status icon |
-| **Name** | Event name — click to open the event detail page |
-| **Duration** | Elapsed time from start to end |
-| **Start Time** | Event start timestamp |
-| **End Time** | Event end timestamp (blank if the event is still active) |
-| **Categories** | Category tags |
-| **Template** | Event template name |
-| **Severity Level** | Severity label |
-| **Reason Code** | Reason code if set |
-| **Description** | Description text |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Column</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>S</strong></td><td>Severity level indicator icon</td></tr>
+<tr><td><strong>A</strong></td><td>Acknowledgment status icon</td></tr>
+<tr><td><strong>Name</strong></td><td>Event name — click to open the event detail page</td></tr>
+<tr><td><strong>Duration</strong></td><td>Elapsed time from start to end</td></tr>
+<tr><td><strong>Start Time</strong></td><td>Event start timestamp</td></tr>
+<tr><td><strong>End Time</strong></td><td>Event end timestamp (blank if the event is still active)</td></tr>
+<tr><td><strong>Categories</strong></td><td>Category tags</td></tr>
+<tr><td><strong>Template</strong></td><td>Event template name</td></tr>
+<tr><td><strong>Severity Level</strong></td><td>Severity label</td></tr>
+<tr><td><strong>Reason Code</strong></td><td>Reason code if set</td></tr>
+<tr><td><strong>Description</strong></td><td>Description text</td></tr>
+</tbody>
+</table>
 
 ### 6.2.1.5 Row Actions
 
 Each event row provides a context menu with actions for viewing details, sending notifications, acknowledging events, trend analysis, and deletion. Hover over any event row to reveal the **⋮** (more) menu on the right. Click it to expand the following options:
 
-| Action | Description |
-|---|---|
-| **View** | Open the event detail page |
-| **Send Notification** | Manually trigger a notification for this event to its configured contact points |
-| **Ack** | Acknowledge the event |
-| **Trend Chart Analysis** | Open a trend chart for the event's time range on its associated element |
-| **Delete** | Delete the event record |
+<table>
+<colgroup><col style="width:14em"/><col/></colgroup>
+<thead><tr><th>Action</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>View</strong></td><td>Open the event detail page</td></tr>
+<tr><td><strong>Send Notification</strong></td><td>Manually trigger a notification for this event to its configured contact points</td></tr>
+<tr><td><strong>Ack</strong></td><td>Acknowledge the event</td></tr>
+<tr><td><strong>Trend Chart Analysis</strong></td><td>Open a trend chart for the event's time range on its associated element</td></tr>
+<tr><td><strong>Delete</strong></td><td>Delete the event record</td></tr>
+</tbody>
+</table>
 
 ## 6.2.2 Element-Level Events
 
@@ -81,11 +93,15 @@ The include-child-elements option makes it convenient to review all operational 
 
 The element-level events tab has the same filters, columns, and row actions as the global events view. Its toolbar includes all the same controls plus three additional ones specific to this context:
 
-| Control | Description |
-|---|---|
-| **Include Child Elements** | Toggle, located to the right of **Show Unacknowledged only**. When enabled, the event list expands to include events from all descendant child elements of the current element, making it convenient to comprehensively review events across an entire production line or site |
-| **Generate test event data** | Create a test event on this element for development and validation purposes |
-| **Notification Rule** | Open the notification rule configuration for this element — see [Alerts and Notifications](./04-alerts-and-notifications.md) |
+<table>
+<colgroup><col style="width:16em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Include Child Elements</strong></td><td>Toggle, located to the right of <strong>Show Unacknowledged only</strong>. When enabled, the event list expands to include events from all descendant child elements of the current element, making it convenient to comprehensively review events across an entire production line or site</td></tr>
+<tr><td><strong>Generate test event data</strong></td><td>Create a test event on this element for development and validation purposes</td></tr>
+<tr><td><strong>Notification Rule</strong></td><td>Open the notification rule configuration for this element — see <a href="./04-alerts-and-notifications.md">Alerts and Notifications</a></td></tr>
+</tbody>
+</table>
 
 ## 6.2.3 Saved Event Filters
 

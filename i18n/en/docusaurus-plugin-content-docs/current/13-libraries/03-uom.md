@@ -15,29 +15,33 @@ IDMP organizes units into **UOM classes** — groups of units that measure the s
 
 IDMP ships with the following built-in UOM classes:
 
-| Class | Canonical Unit | Base UOM Classes |
-|---|---|---|
-| Area | square meter | Length |
-| Computer Storage | byte | — |
-| Density | kilogram per cubic meter | Length, Mass |
-| Electric Current | ampere | — |
-| Electric Potential | volt | — |
-| Electric Power | VoltAmp | — |
-| Energy | joule | — |
-| Length | meter | — |
-| Mass | kilogram | — |
-| Molecular Weight | gram per mole | — |
-| Moles | mole | — |
-| Plane Angle | radian | — |
-| Power | watt | — |
-| Pressure | pascal | Length, Mass, Time |
-| Ratio | % | — |
-| Specific Energy | joule per kilogram | Length, Time |
-| Specific Volume | cubic meter per kilogram | Length, Mass |
-| Temperature | kelvin | — |
-| Time | second | — |
-| Velocity | meter per second | — |
-| Volume | cubic meter | Length |
+<table>
+<colgroup><col style="width:12em"/><col/><col/></colgroup>
+<thead><tr><th>Class</th><th>Canonical Unit</th><th>Base UOM Classes</th></tr></thead>
+<tbody>
+<tr><td>Area</td><td>square meter</td><td>Length</td></tr>
+<tr><td>Computer Storage</td><td>byte</td><td>—</td></tr>
+<tr><td>Density</td><td>kilogram per cubic meter</td><td>Length, Mass</td></tr>
+<tr><td>Electric Current</td><td>ampere</td><td>—</td></tr>
+<tr><td>Electric Potential</td><td>volt</td><td>—</td></tr>
+<tr><td>Electric Power</td><td>VoltAmp</td><td>—</td></tr>
+<tr><td>Energy</td><td>joule</td><td>—</td></tr>
+<tr><td>Length</td><td>meter</td><td>—</td></tr>
+<tr><td>Mass</td><td>kilogram</td><td>—</td></tr>
+<tr><td>Molecular Weight</td><td>gram per mole</td><td>—</td></tr>
+<tr><td>Moles</td><td>mole</td><td>—</td></tr>
+<tr><td>Plane Angle</td><td>radian</td><td>—</td></tr>
+<tr><td>Power</td><td>watt</td><td>—</td></tr>
+<tr><td>Pressure</td><td>pascal</td><td>Length, Mass, Time</td></tr>
+<tr><td>Ratio</td><td>%</td><td>—</td></tr>
+<tr><td>Specific Energy</td><td>joule per kilogram</td><td>Length, Time</td></tr>
+<tr><td>Specific Volume</td><td>cubic meter per kilogram</td><td>Length, Mass</td></tr>
+<tr><td>Temperature</td><td>kelvin</td><td>—</td></tr>
+<tr><td>Time</td><td>second</td><td>—</td></tr>
+<tr><td>Velocity</td><td>meter per second</td><td>—</td></tr>
+<tr><td>Volume</td><td>cubic meter</td><td>Length</td></tr>
+</tbody>
+</table>
 
 You can extend this list by adding custom UOM classes.
 
@@ -45,14 +49,18 @@ You can extend this list by adding custom UOM classes.
 
 Click any UOM class name to see its individual units. The unit list shows:
 
-| Column | Description |
-|---|---|
-| **Name** | Unit name (e.g., liter, US gallon) |
-| **Abbreviation** | Short symbol (e.g., L, US gal) |
-| **Origin** | `System Defined` for built-in units, or the user name for custom units |
-| **Description** | Optional description |
-| **Canonical** | Conversion formula relative to the canonical unit |
-| **Quantity Converted** | How many of this unit equal one canonical unit |
+<table>
+<colgroup><col style="width:12em"/><col/></colgroup>
+<thead><tr><th>Column</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>Unit name (e.g., liter, US gallon)</td></tr>
+<tr><td><strong>Abbreviation</strong></td><td>Short symbol (e.g., L, US gal)</td></tr>
+<tr><td><strong>Origin</strong></td><td><code>System Defined</code> for built-in units, or the user name for custom units</td></tr>
+<tr><td><strong>Description</strong></td><td>Optional description</td></tr>
+<tr><td><strong>Canonical</strong></td><td>Conversion formula relative to the canonical unit</td></tr>
+<tr><td><strong>Quantity Converted</strong></td><td>How many of this unit equal one canonical unit</td></tr>
+</tbody>
+</table>
 
 A **Quantity** field at the top lets you enter a reference amount to preview conversions across all units in the class.
 
@@ -60,13 +68,17 @@ A **Quantity** field at the top lets you enter a reference amount to preview con
 
 Click **+** on the UOM list page to create a new class. Fill in:
 
-| Field | Description |
-|---|---|
-| **Name** (required) | Class name. Accepts letters, numbers, underscores, hyphens, and spaces. |
-| **Canonical UOM** (required) | The name of the canonical (base) unit for this class. |
-| **UOM Abbreviation** (required) | The abbreviation for the canonical unit. |
-| **Description** | Optional description. |
-| **Base UOM Class** | Optional. Add one or more existing classes that this class is derived from (e.g., Pressure is derived from Mass, Length, and Time). Click **+** to add each base class. |
+<table>
+<colgroup><col style="width:17em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong> (required)</td><td>Class name. Accepts letters, numbers, underscores, hyphens, and spaces.</td></tr>
+<tr><td><strong>Canonical UOM</strong> (required)</td><td>The name of the canonical (base) unit for this class.</td></tr>
+<tr><td><strong>UOM Abbreviation</strong> (required)</td><td>The abbreviation for the canonical unit.</td></tr>
+<tr><td><strong>Description</strong></td><td>Optional description.</td></tr>
+<tr><td><strong>Base UOM Class</strong></td><td>Optional. Add one or more existing classes that this class is derived from (e.g., Pressure is derived from Mass, Length, and Time). Click <strong>+</strong> to add each base class.</td></tr>
+</tbody>
+</table>
 
 Click **Save** to create the class.
 
@@ -74,14 +86,18 @@ Click **Save** to create the class.
 
 Open a UOM class and click **+** to add a new unit. Fill in:
 
-| Field | Description |
-|---|---|
-| **Name** (required) | Unit name. Accepts letters, numbers, underscores, hyphens, and spaces. |
-| **Abbreviation** (required) | Short symbol for the unit. |
-| **Description** | Optional description. |
-| **Ref UOM** | The reference unit to convert from (defaults to the canonical unit of the class). |
-| **Ref Factor** | Multiplicative factor: `new_unit = Ref_Factor × Ref_UOM`. Default: 1.0. |
-| **Ref Offset** | Additive offset applied after the factor: `new_unit = Ref_Factor × Ref_UOM + Ref_Offset`. Use this for non-proportional conversions such as Celsius ↔ Fahrenheit. Default: 0.0. |
+<table>
+<colgroup><col style="width:15em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong> (required)</td><td>Unit name. Accepts letters, numbers, underscores, hyphens, and spaces.</td></tr>
+<tr><td><strong>Abbreviation</strong> (required)</td><td>Short symbol for the unit.</td></tr>
+<tr><td><strong>Description</strong></td><td>Optional description.</td></tr>
+<tr><td><strong>Ref UOM</strong></td><td>The reference unit to convert from (defaults to the canonical unit of the class).</td></tr>
+<tr><td><strong>Ref Factor</strong></td><td>Multiplicative factor: <code>new_unit = Ref_Factor × Ref_UOM</code>. Default: 1.0.</td></tr>
+<tr><td><strong>Ref Offset</strong></td><td>Additive offset applied after the factor: <code>new_unit = Ref_Factor × Ref_UOM + Ref_Offset</code>. Use this for non-proportional conversions such as Celsius ↔ Fahrenheit. Default: 0.0.</td></tr>
+</tbody>
+</table>
 
 Click **Save** to add the unit.
 

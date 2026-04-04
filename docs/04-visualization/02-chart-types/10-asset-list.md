@@ -43,10 +43,14 @@ sidebar_label: 资产列表
 
 ![编辑模式下的资产列表面板配置](../images/table-asset-config.png)
 
-| 设置 | 说明 |
-|---|---|
-| **资产类型（模板）** | 必填。将列表过滤为所选模板的元素。仅当选择模板后，才能添加该模板的属性列。 |
-| **显示字段** | 可配置的列集合及其显示顺序。包括 IDMP 管理属性（名称、路径、描述、模板、类别）和引用属性（TDengine Tags 和 TDengine Metrics）。 |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>资产类型（模板）</strong></td><td>必填。将列表过滤为所选模板的元素。仅当选择模板后，才能添加该模板的属性列。</td></tr>
+<tr><td><strong>显示字段</strong></td><td>可配置的列集合及其显示顺序。包括 IDMP 管理属性（名称、路径、描述、模板、类别）和引用属性（TDengine Tags 和 TDengine Metrics）。</td></tr>
+</tbody>
+</table>
 
 ## 4.2.10.4 使用示例
 

@@ -15,33 +15,41 @@ sidebar_label: 事件详情
 
 通用标签页的工具栏提供以下操作控件。
 
-| 控件 | 说明 |
-|---|---|
-| **返回列表** | 返回事件列表 |
-| **确认** | 确认事件 |
-| **收藏** | 将此事件标记为收藏，可从左侧边栏快速访问 |
-| **根因分析** | 打开此事件的根因分析视图 |
-| **趋势图分析** | 打开关联元素在事件时间范围内的趋势图 |
-| **重新发送** | 手动为此事件向已配置的联系途径重新发送通知 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>返回列表</strong></td><td>返回事件列表</td></tr>
+<tr><td><strong>确认</strong></td><td>确认事件</td></tr>
+<tr><td><strong>收藏</strong></td><td>将此事件标记为收藏，可从左侧边栏快速访问</td></tr>
+<tr><td><strong>根因分析</strong></td><td>打开此事件的根因分析视图</td></tr>
+<tr><td><strong>趋势图分析</strong></td><td>打开关联元素在事件时间范围内的趋势图</td></tr>
+<tr><td><strong>重新发送</strong></td><td>手动为此事件向已配置的联系途径重新发送通知</td></tr>
+</tbody>
+</table>
 
 ### 6.3.1.2 字段
 
 通用标签页展示以下标准事件字段，涵盖事件的时间、关联对象和状态信息。
 
-| 字段 | 说明 |
-|---|---|
-| **名称** | 事件名称，由事件模板的命名规则生成 |
-| **模板** | 创建此事件所使用的事件模板 |
-| **严重程度** | 严重等级 |
-| **原因代码** | 原因代码（如已设置） |
-| **类别** | 类别标签 |
-| **描述** | 自由文本描述 |
-| **开始时间** | 事件开始的时间 |
-| **结束时间** | 事件结束的时间（仍处于活动中则为空） |
-| **持续时长** | 从开始到结束的时间间隔 |
-| **关联元素** | 运行触发分析的元素——点击可导航至该元素 |
-| **关联分析** | 生成此事件的分析规则——点击可导航至该分析 |
-| **状态** | 确认状态（未确认 / 已确认） |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>字段</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong></td><td>事件名称，由事件模板的命名规则生成</td></tr>
+<tr><td><strong>模板</strong></td><td>创建此事件所使用的事件模板</td></tr>
+<tr><td><strong>严重程度</strong></td><td>严重等级</td></tr>
+<tr><td><strong>原因代码</strong></td><td>原因代码（如已设置）</td></tr>
+<tr><td><strong>类别</strong></td><td>类别标签</td></tr>
+<tr><td><strong>描述</strong></td><td>自由文本描述</td></tr>
+<tr><td><strong>开始时间</strong></td><td>事件开始的时间</td></tr>
+<tr><td><strong>结束时间</strong></td><td>事件结束的时间（仍处于活动中则为空）</td></tr>
+<tr><td><strong>持续时长</strong></td><td>从开始到结束的时间间隔</td></tr>
+<tr><td><strong>关联元素</strong></td><td>运行触发分析的元素——点击可导航至该元素</td></tr>
+<tr><td><strong>关联分析</strong></td><td>生成此事件的分析规则——点击可导航至该分析</td></tr>
+<tr><td><strong>状态</strong></td><td>确认状态（未确认 / 已确认）</td></tr>
+</tbody>
+</table>
 
 ### 6.3.1.3 可展开区域
 
@@ -67,21 +75,29 @@ sidebar_label: 事件详情
 
 属性标签页的工具栏提供以下操作控件。
 
-| 控件 | 说明 |
-|---|---|
-| **返回列表** | 返回事件列表 |
-| **类别** | 按类别过滤属性列表 |
-| **刷新** | 重新加载属性值 |
-| **选择列** | 显示或隐藏属性表格中的列 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>返回列表</strong></td><td>返回事件列表</td></tr>
+<tr><td><strong>类别</strong></td><td>按类别过滤属性列表</td></tr>
+<tr><td><strong>刷新</strong></td><td>重新加载属性值</td></tr>
+<tr><td><strong>选择列</strong></td><td>显示或隐藏属性表格中的列</td></tr>
+</tbody>
+</table>
 
 ### 6.3.2.2 属性表格
 
 属性表格列出事件的所有自定义属性及其值。每条属性行显示以下内容：
 
-| 列 | 说明 |
-|---|---|
-| **名称** | 属性名称，如事件模板中所定义 |
-| **值** | 事件创建时记录的值 |
-| **值类型** | 值的数据类型 |
+<table>
+<colgroup><col style="width:6em"/><col/></colgroup>
+<thead><tr><th>列</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong></td><td>属性名称，如事件模板中所定义</td></tr>
+<tr><td><strong>值</strong></td><td>事件创建时记录的值</td></tr>
+<tr><td><strong>值类型</strong></td><td>值的数据类型</td></tr>
+</tbody>
+</table>
 
 这些属性由事件模板定义，并由触发事件的分析填充。属性值为只读——在事件创建时设定，之后不可修改。

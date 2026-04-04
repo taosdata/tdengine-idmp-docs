@@ -17,12 +17,16 @@ The top-level list shows one entry per asset tree group (for example, "Oil Field
 
 Each metric in the list has the following columns:
 
-| Column | Description |
-|---|---|
-| **Metric Name** | A structured name for the metric (e.g., `ElectricityMeter_Equipment_Current_LoadFactor`) |
-| **Metric Definition** | A plain language description of what the metric measures |
-| **Industry Alias** | Alternative names for this metric as used in the industry |
-| **Syntax Support** | Whether the metric can be computed directly using TDengine SQL (`true`/`false`) |
+<table>
+<colgroup><col style="width:12em"/><col/></colgroup>
+<thead><tr><th>Column</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Metric Name</strong></td><td>A structured name for the metric (e.g., <code>ElectricityMeter_Equipment_Current_LoadFactor</code>)</td></tr>
+<tr><td><strong>Metric Definition</strong></td><td>A plain language description of what the metric measures</td></tr>
+<tr><td><strong>Industry Alias</strong></td><td>Alternative names for this metric as used in the industry</td></tr>
+<tr><td><strong>Syntax Support</strong></td><td>Whether the metric can be computed directly using TDengine SQL (<code>true</code>/<code>false</code>)</td></tr>
+</tbody>
+</table>
 
 Click any metric to open its full detail view.
 
@@ -30,34 +34,42 @@ Click any metric to open its full detail view.
 
 Each metric detail view shows:
 
-| Field | Description |
-|---|---|
-| **Name** | The metric identifier |
-| **Description** | Full description of what the metric measures |
-| **English Abbreviation** | Short code for the metric (e.g., `CLF`) |
-| **Industry Aliases** | Alternative industry names for this metric |
-| **Calculation Formula** | The abstract formula (e.g., `AVG(Current) / MAX(Current)`) |
-| **Calculation SQL** | The concrete TDengine SQL query that computes the metric |
-| **Involved Fields** | The element attributes used in the calculation |
-| **Data Template** | The element template this metric applies to |
-| **Missing Fields** | Attributes required by the formula that are not yet configured on the element |
-| **Business Meaning** | Plain language explanation of what the metric value indicates operationally |
-| **Syntax Support** | Whether TDengine SQL can directly compute this metric |
-| **Hierarchy Level** | The level of the asset hierarchy at which this metric applies (e.g., `EQUIPMENT`, `SITE`) |
-| **Test Result** | Whether the SQL was executed successfully against actual data |
-| **Aggregate Function** | Whether the metric uses an aggregate function |
-| **Nested Subquery** | Whether the SQL requires a nested subquery |
+<table>
+<colgroup><col style="width:14em"/><col/></colgroup>
+<thead><tr><th>Field</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Name</strong></td><td>The metric identifier</td></tr>
+<tr><td><strong>Description</strong></td><td>Full description of what the metric measures</td></tr>
+<tr><td><strong>English Abbreviation</strong></td><td>Short code for the metric (e.g., <code>CLF</code>)</td></tr>
+<tr><td><strong>Industry Aliases</strong></td><td>Alternative industry names for this metric</td></tr>
+<tr><td><strong>Calculation Formula</strong></td><td>The abstract formula (e.g., <code>AVG(Current) / MAX(Current)</code>)</td></tr>
+<tr><td><strong>Calculation SQL</strong></td><td>The concrete TDengine SQL query that computes the metric</td></tr>
+<tr><td><strong>Involved Fields</strong></td><td>The element attributes used in the calculation</td></tr>
+<tr><td><strong>Data Template</strong></td><td>The element template this metric applies to</td></tr>
+<tr><td><strong>Missing Fields</strong></td><td>Attributes required by the formula that are not yet configured on the element</td></tr>
+<tr><td><strong>Business Meaning</strong></td><td>Plain language explanation of what the metric value indicates operationally</td></tr>
+<tr><td><strong>Syntax Support</strong></td><td>Whether TDengine SQL can directly compute this metric</td></tr>
+<tr><td><strong>Hierarchy Level</strong></td><td>The level of the asset hierarchy at which this metric applies (e.g., <code>EQUIPMENT</code>, <code>SITE</code>)</td></tr>
+<tr><td><strong>Test Result</strong></td><td>Whether the SQL was executed successfully against actual data</td></tr>
+<tr><td><strong>Aggregate Function</strong></td><td>Whether the metric uses an aggregate function</td></tr>
+<tr><td><strong>Nested Subquery</strong></td><td>Whether the SQL requires a nested subquery</td></tr>
+</tbody>
+</table>
 
 ## 8.5.4 Actions
 
 The metric list toolbar provides the following actions:
 
-| Action | Description |
-|---|---|
-| **Download** | Export the full metric list as a file for offline review or modification |
-| **Upload** | Import a modified metric list back into IDMP. Use this after editing downloaded metrics to correct formulas or descriptions. |
-| **Regenerate** | Ask the AI to re-generate the composite metrics for this group. Use this after adding more element data, descriptions, or attributes to improve the quality of suggestions. Regeneration typically takes 5 to 10 minutes. |
-| **Select Columns** | Choose which columns are visible in the metric list. Use this to focus on the fields most relevant to your current review. |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Action</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Download</strong></td><td>Export the full metric list as a file for offline review or modification</td></tr>
+<tr><td><strong>Upload</strong></td><td>Import a modified metric list back into IDMP. Use this after editing downloaded metrics to correct formulas or descriptions.</td></tr>
+<tr><td><strong>Regenerate</strong></td><td>Ask the AI to re-generate the composite metrics for this group. Use this after adding more element data, descriptions, or attributes to improve the quality of suggestions. Regeneration typically takes 5 to 10 minutes.</td></tr>
+<tr><td><strong>Select Columns</strong></td><td>Choose which columns are visible in the metric list. Use this to focus on the fields most relevant to your current review.</td></tr>
+</tbody>
+</table>
 
 ## 8.5.5 How the AI Generates Metrics
 

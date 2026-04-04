@@ -32,11 +32,15 @@ sidebar_label: 事件趋势图
 
 ![向事件趋势图添加属性、事件和分析](../images/event-trend-add.png)
 
-| 数据源类型 | 效果 |
-|---|---|
-| **属性** | 为所选元素属性添加一条时序折线 |
-| **事件** | 添加事件触发条件相关的所有属性，并在图表上高亮显示事件的活跃时间范围 |
-| **分析** | 添加分析监控的所有属性，并叠加显示该分析生成的所有事件 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>数据源类型</th><th>效果</th></tr></thead>
+<tbody>
+<tr><td><strong>属性</strong></td><td>为所选元素属性添加一条时序折线</td></tr>
+<tr><td><strong>事件</strong></td><td>添加事件触发条件相关的所有属性，并在图表上高亮显示事件的活跃时间范围</td></tr>
+<tr><td><strong>分析</strong></td><td>添加分析监控的所有属性，并叠加显示该分析生成的所有事件</td></tr>
+</tbody>
+</table>
 
 ### 分析工具
 

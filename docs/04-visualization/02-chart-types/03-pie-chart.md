@@ -29,18 +29,26 @@ sidebar_label: 饼图
 
 除[通用编辑模式控件](../01-panels.md#414-面板编辑模式)外，饼图还增加了以下控件：
 
-| 控件 | 说明 |
-|---|---|
-| **保存为图片** | 将当前预览下载为 PNG 图片 |
-| **全屏** | 将编辑器预览扩展为填满浏览器窗口 |
-| **解读面板** | 对当前预览数据运行 AI 分析 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>控件</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>保存为图片</strong></td><td>将当前预览下载为 PNG 图片</td></tr>
+<tr><td><strong>全屏</strong></td><td>将编辑器预览扩展为填满浏览器窗口</td></tr>
+<tr><td><strong>解读面板</strong></td><td>对当前预览数据运行 AI 分析</td></tr>
+</tbody>
+</table>
 
 ### 图形设置
 
-| 设置 | 说明 |
-|---|---|
-| **标题** | 显示在饼图上方的图表标题 |
-| **副标题** | 显示在主标题下方的次要标题 |
+<table>
+<colgroup><col style="width:6em"/><col/></colgroup>
+<thead><tr><th>设置</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>标题</strong></td><td>显示在饼图上方的图表标题</td></tr>
+<tr><td><strong>副标题</strong></td><td>显示在主标题下方的次要标题</td></tr>
+</tbody>
+</table>
 
 饼图没有坐标轴、边界值或图例部分。扇形标签和百分比直接显示在图表上。
 

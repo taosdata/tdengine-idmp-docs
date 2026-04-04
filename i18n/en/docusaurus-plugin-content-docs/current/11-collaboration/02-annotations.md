@@ -9,6 +9,8 @@ Annotations let you attach free-text notes to elements, events, and (in a future
 
 ## 11.2.1 Annotating Elements
 
+Annotations on elements are added through the General tab and are immediately visible to all users with access to that element.
+
 1. In the Explorer, select an element and click the **General** tab.
 2. Scroll down to the **Annotation** collapsible section and expand it.
 3. Click **+ New Annotation**.
@@ -17,6 +19,8 @@ Annotations let you attach free-text notes to elements, events, and (in a future
 The annotation is saved and appears listed under the Annotation section, showing the note text, the author, and the timestamp.
 
 ## 11.2.2 Annotating Events
+
+Annotations on events are added from the event detail page and provide a persistent narrative record alongside the event status.
 
 1. Open an event to reach its detail page and click the **General** tab.
 2. Scroll down to the **Annotation** collapsible section and expand it.

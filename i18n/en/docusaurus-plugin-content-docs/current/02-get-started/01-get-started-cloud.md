@@ -9,6 +9,8 @@ TDengine Cloud is a fully managed cloud service for industrial big data. It deli
 
 ## 2.1.1 Create a TDengine Cloud Account
 
+Registration takes place through the TDengine Cloud web portal and requires a valid email address for verification.
+
 1. In a web browser, go to [cloud.tdengine.com](https://cloud.tdengine.com).
 2. Under **Sign Up**, enter your email address and organization name.
 3. Click **Get Confirmation Code** and enter the code sent to your email address.
@@ -20,6 +22,8 @@ TDengine Cloud is a fully managed cloud service for industrial big data. It deli
 4. Read the Terms of Service and Privacy Policy and click **Sign up for TDengine Cloud**.
 
 ## 2.1.2 Enter Account Information
+
+The following steps collect the profile details associated with the new account.
 
 1. On the page displayed, enter your name and password.
 
@@ -34,6 +38,8 @@ TDengine Cloud is a fully managed cloud service for industrial big data. It deli
 4. Click **Continue**.
 
 ## 2.1.3 Create an IDMP Instance
+
+An IDMP instance is paired with a TDengine TSDB-Enterprise instance; both are provisioned together in a single workflow.
 
 1. In the dialog box displayed, select **IDMP** to create a TDengine IDMP instance. A TDengine TSDB-Enterprise instance will also be created during this process.
 2. Enter a name for your TDengine IDMP instance and select a pricing plan.

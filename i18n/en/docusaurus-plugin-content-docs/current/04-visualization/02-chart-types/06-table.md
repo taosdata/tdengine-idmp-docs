@@ -28,17 +28,25 @@ For visual trend analysis, use the Trend Chart. For a single summary number, use
 
 In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Table adds:
 
-| Control | Description |
-|---|---|
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Save as Image</strong></td><td>Download the current preview as a PNG image</td></tr>
+<tr><td><strong>Full Screen</strong></td><td>Expand the editor preview to fill the browser window</td></tr>
+<tr><td><strong>Panel Insights</strong></td><td>Run AI analysis on the current preview data</td></tr>
+</tbody>
+</table>
 
 ### Graph Settings
 
-| Setting | Description |
-|---|---|
-| **Timestamp Format** | Display format for the timestamp column (default: `YYYY-MM-DD HH:mm:ss`) |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Timestamp Format</strong></td><td>Display format for the timestamp column (default: <code>YYYY-MM-DD HH:mm:ss</code>)</td></tr>
+</tbody>
+</table>
 
 The Table panel has no Axis, Limits, or Legend sections.
 

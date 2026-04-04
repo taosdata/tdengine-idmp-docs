@@ -32,26 +32,34 @@ For discrete state signals (on/off, running/stopped), use the State Timeline ins
 
 In addition to the [common view mode controls](../01-panels.md#413-panel-view-mode), the Trend Chart adds:
 
-| Control | Description |
-|---|---|
-| **Enable Multi-Swimlane** | Display each metric in its own horizontal band instead of sharing a single Y axis |
-| **Disable Sampling** | Fetch raw data without downsampling. Use when you need to see every individual data point. |
-| **Imputation** | Enter imputation mode. Click and drag to select a gap in the data; IDMP fills the gap using AI-based trend estimation. |
-| **Reset Imputation** | Remove any imputation applied to the current chart |
+<table>
+<colgroup><col style="width:14em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Enable Multi-Swimlane</strong></td><td>Display each metric in its own horizontal band instead of sharing a single Y axis</td></tr>
+<tr><td><strong>Disable Sampling</strong></td><td>Fetch raw data without downsampling. Use when you need to see every individual data point.</td></tr>
+<tr><td><strong>Imputation</strong></td><td>Enter imputation mode. Click and drag to select a gap in the data; IDMP fills the gap using AI-based trend estimation.</td></tr>
+<tr><td><strong>Reset Imputation</strong></td><td>Remove any imputation applied to the current chart</td></tr>
+</tbody>
+</table>
 
 ### Edit Mode Toolbar
 
 In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Trend Chart adds:
 
-| Control | Description |
-|---|---|
-| **Disable Sampling** | Toggle raw data mode for the preview |
-| **Show Forecast** | Overlay the AI forecast on the chart preview |
-| **Imputation** | Enter imputation mode in the preview |
-| **Reset Imputation** | Remove imputation from the preview |
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+<table>
+<colgroup><col style="width:11em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Disable Sampling</strong></td><td>Toggle raw data mode for the preview</td></tr>
+<tr><td><strong>Show Forecast</strong></td><td>Overlay the AI forecast on the chart preview</td></tr>
+<tr><td><strong>Imputation</strong></td><td>Enter imputation mode in the preview</td></tr>
+<tr><td><strong>Reset Imputation</strong></td><td>Remove imputation from the preview</td></tr>
+<tr><td><strong>Save as Image</strong></td><td>Download the current preview as a PNG image</td></tr>
+<tr><td><strong>Full Screen</strong></td><td>Expand the editor preview to fill the browser window</td></tr>
+<tr><td><strong>Panel Insights</strong></td><td>Run AI analysis on the current preview data</td></tr>
+</tbody>
+</table>
 
 ### Graph Settings
 
@@ -69,13 +77,17 @@ The **Line Style**, **Line Width**, **Line Opacity**, and **Fill Opacity** setti
 
 **Fill Opacity** draws a shaded area under each line. This is particularly effective for cumulative quantities — energy consumption, production volume — where the filled area reinforces the sense of accumulation.
 
-| Setting | Description |
-|---|---|
-| **Style** | Line rendering mode: Lines, Smooth, or Step |
-| **Line Style** | Line pattern: Solid, Dashed, or Dotted |
-| **Line Width** | Stroke width (slider) |
-| **Line Opacity** | Transparency of lines, 0–1 |
-| **Fill Opacity** | Area fill below each line, 0–1 (0 = no fill) |
+<table>
+<colgroup><col style="width:9em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Style</strong></td><td>Line rendering mode: Lines, Smooth, or Step</td></tr>
+<tr><td><strong>Line Style</strong></td><td>Line pattern: Solid, Dashed, or Dotted</td></tr>
+<tr><td><strong>Line Width</strong></td><td>Stroke width (slider)</td></tr>
+<tr><td><strong>Line Opacity</strong></td><td>Transparency of lines, 0–1</td></tr>
+<tr><td><strong>Fill Opacity</strong></td><td>Area fill below each line, 0–1 (0 = no fill)</td></tr>
+</tbody>
+</table>
 
 #### Labels
 
@@ -93,10 +105,14 @@ Two settings address this:
 
 ![Label interval reduced to lower density](../images/trend-interval.png)
 
-| Setting | Description |
-|---|---|
-| **Rotate Labels** | Rotation angle for X-axis labels, –90° to +90° |
-| **Label Interval** | Label density: Auto, Small, Medium, Large |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Rotate Labels</strong></td><td>Rotation angle for X-axis labels, –90° to +90°</td></tr>
+<tr><td><strong>Label Interval</strong></td><td>Label density: Auto, Small, Medium, Large</td></tr>
+</tbody>
+</table>
 
 #### Data Stacking
 
@@ -106,10 +122,14 @@ When plotting multiple series that represent parts of a whole (for example, resi
 
 Enabling Fill Opacity alongside stacking makes the cumulative effect visually clear.
 
-| Setting | Description |
-|---|---|
-| **Stack Series** | Stacking mode: None, Same Sign, All, Positive, Negative |
-| **Multi-Swimlane** | Display each metric in its own horizontal band |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Stack Series</strong></td><td>Stacking mode: None, Same Sign, All, Positive, Negative</td></tr>
+<tr><td><strong>Multi-Swimlane</strong></td><td>Display each metric in its own horizontal band</td></tr>
+</tbody>
+</table>
 
 ### Axis Settings
 
@@ -129,11 +149,15 @@ Enabling the **Right Y Axis** assigns the second metric to its own scale on the 
 
 ![Dual Y axis — each metric on its own scale](../images/trend-bothY.png)
 
-| Setting | Description |
-|---|---|
-| **Left Y Axis Title** | Label for the left Y axis |
-| **Value Range** | Min and Max for the left Y axis (blank = auto-scale) |
-| **Right Y Axis** | Enable a secondary Y axis on the right |
+<table>
+<colgroup><col style="width:12em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Left Y Axis Title</strong></td><td>Label for the left Y axis</td></tr>
+<tr><td><strong>Value Range</strong></td><td>Min and Max for the left Y axis (blank = auto-scale)</td></tr>
+<tr><td><strong>Right Y Axis</strong></td><td>Enable a secondary Y axis on the right</td></tr>
+</tbody>
+</table>
 
 ### Limits Settings
 
@@ -149,11 +173,15 @@ The legend can display summary statistics alongside each series name, including 
 
 ![Legend in table mode showing min, max, and mean for each series](../images/trend-legend.png)
 
-| Setting | Description |
-|---|---|
-| **Show** | Display mode: List, Table, or Hidden |
-| **Placement** | Position: Bottom or Right |
-| **Legend Values** | Statistics shown in Table mode: Last, Min, Max, Mean, Sum, etc. |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Show</strong></td><td>Display mode: List, Table, or Hidden</td></tr>
+<tr><td><strong>Placement</strong></td><td>Position: Bottom or Right</td></tr>
+<tr><td><strong>Legend Values</strong></td><td>Statistics shown in Table mode: Last, Min, Max, Mean, Sum, etc.</td></tr>
+</tbody>
+</table>
 
 ## 4.2.1.4 Example Scenarios
 

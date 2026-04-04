@@ -29,11 +29,15 @@ For multiple values compared across time, use the Trend Chart. For a plain numer
 
 In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Gauge Chart adds:
 
-| Control | Description |
-|---|---|
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+<table>
+<colgroup><col style="width:10em"/><col/></colgroup>
+<thead><tr><th>Control</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Save as Image</strong></td><td>Download the current preview as a PNG image</td></tr>
+<tr><td><strong>Full Screen</strong></td><td>Expand the editor preview to fill the browser window</td></tr>
+<tr><td><strong>Panel Insights</strong></td><td>Run AI analysis on the current preview data</td></tr>
+</tbody>
+</table>
 
 ### Graph Settings
 
@@ -41,14 +45,18 @@ The gauge supports configuring the dial labels, title display, and font sizes:
 
 ![Gauge with threshold labels and metric name displayed](../images/gauge-items.png)
 
-| Setting | Description |
-|---|---|
-| **Title** | Chart title displayed above the panel |
-| **Orientation** | Layout direction when multiple gauges are shown: Horizontal or Vertical |
-| **Show threshold labels** | Toggle: display threshold values around the dial arc |
-| **Show Title** | Toggle: display the metric name below the dial |
-| **Title Text size** | Font size for the metric name label (default 16) |
-| **Value Text size** | Font size for the numeric value at the center of the dial (default 48) |
+<table>
+<colgroup><col style="width:14em"/><col/></colgroup>
+<thead><tr><th>Setting</th><th>Description</th></tr></thead>
+<tbody>
+<tr><td><strong>Title</strong></td><td>Chart title displayed above the panel</td></tr>
+<tr><td><strong>Orientation</strong></td><td>Layout direction when multiple gauges are shown: Horizontal or Vertical</td></tr>
+<tr><td><strong>Show threshold labels</strong></td><td>Toggle: display threshold values around the dial arc</td></tr>
+<tr><td><strong>Show Title</strong></td><td>Toggle: display the metric name below the dial</td></tr>
+<tr><td><strong>Title Text size</strong></td><td>Font size for the metric name label (default 16)</td></tr>
+<tr><td><strong>Value Text size</strong></td><td>Font size for the numeric value at the center of the dial (default 48)</td></tr>
+</tbody>
+</table>
 
 ### Limits Settings
 

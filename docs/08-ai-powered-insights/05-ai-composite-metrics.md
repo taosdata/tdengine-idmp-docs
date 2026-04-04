@@ -17,12 +17,16 @@ sidebar_label: AI 复合指标
 
 列表中的每个指标包含以下列：
 
-| 列 | 说明 |
-|---|---|
-| **指标名称** | 指标的结构化名称（例如 `ElectricityMeter_Equipment_Current_LoadFactor`） |
-| **指标定义** | 描述指标测量内容的通俗语言说明 |
-| **行业别名** | 该指标在行业中使用的其他名称 |
-| **语法支持** | 是否可以直接使用 TDengine SQL 计算该指标（`true`/`false`） |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>列</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>指标名称</strong></td><td>指标的结构化名称（例如 <code>ElectricityMeter_Equipment_Current_LoadFactor</code>）</td></tr>
+<tr><td><strong>指标定义</strong></td><td>描述指标测量内容的通俗语言说明</td></tr>
+<tr><td><strong>行业别名</strong></td><td>该指标在行业中使用的其他名称</td></tr>
+<tr><td><strong>语法支持</strong></td><td>是否可以直接使用 TDengine SQL 计算该指标（<code>true</code>/<code>false</code>）</td></tr>
+</tbody>
+</table>
 
 点击任意指标可打开其详情视图。
 
@@ -30,34 +34,42 @@ sidebar_label: AI 复合指标
 
 每个指标详情视图显示：
 
-| 字段 | 说明 |
-|---|---|
-| **名称** | 指标标识符 |
-| **描述** | 指标测量内容的完整说明 |
-| **英文缩写** | 指标的短代码（例如 `CLF`） |
-| **行业别名** | 该指标的其他行业名称 |
-| **计算公式** | 抽象公式（例如 `AVG(Current) / MAX(Current)`） |
-| **计算 SQL** | 计算该指标的具体 TDengine SQL 查询 |
-| **涉及字段** | 计算中使用的元素属性 |
-| **数据模板** | 该指标适用的元素模板 |
-| **缺失字段** | 公式所需但尚未在元素上配置的属性 |
-| **业务含义** | 通俗语言解释指标值在运营中代表什么 |
-| **语法支持** | TDengine SQL 是否可以直接计算该指标 |
-| **层次级别** | 该指标适用的资产层次结构级别（例如 `EQUIPMENT`、`SITE`） |
-| **测试结果** | SQL 是否已针对实际数据成功执行 |
-| **聚合函数** | 指标是否使用聚合函数 |
-| **嵌套子查询** | SQL 是否需要嵌套子查询 |
+<table>
+<colgroup><col style="width:8em"/><col/></colgroup>
+<thead><tr><th>字段</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>名称</strong></td><td>指标标识符</td></tr>
+<tr><td><strong>描述</strong></td><td>指标测量内容的完整说明</td></tr>
+<tr><td><strong>英文缩写</strong></td><td>指标的短代码（例如 <code>CLF</code>）</td></tr>
+<tr><td><strong>行业别名</strong></td><td>该指标的其他行业名称</td></tr>
+<tr><td><strong>计算公式</strong></td><td>抽象公式（例如 <code>AVG(Current) / MAX(Current)</code>）</td></tr>
+<tr><td><strong>计算 SQL</strong></td><td>计算该指标的具体 TDengine SQL 查询</td></tr>
+<tr><td><strong>涉及字段</strong></td><td>计算中使用的元素属性</td></tr>
+<tr><td><strong>数据模板</strong></td><td>该指标适用的元素模板</td></tr>
+<tr><td><strong>缺失字段</strong></td><td>公式所需但尚未在元素上配置的属性</td></tr>
+<tr><td><strong>业务含义</strong></td><td>通俗语言解释指标值在运营中代表什么</td></tr>
+<tr><td><strong>语法支持</strong></td><td>TDengine SQL 是否可以直接计算该指标</td></tr>
+<tr><td><strong>层次级别</strong></td><td>该指标适用的资产层次结构级别（例如 <code>EQUIPMENT</code>、<code>SITE</code>）</td></tr>
+<tr><td><strong>测试结果</strong></td><td>SQL 是否已针对实际数据成功执行</td></tr>
+<tr><td><strong>聚合函数</strong></td><td>指标是否使用聚合函数</td></tr>
+<tr><td><strong>嵌套子查询</strong></td><td>SQL 是否需要嵌套子查询</td></tr>
+</tbody>
+</table>
 
 ## 8.5.4 操作
 
 指标列表工具栏提供以下操作：
 
-| 操作 | 说明 |
-|---|---|
-| **下载** | 将完整指标列表导出为文件，供离线查阅或修改 |
-| **上传** | 将修改后的指标列表导回 IDMP。在编辑下载的指标以更正公式或描述后使用此功能。 |
-| **重新生成** | 请求 AI 为该分组重新生成复合指标。在添加更多元素数据、描述或属性后使用此功能以提升建议质量。重新生成通常需要 5 到 10 分钟，请勿重复点击，耐心等待即可。 |
-| **选择列** | 选择在指标列表中显示哪些列。用于聚焦于当前审查最相关的字段。 |
+<table>
+<colgroup><col style="width:7em"/><col/></colgroup>
+<thead><tr><th>操作</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><strong>下载</strong></td><td>将完整指标列表导出为文件，供离线查阅或修改</td></tr>
+<tr><td><strong>上传</strong></td><td>将修改后的指标列表导回 IDMP。在编辑下载的指标以更正公式或描述后使用此功能。</td></tr>
+<tr><td><strong>重新生成</strong></td><td>请求 AI 为该分组重新生成复合指标。在添加更多元素数据、描述或属性后使用此功能以提升建议质量。重新生成通常需要 5 到 10 分钟，请勿重复点击，耐心等待即可。</td></tr>
+<tr><td><strong>选择列</strong></td><td>选择在指标列表中显示哪些列。用于聚焦于当前审查最相关的字段。</td></tr>
+</tbody>
+</table>
 
 ## 8.5.5 AI 如何生成指标
 

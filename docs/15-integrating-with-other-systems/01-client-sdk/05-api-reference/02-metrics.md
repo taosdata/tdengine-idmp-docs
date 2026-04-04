@@ -13,12 +13,18 @@ import IdmpSdkVersion from "/src/components/IdmpSdkVersion";
 
 ## 方法列表
 
-| 方法 | HTTP | 说明 |
-|---|---|---|
-| `apiV1MetricsGet` | GET /api/v1/metrics | 查询指标列表 |
-| `apiV1MetricsIdHistoryGet` | GET /api/v1/metrics/\{id\}/history | 查询指标历史数据 |
-| `apiV1MetricsIdLatestGet` | GET /api/v1/metrics/\{id\}/latest | 查询指标最新值 |
-| `apiV1MetricsIdDataPost` | POST /api/v1/metrics/\{id\}/data | 向指标写入数据 |
+`MetricResourceApi` 提供以下方法，支持时序数据的查询与写入操作。
+
+<table>
+<colgroup><col style="width:16em"/><col/><col/></colgroup>
+<thead><tr><th>方法</th><th>HTTP</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td><code>apiV1MetricsGet</code></td><td>GET /api/v1/metrics</td><td>查询指标列表</td></tr>
+<tr><td><code>apiV1MetricsIdHistoryGet</code></td><td>GET /api/v1/metrics/\{id\}/history</td><td>查询指标历史数据</td></tr>
+<tr><td><code>apiV1MetricsIdLatestGet</code></td><td>GET /api/v1/metrics/\{id\}/latest</td><td>查询指标最新值</td></tr>
+<tr><td><code>apiV1MetricsIdDataPost</code></td><td>POST /api/v1/metrics/\{id\}/data</td><td>向指标写入数据</td></tr>
+</tbody>
+</table>
 
 ---
 
@@ -28,13 +34,17 @@ import IdmpSdkVersion from "/src/components/IdmpSdkVersion";
 
 ### 参数
 
-| 名称 | 类型 | 必填 | 说明 |
-|---|---|---|---|
-| id | string | 是 | 指标 ID |
-| from | long | 是 | 开始时间，Unix 毫秒时间戳 |
-| to | long | 是 | 结束时间，Unix 毫秒时间戳 |
-| interval | string | 否 | 聚合时间窗口，如 `1m`、`1h`。省略则返回原始数据。 |
-| aggregate | string | 否 | 聚合函数：`avg`、`max`、`min`、`sum` |
+<table>
+<colgroup><col style="width:7em"/><col/><col/><col/></colgroup>
+<thead><tr><th>名称</th><th>类型</th><th>必填</th><th>说明</th></tr></thead>
+<tbody>
+<tr><td>id</td><td>string</td><td>是</td><td>指标 ID</td></tr>
+<tr><td>from</td><td>long</td><td>是</td><td>开始时间，Unix 毫秒时间戳</td></tr>
+<tr><td>to</td><td>long</td><td>是</td><td>结束时间，Unix 毫秒时间戳</td></tr>
+<tr><td>interval</td><td>string</td><td>否</td><td>聚合时间窗口，如 <code>1m</code>、<code>1h</code>。省略则返回原始数据。</td></tr>
+<tr><td>aggregate</td><td>string</td><td>否</td><td>聚合函数：<code>avg</code>、<code>max</code>、<code>min</code>、<code>sum</code></td></tr>
+</tbody>
+</table>
 
 **返回：** `MetricDataDTO`
 

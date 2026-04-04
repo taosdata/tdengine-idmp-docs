@@ -11,6 +11,8 @@ import GatewayBasePathConfig from './common/_gateway-base-path.md'
 
 ## 14.3.1.1 前置条件
 
+使用 Docker 方式部署 TDengine IDMP 前，请确认宿主机已满足以下环境要求。
+
 1. 本文适用 Docker 20.10 以上版本
 1. 本文适用 Docker Compose v2（Docker Compose 插件）以上版本
 1. 所需 Docker 内存大于等于 10GB
