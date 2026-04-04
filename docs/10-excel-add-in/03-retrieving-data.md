@@ -9,6 +9,8 @@ sidebar_label: 使用插件
 
 ## 10.3.1 功能区概览
 
+**TDengine EAI** 功能区提供一组操作按钮，涵盖数据检索、事件查询、资产过滤与插件配置等核心功能，下表列出各按钮的用途说明。
+
 <table>
 <colgroup><col style="width:8em"/><col/></colgroup>
 <thead><tr><th>按钮</th><th>说明</th></tr></thead>

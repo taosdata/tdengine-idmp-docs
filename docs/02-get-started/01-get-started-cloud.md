@@ -9,6 +9,8 @@ TDengine Cloud 是面向工业大数据的全托管云服务，基于 Amazon Web
 
 ## 2.1.1 创建 TDengine Cloud 账户
 
+按照以下步骤在 TDengine Cloud 官网完成账户注册，注册成功后即可获得免费试用额度。
+
 1. 在浏览器中访问 [cloud.tdengine.com](https://cloud.tdengine.com)。
 2. 在**注册**区域，填写邮箱地址和组织名称。
 3. 点击**获取验证码**，然后输入发送至邮箱的验证码。
@@ -20,6 +22,8 @@ TDengine Cloud 是面向工业大数据的全托管云服务，基于 Amazon Web
 4. 阅读服务条款和隐私政策，点击**注册 TDengine Cloud**。
 
 ## 2.1.2 填写账户信息
+
+完成邮箱验证后，系统将引导填写个人账户信息以完成注册。
 
 1. 在显示的页面中，填写姓名和密码。
 
@@ -34,6 +38,8 @@ TDengine Cloud 是面向工业大数据的全托管云服务，基于 Amazon Web
 4. 点击**继续**。
 
 ## 2.1.3 创建 IDMP 实例
+
+账户注册完成后，按照以下步骤创建 TDengine IDMP 实例，系统将同时自动创建所需的 TSDB-Enterprise 实例。
 
 1. 在弹出的对话框中，选择 **IDMP** 以创建 TDengine IDMP 实例。此过程将同时创建一个 TDengine TSDB-Enterprise 实例。
 2. 输入 TDengine IDMP 实例的名称，并选择计费方案。

@@ -48,6 +48,8 @@ TDengine IDMP 任务窗格将在 Excel 窗口右侧打开。
 
 ## 10.2.4 连接要求
 
+在使用 Excel 插件连接 IDMP 前，请确认网络、HTTPS 配置及账户权限满足以下条件。
+
 - IDMP 服务器必须可从运行 Excel 的机器访问。
 - IDMP 服务器上必须配置 HTTPS（请参阅[安装 Excel 插件](./01-installation.md)中的 HTTPS 设置）。
 - 您的 IDMP 账户必须对要检索的元素和属性至少具有读取权限。

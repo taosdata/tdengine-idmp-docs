@@ -13,6 +13,8 @@ import IdmpSdkVersion from "/src/components/IdmpSdkVersion";
 
 ## 方法列表
 
+`MetricResourceApi` 提供以下方法，支持时序数据的查询与写入操作。
+
 <table>
 <colgroup><col style="width:16em"/><col/><col/></colgroup>
 <thead><tr><th>方法</th><th>HTTP</th><th>说明</th></tr></thead>

@@ -130,6 +130,8 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 
 ## 15.1.2.5 后续步骤
 
+完成快速入门后，可通过以下文档进一步了解 SDK 的认证机制、核心概念与完整 API。
+
 - 了解所有认证选项，包括云服务认证 → [认证](./03-authentication.md)
 - 了解 SDK 中的核心对象 → [核心概念](./04-core-concepts.md)
 - 浏览完整 API 参考 → [API 参考](./05-api-reference/index.md)

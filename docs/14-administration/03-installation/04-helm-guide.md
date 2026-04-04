@@ -11,6 +11,8 @@ Helm 是 Kubernetes 的包管理工具，用于简化 Kubernetes 应用程序的
 
 ## 14.3.4.1 前置条件
 
+使用 Helm 在 Kubernetes 上部署 TDengine IDMP 前，请确认集群环境已满足以下版本和配置要求。
+
 1. 本文适用 Kubernetes v1.24 以上版本
 1. 已安装 Helm 3
 1. （可选）如需启用持久化存储，需配置 PersistentVolume 供应器

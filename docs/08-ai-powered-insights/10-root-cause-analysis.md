@@ -46,6 +46,8 @@ sidebar_label: 根因分析
 
 ## 8.10.4 面板控件
 
+根因分析面板提供以下操作控件，用于管理分析结果的刷新与视图切换。
+
 <table>
 <colgroup><col style="width:7em"/><col/></colgroup>
 <thead><tr><th>控件</th><th>说明</th></tr></thead>

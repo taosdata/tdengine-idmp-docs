@@ -13,6 +13,8 @@ import IdmpSdkVersion from "/src/components/IdmpSdkVersion";
 
 ## 方法列表
 
+`EventResourceApi` 提供以下方法，支持事件的查询、确认和解决操作。
+
 <table>
 <colgroup><col style="width:17em"/><col/><col/></colgroup>
 <thead><tr><th>方法</th><th>HTTP</th><th>说明</th></tr></thead>

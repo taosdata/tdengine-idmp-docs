@@ -46,6 +46,8 @@ except ApiException as e:
 
 ## 15.1.7.2 常见错误码
 
+以下列出 SDK 调用过程中可能遇到的常见 HTTP 状态码及其含义、常见原因与建议处理方式。
+
 <table>
 <colgroup><col style="width:8em"/><col/><col/><col/></colgroup>
 <thead><tr><th>HTTP 状态码</th><th>含义</th><th>常见原因</th><th>建议处理方式</th></tr></thead>
@@ -128,6 +130,8 @@ interface ApiCall<T> {
 </Tabs>
 
 ## 15.1.7.4 调试建议
+
+以下调试技巧有助于在开发阶段快速定位 API 调用问题，缩短排查周期。
 
 - 收到 `401` 时，优先检查 Token 是否已过期，而不是检查代码逻辑。
 - 收到 `400` 时，打印完整的 `responseBody`，服务端通常会在其中说明具体哪个参数有问题。

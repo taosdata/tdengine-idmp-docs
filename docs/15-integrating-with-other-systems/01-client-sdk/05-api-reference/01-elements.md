@@ -12,6 +12,8 @@ import TabItem from '@theme/TabItem';
 
 ## 方法列表
 
+`ElementResourceApi` 提供以下方法，涵盖元素的查询、创建、更新和删除操作。
+
 <table>
 <colgroup><col style="width:14em"/><col/><col/></colgroup>
 <thead><tr><th>方法</th><th>HTTP</th><th>说明</th></tr></thead>

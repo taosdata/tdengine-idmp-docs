@@ -55,6 +55,8 @@ sidebar_label: 规划
 
 ## 14.2.2 支持的操作系统
 
+TDengine IDMP 支持主流的 Linux、macOS 和 Windows 操作系统，以下列出各平台的支持版本及架构情况。
+
 <table>
 <colgroup><col style="width:7em"/><col/><col/><col/></colgroup>
 <thead><tr><th>操作系统</th><th>支持版本</th><th>x86_64</th><th>arm64</th></tr></thead>
@@ -68,6 +70,8 @@ sidebar_label: 规划
 </table>
 
 ## 14.2.3 软件前置条件
+
+安装 TDengine IDMP 前，请确认目标环境已满足以下软件依赖版本要求。
 
 <table>
 <colgroup><col style="width:13em"/><col/></colgroup>
