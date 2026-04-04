@@ -94,7 +94,7 @@ Covariate forecasting requires the **TDtsfm** foundation model to be deployed. O
 
 ## How to Use
 
-IDMP offers two ways to enable time-series forecasting, both accessible from Trend Chart and Event Trend Chart panels.
+IDMP offers two ways to enable time-series forecasting: configuring forecasting at the attribute level so that forecast values are continuously computed and automatically displayed, or toggling the forecast overlay on demand from the Trend Chart or Analysis Chart view page.
 
 ### Enable Forecasting via Attribute Configuration
 
@@ -124,14 +124,13 @@ Once saved, open any Trend Chart panel containing this attribute. The forecast v
 
 ![Forecast results overlaid on a Trend Chart](./images/forecast-result.png)
 
-### Toggle Forecasting from the Panel Toolbar
+### Toggle Forecasting from the Panel View Page Toolbar
 
-The Trend Chart and Event Trend Chart panels include a **Show Forecast** icon in their toolbars, letting you toggle the forecast overlay on or off without modifying the underlying attribute configuration.
+The Trend Chart and Analysis Chart view page toolbars include a **Show Forecast** icon, letting you toggle the forecast overlay on or off without modifying the underlying attribute configuration.
 
 ![Show Forecast button in the Trend Chart toolbar](./images/forecast-button.png)
 
-- **In view mode:** Click the forecast icon to overlay or hide the predicted values on the current chart — handy for quickly comparing actuals against forecasts while browsing historical data.
-- **In edit mode:** Click **Show Forecast** to preview the forecast in real time within the panel editor, helping you evaluate the result before saving any configuration changes.
+Click the forecast icon to overlay or hide the predicted values on the current chart — handy for quickly comparing actuals against forecasts while browsing historical data.
 
 If no forecast has been configured for the attributes in the panel, clicking **Show Forecast** opens a configuration dialog where you can select an algorithm and set forecast parameters inline, without navigating to the attribute page.
 

@@ -41,9 +41,9 @@ When calling through the `IMPUTATION()` SQL function, only the **Moment** (TDtsf
 
 ## How to Use
 
-Missing data imputation is triggered from the **Trend Chart** and **Event Trend Chart** panel toolbars and is available in both view mode and edit mode.
+Missing data imputation is triggered from the **Trend Chart** and **Analysis Chart** view page toolbars.
 
-### Imputing in View Mode
+### Performing Imputation
 
 **Step 1: Identify the gap**
 
@@ -68,10 +68,6 @@ After you confirm the configuration, IDMP calls TDgpt to estimate the missing va
 Once saved, the imputed data is written to the data store and the trend chart displays a smooth, continuous curve with the gap resolved.
 
 ![Trend Chart after saving — gap resolved](./images/imputation-04.png)
-
-### Previewing in Edit Mode
-
-The panel editor toolbar also exposes the **Imputation** control. Clicking it enters imputation mode within the panel preview, letting you evaluate the visual result in real time before saving any configuration changes — no need to switch to view mode first.
 
 ## Example
 

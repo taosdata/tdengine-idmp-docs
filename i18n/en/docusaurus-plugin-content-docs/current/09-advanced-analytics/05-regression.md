@@ -44,24 +44,23 @@ IDMP supports three classic curve types, covering linear and common nonlinear fu
 
 ## How to Use
 
-Regression analysis is accessed through the data transformation settings in a **Scatter Chart panel**, sharing the same entry point as clustering.
+Regression analysis is accessed through the **Regression** icon in the **Scatter Chart panel** view page toolbar.
 
 Steps:
 
 1. Open or create a **Scatter Chart panel**. Assign the independent variable to the X axis and the dependent variable to the Y axis so the panel displays the joint scatter of both attributes.
-2. Open the panel's **Data Transformation** settings.
-3. Switch the transformation mode to **Regression Analysis**.
-4. Select a regression type — Linear, Exponential, or Polynomial. For Polynomial, also set the degree.
-5. IDMP fits the regression curve to the current data and overlays it on the scatter chart.
+2. In the panel's **view page**, click the **Regression** icon in the toolbar.
+3. Select a regression type — Linear, Exponential, or Polynomial. For Polynomial, also set the degree.
+4. IDMP fits the regression curve to the current data and overlays it on the scatter chart.
 
 ![Regression curve overlaid on a Scatter Chart](./images/scatter-regression.png)
 
 The fitted curve sits on top of the raw scatter, making it straightforward to read the direction of the relationship (positive or negative), the slope, and any nonlinearity — all expressed in the physical units of the X and Y axes.
 
 :::note
-The current entry point for regression is the Scatter Chart panel's data transformation settings. Future releases will expand this — adding more regression options and enabling direct access through the **Model Development** module under development.
+The current entry point for regression is the Regression icon in the Scatter Chart panel view page toolbar. Future releases will expand this — adding more regression options and enabling direct access through the **Model Development** module under development.
 
-The same data transformation settings also offer a **Data Aggregation** option for clustering scatter data. For full Scatter Chart panel configuration details, see the [Scatter Chart](../04-visualization/02-chart-types/12-scatter-chart.md) chapter.
+The Scatter Chart panel view page toolbar also provides a **Clustering** icon for grouping scatter data into clusters. For full Scatter Chart panel configuration details, see the [Scatter Chart](../04-visualization/02-chart-types/12-scatter-chart.md) chapter.
 :::
 
 ## Example
@@ -73,7 +72,7 @@ The central chiller plant in an office building operates at varying load levels 
 **Steps**
 
 1. Open or create a **Scatter Chart panel**, set the X axis to `Chilled Water Supply Temp Setpoint` and the Y axis to `Chiller Power`, and load 30 days of historical data.
-2. Open the **Data Transformation** settings, switch to **Regression Analysis**, and select **Linear**.
+2. In the panel's **view page**, click the **Regression** icon in the toolbar, and select **Linear**.
 3. IDMP fits a linear curve to the scatter and overlays it on the chart.
 
 **Outcome**

@@ -49,23 +49,22 @@ Several established algorithms are available, each suited to different data stru
 
 ## How to Use
 
-Clustering is currently accessed through the data transformation settings in a **Scatter Chart panel**.
+Clustering is accessed through the **Clustering** icon in the **Scatter Chart panel** view page toolbar.
 
 Steps:
 
 1. Open or create a **Scatter Chart panel** and assign attributes to the X and Y axes to display a two-dimensional scatter of your data.
-2. Open the panel's **Data Transformation** settings.
-3. Switch the transformation mode to **Data Aggregation**.
-4. IDMP automatically runs clustering on the current data points and renders each cluster in a distinct color, making the grouping structure immediately visible.
+2. In the panel's **view page**, click the **Clustering** icon in the toolbar.
+3. IDMP automatically runs clustering on the current data points and renders each cluster in a distinct color, making the grouping structure immediately visible.
 
 ![Clustering result overlaid on a Scatter Chart](./images/scatter-clustering.png)
 
 The clusters appear on top of the raw scatter, with each color representing a distinct group. Reading the cluster boundaries in terms of the physical quantities on each axis gives you a direct picture of what conditions define each operating state.
 
 :::note
-The current entry point for clustering is the Scatter Chart panel's data transformation settings. Future releases will expand this — adding more algorithm options and enabling direct access through the **Model Development** module under development, which will allow building more sophisticated analysis workflows for specific industrial scenarios.
+The current entry point for clustering is the Clustering icon in the Scatter Chart panel view page toolbar. Future releases will expand this — adding more algorithm options and enabling direct access through the **Model Development** module under development, which will allow building more sophisticated analysis workflows for specific industrial scenarios.
 
-The same data transformation settings also offer a **Regression Analysis** option for fitting curves to scatter data. For full Scatter Chart panel configuration details, see the [Scatter Chart](../04-visualization/02-chart-types/12-scatter-chart.md) chapter.
+The Scatter Chart panel view page toolbar also provides a **Regression** icon for fitting curves to scatter data. For full Scatter Chart panel configuration details, see the [Scatter Chart](../04-visualization/02-chart-types/12-scatter-chart.md) chapter.
 :::
 
 ## Example
@@ -77,7 +76,7 @@ A wind farm operations team runs regular performance reviews of individual turbi
 **Steps**
 
 1. Open or create a **Scatter Chart panel**, set the X axis to `Wind Speed` and the Y axis to `Active Power`, and select seven days of historical data for the target turbine.
-2. Open the **Data Transformation** settings and switch to **Data Aggregation**.
+2. In the panel's **view page**, click the **Clustering** icon in the toolbar.
 3. IDMP runs clustering on the scatter data and color-codes the results.
 
 **Outcome**

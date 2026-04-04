@@ -126,7 +126,7 @@ SELECT TLCC(col1, col2, 'lag_start=-12, lag_end=0') FROM foo;
 Future releases will introduce visual interfaces for correlation analysis within IDMP, including:
 
 - Select multiple attributes and generate a **Correlation Heatmap** showing the full pairwise correlation matrix at a glance
-- Trigger correlation analysis directly from a Trend Chart, Event Trend Chart, or Scatter Chart panel, with results overlaid on the current view
+- Trigger correlation analysis directly from a Trend Chart, Analysis Chart, or Scatter Chart panel, with results overlaid on the current view
 - Track correlation over time using a sliding window, monitoring how the relationship between variables evolves
 
 ## Example
