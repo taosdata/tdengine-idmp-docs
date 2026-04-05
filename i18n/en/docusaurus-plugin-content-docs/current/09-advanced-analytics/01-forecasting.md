@@ -5,7 +5,7 @@ sidebar_label: Time-Series Forecasting
 
 # 9.1 Time-Series Forecasting
 
-Time-series forecasting is one of the most widely applied capabilities in industrial data analysis. Powered by **TDgpt**, IDMP enables AI-driven forecasting that helps users produce quantitative estimates of future trends from historical data — shifting operations from reactive to proactive.
+Time-series forecasting is one of the most widely used capabilities in industrial data analysis. Powered by **TDgpt**, IDMP provides AI-driven forecasting that helps users estimate future trends from historical data and shift operations from reactive response to proactive planning.
 
 ## How It Works
 
@@ -46,7 +46,7 @@ Time-series forecasting has broad practical value across industrial domains:
 
 ## Supported Algorithms
 
-TDgpt ships with a broad selection of forecasting algorithms spanning statistical models, machine learning, and deep learning:
+TDgpt ships with a broad selection of forecasting algorithms spanning statistical models, machine learning, deep learning, and foundation models:
 
 | Algorithm | Category | Characteristics |
 |---|---|---|
@@ -54,19 +54,11 @@ TDgpt ships with a broad selection of forecasting algorithms spanning statistica
 | **ARIMA** | Statistical | Classic differenced autoregressive moving-average model; well-suited to stationary series with trend and seasonal components; highly interpretable |
 | **CES** | Statistical | Complex Exponential Smoothing; handles signals with intricate seasonal structures |
 | **ETS** | Statistical | Error-Trend-Seasonality model; automatically selects the best combination of trend and seasonal components |
-| **Theta** | Statistical | Theta decomposition method; delivers robust short-term forecasts |
-| **MSTL** | Statistical | Multiple Seasonal-Trend decomposition using LOESS; designed for signals with more than one overlapping seasonality |
 | **Prophet** | Statistical | Additive model open-sourced by Meta; robust to holiday effects and missing data |
 | **XGBoost** | Machine Learning | Gradient-boosted trees; well-suited to multi-variate forecasting after feature engineering |
-| **LightGBM** | Machine Learning | Lightweight gradient-boosting framework; fast training, handles large datasets efficiently |
 | **LSTM** | Deep Learning | Long Short-Term Memory network; captures complex nonlinear temporal dependencies; good for signals with intricate dynamics |
-| **MLP** | Deep Learning | Multi-Layer Perceptron; simple architecture, trains quickly, useful as a baseline |
-| **DeepAR** | Deep Learning | Autoregressive RNN-based probabilistic forecasting; outputs a distribution rather than a point estimate |
 | **N-BEATS** | Deep Learning | Pure neural architecture requiring no feature engineering; strong benchmark performance across multiple datasets |
-| **N-HiTS** | Deep Learning | An improvement on N-BEATS using multi-scale sampling to enhance long-horizon accuracy |
 | **PatchTST** | Deep Learning | Transformer-based patch model for time series; excels at capturing long-range dependencies |
-| **Temporal Fusion Transformer** | Deep Learning | Combines attention mechanisms with gating networks; supports multi-variate input and covariates |
-| **TimesNet** | Deep Learning | Reshapes time-series data into 2D feature maps for convolutional learning; handles multi-period complex signals |
 | **TDtsfm** | Foundation Model | TDengine's time-series foundation model, pre-trained on diverse industrial data; supports zero-shot forecasting and covariate input; ideal for limited-data scenarios |
 
 ### Choosing an Algorithm
@@ -94,47 +86,19 @@ Covariate forecasting requires the **TDtsfm** foundation model to be deployed. O
 
 ## How to Use
 
-IDMP offers two ways to enable time-series forecasting: configuring forecasting at the attribute level so that forecast values are continuously computed and automatically displayed, or toggling the forecast overlay on demand from the Trend Chart or Analysis Chart view page.
+Time-series forecasting is triggered from the **Forecast** icon in the toolbar when viewing either a Trend Chart or an Analysis Chart.
 
-### Enable Forecasting via Attribute Configuration
+![Forecast button in the Trend Chart toolbar](./images/forecast-button.png)
 
-Configuring forecasting at the attribute level causes forecast values to be computed continuously and displayed automatically in every Trend Chart panel that includes that attribute.
+Click the **Forecast** icon to overlay or hide a forecast on the current chart, making it easy to compare measured values with projected values while reviewing historical data.
 
-Steps:
+If no forecast settings have been saved yet, IDMP opens the forecast configuration dialog. There, users can choose the target attribute, select an algorithm, and configure the model hyperparameters.
 
-1. In the element's **Attributes** tab, click an attribute name to open its detail page.
-2. Click **Edit**.
-3. Expand the **Forecast Configuration** section.
+![Forecast configuration dialog](./images/forecast-algo.png)
 
-![Forecast configuration entry point in attribute settings](./images/forecast-trigger.png)
+After the configuration is saved, IDMP runs the forecast automatically and overlays the result on the chart as a colored curve.
 
-4. Set **Forecast Provider** to **TDgpt**.
-5. Configure the forecast parameters:
-
-| Field | Description |
-|---|---|
-| **Algorithm** | Select a forecasting algorithm (see the table above) |
-| **Forecast rows** | Number of future data points to predict |
-
-![Algorithm selection for forecasting](./images/forecast-algo.png)
-
-6. Click **Save**.
-
-Once saved, open any Trend Chart panel containing this attribute. The forecast values appear as a distinct projected line extending beyond the last historical data point.
-
-![Forecast results overlaid on a Trend Chart](./images/forecast-result.png)
-
-### Toggle Forecasting from the Panel View Page Toolbar
-
-The Trend Chart and Analysis Chart view page toolbars include a **Show Forecast** icon, letting you toggle the forecast overlay on or off without modifying the underlying attribute configuration.
-
-![Show Forecast button in the Trend Chart toolbar](./images/forecast-button.png)
-
-Click the forecast icon to overlay or hide the predicted values on the current chart — handy for quickly comparing actuals against forecasts while browsing historical data.
-
-If no forecast has been configured for the attributes in the panel, clicking **Show Forecast** opens a configuration dialog where you can select an algorithm and set forecast parameters inline, without navigating to the attribute page.
-
-![Forecast configuration dialog](./images/forecast-new.png)
+![Forecast result displayed on the chart](./images/forecast-result.png)
 
 ## Example
 
@@ -144,9 +108,9 @@ A municipal wastewater treatment plant processes around 150,000 tonnes per day. 
 
 **Steps**
 
-1. In the treatment plant element's attribute list, open the `Daily Influent Flow` attribute and click **Edit**.
-2. Under **Forecast Configuration**, set **Forecast Provider** to **TDgpt**, choose **Prophet** as the algorithm — influent volume follows both daily and weekly cycles and is significantly affected by public holidays, making Prophet a natural fit — and set **Forecast rows** to `24` to cover the next 24 hours.
-3. After saving, the forecast curve appears in the Trend Chart panel on the plant's monitoring dashboard, ready for the shift handover briefing each morning.
+1. Open a Trend Chart panel containing the `Daily Influent Flow` attribute and click the **Forecast** icon in the toolbar.
+2. In the forecast configuration dialog, choose **Prophet** as the algorithm — influent volume follows both daily and weekly cycles and is significantly affected by public holidays, making Prophet a natural fit — and set **Forecast rows** to `24` to cover the next 24 hours.
+3. The forecast curve is immediately overlaid on the chart, ready for the shift handover briefing each morning.
 
 **Outcome**
 
