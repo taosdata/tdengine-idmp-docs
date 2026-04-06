@@ -1,4 +1,4 @@
-﻿---
+---
 title: Time-Series Forecasting
 sidebar_label: Time-Series Forecasting
 ---

@@ -1,4 +1,4 @@
-﻿---
+---
 title: Regression
 sidebar_label: Regression
 ---

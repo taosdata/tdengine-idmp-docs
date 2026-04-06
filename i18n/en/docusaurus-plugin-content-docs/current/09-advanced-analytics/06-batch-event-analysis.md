@@ -1,4 +1,4 @@
-﻿---
+---
 title: Event and Batch Analysis
 sidebar_label: Event and Batch Analysis
 ---

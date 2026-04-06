@@ -1,4 +1,4 @@
-﻿---
+---
 title: Window Analysis
 sidebar_label: Window Analysis
 ---
