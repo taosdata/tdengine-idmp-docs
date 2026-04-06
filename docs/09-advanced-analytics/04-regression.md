@@ -1,4 +1,4 @@
-﻿---
+---
 title: 回归分析
 sidebar_label: 回归分析
 ---

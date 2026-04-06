@@ -1,4 +1,4 @@
-﻿---
+---
 title: 聚类分析
 sidebar_label: 聚类分析
 ---

@@ -1,4 +1,4 @@
-﻿---
+---
 title: 相关分析
 sidebar_label: 相关分析
 ---

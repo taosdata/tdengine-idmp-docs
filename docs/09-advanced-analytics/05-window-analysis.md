@@ -1,4 +1,4 @@
-﻿---
+---
 title: 窗口分析
 sidebar_label: 窗口分析
 ---

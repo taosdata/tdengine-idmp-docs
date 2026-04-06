@@ -1,4 +1,4 @@
-﻿---
+---
 title: 时序预测
 sidebar_label: 时序预测
 ---
