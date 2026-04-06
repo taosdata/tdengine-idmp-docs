@@ -5,9 +5,7 @@ sidebar_label: Event and Batch Analysis
 
 # 9.6 Event and Batch Analysis
 
-An event in TDengine IDMP is a discrete operational event with an explicit start time, end time, and duration — a complete digital record of something that happened.
-
-Batch analysis is a critical method for analyzing discrete production processes in industrial data science. **IDMP defines product batches as a specialized type of event**. Rather than relying on a standalone batch-analysis module, IDMP treats batches as a special event type and uses its flexible event analysis capabilities to manage the full batch lifecycle and perform in-depth analysis.
+Batch analysis is a critical method for analyzing discrete production processes in industrial data science. **IDMP defines product batches as a specialized type of event** — discrete operational records with explicit start times, end times, and durations. Rather than providing a standalone batch-analysis module, IDMP treats batches as a special event type and uses its flexible event analysis capabilities to manage the full batch lifecycle and perform in-depth analysis.
 
 Through event analysis, IDMP enables systematic comparison of full-cycle data across batch production, chemical reactions, and manufacturing processes — helping users identify the key process factors that affect product quality, discover patterns and anomalies across batches, and provide a data foundation for process optimization and quality control.
 
@@ -79,11 +77,25 @@ The batch number attribute type should be integer so that the IDMP State Window 
 For scenarios where batch boundaries are naturally defined by data silence gaps (such as equipment stopping data reporting after completing a batch), you can also use the **Session Window** trigger to automatically complete batch aggregation after data stream interruption.
 :::
 
-## Event Analysis Entry Points
+### Ad Hoc Events
 
-### Event Querying and Filtering
+Beyond system-generated or manually entered events, IDMP also allows users to create **ad hoc events** directly — no template or trigger rule required. Users can combine time ranges and attribute conditions on demand to define the events they want to analyze. On the element’s event list page, click **+** and configure the desired rule set in the **Generate Test Event Data** dialog.
 
-IDMP provides powerful event search and filtering capabilities to help users quickly locate events requiring in-depth analysis. Batch events, as a special event type, can leverage IDMP's full suite of event search capabilities.
+![Ad hoc event generation](./images/event-batch-03.png)
+
+Ad hoc events participate in analysis just like formal events and can be overlaid with existing system events in the same chart for comparison. This is particularly useful for:
+
+- **Exploratory analysis:** Quickly define time periods of interest before establishing a complete batch management system
+- **Supplementary comparison:** Precisely target an anomalous period and compare it side-by-side with normal or golden batches
+- **Hypothesis validation:** Define post-adjustment time periods as ad hoc events and compare with pre-adjustment batches to validate improvements
+
+## Adding Events to the Analysis Chart
+
+Once events have been generated, they need to be added to the Analysis Chart before in-depth comparison and analysis can begin. IDMP provides two methods.
+
+### Method 1: From the Event List
+
+IDMP provides powerful event search and filtering capabilities to help users quickly locate events and add them directly to the Analysis Chart. Batch events, as a special event type, can leverage the full suite of search capabilities.
 
 **Search Entry**
 
@@ -109,43 +121,23 @@ Click **Advanced** to expand additional filter criteria. You can precisely filte
 
 For frequently used filter criteria (such as "defective batches in last 30 days," "all batches for product line A," etc.), click **Save As** to save filter conditions as a named filter. Saved filters appear in the sidebar's **Element Filters** list for quick re-execution with a click.
 
-**From Event List to Deep Analysis**
+**Adding to the Analysis Chart**
 
-After locating target events in the event list, click an event to view its detailed information (start/end times, duration, aggregated metrics, custom attribute values, etc.). From the event details page, you can jump directly into the Analysis Chart for deeper investigation.
+After locating target events in the event list, you can add them to the Analysis Chart in the following ways:
 
-Through flexible search and filtering, users can quickly locate key events of interest from massive historical event data, laying the foundation for subsequent comparative analysis, quality traceability, and process optimization.
+- Click the **more actions** menu (⋮) at the end of an event row and select **Add to Analysis Chart**
+- Select multiple events and use the batch action to add them all to the Analysis Chart at once
+- Click an event to open its details page, then jump directly into the Analysis Chart from there
 
-### Event Analysis and Exploration
+Through flexible search and filtering, users can quickly locate key events of interest from massive historical data and add them to the Analysis Chart for comparative analysis, quality traceability, and process optimization.
 
-After events are generated, they can be analyzed and explored in depth through event views. IDMP provides multiple event comparison and visualization methods to help users understand differences and patterns across events from various perspectives.
+### Method 2: Ad-Hoc Window Analysis
 
-**Batch List and Details**
+The Analysis Chart integrates window analysis capabilities, enabling users to launch an ad-hoc window search directly from the chart to discover time segments of interest in historical data. Click the **Window Analysis** icon in the toolbar, select a window type and configure parameters, and the system scans data within the current time range, displaying matching segments as highlighted windows on the chart. For details on window analysis principles, window types, and usage, see [Window Analysis](./05-window-analysis.md).
 
-In the element's **Events** tab, view all historical event records for that equipment, with filtering by time range, event type, and other criteria. Click a single event to view its complete information — start/end times, duration, aggregated metrics, and custom attribute values.
+Once events have been added to the Analysis Chart, the following display and comparison features help users quickly grasp the overall picture:
 
-**Event and Attribute List**
-
-Click the **Event and Attribute List** icon in the Analysis Chart toolbar to open a summary window that presents the event list, the attribute list, and key statistics for the current analysis scope, such as event count, duration statistics, and attribute means or extrema. This gives users a quick operational overview before they move into detailed analysis.
-
-![Event and attribute list](./images/event-batch-02.png)
-
-**Ad Hoc Events**
-
-Beyond system-generated or manually entered events, IDMP also allows users to create **ad hoc events** directly. No template or trigger rule is required: users can combine time ranges and attribute conditions on demand to define the event they want to analyze. On the element's event list page, click **+** and configure the desired rule set in the **Generate Test Event Data** dialog to create an ad hoc event.
-
-![Ad hoc event generation](./images/event-batch-03.png)
-
-Ad hoc events can participate in analysis like formal events, overlaid with existing system events in the same chart for comparison. This capability is particularly useful in the following scenarios:
-
-- **Exploratory analysis:** Before establishing a complete batch management system, quickly define time periods of interest through flexible condition combinations and immediately begin comparative analysis
-- **Supplementary comparison:** When discovering equipment operation anomalies, precisely lock onto that time period by combining time range and parameter conditions, then compare side-by-side with nearby normal batches or golden batches to quickly identify differences
-- **Hypothesis validation:** After adjusting process parameters, instantly define ad hoc events for several post-adjustment time periods and compare with pre-adjustment batches to validate improvement effectiveness
-
-**Window Analysis**
-
-The Analysis Chart integrates window analysis capabilities, allowing users to switch to window analysis mode at any time during event analysis to perform interactive searches on historical data. Click the **Window Analysis** icon in the toolbar, select a window type and configure parameters, and the system scans the data within the current time range, displaying matching time segments as highlighted windows on the chart. For detailed information about window analysis principles, window types, and usage, see [Window Analysis](./05-window-analysis.md).
-
-**Trend Overlay Comparison**
+### Trend Overlay Comparison
 
 In the Analysis Chart, overlay event time ranges onto process parameter curves to visually present how each parameter evolved during the event. After selecting multiple events, overlay their curves in the same chart for comparison, quickly identifying process differences, parameter drift, and anomalous fluctuations between events.
 
@@ -153,37 +145,45 @@ In the Analysis Chart, overlay event time ranges onto process parameter curves t
 
 The figure above shows multi-event curve overlay comparison. By plotting complete process curves from different events on the same timeline, you can clearly see parameter performance during each event and identify events that deviate from the normal range.
 
-**Event Line Analysis**
+### Event Line Display Mode
 
-The Analysis Chart offers multiple display modes for attribute trends and event overlays. By default, events are overlaid directly on the attribute trend chart using a darker background.
+When a large number of events are loaded into the Analysis Chart, the default overlay style — which renders events as shaded regions behind the trend curves — can make the chart difficult to read. In this situation, click **Enable Event Line Mode** in the toolbar. Events then appear as colored lines above the attribute trend chart; hovering over a line reveals the key details of the corresponding event. This display mode keeps the chart legible at high event density and makes it easier to spot distribution patterns across events.
 
-Users can also click **Enable Event Line Mode** in the toolbar. In this mode, events appear as colored lines above the attribute trend chart. Hovering over an event line reveals the key details of the corresponding event. This display is especially useful when investigating a large number of event types at the same time.
+![Event line display mode](./images/event-batch-line.png)
 
-![Event line analysis](./images/event-batch-line.png)
+## Event Analysis and Exploration
 
-**Time Alignment**
+Once events have been added to the Analysis Chart, IDMP provides multiple comparison and visualization methods to help users understand differences and patterns across events from various perspectives.
+
+### Event and Attribute List
+
+Click the **Event and Attribute List** icon in the Analysis Chart toolbar to open a summary window that presents the event list, the attribute list, and key statistics for the current analysis scope — such as event count, duration statistics, and attribute means or extrema. This gives users a quick operational overview before moving into detailed analysis.
+
+![Event and attribute list](./images/event-batch-02.png)
+
+### Time Alignment
 
 Time alignment aligns the start points of multiple events to the same moment (such as t=0), enabling direct comparison of process parameters at the same relative time points across different events. This eliminates the effect of actual event occurrence time differences, focusing on the internal process itself. Time alignment is particularly suited for analyzing parameter performance during relative time periods such as "first 2 hours from start" or "mid-reaction phase."
 
 ![Time alignment analysis](./images/event-batch-05.png)
 
-The figure above shows event comparison after time alignment. All event start points are aligned to t=0, with the horizontal axis representing relative time since event start. This approach enables clear comparison of parameter performance at the same relative time points across events, identifying process execution consistency.
+As shown, all event start points are aligned to t=0, with the horizontal axis representing relative time since event start. This enables clear comparison of parameter performance at the same relative time points across events, identifying process execution consistency.
 
-**Time Normalization**
+### Time Normalization
 
 Time normalization maps events of different durations to a unified time scale (such as 0% to 100%), enabling comparison of events with varying lengths in the same coordinate system. After normalization, the horizontal axis no longer represents absolute or relative time, but rather event completion percentage. This method is particularly suitable for comparing events with significantly different cycle times (such as 6-hour vs. 8-hour batches), focusing on relative performance at each process stage rather than absolute duration.
 
 ![Time normalization analysis](./images/event-batch-06.png)
 
-The figure above shows event comparison after time normalization. All event timelines are compressed or stretched to a unified 0%–100% scale, with the horizontal axis representing event completion progress. Through normalization, you can compare process parameters at relative progress points such as "first 25%," "mid 50%," or "final stage" across events of different durations, revealing differences in process execution rhythm.
+In this view, all event timelines are compressed or stretched to a unified 0%–100% scale, with the horizontal axis representing event completion progress. Through normalization, you can compare process parameters at relative progress points such as "first 25%," "mid 50%," or "final stage" across events of different durations, revealing differences in process execution rhythm.
 
-**Envelope Analysis**
+### Envelope Analysis
 
 The envelope function automatically calculates and plots parameter boundary curves (such as maximum, minimum, mean ± standard deviation) based on historical event data. The envelope defines the normal parameter fluctuation range for events, forming a "safe corridor." Comparing a new event's curve against the envelope quickly reveals whether the event operated within normal bounds or deviated from historical patterns during specific time periods.
 
 ![Envelope analysis](./images/event-batch-07.png)
 
-The figure above shows envelope analysis. The orange area represents the parameter fluctuation range of the current event (such as mean ± 2 standard deviations), while the colored curves represent the upper and lower limit parameters of the current event. When curves exceed the envelope boundaries, it indicates the event's parameters were anomalous during that period, requiring further investigation. The envelope provides a quantitative reference baseline for batch quality assessment.
+The orange area represents the normal parameter fluctuation range derived from historical reference batches (such as mean ± 2 standard deviations), while the colored curves show the actual parameter trends of the events being evaluated. When curves exceed the envelope boundaries, it indicates anomalous parameters during that period, requiring further investigation. The envelope provides a quantitative reference baseline for batch quality assessment.
 
 Through the combined use of these analysis methods, users can deeply understand event differences from multiple perspectives, identify key process factors affecting quality, and provide data support for process optimization and quality control.
 
@@ -191,9 +191,9 @@ Through the combined use of these analysis methods, users can deeply understand 
 Event template creation and management — including custom attribute definitions, naming rules, and severity configuration — is performed in **Foundation Library → Event Templates**. For the full analysis configuration reference, see the [Real-Time Intelligent Analysis and Response](../07-real-time-analysis/02-creating-analysis.md) chapter. For the complete event reference, see the [Events](../../events/) chapter.
 :::
 
-## Usage Example
+## Example
 
-**Scenario Background**
+**Background**
 
 An automotive parts plant's injection molding workshop operates 8 injection molding machines producing precision plastic housings, with each batch producing approximately 1,000 parts over a 6–8 hour cycle. Injection temperature, hold pressure, and cooling time are the critical parameters affecting housing dimensional accuracy and surface quality. Recently, defect rates for certain batches have been noticeably elevated, and the process team wants to use the Analysis Chart's event comparison capabilities to pinpoint the root cause.
 

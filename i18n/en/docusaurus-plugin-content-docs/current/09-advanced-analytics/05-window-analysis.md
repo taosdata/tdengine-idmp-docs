@@ -82,15 +82,11 @@ Window analysis is accessed from the **Window Analysis** icon in the Analysis Ch
 
 Steps:
 
-1. Open the **Analysis Chart** and, while in view mode, click the **Event and Attribute List** icon in the toolbar. IDMP opens a summary window showing the attributes in the current panel, the event list, and commonly used statistics.
-
-![Window attributes and event list](./images/windows-analysis-03.png)
-
-2. Click the **Window Analysis** icon in the toolbar to open the configuration dialog. Select a window type and configure the relevant parameters, such as condition expressions, state attributes, or time intervals.
+1. Click the **Window Analysis** icon in the toolbar to open the configuration dialog. Select a window type and configure the relevant parameters, such as condition expressions, state attributes, or time intervals.
 
 ![Window analysis configuration](./images/windows-analysis-01.png)
 
-3. After the window configuration is confirmed, IDMP scans the historical data in the current time range and renders the matched segments as highlighted windows in the Analysis Chart. At that point, users can:
+2. After the window configuration is confirmed, IDMP scans the historical data in the current time range and renders the matched segments as highlighted windows in the Analysis Chart. At that point, users can:
 
 - Run multiple window strategies in the same panel and compare the results side by side
 - Inspect the data behavior inside each highlighted window to decide whether deeper analysis is needed

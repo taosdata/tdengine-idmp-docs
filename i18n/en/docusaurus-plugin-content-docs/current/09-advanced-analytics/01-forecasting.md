@@ -86,7 +86,7 @@ Covariate forecasting requires the **TDtsfm** foundation model to be deployed. O
 
 ## How to Use
 
-Time-series forecasting is triggered from the **Forecast** icon in the toolbar when viewing either a Trend Chart or an Analysis Chart.
+Time-series forecasting is triggered from the **Forecast** icon in the toolbar of either a Trend Chart or an Analysis Chart in view mode.
 
 ![Forecast button in the Trend Chart toolbar](./images/forecast-button.png)
 

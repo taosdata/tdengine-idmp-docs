@@ -59,11 +59,11 @@ Click the **Imputation** button in the panel toolbar to enter imputation mode. *
 
 **Step 3: Review the imputed values**
 
-After you confirm the configuration, IDMP calls TDgpt to estimate the missing values. The newly generated data is overlaid on the chart **highlighted in red**, clearly distinguished from the original measurements, so you can verify the result before committing. If the result looks off, click **Reset Imputation** to discard the imputation and try a different time range or algorithm.
+After you confirm the configuration, IDMP calls TDgpt to estimate the missing values. The newly generated data is overlaid on the chart **highlighted in red**, clearly distinguished from the original measurements, so you can verify the result before committing. If the result looks off, click **Reset** to discard the imputation and try a different time range or algorithm.
 
 ![Imputation preview — newly generated values highlighted in red](./images/imputation-03.png)
 
-**Step 4: Confirm the final result**
+**Step 4: Save and verify the final result**
 
 Once you are satisfied with the result, click **Save**. The imputed data is written to the data store and the trend chart displays a smooth, continuous curve with the gap resolved.
 
@@ -73,14 +73,14 @@ Once you are satisfied with the result, click **Save**. The imputed data is writ
 
 **Background**
 
-A chemical plant relies on natural gas flow data for daily energy accounting and fuel cost settlement. During a planned network equipment swap, the flow meter lost its communication link for about three hours, leaving that window of flow data completely blank. Because energy consumption is tracked as a daily cumulative total, the gap caused the day's recorded usage to read significantly low — distorting cost calculations and energy efficiency reporting.
+A chemical plant relies on natural gas flow data for daily energy accounting and fuel cost settlement. During a network equipment swap, the flow meter lost its communication link for about three hours, leaving that window of flow data completely blank. Because energy consumption is tracked as a daily cumulative total, the gap caused the day's recorded usage to read significantly low — distorting cost calculations and energy efficiency reporting.
 
 **Steps**
 
 1. Open the **Trend Chart panel** containing the `Natural Gas Flow` attribute. In view mode, the communication outage shows up clearly as a flat gap in the signal.
 2. Click the **Imputation** button in the toolbar to enter imputation mode.
 3. Click and drag to select the missing time range. IDMP calls TDgpt, which analyzes the flow pattern immediately before and after the gap, estimates what the signal most likely measured during the outage, and fills in the values.
-4. The imputed values appear overlaid in a distinct style. Once the result looks reasonable, accept the imputation.
+4. The imputed values appear overlaid in a distinct style. Once the result looks reasonable, click **Save** to complete the imputation.
 
 **Outcome**
 

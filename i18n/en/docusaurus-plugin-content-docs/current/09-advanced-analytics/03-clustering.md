@@ -30,7 +30,7 @@ Clustering delivers practical value across a broad range of industrial use cases
 
 Several established algorithms are available, each suited to different data structures and analysis goals:
 
-| Algorithm | Type | Characteristics |
+| Algorithm | Category | Characteristics |
 |---|---|---|
 | **K-Means** | Centroid-based | Partitions data into K clusters by iterating toward cluster mean centroids; computationally efficient; works best with large datasets and roughly spherical cluster shapes; requires specifying K upfront |
 | **K-Medoids** | Centroid-based | Uses actual data points as cluster centers rather than means; more robust to outliers than K-Means; suited to noisy industrial data |
