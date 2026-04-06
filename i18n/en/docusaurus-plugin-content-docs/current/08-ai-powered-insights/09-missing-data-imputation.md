@@ -21,7 +21,9 @@ Imputation is complementary to TDengine's native interpolation functions (`INTER
 
 ## 8.9.2 Configuring Imputation
 
-Imputation is configured directly from a Trend Chart panel. Open a Trend Chart that displays the attribute with missing data, then use the **imputation control icon** on the right side of the chart to enable imputation and select the method.
+This section introduces AI-powered missing-data imputation and its basic usage. For the full interactive workflow executed directly in the Trend Chart or Analysis Chart, see Chapter 9 [Missing Data Imputation](../09-advanced-analytics/02-missing-data-imputation.md).
+
+Imputation can be launched directly from the Trend Chart view page. Open a Trend Chart that displays the attribute with missing data, then use the **Imputation** icon in the toolbar to enable imputation and select the method.
 
 ## 8.9.3 Supported TDgpt Algorithms
 
@@ -36,4 +38,4 @@ Imputation is configured directly from a Trend Chart panel. Open a Trend Chart t
 
 Imputed values appear in Trend Chart panels and attribute history views alongside measured data, visually distinguishable from actual sensor measurements.
 
-In the Trend Chart panel, an **imputation control icon** on the right side of the chart lets you toggle imputation on or off directly from the chart view, without changing the attribute configuration. Use this to compare the raw data (with gaps) against the imputed view.
+In the Trend Chart panel, the **Imputation** icon in the toolbar lets you enable or disable imputation directly from the chart view, without changing the attribute configuration. Use this to compare the raw data, including gaps, against the imputed view.
