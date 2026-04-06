@@ -1,4 +1,4 @@
----
+﻿---
 title: Clustering
 sidebar_label: Clustering
 ---
@@ -7,7 +7,7 @@ sidebar_label: Clustering
 
 Clustering is a widely used exploratory analysis technique in industrial data science. IDMP supports clustering directly within Scatter Chart panels, automatically grouping data points into natural clusters — with no labels or prior knowledge required. The result gives users an intuitive visual picture of how operating states, process modes, or behavioral patterns are distributed across their data, providing a foundation for condition identification, fault attribution, and optimization decisions.
 
-## How It Works
+## 9.3.1 How It Works
 
 Clustering is an **unsupervised learning** method. Its goal is to partition a dataset into groups — called clusters — such that points within the same cluster are similar to each other, and points in different clusters are distinctly different.
 
@@ -17,7 +17,7 @@ Unlike classification, clustering requires no predefined category labels and no 
 
 In IDMP, clustering takes the two attributes assigned to the X and Y axes of a Scatter Chart as its input, grouping data points in two-dimensional space. The resulting clusters are rendered as color-coded regions directly on the chart, making the grouping structure immediately visible and easy to interpret in terms of the underlying physical quantities.
 
-## Application Scenarios
+## 9.3.2 Application Scenarios
 
 Clustering delivers practical value across a broad range of industrial use cases:
 
@@ -26,7 +26,7 @@ Clustering delivers practical value across a broad range of industrial use cases
 - **Load pattern discovery:** Cluster energy consumption or electrical load data by time period to identify characteristic usage patterns — workday vs. holiday, peak vs. off-peak — supporting demand response and energy efficiency programs
 - **Fleet health stratification:** Cluster a population of similar assets by their operating characteristics to automatically stratify them by health level, supporting prioritized maintenance and asset management decisions
 
-## Supported Algorithms
+## 9.3.3 Supported Algorithms
 
 Several established algorithms are available, each suited to different data structures and analysis goals:
 
@@ -47,7 +47,7 @@ Several established algorithms are available, each suited to different data stru
 - When cluster boundaries are fuzzy or operating states transition gradually, use **GMM**
 - For high-dimensional data with nonlinear feature distributions, use **Spectral Clustering**
 
-## How to Use
+## 9.3.4 How to Use
 
 Clustering is accessed through the **Clustering** icon in the **Scatter Chart panel** toolbar while in view mode.
 
@@ -67,7 +67,7 @@ The current entry point for clustering is the Clustering icon in the Scatter Cha
 The Scatter Chart panel toolbar in view mode also provides a **Regression** icon for fitting curves to scatter data. For full Scatter Chart panel configuration details, see the [Scatter Chart](../04-visualization/02-chart-types/12-scatter-chart.md) chapter.
 :::
 
-## Example
+## 9.3.5 Example
 
 **Background**
 

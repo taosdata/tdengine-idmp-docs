@@ -1,4 +1,4 @@
----
+﻿---
 title: Window Analysis
 sidebar_label: Window Analysis
 ---
@@ -9,7 +9,7 @@ Window analysis is an interactive historical data exploration tool provided by I
 
 This capability is broadly comparable to Seeq's Value Search: an engineer-facing historical data search workflow that lets users locate time segments of interest through condition-based configuration rather than writing SQL or other query logic.
 
-## How It Works
+## 9.5.1 How It Works
 
 The core idea behind window analysis is: **apply a windowing strategy to divide continuous time-series data into discrete segments, surface those that match the specified criteria, and highlight them on the chart to help users discover patterns, anomalies, and trends.**
 
@@ -34,7 +34,7 @@ The six window types supported by window analysis share the same window semantic
 
 In short, real-time analysis triggers are like "security cameras" — configured once, running continuously; window analysis is like "reviewing recorded footage" — searching for specific scenes in historical data on demand.
 
-## Application Scenarios
+## 9.5.2 Application Scenarios
 
 Window analysis has broad practical value across industrial domains:
 
@@ -63,7 +63,7 @@ Window analysis has broad practical value across industrial domains:
 - Use session windows to find data reporting gaps, assessing sensor and communication link reliability
 - Use count windows to split data by fixed sample size, identifying intervals with abnormal sampling frequency
 
-## Supported Window Types
+## 9.5.3 Supported Window Types
 
 IDMP window analysis provides six window types, covering needs from simple time-based splitting to AI-driven anomaly discovery:
 
@@ -76,7 +76,7 @@ IDMP window analysis provides six window types, covering needs from simple time-
 
 These six window types share the same window semantics as [real-time analysis trigger types](../07-real-time-analysis/03-trigger-types.md). See that chapter for detailed parameter configuration of each window type.
 
-## How to Use
+## 9.5.4 How to Use
 
 Window analysis is accessed from the **Window Analysis** icon in the Analysis Chart toolbar while in view mode.
 
@@ -94,7 +94,7 @@ Steps:
 
 ![Window analysis result displayed on the chart](./images/windows-analysis-02.png)
 
-## Example
+## 9.5.5 Example
 
 **Background**
 

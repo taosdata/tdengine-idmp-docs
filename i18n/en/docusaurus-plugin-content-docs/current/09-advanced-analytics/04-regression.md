@@ -1,4 +1,4 @@
----
+﻿---
 title: Regression
 sidebar_label: Regression
 ---
@@ -7,7 +7,7 @@ sidebar_label: Regression
 
 Regression analysis is the core method for quantifying relationships between variables in industrial data. IDMP supports regression directly within Scatter Chart panels, helping users discover and measure the functional relationship between two attributes — providing a quantitative foundation for process modeling, performance benchmarking, and factor analysis.
 
-## How It Works
+## 9.4.1 How It Works
 
 The goal of regression is to find a mathematical function that best describes how one variable (the dependent variable, or output) changes in response to another (the independent variable, or input). The algorithm fits this function by minimizing the difference between predicted and observed values — typically measured as the sum of squared residuals, the method known as least squares.
 
@@ -17,7 +17,7 @@ Unlike clustering, regression is a **supervised** modeling approach: you specify
 
 In IDMP, regression analysis uses the Scatter Chart as its canvas: the X axis carries the independent variable, the Y axis carries the dependent variable, and the fitted curve is overlaid on the scatter of data points — making the quantitative relationship immediately readable in physical terms.
 
-## Application Scenarios
+## 9.4.2 Application Scenarios
 
 Regression analysis delivers practical value across a range of industrial domains:
 
@@ -26,7 +26,7 @@ Regression analysis delivers practical value across a range of industrial domain
 - **Process parameter impact:** Quantify how a process input (mold temperature, injection pressure, feed rate) influences a quality output, supporting data-driven process optimization
 - **Wear and remaining-life estimation:** Fit the relationship between cumulative runtime and a wear indicator such as vibration amplitude or temperature rise, to extrapolate when maintenance will be needed
 
-## Supported Algorithms
+## 9.4.3 Supported Algorithms
 
 IDMP supports three classic curve types, covering linear and common nonlinear function shapes:
 
@@ -42,7 +42,7 @@ IDMP supports three classic curve types, covering linear and common nonlinear fu
 - For relationships that grow or decay exponentially, use **Exponential** regression
 - For curves with local peaks, valleys, S-shapes, or other complex forms, use **Polynomial** regression; degrees of 2 to 4 cover most industrial scenarios
 
-## How to Use
+## 9.4.4 How to Use
 
 Regression analysis is accessed through the **Regression** icon in the **Scatter Chart panel** toolbar while in view mode.
 
@@ -63,7 +63,7 @@ The current entry point for regression is the Regression icon in the Scatter Cha
 The Scatter Chart panel toolbar in view mode also provides a **Clustering** icon for grouping scatter data into clusters. For full Scatter Chart panel configuration details, see the [Scatter Chart](../04-visualization/02-chart-types/12-scatter-chart.md) chapter.
 :::
 
-## Example
+## 9.4.5 Example
 
 **Background**
 

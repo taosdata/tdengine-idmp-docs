@@ -1,4 +1,4 @@
----
+﻿---
 title: Missing Data Imputation
 sidebar_label: Missing Data Imputation
 ---
@@ -7,7 +7,7 @@ sidebar_label: Missing Data Imputation
 
 Gaps in industrial time-series data are unavoidable. Sensors go offline, networks drop, hardware fails, transmission delays accumulate — any of these can leave stretches of a signal with no recorded values. Powered by **TDgpt**, IDMP intelligently fills those gaps by learning from the surrounding signal history and estimating what the sensor most likely would have measured, keeping downstream analytics, cumulative totals, and KPI calculations accurate and complete.
 
-## How It Works
+## 9.2.1 How It Works
 
 The core idea behind imputation is: **reason from what is known to fill in what is missing**. The algorithm runs over a window of data surrounding the gap, analyzes the signal's behavior, estimates the most plausible values for each missing timestamp, and writes those estimates back into the dataset. Imputed values are rendered distinctly from actual measurements — the original data is never overwritten.
 
@@ -15,7 +15,7 @@ TDgpt exposes its imputation capability through the `IMPUTATION()` SQL function.
 
 TDgpt imputation is a complement to TDengine's native interpolation functions (`INTERP`, `FILL`). Native interpolation uses simple strategies — linear, forward-fill, backward-fill — and works well for short, predictable gaps. TDgpt imputation applies learned signal knowledge and is better suited to longer gaps, irregular signals, or situations where simple interpolation would produce unrealistic values.
 
-## Application Scenarios
+## 9.2.2 Application Scenarios
 
 Missing data imputation is most valuable in the following situations:
 
@@ -24,7 +24,7 @@ Missing data imputation is most valuable in the following situations:
 - **Audit trails and compliance records:** In scenarios requiring a complete equipment operating log — regulatory compliance, quality traceability — imputation provides defensible estimated values that maintain record continuity.
 - **Multi-attribute alignment:** When multiple time series need to be analyzed jointly, a gap in one attribute disrupts alignment and joint calculations. Imputation ensures all attributes share a consistent time axis.
 
-## Supported Algorithms
+## 9.2.3 Supported Algorithms
 
 TDgpt provides several imputation algorithms across statistical, deep learning, and foundation model categories:
 
@@ -39,7 +39,7 @@ TDgpt provides several imputation algorithms across statistical, deep learning, 
 When calling through the `IMPUTATION()` SQL function, only the **Moment** (TDtsfm family) algorithm is currently available. When triggering imputation from the Trend Chart panel toolbar, all algorithms listed above are selectable. Each imputation call handles up to 2,048 missing records, with an input data requirement of at least 10 and no more than 8,192 records.
 :::
 
-## How to Use
+## 9.2.4 How to Use
 
 Missing data imputation is triggered from the toolbars in view mode of both the **Trend Chart** and the **Analysis Chart**.
 
@@ -69,7 +69,7 @@ Once you are satisfied with the result, click **Save**. The imputed data is writ
 
 ![Trend Chart after saving — gap resolved](./images/imputation-04.png)
 
-## Example
+## 9.2.5 Example
 
 **Background**
 

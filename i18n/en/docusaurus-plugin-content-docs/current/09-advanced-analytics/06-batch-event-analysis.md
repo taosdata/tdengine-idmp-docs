@@ -1,4 +1,4 @@
----
+﻿---
 title: Event and Batch Analysis
 sidebar_label: Event and Batch Analysis
 ---
@@ -11,7 +11,7 @@ Through event analysis, IDMP enables systematic comparison of full-cycle data ac
 
 **The Analysis Chart is the primary entry point for event and batch analysis.** It is the only analysis workspace in IDMP that runs as an independent window, where users can perform window analysis, event comparison, correlation analysis, and other process-analytics workflows. The event analysis and exploration capabilities described in this section are all carried out from the Analysis Chart while in view mode.
 
-## Principles of Event and Batch Analysis
+## 9.6.1 Principles of Event and Batch Analysis
 
 The core concept of event and batch analysis is: **treat each time-bounded production, reaction, or processing run as an independent analysis unit (i.e., an event/batch), then compare, aggregate, and trace full-cycle data across multiple events to discover patterns, identify differences, and detect anomalies.**
 
@@ -24,7 +24,7 @@ Event and batch analysis typically serves the following objectives:
 - **Anomalous batch identification:** Screen large volumes of historical batches to identify those where process parameters deviated from normal ranges, supporting quality control and process audits
 - **Trend monitoring:** Track long-term trends in key batch metrics (such as yield, cycle time, energy consumption) to detect process drift or equipment aging signals
 
-## Application Scenarios
+## 9.6.2 Application Scenarios
 
 Event and batch analysis has broad applications across discrete manufacturing and process industries:
 
@@ -48,7 +48,7 @@ Event and batch analysis has broad applications across discrete manufacturing an
 - Aggregate statistics on injection temperature, hold pressure, and cooling rate across molding cycles or batches to establish process window baselines
 - Compare process data from defective batches against conforming batches to quickly pinpoint parameter anomaly phases
 
-## Event Definition and Implementation
+## 9.6.3 Event Definition and Implementation
 
 An **Event** in IDMP is a discrete operational record with an explicit start time, end time, and duration. Each event records its time boundaries and can carry custom attributes (such as batch ID, product type, operator, quality conclusion, etc.). Events are associated with elements and their time-series attributes, making it possible to extract and analyze complete process data for any batch time range.
 
@@ -89,7 +89,7 @@ Ad hoc events participate in analysis just like formal events and can be overlai
 - **Supplementary comparison:** Precisely target an anomalous period and compare it side-by-side with normal or golden batches
 - **Hypothesis validation:** Define post-adjustment time periods as ad hoc events and compare with pre-adjustment batches to validate improvements
 
-## Adding Events to the Analysis Chart
+## 9.6.4 Adding Events to the Analysis Chart
 
 Once events have been generated, they need to be added to the Analysis Chart before in-depth comparison and analysis can begin. IDMP provides two methods.
 
@@ -151,7 +151,7 @@ When a large number of events are loaded into the Analysis Chart, the default ov
 
 ![Event line display mode](./images/event-batch-line.png)
 
-## Event Analysis and Exploration
+## 9.6.5 Event Analysis and Exploration
 
 Once events have been added to the Analysis Chart, IDMP provides multiple comparison and visualization methods to help users understand differences and patterns across events from various perspectives.
 
@@ -191,7 +191,7 @@ Through the combined use of these analysis methods, users can deeply understand 
 Event template creation and management — including custom attribute definitions, naming rules, and severity configuration — is performed in **Foundation Library → Event Templates**. For the full analysis configuration reference, see the [Real-Time Intelligent Analysis and Response](../07-real-time-analysis/02-creating-analysis.md) chapter. For the complete event reference, see the [Events](../../events/) chapter.
 :::
 
-## Example
+## 9.6.6 Example
 
 **Background**
 
