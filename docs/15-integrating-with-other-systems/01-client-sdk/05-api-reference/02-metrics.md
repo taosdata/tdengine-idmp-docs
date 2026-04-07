@@ -5,6 +5,7 @@ sidebar_label: 指标 API
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import IdmpSdkVersion from "/src/components/IdmpSdkVersion";
 
 # 15.1.5.2 指标 API
 
@@ -107,5 +108,5 @@ one_hour_ago_ms = now_ms - 3600 * 1000
 </Tabs>
 
 :::note
-完整的方法签名和参数请参考 SDK 包中的 OpenAPI 规范文件（`idmp-v1.0.15.2.json`），或在您的 IDMP 服务器上访问 `/swagger-ui.html` 浏览 Swagger UI。
+完整的方法签名和参数请参考 SDK 包中的 OpenAPI 规范文件（<code>idmp-v<IdmpSdkVersion />.json</code>），或在您的 IDMP 服务器上访问 `/swagger-ui.html` 浏览 Swagger UI。
 :::

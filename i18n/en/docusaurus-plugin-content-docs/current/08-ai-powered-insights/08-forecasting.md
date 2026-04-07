@@ -13,6 +13,8 @@ IDMP supports AI-based time-series forecasting powered by **TDgpt**. Forecasting
 
 ## 8.8.1 Configuring Forecasting on an Attribute
 
+This section covers the **persistent, attribute-level configuration** of forecasting. Once configured, forecast results are automatically available in charts that include that attribute. For an on-demand workflow launched directly from the Trend Chart or Analysis Chart, see Chapter 9 [Time-Series Forecasting](../09-advanced-analytics/01-forecasting.md).
+
 Forecasting is configured per attribute in the **Forecast Configuration** section of the attribute properties.
 
 To enable forecasting for an attribute:
@@ -52,7 +54,7 @@ TDgpt provides several forecasting algorithms:
 
 Once forecasting is enabled on an attribute, forecast values appear alongside historical data in Trend Chart panels. The predicted values are rendered as a continuation of the time-series line, visually distinguishable from measured data.
 
-In the Trend Chart panel, a **forecast control icon** on the right side of the chart lets you toggle the forecast overlay on or off without changing the attribute configuration. Use this to quickly show or hide the predicted values while browsing data.
+In the Trend Chart panel, the **Forecast** icon in the view page toolbar lets you toggle the forecast overlay on or off without changing the attribute configuration. Use this to quickly show or hide predicted values while browsing data.
 
 Forecast results are accessible programmatically via TDengine SQL using the `FORECAST` function, which returns the predicted values for a configured number of future rows.
 

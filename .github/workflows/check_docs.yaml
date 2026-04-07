@@ -29,13 +29,13 @@ jobs:
         run: sudo npm install -g markdownlint-cli
 
       - name: Run Markdown Lint
-        run: markdownlint -c .github/workflows/markdown_config.json --ignore .claude ./
+        run: markdownlint -c .github/workflows/markdown_config.json --ignore .agent ./
 
       - name: Check Typos
         uses: crate-ci/typos@v1.31.1
         with:
           files: ./**/*.md
-          exclude: .claude/**
+          exclude: .agent/**
           config: .github/workflows/typos.toml
 
       - name: Check Typos for i18n
@@ -64,7 +64,7 @@ jobs:
           config: '.github/workflows/.markdownlint-cli2.jsonc'
           globs: |
             **/*.md
-            !.claude/**
+            !.agent/**
       
 
   build:

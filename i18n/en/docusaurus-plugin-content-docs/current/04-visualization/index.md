@@ -37,7 +37,7 @@ TDengine IDMP's trend chart goes far beyond simple time-series plotting. It is t
 
 **Batch comparison.** When events are defined for a process (e.g., batch start and end), the trend chart can overlay multiple batch occurrences on a normalized time axis. This immediately reveals how the current batch compares against historical ones — where it deviated, where it matched, and which batches define the best-known operating profile.
 
-Beyond these, the trend chart and scatter chart serve as the entry point for a broad set of advanced analytics: forecasting, anomaly detection, imputation of missing data, clustering, regression, correlation analysis, and more. Each of these is covered in depth in Chapter 8. The key design point is that these capabilities are not separate applications — they are launched directly from the chart, in context, against the data you are already looking at.
+Beyond these, the trend chart, scatter chart, and Analysis Chart serve as entry points to a broad set of advanced analytics: forecasting, anomaly detection, missing-data imputation, clustering, regression, correlation analysis, window analysis, and event/batch analysis. These capabilities are covered across Chapters 8 and 9: Chapter 8 focuses on real-time analysis and AI-driven capabilities, while Chapter 9 focuses on interactive process analytics performed directly in charts. The key design point is that these capabilities are not separate applications — they are launched directly from the chart, in context, against the data you are already looking at.
 
 ## AI-Powered Visualization
 
