@@ -15,7 +15,7 @@ You can install TDengine IDMP locally on a Linux, macOS, or Windows machine.
 
 Ensure the following prerequisites are in place before installing:
 
-- TDengine TSDB-Enterprise 3.3.7.0 or later — must be installed and running. See [Deploy from Package](https://docs.tdengine.com/get-started/deploy-from-package/).
+- The latest version of TDengine TSDB-Enterprise must be installed and running. See [Deploy from Package](https://docs.tdengine.com/get-started/package/).
 - Java 21 or later
 - On Linux: glibc 2.28 or later
 - SMTP email service (required for alert notifications; deploy internally if internet access is unavailable)
@@ -267,7 +267,7 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 
    If the connection is successful, the list of databases in TDengine TSDB-Enterprise will be displayed.
 
-1. Start TDengine IDMP:
+1. Run the following batch file as an administrator to start TDengine IDMP:
 
    ```batch
    C:\TDengine\idmp\bin\start-tdengine-idmp.bat
