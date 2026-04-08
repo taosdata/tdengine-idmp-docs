@@ -134,7 +134,11 @@ caption {
    Docusaurus sets html[lang="zh-CN"] (or zh) on Chinese pages, so this
    selector is zero-touch — no Markdown changes required. */
 html[lang^="zh"] .markdown table td:first-child,
-html[lang^="zh"] .markdown table th:first-child {
+html[lang^="zh"] .markdown table th:first-child,
+html[lang^="zh"] .markdown table td:first-child code,
+html[lang^="zh"] .markdown table th:first-child code,
+html[lang^="zh"] .markdown table td:first-child a,
+html[lang^="zh"] .markdown table th:first-child a {
   white-space: nowrap;
 }
 
