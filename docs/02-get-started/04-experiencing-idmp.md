@@ -13,7 +13,7 @@ sidebar_label: 探索 IDMP
 
 界面分为以下几个区域：
 
-![IDMP 用户界面总览](../../static/docs-img/basic/ui-main.png)
+![IDMP 用户界面总览](/docs-img/basic/ui-main.png)
 
 **1. 顶部导航栏**
 
@@ -64,7 +64,7 @@ sidebar_label: 探索 IDMP
 3. 在上下文标签栏中选择**通用**，查看该电表的描述和基本信息。
 4. 选择**属性**，查看其属性信息，如电流、电压等。
 
-![查看元素属性](../../static/docs-img/get-started/attributes.png)
+![查看元素属性](/docs-img/get-started/attributes.png)
 
 ## 2.4.3 体验 AI 生成面板
 
@@ -76,7 +76,7 @@ sidebar_label: 探索 IDMP
 
    点击**问我一下**，AI 会自动生成您期望的面板。
 
-![AI 生成面板](../../static/docs-img/get-started/panels.png)
+![AI 生成面板](/docs-img/get-started/panels.png)
 
 ## 2.4.4 体验 AI 实时分析
 
@@ -89,7 +89,7 @@ sidebar_label: 探索 IDMP
 
    按**回车**，AI 会自动生成您期望的实时分析。
 
-![AI 实时分析](../../static/docs-img/get-started/analysis.png)
+![AI 实时分析](/docs-img/get-started/analysis.png)
 
 ## 2.4.5 下一步
 
