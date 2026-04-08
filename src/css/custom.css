@@ -130,6 +130,14 @@ caption {
   caption-side: bottom
 }
 
+/* Prevent first column from wrapping in Chinese locale tables.
+   Docusaurus sets html[lang="zh-CN"] (or zh) on Chinese pages, so this
+   selector is zero-touch — no Markdown changes required. */
+html[lang^="zh"] .markdown table td:first-child,
+html[lang^="zh"] .markdown table th:first-child {
+  white-space: nowrap;
+}
+
 .navbar {
   background-blend-mode: normal;
   background-color: var(--accent);
