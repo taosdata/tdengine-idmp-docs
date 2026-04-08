@@ -1,5 +1,5 @@
 ---
-title: Activate TDengine TSDB-Enterprise
+title: Activate TDengine Historian
 ---
 
 import Tabs from "@theme/Tabs";
