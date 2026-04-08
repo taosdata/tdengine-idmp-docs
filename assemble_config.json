@@ -1,0 +1,34 @@
+{
+    "assembleVersions": {
+        "latest": {
+            "branch": "main",
+            "version": "1.0.15",
+            "ignoreFiles": []
+        },
+        "3.4.0": {
+            "branch": "3.4.0",
+            "version": "3.4.0",
+            "ignoreFiles": []
+        },
+        "3.3.8": {
+            "branch": "3.3.8",
+            "version": "3.3.8",
+            "ignoreFiles": []
+        },
+        "lts": {
+            "branch": "3.3.6",
+            "version": "3.3.6",
+            "ignoreFiles": []
+        },
+        "next": {
+            "branch": "3.0",
+            "version": "1.0.15",
+            "ignoreFiles": []
+        },
+        "cloud": {
+            "branch": "docs-cloud",
+            "version": "cloud",
+            "ignoreFiles": []
+        }
+    }
+}
