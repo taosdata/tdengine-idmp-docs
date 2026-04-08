@@ -1,11 +1,13 @@
 ---
-title: Elements
-sidebar_label: Elements
+title: Elements and Data Catalog
+sidebar_label: Elements and Data Catalog
 ---
 
-# 3.1 Elements
+# 3.1 Elements and Data Catalog
 
 In TDengine IDMP, every physical or logical asset in your industrial environment — a factory, a production line, a machine, or a sensor — is represented as an **element**. Elements are the foundational building blocks of your asset model, giving raw time-series data a structured home and meaningful context.
+
+Elements are organized into a hierarchical **asset tree** that forms your organization's **data catalog** — a structured, navigable map of every asset and data stream. In the AI era, this catalog is essential: it is the index that allows AI agents to locate, understand, and reason about your industrial data without any manual guidance.
 
 ## 3.1.1 What is an Element
 
@@ -16,7 +18,7 @@ An element is a digital representation of a real-world asset or logical grouping
 When you select an element in the asset tree, the **General** tab displays the following information:
 
 | Field | Description |
-|---|---|
+|-------|-------------|
 | **Name** | The element's unique identifier within its parent scope |
 | **Path** | The full hierarchical path to this element in the asset tree (for example, `/Elements/Utilities/California/San Diego County/Chula Vista/em-10`) |
 | **Template** | The element template this element is based on. Click the template name to navigate to the template definition. |
@@ -52,9 +54,9 @@ Role-based access control for this element. This feature is not yet implemented.
 
 Version history and audit trail for changes to this element's configuration. This feature is not yet implemented.
 
-## 3.1.2 Asset Tree and Child Elements
+## 3.1.2 Asset Tree and Data Catalog
 
-Elements are organized into a hierarchical **asset tree**, which mirrors the physical or logical structure of your industrial environment. A typical hierarchy might look like this:
+Elements are organized into a hierarchical **asset tree**, which mirrors the physical or logical structure of your industrial environment. A typical hierarchy looks like this:
 
 ```text
 Enterprise
@@ -64,15 +66,52 @@ Enterprise
             └── Sensor
 ```
 
-Any element can have one or more **child elements**. This parent-child relationship allows you to:
+Each node in this tree is an element. Every element can be associated not only with time-series data, but also with attributes, visualizations, real-time analysis tasks, events, documents, and annotations — all attached at the right level of the hierarchy. This transforms raw sensor measurements into contextualized, business-meaningful information.
 
-- Browse your entire asset catalog from the top down
+### The Asset Tree as a Data Catalog
+
+The asset tree is more than a navigation panel. When fully built out, it becomes your organization's **data catalog** — a structured, browsable map of every asset and every data stream in your industrial environment.
+
+Think of it this way: a data catalog is what allows AI and users alike to *locate, understand, and navigate* data assets without having to know the names of underlying database tables or the specifics of raw data schemas. Instead of asking "which supertable in TDengine contains the vibration data for Pump-3 at Site A?", a user or an AI agent can simply navigate to `Site A → Utilities → Pump-3 → Vibration` and immediately find the right data, along with its engineering units, historical trends, analysis rules, and related documents.
+
+This is exactly what makes TDengine IDMP AI-Ready. The AI engine in IDMP uses the asset tree as its index into your data. When you ask a question in AI Chat — such as "Which pumps at Site A exceeded their vibration threshold last week?" — the AI traverses the catalog to identify the relevant elements, retrieve the right attributes, and provide a grounded, asset-specific answer. A well-structured data catalog is therefore not just an organizational convenience: it is the foundation that makes AI queries accurate, context-aware, and actionable.
+
+Any element can have one or more child elements, forming a parent-child relationship that allows you to:
+
 - Aggregate data across a branch of the tree (for example, total energy usage across all machines on a production line)
-- Apply configurations at any level of the hierarchy
+- Apply configurations, analysis rules, and dashboard templates at any level of the hierarchy
 
 The root of the asset tree — the top-level element with no parent — typically represents an enterprise or site-level asset. You can create multiple root-level elements to represent separate sites or business units.
 
-An element can also appear in more than one hierarchy at the same time — for example, a wind turbine may belong to both a geographic site tree and an equipment-type tree. This is achieved through *element references*. See [3.1.7 Element References](#317-element-references) for details.
+### Multiple Perspectives on the Same Assets
+
+The asset tree supports **multiple simultaneous hierarchies**, each reflecting a different business perspective on the same underlying assets:
+
+| Perspective | Example hierarchy |
+|-------------|------------------|
+| Organizational | Company → Factory → Production Line → Equipment |
+| Geographic | Region → Site → Building → Zone → Device |
+| Equipment type | Turbine → Inverter → Sensor |
+| Functional | Utility → Power Meter → Phase Measurement |
+
+Take a wind farm as an example. A turbine or an inverter, can appear in a geographic hierarchy *and* a functional equipment hierarchy at the same time. Both views point to the same element and its data; nothing is duplicated. This is achieved through *element references*. See [3.1.7 Element References](#317-element-references) for details.
+
+![Asset tree hierarchy — two perspectives on the same assets](../images/03/aiready-tree.png)
+
+This multi-perspective organization ensures that the data catalog serves every team in the organization: operations teams navigate by site, maintenance teams navigate by equipment class, and AI agents can traverse any path that leads to the right data.
+
+### What Each Node Carries
+
+Every element in the catalog is more than a name. Each node carries:
+
+- **Identity** — name, path, template, categories, and descriptive metadata
+- **Data** — attribute bindings that link the element to live and historical time-series data in TDengine TSDB
+- **Intelligence** — real-time analysis rules, anomaly detection, and alert conditions
+- **Visualization** — panels and dashboards automatically generated from templates
+- **Knowledge** — attached documents (manuals, P&IDs, calibration records) indexed by the AI engine
+- **Context** — annotations, location coordinates, and operational notes
+
+This richness is what distinguishes a data catalog from a simple folder structure. The catalog does not merely tell you *where* data lives — it tells you *what it means*, *who owns it*, and *how to interpret it*.
 
 ## 3.1.3 Creating Elements
 
@@ -150,7 +189,7 @@ Templates support inheritance. You can create a base template (for example, "Mot
 Because a template is shared across many elements, field values inside a template cannot be hardcoded. IDMP provides **substitution strings** that are resolved to the actual values when an element is created. Common substitution strings include:
 
 | Substitution string | Resolves to |
-|---|---|
+|---------------------|-------------|
 | `${Template#name}` | The template name |
 | `${Element#name}` | The element name |
 | `${Attribute#name}` | The attribute name |
@@ -165,7 +204,7 @@ In addition to system-provided strings, you can define custom **KEYWORD** substi
 ### 3.1.6.3 Key Template Settings
 
 | Setting | Description |
-|---|---|
+|---------|-------------|
 | **Base Template Only** | If enabled, this template can only be used as a parent for other templates, not to create elements directly. |
 | **Allow Extension** | If enabled, elements created from this template can have additional custom attributes, analyses, or panels added on top of the template-defined ones. If disabled, no customization is permitted. |
 | **Element Naming Pattern** | A pattern — composed of fixed strings and substitution strings — that determines the auto-generated name for each element created from this template. For example, `DEV-${KEYWORD1}` would name elements like `DEV-smeter-1`. |
@@ -175,7 +214,7 @@ In addition to system-provided strings, you can define custom **KEYWORD** substi
 When you open an element template, the **General** tab shows:
 
 | Field | Description |
-|---|---|
+|-------|-------------|
 | **Template Name** | The name of the template |
 | **Description** | Optional description |
 | **Base Template** | The parent template this one inherits from, if any |
@@ -193,7 +232,7 @@ When you open an element template, the **General** tab shows:
 Once a template is created, its detail page shows the following tabs. Each tab manages one category of sub-template that is automatically instantiated for every element created from this template:
 
 | Tab | Description |
-|---|---|
+|-----|-------------|
 | **General** | The element-level settings described above |
 | **Attribute Template** | The standard set of attributes, including TDengine TSDB data reference bindings. See [Attribute Templates](./02-attributes.md#attribute-templates). |
 | **Panel Template** | Standard panels (Trend Chart, Gauge, Table, etc.) auto-created for each element. See [Panel and Dashboard Templates](../04-visualization/07-panel-dashboard-templates.md). |
@@ -225,7 +264,7 @@ DEV-${KEYWORD1}
 Create three attribute templates on the `Smart Meter` template:
 
 | Attribute | Data Reference Type | Data Reference Setting |
-|---|---|---|
+|-----------|--------------------|-----------------------|
 | Current | TDengine Metric | `TDengine/smdb/${KEYWORD1}/current` |
 | Voltage | TDengine Metric | `TDengine/smdb/${KEYWORD1}/voltage` |
 | Model | TDengine Tag | `TDengine/smdb/${KEYWORD1}/model` |
