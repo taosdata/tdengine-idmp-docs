@@ -41,3 +41,7 @@
 .sidebarLogo {
   display: none;
 }
+
+.sidebarLogo img {
+  width: 80%;
+}
