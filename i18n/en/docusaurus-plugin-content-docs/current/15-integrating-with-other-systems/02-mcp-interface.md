@@ -5,7 +5,7 @@ sidebar_label: MCP Interface
 
 # 15.2 MCP Interface
 
-IDMP now exposes its MCP integration through a reverse-proxied HTTP Stream endpoint. AI agents do not need to install or run `mcp-tdengine-idmp` locally. Instead, they connect directly to the Streamable HTTP endpoint provided by IDMP and can immediately discover the available tools, resources, and prompts. The current surface includes **50 tools**, **4 dynamic resources**, and **7 prompt templates** for diagnostics, alarm triage, shift handover, root-cause analysis, and guided creation of analyses and panels.
+IDMP now exposes its MCP integration through a reverse-proxied Streamable HTTP endpoint. AI agents do not need to install or run `mcp-tdengine-idmp` locally. Instead, they connect directly to the Streamable HTTP endpoint provided by IDMP and can immediately discover the available tools, resources, and prompts. The current surface covers tools, resources, and prompt workflows for diagnostics, alarm triage, shift handover, root-cause analysis, and guided creation of analyses and panels.
 
 ## 15.2.1 Typical Use Cases
 
@@ -18,7 +18,7 @@ IDMP now exposes its MCP integration through a reverse-proxied HTTP Stream endpo
 
 | Item | Value |
 |---|---|
-| Transport | `HTTP` / `Streamable HTTP` |
+| Transport | `Streamable HTTP` |
 | Endpoint URL | `http://<IDMP_HOST>:6042/api/v1/mcp/stream` |
 | Authentication | `Authorization: Bearer <IDMP_TOKEN>` |
 | Capability discovery | The client automatically reads Tools, Resources, and Prompts after connecting |
@@ -27,7 +27,7 @@ If your deployment uses a public domain or another entry point instead of `http:
 
 ## 15.2.3 Configuring Common Agents
 
-Different clients may use slightly different field names, but the essential information is always the same: **remote URL + HTTP Stream transport + Authorization header**.
+Different clients may use slightly different field names, but the essential information is always the same: **remote URL + Streamable HTTP transport + Authorization header**.
 
 ### 15.2.3.1 Claude Code
 
@@ -92,11 +92,11 @@ You can also edit Copilot CLI's configuration file directly at `~/.copilot/mcp-c
 
 ## 15.2.4 MCP Surface Summary
 
-| Type | Count | Description |
-|---|---|---|
-| Tools | 50 | Query tools plus a controlled write surface for elements, attributes, events, analyses, and panels |
-| Resources | 4 | Dynamic resources for hierarchy, templates, event templates, and analysis algorithms |
-| Prompts | 7 | Structured workflows for handover, health checks, alarm triage, root-cause analysis, and more |
+| Type | Description |
+|---|---|
+| Tools | Query tools plus a controlled write surface for elements, attributes, events, analyses, and panels |
+| Resources | Dynamic resources for hierarchy, templates, event templates, and analysis algorithms |
+| Prompts | Structured workflows for handover, health checks, alarm triage, root-cause analysis, and more |
 
 ## 15.2.5 Tool Categories
 
@@ -109,7 +109,7 @@ You can also edit Copilot CLI's configuration file directly at `~/.copilot/mcp-c
 | Panels and dashboards | `list_panels`, `get_panel`, `add_panel`, `create_panel`, `delete_panel`, `search_dashboards` | Querying, generating, creating, and deleting panels, plus dashboard search |
 | AI and system metadata | `ask_idmp`, `recommend_analyses`, `recommend_panels`, `get_system_config`, `list_categories` | Built-in AI calls plus system metadata and category lookup |
 
-The write surface is intentionally limited to 12 scoped tools: `acknowledge_event`, `add_event_annotation`, `add_analysis`, `create_analysis`, `create_alarm_rule`, `manage_analysis`, `add_panel`, `create_panel`, `delete_panel`, `create_attribute`, `create_element_annotation`, and `update_contact_point`.
+The write surface is intentionally limited to a scoped set of tools: `acknowledge_event`, `add_event_annotation`, `add_analysis`, `create_analysis`, `create_alarm_rule`, `manage_analysis`, `add_panel`, `create_panel`, `delete_panel`, `create_attribute`, `create_element_annotation`, and `update_contact_point`.
 
 ## 15.2.6 Dynamic Resources
 

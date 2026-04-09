@@ -5,7 +5,7 @@ sidebar_label: MCP 接口
 
 # 15.2 MCP 接口
 
-IDMP 现已通过反向代理对外提供基于 HTTP Stream 的 MCP 接口。AI 智能体无需单独部署 `mcp-tdengine-idmp`，只需连接 IDMP 提供的 Streamable HTTP 地址，即可读取工业数据与上下文，并调用受控写能力。当前能力面包含 **50 个工具**、**4 个动态资源** 和 **7 个提示模板**，适合设备诊断、告警分诊、交接班、根因分析，以及分析规则与看板配置等场景。
+IDMP 现已通过反向代理对外提供基于 Streamable HTTP 的 MCP 接口。AI 智能体无需单独部署 `mcp-tdengine-idmp`，只需连接 IDMP 提供的 Streamable HTTP 地址，即可读取工业数据与上下文，并调用受控写能力。当前能力面覆盖 Tools、Resources 和 Prompts 三类 MCP 能力，适合设备诊断、告警分诊、交接班、根因分析，以及分析规则与看板配置等场景。
 
 ## 15.2.1 适用场景
 
@@ -18,7 +18,7 @@ IDMP 现已通过反向代理对外提供基于 HTTP Stream 的 MCP 接口。AI 
 
 | 项目 | 说明 |
 |---|---|
-| Transport | `HTTP` / `Streamable HTTP` |
+| Transport | `Streamable HTTP` |
 | 接口 URL | `http://<IDMP_HOST>:6042/api/v1/mcp/stream` |
 | 鉴权方式 | `Authorization: Bearer <IDMP_TOKEN>` |
 | 能力发现 | 客户端连接后会自动读取 Tools、Resources 和 Prompts |
@@ -27,7 +27,7 @@ IDMP 现已通过反向代理对外提供基于 HTTP Stream 的 MCP 接口。AI 
 
 ## 15.2.3 在常见 Agent 中配置
 
-不同客户端的字段名可能略有差异，但核心信息始终一致：**远程 URL + HTTP Stream transport + Authorization Header**。
+不同客户端的字段名可能略有差异，但核心信息始终一致：**远程 URL + Streamable HTTP transport + Authorization Header**。
 
 ### 15.2.3.1 Claude Code
 
@@ -92,11 +92,11 @@ GitHub Copilot CLI 官方支持通过交互式命令 `/mcp add` 添加远程 MCP
 
 ## 15.2.4 MCP 能力总览
 
-| 类型 | 数量 | 说明 |
-|---|---|---|
-| Tools | 50 | 包含查询类工具和受控写工具，可读写元素、属性、事件、分析任务和看板 |
-| Resources | 4 | 提供层级、模板、事件模板和分析算法等动态资源 |
-| Prompts | 7 | 封装交接班、健康检查、告警分诊、根因分析等标准工作流 |
+| 类型 | 说明 |
+|---|---|
+| Tools | 包含查询类工具和受控写工具，可读写元素、属性、事件、分析任务和看板 |
+| Resources | 提供层级、模板、事件模板和分析算法等动态资源 |
+| Prompts | 封装交接班、健康检查、告警分诊、根因分析等标准工作流 |
 
 ## 15.2.5 Tools 能力
 
@@ -109,7 +109,7 @@ GitHub Copilot CLI 官方支持通过交互式命令 `/mcp add` 添加远程 MCP
 | 看板与数据大屏 | `list_panels`、`get_panel`、`add_panel`、`create_panel`、`delete_panel`、`search_dashboards` | 查询、生成、创建和删除看板，并搜索数据大屏 |
 | AI 与系统元数据 | `ask_idmp`、`recommend_analyses`、`recommend_panels`、`get_system_config`、`list_categories` | 调用 IDMP AI，并读取系统配置与分类元数据 |
 
-当前对外只暴露 12 个受控写工具：`acknowledge_event`、`add_event_annotation`、`add_analysis`、`create_analysis`、`create_alarm_rule`、`manage_analysis`、`add_panel`、`create_panel`、`delete_panel`、`create_attribute`、`create_element_annotation` 和 `update_contact_point`。
+当前对外暴露的受控写工具包括：`acknowledge_event`、`add_event_annotation`、`add_analysis`、`create_analysis`、`create_alarm_rule`、`manage_analysis`、`add_panel`、`create_panel`、`delete_panel`、`create_attribute`、`create_element_annotation` 和 `update_contact_point`。
 
 ## 15.2.6 Dynamic Resources
 
