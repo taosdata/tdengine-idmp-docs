@@ -231,7 +231,6 @@ html[lang^="zh"] .markdown table th:first-child a {
 }
 
 .DocSearch-Button {
-  margin: 16px 0 !important;
   border-radius: 0.25rem !important;
   width: 55%
 }

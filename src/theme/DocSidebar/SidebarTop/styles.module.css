@@ -1,0 +1,54 @@
+.sidebarTop {
+  margin: 20px 10px 10px 10px;
+  display: flex;
+  column-gap: 10px;
+}
+
+.versionSelect {
+  font-size: 18px;
+  color: var(--contrast-2);
+  width: 100%;
+  border-radius: 8px;
+  padding: 4px 8px;
+  background-color: var(--base-3);
+  border: 1px solid #999;
+  appearance: base-select;
+}
+
+@media (min-width: 997px) {
+  .versionSelect::picker-icon {
+    color: #999;
+    margin-right: 5px
+  }
+
+  ::picker(select) {
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 0 4px #ebebeb;
+    appearance: base-select;
+  }
+
+  option {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-left: 1px solid #ebebeb;
+    border-right: 1px solid #ebebeb;
+    white-space: nowrap;
+  }
+
+  option:first-of-type {
+    border-radius: 8px 8px 0 0;
+    border-top: 1px solid #ebebeb;
+  }
+
+  option:last-of-type {
+    border-radius: 0 0 8px 8px;
+    border-bottom: 1px solid #ebebeb;
+  }
+
+  option:hover,
+  option:focus {
+    background: var(--accent);
+    color: var(--base-3)
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "assembleVersions": {
+        "latest": {
+            "version": "1.0.15"
+        },
+        "lts": {}
+    }
+}
