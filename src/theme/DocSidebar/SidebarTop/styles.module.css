@@ -7,7 +7,6 @@
 .versionSelect {
   font-size: 18px;
   color: var(--contrast-2);
-  width: 100%;
   border-radius: 8px;
   padding: 4px 8px;
   background-color: var(--base-3);
