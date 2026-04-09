@@ -16,6 +16,9 @@ This procedure describes how to activate a TDengine Historian license. The opera
 
 ### Obtain Your Activation Code
 
+<Tabs>
+<TabItem value="TDengine CLI">
+
 1. On the machine running TDengine TSDB-Enterprise, open the TDengine CLI as the `root` user:
 
    ```shell
@@ -46,6 +49,31 @@ This procedure describes how to activate a TDengine Historian license. The opera
 
    Your account representative or reseller will send you an activation code that you use to activate your TDengine Historian deployment.
 
+</TabItem>
+
+<TabItem value="TDengine TSDB Explorer">
+
+1. Log in to TDengine TSDB Explorer as the `root` user. The default URL is `http://127.0.0.1:6060`.
+
+1. From the main menu on the left, select **Management** and open the **License** tab.
+
+1. Copy the value of the Cluster ID and Machine Code values as shown below.
+
+   ![License tab](../assets/activate-01.png)
+
+1. Send these values to your account representative or authorized reseller. Also include the following information:
+
+   - The name of your company
+   - The name and email address of the primary technical contact
+   - The intended environment (production, PoC, or testing)
+   - The intended number of historian tags. For more information, see [TDengine Historian Pricing](https://tdengine.com/pricing/).
+   - The desired term of the license
+
+   Your account representative or reseller will send you an activation code that you use to activate your TDengine Historian deployment.
+
+</TabItem>
+</Tabs>
+
 ### Activate Your Deployment
 
 <Tabs>
@@ -70,6 +98,7 @@ SHOW GRANTS\G;
 ```
 
 </TabItem>
+
 <TabItem value="TDengine TSDB Explorer">
 
 1. Once you receive your activation code, log in to TDengine TSDB Explorer as the `root` user. The default URL is `http://127.0.0.1:6060`.
@@ -78,9 +107,7 @@ SHOW GRANTS\G;
 
 1. Enter your activation code and click **Confirm**.
 
-   :::important
-   Ensure that the activation code is not enclosed in single quotes.
-   :::
+   ![Activate license](../assets/activate-02.png)
 
 Your TDengine Historian deployment is now licensed. You can view the details of your license, including expiration date, on the **License** tab.
 
