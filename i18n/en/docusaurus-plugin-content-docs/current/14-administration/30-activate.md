@@ -57,7 +57,7 @@ This procedure describes how to activate a TDengine Historian license. The opera
 
 1. From the main menu on the left, select **Management** and open the **License** tab.
 
-1. Copy the value of the Cluster ID and Machine Code values as shown below. 
+1. Copy the value of the Cluster ID and Machine Code values as shown below.
 
    ![License tab](../assets/activate-01.png)
 
