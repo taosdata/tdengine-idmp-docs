@@ -5,6 +5,27 @@ const customSidebarItemsGenerator = async ({
     defaultSidebarItemsGenerator,
     ...args
 }) => {
+    function isReleaseHistoryCategory(item) {
+        if (item?.type !== 'category' || !Array.isArray(item.items)) {
+            return false;
+        }
+
+        const releaseLabels = new Set([
+            'Release Notes',
+            'Release History',
+            '发布说明',
+            '发布历史'
+        ]);
+
+        if (releaseLabels.has(item.label)) {
+            return true;
+        }
+
+        // Fallback to category link id/path so sorting survives label changes.
+        const linkId = item.link?.id || '';
+        return /(^|\/)21-release-history\/index$/.test(linkId);
+    }
+
     function sortReleaseHistory(items) {
         // Debug logs for version extraction and sorting
         // To enable debug logs, set DEBUG_RELEASE_SORT=true
@@ -52,11 +73,7 @@ const customSidebarItemsGenerator = async ({
 
     function deepSort(items) {
         return items.map(item => {
-            if (
-                item.type === 'category' &&
-                item.label === 'Release Notes' &&
-                Array.isArray(item.items)
-            ) {
+            if (isReleaseHistoryCategory(item)) {
                 // Sort version entries under "Release Notes"
                 return { ...item, items: sortReleaseHistory(item.items) };
             } else if (Array.isArray(item.items)) {
