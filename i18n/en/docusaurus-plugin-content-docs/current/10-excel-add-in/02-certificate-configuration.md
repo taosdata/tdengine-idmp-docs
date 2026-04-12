@@ -126,6 +126,7 @@ Ensure that the IDMP HTTPS port (default: **6034**) is in a listening state.
    mkdir -p bak
    mv privkey.pem certbundle.pem bak/
    ```
+   
 2. Copy the newly generated `privkey.pem` and `certbundle.pem` to the `/usr/local/taos/idmp/config` directory:
 
    - **Package installation:** Copy and replace the files directly.
