@@ -23,7 +23,7 @@ const customSidebarItemsGenerator = async ({
 
         // Fallback to category link id/path so sorting survives label changes.
         const linkId = item.link?.id || '';
-        return /(^|\/)21-release-history\/index$/.test(linkId);
+        return /(^|\/)\d*-?release-history\/index$/.test(linkId);
     }
 
     function sortReleaseHistory(items) {
