@@ -127,6 +127,7 @@ openssl x509 -in certbundle.pem -text -noout | grep -A1 "Subject Alternative Nam
    mkdir -p bak
    mv privkey.pem certbundle.pem bak/
    ```
+   
 2. 将新生成的 `privkey.pem` 和 `certbundle.pem` 复制到 `/usr/local/taos/idmp/config` 目录：
 
    - **安装包部署：** 直接复制替换即可。
