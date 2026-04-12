@@ -3,16 +3,16 @@ title: Installing the Excel Add-In
 sidebar_label: Installing the Excel Add-In
 ---
 
-# 10.1 Installing the Excel Add-In
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+
+# 10.1 Installing the Excel Add-In
 
 The TDengine IDMP Excel Add-In allows you to retrieve time-series data and element attributes directly inside Microsoft Excel, without writing any code or SQL.
 
 ## 10.1.1 Prerequisites
 
-### 10.1.1.1 HTTPS Requirement
+### HTTPS Requirement
 
 The Excel Add-In connects to IDMP over **HTTPS only**. Before installing, ensure that the IDMP HTTPS service is enabled and accessible (default port: **6034**).
 
@@ -21,23 +21,17 @@ To enable HTTPS, add the following to the IDMP configuration file (`application.
 ```yaml
 quarkus:
   http:
-    port: 6042          # IDMP HTTP service port
-    ssl-port: 6034      # IDMP HTTPS service port
-    insecure-requests: enabled  # Allow HTTP and HTTPS to work simultaneously
+    port: 6042
+    ssl-port: 6034
+    insecure-requests: enabled
     ssl:
-      enabled: true     # Enable SSL/HTTPS
+      enabled: true
       certificate:
-        files: /usr/local/taos/idmp/config/certbundle.pem   # Certificate file path
-        key-files: /usr/local/taos/idmp/config/privkey.pem  # Private key file path
+        files: /usr/local/taos/idmp/config/certbundle.pem
+        key-files: /usr/local/taos/idmp/config/privkey.pem
 ```
 
-:::info Full Configuration Reference
-
-For the complete IDMP configuration file documentation, see [Configuration File Reference](../14-administration/03-installation/06-config-reference.md).
-
-:::
-
-**Built-in test certificate.** IDMP ships with a test certificate valid for 3 months, bound to the domain `idmp.tdengine.net`. This certificate is suitable for evaluation and testing. It is not recommended for production use.
+**Built-in test certificate.** IDMP ships with a test certificate valid for 3 months, bound to the domain `idmp.tdengine.net`. This certificate is suitable for evaluation and testing. It is not recommended for production use. To configure a self-signed certificate with a longer validity period, see [Certificate Configuration](./02-certificate-configuration.md).
 
 If you are using the built-in test certificate, add the following entry to the hosts file on the client machine (replace the IP with your actual server address):
 
@@ -50,13 +44,12 @@ Hosts file locations:
 - **Linux / macOS:** `/etc/hosts`
 - **Windows:** `C:\Windows\System32\drivers\etc\hosts`
 
-### 10.1.1.2 System Requirements
+### System Requirements
 
 | Requirement | Details |
 |---|---|
 | **Excel version** | Excel 2016 or later (Windows or macOS) |
 | **Permissions** | Administrator rights required on Windows |
-| **Network** | Requires access to download the installation script and connect to the IDMP service |
 | **Node.js** | Node.js 22.3 or later required on Windows if logging is enabled |
 
 ## 10.1.2 Installation
