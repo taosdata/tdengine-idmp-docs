@@ -28,7 +28,7 @@ TDengine IDMP 打破了这一壁垒：
 | 章节 | 说明 |
 |---|---|
 | **客户端 SDK** | 用于以编程方式访问元素、指标和事件的 Java 和 Python SDK |
-| **MCP 接口** | 通过模型上下文协议实现 LLM 智能体集成 *(即将推出)* |
+| **MCP 接口** | 通过模型上下文协议实现 LLM 智能体集成，提供 Tools、Resources 和 Prompts |
 | **嵌入面板与仪表盘** | 将 IDMP 可视化内容嵌入外部 Web 应用 |
 
 <DocCardList />
