@@ -193,7 +193,7 @@ Because a template is shared across many elements, field values inside a templat
 | `${Template#name}` | The template name |
 | `${Element#name}` | The element name |
 | `${Attribute#name}` | The attribute name |
-| `${attributes["AttrName"]#value}` | The current value of the named attribute |
+| `${attributes["AttrName"]#value}` | The current value of the named attribute. `AttrName` is a placeholder that you **must manually replace with an actual attribute name** defined in the template. For example, if the template has an attribute named `Device ID`, write `${attributes["Device ID"]#value}`. The system resolves it to the attribute's actual value when creating an element or generating an event. |
 | `${startTime}` | The event start time |
 | `${endTime}` | The event end time |
 

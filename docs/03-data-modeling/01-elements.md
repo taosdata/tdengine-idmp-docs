@@ -193,7 +193,7 @@ sidebar_label: 元素与数据目录
 | `${Template#name}` | 模板名称 |
 | `${Element#name}` | 元素名称 |
 | `${Attribute#name}` | 属性名称 |
-| `${attributes["AttrName"]#value}` | 指定属性的当前值 |
+| `${attributes["AttrName"]#value}` | 指定属性的当前值。`AttrName` 为占位符，**必须手动替换为该模板中实际存在的属性名称**。例如，若模板包含名为 `设备ID` 的属性，则写为 `${attributes["设备ID"]#value}`。系统在创建元素或生成事件时，会将其解析为该属性的实际值。 |
 | `${startTime}` | 事件开始时间 |
 | `${endTime}` | 事件结束时间 |
 

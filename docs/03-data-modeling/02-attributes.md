@@ -100,7 +100,7 @@ CONCAT('voltage of device ', ${attributes['Device ID']}, ' is ', CAST(${attribut
 | **名称** | 属性在其元素内的唯一名称 |
 | **描述** | 对该属性所测量或代表内容的可读说明 |
 | **类别** | 用于在属性选项卡中对属性进行分组和筛选的一个或多个标签 |
-| **值类型** | 值的数据类型：`Float`、`Double`、`Int`、`BigInt`、`TinyInt`、`SmallInt`、`Bool`、`Nchar`、`Varchar`、`Timestamp` |
+| **值类型** | 值的数据类型，分为三类。**基础类型**：`Float`、`Double`、`Int`、`IntUnsigned`、`BigInt`、`BigIntUnsigned`、`TinyInt`、`TinyIntUnsigned`、`SmallInt`、`SmallIntUnsigned`、`Bool`、`Nchar`、`Varchar`、`Timestamp`、`Decimal`（需要 TDengine TSDB 版本 3.4.1.1 及以上，且数据引用类型必须为 TDengine 指标）。**枚举类型**：从系统中已定义的枚举类型中选择，属性值限定为该枚举的预定义选项。**对象类型**：`File`（文件）、`Video`（视频）、`Attribute`（属性引用）、`Element`（元素引用）。 |
 | **默认值** | 当数据源无可用数据时返回的值 |
 | **计量单位分类** | 物理量类别（如电流、温度、压力）。选择计量单位分类后，默认计量单位和显示计量单位的可用选项会相应筛选。 |
 | **默认计量单位** | 属性值存储时使用的单位（如安培、°C、bar） |
