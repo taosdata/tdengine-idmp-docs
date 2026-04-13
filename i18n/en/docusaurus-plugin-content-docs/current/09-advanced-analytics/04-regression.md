@@ -44,7 +44,9 @@ IDMP supports three classic curve types, covering linear and common nonlinear fu
 
 ## 9.4.4 How to Use
 
-Regression analysis is accessed through the **Regression** icon in the **Scatter Chart panel** toolbar while in view mode.
+There are two ways to access regression analysis.
+
+**Option 1: From a Scatter Chart panel**, click the **Regression** icon in the toolbar while in view mode.
 
 Steps:
 
@@ -53,12 +55,28 @@ Steps:
 3. Select a regression type — Linear, Exponential, or Polynomial. For Polynomial, also set the degree.
 4. IDMP fits the regression curve to the current data, overlays it on the scatter chart, and displays the fitted equation.
 
-![Regression curve overlaid on a Scatter Chart](./images/scatter-regression.png)
+![Regression curve in a Scatter Chart](./images/scatter-regression.png)
 
 The fitted curve sits on top of the raw scatter, making it straightforward to read the direction of the relationship (positive or negative), the slope, and any nonlinearity — all expressed in the physical units of the X and Y axes.
 
+**Option 2: From an Analysis Chart panel**, click the **Enable XY Plot** icon in the toolbar.
+
+Steps:
+
+1. Open or create an **Analysis Chart** panel. Click the **Enable XY Plot** icon in the toolbar, select the X-axis and Y-axis attributes in the popup, and click Apply. The panel switches to a scatter chart view.
+
+![Regression from an Analysis Chart](./images/scatter-clustering-2.png)
+
+2. Click the **Regression** icon in the toolbar and configure the regression algorithm in the popup.
+
+![Regression configuration in Analysis Chart](./images/scatter-regression-2.png)
+
+3. After confirming the configuration, the system generates the regression result and displays it on the scatter chart.
+
+![Regression result in Analysis Chart](./images/scatter-regression-3.png)
+
 :::note
-The current entry point for regression is the Regression icon in the Scatter Chart panel toolbar while in view mode. Future releases will expand the available algorithms and usage patterns.
+In the current version, regression analysis is accessible from both the Analysis Chart panel and the Scatter Chart panel toolbar while in view mode. Future releases will expand the available algorithms and usage patterns.
 
 The Scatter Chart panel toolbar in view mode also provides a **Clustering** icon for grouping scatter data into clusters. For full Scatter Chart panel configuration details, see the [Scatter Chart](../04-visualization/02-chart-types/12-scatter-chart.md) chapter.
 :::

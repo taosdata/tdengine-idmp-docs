@@ -28,7 +28,7 @@ Together these integration points mean that IDMP data can flow freely into AI mo
 | Section | Description |
 |---|---|
 | **Client SDK** | Java and Python SDKs for programmatic access to elements, metrics, and events |
-| **MCP Interface** | LLM agent integration via the Model Context Protocol *(coming soon)* |
+| **MCP Interface** | LLM agent integration via the Model Context Protocol with tools, resources, and prompts |
 | **Embedding Panels and Dashboards** | Embed IDMP visualizations in external web applications |
 
 <DocCardList />

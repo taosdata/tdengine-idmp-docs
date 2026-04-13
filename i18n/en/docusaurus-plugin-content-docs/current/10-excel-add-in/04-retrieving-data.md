@@ -1,13 +1,13 @@
----
+﻿---
 title: Using the Add-In
 sidebar_label: Using the Add-In
 ---
 
-# 10.3 Using the Add-In
+# 10.4 Using the Add-In
 
 Once connected to IDMP, the **TDengine EAI** ribbon tab provides all the tools for retrieving data, exploring events, filtering assets, and configuring the add-in. Each button opens a task pane on the right side of Excel where you configure the query and select an output cell.
 
-## 10.3.1 Ribbon Overview
+## 10.4.1 Ribbon Overview
 
 | Button | Description |
 |---|---|
@@ -25,7 +25,7 @@ Once connected to IDMP, the **TDengine EAI** ribbon tab provides all the tools f
 | **Update** | Refresh all data in the workbook |
 | **Settings** | Configure global add-in settings |
 
-## 10.3.2 Common Fields
+## 10.4.2 Common Fields
 
 Most data retrieval forms share the following fields:
 
@@ -37,7 +37,7 @@ Most data retrieval forms share the following fields:
 
 Click **OK** to insert data and close the pane, or **Apply** to insert data and keep the pane open for further queries.
 
-## 10.3.3 Current Value
+## 10.4.3 Current Value
 
 Retrieves the latest value of the selected attributes and writes it to the output cell.
 
@@ -47,7 +47,7 @@ Retrieves the latest value of the selected attributes and writes it to the outpu
 | **Output Cell** | Target cell |
 | **Time Position** | No Time Stamp / Time at Left / Time on Top |
 
-## 10.3.4 Archive Value
+## 10.4.4 Archive Value
 
 Retrieves the attribute value at a specific historical timestamp, with gap-filling support.
 
@@ -59,7 +59,7 @@ Retrieves the attribute value at a specific historical timestamp, with gap-filli
 | **Output Cell** | Target cell |
 | **Time Position** | No Time Stamp / Time at Left / Time on Top |
 
-## 10.3.5 Raw Data
+## 10.4.5 Raw Data
 
 Retrieves all raw time-series data points within a time range, with no aggregation.
 
@@ -71,7 +71,7 @@ Retrieves all raw time-series data points within a time range, with no aggregati
 | **Output Cell** | Top-left cell of the output range |
 | **Time Position** | No Time Stamp / Time at Left / Time on Top |
 
-## 10.3.6 Sampled Data
+## 10.4.6 Sampled Data
 
 Retrieves time-series data resampled at a regular interval over a time range. Use this to get a uniformly-spaced series regardless of the original data frequency.
 
@@ -85,7 +85,7 @@ Retrieves time-series data resampled at a regular interval over a time range. Us
 | **Output Cell** | Top-left cell of the output range |
 | **Time Position** | No Time Stamp / Time at Left / Time on Top |
 
-## 10.3.7 Timed Data
+## 10.4.7 Timed Data
 
 Retrieves the attribute value at one or more specific timestamps that you provide, with fill support for gaps.
 
@@ -97,9 +97,9 @@ Retrieves the attribute value at one or more specific timestamps that you provid
 | **Output Cell** | Target cell |
 | **Time Position** | No Time Stamp / Time at Left / Time on Top |
 
-## 10.3.8 Calculated Data
+## 10.4.8 Calculated Data
 
-Retrieves aggregated data over regular time windows — for example, the hourly average, daily maximum, or sum per shift.
+Retrieves aggregated data over regular time windows â€” for example, the hourly average, daily maximum, or sum per shift.
 
 | Field | Description |
 |---|---|
@@ -112,15 +112,15 @@ Retrieves aggregated data over regular time windows — for example, the hourly 
 | **Output Cell** | Top-left cell of the output range |
 | **Time Options** | Optionally show **Start Time**, **End Time**, or **Max/Min Time** columns alongside the aggregated values |
 
-## 10.3.9 Time Filtered
+## 10.4.9 Time Filtered
 
-Retrieves data filtered by a state or condition defined by start and end expressions — useful for extracting data only during specific operating conditions (e.g., when a machine is running).
+Retrieves data filtered by a state or condition defined by start and end expressions â€” useful for extracting data only during specific operating conditions (e.g., when a machine is running).
 
 | Field | Description |
 |---|---|
 | **Data Items** | The attributes to query (required) |
-| **Expression — Start With** | The condition expression that marks the beginning of a valid period (required) |
-| **Expression — End With** | The condition expression that marks the end of a valid period (required) |
+| **Expression â€” Start With** | The condition expression that marks the beginning of a valid period (required) |
+| **Expression â€” End With** | The condition expression that marks the end of a valid period (required) |
 | **Start Time** | Start of the search range (required) |
 | **End Time** | End of the search range (required) |
 | **Time Interval** | Interval for data points within each valid period |
@@ -128,7 +128,7 @@ Retrieves data filtered by a state or condition defined by start and end express
 | **Output Cell** | Top-left cell of the output range |
 | **Time Options** | Optionally show **Start Time** and/or **End Time** columns |
 
-## 10.3.10 Event Explore
+## 10.4.10 Event Explore
 
 Queries IDMP events and exports the results as a table in the spreadsheet. Supports filtering by multiple criteria.
 
@@ -143,11 +143,11 @@ Queries IDMP events and exports the results as a table in the spreadsheet. Suppo
 | **Updated at** | Filter by last update time range |
 | **Maximum Results** | Maximum number of events to return (default: 1000) |
 | **Order By** | Sort field, with ASC or DESC order |
-| **Element Criteria — Root Path** | Limit results to events associated with elements under a specific asset tree path |
+| **Element Criteria â€” Root Path** | Limit results to events associated with elements under a specific asset tree path |
 | **Output Cell** | Top-left cell of the output table |
 | **Columns to Display** | Select which event fields to include as columns in the output table. A multi-select picker lets you choose from all available event fields (e.g., Ack, Status, and more). |
 
-## 10.3.11 Attribute Filter
+## 10.4.11 Attribute Filter
 
 Searches IDMP attribute metadata and exports the results as a table. Useful for auditing your data model or building dynamic references.
 
@@ -163,7 +163,7 @@ Searches IDMP attribute metadata and exports the results as a table. Useful for 
 | **Output Cell** | Top-left cell of the output table |
 | **Columns to Display** | Select which attribute fields to include as columns in the output table. A multi-select picker lets you choose from all available attribute fields (e.g., Name, Description, and more). |
 
-## 10.3.12 Asset Filter
+## 10.4.12 Asset Filter
 
 Searches IDMP elements (assets) and exports the results as a table.
 
@@ -182,7 +182,7 @@ Searches IDMP elements (assets) and exports the results as a table.
 | **Order By** | Sort field, with ASC or DESC order |
 | **Output Cell** | Top-left cell of the output table |
 
-## 10.3.13 Properties
+## 10.4.13 Properties
 
 Retrieves a specific metadata property of an element attribute (such as its unit, description, or configured limits) and writes it to a cell.
 
@@ -192,13 +192,13 @@ Retrieves a specific metadata property of an element attribute (such as its unit
 | **Property** | The metadata property to retrieve (e.g., unit of measure, description, Hi limit) |
 | **Output Cell** | Target cell |
 
-## 10.3.14 Update
+## 10.4.14 Update
 
 Click **Update** in the ribbon to refresh all data in the workbook. Every cell that was populated by the TDengine EAI add-in is re-queried with its original parameters and updated with the latest results.
 
 Use this to keep a workbook current without reopening each form individually. For automatic periodic refresh, configure the **Interval** in Settings.
 
-## 10.3.15 Settings
+## 10.4.15 Settings
 
 Configures global defaults for the add-in.
 

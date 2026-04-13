@@ -100,7 +100,7 @@ Every attribute has the following configurable properties:
 | **Name** | A unique name for the attribute within its element |
 | **Description** | A human-readable explanation of what the attribute measures or represents |
 | **Categories** | One or more tags for grouping and filtering attributes within the Attributes tab |
-| **Value Type** | The data type of the value: `Float`, `Double`, `Int`, `BigInt`, `TinyInt`, `SmallInt`, `Bool`, `Nchar`, `Varchar`, `Timestamp` |
+| **Value Type** | The data type of the value, organized into three groups. **Basic Types**: `Float`, `Double`, `Int`, `IntUnsigned`, `BigInt`, `BigIntUnsigned`, `TinyInt`, `TinyIntUnsigned`, `SmallInt`, `SmallIntUnsigned`, `Bool`, `Nchar`, `Varchar`, `Timestamp`, `Decimal` (requires TDengine TSDB version 3.4.1.1 or above; Data Reference Type must be TDengine Metric). **Enumeration Types**: select from enumeration types defined in the system; the attribute value is restricted to the predefined options of that enumeration. **Object Types**: `File`, `Video`, `Attribute` (attribute reference), `Element` (element reference). |
 | **Default Value** | The value returned when no data is available from the data source |
 | **UOM Class** | The physical quantity category (e.g., Electric Current, Temperature, Pressure). Selecting a UOM Class filters the available unit options for Default UOM and Display UOM. |
 | **Default UOM** | The unit in which the attribute value is stored (e.g., ampere, °C, bar) |

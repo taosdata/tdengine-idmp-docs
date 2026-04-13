@@ -49,7 +49,9 @@ Several established algorithms are available, each suited to different data stru
 
 ## 9.3.4 How to Use
 
-Clustering is accessed through the **Clustering** icon in the **Scatter Chart panel** toolbar while in view mode.
+There are two ways to access clustering analysis.
+
+**Option 1: From a Scatter Chart panel**, click the **Clustering** icon in the toolbar while in view mode.
 
 Steps:
 
@@ -57,12 +59,28 @@ Steps:
 2. In the panel's view mode, click the **Clustering** icon in the toolbar.
 3. IDMP automatically runs clustering on the current data points and renders each cluster in a distinct color, making the grouping structure immediately visible.
 
-![Clustering result overlaid on a Scatter Chart](./images/scatter-clustering.png)
+![Clustering result in a Scatter Chart](./images/scatter-clustering.png)
 
 The clusters appear on top of the raw scatter, with each color representing a distinct group. Reading the cluster boundaries in terms of the physical quantities on each axis gives you a direct picture of what conditions define each operating state.
 
+**Option 2: From an Analysis Chart panel**, click the **Enable XY Plot** icon in the toolbar.
+
+Steps:
+
+1. Open or create an **Analysis Chart** panel. Click the **Enable XY Plot** icon in the toolbar, select the X-axis and Y-axis attributes in the popup, and click Apply. The panel switches to a scatter chart view.
+
+![Clustering from an Analysis Chart](./images/scatter-clustering-2.png)
+
+2. Click the **Enable Selection** icon in the toolbar. You can now drag a selection box on the scatter chart to select a data range. The system automatically generates a new window analysis based on the selected points.
+
+![Box selection on scatter chart](./images/scatter-clustering-3.png)
+
+3. Click the **Clustering** icon in the toolbar. Configure the clustering parameters in the popup, and the system generates clustering results displayed with different colors on the scatter chart.
+
+![Clustering result in Analysis Chart](./images/scatter-clustering-4.png)
+
 :::note
-The current entry point for clustering is the Clustering icon in the Scatter Chart panel toolbar while in view mode. Future releases will expand the available algorithms and usage patterns.
+In the current version, clustering analysis is accessible from both the Analysis Chart panel and the Scatter Chart panel toolbar while in view mode. Future releases will expand the available algorithms and usage patterns.
 
 The Scatter Chart panel toolbar in view mode also provides a **Regression** icon for fitting curves to scatter data. For full Scatter Chart panel configuration details, see the [Scatter Chart](../04-visualization/02-chart-types/12-scatter-chart.md) chapter.
 :::

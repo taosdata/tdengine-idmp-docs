@@ -73,6 +73,7 @@ TDengine IDMP 默认使用以下端口：
 |---|---|---|
 | 6042 | HTTP | 外部端口——IDMP Web UI 和 REST API（浏览器和 API 访问） |
 | 6034 | HTTPS | 外部端口——安全访问 Web UI 和 REST API；生产环境推荐使用 |
+| 6037 | MCP | 外部端口—— AI Agent 访问端口 |
 | 6038 | HTTP | 内部端口——内嵌 H2 数据库 Web 界面 |
 | 6039 | TCP | 内部端口——内嵌 H2 数据库监听器 |
 | 6040 | HTTP | 内部端口——内部聊天服务 API |
