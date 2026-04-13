@@ -75,6 +75,7 @@ TDengine IDMP uses the following ports by default:
 |---|---|---|
 | 6042 | HTTP | External port — IDMP web UI and REST API (browser and API access) |
 | 6034 | HTTPS | External port — Secure access to the web UI and REST API; recommended for production |
+| 6037 | MCP | External port — AI Agent access port |
 | 6038 | HTTP | Internal port — Built-in H2 database web interface |
 | 6039 | TCP | Internal port — Built-in H2 database listener |
 | 6040 | HTTP | Internal port — Internal chat service API |
