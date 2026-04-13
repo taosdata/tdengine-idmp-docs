@@ -248,35 +248,68 @@ Alternatively, you can uninstall TDengine IDMP through **Control Panel** → **P
 </TabItem>
 </Tabs>
 
-## 14.3.2.6 Upgrade Instructions
+## 14.3.2.6 Upgrade TDengine IDMP
 
-TDengine IDMP recommends using the official installation script for upgrades. The script will automatically detect the existing installation environment and select the appropriate upgrade mode to ensure the safety of your data and configuration files. Details are as follows:
-
-- **Automatic Upgrade Detection**: The installation script will automatically determine whether it is an upgrade installation.
-- **Data and Configuration Protection**: In upgrade mode, the installation script will not overwrite or modify the following directories and their contents:
+To upgrade TDengine IDMP, you download the installation package for the new version of TDengine IDMP, stop all TDengine IDMP services, install the new version, and start TDengine IDMP services again. It is not necessary to uninstall the previous version before upgrading, and all existing configuration, logs, and data are retained after upgrade.
 
 <Tabs>
 <TabItem label="Linux/macOS" value="unix">
 
-- `data/idmp`: User data directory
-- `idmp/venv`: Python virtual environment
-- `idmp/config`: Configuration directory
-- `logs`: Log directory
+1. Back up the contents of the following directories:
+
+   - `data/idmp`: User data directory
+   - `idmp/venv`: Python virtual environment
+   - `idmp/config`: Configuration directory
+   - `logs`: Log directory
+
+1. Stop all TDengine IDMP services:
+
+   ```shell
+   sudo svc-tdengine-idmp stop
+   ```
+
+1. Install the new version of TDengine IDMP:
+
+   ```shell idmp-ee
+   tar -zxvf tdengine-idmp-enterprise-{{VERSION}}-linux-x64.tar.gz
+   cd tdengine-idmp-enterprise-{{VERSION}}
+   sudo ./install.sh
+   ```
+
+1. Start TDengine IDMP services:
+
+   ```shell
+   sudo svc-tdengine-idmp start
+   ```
+
+1. Log in to TDengine IDMP and verify that the desired version has been installed.
 
 </TabItem>
+
 <TabItem label="Windows" value="windows">
 
-- `data\idmp`: User data directory
-- `idmp\venv`: Python virtual environment
-- `idmp\config`: Configuration directory
-- `logs`: Log directory
+1. Back up the contents of the following directories:
+
+   - `data\idmp`: User data directory
+   - `idmp\venv`: Python virtual environment
+   - `idmp\config`: Configuration directory
+   - `logs`: Log directory
+
+1. Run the following file as an administrator to stop all TDengine IDMP services:
+
+   ```shell
+   C:\TDengine\idmp\bin\stop-tdengine-idmp.bat
+   ```
+
+1. Run the installation package to install the new version of TDengine IDMP.
+
+1. Run the following file as an administrator to start all TDengine IDMP services:
+
+   ```shell
+   C:\TDengine\idmp\bin\start-tdengine-idmp.bat
+   ```
+
+1. Log in to TDengine IDMP and verify that the desired version has been installed.
 
 </TabItem>
 </Tabs>
-
-- **Program Files Only Updated**: During an upgrade, only core program files and dependencies are updated, ensuring new features are available while user data and configuration remain unchanged.
-- **First-Time Installation**: If this is a first-time installation, all directories and files will be fully initialized.
-
-:::info
-It is strongly recommended to use the official installation script for upgrades. If you wish to manually back up your data and configuration, you can do so before upgrading. After the upgrade, check the service status and logs to ensure the upgrade was successful.
-:::
