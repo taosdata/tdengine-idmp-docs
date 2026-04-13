@@ -38,8 +38,10 @@ const config = {
   markdown: {
     hooks: {
       onBrokenMarkdownLinks: 'throw'
-    }
+    },
+    mermaid: true
   },
+  themes: ['@docusaurus/theme-mermaid'],
   i18n: {
     defaultLocale: 'zh-Hans',
     locales: ['en', 'zh-Hans'],
