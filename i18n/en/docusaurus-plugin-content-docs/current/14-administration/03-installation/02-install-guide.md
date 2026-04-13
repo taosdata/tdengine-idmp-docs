@@ -301,7 +301,7 @@ To upgrade TDengine IDMP, you download the installation package for the new vers
    C:\TDengine\idmp\bin\stop-tdengine-idmp.bat
    ```
 
-1. Run the installation package to Install the new version of TDengine IDMP.
+1. Run the installation package to install the new version of TDengine IDMP.
 
 1. Run the following file as an administrator to start all TDengine IDMP services:
 
