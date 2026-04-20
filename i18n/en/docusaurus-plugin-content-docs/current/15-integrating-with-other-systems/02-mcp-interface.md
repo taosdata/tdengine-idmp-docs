@@ -19,9 +19,9 @@ IDMP exposes its MCP integration through reverse-proxied remote endpoints. AI ag
 1. Sign in to the IDMP Web UI.
 2. Click the avatar in the upper-right corner to open the personal information dialog.
 3. Copy the value shown in **Login Token**.
-4. The **Login Token** field shows the full `Authorization` header value and already includes the `Bearer` prefix. For clients that accept an `Authorization` header, paste it as-is, for example `Authorization: Bearer <token>`.
+4. The **Login Token** field shows the value part of the `Authorization` header, in the form `Bearer <token>`. It already includes the `Bearer` prefix, but it does **not** include the `Authorization:` field name. For clients that accept an `Authorization` header, place this value in the `Authorization` field.
 
-If a client expects only the raw bearer token instead of the full header value, remove the leading `Bearer` prefix before filling that field.
+If a client expects only the raw Bearer token instead of the full header value, remove the leading `Bearer` prefix before filling that field.
 
 If the token expires or you sign in again, reopen the avatar dialog and copy the latest token.
 
@@ -37,7 +37,7 @@ If the token expires or you sign in again, reopen the avatar dialog and copy the
 | Default HTTPS port | `6034` |
 | HTTP troubleshooting URL | `http://<IDMP_HOST>:6042/api/v1/mcp/stream` |
 
-Replace `<IDMP_HOST>` with your actual IDMP domain or IP address. `<IDMP_LOGIN_TOKEN>` means the full login token value copied from the UI, including the `Bearer` prefix. Use HTTPS for production traffic. Switch to the HTTP URL only when you are troubleshooting certificate or network issues.
+Replace `<IDMP_HOST>` with your actual IDMP domain or IP address. `<IDMP_LOGIN_TOKEN>` means the login token value copied from the UI, in the form `Bearer <token>`. It includes the `Bearer` prefix but does not include the `Authorization:` field name. Use HTTPS for production traffic. Switch to the HTTP URL only when you are troubleshooting certificate or network issues.
 
 ## 15.2.4 Streamable HTTP vs SSE
 
@@ -62,7 +62,7 @@ Different agents may use slightly different field names, but the required inform
 
 The MCP server is hosted by IDMP, so the client side only needs the remote address and authentication information.
 
-In the examples below, `<IDMP_LOGIN_TOKEN>` means the full login token copied from the UI, including the `Bearer` prefix. `<IDMP_BEARER_TOKEN>` means the raw token value after removing that prefix.
+In the examples below, `<IDMP_LOGIN_TOKEN>` means the login token copied from the UI, in the form `Bearer <token>`. It includes the `Bearer` prefix but does not include the `Authorization:` field name. `<IDMP_BEARER_TOKEN>` means the raw token value after removing that prefix.
 
 ### 15.2.5.1 Claude Code
 
