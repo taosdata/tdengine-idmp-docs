@@ -176,6 +176,11 @@ C:\TDengine\idmp\bin\start-tdengine-idmp.bat
 </TabItem>
 </Tabs>
 
+默认情况下，TDengine IDMP 服务监听主机的以下端口：
+
+* HTTP 访问：http://localhost:6042 或 http://ip:6042
+* HTTPS 访问：https://localhost:6034 或 https://ip:6034
+
 ## 2.3.5 激活
 
 1. 首次访问时，您需要激活服务。在填写"邮箱"和"组织"后，点击**获取激活码**，系统会向您填写的邮箱发送一封激活邮件，输入邮件中的激活码后，点击**激活**，即可完成激活，您将获得 15 天的免费试用期。

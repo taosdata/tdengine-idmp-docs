@@ -280,7 +280,7 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 
 ## 2.3.3 Activate and Initialize the System
 
-1. In a web browser, access TDengine IDMP at `http://ip:6042`.
+1. In a web browser, access TDengine IDMP at `http://ip:6042` or `https://ip:6034`.
 2. Under **Activate TDengine IDMP**, enter your email address and organization.
 3. Click **Get Code** and enter the code sent to your email address.
 
