@@ -22,7 +22,7 @@ Process analytics, real-time analytics, and AI-powered insights share the same d
 - **[Window Analysis](./05-window-analysis.md)** — Interactively search for meaningful time segments in historical data
 - **[Event and Batch Analysis](./06-batch-event-analysis.md)** — Compare and analyze production batch data through IDMP's event analysis capabilities
 - **[Correlation Analysis](./07-correlation-analysis.md)** — Measure correlations across multiple attributes or devices
-- **[Marker Analysis](./08-marker-analysis.md)** — Place a reference marker line on the chart to compare attribute differences between two points in time
+- **[Marker Analysis](./08-marker-analysis.md)** — Place two reference marker lines on the chart to compare attribute differences between two points in time
 - **[Profile Search](./09-profile-search.md)** — Search for time segments in historical data that match a target waveform
 - **[Association Rules](./10-association-rules.md)** — Discover co-occurrence patterns between events and attributes
 
