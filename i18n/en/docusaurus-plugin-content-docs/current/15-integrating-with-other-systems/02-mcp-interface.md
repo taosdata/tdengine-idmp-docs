@@ -19,7 +19,9 @@ IDMP exposes its MCP integration through reverse-proxied remote endpoints. AI ag
 1. Sign in to the IDMP Web UI.
 2. Click the avatar in the upper-right corner to open the personal information dialog.
 3. Copy the value shown in **Login Token**.
-4. Use the copied value as-is in the `Authorization` header, for example `Bearer <IDMP_TOKEN>`.
+4. The **Login Token** field shows the full `Authorization` header value and already includes the `Bearer ` prefix. For clients that accept an `Authorization` header, paste it as-is, for example `Authorization: Bearer <token>`.
+
+If a client expects only the raw bearer token instead of the full header value, remove the leading `Bearer ` prefix before filling that field.
 
 If the token expires or you sign in again, reopen the avatar dialog and copy the latest token.
 
@@ -27,15 +29,15 @@ If the token expires or you sign in again, reopen the avatar dialog and copy the
 
 | Item | Value |
 |---|---|
-| Recommended base address | `https://idmp.tdengine.net:6034` |
+| Recommended base address | `https://<IDMP_HOST>:6034` |
 | Recommended transport | `Streamable HTTP` |
-| Streamable HTTP URL | `https://idmp.tdengine.net:6034/api/v1/mcp/stream` |
-| SSE URL | `https://idmp.tdengine.net:6034/api/v1/mcp/sse` |
-| Authentication | `Authorization: Bearer <IDMP_TOKEN>` |
+| Streamable HTTP URL | `https://<IDMP_HOST>:6034/api/v1/mcp/stream` |
+| SSE URL | `https://<IDMP_HOST>:6034/api/v1/mcp/sse` |
+| Authentication | `Authorization: <IDMP_LOGIN_TOKEN>` |
 | Default HTTPS port | `6034` |
-| HTTP troubleshooting URL | `http://idmp.tdengine.net:6042/api/v1/mcp/stream` |
+| HTTP troubleshooting URL | `http://<IDMP_HOST>:6042/api/v1/mcp/stream` |
 
-Replace `https://idmp.tdengine.net:6034` with your actual IDMP HTTPS address. Use HTTPS for production traffic. Switch to the HTTP URL only when you are troubleshooting certificate or network issues.
+Replace `<IDMP_HOST>` with your actual IDMP domain or IP address. `<IDMP_LOGIN_TOKEN>` means the full login token value copied from the UI, including the `Bearer ` prefix. Use HTTPS for production traffic. Switch to the HTTP URL only when you are troubleshooting certificate or network issues.
 
 ## 15.2.4 Streamable HTTP vs SSE
 
@@ -49,10 +51,10 @@ Replace `https://idmp.tdengine.net:6034` with your actual IDMP HTTPS address. Us
 
 Streamable HTTP is recommended because:
 
-1. newer MCP clients typically support it first,
-2. request, response, and error semantics are clearer,
-3. it is better aligned with future capability expansion, and
-4. it matches IDMP's default remote MCP presentation.
+1. Newer MCP clients typically support it first.
+2. Request, response, and error semantics are clearer.
+3. It is better aligned with future capability expansion.
+4. It matches IDMP's default remote MCP presentation.
 
 ## 15.2.5 Configuration Pattern
 
@@ -60,17 +62,19 @@ Different agents may use slightly different field names, but the required inform
 
 The MCP server is hosted by IDMP, so the client side only needs the remote address and authentication information.
 
+In the examples below, `<IDMP_LOGIN_TOKEN>` means the full login token copied from the UI, including the `Bearer ` prefix. `<IDMP_BEARER_TOKEN>` means the raw token value after removing that prefix.
+
 ### 15.2.5.1 Claude Code
 
 Claude Code supports adding a remote MCP server from the command line. Streamable HTTP is the recommended option:
 
 ```bash
 claude mcp add --transport http tdengine-idmp \
-  https://idmp.tdengine.net:6034/api/v1/mcp/stream \
-  --header "Authorization: Bearer <IDMP_TOKEN>"
+  https://<IDMP_HOST>:6034/api/v1/mcp/stream \
+  --header "Authorization: <IDMP_LOGIN_TOKEN>"
 ```
 
-If you want to share the configuration with the current project, add `--scope project`. If your environment requires SSE instead, replace the URL with `https://idmp.tdengine.net:6034/api/v1/mcp/sse` and choose the matching transport type required by the client.
+If you want to share the configuration with the current project, add `--scope project`. If your environment requires SSE instead, replace the URL with `https://<IDMP_HOST>:6034/api/v1/mcp/sse` and choose the matching transport type required by the client.
 
 ### 15.2.5.2 Codex
 
@@ -78,11 +82,11 @@ Codex can configure a remote MCP server in `~/.codex/config.toml`. It is recomme
 
 ```toml
 [mcp_servers.tdengine-idmp]
-url = "https://idmp.tdengine.net:6034/api/v1/mcp/stream"
-bearer_token_env_var = "IDMP_TOKEN"
+url = "https://<IDMP_HOST>:6034/api/v1/mcp/stream"
+bearer_token_env_var = "IDMP_BEARER_TOKEN"
 ```
 
-Before starting Codex, make sure `IDMP_TOKEN` is available in the current shell. If your environment requires SSE, replace the URL with `https://idmp.tdengine.net:6034/api/v1/mcp/sse`. If your client version requires an explicit transport field, set it to `sse`.
+Before starting Codex, make sure `IDMP_BEARER_TOKEN` is available in the current shell and does **not** include the `Bearer ` prefix. If your environment requires SSE, replace the URL with `https://<IDMP_HOST>:6034/api/v1/mcp/sse`. If your client version requires an explicit transport field, set it to `sse`.
 
 ### 15.2.5.3 Copilot CLI
 
@@ -98,10 +102,10 @@ Then fill in the form with values like these:
 |---|---|
 | Server Name | `tdengine-idmp` |
 | Server Type | `HTTP` |
-| URL | `https://idmp.tdengine.net:6034/api/v1/mcp/stream` |
-| HTTP Headers | `{"Authorization":"Bearer <IDMP_TOKEN>"}` |
+| URL | `https://<IDMP_HOST>:6034/api/v1/mcp/stream` |
+| HTTP Headers | `{"Authorization":"<IDMP_LOGIN_TOKEN>"}` |
 
-If your environment requires SSE, change the URL to `https://idmp.tdengine.net:6034/api/v1/mcp/sse` and select `SSE` or the equivalent transport type in the UI.
+If your environment requires SSE, change the URL to `https://<IDMP_HOST>:6034/api/v1/mcp/sse` and select `SSE` or the equivalent transport type in the UI.
 
 You can also edit Copilot CLI's configuration file directly at `~/.copilot/mcp-config.json`:
 
@@ -110,9 +114,9 @@ You can also edit Copilot CLI's configuration file directly at `~/.copilot/mcp-c
   "mcpServers": {
     "tdengine-idmp": {
       "type": "http",
-      "url": "https://idmp.tdengine.net:6034/api/v1/mcp/stream",
+      "url": "https://<IDMP_HOST>:6034/api/v1/mcp/stream",
       "headers": {
-        "Authorization": "Bearer <IDMP_TOKEN>"
+        "Authorization": "<IDMP_LOGIN_TOKEN>"
       }
     }
   }
@@ -127,8 +131,8 @@ If your agent provides an interactive form, fill it with values like these:
 |---|---|---|
 | Server Name | `tdengine-idmp` | `tdengine-idmp` |
 | Type / Transport | `http` | `sse` |
-| URL | `https://idmp.tdengine.net:6034/api/v1/mcp/stream` | `https://idmp.tdengine.net:6034/api/v1/mcp/sse` |
-| HTTP Headers | `{"Authorization":"Bearer <IDMP_TOKEN>"}` | `{"Authorization":"Bearer <IDMP_TOKEN>"}` |
+| URL | `https://<IDMP_HOST>:6034/api/v1/mcp/stream` | `https://<IDMP_HOST>:6034/api/v1/mcp/sse` |
+| HTTP Headers | `{"Authorization":"<IDMP_LOGIN_TOKEN>"}` | `{"Authorization":"<IDMP_LOGIN_TOKEN>"}` |
 
 For other agents that support JSON-style configuration, use a structure like the following.
 
@@ -139,9 +143,9 @@ For other agents that support JSON-style configuration, use a structure like the
   "mcpServers": {
     "tdengine-idmp": {
       "type": "http",
-      "url": "https://idmp.tdengine.net:6034/api/v1/mcp/stream",
+      "url": "https://<IDMP_HOST>:6034/api/v1/mcp/stream",
       "headers": {
-        "Authorization": "Bearer <IDMP_TOKEN>"
+        "Authorization": "<IDMP_LOGIN_TOKEN>"
       }
     }
   }
@@ -155,9 +159,9 @@ For other agents that support JSON-style configuration, use a structure like the
   "mcpServers": {
     "tdengine-idmp": {
       "type": "sse",
-      "url": "https://idmp.tdengine.net:6034/api/v1/mcp/sse",
+      "url": "https://<IDMP_HOST>:6034/api/v1/mcp/sse",
       "headers": {
-        "Authorization": "Bearer <IDMP_TOKEN>"
+        "Authorization": "<IDMP_LOGIN_TOKEN>"
       }
     }
   }
@@ -208,7 +212,7 @@ The following section describes the Prompt capabilities exposed through MCP.
 
 ### 15.2.9.1 What should I do if HTTPS certificate validation fails?
 
-First verify DNS resolution, the certificate chain, and the client's trust store. If you are only troubleshooting connectivity, temporarily switch to `http://idmp.tdengine.net:6042/api/v1/mcp/stream` to confirm network reachability, then move back to HTTPS after the certificate issue is fixed.
+First verify DNS resolution, the certificate chain, and the client's trust store. If you are only troubleshooting connectivity, temporarily switch to `http://<IDMP_HOST>:6042/api/v1/mcp/stream` to confirm network reachability, then move back to HTTPS after the certificate issue is fixed.
 
 ### 15.2.9.2 Why is Streamable HTTP the preferred choice?
 
