@@ -178,8 +178,8 @@ C:\TDengine\idmp\bin\start-tdengine-idmp.bat
 
 默认情况下，TDengine IDMP 服务监听主机的以下端口：
 
-* HTTP 访问：http://localhost:6042 或 http://ip:6042
-* HTTPS 访问：https://localhost:6034 或 https://ip:6034
+- HTTP 访问：`http://localhost:6042` 或 `http://ip:6042`
+- HTTPS 访问：`https://localhost:6034` 或 `https://ip:6034`
 
 ## 2.3.5 激活
 

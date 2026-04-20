@@ -77,8 +77,8 @@ AI 服务已作为独立镜像 `tdengine/idmp-ai-ee` 部署，Docker Compose 配
 
 默认情况下，TDengine IDMP 服务监听主机的以下端口：
 
-* HTTP 访问：http://localhost:6042 或 http://ip:6042
-* HTTPS 访问：https://localhost:6034 或 https://ip:6034
+- HTTP 访问：`http://localhost:6042` 或 `http://ip:6042`
+- HTTPS 访问：`https://localhost:6034` 或 `https://ip:6034`
 
 :::note
 请将 `TZ` 环境变量设置为与您的实际环境匹配的时区。`Asia/Shanghai` 适用于北京时间环境。Compose 中的所有容器将继承该设置——时区配置错误将导致实时分析触发时间和事件时间戳出现偏差。
