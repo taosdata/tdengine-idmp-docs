@@ -176,12 +176,17 @@ C:\TDengine\idmp\bin\start-tdengine-idmp.bat
 </TabItem>
 </Tabs>
 
+默认情况下，TDengine IDMP 服务监听主机的以下端口：
+
+- HTTP 访问：`http://localhost:6042` 或 `http://ip:6042`
+- HTTPS 访问：`https://localhost:6034` 或 `https://ip:6034`
+
 ## 2.3.5 激活
 
 1. 首次访问时，您需要激活服务。在填写"邮箱"和"组织"后，点击**获取激活码**，系统会向您填写的邮箱发送一封激活邮件，输入邮件中的激活码后，点击**激活**，即可完成激活，您将获得 15 天的免费试用期。
 
    :::note
-   为方便 AI 相关功能的体验，IDMP 安装后预置了 DeepSeek 的 API key，有效期 3 天。到期后，请在 TDengine IDMP 的**管理后台 → 连接**更新您的 API key。
+   为方便 AI 相关功能的体验，IDMP 安装后预置了 DeepSeek 的 API key，有效期 15 天。到期后，请在 TDengine IDMP 的**管理后台 → 连接**更新您的 API key。
    :::
 
 2. 激活码验证通过后，会弹出**隐私配置**对话框，您可以根据需求选择信息采集项，采集的信息将帮助我们改进产品，您的业务及生产数据绝不会被采集，配置完成后，请点击**同意**。

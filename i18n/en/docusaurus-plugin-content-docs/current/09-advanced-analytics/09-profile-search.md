@@ -1,9 +1,9 @@
 ---
-title: Association Rules
-sidebar_label: Association Rules
+title: Profile Search
+sidebar_label: Profile Search
 ---
 
-# 9.8 Association Rules
+# 9.9 Profile Search
 
 :::note Coming Soon
 This section is under development. Content will be published in a future release.

@@ -22,8 +22,9 @@ sidebar_label: 过程分析
 - **[窗口分析](./05-window-analysis.md)** — 在历史数据中交互式搜索有意义的时间片段
 - **[事件、批次分析](./06-batch-event-analysis.md)** — 利用事件分析能力对生产批次数据进行对比与深度分析
 - **[相关分析](./07-correlation-analysis.md)** — 度量多个属性或设备之间的相关性
-- **[关联规则](./08-association-rules.md)** — 挖掘事件与属性之间的共现规律
-- **[相似度搜索](./09-pattern-search.md)** — 在历史数据中搜索与目标模式相似的时间片段
+- **[标记线分析](./08-marker-analysis.md)** — 在图表上放置两条参考标记线，实时比较标记线之间的时间与属性差异
+- **[相似度分析](./09-profile-search.md)** — 在历史数据中搜索与目标波形相似的时间片段
+- **[关联规则](./10-association-rules.md)** — 挖掘事件与属性之间的共现规律
 
 import DocCardList from '@theme/DocCardList';
 
