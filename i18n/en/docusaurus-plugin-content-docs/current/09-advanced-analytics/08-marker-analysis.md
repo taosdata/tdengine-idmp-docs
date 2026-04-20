@@ -47,7 +47,7 @@ In the **Analysis Chart** view mode, click the **Marker Line** button in the too
 5. The tooltip on the second marker line displays ΔT and each attribute's ΔValue in real time.
 6. When analysis is complete, click the **Marker Line** button again to remove both marker lines.
 
-![Marker Line Start Page](./images/maker-line-01.png)
+![Marker Line Start Page](./images/marker-line-01.png)
 
 ### Tooltip Information
 
