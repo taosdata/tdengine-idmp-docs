@@ -18,8 +18,8 @@ The workflow is as follows:
 2. The system generates two vertical red marker lines at the center of the Analysis Chart, spanning all lanes.
 3. The user moves the cursor to the top of either marker line, then drags the marker line to a time position of interest (e.g., an anomaly peak, the moment of an operating condition change).
 4. The tooltip near the second marker line displays in real time:
-   - **Time Difference (ΔT):** The time interval between the cursor position and the marker line position
-   - **Value Differences (ΔValue):** For each attribute in the Analysis Chart, the difference between the value at the cursor position and the value at the marker line position
+   - **Time Difference (ΔT):** The time interval between the two marker line positions
+   - **Value Differences (ΔValue):** For each attribute in the Analysis Chart, the difference between the values at the two marker line positions
 5. Click the **Marker Line** button again to remove both marker lines and return to normal browsing mode.
 
 Marker Analysis does not involve any data modification or write operations. It is purely an interactive visual aid that helps users quickly quantify the differences in various metrics between two points in time while browsing historical data.
