@@ -3,14 +3,14 @@ title: Installing the Excel Add-In
 sidebar_label: Installing the Excel Add-In
 ---
 
-# 10.1 Installing the Excel Add-In
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
+# 10.1 Installing the Excel Add-In
+
 The TDengine IDMP Excel Add-In allows you to retrieve time-series data and element attributes directly inside Microsoft Excel, without writing any code or SQL.
 
-## Prerequisites
+## 10.1.1 Prerequisites
 
 ### HTTPS Requirement
 
@@ -21,17 +21,17 @@ To enable HTTPS, add the following to the IDMP configuration file (`application.
 ```yaml
 quarkus:
   http:
-    port: 6042
-    ssl-port: 6034
-    insecure-requests: enabled
+    port: 6042          # IDMP HTTP service port
+    ssl-port: 6034      # IDMP HTTPS service port
+    insecure-requests: enabled      # Allow both HTTP and HTTPS
     ssl:
-      enabled: true
+      enabled: true     # Enable SSL/HTTPS
       certificate:
-        files: /usr/local/taos/idmp/config/certbundle.pem
-        key-files: /usr/local/taos/idmp/config/privkey.pem
+        files: /usr/local/taos/idmp/config/certbundle.pem   # Certificate file path
+        key-files: /usr/local/taos/idmp/config/privkey.pem  # Private key file path
 ```
 
-**Built-in test certificate.** IDMP ships with a test certificate valid for 3 months, bound to the domain `idmp.tdengine.net`. This certificate is suitable for evaluation and testing. It is not recommended for production use.
+**Built-in test certificate.** IDMP ships with a test certificate valid for 3 months, bound to the domain `idmp.tdengine.net`. This certificate is suitable for evaluation and testing. It is not recommended for production use. To configure a self-signed certificate with a longer validity period, see [Certificate Configuration](./02-certificate-configuration.md).
 
 If you are using the built-in test certificate, add the following entry to the hosts file on the client machine (replace the IP with your actual server address):
 
@@ -50,9 +50,10 @@ Hosts file locations:
 |---|---|
 | **Excel version** | Excel 2016 or later (Windows or macOS) |
 | **Permissions** | Administrator rights required on Windows |
+| **Network** | Network access is required to download the installation script and connect to the IDMP service |
 | **Node.js** | Node.js 22.3 or later required on Windows if logging is enabled |
 
-## Installation
+## 10.1.2 Installation
 
 <Tabs>
 <TabItem value="macos" label="macOS">
@@ -108,7 +109,7 @@ PowerShell must be run as Administrator. Excel will be force-closed during insta
 </TabItem>
 </Tabs>
 
-## Enabling and Disabling Logging
+## 10.1.3 Enabling and Disabling Logging
 
 To toggle logging independently of installation:
 
@@ -137,7 +138,7 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 </TabItem>
 </Tabs>
 
-## Uninstallation
+## 10.1.4 Uninstallation
 
 <Tabs>
 <TabItem value="macos" label="macOS">

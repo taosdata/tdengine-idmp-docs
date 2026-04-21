@@ -8,7 +8,9 @@ const PHP_ENDPOINT = "https://tdengine.com/assets/globalscripts/generatelink_v3_
 export default function PkgList({
     productName,
     version: versionProp,
-    platform
+    platform,
+    arch,
+    pkgType
 }) {
     const [data, setData] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +33,9 @@ export default function PkgList({
         const matchedVersions = all.filter(
             (v) =>
                 v?.version === pkgVersion &&
-                v?.platform === platform
+                v?.platform === platform &&
+                (!arch || v?.arch === arch) &&
+                (!pkgType || v?.["pkg-type"] === pkgType)
         );
         const seen = new Set();
         return matchedVersions.filter((v) => {
@@ -40,7 +44,7 @@ export default function PkgList({
             seen.add(url);
             return true;
         });
-    }, [data, productName, versionProp, platform]);
+    }, [data, productName, versionProp, platform, arch, pkgType]);
 
     const openPopup = (pkg) => {
         setSelectedPackage({

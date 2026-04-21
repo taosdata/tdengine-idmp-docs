@@ -4,21 +4,19 @@
 
 ## 配置目录
 
-- `.claude/` - Claude Code 专用配置
 - `.agent/` - 通用 AI Agent 配置（兼容 GPT、Cursor 等）
 
 ## 可用 Skills
 
 ### 文档编写 (doc-writing)
 
-**位置：** `.agent/skills/doc-writing/` 或 `.claude/skills/doc-writing/`
+**位置：** `.agent/skills/doc-writing/`
 
 **用途：** 编写符合项目规范的 Markdown 文档
 
 **使用方式：**
 
-- Claude Code: 使用 `/doc-writing` 命令
-- 其他 AI: 读取 `.agent/skills/doc-writing/SKILL.md` 作为上下文
+- 使用 `/doc-writing` 命令
 
 **主要规范：**
 

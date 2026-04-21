@@ -51,7 +51,7 @@ Dashboards can also be created from a panel's view mode: use **Save to Dashboard
 
 The dashboard editor has three areas: a left panel library, a center canvas, and a right settings panel.
 
-### Editor Toolbar
+### 4.4.3.1 Editor Toolbar
 
 | Control | Description |
 |---|---|
@@ -65,7 +65,7 @@ The dashboard editor has three areas: a left panel library, a center canvas, and
 | **Auto-refresh** | Set an automatic refresh interval (Off, 5s, 10s, 30s, 1m, etc.) |
 | **Full Screen** | Expand the dashboard to fill the browser window |
 
-### Left Panel: Panel Library
+### 4.4.3.2 Left Panel: Panel Library
 
 The left panel shows the panels available for this element, organized in a tree:
 
@@ -74,7 +74,7 @@ The left panel shows the panels available for this element, organized in a tree:
 
 To add a panel to the canvas, drag it from the library onto the grid.
 
-### Center: Grid Canvas
+### 4.4.3.3 Center: Grid Canvas
 
 The canvas is a 12-column grid. Panels are placed by dragging from the library or by using the **+** toolbar button. Once placed on the canvas, panels can be:
 
@@ -84,7 +84,7 @@ The canvas is a 12-column grid. Panels are placed by dragging from the library o
 
 Panels render their live data on the canvas according to the dashboard's current time range setting.
 
-### Right Panel: Dashboard Settings
+### 4.4.3.4 Right Panel: Dashboard Settings
 
 | Field | Description |
 |---|---|
@@ -103,7 +103,31 @@ There are three ways to populate a dashboard:
 
 **Add from panel view mode.** When viewing any panel in full view mode, open the panel card's **⋮** menu and select a dashboard action, or navigate to the Dashboards tab and use the panel library to drag it onto the canvas.
 
-## 4.4.5 The Global Dashboards View
+## 4.4.5 Dashboard View Mode
+
+Click **View** on a dashboard card to open the dashboard in full view mode.
+
+### View Mode Toolbar
+
+| Control | Description |
+|---|---|
+| **Back to List** | Return to the Dashboards tab |
+| **Edit** | Open the dashboard editor |
+| **Favorite** | Mark this dashboard as a favorite for quick access |
+| **Time picker** | Set the time range for all panels in the dashboard |
+| **Zoom out** | Expand the time range to the next level |
+| **Refresh** | Reload all panel data |
+| **Auto-refresh** | Set an automatic refresh interval |
+| **Share** | Generate a time-limited shareable link to this dashboard view |
+| **Data Zoom** | Enable data zoom mode to select a time range on charts |
+| **Full Screen** | Expand the dashboard to fill the browser window |
+| **Annotations** | Open the annotations panel to add text annotations to this dashboard |
+
+### Annotations
+
+Annotations let users attach text notes to a dashboard. The workflow is the same as panel annotations — see [4.1.5 Annotations](./01-panels.md#415-annotations) for details.
+
+## 4.4.6 The Global Dashboards View
 
 The **Dashboards** item in the main navigation bar opens the global dashboards list, which shows all dashboards across every element in the system.
 

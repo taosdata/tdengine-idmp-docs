@@ -13,11 +13,11 @@ An attribute is a named property of an element that holds or references a value.
 
 Attributes give context to raw data. Instead of querying a database column by its technical name, users and applications can reference data by a meaningful attribute name within a well-understood asset hierarchy.
 
-## 3.2.2 Attribute Types
+## 3.2.2 Data Reference Types
 
 The **Data Reference Type** determines where an attribute's value comes from. There are four types:
 
-### 1. TDengine Metric
+### 3.2.2.1 TDengine Metric
 
 References a metric column (a time-series measurement column) in a TDengine TSDB table. The attribute value is read in real time as new data is ingested. Use this type for any value that changes over time — temperature, pressure, flow rate, current, voltage, and so on.
 
@@ -29,7 +29,19 @@ ConnectionName/DatabaseName/TableName/ColumnName
 
 Example: `TDengine/idmp_sample_utility/em-12/current`
 
-### 2. TDengine Tag
+If the collected metric also carries a data quality value stored in the same table, the Data Reference Setting can include the name of the quality column. The format is:
+
+```text
+ConnectionName/DatabaseName/TableName/ColumnName:QualityColumnName
+```
+
+Example: `TDengine/idmp_sample_utility/em-12/current:quality`
+
+:::note
+The data type of the quality column must be INT.
+:::
+
+### 3.2.2.2 TDengine Tag
 
 References a tag value in a TDengine TSDB table. Tags are static metadata fields attached to a table (such as device ID, location, or installation floor). Use this type for attributes whose values come from TSDB tags rather than time-series columns.
 
@@ -41,7 +53,7 @@ ConnectionName/DatabaseName/TableName/TagName
 
 Example: `TDengine/idmp_sample_utility/em-17/location`
 
-### 3. Formula
+### 3.2.2.3 Formula
 
 A calculated attribute whose value is derived from an expression referencing other attributes of the same element. The expression is converted to a TDengine SQL expression and executed against TDengine TSDB. The output must be numeric.
 
@@ -57,7 +69,7 @@ The special replacement parameter `TIME` is available — it is substituted with
 Formula attributes can only reference attributes of the same element. To use a value from another element, add a new attribute to the current element that maps to the same data source.
 :::
 
-### 4. String Builder
+### 3.2.2.4 String Builder
 
 Similar to Formula but the output is a string. The input can be any attribute of the current element (not limited to numeric types). Common functions include:
 
@@ -70,7 +82,7 @@ Replacement parameters beyond `TIME` are also available, such as the current ele
 Example expression:
 
 ```text
-CONCAT(${Template#name}, 'Device', ${attributes['Device ID']}, ' voltage is ', CAST(${attributes['Voltage']} AS varchar), 'V')
+CONCAT('voltage of device ', ${attributes['Device ID']}, ' is ', CAST(${attributes['Voltage']} AS varchar), 'V')
 ```
 
 :::note
@@ -81,24 +93,24 @@ Use `CONCAT()` to join strings — the `+` operator cannot be used for string co
 
 Every attribute has the following configurable properties:
 
-### Basic fields
+### 3.2.3.1 Basic fields
 
 | Property | Description |
 |---|---|
 | **Name** | A unique name for the attribute within its element |
 | **Description** | A human-readable explanation of what the attribute measures or represents |
 | **Categories** | One or more tags for grouping and filtering attributes within the Attributes tab |
-| **Value Type** | The data type of the value: `Float`, `Double`, `Int`, `BigInt`, `TinyInt`, `SmallInt`, `Bool`, `Nchar`, `Varchar`, `Timestamp` |
+| **Value Type** | The data type of the value, organized into three groups. **Basic Types**: `Float`, `Double`, `Int`, `IntUnsigned`, `BigInt`, `BigIntUnsigned`, `TinyInt`, `TinyIntUnsigned`, `SmallInt`, `SmallIntUnsigned`, `Bool`, `Nchar`, `Varchar`, `Timestamp`, `Decimal` (requires TDengine TSDB version 3.4.1.1 or above; Data Reference Type must be TDengine Metric). **Enumeration Types**: select from enumeration types defined in the system; the attribute value is restricted to the predefined options of that enumeration. **Object Types**: `File`, `Video`, `Attribute` (attribute reference), `Element` (element reference). |
 | **Default Value** | The value returned when no data is available from the data source |
 | **UOM Class** | The physical quantity category (e.g., Electric Current, Temperature, Pressure). Selecting a UOM Class filters the available unit options for Default UOM and Display UOM. |
 | **Default UOM** | The unit in which the attribute value is stored (e.g., ampere, °C, bar) |
 | **Display UOM** | The unit used when displaying the value in panels and dashboards. Can differ from Default UOM — IDMP applies the conversion automatically. |
-| **Display Digits** | The number of decimal places shown when displaying the value |
-| **Data Reference Type** | Where the attribute value comes from: TDengine Metric, TDengine Table, or None (see [3.2.2](#322-attribute-types)) |
-| **Data Reference Setting** | The path to the TDengine TSDB data source in the format `database/table/column` |
+| **Display Digits** | Positive values indicate the number of digits after the decimal point; negative values indicate the number of significant digits. |
+| **Data Reference Type** | Where the attribute value comes from: TDengine Metric, TDengine Tag, Formula, or String Builder (see [3.2.2](#322-data-reference-types)) |
+| **Data Reference Setting** | The path to the TDengine TSDB data source in the format `ConnectionName/DatabaseName/TableName/ColumnName`, optionally with a quality column suffix as `.../ColumnName:QualityColumnName` |
 | **Path** | The full path of the attribute within the asset model (read-only, auto-generated) |
 
-### Limits Configuration
+### 3.2.3.2 Limits Configuration
 
 Define operational thresholds for the attribute. Each limit has a name and a numeric value:
 
@@ -114,7 +126,7 @@ Define operational thresholds for the attribute. Each limit has a name and a num
 
 Each limit entry also has an optional **Attribute** field — you can link a limit to another attribute rather than a fixed value, allowing dynamic limits that change based on real-time conditions.
 
-### Forecast Configuration
+### 3.2.3.3 Forecast Configuration
 
 Configure AI-based forecasting for this attribute:
 
@@ -124,11 +136,11 @@ Configure AI-based forecasting for this attribute:
 | **External** | Connect to an external forecasting service via a configured endpoint |
 | **None** | No forecasting (default) |
 
-### Additional Properties
+### 3.2.3.4 Additional Properties
 
 Free-form key-value pairs for storing any custom metadata specific to the attribute (e.g., instrument tag, calibration date, sensor model). Click **+** to add a new entry.
 
-### Configuration flags
+### 3.2.3.5 Configuration flags
 
 | Flag | Description |
 |---|---|
@@ -169,13 +181,13 @@ To add a new attribute to an element:
 
 There are two ways to edit an attribute:
 
-### Method 1: From the attribute detail view
+### 3.2.6.1 Method 1: From the attribute detail view
 
 1. Click the attribute name in the list to open its detail view.
 2. Click the **Edit** icon (pencil) in the toolbar.
 3. Modify the desired fields and click **Save**.
 
-### Method 2: From the attributes list ⋮ menu
+### 3.2.6.2 Method 2: From the attributes list ⋮ menu
 
 1. In the Attributes list, click the **⋮** menu on the attribute row.
 2. Select **Edit**.
@@ -185,13 +197,13 @@ There are two ways to edit an attribute:
 
 There are two ways to delete an attribute:
 
-### Method 1: From the attribute detail view
+### 3.2.7.1 Method 1: From the attribute detail view
 
 1. Open the attribute detail view by clicking the attribute name.
 2. Click the **Delete** icon (trash) in the top-right toolbar.
 3. Confirm the deletion.
 
-### Method 2: From the attributes list ⋮ menu
+### 3.2.7.2 Method 2: From the attributes list ⋮ menu
 
 1. In the Attributes list, click the **⋮** menu on the attribute row.
 2. Select **Delete** and confirm.
@@ -209,6 +221,7 @@ The **⋮** menu in the attributes list also provides the following operations:
 | **View** | Open the attribute detail view |
 | **Copy** | Copy the attribute configuration. The copied attribute can be pasted as a new attribute on the same element or on any other element. |
 | **Move Up / Move Down** | Reorder the attribute within the list |
+| **Add Data Entry** | An operation exclusive to TDengine Metric attributes. Manually enter a data point; the entered data will be inserted into the TSDB table referenced by the attribute. |
 | **Add to trend** | Quickly add this attribute to a new Trend Chart panel |
 | **History Value** | View the historical time-series values for this attribute |
 
@@ -216,7 +229,7 @@ The **⋮** menu in the attributes list also provides the following operations:
 
 The Expression Editor is a shared UI component used wherever expressions are configured in IDMP — including Formula and String Builder attribute definitions, analysis output attributes, and analysis trigger conditions (pre-filter and event window expressions). It opens as a dialog when you click on an expression input field.
 
-### Where Expressions Are Used
+### 3.2.9.1 Where Expressions Are Used
 
 | Location | Purpose |
 |---|---|
@@ -226,11 +239,11 @@ The Expression Editor is a shared UI component used wherever expressions are con
 | **Analysis** — Trigger, Pre-filter | Filters data rows before the trigger evaluates |
 | **Analysis** — Event Window trigger, Start/Stop conditions | Defines when the event window opens and closes |
 
-### Expression Editor Layout
+### 3.2.9.2 Expression Editor Layout
 
 The dialog has three panels:
 
-### Attribute panel (left)
+### 3.2.9.3 Attribute panel (left)
 
 Browse and insert the element's attributes into the expression. Attributes are organized into groups:
 
@@ -243,7 +256,7 @@ Browse and insert the element's attributes into the expression. Attributes are o
 
 A **Filter** field at the top lets you search by name. Click an attribute or parameter to insert it at the cursor position in the expression.
 
-### Expression editor (center)
+### 3.2.9.4 Expression editor (center)
 
 A code editor where you write the expression. An operator shortcut bar at the top provides one-click insertion of common operators:
 
@@ -251,11 +264,11 @@ A code editor where you write the expression. An operator shortcut bar at the to
 +  -  *  /  =  <  >  >=  <=  !=  <>  &  |
 ```
 
-### Function panel (right)
+### 3.2.9.5 Function panel (right)
 
 Browse and insert functions by category. A **Filter** field lets you search by function name. Click a function name to insert it at the cursor position.
 
-### Function Categories
+### 3.2.9.6 Function Categories
 
 | Category | Example functions |
 |---|---|
@@ -267,7 +280,7 @@ Browse and insert functions by category. A **Filter** field lets you search by f
 | **Selection Functions** | MAX, MIN, FIRST, LAST, LAST\_ROW, TOP, BOTTOM, UNIQUE, MODE, SAMPLE, ... |
 | **Time-Series Specific Functions** | MAVG, DERIVATIVE, DIFF, IRATE, CSUM, INTERP, TWA, STATECOUNT, STATEDURATION, ... |
 
-### Evaluating an Expression
+### 3.2.9.7 Evaluating an Expression
 
 Where supported (Formula and String Builder attribute definitions), the editor includes an **Evaluate** button and an **Evaluate Result** display at the bottom of the center panel. Click **Evaluate** to run the expression against the element's current data and verify the result before saving.
 
@@ -277,14 +290,14 @@ Click **Save** in the dialog to apply the expression, or **Cancel** to discard c
 
 An **attribute template** defines a standard attribute — including its name, data type, unit of measure, and data reference binding — as part of an [element template](./01-elements.md#316-element-templates). When an element is created from the template, all of its attribute templates are instantiated automatically, with substitution strings resolved to the actual values for that element.
 
-### Creating an Attribute Template
+### 3.2.8.1 Creating an Attribute Template
 
 1. In **Libraries**, open the element template you want to add attributes to.
 2. Click the **Attribute Template** tab at the top of the template detail page.
 3. Click **+** to open the attribute template creation form.
 4. Fill in the attribute fields and configure the data reference binding (see below).
 
-### Attribute Template Fields
+### 3.2.8.2 Attribute Template Fields
 
 | Field | Description |
 |---|---|
@@ -302,7 +315,7 @@ An **attribute template** defines a standard attribute — including its name, d
 | **Limits Configuration** | Optional Hi/Lo alarm limit thresholds |
 | **Forecast Configuration** | Optional TDgpt forecasting configuration for this attribute |
 
-### Data Reference Binding
+### 3.2.8.3 Data Reference Binding
 
 The **Data Reference Type** determines how the attribute is connected to time-series data in TDengine TSDB:
 

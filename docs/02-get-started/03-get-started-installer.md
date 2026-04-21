@@ -15,11 +15,9 @@ TDengine IDMP 支持在 Linux、macOS 或 Windows 机器上进行本地安装。
 
 安装前，请确保以下前置条件已满足：
 
-- TDengine TSDB-Enterprise 3.3.7.0 或更高版本——必须已安装并运行。参见 [使用安装包部署](https://docs.tdengine.com/get-started/deploy-from-package/)。
+- TDengine TSDB-Enterprise 3.3.7.0 或更高版本——必须已安装并运行。参见 [使用安装包部署](https://docs.taosdata.com/get-started/package/)。
 - Java 21 或更高版本
-- glibc 2.25 或更高版本（仅 Linux）
-- Python 3.12
-- Debian/Ubuntu 系统需安装 `python3-venv` 包
+- glibc 2.28 或更高版本（仅 Linux）
 - SMTP 邮件服务（告警通知所必需；如无法访问公网，需在内网部署）
 - 已正确配置的系统时区。请参考操作系统的用户手册进行设置。
 
@@ -30,15 +28,15 @@ TDengine IDMP 支持在 Linux、macOS 或 Windows 机器上进行本地安装。
 <Tabs>
 <TabItem label="Linux - tar.gz 安装" value="tar">
 
-1. 请点击以下链接获取最新版本的 `tar.gz` 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
+1. 请点击以下链接获取最新版本的 `tar.gz` 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。请根据操作系统架构选择对应的安装包。
 
-   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.14.2" platform="Linux-Generic" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" platform="Linux-Generic" />
 
-2. 执行以下命令，解压并安装：
+2. 执行以下命令，解压并安装，以 x64 架构为例：
 
-   ```bash
-   tar zxvf tdengine-idmp-enterprise-1.0.14.2-linux-generic.tar.gz
-   cd tdengine-idmp-enterprise-1.0.14.2
+   ```bash idmp-ee
+   tar zxvf tdengine-idmp-enterprise-{{VERSION}}-linux-x64.tar.gz
+   cd tdengine-idmp-enterprise-{{VERSION}}
    sudo ./install.sh
    ```
 
@@ -51,14 +49,14 @@ TDengine IDMP 支持在 Linux、macOS 或 Windows 机器上进行本地安装。
 </TabItem>
 <TabItem label="Debian/Ubuntu - deb 安装" value="deb">
 
-1. 请点击以下链接获取最新版本的 `.deb` 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
+1. 请点击以下链接获取最新版本的 `.deb` 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。请根据操作系统架构选择对应的安装包。
 
-   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.14.2" platform="Linux-Ubuntu" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" platform="Linux-Ubuntu" />
 
-2. 执行以下命令，安装 deb 包：
+2. 执行以下命令，安装 deb 包，以 x64 架构为例：
 
-   ```bash
-   sudo dpkg -i tdengine-idmp-enterprise-1.0.14.2-linux-generic.deb
+   ```bash idmp-ee
+   sudo dpkg -i tdengine-idmp-enterprise-{{VERSION}}-linux-x64.deb
    ```
 
 3. TDengine IDMP 的默认安装路径为 `/usr/local/taos/idmp`，安装成功后，可以看到终端展示 "TDengine IDMP has been installed successfully!"。
@@ -70,14 +68,14 @@ TDengine IDMP 支持在 Linux、macOS 或 Windows 机器上进行本地安装。
 </TabItem>
 <TabItem label="CentOS/RHEL - rpm 安装" value="rpm">
 
-1. 请点击以下链接获取最新版本的 `.rpm` 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
+1. 请点击以下链接获取最新版本的 `.rpm` 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。请根据操作系统架构选择对应的安装包。
 
-   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.14.2" platform="Linux-Red Hat" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" platform="Linux-Red Hat" />
 
-2. 执行以下命令，安装 rpm 包：
+2. 执行以下命令，安装 rpm 包，以 x64 架构为例：
 
-   ```bash
-   sudo rpm -ivh --nodeps tdengine-idmp-enterprise-1.0.14.2-linux-generic.rpm
+   ```bash idmp-ee
+   sudo rpm -ivh --nodeps tdengine-idmp-enterprise-{{VERSION}}-linux-x64.rpm
    ```
 
 3. TDengine IDMP 的默认安装路径为 `/usr/local/taos/idmp`，安装成功后，可以看到终端展示 "TDengine IDMP has been installed successfully!"。
@@ -89,9 +87,9 @@ TDengine IDMP 支持在 Linux、macOS 或 Windows 机器上进行本地安装。
 </TabItem>
 <TabItem label="macOS 安装" value="macos">
 
-1. 请点击以下链接获取最新版本的 macOS 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
+1. 请点击以下链接获取最新版本的 macOS 安装包（仅支持 arm64 架构）。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
 
-   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.14.2" platform="macOS" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" platform="macOS" />
 
 2. 双击安装包，按照提示完成安装。
 
@@ -106,7 +104,7 @@ TDengine IDMP 支持在 Linux、macOS 或 Windows 机器上进行本地安装。
 
 1. 请点击以下链接获取最新版本的 Windows 安装包。请在弹出的对话框中，填写您的邮箱地址，我们会将下载链接发送到您的邮箱。
 
-   <PkgListV37 productName="TDengine IDMP-Enterprise" version="1.0.14.2" platform="Windows" arch="x64" pkgType="Server" />
+   <PkgListV37 productName="TDengine IDMP-Enterprise" platform="Windows" />
 
 2. 双击安装包，按照安装向导完成安装。TDengine IDMP 的默认安装路径为 `C:\TDengine\idmp`。
 
@@ -178,12 +176,17 @@ C:\TDengine\idmp\bin\start-tdengine-idmp.bat
 </TabItem>
 </Tabs>
 
+默认情况下，TDengine IDMP 服务监听主机的以下端口：
+
+- HTTP 访问：`http://localhost:6042` 或 `http://ip:6042`
+- HTTPS 访问：`https://localhost:6034` 或 `https://ip:6034`
+
 ## 2.3.5 激活
 
 1. 首次访问时，您需要激活服务。在填写"邮箱"和"组织"后，点击**获取激活码**，系统会向您填写的邮箱发送一封激活邮件，输入邮件中的激活码后，点击**激活**，即可完成激活，您将获得 15 天的免费试用期。
 
    :::note
-   为方便 AI 相关功能的体验，IDMP 安装后预置了 DeepSeek 的 API key，有效期 3 天。到期后，请在 TDengine IDMP 的**管理后台 → 连接**更新您的 API key。
+   为方便 AI 相关功能的体验，IDMP 安装后预置了 DeepSeek 的 API key，有效期 15 天。到期后，请在 TDengine IDMP 的**管理后台 → 连接**更新您的 API key。
    :::
 
 2. 激活码验证通过后，会弹出**隐私配置**对话框，您可以根据需求选择信息采集项，采集的信息将帮助我们改进产品，您的业务及生产数据绝不会被采集，配置完成后，请点击**同意**。
