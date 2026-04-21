@@ -30,7 +30,7 @@ A TDengine TSDB connection links IDMP to a TDengine time-series database. Once c
 | **URL** (required) | The TDengine REST API endpoint, e.g., `http://localhost:6041` |
 | **Auth Type** | **Username Password** or **Token** |
 | **Username** | Database username (for Username Password auth) |
-| **Password** (required) | Database password |
+| **Password** (required) | Database password. For Token auth, enter the token here. |
 | **Explorer URL** (required) | The TDengine Explorer address for this instance, typically `http://[host]:6060` |
 | **Additional Properties** | Optional key-value pairs for advanced configuration |
 
