@@ -5,57 +5,92 @@ sidebar_label: MCP Interface
 
 # 15.2 MCP Interface
 
-IDMP now exposes its MCP integration through a reverse-proxied Streamable HTTP endpoint. AI agents do not need to install or run `mcp-tdengine-idmp` locally. Instead, they connect directly to the Streamable HTTP endpoint provided by IDMP and can immediately discover the available tools, resources, and prompts. The current surface covers tools, resources, and prompt workflows for diagnostics, alarm triage, shift handover, root-cause analysis, and guided creation of analyses and panels.
+IDMP exposes its MCP integration through reverse-proxied remote endpoints. AI agents do not need to install a local MCP server. Instead, they connect directly to the endpoint provided by IDMP and can read element context, time-series attributes, events, analyses, panels, and dashboards, while performing controlled write actions within the user's permission boundary. Streamable HTTP is the recommended transport. SSE remains available for agents that still depend on it.
 
 ## 15.2.1 Typical Use Cases
 
-- Connect Streamable HTTP MCP clients directly to IDMP elements, attributes, events, analyses, and panels.
-- Bring live industrial context into LLM workflows for health checks, alarm investigation, and natural-language question answering.
-- Standardize multi-step operational workflows such as shift handover, batch review, and alarm triage through prompt templates.
+- Connect MCP-aware agents directly to IDMP elements, attributes, events, analyses, panels, and dashboards.
+- Bring live industrial context into LLM workflows for element health checks, alarm investigation, and natural-language question answering.
+- Standardize multi-step workflows such as shift handover, alarm triage, and batch review, reducing manual context assembly.
 - Create analyses, alarm rules, panels, attributes, and annotations within a controlled write boundary instead of exposing broad administrative CRUD.
 
-## 15.2.2 Access Model
+## 15.2.2 Getting a Login Token
+
+1. Sign in to the IDMP Web UI.
+2. Click the avatar in the upper-right corner to open the personal information dialog.
+3. Copy the value shown in **Login Token**.
+4. The **Login Token** field shows the value part of the `Authorization` header, in the form `Bearer <token>`. It already includes the `Bearer` prefix, but it does **not** include the `Authorization:` field name. For clients that accept an `Authorization` header, place this value in the `Authorization` field.
+
+If a client expects only the raw Bearer token instead of the full header value, remove the leading `Bearer` prefix before filling that field.
+
+If the token expires or you sign in again, reopen the avatar dialog and copy the latest token.
+
+## 15.2.3 Endpoint and Authentication
 
 | Item | Value |
 |---|---|
-| Transport | `Streamable HTTP` |
-| Endpoint URL | `http://<IDMP_HOST>:6042/api/v1/mcp/stream` |
-| Authentication | `Authorization: Bearer <IDMP_TOKEN>` |
-| Capability discovery | The client automatically reads Tools, Resources, and Prompts after connecting |
+| Recommended base address | `https://<IDMP_HOST>:6034` |
+| Recommended transport | `Streamable HTTP` |
+| Streamable HTTP URL | `https://<IDMP_HOST>:6034/api/v1/mcp/stream` |
+| SSE URL | `https://<IDMP_HOST>:6034/api/v1/mcp/sse` |
+| Authentication | `Authorization: <IDMP_LOGIN_TOKEN>` |
+| Default HTTPS port | `6034` |
+| HTTP troubleshooting URL | `http://<IDMP_HOST>:6042/api/v1/mcp/stream` |
 
-If your deployment uses a public domain or another entry point instead of `http://<IDMP_HOST>:6042`, replace the host portion accordingly and keep the MCP path as `/api/v1/mcp/stream`.
+Replace `<IDMP_HOST>` with your actual IDMP domain or IP address. `<IDMP_LOGIN_TOKEN>` means the login token value copied from the UI, in the form `Bearer <token>`. It includes the `Bearer` prefix but does not include the `Authorization:` field name. Use HTTPS for production traffic. Switch to the HTTP URL only when you are troubleshooting certificate or network issues.
 
-## 15.2.3 Configuring Common Agents
+## 15.2.4 Streamable HTTP vs SSE
 
-Different clients may use slightly different field names, but the essential information is always the same: **remote URL + Streamable HTTP transport + Authorization header**.
+| Aspect | Streamable HTTP | SSE |
+|---|---|---|
+| Configuration type | `type: "http"` | `type: "sse"` |
+| Endpoint path | `/api/v1/mcp/stream` | `/api/v1/mcp/sse` |
+| Interaction model | Bidirectional request/response streaming over HTTP | Server-sent events with client-side follow-up requests |
+| Client support | Preferred by newer MCP clients | Mainly used for clients that still require SSE compatibility |
+| Recommendation | **Recommended** | Use only when needed |
 
-### 15.2.3.1 Claude Code
+Streamable HTTP is recommended because:
 
-Claude Code officially supports adding a remote HTTP MCP server from the command line. Use a command like this:
+1. Newer MCP clients typically support it first.
+2. Request, response, and error semantics are clearer.
+3. It is better aligned with future capability expansion.
+4. It matches IDMP's default remote MCP presentation.
+
+## 15.2.5 Configuration Pattern
+
+Different agents may use slightly different field names, but the required information is always the same: **remote URL + transport type + Authorization header**.
+
+The MCP server is hosted by IDMP, so the client side only needs the remote address and authentication information.
+
+In the examples below, `<IDMP_LOGIN_TOKEN>` means the login token copied from the UI, in the form `Bearer <token>`. It includes the `Bearer` prefix but does not include the `Authorization:` field name. `<IDMP_BEARER_TOKEN>` means the raw token value after removing that prefix.
+
+### 15.2.5.1 Claude Code
+
+Claude Code supports adding a remote MCP server from the command line. Streamable HTTP is the recommended option:
 
 ```bash
 claude mcp add --transport http tdengine-idmp \
-  http://<IDMP_HOST>:6042/api/v1/mcp/stream \
-  --header "Authorization: Bearer <IDMP_TOKEN>"
+  https://<IDMP_HOST>:6034/api/v1/mcp/stream \
+  --header "Authorization: <IDMP_LOGIN_TOKEN>"
 ```
 
-If you want to share the configuration with the current project, add `--scope project`.
+If you want to share the configuration with the current project, add `--scope project`. If your environment requires SSE instead, replace the URL with `https://<IDMP_HOST>:6034/api/v1/mcp/sse` and choose the matching transport type required by the client.
 
-### 15.2.3.2 Codex
+### 15.2.5.2 Codex
 
-Codex configures remote MCP servers under `mcp_servers` in `~/.codex/config.toml`. A practical setup is to keep the token in an environment variable:
+Codex can configure a remote MCP server in `~/.codex/config.toml`. It is recommended to keep the token in an environment variable:
 
 ```toml
 [mcp_servers.tdengine-idmp]
-url = "http://<IDMP_HOST>:6042/api/v1/mcp/stream"
-bearer_token_env_var = "IDMP_TOKEN"
+url = "https://<IDMP_HOST>:6034/api/v1/mcp/stream"
+bearer_token_env_var = "IDMP_BEARER_TOKEN"
 ```
 
-Before starting Codex, make sure the `IDMP_TOKEN` environment variable is available in the current shell.
+Before starting Codex, make sure `IDMP_BEARER_TOKEN` is available in the current shell and does **not** include the `Bearer` prefix. If your environment requires SSE, replace the URL with `https://<IDMP_HOST>:6034/api/v1/mcp/sse`. If your client version requires an explicit transport field, set it to `sse`.
 
-### 15.2.3.3 Copilot CLI
+### 15.2.5.3 Copilot CLI
 
-GitHub Copilot CLI officially supports adding remote MCP servers through the interactive `/mcp add` command. Inside an interactive `copilot` session, run:
+GitHub Copilot CLI supports adding a remote MCP server through the interactive `/mcp add` command. Inside an interactive `copilot` session, run:
 
 ```text
 /mcp add
@@ -67,9 +102,10 @@ Then fill in the form with values like these:
 |---|---|
 | Server Name | `tdengine-idmp` |
 | Server Type | `HTTP` |
-| URL | `http://<IDMP_HOST>:6042/api/v1/mcp/stream` |
-| HTTP Headers | `{"Authorization":"Bearer <IDMP_TOKEN>"}` |
-| Tools | `*` |
+| URL | `https://<IDMP_HOST>:6034/api/v1/mcp/stream` |
+| HTTP Headers | `{"Authorization":"<IDMP_LOGIN_TOKEN>"}` |
+
+If your environment requires SSE, change the URL to `https://<IDMP_HOST>:6034/api/v1/mcp/sse` and select `SSE` or the equivalent transport type in the UI.
 
 You can also edit Copilot CLI's configuration file directly at `~/.copilot/mcp-config.json`:
 
@@ -78,68 +114,126 @@ You can also edit Copilot CLI's configuration file directly at `~/.copilot/mcp-c
   "mcpServers": {
     "tdengine-idmp": {
       "type": "http",
-      "url": "http://<IDMP_HOST>:6042/api/v1/mcp/stream",
+      "url": "https://<IDMP_HOST>:6034/api/v1/mcp/stream",
       "headers": {
-        "Authorization": "Bearer <IDMP_TOKEN>"
-      },
-      "tools": [
-        "*"
-      ]
+        "Authorization": "<IDMP_LOGIN_TOKEN>"
+      }
     }
   }
 }
 ```
 
-## 15.2.4 MCP Surface Summary
+### 15.2.5.4 Generic Form and JSON Examples
 
-| Type | Description |
-|---|---|
-| Tools | Query tools plus a controlled write surface for elements, attributes, events, analyses, and panels |
-| Resources | Dynamic resources for hierarchy, templates, event templates, and analysis algorithms |
-| Prompts | Structured workflows for handover, health checks, alarm triage, root-cause analysis, and more |
+If your agent provides an interactive form, fill it with values like these:
 
-## 15.2.5 Tool Categories
-
-| Category | Representative tools | What they cover |
+| Field | Streamable HTTP | SSE |
 |---|---|---|
-| Elements and hierarchy | `get_element_context`, `search_elements`, `get_element_by_path`, `list_element_children`, `count_branch_elements` | Element context, hierarchy lookup, branch navigation, and scoped discovery |
-| Attribute data | `get_attribute_value`, `get_attribute_history`, `get_batch_attribute_data`, `search_attributes` | Current values, time-series history, and cross-element attribute queries |
-| Events and notifications | `list_events`, `get_event`, `acknowledge_event`, `add_event_annotation`, `get_notification_history` | Event querying, alarm acknowledgement, annotation, and notification tracing |
-| Analyses | `list_analyses`, `get_analysis`, `add_analysis`, `create_analysis`, `create_alarm_rule`, `manage_analysis` | Reading, creating, pausing, resuming, and deleting analysis tasks |
-| Panels and dashboards | `list_panels`, `get_panel`, `add_panel`, `create_panel`, `delete_panel`, `search_dashboards` | Querying, generating, creating, and deleting panels, plus dashboard search |
-| AI and system metadata | `ask_idmp`, `recommend_analyses`, `recommend_panels`, `get_system_config`, `list_categories` | Built-in AI calls plus system metadata and category lookup |
+| Server Name | `tdengine-idmp` | `tdengine-idmp` |
+| Type / Transport | `http` | `sse` |
+| URL | `https://<IDMP_HOST>:6034/api/v1/mcp/stream` | `https://<IDMP_HOST>:6034/api/v1/mcp/sse` |
+| HTTP Headers | `{"Authorization":"<IDMP_LOGIN_TOKEN>"}` | `{"Authorization":"<IDMP_LOGIN_TOKEN>"}` |
 
-The write surface is intentionally limited to a scoped set of tools: `acknowledge_event`, `add_event_annotation`, `add_analysis`, `create_analysis`, `create_alarm_rule`, `manage_analysis`, `add_panel`, `create_panel`, `delete_panel`, `create_attribute`, `create_element_annotation`, and `update_contact_point`.
+For other agents that support JSON-style configuration, use a structure like the following.
 
-## 15.2.6 Dynamic Resources
+**Streamable HTTP:**
 
-| Resource | When to use it | Returned content |
+```json
+{
+  "mcpServers": {
+    "tdengine-idmp": {
+      "type": "http",
+      "url": "https://<IDMP_HOST>:6034/api/v1/mcp/stream",
+      "headers": {
+        "Authorization": "<IDMP_LOGIN_TOKEN>"
+      }
+    }
+  }
+}
+```
+
+**SSE:**
+
+```json
+{
+  "mcpServers": {
+    "tdengine-idmp": {
+      "type": "sse",
+      "url": "https://<IDMP_HOST>:6034/api/v1/mcp/sse",
+      "headers": {
+        "Authorization": "<IDMP_LOGIN_TOKEN>"
+      }
+    }
+  }
+}
+```
+
+## 15.2.6 Tool Capabilities
+
+The following section describes the Tool capabilities exposed through MCP.
+
+| Tool category | What it covers | Typical use |
 |---|---|---|
-| `idmp://hierarchy` | Before resolving elements by name or building full asset-tree context | A flat element hierarchy with `id`, `name`, `parentId`, and template metadata |
-| `idmp://element-templates` | Before designing panels, analyses, or attribute queries | Element templates and their standard attribute definitions |
-| `idmp://event-templates` | Before interpreting event template IDs, severities, and alarm semantics | Event template definitions |
-| `idmp://analysis-algorithms` | Before creating analyses so the client can inspect supported trigger and algorithm types | Analysis algorithm and trigger metadata |
+| Elements and hierarchy | Read element context, paths, child elements, and branch scope | Element lookup, asset-tree browsing, scoped discovery |
+| Attribute data | Query current values, history, and batch attribute data across elements | Trend analysis, state checks, cross-element comparison |
+| Events and alarms | Query events, acknowledge alarms, add annotations, and inspect notification history | Alarm triage, event review, notification tracing |
+| Analyses | Read, create, pause, resume, and delete analyses or alarm rules | Real-time analysis, rule delivery, alarm automation |
+| Panels | Query, generate, create, and delete panels | Visualization for a single element or focused use case |
+| Dashboards | Search and associate dashboards | Cross-panel summaries and scenario-level views |
+| AI and system metadata | Call IDMP AI and read system configuration, categories, and recommendations | Natural-language Q&A, capability recommendation, metadata lookup |
+| Controlled writes | Create attributes, annotations, and notification rule updates within the user's scope | Safe configuration changes without broad admin access |
 
-## 15.2.7 Prompt Workflows
+## 15.2.7 Resource Capabilities
 
-| Prompt | Typical use | Suggested tool flow |
+The following section describes the Resource capabilities exposed through MCP.
+
+| Resource capability | When to use it | Returned content |
 |---|---|---|
-| `shift_handover` | Generate a structured shift handover report | `get_element_context` → `list_events` → `list_element_annotations` → `list_analyses` |
-| `equipment_health_check` | Run a health assessment for one equipment element | `get_element_context` → `ask_idmp` |
-| `root_cause_analysis` | Investigate one alarm or event | `get_event` → `get_element_context` → `get_attribute_history` → `get_event_annotations` |
-| `batch_review` | Review one batch or time-bounded operation | `get_element_context` → `list_events` → `get_attribute_history` → `list_analyses` |
-| `fleet_comparison` | Compare all elements of the same type | `list_elements` → `get_element_context` → `list_events` → `ask_idmp` |
-| `maintenance_due` | Build a maintenance-due report for child equipment | `get_element_context` → `list_events` → `list_element_annotations` → `ask_idmp` |
-| `alarm_triage` | Prioritize system-wide unacknowledged alarms | `get_event_count_unacknowledged` → `list_events` → `get_event` → `get_element_context` → `ask_idmp` |
+| Element hierarchy and path resolution | Before locating an element by name or building full asset-tree context | Hierarchy data, path relationships, and basic metadata |
+| Element templates and standard attributes | Before designing panels, analyses, or attribute queries | Element templates and standard attribute definitions |
+| Event semantics | Before interpreting template IDs, severities, and alarm meaning | Event template definitions and semantic metadata |
+| Analysis algorithm metadata | Before creating an analysis and selecting a trigger or algorithm type | Supported triggers, algorithms, and related metadata |
 
-## 15.2.8 Common Usage Patterns
+## 15.2.8 Prompt Capabilities
 
-| Scenario | Recommended flow |
-|---|---|
-| Element lookup and context gathering | `idmp://hierarchy` → `get_element_context` → add `get_attribute_value`, `list_events`, or `list_panels` as needed |
-| Single-equipment health check | `get_element_context` → `equipment_health_check`, or pass a compact context summary into `ask_idmp` |
-| Alarm triage | `get_event_count_unacknowledged` → `list_events` → `get_event` → `get_element_context` → `alarm_triage` |
-| Root-cause analysis | `get_event` → `get_element_context` → `get_attribute_history` → `get_event_annotations` → `root_cause_analysis` |
-| Creating analyses or panels | `idmp://analysis-algorithms` / `idmp://element-templates` → `create_attribute` (if an output attribute is needed) → `add_analysis` / `create_analysis` or `add_panel` / `create_panel` |
+The following section describes the Prompt capabilities exposed through MCP.
 
-If your client supports prompts, start with `shift_handover`, `equipment_health_check`, or `root_cause_analysis` instead of building the tool sequence manually.
+| Prompt capability | Typical use | Recommended context |
+|---|---|---|
+| Shift handover report generation | Summarize key events, annotations, and analysis results for one shift | Element context, event list, element annotations, analyses |
+| Element health check | Diagnose the operating state of one element | Element context, key attributes, recent events |
+| Root-cause analysis | Investigate one alarm or event | Event details, element context, historical attributes, event annotations |
+| Batch review | Review one batch or bounded time window | Element context, event list, attribute history, analyses |
+| Same-type element comparison | Compare operational patterns across similar elements | Element list, element context, events, and AI output |
+| Maintenance-due review | Build a maintenance-due list and next-step suggestions | Element context, events, annotations, AI suggestions |
+| Alarm triage | Prioritize unacknowledged alarms across the system | Alarm counts, event details, element context, AI judgment |
+
+## 15.2.9 Frequently Asked Questions
+
+### 15.2.9.1 What should I do if HTTPS certificate validation fails?
+
+First verify DNS resolution, the certificate chain, and the client's trust store. If you are only troubleshooting connectivity, temporarily switch to `http://<IDMP_HOST>:6042/api/v1/mcp/stream` to confirm network reachability, then move back to HTTPS after the certificate issue is fixed.
+
+### 15.2.9.2 Why is Streamable HTTP the preferred choice?
+
+Newer MCP clients usually support Streamable HTTP first, and it offers clearer request, response, and error semantics. It is also a better long-term fit for future capability growth, so use SSE only when your current agent explicitly requires it.
+
+### 15.2.9.3 Why do the examples use port `6034`?
+
+`6034` is IDMP's default HTTPS port, and the rest of the documentation uses the same secure external entry point. `6042` is still useful for plain HTTP access and troubleshooting, but `6034` is the recommended production-facing port.
+
+### 15.2.9.4 Why can't I see every Tool, Resource, or Prompt capability after connecting?
+
+Agents do not all render Tools, Resources, and Prompts in the same way. Some hide capabilities until they are needed, while others display only the subset they actively support. A successful connection does not guarantee a full visual listing.
+
+### 15.2.9.5 Why do some Resource or Prompt capabilities not take effect?
+
+Whether an agent reads Resources or invokes Prompts depends on the agent's own implementation strategy. Some agents actively use only the basic Tools and may ignore other capability types unless they are explicitly designed to consume them.
+
+### 15.2.9.6 Why do write actions fail?
+
+Write capabilities follow the current IDMP user's permission boundary. If the token does not grant access to the target element, analysis, panel, or notification rule, the write request will fail. Check the user's role and scope first.
+
+### 15.2.9.7 Why does the connection succeed but no element data is returned?
+
+Check whether the element path is correct, whether the current user has access, whether the queried time range actually covers the data, and whether the environment contains the expected attributes or events. For history-oriented requests, it is best to specify the time range explicitly instead of relying entirely on agent inference.

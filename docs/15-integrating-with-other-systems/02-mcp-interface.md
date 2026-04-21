@@ -5,57 +5,92 @@ sidebar_label: MCP 接口
 
 # 15.2 MCP 接口
 
-IDMP 现已通过反向代理对外提供基于 Streamable HTTP 的 MCP 接口。AI 智能体无需单独部署 `mcp-tdengine-idmp`，只需连接 IDMP 提供的 Streamable HTTP 地址，即可读取工业数据与上下文，并调用受控写能力。当前能力面覆盖 Tools、Resources 和 Prompts 三类 MCP 能力，适合设备诊断、告警分诊、交接班、根因分析，以及分析规则与看板配置等场景。
+IDMP 通过反向代理对外提供 MCP 接口。AI 智能体无需在本地安装 MCP 服务端，只需连接 IDMP 提供的远程地址，即可读取元素上下文、时序属性、事件、分析结果、面板与 Dashboard，并在权限范围内执行受控写操作。推荐优先使用 Streamable HTTP；如果现有 Agent 仅支持 SSE，也可以通过 SSE 方式接入。
 
 ## 15.2.1 适用场景
 
-- 让支持 Streamable HTTP 的 MCP 客户端直接访问 IDMP 的元素、属性、事件、分析任务和看板。
-- 将实时工业上下文接入 LLM 工作流，用于设备健康检查、告警根因分析和自然语言问答。
-- 用 Prompt 模板把交接班、告警分诊、批次复盘等多步运维流程固化为标准化工作流。
-- 在受控边界内创建分析任务、告警规则、看板、属性和元素标注，减少手工配置。
+- 让支持 MCP 的智能体直接访问 IDMP 中的元素、属性、事件、分析任务、面板和 Dashboard。
+- 将实时工业上下文接入 LLM 工作流，用于元素健康检查、告警根因分析和自然语言问答。
+- 把交接班、告警分诊、批次复盘等多步运维流程标准化，减少人工整理上下文的成本。
+- 在受控边界内创建分析任务、告警规则、面板、属性和元素标注，减少手工配置。
 
-## 15.2.2 接入方式
+## 15.2.2 获取登录令牌
+
+1. 登录 IDMP Web UI。
+2. 单击右上角头像，打开个人信息弹窗。
+3. 在 **登录令牌** 区域复制当前令牌。
+4. **登录令牌** 区域显示的是 `Authorization` Header 的 value 部分，形如 `Bearer <token>`；它已包含 `Bearer` 前缀，但**不包含** `Authorization:` 字段名。对于需要 `Authorization` Header 的客户端，请将该值填入 `Authorization` 字段中。
+
+如果客户端要求填写的是纯 Bearer Token，而不是完整 Header 值，请先去掉开头的 `Bearer` 前缀，再填入对应字段。
+
+如果令牌失效或重新登录，请重新打开头像弹窗复制最新令牌。
+
+## 15.2.3 接入地址与鉴权
 
 | 项目 | 说明 |
 |---|---|
-| Transport | `Streamable HTTP` |
-| 接口 URL | `http://<IDMP_HOST>:6042/api/v1/mcp/stream` |
-| 鉴权方式 | `Authorization: Bearer <IDMP_TOKEN>` |
-| 能力发现 | 客户端连接后会自动读取 Tools、Resources 和 Prompts |
+| 推荐访问地址 | `https://<IDMP_HOST>:6034` |
+| 推荐 Transport | `Streamable HTTP` |
+| Streamable HTTP URL | `https://<IDMP_HOST>:6034/api/v1/mcp/stream` |
+| SSE URL | `https://<IDMP_HOST>:6034/api/v1/mcp/sse` |
+| 鉴权方式 | `Authorization: <IDMP_LOGIN_TOKEN>` |
+| 默认 HTTPS 端口 | `6034` |
+| HTTP 排障地址 | `http://<IDMP_HOST>:6042/api/v1/mcp/stream` |
 
-如果您的 IDMP 对外入口不是 `http://<IDMP_HOST>:6042`，请将上面的地址替换为实际访问域名，但 MCP 路径保持为 `/api/v1/mcp/stream`。
+将示例中的 `<IDMP_HOST>` 替换为您的实际 IDMP 域名或 IP。`<IDMP_LOGIN_TOKEN>` 表示从界面复制的登录令牌值，形如 `Bearer <token>`，已包含 `Bearer` 前缀，但不包含 `Authorization:` 字段名。生产环境建议优先使用 HTTPS；仅在证书或网络排障时，才临时切换到 HTTP 地址。
 
-## 15.2.3 在常见 Agent 中配置
+## 15.2.4 Streamable HTTP 与 SSE 的区别
 
-不同客户端的字段名可能略有差异，但核心信息始终一致：**远程 URL + Streamable HTTP transport + Authorization Header**。
+| 对比项 | Streamable HTTP | SSE |
+|---|---|---|
+| 配置类型 | `type: "http"` | `type: "sse"` |
+| 接口路径 | `/api/v1/mcp/stream` | `/api/v1/mcp/sse` |
+| 交互方式 | 基于 HTTP 的双向请求/响应流 | 服务端事件推送 + 客户端补充请求 |
+| 适配情况 | 新版 MCP 客户端优先支持 | 主要用于仍保留 SSE 兼容层的客户端 |
+| 推荐级别 | **推荐** | 按需使用 |
 
-### 15.2.3.1 Claude Code
+推荐优先使用 Streamable HTTP，原因如下：
 
-Claude Code 官方支持通过命令行直接添加远程 HTTP MCP Server，推荐使用如下命令：
+1. 与新版 MCP 客户端的兼容性更好。
+2. 请求、响应和错误语义更清晰，排障更直接。
+3. 更适合后续能力扩展，长期维护成本更低。
+4. 与 IDMP 当前默认的远程 MCP 展示方式一致，配置更统一。
+
+## 15.2.5 配置方式
+
+不同 Agent 的字段名可能略有差异，但核心信息始终一致：**远程 URL + Transport 类型 + Authorization Header**。
+
+MCP 服务端由 IDMP 统一提供，客户端侧只需要配置远程地址和鉴权信息。
+
+下文中，`<IDMP_LOGIN_TOKEN>` 表示从界面复制的登录令牌值，形如 `Bearer <token>`，已包含 `Bearer` 前缀，但不包含 `Authorization:` 字段名；`<IDMP_BEARER_TOKEN>` 表示去掉 `Bearer` 前缀后的纯 token 值。
+
+### 15.2.5.1 Claude Code
+
+Claude Code 支持通过命令行添加远程 MCP Server。推荐优先使用 Streamable HTTP：
 
 ```bash
 claude mcp add --transport http tdengine-idmp \
-  http://<IDMP_HOST>:6042/api/v1/mcp/stream \
-  --header "Authorization: Bearer <IDMP_TOKEN>"
+  https://<IDMP_HOST>:6034/api/v1/mcp/stream \
+  --header "Authorization: <IDMP_LOGIN_TOKEN>"
 ```
 
-如果希望把配置共享给当前项目，可额外加上 `--scope project`。
+如果希望将配置共享给当前项目，可额外加上 `--scope project`。如果当前环境只能使用 SSE，请将 URL 替换为 `https://<IDMP_HOST>:6034/api/v1/mcp/sse`，并按客户端要求选择对应的 transport 类型。
 
-### 15.2.3.2 Codex
+### 15.2.5.2 Codex
 
-Codex 通过 `~/.codex/config.toml` 中的 `mcp_servers` 段配置远程 MCP Server。推荐使用环境变量保存 Token：
+Codex 可通过 `~/.codex/config.toml` 配置远程 MCP Server。推荐使用环境变量保存令牌：
 
 ```toml
 [mcp_servers.tdengine-idmp]
-url = "http://<IDMP_HOST>:6042/api/v1/mcp/stream"
-bearer_token_env_var = "IDMP_TOKEN"
+url = "https://<IDMP_HOST>:6034/api/v1/mcp/stream"
+bearer_token_env_var = "IDMP_BEARER_TOKEN"
 ```
 
-启动 Codex 前，先在当前终端设置 `IDMP_TOKEN` 环境变量即可。
+启动 Codex 前，请先在当前终端设置 `IDMP_BEARER_TOKEN`，并确保其值**不包含** `Bearer` 前缀。如果当前环境需要 SSE，可将 URL 改为 `https://<IDMP_HOST>:6034/api/v1/mcp/sse`；如客户端版本需要显式 transport 字段，请设置为 `sse`。
 
-### 15.2.3.3 Copilot CLI
+### 15.2.5.3 Copilot CLI
 
-GitHub Copilot CLI 官方支持通过交互式命令 `/mcp add` 添加远程 MCP Server。进入 `copilot` 交互界面后，执行：
+GitHub Copilot CLI 支持通过交互式命令 `/mcp add` 添加远程 MCP Server。进入 `copilot` 交互界面后，执行：
 
 ```text
 /mcp add
@@ -67,9 +102,10 @@ GitHub Copilot CLI 官方支持通过交互式命令 `/mcp add` 添加远程 MCP
 |---|---|
 | Server Name | `tdengine-idmp` |
 | Server Type | `HTTP` |
-| URL | `http://<IDMP_HOST>:6042/api/v1/mcp/stream` |
-| HTTP Headers | `{"Authorization":"Bearer <IDMP_TOKEN>"}` |
-| Tools | `*` |
+| URL | `https://<IDMP_HOST>:6034/api/v1/mcp/stream` |
+| HTTP Headers | `{"Authorization":"<IDMP_LOGIN_TOKEN>"}` |
+
+如果当前环境需要 SSE，请将 URL 改为 `https://<IDMP_HOST>:6034/api/v1/mcp/sse`，并在界面中选择 `SSE` 或等价的 transport 类型。
 
 也可以直接编辑 Copilot CLI 的配置文件 `~/.copilot/mcp-config.json`：
 
@@ -78,68 +114,126 @@ GitHub Copilot CLI 官方支持通过交互式命令 `/mcp add` 添加远程 MCP
   "mcpServers": {
     "tdengine-idmp": {
       "type": "http",
-      "url": "http://<IDMP_HOST>:6042/api/v1/mcp/stream",
+      "url": "https://<IDMP_HOST>:6034/api/v1/mcp/stream",
       "headers": {
-        "Authorization": "Bearer <IDMP_TOKEN>"
-      },
-      "tools": [
-        "*"
-      ]
+        "Authorization": "<IDMP_LOGIN_TOKEN>"
+      }
     }
   }
 }
 ```
 
-## 15.2.4 MCP 能力总览
+### 15.2.5.4 通用表单与 JSON 配置示例
 
-| 类型 | 说明 |
-|---|---|
-| Tools | 包含查询类工具和受控写工具，可读写元素、属性、事件、分析任务和看板 |
-| Resources | 提供层级、模板、事件模板和分析算法等动态资源 |
-| Prompts | 封装交接班、健康检查、告警分诊、根因分析等标准工作流 |
+如果 Agent 提供交互式表单，请填写以下字段：
 
-## 15.2.5 Tools 能力
-
-| 类别 | 代表工具 | 说明 |
+| 字段 | Streamable HTTP | SSE |
 |---|---|---|
-| 元素与层级 | `get_element_context`、`search_elements`、`get_element_by_path`、`list_element_children`、`count_branch_elements` | 获取元素上下文、层级路径和分支范围 |
-| 属性数据 | `get_attribute_value`、`get_attribute_history`、`get_batch_attribute_data`、`search_attributes` | 查询当前值、历史值和跨元素批量属性数据 |
-| 事件与通知 | `list_events`、`get_event`、`acknowledge_event`、`add_event_annotation`、`get_notification_history` | 查询事件、确认告警、补充标注、查看通知历史 |
-| 分析任务 | `list_analyses`、`get_analysis`、`add_analysis`、`create_analysis`、`create_alarm_rule`、`manage_analysis` | 查询、创建、暂停、恢复或删除分析任务 |
-| 看板与数据大屏 | `list_panels`、`get_panel`、`add_panel`、`create_panel`、`delete_panel`、`search_dashboards` | 查询、生成、创建和删除看板，并搜索数据大屏 |
-| AI 与系统元数据 | `ask_idmp`、`recommend_analyses`、`recommend_panels`、`get_system_config`、`list_categories` | 调用 IDMP AI，并读取系统配置与分类元数据 |
+| Server Name | `tdengine-idmp` | `tdengine-idmp` |
+| Type / Transport | `http` | `sse` |
+| URL | `https://<IDMP_HOST>:6034/api/v1/mcp/stream` | `https://<IDMP_HOST>:6034/api/v1/mcp/sse` |
+| HTTP Headers | `{"Authorization":"<IDMP_LOGIN_TOKEN>"}` | `{"Authorization":"<IDMP_LOGIN_TOKEN>"}` |
 
-当前对外暴露的受控写工具包括：`acknowledge_event`、`add_event_annotation`、`add_analysis`、`create_analysis`、`create_alarm_rule`、`manage_analysis`、`add_panel`、`create_panel`、`delete_panel`、`create_attribute`、`create_element_annotation` 和 `update_contact_point`。
+对于其他支持 JSON 配置的 Agent，可参考以下示例。
 
-## 15.2.6 Dynamic Resources
+**Streamable HTTP:**
 
-| Resource | 适用场景 | 返回内容 |
+```json
+{
+  "mcpServers": {
+    "tdengine-idmp": {
+      "type": "http",
+      "url": "https://<IDMP_HOST>:6034/api/v1/mcp/stream",
+      "headers": {
+        "Authorization": "<IDMP_LOGIN_TOKEN>"
+      }
+    }
+  }
+}
+```
+
+**SSE:**
+
+```json
+{
+  "mcpServers": {
+    "tdengine-idmp": {
+      "type": "sse",
+      "url": "https://<IDMP_HOST>:6034/api/v1/mcp/sse",
+      "headers": {
+        "Authorization": "<IDMP_LOGIN_TOKEN>"
+      }
+    }
+  }
+}
+```
+
+## 15.2.6 Tool 功能
+
+以下内容对应 MCP 中的 Tool 功能。
+
+| Tool 类别 | 能力说明 | 典型用途 |
 |---|---|---|
-| `idmp://hierarchy` | 按名称定位元素或建立完整资产树上下文 | 扁平元素层级列表，包含 `id`、`name`、`parentId` 和模板元数据 |
-| `idmp://element-templates` | 设计看板、分析规则或属性查询前先了解设备类型 | 元素模板及其标准属性定义 |
-| `idmp://event-templates` | 解释事件模板 ID、严重级别和告警语义 | 事件模板定义 |
-| `idmp://analysis-algorithms` | 创建分析规则前查看当前环境支持的 trigger / algorithm 类型 | 分析算法和触发类型元数据 |
+| 元素与层级 | 读取元素上下文、层级路径、子元素和分支范围 | 元素定位、资产树浏览、范围查询 |
+| 属性数据 | 查询当前值、历史值和跨元素批量属性数据 | 趋势分析、状态核查、跨元素对比 |
+| 事件与告警 | 查询事件、确认告警、补充标注、查看通知历史 | 告警分诊、事件复盘、通知追踪 |
+| 分析任务 | 查询、创建、暂停、恢复和删除分析任务或告警规则 | 实时分析、规则下发、告警自动化 |
+| 面板 | 查询、生成、创建和删除面板 | 单个元素的可视化配置与展示 |
+| Dashboard | 搜索和关联 Dashboard | 跨面板汇总、场景级数据展示 |
+| AI 与系统元数据 | 调用 IDMP AI，并读取系统配置、分类和推荐结果 | 自然语言问答、能力推荐、元数据读取 |
+| 受控写入 | 创建属性、元素标注、事件标注和通知规则更新等 | 在权限范围内完成受控配置变更 |
 
-## 15.2.7 Prompt 工作流
+## 15.2.7 Resource 功能
 
-| Prompt | 适用场景 | 推荐流程 |
+以下内容对应 MCP 中的 Resource 功能。
+
+| Resource 功能 | 适用场景 | 返回内容 |
 |---|---|---|
-| `shift_handover` | 生成交接班报告 | `get_element_context` → `list_events` → `list_element_annotations` → `list_analyses` |
-| `equipment_health_check` | 做单台设备健康检查 | `get_element_context` → `ask_idmp` |
-| `root_cause_analysis` | 对单条告警或事件做根因分析 | `get_event` → `get_element_context` → `get_attribute_history` → `get_event_annotations` |
-| `batch_review` | 复盘某个批次或时间窗口 | `get_element_context` → `list_events` → `get_attribute_history` → `list_analyses` |
-| `fleet_comparison` | 横向比较同类设备 | `list_elements` → `get_element_context` → `list_events` → `ask_idmp` |
-| `maintenance_due` | 生成维保到期清单 | `get_element_context` → `list_events` → `list_element_annotations` → `ask_idmp` |
-| `alarm_triage` | 对全系统未确认告警做优先级分诊 | `get_event_count_unacknowledged` → `list_events` → `get_event` → `get_element_context` → `ask_idmp` |
+| 元素层级与路径解析 | 按名称定位元素，或建立完整资产树上下文 | 元素层级、路径关系及基础元数据 |
+| 元素模板与标准属性 | 在设计面板、分析规则或属性查询前了解元素类型 | 元素模板及标准属性定义 |
+| 事件语义 | 解释事件模板 ID、严重级别和告警含义 | 事件模板定义和语义信息 |
+| 分析算法元数据 | 创建分析任务前了解支持的触发方式和算法类型 | 分析算法、触发类型及相关元数据 |
 
-## 15.2.8 常见使用方式
+## 15.2.8 Prompt 功能
 
-| 场景 | 建议顺序 |
-|---|---|
-| 元素定位与上下文获取 | `idmp://hierarchy` → `get_element_context` → 按需补充 `get_attribute_value`、`list_events`、`list_panels` |
-| 单设备健康诊断 | `get_element_context` → `equipment_health_check`，或将关键上下文整理后交给 `ask_idmp` |
-| 告警分诊 | `get_event_count_unacknowledged` → `list_events` → `get_event` → `get_element_context` → `alarm_triage` |
-| 根因分析 | `get_event` → `get_element_context` → `get_attribute_history` → `get_event_annotations` → `root_cause_analysis` |
-| 新建分析或看板 | `idmp://analysis-algorithms` / `idmp://element-templates` → `create_attribute`（如需输出属性）→ `add_analysis` / `create_analysis` 或 `add_panel` / `create_panel` |
+以下内容对应 MCP 中的 Prompt 功能。
 
-如果客户端支持 Prompt，优先使用 `shift_handover`、`equipment_health_check`、`root_cause_analysis` 等模板，会比从零组织工具链更稳定。
+| Prompt 功能 | 适用场景 | 推荐上下文 |
+|---|---|---|
+| 交接班报告生成 | 汇总班次期间的关键事件、标注和分析结果 | 元素上下文、事件列表、元素标注、分析任务 |
+| 元素健康检查 | 对单个元素做运行状态诊断 | 元素上下文、关键属性、最近事件 |
+| 根因分析 | 对单条告警或事件做原因追踪 | 事件详情、元素上下文、历史属性、事件标注 |
+| 批次复盘 | 回顾某个批次或时间窗口内的关键变化 | 元素上下文、事件列表、历史属性、分析任务 |
+| 同类元素对比 | 横向比较同类型元素的运行表现 | 元素列表、元素上下文、事件和 AI 分析结果 |
+| 维保到期梳理 | 生成待维护元素清单并给出处理建议 | 元素上下文、事件、元素标注、AI 建议 |
+| 告警分诊 | 对全系统未确认告警进行优先级排序 | 告警计数、事件详情、元素上下文、AI 判断 |
+
+## 15.2.9 常见问题
+
+### 15.2.9.1 HTTPS 证书校验不通过怎么办？
+
+请先确认域名解析、证书链和客户端信任链是否正确。如果只是临时排查连通性问题，可以先改用 `http://<IDMP_HOST>:6042/api/v1/mcp/stream` 验证网络是否可达，排障完成后再切回 HTTPS。
+
+### 15.2.9.2 为什么更推荐 Streamable HTTP？
+
+因为新版 MCP 客户端通常优先支持 Streamable HTTP，且它的交互语义、错误处理和长期兼容性都更好。只有在现有 Agent 明确只支持 SSE 时，才建议使用 SSE。
+
+### 15.2.9.3 为什么示例优先使用 `6034` 端口？
+
+`6034` 是 IDMP 默认的 HTTPS 端口，文档库中的外部访问示例也统一使用这一端口。`6042` 可用于 HTTP 访问和排障，但生产环境更建议使用 `6034` 对外提供安全入口。
+
+### 15.2.9.4 为什么连接成功后看不到全部 Tool、Resource 或 Prompt 功能？
+
+不同 Agent 对 Tool、Resource 和 Prompt 的展示方式不完全一致。有些 Agent 会隐藏暂未使用的功能，有些只显示自己支持的部分，因此“能连上”并不意味着界面一定会完整列出所有功能。
+
+### 15.2.9.5 为什么某些 Resource 或 Prompt 功能没有生效？
+
+是否读取 Resource、是否调用 Prompt，取决于 Agent 自身的实现策略。有些 Agent 只主动调用基础 Tool，不一定会自动消费所有 Resource 或 Prompt 功能。
+
+### 15.2.9.6 为什么写入类操作失败？
+
+MCP 写入能力遵循 IDMP 当前登录用户的权限边界。如果令牌对应的用户没有目标元素、分析任务、面板或通知规则的权限，相关写入请求会失败。请优先检查角色授权和元素访问范围。
+
+### 15.2.9.7 为什么连接成功但查询不到元素数据？
+
+请依次检查元素路径是否正确、当前用户是否具备访问权限、查询时间范围是否覆盖实际数据，以及目标环境中是否已经写入对应属性或事件数据。对于历史趋势类查询，建议显式指定时间范围，而不要完全依赖 Agent 自动推断。
