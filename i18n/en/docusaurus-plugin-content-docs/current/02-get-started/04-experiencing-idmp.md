@@ -25,7 +25,7 @@ The top navigation bar spans the full width of the page. On the left is the TDen
 - **Events** — Browse, filter, and analyze events across the system.
 - **Libraries** — Manage shared resources such as element templates, event templates, enumerations, units of measure, and more.
 
-On the far right is your **avatar**. Click it to manage your profile, access system administration, or launch the Tour Guide.
+On the far right is your **avatar menu**. Open it and select the top account item to open the personal settings dialog, where you can manage **Profile**, **API Key**, and **MFA**-related settings. Users with permission can also open the **Admin Console** or launch the Tour Guide from the same menu. For details, see [Section 14.8](../14-administration/08-profile-settings.md).
 
 **2. Left Panel**
 

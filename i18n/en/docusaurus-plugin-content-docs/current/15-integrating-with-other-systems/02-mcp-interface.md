@@ -14,18 +14,18 @@ IDMP exposes its MCP integration through reverse-proxied remote endpoints. AI ag
 - Standardize multi-step workflows such as shift handover, alarm triage, and batch review, reducing manual context assembly.
 - Create analyses, alarm rules, panels, attributes, and annotations within a controlled write boundary instead of exposing broad administrative CRUD.
 
-## 15.2.2 Getting a Login Token
+## 15.2.2 Getting an API Key
 
 1. Sign in to the IDMP Web UI.
-2. Click the avatar in the upper-right corner to open the personal information dialog.
-3. Copy the value shown in **Login Token**.
-4. The **Login Token** field shows the value part of the `Authorization` header, in the form `Bearer <token>`. It already includes the `Bearer` prefix, but it does **not** include the `Authorization:` field name. For clients that accept an `Authorization` header, place this value in the `Authorization` field.
+2. Open the avatar menu in the upper-right corner and select the top account item to open the personal settings dialog.
+3. Switch to the **API Key** tab.
+4. To create a new API key, click **Add New API Key**, enter a unique title, and choose **Never** or a future **Expiration Date**.
+5. Copy the full API key. The list view shows only a masked value. To retrieve the full value again later, use the row-level copy action.
+6. The copied value starts with `api_` and does not include the `Bearer` prefix. For clients that require a full `Authorization` header, format it as `Bearer <IDMP_API_KEY>`.
 
-If a client expects only the raw Bearer token instead of the full header value, remove the leading `Bearer` prefix before filling that field.
+For the full API key management workflow and limits, see [Section 14.8](../14-administration/08-profile-settings.md). If you already automate sign-in and issue JWTs, that flow remains valid. This document recommends API keys because they are a better fit for long-running MCP clients.
 
-If the token expires or you sign in again, reopen the avatar dialog and copy the latest token.
-
-In the sections below, `<IDMP_LOGIN_TOKEN>` means the login token copied from the UI, in the form `Bearer <token>`. It already includes the `Bearer` prefix but does not include the `Authorization:` field name. `<IDMP_BEARER_TOKEN>` means the raw token value after removing that prefix.
+In the sections below, `<IDMP_API_KEY>` means the raw API key copied from the UI, in the form `api_<key_id>.<secret>`. The sample `Authorization` headers add the `Bearer` prefix explicitly.
 
 ## 15.2.3 Streamable HTTP Access
 
@@ -38,11 +38,11 @@ Streamable HTTP is the recommended remote MCP transport and should be the defaul
 | Recommended base address | `https://<IDMP_HOST>:6034` |
 | Transport type | `http` |
 | MCP URL | `https://<IDMP_HOST>:6034/api/v1/mcp/stream` |
-| Authentication | `Authorization: <IDMP_LOGIN_TOKEN>` |
+| Authentication | `Authorization: Bearer <IDMP_API_KEY>` |
 | Default HTTPS port | `6034` |
 | HTTP troubleshooting URL | `http://<IDMP_HOST>:6042/api/v1/mcp/stream` |
 
-Replace `<IDMP_HOST>` with your actual IDMP domain or IP address. Use HTTPS for production traffic. Switch to the HTTP URL only when you are troubleshooting certificate or network issues.
+Replace `<IDMP_HOST>` with your actual IDMP domain or IP address. `<IDMP_API_KEY>` means the raw API key copied from the UI, in the form `api_<key_id>.<secret>`. It does not include the `Bearer` prefix. Use HTTPS for production traffic. Switch to the HTTP URL only when you are troubleshooting certificate or network issues.
 
 ### 15.2.3.2 Claude Code
 
@@ -51,7 +51,7 @@ Claude Code can add a remote MCP server from the command line:
 ```bash
 claude mcp add --transport http tdengine-idmp \
   https://<IDMP_HOST>:6034/api/v1/mcp/stream \
-  --header "Authorization: <IDMP_LOGIN_TOKEN>"
+  --header "Authorization: Bearer <IDMP_API_KEY>"
 ```
 
 If you want to share the configuration with the current project, add `--scope project`.
@@ -63,10 +63,10 @@ Codex can configure a remote MCP server in `~/.codex/config.toml`. It is recomme
 ```toml
 [mcp_servers.tdengine-idmp]
 url = "https://<IDMP_HOST>:6034/api/v1/mcp/stream"
-bearer_token_env_var = "IDMP_BEARER_TOKEN"
+bearer_token_env_var = "IDMP_API_KEY"
 ```
 
-Before starting Codex, make sure `IDMP_BEARER_TOKEN` is available in the current shell and does **not** include the `Bearer` prefix.
+Before starting Codex, make sure `IDMP_API_KEY` is available in the current shell as the raw `api_...` value, without the `Bearer` prefix.
 
 ### 15.2.3.4 Copilot CLI
 
@@ -83,7 +83,7 @@ Then fill in the form with values like these:
 | Server Name | `tdengine-idmp` |
 | Server Type | `HTTP` |
 | URL | `https://<IDMP_HOST>:6034/api/v1/mcp/stream` |
-| HTTP Headers | `{"Authorization":"<IDMP_LOGIN_TOKEN>"}` |
+| HTTP Headers | `{"Authorization":"Bearer <IDMP_API_KEY>"}` |
 
 You can also edit Copilot CLI's configuration file directly at `~/.copilot/mcp-config.json`:
 
@@ -94,7 +94,7 @@ You can also edit Copilot CLI's configuration file directly at `~/.copilot/mcp-c
       "type": "http",
       "url": "https://<IDMP_HOST>:6034/api/v1/mcp/stream",
       "headers": {
-        "Authorization": "<IDMP_LOGIN_TOKEN>"
+        "Authorization": "Bearer <IDMP_API_KEY>"
       }
     }
   }
@@ -110,7 +110,7 @@ If your agent provides an interactive form, fill it with values like these:
 | Server Name | `tdengine-idmp` |
 | Type / Transport | `http` |
 | URL | `https://<IDMP_HOST>:6034/api/v1/mcp/stream` |
-| HTTP Headers | `{"Authorization":"<IDMP_LOGIN_TOKEN>"}` |
+| HTTP Headers | `{"Authorization":"Bearer <IDMP_API_KEY>"}` |
 
 For other agents that support JSON-style configuration, use a structure like the following:
 
@@ -121,7 +121,7 @@ For other agents that support JSON-style configuration, use a structure like the
       "type": "http",
       "url": "https://<IDMP_HOST>:6034/api/v1/mcp/stream",
       "headers": {
-        "Authorization": "<IDMP_LOGIN_TOKEN>"
+        "Authorization": "Bearer <IDMP_API_KEY>"
       }
     }
   }
@@ -139,11 +139,11 @@ SSE is intended for clients that still depend on the SSE transport. Use it only 
 | Recommended base address | `https://<IDMP_HOST>:6034` |
 | Transport type | `sse` |
 | MCP URL | `https://<IDMP_HOST>:6034/api/v1/mcp/sse` |
-| Authentication | `Authorization: <IDMP_LOGIN_TOKEN>` |
+| Authentication | `Authorization: Bearer <IDMP_API_KEY>` |
 | Default HTTPS port | `6034` |
 | HTTP troubleshooting URL | `http://<IDMP_HOST>:6042/api/v1/mcp/sse` |
 
-Replace `<IDMP_HOST>` with your actual IDMP domain or IP address. Use HTTPS for production traffic. When you need to troubleshoot certificate or network issues, keep the `/api/v1/mcp/sse` path and only switch the protocol and port temporarily to HTTP and `6042`.
+Replace `<IDMP_HOST>` with your actual IDMP domain or IP address. `<IDMP_API_KEY>` means the raw API key copied from the UI, in the form `api_<key_id>.<secret>`. It does not include the `Bearer` prefix. Use HTTPS for production traffic. When you need to troubleshoot certificate or network issues, keep the `/api/v1/mcp/sse` path and only switch the protocol and port temporarily to HTTP and `6042`.
 
 ### 15.2.4.2 Generic Form and JSON Examples
 
@@ -154,7 +154,7 @@ If your agent provides an interactive form, fill it with values like these:
 | Server Name | `tdengine-idmp` |
 | Type / Transport | `sse` |
 | URL | `https://<IDMP_HOST>:6034/api/v1/mcp/sse` |
-| HTTP Headers | `{"Authorization":"<IDMP_LOGIN_TOKEN>"}` |
+| HTTP Headers | `{"Authorization":"Bearer <IDMP_API_KEY>"}` |
 
 For other agents that support JSON-style configuration, use a structure like the following:
 
@@ -165,7 +165,7 @@ For other agents that support JSON-style configuration, use a structure like the
       "type": "sse",
       "url": "https://<IDMP_HOST>:6034/api/v1/mcp/sse",
       "headers": {
-        "Authorization": "<IDMP_LOGIN_TOKEN>"
+        "Authorization": "Bearer <IDMP_API_KEY>"
       }
     }
   }
