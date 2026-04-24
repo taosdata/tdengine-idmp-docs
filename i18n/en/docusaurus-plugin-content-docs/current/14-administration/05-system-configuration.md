@@ -11,7 +11,7 @@ System Configuration is accessed from **Admin Console → System Configuration**
 Basic Configuration contains system-wide settings:
 
 | Setting  | Description        |
-| -- | --- |
+| --- | --- |
 | **Language**   | Default display language for the interface    |
 | **Enable User Behavior Collection** | Whether to collect anonymized usage data for product improvement   |
 | **Upload Crash Reports**   | Whether to automatically upload crash reports                           |
