@@ -2,7 +2,6 @@
 title: Scheduled Reports
 sidebar_label: Scheduled Reports
 ---
-
 # 4.6 Scheduled Reports
 
 Scheduled Reports let you deliver a rendered image of a panel or dashboard to one or more recipients on a recurring schedule. At the configured time, IDMP captures the panel or dashboard at its current state, generates a PNG image, and sends it through the configured notification contact point — no login or manual export required.
@@ -11,17 +10,17 @@ Typical uses include weekly energy summary dashboards sent to management, daily 
 
 ## 4.6.1 Configuring Reports for a Panel
 
-Scheduled report delivery is configured in the **Notification Rule** section of the panel editor.
+Scheduled report delivery is configured in the **Scheduled Report** section of the panel editor.
 
 1. Open the panel editor (**Edit** on any panel card or in view mode).
-2. In the right settings panel, scroll to **Notification Rule** and click **+** to add a new rule.
+2. In the right settings panel, scroll to **Scheduled Report** and click **+** to add a new rule.
 3. Configure the rule fields:
 
-| Field | Description |
-|---|---|
-| **Frequency** | How often to send the report: **Single** (once only), **Daily**, **Weekly**, or **Monthly** |
-| **Job Start Time** | The date and time of the first (or only) delivery. Required. |
-| **End Date** | The date on which the recurring schedule stops. Optional — if left blank, the schedule runs indefinitely. |
+| Field                                | Description                                                                                                                             |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| **Frequency**                  | How often to send the report:**Single** (once only), **Daily**, **Weekly**, or **Monthly**                      |
+| **Job Start Time**             | The date and time of the first (or only) delivery. Required.                                                                            |
+| **End Date**                   | The date on which the recurring schedule stops. Optional — if left blank, the schedule runs indefinitely.                              |
 | **Notification Contact Point** | The notification channel(s) that will receive the report. Select one or more pre-configured contact points from the dropdown. Required. |
 
 4. Click **+** again to add additional rules with different frequencies or recipients.
@@ -34,7 +33,7 @@ Each saved rule appears as a row in the Notification Rule section. Use the delet
 Dashboard-level reports send a full-dashboard image instead of a single panel. The configuration is identical to panel-level rules.
 
 1. Open the dashboard editor.
-2. In the right settings panel, find the **Notification Rule** field.
+2. In the right settings panel, find the **Scheduled Report** field.
 3. Click **+** to add a rule and fill in the same fields: Frequency, Job Start Time, End Date, and Notification Contact Point.
 4. Click **Save** to activate the schedule.
 
