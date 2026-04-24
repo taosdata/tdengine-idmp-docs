@@ -26,7 +26,7 @@ Scheduled report delivery is configured in the **Scheduled Report** section of t
 4. Click **+** again to add additional rules with different frequencies or recipients.
 5. Click **Save** to save the panel and activate the schedule.
 
-Each saved rule appears as a row in the Notification Rule section. Use the delete icon on the row to remove a rule. Expand a collapsed rule row to edit its settings.
+Each saved rule appears as a row in the Schedule Rule section. Use the delete icon on the row to remove a rule. Expand a collapsed rule row to edit its settings.
 
 ## 4.6.2 Configuring Reports for a Dashboard
 
