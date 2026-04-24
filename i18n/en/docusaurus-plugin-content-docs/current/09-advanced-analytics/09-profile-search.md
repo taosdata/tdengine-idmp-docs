@@ -75,12 +75,13 @@ IDMP's profile search supports two algorithms for different analytical needs:
 | **Window Size (radius)** | The Sakoe-Chiba Band width, which limits the maximum number of steps the alignment path can deviate from the diagonal. When DTW searches for the optimal alignment path in the cost matrix, this parameter constrains any match point (i, j) such that \|i − j\| ≤ w. Smaller values enforce stricter alignment with faster computation but less tolerance for time shifts; larger values allow greater temporal stretching but increase computational complexity | 3 |
 | **Target Window Length Range (Min / Max)** | The minimum and maximum lengths for candidate windows; DTW searches for segments of varying lengths within this range | Same as the initial window by default |
 | **Variable Window Step** | Starting from the minimum-length candidate window, the length by which the window is extended each time until it reaches the maximum candidate window length | 1 minute |
+| **Sliding Step** | The distance by which the candidate window slides forward along the time axis each time, used to traverse historical data in search of similar windows | 1 minute |
 
 **Cosine Similarity Parameters:**
 
 Cosine Similarity requires the candidate window to have exactly the same length as the initial window, so no candidate window length range needs to be configured.
 
-Both the Cosine Similarity and DTW algorithms require specifying a **sliding duration** — the distance by which the candidate window slides forward along the time axis each time when traversing historical data to search for similar windows. A larger sliding duration speeds up data traversal and reduces computation, but may miss shorter historical segments.
+Both the Cosine Similarity and DTW algorithms require specifying a **Sliding Step**. Similar to DTW, a larger sliding step speeds up data traversal and reduces computation, but may miss shorter historical segments.
 
 ## 9.9.4 Entry Point
 
