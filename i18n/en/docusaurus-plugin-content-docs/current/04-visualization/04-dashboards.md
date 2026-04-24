@@ -91,7 +91,7 @@ Panels render their live data on the canvas according to the dashboard's current
 | **Name** | The dashboard title (required) |
 | **Description** | Optional description for the dashboard |
 | **Categories** | One or more tags for filtering and organizing dashboards |
-| **Notification Rule** | Configure an alerting rule at the dashboard level |
+| **Scheduled Report** | Configure an schedule rule at the dashboard level |
 
 ## 4.4.4 Adding Panels to a Dashboard
 
