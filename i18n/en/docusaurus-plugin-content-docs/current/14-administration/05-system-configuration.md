@@ -10,13 +10,13 @@ System Configuration is accessed from **Admin Console → System Configuration**
 
 Basic Configuration contains system-wide settings:
 
-| Setting                                   | Description                                                             |
-| ----------------------------------------- | ----------------------------------------------------------------------- |
-| **Language**                        | Default display language for the interface                              |
-| **Enable User Behavior Collection** | Whether to collect anonymized usage data for product improvement        |
-| **Upload Crash Reports**            | Whether to automatically upload crash reports                           |
+| Setting  | Description        |
+| -- | --- |
+| **Language**   | Default display language for the interface    |
+| **Enable User Behavior Collection** | Whether to collect anonymized usage data for product improvement   |
+| **Upload Crash Reports**   | Whether to automatically upload crash reports                           |
 | **Auto Refresh Elements Explorer**  | Whether the asset explorer automatically refreshes when elements change |
-| **System Log**                      | Whether to enable generation of tamper-proof system operation logs and support filtering, querying, and exporting |
+| **System Log**  | Whether to enable generation of tamper-proof system operation logs and support filtering, querying, and exporting |
 
 Click the edit (pencil) icon to modify these settings.
 
