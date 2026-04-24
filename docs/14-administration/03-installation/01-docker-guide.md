@@ -155,7 +155,7 @@ TDengine IDMP 依赖 TDengine TSDB-Enterprise 3.3.7.0+
 
 如果您的环境中已存在满足要求的 TDengine TSDB-Enterprise 实例，您可以只启动 TDengine IDMP 容器，并将其连接至该 TDengine TSDB-Enterprise 实例。
 
-### 1. 拉取 TDengine  IDMP 镜像
+### 1. 拉取 TDengine IDMP 镜像
 
 ```bash
 docker pull tdengine/idmp-ee
@@ -234,7 +234,7 @@ tda:
 
 :::
 
-### 2. 启动 TDengine IDMP 容器
+### 3. 启动 TDengine IDMP 容器
 
 ```bash
 docker run -d \
@@ -250,14 +250,14 @@ docker run -d \
 - `-p` 选项，用于将​​容器的端口映射到主机的端口​​，使得外部可以通过主机的端口访问容器内运行的服务。如需自定义端口，例如：将 TDengine IDMP 服务的端口 6042 映射至主机的 7042 端口，可按照以下方式，修改端口映射参数 `-p 7042:6042`。
 - `-v` 选项，用于挂载主机目录或卷到容器中，实现主机和容器之间的文件共享或持久化存储。在以上命令中，将主机当前目录下的 `application.yml` 文件挂载到容器内的 `/usr/local/taos/idmp/config/application.yml` 路径下。
 
-### 3. 访问 TDengine IDMP 服务
+### 4. 访问 TDengine IDMP 服务
 
 默认情况下，TDengine IDMP 服务监听主机的以下端口：
 
 - **HTTP 访问**：[http://localhost:6042](http://localhost:6042) 或 [http://ip:6042](http://ip:6042)
 - **HTTPS 访问**：[https://localhost:6034](https://localhost:6034) 或 [https://ip:6034](https://ip:6034)
 
-### 4. 停止并移除容器
+### 5. 停止并移除容器
 
 ```bash
 docker stop tdengine-idmp
@@ -268,7 +268,7 @@ docker rm tdengine-idmp
 
 ## 14.3.1.4 常见错误
 
-### 1. 容器 `tdengine-idmp` 状态为 `unhealthy`，或者 IDMP 页面中显示 `Python Server unhealthy.` 等错误
+1. 容器 `tdengine-idmp` 状态为 `unhealthy`，或者 IDMP 页面中显示 `Python Server unhealthy.` 等错误。
 
 这种情况需要排查 `tdengine-idmp` 的 Python 应用是否正常，请按照以下命令逐步排查：
 
@@ -293,6 +293,6 @@ export IDMP_DATA_PATH=/var/lib/taos/idmp && export IDMP_LOG_PATH=/var/log/taos &
 docker cp tdengine-idmp:/var/log/taos/idmp-ai.log .
 ```
 
-### 2. IDMP 页面中显示 `AI service is unhealthy` 等错误
+2. IDMP 页面中显示 `AI service is unhealthy` 等错误。
 
-首先，可以在 `管理后台 -> 连接` 页面点击进入 AI 连接的详情页面，查看是否内置密钥过期。如果过期，请尽快设置有效的密钥或新建连接；如果未过期，请按照 `常见问题1` 进行排查；如果仍未发现问题，建议联系 TDengine 团队。
+首先，可以在 `管理后台 -> 连接` 页面点击进入 AI 连接的详情页面，查看是否内置密钥过期。如果过期，请尽快设置有效的密钥或新建连接；如果未过期，请按照 `常见错误 1` 进行排查；如果仍未发现问题，建议联系 TDengine 团队。

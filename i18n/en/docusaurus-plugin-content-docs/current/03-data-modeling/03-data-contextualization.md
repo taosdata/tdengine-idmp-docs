@@ -43,6 +43,8 @@ An attribute represents a specific measurement of an element. The contextual inf
 
 Without this context, a value of `5.45` is meaningless. With it, TDengine IDMP knows it is `5.45 A` of current on meter `em-12`, within a normal range of 0–10 A, and that anything above 8 A should trigger a high alarm.
 
+The IDMP platform manages this attribute context as first-class data objects, enabling unified definition, global reference, and dynamic updates. Context can be configured on an element template, or tailored on a specific device when needed. Either way, it is configured once and becomes available everywhere. Once defined, these context objects can be referenced broadly across the platform — as reference lines on visualization panels, as trigger conditions in real-time analyses, and as variables in attribute expressions — all resolving to the same definition.
+
 ## 3.3.4 Context from Events
 
 Events add a temporal dimension to context. When an event rule triggers — for example, when current exceeds the HiHi limit, or when a machine transitions from running to stopped — TDengine IDMP records what happened, when it happened, and on which asset.

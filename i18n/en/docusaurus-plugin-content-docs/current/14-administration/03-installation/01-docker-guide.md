@@ -266,7 +266,7 @@ IDMP supports HTTPS with default port 6034. The built-in test certificate is bou
 
 ## 14.3.1.4 Troubleshooting
 
-### 1. The container `tdengine-idmp` is in an `unhealthy` state, or the IDMP page displays the error `Python Server unhealthy`
+1. The container `tdengine-idmp` is in an `unhealthy` state, or the IDMP page displays the error `Python Server unhealthy` .
 
 In this case, you need to check whether the Python application in `tdengine-idmp` is functioning properly. Follow the commands below to troubleshoot step by step:
 
@@ -291,6 +291,6 @@ If the log file contains error messages or the last command execution results in
 docker cp tdengine-idmp:/var/log/taos/idmp-ai.log .
 ```
 
-### 2. The IDMP page displays the error `AI service is unhealthy`
+2. The IDMP page displays the error `AI service is unhealthy` .
 
 First, you can navigate to the AI connection details page by clicking on the connection in the `Admin Console -> Connections` page to check whether the built-in key has expired. If it has expired, please set a valid key or create a new connection as soon as possible; if it has not expired, follow the troubleshooting steps in `Issue 1`; if no errors are found, it is recommended to contact the TDengine team.
