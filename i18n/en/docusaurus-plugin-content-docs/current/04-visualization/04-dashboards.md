@@ -135,8 +135,8 @@ The left sidebar of the global view organizes navigation into six sections:
 
 - **Dashboards:** The primary list of all dashboards system-wide.
 - **Panels:** A global list of all saved panels across all elements.
-- **Favorite Dashboards:** Dashboards you have marked as favorites.
-- **Favorite Panels:** Panels you have marked as favorites.
+- **Dashboard Groups:** Custom groups containing dashboards you have added.
+- **Panel Groups:** Custom groups containing panels you have added.
 - **Dashboard Filters:** Saved filter configurations for the dashboards list.
 - **Panel Filters:** Saved filter configurations for the panels list.
 

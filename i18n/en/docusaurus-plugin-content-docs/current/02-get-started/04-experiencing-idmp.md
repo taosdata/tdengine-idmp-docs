@@ -32,7 +32,7 @@ On the far right is your **avatar**. Click it to manage your profile, access sys
 The left panel shows the tree structure for the active module. In the **Explorer**, it displays three sections:
 
 - **Elements** — The asset hierarchy. Click the arrow to expand a node; click the element name to select it. Use the search icon to find elements by name.
-- **Favorite Elements** — Elements you have marked as favorites for quick access.
+- **Element Groups** — User-created named groups; elements can be added to one or more groups for quick access.
 - **Element Filters** — Saved search filters that let you quickly recall a specific set of elements.
 
 **3. Context Tab Bar**

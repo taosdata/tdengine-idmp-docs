@@ -79,7 +79,7 @@ The following controls appear in the view mode toolbar for every panel type:
 |---|---|
 | **Back to List** | Return to the Panels tab |
 | **Edit** | Open the panel editor |
-| **Favorite** | Mark this panel as a favorite for quick access |
+| **Add to Group** | Add this panel to one or more custom groups for quick access |
 | **Time picker** | Select the time range for the chart (e.g., Last 7 Days). Click the dropdown arrow for preset ranges or a custom range. |
 | **Zoom out** | Expand the time range to the next level |
 | **Refresh** | Reload the chart data immediately |
@@ -253,6 +253,6 @@ Hover over an annotation and click the **Delete** icon, then confirm in the conf
 
 **Categories** are free-form text tags assigned to a panel in the General settings. They appear in the Categories filter dropdown on the Panels tab, letting users quickly find panels by function or system area (e.g., Electrical, Mechanical, Quality).
 
-**Favorites** mark panels for quick access. Favorited panels appear in the Favorites filter on the Panels tab.
+**Groups** organize panels into custom named collections for quick access. Grouped panels are accessible from **Panel Groups** in the left sidebar of the global dashboard view.
 
 **Convert to Template** saves the panel's configuration as a reusable panel template. Once saved to the template library, the same panel structure can be applied to other elements of the same type without reconfiguration. See [Panel and Dashboard Templates](./07-panel-dashboard-templates.md) for details on template management.
