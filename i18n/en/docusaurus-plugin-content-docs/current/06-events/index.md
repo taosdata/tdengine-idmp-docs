@@ -54,14 +54,14 @@ In addition to these standard fields, an event can carry **custom attributes** �
 
 ## What's Covered in This Chapter
 
-This chapter covers the complete event management workflow, from template definition to event browsing, detail viewing, alert notifications, acknowledgment, and trend analysis.
+This chapter covers the complete event management workflow, from template definition to event browsing, detail viewing, alert notifications, acknowledgment, and analysis chart.
 
 - **[Event Templates](./01-event-templates.md)** — Creating and managing event templates in Libraries
 - **[Browsing Events](./02-browsing-events.md)** — The global events view, element-level events, and filtering
 - **[Event Detail](./03-event-detail.md)** — Fields, attributes, annotations, and notification history
 - **[Alerts and Notifications](./04-alerts-and-notifications.md)** — Contact points, notification rules, and notification behavior
 - **[Acknowledgment](./05-acknowledgment.md)** — Acknowledging events and the acknowledgment workflow
-- **[Trend Analysis](./06-trend-analysis.md)** — Analyzing events with trend charts
+- **[Analysis Chart](./06-trend-analysis.md)** — Analyzing events with the analysis chart
 
 import DocCardList from '@theme/DocCardList';
 

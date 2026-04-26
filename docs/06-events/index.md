@@ -54,14 +54,14 @@ TDengine IDMP 中的事件始终由与元素关联的分析规则自动生成，
 
 ## 本章内容
 
-本章涵盖事件的完整管理流程，从模板定义到事件浏览、详情查看、告警通知、确认操作及趋势图分析。
+本章涵盖事件的完整管理流程，从模板定义到事件浏览、详情查看、告警通知、确认操作及分析面板。
 
 - **[事件模板](./01-event-templates.md)** — 在基础库中创建和管理事件模板
 - **[浏览事件](./02-browsing-events.md)** — 全局事件视图、元素级事件和过滤功能
 - **[事件详情](./03-event-detail.md)** — 字段、属性、备注和通知历史
 - **[告警与通知](./04-alerts-and-notifications.md)** — 联系途径、通知规则和通知行为
 - **[确认](./05-acknowledgment.md)** — 确认事件与确认工作流
-- **[趋势图分析](./06-trend-analysis.md)** — 通过趋势图分析事件
+- **[分析面板](./06-trend-analysis.md)** — 通过分析面板分析事件
 
 import DocCardList from '@theme/DocCardList';
 

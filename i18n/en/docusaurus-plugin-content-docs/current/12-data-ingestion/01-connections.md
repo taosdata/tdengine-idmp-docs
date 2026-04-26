@@ -7,6 +7,10 @@ sidebar_label: Connections
 
 A **connection** tells IDMP how to reach an external system. Connections are configured in **Admin Console → Connections** and are referenced by data ingestion tasks and asset model imports.
 
+:::note
+Connections come in two types: TDengine and AI. TDengine connections are used for business data management, while AI connections are used for AI Chat and question recommendations.
+:::
+
 The connection list shows all configured connections with the following columns:
 
 | Column | Description |

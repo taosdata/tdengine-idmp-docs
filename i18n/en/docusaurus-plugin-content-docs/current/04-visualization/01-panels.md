@@ -224,7 +224,7 @@ The visualization settings are organized into collapsible sections. The followin
 
 Define clickable links attached to data points. Each link specifies a label and a URL, which can include template variables referencing the data point's time or value. Clicking a data point in the chart opens the configured link.
 
-### 4.1.4.13 Notification Rule
+### 4.1.4.13 Schedule Rule
 
 Configure a scheduled report delivery rule on this panel. See [Scheduled Reports](./06-scheduled-reports.md) for details.
 
