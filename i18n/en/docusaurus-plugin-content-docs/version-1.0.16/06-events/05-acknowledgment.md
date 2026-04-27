@@ -43,7 +43,7 @@ The **Events** item in the main navigation bar displays a badge showing the tota
 
 The global events view and the element-level events tab both provide an **Unacknowledged** toggle in the toolbar. Enable this toggle to filter the list to only events that still require attention. In the element-level events tab, an **Include Child Elements** toggle is also available to the right of the **Unacknowledged** toggle — when enabled, the event list expands to include events from all descendant child elements of the current element, making it convenient to comprehensively review unacknowledged events across an entire production line or site. This is the most convenient approach for operators to identify pending action items at the start of a shift.
 
-Unacknowledged events can also be located through saved event filters — create and save a filter with the Unacknowledged toggle enabled, then add it to a group for one-click access.
+Unacknowledged events can also be located through saved event filters — create and save a filter with the Unacknowledged toggle enabled, then pin it as a favorite for one-click access.
 
 ## 6.5.4 Acknowledgment and Notification Interaction
 

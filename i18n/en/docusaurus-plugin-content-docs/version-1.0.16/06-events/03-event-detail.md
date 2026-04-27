@@ -9,7 +9,7 @@ Clicking an event name — in either the global events view or an element's Even
 
 ## 6.3.1 General Tab
 
-The General tab displays all standard event field information and provides entry points for acknowledgment, adding to groups, root cause analysis, and trend analysis operations.
+The General tab displays all standard event field information and provides entry points for acknowledgment, favorites, root cause analysis, and trend analysis operations.
 
 ### 6.3.1.1 Toolbar
 
@@ -19,7 +19,7 @@ The General tab toolbar provides the following action controls.
 |---|---|
 | **Back to List** | Return to the events list |
 | **Ack** | Acknowledge the event |
-| **Add to Group** | Add this event to one or more custom groups for quick access from the left sidebar |
+| **Favorite** | Mark this event as a favorite for quick access from the left sidebar |
 | **Root Cause Analysis** | Open a root cause analysis view for this event |
 | **Trend Chart Analysis** | Open a trend chart for the event's time range on its associated element |
 | **Resend** | Manually resend a notification for this event to its configured contact points |

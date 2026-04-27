@@ -35,8 +35,6 @@ The list displays all saved dashboards for the element with these columns:
 
 Hover over a row to reveal action buttons for viewing, editing, or deleting the dashboard.
 
-If a dashboard was created from a **Dashboard Template** and includes panels based on child element templates, open the dashboard and use the **Cascading Element Selector** to choose the corresponding child element under the current element. The selection should be limited to child elements within the current element's hierarchy so the template panels bind to the correct data source.
-
 ## 4.4.2 Creating a Dashboard
 
 To create a new dashboard:
@@ -137,8 +135,8 @@ The left sidebar of the global view organizes navigation into six sections:
 
 - **Dashboards:** The primary list of all dashboards system-wide.
 - **Panels:** A global list of all saved panels across all elements.
-- **Dashboard Groups:** Custom groups containing dashboards you have added.
-- **Panel Groups:** Custom groups containing panels you have added.
+- **Favorite Dashboards:** Dashboards you have marked as favorites.
+- **Favorite Panels:** Panels you have marked as favorites.
 - **Dashboard Filters:** Saved filter configurations for the dashboards list.
 - **Panel Filters:** Saved filter configurations for the panels list.
 
