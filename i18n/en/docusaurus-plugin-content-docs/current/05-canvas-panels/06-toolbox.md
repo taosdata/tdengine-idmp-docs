@@ -49,7 +49,7 @@ Sets the default line type for the canvas. Hover the icon to expand the dropdown
 - **Curve**: A smooth Bézier curve.
 - **Segment**: A polyline that auto-bends.
 - **Line**: A straight line between two points.
-- **Mind**: A mind-map style curve.
+- **Mind Map Curve**: A mind-map style curve.
 
 The selected type applies to subsequent lines drawn with the pen or pencil tools.
 
