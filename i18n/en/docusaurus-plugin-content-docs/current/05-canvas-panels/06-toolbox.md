@@ -82,7 +82,7 @@ Returns to the canvas panel list. The button is disabled while there are unsaved
 
 Saves all changes to the current canvas panel. A thumbnail is generated during save and the canvas data is persisted to the server. The button is enabled only when there are unsaved changes.
 
-## 5.6.14 Discard
+## 5.6.14 Discard Changes
 
 Discards all unsaved changes and reverts to the last saved state. The button is enabled only when there are unsaved changes.
 
