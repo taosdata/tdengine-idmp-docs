@@ -101,7 +101,7 @@ You can also edit Copilot CLI's configuration file directly at `~/.copilot/mcp-c
 }
 ```
 
-### 15.2.3.5 Generic Form and JSON Example
+### 15.2.3.5 Generic Form and JSON Examples
 
 If your agent provides an interactive form, fill it with values like these:
 
@@ -145,7 +145,7 @@ SSE is intended for clients that still depend on the SSE transport. Use it only 
 
 Replace `<IDMP_HOST>` with your actual IDMP domain or IP address. Use HTTPS for production traffic. When you need to troubleshoot certificate or network issues, keep the `/api/v1/mcp/sse` path and only switch the protocol and port temporarily to HTTP and `6042`.
 
-### 15.2.4.2 Generic Form and JSON Example
+### 15.2.4.2 Generic Form and JSON Examples
 
 If your agent provides an interactive form, fill it with values like these:
 
