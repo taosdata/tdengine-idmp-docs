@@ -113,7 +113,7 @@ Used to import canvas data together with referenced image assets in one step:
 
 ### 5.6.15.4 VSDX Import
 
-Microsoft Visio drawing files are supported. For more complex files (for example, Visio files that contain unparseable binary content or nested files), the parser and some drawing instructions have limited compatibility, so a small number of shapes may be rendered inconsistently. Theme color support is also limited and colors may not match exactly — you can manually adjust the colors after import.
+Microsoft Visio drawing files are supported. For more complex files (for example, Visio files that contain unparsable binary content or nested files), the parser and some drawing instructions have limited compatibility, so a small number of shapes may be rendered inconsistently. Theme color support is also limited and colors may not match exactly — you can manually adjust the colors after import.
 
 ### 5.6.15.5 DXF Import
 
