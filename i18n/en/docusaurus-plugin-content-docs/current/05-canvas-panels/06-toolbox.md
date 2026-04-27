@@ -33,7 +33,7 @@ The global view of the configuration diagram. Clicking on the overview map allow
 
 ## 5.6.5 Line Start Arrow
 
-Sets the arrow style for the start point of lines. Click the icon to open a dropdown with multiple arrow styles: none, triangle, diamond, circle, line-down, line-up, solid triangle, solid diamond, solid circle, and short line.
+Sets the arrow style for the start point of lines. Click the icon to open a dropdown with multiple arrow styles: none, triangle, diamond, circle, line down, line up, solid triangle, solid diamond, solid circle, and short line.
 
 - The selection becomes the canvas default and is applied to newly drawn lines.
 - If one or more lines are selected, their start arrow is updated at the same time.
