@@ -134,13 +134,11 @@ The panel aggregates data across all child elements of a selected element templa
 
 The upper portion of the center panel shows a live preview of the chart, updated as you make changes. Below the chart is a minimap for navigation.
 
-Below the minimap is the data configuration area. At the top is a single switch button that switches between **Metrics Configuration** and **Advanced SQL**, with **Metrics Configuration** selected by default. Click the blank area of that row to expand or collapse the current configuration block.
-
-When the system is executing a query to refresh preview data, a **Running** indicator appears on the right side of the active row, immediately to the left of the expand/collapse icon.
+Below the minimap is the data configuration area, divided into two collapsible sections:
 
 ### 4.1.4.6 Metrics
 
-When the switch button is set to **Metrics Configuration** and the configuration block is expanded, the Metrics section provides a structured way to define the data series plotted on the chart. The header row provides three additional controls:
+The Metrics section defines the data series plotted on the chart. The header row provides three additional controls:
 
 - **View SQL:** Display the SQL query generated from the current configuration.
 - **Limit:** Set a limit on the number of records returned.
@@ -174,7 +172,7 @@ The Dimensions section defines grouping dimensions for aggregate queries. This i
 
 ### 4.1.4.8 Advanced SQL Mode
 
-When the switch button is set to **Advanced SQL** and the configuration block is expanded, the raw SQL editor becomes available. In advanced mode you can add multiple SQL queries — each appears as a separate query block — and all results are displayed together in the same panel.
+The **Advanced** toggle at the bottom of the data configuration area switches to a raw SQL editor. In advanced mode you can add multiple SQL queries — each appears as a separate query block — and all results are displayed together in the same panel.
 
 Each query block has a **Query Type** selector:
 
