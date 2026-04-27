@@ -35,6 +35,8 @@ The list displays all saved dashboards for the element with these columns:
 
 Hover over a row to reveal action buttons for viewing, editing, or deleting the dashboard.
 
+If a dashboard was created from a **Dashboard Template** and includes panels based on child element templates, open the dashboard and use the **Cascading Element Selector** to choose the corresponding child element under the current element. The selection should be limited to child elements within the current element's hierarchy so the template panels bind to the correct data source.
+
 ## 4.4.2 Creating a Dashboard
 
 To create a new dashboard:

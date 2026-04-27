@@ -22,6 +22,8 @@ When an element is created from the template, all panel templates are automatica
 
 The **Dashboard Template** tab shows a list of dashboard templates (columns: **Name**, **Categories**). Click **+ New Dashboard Template** to create a dashboard layout that will be automatically associated with each element created from this template.
 
+A dashboard template can include panel templates from the current element template, and it also supports panel templates based on child element templates. For panels based on child element templates, once the dashboard template is instantiated on a concrete element, use the **Cascading Element Selector** in the dashboard to choose the corresponding child element under that element so the panel binds to the correct child-element data source.
+
 ## 4.7.3 Relationship to Standalone Panels and Dashboards
 
 Panel templates and dashboard templates defined inside an element template are distinct from standalone panels and dashboards created directly on a specific element. Template-based visualizations are instantiated automatically across all elements of the asset class and kept consistent at the template level.
