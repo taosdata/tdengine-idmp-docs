@@ -69,6 +69,7 @@ jobs:
           name: docs-build
           path: |
             build/
+            build-en/
             .docsearch
           include-hidden-files: true
           retention-days: 1
