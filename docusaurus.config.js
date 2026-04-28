@@ -48,10 +48,15 @@ const config = {
     localeConfigs: {
       'en': {
         label: 'English',
-        htmlLang: 'en-US'
+        htmlLang: 'en-US',
+        baseUrl: '/',
+        url: 'https://idmpdocs.tdengine.com'
       },
       'zh-Hans': {
         label: '简体中文',
+        htmlLang: 'zh-CN',
+        baseUrl: '/',
+        url: 'https://idmpdocs.taosdata.com'
       },
     },
   },

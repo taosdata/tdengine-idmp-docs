@@ -38,7 +38,7 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Upload Docs to Azure Blob Storage
+    - name: Upload CN Docs to Azure Blob Storage
       uses: azure/cli@v2
       with:
         azcliversion: ${{ env.AZ_CLI_VERSION }}
@@ -47,6 +47,20 @@ jobs:
             --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
             --destination '$web' \
             --source build-artifacts/build \
+            --overwrite \
+            --auth-mode key
+          echo "Uploaded CN docs to Azure Blob Storage"
+
+    - name: Upload EN Docs to Azure Blob Storage
+      uses: azure/cli@v2
+      with:
+        azcliversion: ${{ env.AZ_CLI_VERSION }}
+        inlineScript: |
+          az storage blob upload-batch \
+            --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
+            --destination '$web' \
+            --destination-path 'build-en' \
+            --source build-artifacts/build-en \
             --overwrite \
             --auth-mode key
           echo "Uploaded EN docs to Azure Blob Storage"
