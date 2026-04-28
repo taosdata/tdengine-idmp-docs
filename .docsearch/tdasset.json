@@ -7,6 +7,13 @@
         "language": "zh-Hans",
         "docusaurus_tag": "docs-default-current"
       }
+    },
+    {
+      "url": "https://idmpdocs.tdengine.com/",
+      "custom_fields": {
+        "language": "en",
+        "docusaurus_tag": "docs-default-current"
+      }
     }
   ],
   "sitemap_urls": [
