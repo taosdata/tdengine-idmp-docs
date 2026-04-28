@@ -79,7 +79,7 @@ User API keys are recommended for scripts, CLIs, MCP clients, and other integrat
 | **Credential format** | `api_<key_id>.<secret>` |
 | **Header format** | `Authorization: Bearer <IDMP_API_KEY>` |
 | **Best for** | CLIs, scripts, MCP clients, and other long-lived integrations |
-| **Rotation** | Update the expiration time, or delete and recreate the key from **Personal Settings → API Key** |
+| **Rotation** | Delete and recreate the key from **Personal Settings → API Key** |
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -174,7 +174,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 | Credential Type | Lifetime | How to Rotate |
 |---|---|---|
 | Enterprise JWT | Configured on the server (see `application.yml`) | Call the login endpoint again to get a new JWT |
-| User API Key | Controlled by the expiration chosen at creation time, or set to never expire | Update the expiration time, or delete and recreate the key from **Personal Settings → API Key** |
+| User API Key | Controlled by the expiration chosen at creation time, or set to never expire | Delete and recreate the key from **Personal Settings → API Key** |
 | Cloud service | Controlled by the browser session | Log in through the browser again and copy new tokens from DevTools |
 
 :::tip

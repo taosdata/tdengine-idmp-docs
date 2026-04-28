@@ -1,64 +1,62 @@
 ﻿---
-title: 示例数据
-sidebar_label: 示例数据
+title: Sample Data
+sidebar_label: Sample Data
 ---
 
-# 14.8 示例数据
+# 14.9 Sample Data
 
-示例数据功能可将预置的业务场景一键加载到 TDengine IDMP 中。无需连接真实数据源，即可完整体验系统各项能力。加载过程中，工具会根据 JSON 配置文件自动创建设备模型，并将模拟的时序数据写入 TDengine 时序数据库。系统安装包内置了若干典型行业场景的示例数据包，也可根据实际业务需求编写相应的 JSON 配置文件。
+The Sample Data feature loads a prebuilt business scenario into TDengine IDMP with a single click. No real data source is required to experience the full product workflow. During loading, the tool automatically creates the data model from a JSON configuration file and writes simulated time-series data into the TDengine time-series database. The system includes several typical industry scenario packages out of the box, and users can also build custom packages to match specific business requirements.
 
-该功能尤其适用于系统集成商和售前工程师。在充分了解客户业务场景后，可快速搭建贴近客户实际情况的演示环境，帮助客户直观验证 IDMP 的功能与价值，显著缩短从需求确认到功能验证的周期。使用时，需要根据场景编写 JSON 配置文件，也可以借助 AI 工具通过自然语言生成配置文件。
+This feature is especially useful for system integrators and pre-sales engineers. After understanding a customer's operational environment, they can quickly assemble a demo that closely matches the customer's real scenario, helping the customer verify the relevant IDMP capabilities and value earlier in the evaluation cycle.
 
-可通过 **管理控制台 → 示例数据** 访问该功能。
+Sample Data is accessed from **Admin Console → Sample Data**.
 
-## 14.8.1 使用说明
+## 14.9.1 Usage Instructions
 
-以下说明假设 JSON 配置文件名为 init.json。
+### 14.9.1.1 Command-Line Mode
 
-### 14.8.1.1 命令行方式
+#### Environment Requirements
 
-#### 运行环境要求
+| Component | Requirement               |
+| --------- | ------------------------- |
+| Java      | JDK 8 or later            |
+| TDengine  | Installed and accessible  |
+| IDMP      | Installed and accessible  |
+| JSON File | Sample data configuration |
 
-| 组件          | 要求             |
-| ------------- | ---------------- |
-| Java          | JDK 8 及以上     |
-| TDengine      | 已部署并可访问   |
-| IDMP          | 已部署并可访问   |
-| JSON 配置文件 | 示例数据描述文件 |
+#### Tool Location
 
-#### 工具位置说明
-
-在 TDasset Docker 容器中：
+Inside the TDasset Docker container:
 
 ```bash
 /app/tda-generator-command.jar
 ```
 
-#### 基本运行命令
+#### Basic Commands
 
-##### 根据 JSON 生成示例数据
+##### Generate sample data
 
 ```bash
 java -jar tda-generator-command.jar -f init.json
 ```
 
-##### 清理示例数据
+##### Clean up sample data
 
 ```bash
 java -jar tda-generator-command.jar -f init.json -c
 ```
 
 :::warning
-仅限测试环境使用。
+For testing environments only.
 :::
 
-### 14.8.1.2 图形界面方式
+### 14.9.1.2 GUI Mode
 
-在 IDMP 管理界面中，进入**示例数据**模块，选择或上传 JSON 配置文件，点击 **保存** 或 **取消** 按钮完成操作。
+In the IDMP management interface, open the **Sample Data** module, select or upload a JSON configuration file, then click **Save** or **Cancel** to complete the operation.
 
-## 14.8.2 配置说明（JSON 文件）
+## 14.9.2 Configuration Guide (JSON)
 
-### 14.8.2.1 JSON 整体结构
+### 14.9.2.1 Overall Structure
 
 ```json
 {
@@ -71,30 +69,27 @@ java -jar tda-generator-command.jar -f init.json -c
 }
 ```
 
-整个 JSON 配置文件包含 6 个部分：`info` 用于描述模拟场景，`TDasset` 用于描述 IDMP 的连接信息，`datasource` 用于描述时序数据库 TSDB 的连接信息，`databases` 用于描述数据库配置，`templates` 用于定义元素模板，`trees` 用于描述整个模拟场景的元素树结构。
+### 14.9.2.2 info - Sample Data Scenario Information
 
-### 14.8.2.2 info - 示例数据场景信息说明
-
-仅用于在 IDMP 示例场景列表中展示。
+Used only for display in the IDMP UI.
 
 ```json
 {
   "id": "smart_meters",
-  "name": "智能电表",
-  "description": "智能电表示例场景",
+  "name": "Smart Meters",
+  "description": "Smart meter sample scenario",
   "file": "init.json",
   "image": "smart_meters.jpg"
 }
 ```
 
-- name: 场景名称，保持在示例数据列表中唯一；
-- description: 场景描述；
-- file: 保持与文件名称一致；
-- image: 展示示例场景列表时显示的图片；
+- name: Scenario name (must be unique in the sample data list)
+- description: Scenario description
+- file: Must match the filename
 
-### 14.8.2.3 TDasset - IDMP 连接配置
+### 14.9.2.3 TDasset — IDMP Connection
 
-仅在 **命令行模式** 下生效。
+Effective only in command-line mode.
 
 ```json
 {
@@ -104,11 +99,11 @@ java -jar tda-generator-command.jar -f init.json -c
 }
 ```
 
-- url: IDMP 访问地址；
-- user: IDMP 用户名；
-- password: IDMP 登录密码；
+- url: IDMP access URL
+- user: IDMP username
+- password: IDMP login password
 
-### 14.8.2.4 datasource - TDengine 连接配置
+### 14.9.2.4 datasource — TDengine Connection
 
 ```json
 {
@@ -129,12 +124,12 @@ java -jar tda-generator-command.jar -f init.json -c
 }
 ```
 
-- db: TDengine 连接信息，如果使用页面方式操作，则无需配置此项
-- max_active: 连接池最大连接数；
-- min_idle: 连接池最小空闲连接数；
-- 其他参数请参考 TDengine JDBC 连接池配置说明；
+- db: TDengine connection details
+- max_active: Maximum active connections in pool
+- min_idle: Minimum idle connections in pool
+- Other parameters refer to TDengine JDBC connection pool documentation
 
-### 14.8.2.5 databases - 数据库定义
+### 14.9.2.5 databases — Database Definition
 
 ```json
 {
@@ -148,22 +143,22 @@ java -jar tda-generator-command.jar -f init.json -c
 }
 ```
 
-- name: 数据库名称，如果配置缺省，将自动生成数据库名称
-- drop: 是否删除已存在数据库，建议仅测试环境使用；
-- vgroups: 数据库中初始 vgroup 的数目；
-- precision: 时间精度，默认 ms；
-- replica: 副本数量，默认 1；
-- duration: 数据文件存储数据的时间跨度，默认 10d；
-- keep: 数据存储天数，默认 3650 天；
-- 其他参数请参考 TDengine 数据库创建说明；
+- name: Database name
+- drop: Whether to drop existing database (recommended for testing only)
+- vgroups: Initial number of vgroups
+- precision: Timestamp precision (default: ms)
+- replica: Replication factor (default: 1)
+- duration: Data file storage duration (default: 10d)
+- keep: Data retention days (default: 3650)
+- Other parameters refer to TDengine database creation documentation
 
-### 14.8.2.6 templates - 元素模板配置
+### 14.9.2.6 templates - Element Template Configuration
 
-元素模板配置包含两部分：1. 通用信息，如名称、命名规则和位置信息；2. 属性列表，由 `super_tables` 描述，包括模拟数据生成方式、CSV 数据源配置以及 `metric` 和 `tag` 的定义。其中，`metric` 还可以指定模拟数据生成函数。
+Template configuration includes two parts: 1. general information such as the name, naming rule, and location; 2. the property list defined in `super_tables`, including generated data settings, CSV data source settings, and the definitions of `metric` and `tag`. Metrics can also define data generation functions.
 
 ```json
 {
-  "name": "智能电表",
+  "name": "Smart Meter",
   "leaf": true,
   "namingPattern": "${KEYWORD1}",
   "keywordsDesc": {
@@ -195,11 +190,11 @@ java -jar tda-generator-command.jar -f init.json -c
       "metrics": [
         {
           "name": "current",
-          "title": "电流",
-          "description": "电流信息",
+          "title": "Current",
+          "description": "Current information",
           "type": "Float",
           "tdType": "metric",
-          "uomClass": "电流",
+          "uomClass": "Current",
           "uom": "A",
           "displayDigits": 2,
           "fun": "4*sin(x)+random(2)+4"
@@ -208,8 +203,8 @@ java -jar tda-generator-command.jar -f init.json -c
       "tags": [
         {
           "name": "location",
-          "title": "地址",
-          "description": "地址信息",
+          "title": "Address",
+          "description": "Address information",
           "namingPattern": "${KEYWORD1}",
           "type": "Varchar",
           "length": 50,
@@ -236,34 +231,34 @@ java -jar tda-generator-command.jar -f init.json -c
 }
 ```
 
-- name: 模板名称，保持唯一；
-- leaf: 是否为叶子节点模板，false 表示路径模板；
-- namingPattern: 命名规则；
-- keywordsDesc: 命名关键字说明；
-- location: 元素位置属性范围配置；通过 altitude、latitude、longitude 三个字段配置；
-- super_tables: 超级表列表配置；
-  - name: 超级表名称；
-  - start_timestamp: 数据写入起始时间戳，null 表示从 4 天前开始写入；
-  - time_step: 数据时间步进，单位毫秒；
-  - non_stop_mode: false 表示按固定行数生成数据；true 表示持续生成数据，用于实时模拟；
-  - insert_rows: 需要写入的数据总行数；
-  - batch_insert_num: 每批次写入数据行数；
-  - insert_interval: 每批次写入间隔时间，单位毫秒，0 表示无间隔；
-  - metrics: 元素指标列表配置；
-    - name: 指标名称；
-    - title: 指标标题；
-    - description: 指标描述；
-    - type: 指标数据类型，支持 Float、Double、Int、BigInt、Varchar 等 TDengine 支持的数据类型；
-    - tdType: 数据类型，metric 表示指标，tag 表示标签；
-    - uomClass: 单位类别；
-    - uom: 单位名称；
-    - displayDigits: 显示小数位数；
-    - fun: 数据生成函数，支持基本数学函数与 random() 函数，x 表示时间变量；
-  - tags: 元素标签列表配置，同指标类似；
+- name: Template name (must be unique)
+- leaf: Whether this is a leaf node template (true for leaf, false for path)
+- namingPattern: Naming rule
+- keywordsDesc: Keyword description for naming
+- location: Location attribute range (altitude, latitude, longitude)
+- super_tables: Super table configuration list
+  - name: Super table name
+  - start_timestamp: Data start timestamp (null = 4 days ago)
+  - time_step: Time step in milliseconds
+  - non_stop_mode: false = fixed rows; true = continuous real-time simulation
+  - insert_rows: Total rows to insert
+  - batch_insert_num: Rows per batch
+  - insert_interval: Interval between batches (ms; 0 = no delay)
+  - metrics: List of metric attributes
+    - name: Metric name
+    - title: Metric title
+    - description: Metric description
+    - type: Data type (Float, Double, Int, BigInt, Varchar, and other TDengine supported types)
+    - tdType: Field role — metric for measurements, tag for tags
+    - uomClass: Unit category
+    - uom: Unit name
+    - displayDigits: Decimal places displayed
+    - fun: Data generation function; supports basic math and random(); x represents the time variable
+  - tags: List of tag attributes (same structure as metrics)
 
-### 14.8.2.7 csv - CSV 数据源配置
+### 14.9.2.7 csv - CSV Data Source Configuration
 
-当 `super_tables` 中的数据来自已有 CSV 文件而非按公式生成时，可在超级表节点下增加 `csv` 配置。CSV 模式仅切换数据来源，`metrics`、`tags` 和 `trees` 的定义方式保持不变。
+When data for a super table should be loaded from an existing CSV file instead of generated by formulas, add a `csv` block under that `super_tables` entry. CSV mode only changes the data source; `metrics`, `tags`, and `trees` are still defined in the same way.
 
 ```json
 {
@@ -276,8 +271,8 @@ java -jar tda-generator-command.jar -f init.json -c
   "metrics": [
     {
       "name": "speed",
-      "title": "速度",
-      "description": "速度信息",
+      "title": "Speed",
+      "description": "Speed information",
       "type": "SmallInt",
       "tdType": "metric"
     }
@@ -285,31 +280,29 @@ java -jar tda-generator-command.jar -f init.json -c
 }
 ```
 
-- file: CSV 文件路径；支持绝对路径和相对路径；缺省时默认读取 `<超级表名称>.csv`；
-- timestamp_column: 时间列名称；缺省值为 `ts`；该列值将直接作为写入时间戳；
-- sub_table_column: 子表名称列；必填；列值用于决定写入目标子表，CSV 表头中必须存在该列；
-- CSV 表头至少应包含 `timestamp_column`、`sub_table_column` 以及所有 `metrics.name` 对应的列名；多余列可以保留，但当前导入流程不会使用；
-- 启用 CSV 模式后，`start_timestamp`、`time_step`、`non_stop_mode`、`insert_rows`、`batch_insert_num` 和 `insert_interval` 无需再配置，实际写入时间和数据量以 CSV 内容为准；
+- file: CSV file path. Absolute and relative paths are supported. If omitted, the default path is `<super_table_name>.csv`.
+- timestamp_column: Timestamp column name. The default value is `ts`. Values in this column are written directly as row timestamps.
+- sub_table_column: Required. This column provides the target sub-table name, and it must exist in the CSV header.
+- The CSV header must contain `timestamp_column`, `sub_table_column`, and one column for each `metrics.name`. Extra columns are allowed, but the current import pipeline does not use them.
+- In CSV mode, `start_timestamp`, `time_step`, `non_stop_mode`, `insert_rows`, `batch_insert_num`, and `insert_interval` are no longer required. Imported timestamps and row counts come directly from the CSV content.
 
-### 14.8.2.8 trees - 元素树
-
-此处描述整个树状结构。每个节点均可指定元素模板 `template`，子节点通过 `children` 描述。使用元素模板时，需要通过 `values` 为命名规则中的 `KEYWORD1` 赋值。
+### 14.9.2.8 trees - Element Tree and Child Table Generation
 
 ```json
 {
-  "value": "公共事业",
+  "value": "Public Utility",
   "visible": "true",
   "children": [
     {
       "template": "location-1-smart_meters",
-      "values": "北京",
+      "values": "Beijing",
       "children": [
         {
           "template": "location-2-smart_meters",
-          "values": "海淀",
+          "values": "Haidian",
           "children": [
             {
-              "template": "智能电表",
+              "template": "Smart Meter",
               "values": "em[1,5]"
             }
           ]
@@ -320,25 +313,29 @@ java -jar tda-generator-command.jar -f init.json -c
 }
 ```
 
-- visible: 根节点是否可见；
-- template: 使用的模板名称；与 templates 中定义的模板名称保持一致；
-- values: 为模板中的命名关键字 `KEYWORD1` 赋值；支持范围生成，如 `em[1,5]` 表示从 `em1` 到 `em5`，系统会依据模板自动生成 5 个元素。
-- children: 子节点列表；
+- visible: Whether the root node is visible
+- template: Template name (must match one defined in templates)
+- values: Assigns values to naming keywords; supports ranges like em[1,5] → em1 to em5
+- children: Child node list
 
-该配置用于创建元素，并构建整个元素的树状结构。
+This section:
 
-### 14.8.2.9 完整示例
+- Builds the element tree
+- Automatically creates sub-tables
+- Automatically binds TAG values
+
+### 14.9.2.9 Full Example
 
 <details>
-<summary>展开查看完整 JSON 示例</summary>
+<summary>Expand to view the complete JSON example</summary>
 
 ```json
 {
   "info": {
     "id": "smart_meters",
-    "name": "公共事业",
-    "description": "智能表计监控系统通过实时采集电表、水表数据，实现能源消耗的精细化管理和异常预警。系统支持区域用量分析、异常检测和用量预测，帮助优化资源配置，降低运营成本，提升公共服务质量。",
-    "file": "smart_meters.json",
+    "name": "Utilities",
+    "description": "A smart metering monitoring system that collects real-time data from electricity and water meters to enable precise energy management and anomaly detection.",
+    "file": "smart_meters-en.json",
     "image": "smart_meters.png"
   },
   "TDasset": {
@@ -400,8 +397,8 @@ java -jar tda-generator-command.jar -f init.json -c
   ],
   "templates": [
     {
-      "name": "智能电表",
-      "description": "这是智能电表信息",
+      "name": "Electricity meter",
+      "description": "This is electricity meter information",
       "namingPattern": "${KEYWORD1}",
       "keywordsDesc": {
         "KEYWORD1": "child table name"
@@ -434,39 +431,39 @@ java -jar tda-generator-command.jar -f init.json -c
           "metrics": [
             {
               "name": "current",
-              "title": "电流",
-              "description": "电流信息",
+              "title": "Current",
+              "description": "current info",
               "type": "Float",
               "tdType": "metric",
-              "uomClass": "电流",
+              "uomClass": "Electric Current",
               "uom": "A",
               "displayDigits": 2,
               "fun": "4*sin(x)+random(2)+4"
             },
             {
               "name": "voltage",
-              "title": "电压",
-              "description": "电压信息",
+              "title": "Voltage",
+              "description": "voltage info",
               "type": "Int",
               "tdType": "metric",
-              "uomClass": "电压",
+              "uomClass": "Electric Potential",
               "uom": "V",
               "fun": "10*sin(x)+10*random(4)+200"
             },
             {
               "name": "power",
-              "title": "功率",
-              "description": "功率信息",
+              "title": "Power",
+              "description": "power info",
               "type": "Float",
               "tdType": "metric",
-              "uomClass": "功率",
+              "uomClass": "Power",
               "uom": "W",
               "defaultValue": 100
             },
             {
               "name": "phase",
-              "title": "相位",
-              "description": "相位信息",
+              "title": "Phase",
+              "description": "phase info",
               "type": "Float",
               "tdType": "metric",
               "displayDigits": 2,
@@ -487,8 +484,8 @@ java -jar tda-generator-command.jar -f init.json -c
           "tags": [
             {
               "name": "location",
-              "title": "地址",
-              "description": "地址信息",
+              "title": "Location",
+              "description": "location info",
               "namingPattern": "${KEYWORD1}",
               "type": "Varchar",
               "length": 50,
@@ -511,22 +508,22 @@ java -jar tda-generator-command.jar -f init.json -c
             },
             {
               "name": "unit",
-              "title": "单元",
-              "description": "单元信息",
+              "title": "Unit",
+              "description": "Unit information",
               "type": "tinyint",
               "tdType": "tag"
             },
             {
               "name": "floor",
-              "title": "楼层",
-              "description": "楼层信息",
+              "title": "Floor",
+              "description": "Floor information",
               "type": "tinyint",
               "tdType": "tag"
             },
             {
               "name": "device_id",
-              "title": "设备ID",
-              "description": "设备ID信息",
+              "title": "Device ID",
+              "description": "Device ID information",
               "type": "Nchar",
               "length": 20,
               "tdType": "tag"
@@ -536,8 +533,8 @@ java -jar tda-generator-command.jar -f init.json -c
       ]
     },
     {
-      "name": "智能水表",
-      "description": "这是智能水表信息",
+      "name": "Water meter",
+      "description": "This is water meter information",
       "namingPattern": "${KEYWORD1}",
       "keywordsDesc": {
         "KEYWORD1": "child table name"
@@ -570,22 +567,22 @@ java -jar tda-generator-command.jar -f init.json -c
           "metrics": [
             {
               "name": "rate",
-              "title": "流量",
-              "description": "流量信息",
+              "title": "Flow rate",
+              "description": "rate info",
               "type": "Float",
               "tdType": "metric",
-              "uomClass": "体积流量",
+              "uomClass": "Volume Flow Rate",
               "uom": "l/s",
               "displayDigits": 2,
               "fun": "4*sin(x)+random(2)+4"
             },
             {
               "name": "pressure",
-              "title": "水压",
-              "description": "水压信息",
+              "title": "Water pressure",
+              "description": "pressure info",
               "type": "Int",
               "tdType": "metric",
-              "uomClass": "压力",
+              "uomClass": "Pressure",
               "uom": "kPa",
               "traits": [
                 {
@@ -604,8 +601,8 @@ java -jar tda-generator-command.jar -f init.json -c
           "tags": [
             {
               "name": "location",
-              "title": "地址",
-              "description": "地址信息",
+              "title": "Location",
+              "description": "location info",
               "namingPattern": "${KEYWORD1}",
               "column": "$(databases[0]).$(super_tables[1]).location",
               "location": {
@@ -633,7 +630,7 @@ java -jar tda-generator-command.jar -f init.json -c
     },
     {
       "name": "location-1-smart_meters",
-      "description": "这是树的路径模板信息",
+      "description": "Tree path template information",
       "namingPattern": "${KEYWORD1}",
       "keywordsDesc": {
         "KEYWORD1": "name"
@@ -641,7 +638,7 @@ java -jar tda-generator-command.jar -f init.json -c
     },
     {
       "name": "location-2-smart_meters",
-      "description": "这是树的路径模板信息",
+      "description": "Tree path template information",
       "namingPattern": "${KEYWORD1}",
       "keywordsDesc": {
         "KEYWORD1": "name"
@@ -649,7 +646,7 @@ java -jar tda-generator-command.jar -f init.json -c
     },
     {
       "name": "location-3-smart_meters",
-      "description": "这是树的路径模板信息",
+      "description": "Tree path template information",
       "namingPattern": "${KEYWORD1}",
       "keywordsDesc": {
         "KEYWORD1": "name"
@@ -657,7 +654,7 @@ java -jar tda-generator-command.jar -f init.json -c
     },
     {
       "name": "location-4-smart_meters",
-      "description": "这是树的路径模板信息",
+      "description": "Tree path template information",
       "namingPattern": "${KEYWORD1}",
       "keywordsDesc": {
         "KEYWORD1": "name"
@@ -665,56 +662,76 @@ java -jar tda-generator-command.jar -f init.json -c
     }
   ],
   "trees": {
-    "value": "公共事业",
+    "value": "Utilities",
     "visible": true,
     "children": [
       {
         "template": "location-1-smart_meters",
-        "values": "北京",
+        "values": "California",
         "children": [
           {
             "template": "location-2-smart_meters",
-            "values": "海淀",
+            "values": "Los Angeles County",
             "children": [
               {
                 "template": "location-3-smart_meters",
-                "values": "西三旗街道",
+                "values": "Los Angeles",
                 "children": [
                   {
-                    "template": "智能电表",
-                    "child_table_names": "em-[1,2]",
-                    "values": "em-[1,2]",
-                    "unit": [1, 2],
-                    "floor": [2, 2],
-                    "device_id": "em20250220001000[1,2]"
+                    "template": "Electricity meter",
+                    "child_table_names": "em-[1,5]",
+                    "values": "em-[1,5]",
+                    "unit": [
+                      1,
+                      1,
+                      1,
+                      2,
+                      2
+                    ],
+                    "floor": [
+                      2,
+                      2,
+                      2,
+                      2,
+                      2
+                    ],
+                    "device_id": "em20250220001000[1,5]"
                   }
                 ]
               },
               {
                 "template": "location-3-smart_meters",
-                "values": "上地街道",
+                "values": "Long Beach",
                 "children": [
                   {
-                    "template": "智能电表",
-                    "child_table_names": "em-3",
-                    "values": "em-3",
-                    "unit": [1],
-                    "floor": [2],
-                    "device_id": "em202502200010003"
+                    "template": "Electricity meter",
+                    "child_table_names": "em-16",
+                    "values": "em-16",
+                    "unit": [
+                      2
+                    ],
+                    "floor": [
+                      2
+                    ],
+                    "device_id": "em202502200010016"
                   }
                 ]
               },
               {
                 "template": "location-3-smart_meters",
-                "values": "五道口街道",
+                "values": "Santa Clarita",
                 "children": [
                   {
-                    "template": "智能电表",
-                    "child_table_names": "em-4",
-                    "values": "em-4",
-                    "unit": [1],
-                    "floor": [2],
-                    "device_id": "em202502200010004"
+                    "template": "Electricity meter",
+                    "child_table_names": "em-17",
+                    "values": "em-17",
+                    "unit": [
+                      2
+                    ],
+                    "floor": [
+                      2
+                    ],
+                    "device_id": "em202502200010017"
                   }
                 ]
               }
@@ -722,18 +739,30 @@ java -jar tda-generator-command.jar -f init.json -c
           },
           {
             "template": "location-2-smart_meters",
-            "values": "朝阳",
+            "values": "San Diego County",
             "children": [
               {
                 "template": "location-3-smart_meters",
-                "values": "望京街道",
+                "values": "San Diego",
                 "children": [
                   {
-                    "template": "智能电表",
+                    "template": "Electricity meter",
                     "child_table_names": "em-[11,15]",
                     "values": "em-[11,15]",
-                    "unit": [11, 11, 11, 11, 1],
-                    "floor": [11, 12, 13, 14, 15],
+                    "unit": [
+                      11,
+                      11,
+                      11,
+                      11,
+                      1
+                    ],
+                    "floor": [
+                      11,
+                      12,
+                      13,
+                      14,
+                      15
+                    ],
                     "device_id": [
                       "em202502200010011",
                       "em202502200010012",
@@ -746,18 +775,22 @@ java -jar tda-generator-command.jar -f init.json -c
               },
               {
                 "template": "location-3-smart_meters",
-                "values": "三元桥街道",
+                "values": "Chula Vista",
                 "children": [
                   {
-                    "template": "智能电表",
+                    "template": "Electricity meter",
                     "child_table_names": "em-10",
                     "values": "em-10",
-                    "unit": [1],
-                    "floor": [2],
+                    "unit": [
+                      1
+                    ],
+                    "floor": [
+                      2
+                    ],
                     "device_id": "em202502200010010"
                   },
                   {
-                    "template": "智能水表",
+                    "template": "Water meter",
                     "child_table_names": "wm-1",
                     "values": "wm-1",
                     "device_id": "wm20250220001001"
@@ -766,14 +799,24 @@ java -jar tda-generator-command.jar -f init.json -c
               },
               {
                 "template": "location-3-smart_meters",
-                "values": "国贸街道",
+                "values": "Oceanside",
                 "children": [
                   {
-                    "template": "智能电表",
+                    "template": "Electricity meter",
                     "child_table_names": "em-[6,9]",
                     "values": "em-[6,9]",
-                    "unit": [1, 1, 1, 1],
-                    "floor": [2, 2, 2, 2],
+                    "unit": [
+                      1,
+                      1,
+                      1,
+                      1
+                    ],
+                    "floor": [
+                      2,
+                      2,
+                      2,
+                      2
+                    ],
                     "device_id": "em20250220001000[6,9]"
                   }
                 ]
@@ -782,27 +825,37 @@ java -jar tda-generator-command.jar -f init.json -c
           },
           {
             "template": "location-2-smart_meters",
-            "values": "东城",
+            "values": "Orange County",
             "children": [
               {
-                "template": "智能电表",
-                "child_table_names": "em-[16,17]",
-                "values": "em-[16,17]",
-                "unit": [1, 1],
-                "floor": [2, 2],
-                "device_id": "em2025022000100[16,17]"
+                "template": "Electricity meter",
+                "child_table_names": "em-18",
+                "values": "em-18",
+                "unit": [
+                  1
+                ],
+                "floor": [
+                  2
+                ],
+                "device_id": "em202502200010018"
               }
             ]
           },
           {
             "template": "location-2-smart_meters",
-            "values": "西城",
+            "values": "Riverside County",
             "children": [
               {
-                "template": "智能水表",
-                "child_table_names": "wm-2",
-                "values": "wm-2",
-                "device_id": "wm20250220001002"
+                "template": "Electricity meter",
+                "child_table_names": "em-19",
+                "values": "em-19",
+                "unit": [
+                  1
+                ],
+                "floor": [
+                  2
+                ],
+                "device_id": "em202502200010019"
               }
             ]
           }
@@ -810,47 +863,59 @@ java -jar tda-generator-command.jar -f init.json -c
       },
       {
         "template": "location-1-smart_meters",
-        "values": "河南",
+        "values": "New York",
         "children": [
           {
             "template": "location-2-smart_meters",
-            "values": "郑州",
+            "values": "Kings County",
             "children": [
               {
-                "template": "智能电表",
-                "child_table_names": "em-[18,19]",
-                "values": "em-[18,19]",
-                "unit": [1, 1],
-                "floor": [2, 2],
-                "device_id": "em2025022000100[18,19]"
-              }
-            ]
-          },
-          {
-            "template": "location-2-smart_meters",
-            "values": "开封",
-            "children": [
-              {
-                "template": "智能电表",
+                "template": "Electricity meter",
                 "child_table_names": "em-20",
                 "values": "em-20",
-                "unit": [1],
-                "floor": [2],
+                "unit": [
+                  1
+                ],
+                "floor": [
+                  2
+                ],
                 "device_id": "em202502200010020"
               }
             ]
           },
           {
             "template": "location-2-smart_meters",
-            "values": "洛阳",
+            "values": "Queens County",
             "children": [
               {
-                "template": "智能电表",
+                "template": "Electricity meter",
                 "child_table_names": "em-21",
                 "values": "em-21",
-                "unit": [1],
-                "floor": [2],
+                "unit": [
+                  1
+                ],
+                "floor": [
+                  2
+                ],
                 "device_id": "em202502200010021"
+              }
+            ]
+          },
+          {
+            "template": "location-2-smart_meters",
+            "values": "New York County",
+            "children": [
+              {
+                "template": "Electricity meter",
+                "child_table_names": "em-22",
+                "values": "em-22",
+                "unit": [
+                  1
+                ],
+                "floor": [
+                  2
+                ],
+                "device_id": "em202502200010022"
               }
             ]
           }
@@ -858,37 +923,50 @@ java -jar tda-generator-command.jar -f init.json -c
       },
       {
         "template": "location-1-smart_meters",
-        "values": "河北",
+        "values": "Georgia",
         "children": [
           {
             "template": "location-2-smart_meters",
-            "values": "石家庄",
+            "values": "Fulton County",
             "children": [
               {
-                "template": "智能电表",
-                "child_table_names": "em-22",
-                "values": "em-22",
-                "unit": [1],
-                "floor": [2],
-                "device_id": "em202502200010022"
+                "template": "Electricity meter",
+                "child_table_names": "em-23",
+                "values": "em-23",
+                "unit": [
+                  1
+                ],
+                "floor": [
+                  2
+                ],
+                "device_id": "em202502200010023"
               }
             ]
           },
           {
             "template": "location-2-smart_meters",
-            "values": "保定[1,2]",
+            "values": "DeKalb County[1,2]",
             "children": [
               {
                 "template": "location-3-smart_meters",
-                "values": "清苑区",
+                "values": "Kensington",
                 "children": [
                   {
-                    "template": "智能电表",
-                    "child_table_names": "em-[23,24]",
-                    "values": "em-[23,24]",
-                    "unit": [1, 1],
-                    "floor": [2, 2],
-                    "device_id": ["em202502200010023", "em202502200010024"]
+                    "template": "Electricity meter",
+                    "child_table_names": "em-[24,25]",
+                    "values": "em-[24,25]",
+                    "unit": [
+                      1,
+                      1
+                    ],
+                    "floor": [
+                      2,
+                      2
+                    ],
+                    "device_id": [
+                      "em202502200010024",
+                      "em202502200010025"
+                    ]
                   }
                 ]
               }
@@ -899,13 +977,14 @@ java -jar tda-generator-command.jar -f init.json -c
     ]
   }
 }
+
 ```
 
 </details>
 
-## 14.8.3 使用建议
+## 14.9.3 Usage Recommendations
 
-- 一个 JSON 对应一个示例场景
-- 模板名称建议使用统一前缀
-- 持续写入请控制子表数量
-- 清理操作务必确认环境
+- One JSON file per sample scenario
+- Use consistent prefixes for template names
+- Control child table count when using continuous data generation
+- Always confirm the environment before running cleanup operations
