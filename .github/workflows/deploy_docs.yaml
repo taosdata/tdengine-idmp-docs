@@ -70,7 +70,7 @@ jobs:
       with:
         azcliversion: ${{ env.AZ_CLI_VERSION }}
         inlineScript: |
-          az cdn endpoint purge \
+          az afd endpoint purge \
             --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
             --profile-name ${{ secrets.AZURE_CDN_PROFILE_CN }} \
             --name ${{ secrets.AZURE_CDN_ENDPOINT_CN }} \
@@ -82,7 +82,7 @@ jobs:
       with:
         azcliversion: ${{ env.AZ_CLI_VERSION }}
         inlineScript: |
-          az cdn endpoint purge \
+          az afd endpoint purge \
             --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
             --profile-name ${{ secrets.AZURE_CDN_PROFILE_EN }} \
             --name ${{ secrets.AZURE_CDN_ENDPOINT_EN }} \
