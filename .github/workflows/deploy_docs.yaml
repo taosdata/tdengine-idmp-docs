@@ -73,7 +73,8 @@ jobs:
           az afd endpoint purge \
             --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
             --profile-name ${{ secrets.AZURE_CDN_PROFILE_CN }} \
-            --name ${{ secrets.AZURE_CDN_ENDPOINT_CN }} \
+            --endpoint-name ${{ secrets.AZURE_CDN_ENDPOINT_CN }} \
+            --domains idmpdocs.taosdata.com \
             --content-paths  "/*" "/index.html" "/"
           echo "Azure CDN purged for idmpdocs.taosdata.com"
 
@@ -85,7 +86,8 @@ jobs:
           az afd endpoint purge \
             --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
             --profile-name ${{ secrets.AZURE_CDN_PROFILE_EN }} \
-            --name ${{ secrets.AZURE_CDN_ENDPOINT_EN }} \
+            --endpoint-name ${{ secrets.AZURE_CDN_ENDPOINT_EN }} \
+            --domains idmpdocs.tdengine.com \
             --content-paths  "/*" "/index.html" "/"
           echo "Azure CDN purged for idmpdocs.tdengine.com"
 
