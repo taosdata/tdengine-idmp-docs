@@ -30,8 +30,8 @@ const getMenu = () => {
         label: 'TSDB Docs',
         to: 'https://docs.tdengine.com',
         position: 'right',
-        target: '_blank', // 新标签页打开
-        rel: 'noopener noreferrer', // 安全性
+        target: '_blank',
+        rel: 'noopener noreferrer',
       },
       {
         label: 'Cloud',
@@ -59,16 +59,15 @@ const getMenu = () => {
       label: 'AI 问答',
       to: '/redirect?target=chat',
       position: 'right',
-      target: '_blank', // 新标签页打开
-      rel: 'noopener noreferrer', // 安全性
-      locale: 'zh-Hans',
+      target: '_blank',
+      rel: 'noopener noreferrer',
     },
     {
       label: 'TSDB 文档',
       to: '/redirect?target=tsdb',
       position: 'right',
-      target: '_blank', // 新标签页打开
-      rel: 'noopener noreferrer', // 安全性
+      target: '_blank',
+      rel: 'noopener noreferrer',
     },
     {
       label: 'Cloud',
