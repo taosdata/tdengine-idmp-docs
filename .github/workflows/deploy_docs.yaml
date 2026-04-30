@@ -65,6 +65,22 @@ jobs:
             --auth-mode key
           echo "Uploaded EN docs to Azure Blob Storage"
 
+    - name: Debug - List AFD Endpoints
+      uses: azure/cli@v2
+      with:
+        azcliversion: ${{ env.AZ_CLI_VERSION }}
+        inlineScript: |
+          echo "=== CN Profile Endpoints ==="
+          az afd endpoint list \
+            --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
+            --profile-name ${{ secrets.AZURE_CDN_PROFILE_CN }} \
+            --query "[].{name:name, hostName:hostName}" -o table
+          echo "=== EN Profile Endpoints ==="
+          az afd endpoint list \
+            --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
+            --profile-name ${{ secrets.AZURE_CDN_PROFILE_EN }} \
+            --query "[].{name:name, hostName:hostName}" -o table
+
     - name: Purge Azure CDN Endpoint (CN)
       uses: azure/cli@v2
       with:
