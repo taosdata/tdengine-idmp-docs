@@ -38,32 +38,32 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Upload CN Docs to Azure Blob Storage
-      uses: azure/cli@v2
-      with:
-        azcliversion: ${{ env.AZ_CLI_VERSION }}
-        inlineScript: |
-          az storage blob upload-batch \
-            --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-            --destination '$web' \
-            --source build-artifacts/build \
-            --overwrite \
-            --auth-mode key
-          echo "Uploaded CN docs to Azure Blob Storage"
+    # - name: Upload CN Docs to Azure Blob Storage
+    #   uses: azure/cli@v2
+    #   with:
+    #     azcliversion: ${{ env.AZ_CLI_VERSION }}
+    #     inlineScript: |
+    #       az storage blob upload-batch \
+    #         --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
+    #         --destination '$web' \
+    #         --source build-artifacts/build \
+    #         --overwrite \
+    #         --auth-mode key
+    #       echo "Uploaded CN docs to Azure Blob Storage"
 
-    - name: Upload EN Docs to Azure Blob Storage
-      uses: azure/cli@v2
-      with:
-        azcliversion: ${{ env.AZ_CLI_VERSION }}
-        inlineScript: |
-          az storage blob upload-batch \
-            --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
-            --destination '$web' \
-            --destination-path 'build-en' \
-            --source build-artifacts/build-en \
-            --overwrite \
-            --auth-mode key
-          echo "Uploaded EN docs to Azure Blob Storage"
+    # - name: Upload EN Docs to Azure Blob Storage
+    #   uses: azure/cli@v2
+    #   with:
+    #     azcliversion: ${{ env.AZ_CLI_VERSION }}
+    #     inlineScript: |
+    #       az storage blob upload-batch \
+    #         --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
+    #         --destination '$web' \
+    #         --destination-path 'build-en' \
+    #         --source build-artifacts/build-en \
+    #         --overwrite \
+    #         --auth-mode key
+    #       echo "Uploaded EN docs to Azure Blob Storage"
 
     - name: Debug - List AFD Endpoints
       uses: azure/cli@v2
@@ -107,14 +107,14 @@ jobs:
             --content-paths  "/*" "/index.html" "/"
           echo "Azure CDN purged for idmpdocs.tdengine.com"
 
-    - name: Run Docsearch Scraper
-      env:
-        APPLICATION_ID: ${{ secrets.ALGOLIA_APPLICATION_ID }}
-        API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
-      run: |
-        CONFIG="$(cat ${{ github.workspace }}/build-artifacts/.docsearch/tdasset.json | jq -c '.')"
-        docker run --rm \
-          -e APPLICATION_ID \
-          -e API_KEY \
-          -e CONFIG="$CONFIG" \
-          algolia/docsearch-scraper
+    # - name: Run Docsearch Scraper
+    #   env:
+    #     APPLICATION_ID: ${{ secrets.ALGOLIA_APPLICATION_ID }}
+    #     API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
+    #   run: |
+    #     CONFIG="$(cat ${{ github.workspace }}/build-artifacts/.docsearch/tdasset.json | jq -c '.')"
+    #     docker run --rm \
+    #       -e APPLICATION_ID \
+    #       -e API_KEY \
+    #       -e CONFIG="$CONFIG" \
+    #       algolia/docsearch-scraper
