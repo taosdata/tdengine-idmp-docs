@@ -2,7 +2,6 @@
 title: Event and Batch Analysis
 sidebar_label: Event and Batch Analysis
 ---
-
 # 9.6 Event and Batch Analysis
 
 Batch analysis is a critical method for analyzing discrete production processes in industrial data science. **IDMP defines product batches as a specialized type of event** — discrete operational records with explicit start times, end times, and durations. Rather than providing a standalone batch-analysis module, IDMP treats batches as a special event type and uses its flexible event analysis capabilities to manage the full batch lifecycle and perform in-depth analysis.
@@ -161,17 +160,17 @@ Click the **Event and Attribute List** icon in the Analysis Chart toolbar to ope
 
 ![Event and attribute list](./images/event-batch-02.png)
 
-### Time Alignment
+### Start Time Alignment
 
-Time alignment aligns the start points of multiple events to the same moment (such as t=0), enabling direct comparison of process parameters at the same relative time points across different events. This eliminates the effect of actual event occurrence time differences, focusing on the internal process itself. Time alignment is particularly suited for analyzing parameter performance during relative time periods such as "first 2 hours from start" or "mid-reaction phase."
+Start time alignment aligns the start points of multiple events to the same moment (such as t=0), enabling direct comparison of process parameters at the same relative time points across different events. This eliminates the effect of actual event occurrence time differences, focusing on the internal process itself. Time alignment is particularly suited for analyzing parameter performance during relative time periods such as "first 2 hours from start" or "mid-reaction phase."
 
 ![Time alignment analysis](./images/event-batch-05.png)
 
 As shown, all event start points are aligned to t=0, with the horizontal axis representing relative time since event start. This enables clear comparison of parameter performance at the same relative time points across events, identifying process execution consistency.
 
-### Time Normalization
+### Event Duration Time Normalization
 
-Time normalization maps events of different durations to a unified time scale (such as 0% to 100%), enabling comparison of events with varying lengths in the same coordinate system. After normalization, the horizontal axis no longer represents absolute or relative time, but rather event completion percentage. This method is particularly suitable for comparing events with significantly different cycle times (such as 6-hour vs. 8-hour batches), focusing on relative performance at each process stage rather than absolute duration.
+Event duration time normalization maps events of different durations to a unified time scale (such as 0% to 100%), enabling comparison of events with varying lengths in the same coordinate system. After normalization, the horizontal axis no longer represents absolute or relative time, but rather event completion percentage. This method is particularly suitable for comparing events with significantly different cycle times (such as 6-hour vs. 8-hour batches), focusing on relative performance at each process stage rather than absolute duration.
 
 ![Time normalization analysis](./images/event-batch-06.png)
 
