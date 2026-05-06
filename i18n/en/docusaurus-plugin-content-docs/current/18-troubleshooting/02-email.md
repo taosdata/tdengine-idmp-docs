@@ -3,11 +3,11 @@ title: Email Troubleshooting
 sidebar_label: Email Troubleshooting
 ---
 
-# 18.1 Email Troubleshooting
+# 18.2 Email Troubleshooting
 
 This page describes how to investigate email delivery issues in IDMP, including verification emails, password reset emails, and SMTP connectivity failures.
 
-## 18.1.1 Scope
+## 18.2.1 Scope
 
 Use this page when any of the following symptoms are observed:
 
@@ -17,7 +17,7 @@ Use this page when any of the following symptoms are observed:
 - The application reports success, but the recipient does not receive the email.
 - SMTP authentication fails, SMTP connections fail, or email sending times out or is significantly delayed.
 
-## 18.1.2 Interpreting Success States
+## 18.2.2 Interpreting Success States
 
 Before troubleshooting, separate the email flow into three different success states so that an HTTP success response is not mistaken for final delivery.
 
@@ -29,11 +29,11 @@ Before troubleshooting, separate the email flow into three different success sta
 
 The first two states do not guarantee that the message reached the inbox.
 
-## 18.1.3 Quick Troubleshooting Steps
+## 18.2.3 Quick Troubleshooting Steps
 
 Follow the checks in order across the API layer, logs, configuration, and external delivery evidence.
 
-### 18.1.3.1 Trigger a Real Email Request
+### 18.2.3.1 Trigger a Real Email Request
 
 Start with a real API request so that the full delivery chain is exercised, instead of relying only on the configuration page.
 
@@ -83,7 +83,7 @@ Expected results:
 
 If the request fails immediately, verify the API path, request payload, service status, and any reverse proxy or gateway configuration first.
 
-### 18.1.3.2 Confirm That the Request Reached the Backend
+### 18.2.3.2 Confirm That the Request Reached the Backend
 
 Check the main request log before inspecting the email sending implementation.
 
@@ -110,7 +110,7 @@ Expected results:
 
 If no request log exists, the request likely never entered the backend. Focus on the gateway, ingress, reverse proxy, frontend endpoint configuration, and archived logs such as `tda.log.yyyy-MM-dd.gz`.
 
-### 18.1.3.3 Inspect the Send Flow Logs
+### 18.2.3.3 Inspect the Send Flow Logs
 
 Email sending is typically handled asynchronously. Wait `2` to `5` seconds after triggering the request before searching the logs.
 
@@ -155,7 +155,7 @@ Interpret the results as follows:
 - `Authentication failed` points first to SMTP credentials or an authorization code problem.
 - `Mail server connection failed` points first to network reachability, ports, firewalls, or DNS.
 
-### 18.1.3.4 Check Which Email Configuration Is Active
+### 18.2.3.4 Check Which Email Configuration Is Active
 
 The effective email configuration may come from system settings or the application configuration file, so confirm the active source before changing any settings.
 
@@ -174,7 +174,7 @@ In system settings, focus on the following fields:
 - `tls`
 - `auth`
 
-### 18.1.3.5 Validate SMTP Connectivity
+### 18.2.3.5 Validate SMTP Connectivity
 
 When you need to separate an application issue from an SMTP environment issue, validate SMTP connectivity directly.
 
@@ -204,7 +204,7 @@ Confirm the following:
 - The selected port matches the TLS or SSL policy.
 - The deployment network allows outbound SMTP traffic.
 
-### 18.1.3.6 Confirm Final Delivery
+### 18.2.3.6 Confirm Final Delivery
 
 An application-side success log does not prove that the email was delivered to the recipient mailbox.
 
@@ -214,7 +214,7 @@ Confirm final delivery through at least one of the following sources:
 - The recipient checks both the inbox and spam folder.
 - The recipient email address is verified as valid.
 
-## 18.1.4 Recommended Investigation Order
+## 18.2.4 Recommended Investigation Order
 
 Use the following order to reduce false conclusions.
 
@@ -226,11 +226,11 @@ Use the following order to reduce false conclusions.
 6. Confirm that the SMTP provider accepted the message.
 7. Confirm that the message is visible in the recipient mailbox.
 
-## 18.1.5 Common Failures and Recommended Actions
+## 18.2.5 Common Failures and Recommended Actions
 
 The following scenarios cover the most frequent classes of email delivery issues.
 
-### 18.1.5.1 Authentication Failure
+### 18.2.5.1 Authentication Failure
 
 If the logs contain `Authentication failed` or `Invalid credentials`, the SMTP authentication step is failing.
 
@@ -248,7 +248,7 @@ Recommended checks:
 - Test the same account with another mail client.
 - Generate a new app-specific password if required.
 
-### 18.1.5.2 Connection Failure
+### 18.2.5.2 Connection Failure
 
 If the logs contain `Mail server connection failed`, `timeout`, or `refused`, the issue is usually related to network reachability or port configuration.
 
@@ -268,7 +268,7 @@ Recommended checks:
 - Use `nslookup` to confirm DNS resolution.
 - Confirm that the TLS setting matches the provider requirements.
 
-### 18.1.5.3 Application Success but No Email Received
+### 18.2.5.3 Application Success but No Email Received
 
 If the application logs show success but the recipient cannot find the email, the problem is usually outside the application.
 
@@ -285,7 +285,7 @@ Recommended checks:
 - Reconfirm the recipient address spelling.
 - Verify the sender domain mail authentication configuration.
 
-### 18.1.5.4 Delay or Timeout
+### 18.2.5.4 Delay or Timeout
 
 If sending is delayed or timeouts appear in the logs, inspect both application-side queueing and SMTP response time.
 
@@ -302,14 +302,14 @@ Recommended checks:
 - Measure the SMTP server response time.
 - Inspect the message body, attachments, and inline images for abnormal size.
 
-## 18.1.6 Key Checks
+## 18.2.6 Key Checks
 
 To avoid missing critical evidence, inspect the email sending status from both configuration and logs.
 
 - Configuration: confirm whether the database email configuration is enabled. If it is not, determine which default file configuration is used, and verify `host`, `port`, `username`, `from`, `tls`, and `auth`.
 - Logs: confirm that request logs, asynchronous send-task logs, sender logs, and authentication, connection, or retry failures are all covered.
 
-## 18.1.7 Best Practices
+## 18.2.7 Best Practices
 
 The following practices improve repeatability and reduce investigation time.
 
