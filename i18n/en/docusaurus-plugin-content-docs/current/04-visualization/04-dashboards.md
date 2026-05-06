@@ -35,6 +35,8 @@ The list displays all saved dashboards for the element with these columns:
 
 Hover over a row to reveal action buttons for viewing, editing, or deleting the dashboard.
 
+If a dashboard was created from a **Dashboard Template** and includes panels based on child element templates, open the dashboard and use the **Cascading Element Selector** to choose the corresponding child element under the current element. The selection should be limited to child elements within the current element's hierarchy so the template panels bind to the correct data source.
+
 ## 4.4.2 Creating a Dashboard
 
 To create a new dashboard:
@@ -91,7 +93,7 @@ Panels render their live data on the canvas according to the dashboard's current
 | **Name** | The dashboard title (required) |
 | **Description** | Optional description for the dashboard |
 | **Categories** | One or more tags for filtering and organizing dashboards |
-| **Notification Rule** | Configure an alerting rule at the dashboard level |
+| **Scheduled Report** | Configure an schedule rule at the dashboard level |
 
 ## 4.4.4 Adding Panels to a Dashboard
 
@@ -103,7 +105,31 @@ There are three ways to populate a dashboard:
 
 **Add from panel view mode.** When viewing any panel in full view mode, open the panel card's **⋮** menu and select a dashboard action, or navigate to the Dashboards tab and use the panel library to drag it onto the canvas.
 
-## 4.4.5 The Global Dashboards View
+## 4.4.5 Dashboard View Mode
+
+Click **View** on a dashboard card to open the dashboard in full view mode.
+
+### View Mode Toolbar
+
+| Control | Description |
+|---|---|
+| **Back to List** | Return to the Dashboards tab |
+| **Edit** | Open the dashboard editor |
+| **Favorite** | Mark this dashboard as a favorite for quick access |
+| **Time picker** | Set the time range for all panels in the dashboard |
+| **Zoom out** | Expand the time range to the next level |
+| **Refresh** | Reload all panel data |
+| **Auto-refresh** | Set an automatic refresh interval |
+| **Share** | Generate a time-limited shareable link to this dashboard view |
+| **Data Zoom** | Enable data zoom mode to select a time range on charts |
+| **Full Screen** | Expand the dashboard to fill the browser window |
+| **Annotations** | Open the annotations panel to add text annotations to this dashboard |
+
+### Annotations
+
+Annotations let users attach text notes to a dashboard. The workflow is the same as panel annotations — see [4.1.5 Annotations](./01-panels.md#415-annotations) for details.
+
+## 4.4.6 The Global Dashboards View
 
 The **Dashboards** item in the main navigation bar opens the global dashboards list, which shows all dashboards across every element in the system.
 
@@ -111,8 +137,8 @@ The left sidebar of the global view organizes navigation into six sections:
 
 - **Dashboards:** The primary list of all dashboards system-wide.
 - **Panels:** A global list of all saved panels across all elements.
-- **Favorite Dashboards:** Dashboards you have marked as favorites.
-- **Favorite Panels:** Panels you have marked as favorites.
+- **Dashboard Groups:** Custom groups containing dashboards you have added.
+- **Panel Groups:** Custom groups containing panels you have added.
 - **Dashboard Filters:** Saved filter configurations for the dashboards list.
 - **Panel Filters:** Saved filter configurations for the panels list.
 

@@ -100,7 +100,7 @@ Every attribute has the following configurable properties:
 | **Name** | A unique name for the attribute within its element |
 | **Description** | A human-readable explanation of what the attribute measures or represents |
 | **Categories** | One or more tags for grouping and filtering attributes within the Attributes tab |
-| **Value Type** | The data type of the value: `Float`, `Double`, `Int`, `BigInt`, `TinyInt`, `SmallInt`, `Bool`, `Nchar`, `Varchar`, `Timestamp` |
+| **Value Type** | The data type of the value, organized into three groups. **Basic Types**: `Float`, `Double`, `Int`, `IntUnsigned`, `BigInt`, `BigIntUnsigned`, `TinyInt`, `TinyIntUnsigned`, `SmallInt`, `SmallIntUnsigned`, `Bool`, `Nchar`, `Varchar`, `Timestamp`, `Decimal` (requires TDengine TSDB version 3.4.1.1 or above; Data Reference Type must be TDengine Metric). **Enumeration Types**: select from enumeration types defined in the system; the attribute value is restricted to the predefined options of that enumeration. **Object Types**: `File`, `Video`, `Attribute` (attribute reference), `Element` (element reference). |
 | **Default Value** | The value returned when no data is available from the data source |
 | **UOM Class** | The physical quantity category (e.g., Electric Current, Temperature, Pressure). Selecting a UOM Class filters the available unit options for Default UOM and Display UOM. |
 | **Default UOM** | The unit in which the attribute value is stored (e.g., ampere, °C, bar) |
@@ -245,14 +245,16 @@ The dialog has three panels:
 
 ### 3.2.9.3 Attribute panel (left)
 
-Browse and insert the element's attributes into the expression. Attributes are organized into groups:
+The left panel is titled **Attributes**. By default, it lists the attributes of the current element, or the attribute templates of the current element template. Attributes are shown directly in a flat list under the following categories, with **Substitution Parameters** provided as an expandable node:
 
 | Group | Contents |
 |---|---|
-| **Metrics** | Time-series metric attributes (e.g., Current, Voltage, Power) |
-| **Tags** | Tag (dimension) attributes — static metadata fields |
-| **Other Attributes** | Any remaining attributes defined on the element |
-| **Substitution Parameters** | System-level substitution values such as `TIME` (current local time in milliseconds), current element name, attribute name, and template name |
+| **TDengine Metrics** | Attributes that reference TDengine TSDB metric columns. If an attribute has configured limits, it can be expanded to list and insert those limits. |
+| **TDengine Tags** | Attributes that reference TDengine TSDB tag columns. |
+| **Formula** | Formula-type attributes. |
+| **String Builder** | String Builder attributes. |
+| **Regular Attributes** | Any remaining attributes outside the categories above. |
+| **Substitution Parameters** | System-level substitution values shown as an expandable node, such as `TIME` (current local time in milliseconds), current element name, attribute name, and template name |
 
 A **Filter** field at the top lets you search by name. Click an attribute or parameter to insert it at the cursor position in the expression.
 
@@ -266,7 +268,7 @@ A code editor where you write the expression. An operator shortcut bar at the to
 
 ### 3.2.9.5 Function panel (right)
 
-Browse and insert functions by category. A **Filter** field lets you search by function name. Click a function name to insert it at the cursor position.
+Browse and insert functions by category. In addition to the built-in function categories, the panel also includes a **UDF** category. A **Filter** field lets you search by function name. Click a function name to insert it at the cursor position.
 
 ### 3.2.9.6 Function Categories
 
@@ -279,6 +281,7 @@ Browse and insert functions by category. A **Filter** field lets you search by f
 | **Aggregate Functions** | AVG, COUNT, SUM, STDDEV, STDDEV\_POP, PERCENTILE, SPREAD, ELAPSED, HISTOGRAM, ... |
 | **Selection Functions** | MAX, MIN, FIRST, LAST, LAST\_ROW, TOP, BOTTOM, UNIQUE, MODE, SAMPLE, ... |
 | **Time-Series Specific Functions** | MAVG, DERIVATIVE, DIFF, IRATE, CSUM, INTERP, TWA, STATECOUNT, STATEDURATION, ... |
+| **UDF** | User-defined functions registered in TDengine TSDB. |
 
 ### 3.2.9.7 Evaluating an Expression
 

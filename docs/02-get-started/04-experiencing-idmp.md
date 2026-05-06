@@ -13,7 +13,7 @@ sidebar_label: 探索 IDMP
 
 界面分为以下几个区域：
 
-![IDMP 用户界面总览](../../static/docs-img/basic/ui-main.png)
+![IDMP 用户界面总览](/docs-img/basic/ui-main.png)
 
 **1. 顶部导航栏**
 
@@ -25,14 +25,14 @@ sidebar_label: 探索 IDMP
 - **事件** — 浏览、筛选和分析全系统的事件。
 - **基础库** — 管理共享资源，包括元素模板、事件模板、枚举集、计量单位等。
 
-最右侧是您的**头像**图标，点击可管理个人信息、进入系统管理页面或启动引导页。
+最右侧是您的**头像**菜单。打开头像菜单后，顶部账户项会打开个人设置对话框，可在其中管理**个人信息**、**密钥**和 **MFA** 相关项；具备权限的用户还可从同一菜单进入**管理后台**或启动引导页。关于个人设置与 API Key 的详细说明，请参见[第 14.8 节](../14-administration/08-profile-settings.md)。
 
 **2. 左侧面板**
 
 左侧面板显示当前模块的树状层次结构。在**元素浏览器**中，分为三个部分：
 
 - **元素** — 资产层次结构。点击箭头展开节点，点击元素名称选中该元素。点击搜索图标可按名称查找元素。
-- **元素收藏** — 您标记为收藏的元素，方便快速访问。
+- **元素分组** — 您创建的自定义分组，可将元素加入一个或多个分组以便快速访问。
 - **元素过滤器** — 已保存的搜索过滤条件，可快速召回特定的元素集合。
 
 **3. 上下文标签栏**
@@ -64,7 +64,7 @@ sidebar_label: 探索 IDMP
 3. 在上下文标签栏中选择**通用**，查看该电表的描述和基本信息。
 4. 选择**属性**，查看其属性信息，如电流、电压等。
 
-![查看元素属性](../../static/docs-img/get-started/attributes.png)
+![查看元素属性](/docs-img/get-started/attributes.png)
 
 ## 2.4.3 体验 AI 生成面板
 
@@ -76,7 +76,7 @@ sidebar_label: 探索 IDMP
 
    点击**问我一下**，AI 会自动生成您期望的面板。
 
-![AI 生成面板](../../static/docs-img/get-started/panels.png)
+![AI 生成面板](/docs-img/get-started/panels.png)
 
 ## 2.4.4 体验 AI 实时分析
 
@@ -89,7 +89,7 @@ sidebar_label: 探索 IDMP
 
    按**回车**，AI 会自动生成您期望的实时分析。
 
-![AI 实时分析](../../static/docs-img/get-started/analysis.png)
+![AI 实时分析](/docs-img/get-started/analysis.png)
 
 ## 2.4.5 下一步
 

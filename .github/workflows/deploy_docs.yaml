@@ -38,7 +38,7 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-    - name: Upload Docs to Azure Blob Storage
+    - name: Upload CN Docs to Azure Blob Storage
       uses: azure/cli@v2
       with:
         azcliversion: ${{ env.AZ_CLI_VERSION }}
@@ -49,17 +49,45 @@ jobs:
             --source build-artifacts/build \
             --overwrite \
             --auth-mode key
-          echo "Uploaded EN docs to Azure Blob Storage"
+          echo "Uploaded CN docs to Azure Blob Storage"
 
-    - name: Purge Azure CDN Endpoint
+    - name: Upload EN Docs to Azure Blob Storage
       uses: azure/cli@v2
       with:
         azcliversion: ${{ env.AZ_CLI_VERSION }}
         inlineScript: |
-          az cdn endpoint purge \
+          az storage blob upload-batch \
+            --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
+            --destination '$web' \
+            --destination-path 'build-en' \
+            --source build-artifacts/build-en \
+            --overwrite \
+            --auth-mode key
+          echo "Uploaded EN docs to Azure Blob Storage"
+
+    - name: Purge Azure CDN Endpoint (CN)
+      uses: azure/cli@v2
+      with:
+        azcliversion: ${{ env.AZ_CLI_VERSION }}
+        inlineScript: |
+          az afd endpoint purge \
             --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
-            --profile-name ${{ secrets.AZURE_CDN_PROFILE }} \
-            --name ${{ secrets.AZURE_CDN_ENDPOINT }} \
+            --profile-name ${{ secrets.AZURE_CDN_PROFILE_CN }} \
+            --endpoint-name ${{ secrets.AZURE_CDN_ENDPOINT_CN }} \
+            --domains idmpdocs.taosdata.com \
+            --content-paths  "/*" "/index.html" "/"
+          echo "Azure CDN purged for idmpdocs.taosdata.com"
+
+    - name: Purge Azure CDN Endpoint (EN)
+      uses: azure/cli@v2
+      with:
+        azcliversion: ${{ env.AZ_CLI_VERSION }}
+        inlineScript: |
+          az afd endpoint purge \
+            --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
+            --profile-name ${{ secrets.AZURE_CDN_PROFILE_EN }} \
+            --endpoint-name ${{ secrets.AZURE_CDN_ENDPOINT_EN }} \
+            --domains idmpdocs.tdengine.com \
             --content-paths  "/*" "/index.html" "/"
           echo "Azure CDN purged for idmpdocs.tdengine.com"
 

@@ -7,6 +7,10 @@ sidebar_label: Connections
 
 A **connection** tells IDMP how to reach an external system. Connections are configured in **Admin Console → Connections** and are referenced by data ingestion tasks and asset model imports.
 
+:::note
+Connections come in two types: TDengine and AI. TDengine connections are used for business data management, while AI connections are used for AI Chat and question recommendations.
+:::
+
 The connection list shows all configured connections with the following columns:
 
 | Column | Description |
@@ -30,7 +34,7 @@ A TDengine TSDB connection links IDMP to a TDengine time-series database. Once c
 | **URL** (required) | The TDengine REST API endpoint, e.g., `http://localhost:6041` |
 | **Auth Type** | **Username Password** or **Token** |
 | **Username** | Database username (for Username Password auth) |
-| **Password** (required) | Database password |
+| **Password** (required) | Database password. For Token auth, enter the token here. |
 | **Explorer URL** (required) | The TDengine Explorer address for this instance, typically `http://[host]:6060` |
 | **Additional Properties** | Optional key-value pairs for advanced configuration |
 

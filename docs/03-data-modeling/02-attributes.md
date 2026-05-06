@@ -100,7 +100,7 @@ CONCAT('voltage of device ', ${attributes['Device ID']}, ' is ', CAST(${attribut
 | **名称** | 属性在其元素内的唯一名称 |
 | **描述** | 对该属性所测量或代表内容的可读说明 |
 | **类别** | 用于在属性选项卡中对属性进行分组和筛选的一个或多个标签 |
-| **值类型** | 值的数据类型：`Float`、`Double`、`Int`、`BigInt`、`TinyInt`、`SmallInt`、`Bool`、`Nchar`、`Varchar`、`Timestamp` |
+| **值类型** | 值的数据类型，分为三类。**基础类型**：`Float`、`Double`、`Int`、`IntUnsigned`、`BigInt`、`BigIntUnsigned`、`TinyInt`、`TinyIntUnsigned`、`SmallInt`、`SmallIntUnsigned`、`Bool`、`Nchar`、`Varchar`、`Timestamp`、`Decimal`（需要 TDengine TSDB 版本 3.4.1.1 及以上，且数据引用类型必须为 TDengine 指标）。**枚举类型**：从系统中已定义的枚举类型中选择，属性值限定为该枚举的预定义选项。**对象类型**：`File`（文件）、`Video`（视频）、`Attribute`（属性引用）、`Element`（元素引用）。 |
 | **默认值** | 当数据源无可用数据时返回的值 |
 | **计量单位分类** | 物理量类别（如电流、温度、压力）。选择计量单位分类后，默认计量单位和显示计量单位的可用选项会相应筛选。 |
 | **默认计量单位** | 属性值存储时使用的单位（如安培、°C、bar） |
@@ -243,14 +243,16 @@ CONCAT('voltage of device ', ${attributes['Device ID']}, ' is ', CAST(${attribut
 
 弹窗分为三个面板：
 
-**属性面板（左侧）** — 浏览并将元素属性插入表达式。属性按以下分组展示：
+**属性（左侧）** — 左侧面板标题为**属性**。默认列出当前元素上的属性，或当前元素模板上的属性模板。属性按以下类别直接平铺展示，同时提供**替换参数**展开节点：
 
 | 分组 | 内容 |
 |---|---|
-| **指标** | 时序指标属性（如电流、电压、功率） |
-| **标签** | 标签（维度）属性——静态元数据字段 |
-| **其他属性** | 元素上定义的其他属性 |
-| **替换参数** | 系统级替换值，如 `TIME`（当前本地时间毫秒数）、当前元素名、属性名和模板名 |
+| **TDengine 指标** | 引用 TDengine TSDB 指标列的属性。若该属性配置了极限值，可展开查看并插入其包含的极限值。 |
+| **TDengine 标签** | 引用 TDengine TSDB 标签列的属性。 |
+| **公式** | 公式类型属性。 |
+| **字符串构建** | 字符串构建器类型属性。 |
+| **普通属性** | 不属于上述类型的其他属性。 |
+| **替换参数** | 以可展开节点形式展示的系统级替换值，如 `TIME`（当前本地时间毫秒数）、当前元素名、属性名和模板名。 |
 
 顶部的**过滤**输入框可按名称搜索。点击属性或参数，将其插入表达式的光标位置。
 
@@ -260,7 +262,7 @@ CONCAT('voltage of device ', ${attributes['Device ID']}, ' is ', CAST(${attribut
 +  -  *  /  =  <  >  >=  <=  !=  <>  &  |
 ```
 
-**函数面板（右侧）** — 按类别浏览并插入函数。**过滤**输入框可按函数名搜索。点击函数名将其插入表达式的光标位置。
+**函数面板（右侧）** — 按类别浏览并插入函数。除内置函数分类外，还包含**用户自定义函数**分类。**过滤**输入框可按函数名搜索。点击函数名将其插入表达式的光标位置。
 
 ### 3.2.9.3 函数分类
 
@@ -273,6 +275,7 @@ CONCAT('voltage of device ', ${attributes['Device ID']}, ' is ', CAST(${attribut
 | **聚合函数** | AVG, COUNT, SUM, STDDEV, STDDEV\_POP, PERCENTILE, SPREAD, ELAPSED, HISTOGRAM, ... |
 | **选择函数** | MAX, MIN, FIRST, LAST, LAST\_ROW, TOP, BOTTOM, UNIQUE, MODE, SAMPLE, ... |
 | **时序专用函数** | MAVG, DERIVATIVE, DIFF, IRATE, CSUM, INTERP, TWA, STATECOUNT, STATEDURATION, ... |
+| **用户自定义函数** | 已在 TDengine TSDB 中注册的用户自定义函数。 |
 
 ### 3.2.9.4 评估表达式
 

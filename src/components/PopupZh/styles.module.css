@@ -1,0 +1,278 @@
+/*Pippi-2026-03-11 重写整个样式文件 */
+
+/* 弹窗遮罩 */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: rgba(20, 20, 20, 0.5);
+  font-size: 16px;
+  transition: z-index 0.4s, opacity 0.4s;
+  margin-top: 0;
+  opacity: 1;
+}
+
+/* 弹窗容器 - 400x290 */
+.popupContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #0041ce;
+  box-shadow: 0 20px 60px rgba(0, 65, 206, 0.12);
+  width: 400px;
+  height: 290px;
+  overflow: hidden;
+    padding: 24px 28px;
+}
+
+/* @keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+} */
+
+/* 顶部标题栏 */
+.popupTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.iconBadge {
+  width: 36px;
+  height: 36px;
+  background: #0041ce;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconBadge svg {
+  width: 18px;
+  height: 18px;
+  color: white;
+}
+
+/* 关闭按钮 */
+.closeBtn {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.closeBtn:hover {
+  background: #f5f5f5;
+  border-color: #ddd;
+}
+
+.closeBtn svg {
+  width: 14px;
+  height: 14px;
+  color: #595959;
+}
+
+/* 标题文字 */
+.popupTitleText {
+  font-size: 20px;
+  font-weight: 600;
+  color: #141414;
+}
+
+/* 说明文字 */
+.popupContent {
+  font-size: 13px;
+  color: #595959;
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+/* 表单字段 */
+.formField {
+  margin-bottom: 12px;
+}
+
+/* 必填标记 */
+.formRequired {
+  color: #d81e06;
+}
+
+p.formRequired {
+  font-size: 12px;
+  line-height: 1.2em;
+  margin: 4px 0 0 0;
+}
+
+/* 输入框 */
+.subscriptionInput {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: inherit;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #141414;
+  transition: all 0.2s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.subscriptionInput::placeholder {
+  color: #a0aec0;
+}
+
+.subscriptionInput:focus {
+  border-color: #0041ce;
+  background: #f0f4ff;
+}
+
+/* 复选框容器 */
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* 隐藏原生复选框 */
+.checkboxInput {
+  display: none;
+}
+
+/* 自定义复选框 */
+.checkboxCustom {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  border: 1.5px solid #f0f0f0;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  background: #ffffff;
+}
+
+.checkboxCustom svg {
+  width: 10px;
+  height: 10px;
+  color: white;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.2s ease;
+}
+
+.checkboxInput:checked + .checkboxCustom {
+  background: #0041ce;
+  border-color: #0041ce;
+}
+
+.checkboxInput:checked + .checkboxCustom svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 复选框标签 */
+.checkboxLabel {
+  font-size: 12px;
+  color: #595959;
+  line-height: 1.5;
+}
+
+/* 主按钮 */
+.btnPrimary {
+  width: 100%;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  color: #ffffff;
+  background: linear-gradient(135deg, #0041ce 0%, #2651f0 100%);
+  border: none;
+  margin-top: 21px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btnPrimary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 65, 206, 0.2);
+}
+
+/* 成功提示容器 */
+.messageContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #0041ce;
+  box-shadow: 0 20px 60px rgba(0, 65, 206, 0.12);
+  width: 400px;
+  padding: 32px;
+  text-align: center;
+}
+
+.successContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.successIcon {
+  width: 64px;
+  height: 64px;
+  background: #00c48c;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.successIcon svg {
+  width: 32px;
+  height: 32px;
+  color: white;
+}
+
+.successTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #141414;
+  margin: 0;
+}
+
+.successDesc {
+  font-size: 14px;
+  color: #595959;
+  margin: 0;
+}

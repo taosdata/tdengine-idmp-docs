@@ -79,7 +79,7 @@ The following controls appear in the view mode toolbar for every panel type:
 |---|---|
 | **Back to List** | Return to the Panels tab |
 | **Edit** | Open the panel editor |
-| **Favorite** | Mark this panel as a favorite for quick access |
+| **Add to Group** | Add this panel to one or more custom groups for quick access |
 | **Time picker** | Select the time range for the chart (e.g., Last 7 Days). Click the dropdown arrow for preset ranges or a custom range. |
 | **Zoom out** | Expand the time range to the next level |
 | **Refresh** | Reload the chart data immediately |
@@ -89,6 +89,7 @@ The following controls appear in the view mode toolbar for every panel type:
 | **Full Screen** | Expand the panel to fill the browser window |
 | **Open in New Window** | Open this panel in a separate browser window |
 | **Panel Insights** | Open the AI-generated insight report for this panel |
+| **Annotations** | Open the annotations panel to add text annotations to this panel |
 
 Additional toolbar controls that are specific to a panel type are documented in each panel type's section.
 
@@ -133,11 +134,13 @@ The panel aggregates data across all child elements of a selected element templa
 
 The upper portion of the center panel shows a live preview of the chart, updated as you make changes. Below the chart is a minimap for navigation.
 
-Below the minimap is the data configuration area, divided into two collapsible sections:
+Below the minimap is the data configuration area. At the top is a single switch button that switches between **Metrics Configuration** and **Advanced SQL**, with **Metrics Configuration** selected by default. Click the blank area of that row to expand or collapse the current configuration block.
+
+When the system is executing a query to refresh preview data, a **Running** indicator appears on the right side of the active row, immediately to the left of the expand/collapse icon.
 
 ### 4.1.4.6 Metrics
 
-The Metrics section defines the data series plotted on the chart. The header row provides three additional controls:
+When the switch button is set to **Metrics Configuration** and the configuration block is expanded, the Metrics section provides a structured way to define the data series plotted on the chart. The header row provides three additional controls:
 
 - **View SQL:** Display the SQL query generated from the current configuration.
 - **Limit:** Set a limit on the number of records returned.
@@ -171,7 +174,7 @@ The Dimensions section defines grouping dimensions for aggregate queries. This i
 
 ### 4.1.4.8 Advanced SQL Mode
 
-The **Advanced** toggle at the bottom of the data configuration area switches to a raw SQL editor. In advanced mode you can add multiple SQL queries — each appears as a separate query block — and all results are displayed together in the same panel.
+When the switch button is set to **Advanced SQL** and the configuration block is expanded, the raw SQL editor becomes available. In advanced mode you can add multiple SQL queries — each appears as a separate query block — and all results are displayed together in the same panel.
 
 Each query block has a **Query Type** selector:
 
@@ -223,16 +226,35 @@ The visualization settings are organized into collapsible sections. The followin
 
 Define clickable links attached to data points. Each link specifies a label and a URL, which can include template variables referencing the data point's time or value. Clicking a data point in the chart opens the configured link.
 
-### 4.1.4.13 Notification Rule
+### 4.1.4.13 Schedule Rule
 
 Configure a scheduled report delivery rule on this panel. See [Scheduled Reports](./06-scheduled-reports.md) for details.
 
 Additional settings sections — Graph, Axis, Limits, Legend, and others — are panel-type-specific and documented in each panel type's section.
 
-## 4.1.5 Organizing Panels
+## 4.1.5 Annotations
+
+Annotations let users attach text notes to a panel — for example, marking the cause of an anomaly, recording a maintenance action, or leaving contextual notes for team members.
+
+### Adding an Annotation
+
+1. In panel view mode, click the **Annotations** button in the toolbar to open the annotations panel.
+2. Click the **+** button at the bottom to expand the input box.
+3. Type the annotation content (Markdown formatting is supported).
+4. Press **Enter** to submit, or **Shift+Enter** for a new line.
+
+### Editing an Annotation
+
+Hover over an annotation and click the **Edit** icon. After modifying the content, click **Save** to save the changes, or click **Cancel** to discard them.
+
+### Deleting an Annotation
+
+Hover over an annotation and click the **Delete** icon, then confirm in the confirmation dialog.
+
+## 4.1.6 Organizing Panels
 
 **Categories** are free-form text tags assigned to a panel in the General settings. They appear in the Categories filter dropdown on the Panels tab, letting users quickly find panels by function or system area (e.g., Electrical, Mechanical, Quality).
 
-**Favorites** mark panels for quick access. Favorited panels appear in the Favorites filter on the Panels tab.
+**Groups** organize panels into custom named collections for quick access. Grouped panels are accessible from **Panel Groups** in the left sidebar of the global dashboard view.
 
 **Convert to Template** saves the panel's configuration as a reusable panel template. Once saved to the template library, the same panel structure can be applied to other elements of the same type without reconfiguration. See [Panel and Dashboard Templates](./07-panel-dashboard-templates.md) for details on template management.

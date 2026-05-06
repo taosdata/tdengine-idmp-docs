@@ -50,7 +50,7 @@ Activate mise in your shell (add to `~/.bashrc`, `~/.zshrc`, or equivalent):
 
 ```bash
 eval "$(~/.local/bin/mise activate bash)"   # for bash
-eval "$(~/.local/bin/mise activate zsh)"    # for zsh
+eval "$(~/.local/bin/mise activate zsh)"    # for zsh (default shell on macOS)
 ```
 
 Restart your shell session after modifying your rc file. After restarting, run `mise version` to verify installation.
