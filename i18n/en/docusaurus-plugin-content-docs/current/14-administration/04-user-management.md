@@ -20,7 +20,7 @@ To add a new user, go to **Admin Console → User Management → Users** and cli
 | **Email** | The new user's email address (used as their login ID) |
 | **Roles** | One or more roles to assign, each with a configurable set of accessible elements |
 
-The invited user receives an email with a link to set their personal information and password.
+The invited user receives an email with a link to set their personal information and password. IDMP first creates the account in the **Invited** state. The account becomes **Active** only after the user completes activation.
 
 The users list shows:
 
@@ -61,10 +61,10 @@ Built-in roles available for assignment:
 
 ### 14.4.1.3 Password Reset
 
-Any user can reset their own password from the login page by clicking **Forgot Password**. A reset link is sent by email. For security, the Super Admin cannot reset another user's password.
+Any user can reset their own password from the login page by clicking **Forgot Password**. A reset link is sent by email. Only **Active** users can receive password-reset emails. For security reasons, the Super Admin cannot directly reset another user's password.
 
 :::note
-Ensure `tda.server-url` in `config/application.yml` is set to an externally accessible URL or IP address. If it is not configured correctly, invited users will not be able to follow the email link to access IDMP.
+Ensure `tda.server-url` in your deployment configuration is set to an externally accessible URL or IP address. If it is not configured correctly, invited users will not be able to follow the email link to access IDMP.
 :::
 
 ## 14.4.2 Roles
@@ -83,7 +83,7 @@ Elements that a user cannot access are completely invisible in the asset tree �
 
 ## 14.4.3 Single Sign-On (OAuth 2.0)
 
-IDMP supports OAuth 2.0 SSO. OAuth configurations are managed under **Admin Console → User Management → OAuth**.
+IDMP supports OAuth 2.0 SSO. OAuth configurations are managed under **Admin Console → User Management → OAuth**. On the login page, IDMP reads the configured provider list from the backend and starts authorization with each provider's authorization URL, client ID, redirect URL, and scope.
 
 ### 14.4.3.1 Creating an OAuth Configuration
 
@@ -91,20 +91,29 @@ Click **+** to add a new OAuth provider. Fill in the following fields:
 
 | Field | Required | Description |
 |---|:---:|---|
-| **Icon** | Yes | Provider logo image (PNG, JPG, or SVG). Shown on the login page. |
-| **Name** | Yes | Display name for the OAuth option (e.g., `GitHub`, `TAOS`). |
+| **Icon** | Yes | Provider logo image shown on the login page. Supported formats are `png/jpg/jpeg/gif/webp`, and the file must be smaller than 1 MB. |
+| **Name** | Yes | Display name for the OAuth option (for example, `GitHub`, `Lark`, or `ADFS`). |
+| **Type (User Info Mapping Type)** | Yes | Choose `GitHub`, `Lark`, `ADFS`, or `Custom`. This field controls how IDMP retrieves and parses user information. |
 | **Client ID** | Yes | Application identifier registered with the OAuth provider. |
 | **Client Secret** | Yes | Secret key obtained from the OAuth provider's developer console. |
 | **Authorize URL** | Yes | The OAuth 2.0 authorization endpoint URL (`http://` or `https://`). |
 | **Token URL** | Yes | The token exchange endpoint URL (`http://` or `https://`). |
-| **User Info URL** | Yes | The endpoint for retrieving user profile information. |
-| **Redirect URL** | Yes | The callback URL registered with the provider (e.g., `http://localhost:6042/login/back`). Must exactly match the registered value. |
-| **Scope** | No | Permission scopes requested (e.g., `openid email profile`). |
-| **User Info Mapping Type** | Yes | How to extract user fields from the provider's response: `GITHUB`, `LARK`, or `CUSTOM`. |
+| **User Info URL** | Required for non-ADFS | Endpoint used to retrieve the user profile. Leave it empty for `ADFS`. |
+| **Redirect URL** | Yes | Callback URL registered with the provider. In most deployments this should be the IDMP front-end callback page, for example `https://<idmp-host>/login/back`. |
+| **Scope** | No | Requested permission scopes. For `ADFS`, the scope must include `openid`; `openid profile email` is the recommended value. |
 | **Custom Mapping Rules** | When CUSTOM | JSON object defining JSONPath expressions to extract `name`, `email`, and optional fields. |
 | **Roles** | Yes | Roles assigned to users who log in through this OAuth provider. |
 
-### 14.4.3.2 Custom Mapping Rules
+### 14.4.3.2 How Each Provider Type Works
+
+| Type | Source of user information | Special requirements |
+|---|---|---|
+| **GitHub** | Calls `User Info URL` and parses the response with the built-in GitHub logic. | `User Info URL` is required. |
+| **Lark** | Calls `User Info URL` and parses the response with the built-in Lark logic. | `User Info URL` is required. |
+| **ADFS** | Reads claims from the token response `id_token` and validates it through OIDC discovery and JWKS. | Leave `User Info URL` empty; `Scope` must include `openid`. |
+| **Custom** | Calls `User Info URL` and extracts fields using custom JSONPath rules. | `User Info URL` and `rules` are required, and `rules` must include `name` and `email`. |
+
+### 14.4.3.3 Custom Mapping Rules
 
 When **User Info Mapping Type** is `CUSTOM`, provide a JSON object mapping field names to JSONPath expressions:
 
@@ -113,16 +122,83 @@ When **User Info Mapping Type** is `CUSTOM`, provide a JSON object mapping field
   "name": "$.username",
   "email": "$.email",
   "nickname": "$.display_name",
-  "phone": "$.contact.mobile",
-  "description": "$.bio"
+  "description": "$.bio",
+  "phone": "$.contact.mobile"
 }
 ```
 
-The `name` and `email` fields are required. All others are optional.
+Supported fields are `name`, `email`, `nickname`, `description`, and `phone`. The `name` and `email` fields are required. All others are optional.
 
-### 14.4.3.3 Setup Steps
+### 14.4.3.4 ADFS Configuration Notes
+
+For `ADFS`, use the standard ADFS OAuth/OIDC endpoints under the same base path, for example:
+
+```text
+Authorize URL: https://adfs.example.com/adfs/oauth2/authorize
+Token URL:     https://adfs.example.com/adfs/oauth2/token
+Redirect URL:  https://<idmp-host>/login/back
+Scope:         openid profile email
+```
+
+The current implementation automatically derives `/.well-known/openid-configuration` from the configured `Authorize URL` or `Token URL`, reads `issuer` and `jwks_uri`, downloads JWKS, and validates the `id_token` for:
+
+- Signature
+- `iss`
+- `aud` (must match `Client ID`)
+- `exp`
+- Optional `nbf`
+
+ADFS claim mapping is fixed in the current implementation:
+
+- Email: `upn`, with fallback to `email`
+- Display name: `given_name + family_name`, with fallback to `unique_name` when `given_name` is missing
+- Nickname: `unique_name`
+
+### 14.4.3.5 OAuth Login and Automatic User Provisioning
+
+OAuth login works as follows in the current implementation:
+
+- The login page builds the authorization request from `authorize_url`, `client_id`, `redirect_url`, and `scope`.
+- After the provider redirects back to `redirect_url`, the IDMP front end extracts `code` and `state`, then calls the IDMP backend to complete sign-in.
+- The OAuth provider must return a valid `email` and `name`; login fails if either is missing or if the email format is invalid.
+- If an active account with the same email already exists, IDMP reuses that account instead of creating a second user.
+- If no such user exists, IDMP automatically creates an **Active** OAuth user and grants the roles configured on this OAuth provider.
+- Deleted or disabled users cannot log in through OAuth.
+
+### 14.4.3.6 Optional Deployment Settings
+
+The following settings affect the final login-page and OAuth behavior:
+
+| Setting | Effect |
+|---|---|
+| `tda.sso-login-first` | Automatically redirects the login page to the first available OAuth provider. |
+| `tda.sso-login-silent` | Adds `prompt=none` during automatic redirection, which is useful for silent SSO attempts. |
+| `tda.oauth.tls-configuration-name` | Points to a named `quarkus.tls.<name>` configuration used for OAuth/ADFS HTTPS certificate validation. If unset, IDMP uses the JVM default trust store and hostname verification. |
+
+If the OAuth or ADFS endpoint uses a private CA or self-signed certificate, you can explicitly configure TLS, for example:
+
+```yaml
+tda:
+  oauth:
+    tls-configuration-name: oauth-client
+
+quarkus:
+  tls:
+    oauth-client:
+      trust-all: true
+```
+
+:::note
+`trust-all: true` is only recommended for test environments. In production, configure a proper trust store instead of disabling certificate validation.
+:::
+
+### 14.4.3.7 Setup Steps
 
 1. Register your application in the OAuth provider's developer console and obtain the Client ID, Client Secret, and configure the Redirect URL.
-2. In IDMP, go to **Admin Console → User Management → OAuth** and click **+**.
-3. Fill in all required fields and click **Save**.
-4. Sign out and verify the new login option appears on the login page.
+2. Set the Redirect URL to the IDMP front-end callback page, for example `https://<idmp-host>/login/back`, and make sure it exactly matches the value registered with the provider.
+3. In IDMP, go to **Admin Console → User Management → OAuth** and click **+**.
+4. Choose the correct type and fill in the configuration:
+   - `ADFS`: leave `User Info URL` empty and make sure `Scope` contains `openid`
+   - `Custom`: fill in both `User Info URL` and the JSONPath mapping rules
+5. Upload an icon, assign roles, and save the configuration.
+6. Sign out and verify that the new login option appears on the login page, and that the first OAuth login either reuses an existing email-matched account or auto-creates a new one.
