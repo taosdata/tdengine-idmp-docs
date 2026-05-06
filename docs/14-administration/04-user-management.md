@@ -101,7 +101,7 @@ IDMP 支持 OAuth 2.0 单点登录。OAuth 配置通过**管理控制台 → 用
 | **用户信息 URL** | 非 ADFS 必填 | 获取用户档案信息的端点。`ADFS` 类型可留空。 |
 | **回调 URL** | 是 | 在 OAuth 提供商处注册的回调 URL，通常配置为 IDMP 前端登录回调页，如 `https://<idmp-host>/login/back`。 |
 | **范围（Scope）** | 否 | 请求的权限范围。`ADFS` 类型必须包含 `openid`，建议使用 `openid profile email`。 |
-| **自定义映射规则** | CUSTOM 时必填 | 定义 JSONPath 表达式以提取 `name`、`email` 及可选字段的 JSON 对象。 |
+| **自定义映射规则** | `Custom` 时必填 | 定义 JSONPath 表达式以提取 `name`、`email` 及可选字段的 JSON 对象。 |
 | **角色** | 是 | 通过该 OAuth 提供商登录的用户所分配的角色。 |
 
 ### 14.4.3.2 不同类型的处理方式
@@ -111,11 +111,11 @@ IDMP 支持 OAuth 2.0 单点登录。OAuth 配置通过**管理控制台 → 用
 | **GitHub** | 调用 `User Info URL`，再按内置 GitHub 解析逻辑提取用户信息。 | `User Info URL` 必填。 |
 | **Lark** | 调用 `User Info URL`，再按内置 Lark 解析逻辑提取用户信息。 | `User Info URL` 必填。 |
 | **ADFS** | 从 Token 响应中的 `id_token` 读取声明，并通过 OIDC 发现和 JWKS 验签。 | `User Info URL` 留空；`Scope` 必须包含 `openid`。 |
-| **Custom** | 调用 `User Info URL`，再按自定义 JSONPath 规则提取用户信息。 | `User Info URL` 与 `rules` 必填，且 `rules` 必须包含 `name` 和 `email`。 |
+| **Custom** | 调用 `User Info URL`，再按自定义 JSONPath 规则提取用户信息。 | `User Info URL` 与自定义映射规则必填，且自定义映射规则必须包含 `name` 和 `email`。 |
 
 ### 14.4.3.3 自定义映射规则
 
-当**用户信息映射类型**为 `CUSTOM` 时，提供一个将字段名映射到 JSONPath 表达式的 JSON 对象：
+当**用户信息映射类型**为 `Custom` 时，提供一个将字段名映射到 JSONPath 表达式的 JSON 对象：
 
 ```json
 {
@@ -140,7 +140,7 @@ Redirect URL:  https://<idmp-host>/login/back
 Scope:         openid profile email
 ```
 
-当前实现会基于配置的 `Authorize URL` 或 `Token URL` 自动推导 ADFS 的 `/.well-known/openid-configuration`，再读取 `issuer` 和 `jwks_uri` 拉取 JWKS，用于校验 `id_token` 的：
+当前实现会基于配置的 `Authorize URL` 或 `Token URL` 自动推导 ADFS 的 `/.well-known/openid-configuration`，再读取 `issuer` 和 `jwks_uri` 拉取 JWKS，并校验 `id_token` 的以下内容：
 
 - 签名
 - `iss`
@@ -199,6 +199,6 @@ quarkus:
 3. 在 IDMP 中，前往**管理控制台 → 用户管理 → OAuth**，点击 **+**。
 4. 选择合适的类型并填写配置：
    - `ADFS`：`User Info URL` 留空，`Scope` 中必须包含 `openid`
-   - `Custom`：补充 `User Info URL` 和 JSONPath 映射规则
+   - `Custom`：补充 `User Info URL` 和自定义映射规则
 5. 上传图标、分配角色并保存。
 6. 退出登录，验证新的登录选项是否出现在登录页面，并确认首次 OAuth 登录是否按预期复用现有账号或自动创建新账号。

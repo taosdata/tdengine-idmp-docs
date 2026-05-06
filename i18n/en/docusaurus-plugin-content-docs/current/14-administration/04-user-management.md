@@ -101,7 +101,7 @@ Click **+** to add a new OAuth provider. Fill in the following fields:
 | **User Info URL** | Required for non-ADFS | Endpoint used to retrieve the user profile. Leave it empty for `ADFS`. |
 | **Redirect URL** | Yes | Callback URL registered with the provider. In most deployments this should be the IDMP front-end callback page, for example `https://<idmp-host>/login/back`. |
 | **Scope** | No | Requested permission scopes. For `ADFS`, the scope must include `openid`; `openid profile email` is the recommended value. |
-| **Custom Mapping Rules** | When CUSTOM | JSON object defining JSONPath expressions to extract `name`, `email`, and optional fields. |
+| **Custom Mapping Rules** | Required when `Custom` is selected | JSON object defining JSONPath expressions to extract `name`, `email`, and optional fields. |
 | **Roles** | Yes | Roles assigned to users who log in through this OAuth provider. |
 
 ### 14.4.3.2 How Each Provider Type Works
@@ -111,11 +111,11 @@ Click **+** to add a new OAuth provider. Fill in the following fields:
 | **GitHub** | Calls `User Info URL` and parses the response with the built-in GitHub logic. | `User Info URL` is required. |
 | **Lark** | Calls `User Info URL` and parses the response with the built-in Lark logic. | `User Info URL` is required. |
 | **ADFS** | Reads claims from the token response `id_token` and validates it through OIDC discovery and JWKS. | Leave `User Info URL` empty; `Scope` must include `openid`. |
-| **Custom** | Calls `User Info URL` and extracts fields using custom JSONPath rules. | `User Info URL` and `rules` are required, and `rules` must include `name` and `email`. |
+| **Custom** | Calls `User Info URL` and extracts fields using custom JSONPath rules. | `User Info URL` and `Custom Mapping Rules` are required, and `Custom Mapping Rules` must include `name` and `email`. |
 
 ### 14.4.3.3 Custom Mapping Rules
 
-When **User Info Mapping Type** is `CUSTOM`, provide a JSON object mapping field names to JSONPath expressions:
+When **User Info Mapping Type** is `Custom`, provide a JSON object mapping field names to JSONPath expressions:
 
 ```json
 {
@@ -140,7 +140,7 @@ Redirect URL:  https://<idmp-host>/login/back
 Scope:         openid profile email
 ```
 
-The current implementation automatically derives `/.well-known/openid-configuration` from the configured `Authorize URL` or `Token URL`, reads `issuer` and `jwks_uri`, downloads JWKS, and validates the `id_token` for:
+The current implementation automatically derives `/.well-known/openid-configuration` from the configured `Authorize URL` or `Token URL`, reads `issuer` and `jwks_uri`, downloads JWKS, and validates the following aspects of the `id_token`:
 
 - Signature
 - `iss`
@@ -199,6 +199,6 @@ quarkus:
 3. In IDMP, go to **Admin Console → User Management → OAuth** and click **+**.
 4. Choose the correct type and fill in the configuration:
    - `ADFS`: leave `User Info URL` empty and make sure `Scope` contains `openid`
-   - `Custom`: fill in both `User Info URL` and the JSONPath mapping rules
+   - `Custom`: fill in both `User Info URL` and `Custom Mapping Rules`
 5. Upload an icon, assign roles, and save the configuration.
 6. Sign out and verify that the new login option appears on the login page, and that the first OAuth login either reuses an existing email-matched account or auto-creates a new one.
