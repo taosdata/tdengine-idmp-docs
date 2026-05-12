@@ -35,9 +35,13 @@ Prepare the following items before starting:
 |---|---|
 | IDMP server URL | Use the real endpoint that your environment can reach. The examples below use `https://<IDMP_HOST>:6034`. For certificate or network troubleshooting, switch temporarily to `http://<IDMP_HOST>:6042`. |
 | Credential | Use either a username and password or a pre-issued API key. |
-| Local dependency | Both online and offline CLI installation require `Node.js 16+` and `npm`. |
+| Local dependency | The minimum requirement for both online and offline CLI installation is `Node.js 16+` and `npm`. Prefer a currently supported Node.js LTS release when possible. |
 | Supported platforms | The CLI supports macOS, Linux, and Windows on `x64` and `arm64`. |
 | Optional agent runtime | If the CLI will be used with Claude Code or another agent, install the related plugin or skills later in the process. |
+
+:::warning Use HTTP only for temporary troubleshooting
+If you must switch temporarily to `http://<IDMP_HOST>:6042` for connectivity checks, do so only inside a trusted, isolated network and avoid logging in or sending real passwords, API keys, bearer tokens, or other sensitive credentials over HTTP.
+:::
 
 On an interactive terminal, `config init` and `auth login` can prompt for missing secrets. The examples in this page prefer `stdin` so they can be copied into scripts and automation flows directly.
 
@@ -147,8 +151,15 @@ For agents other than Claude Code, install `taosdata/agent-skills` separately wh
 
 **Online installation**
 
+If you want to inspect which skills are available in the repository first, preview them with:
+
 ```bash
 npx --yes skills add taosdata/agent-skills -g -y --list
+```
+
+Then install the skills:
+
+```bash
 npx --yes skills add taosdata/agent-skills -g -y
 ```
 
@@ -252,9 +263,9 @@ idmp-cli doctor --offline
 
 These commands confirm the saved environments, verify that the server accepts the current credential, and check whether local configuration, session storage, and generated metadata are all in place.
 
-These examples use IDMP's default external HTTPS port `6034`. When certificate or network troubleshooting is required, switch only the protocol and port temporarily to `http://<IDMP_HOST>:6042`, then move back to HTTPS after the issue is resolved.
+These examples use IDMP's default external HTTPS port `6034`. When certificate or network troubleshooting is required, switch only the protocol and port temporarily to `http://<IDMP_HOST>:6042`, but only for short-lived troubleshooting inside a trusted, isolated network. Avoid logging in or sending real passwords, API keys, bearer tokens, or other sensitive credentials over HTTP, and move back to HTTPS after the issue is resolved.
 
-If the environment uses a self-signed certificate, `idmp-cli` does not skip certificate verification by default. HTTPS works only when that certificate, or the CA that issued it, has already been imported into the current machine's system trust store. If the trust chain is not in place yet, use `http://<IDMP_HOST>:6042` only as a temporary troubleshooting path. The CLI does not currently provide a `--insecure`-style flag to bypass certificate verification.
+If the environment uses a self-signed certificate, `idmp-cli` does not skip certificate verification by default. HTTPS works only when that certificate, or the CA that issued it, has already been imported into the current machine's system trust store. If the trust chain is not in place yet, use `http://<IDMP_HOST>:6042` only as a temporary troubleshooting path, and avoid sending sensitive credentials over HTTP. The CLI does not currently provide a `--insecure`-style flag to bypass certificate verification.
 
 ## 15.4.6 Understanding the Command Model
 
@@ -461,7 +472,7 @@ Use this troubleshooting sequence:
 1. If the self-signed certificate, or its issuing CA, is already trusted by the current machine, the CLI can use HTTPS normally.
 2. If the trust chain has not been imported yet, the CLI will fail during TLS verification.
 3. The CLI does not currently provide a `--insecure`-style flag to skip certificate verification.
-4. If you only need temporary connectivity troubleshooting, switch to `http://<IDMP_HOST>:6042`, then move back to HTTPS after the issue is resolved.
+4. If you only need temporary connectivity troubleshooting, switch to `http://<IDMP_HOST>:6042` only inside a trusted, isolated network and avoid sending sensitive credentials over HTTP; then move back to HTTPS after the issue is resolved.
 
 ### 15.4.11.4 The correct command path is unknown
 

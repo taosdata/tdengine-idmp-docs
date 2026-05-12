@@ -35,9 +35,13 @@ sidebar_label: IDMP CLI
 |---|---|
 | IDMP 服务地址 | 使用当前环境真实可访问的地址。本文示例统一使用 `https://<IDMP_HOST>:6034`；如需排查证书或网络问题，可临时切换为 `http://<IDMP_HOST>:6042`。 |
 | 登录凭证 | 可使用用户名 + 密码，或使用已签发的 API Key。 |
-| 本地依赖 | 在线安装与离线安装 CLI 都需要 `Node.js 16+` 和 `npm`。 |
+| 本地依赖 | 在线安装与离线安装 CLI 的最低要求是 `Node.js 16+` 和 `npm`；建议优先使用当前仍受支持的 Node.js LTS 版本。 |
 | 支持平台 | CLI 支持 macOS、Linux、Windows，架构支持 `x64` 和 `arm64`。 |
 | 可选 Agent 环境 | 如果计划配合 Claude Code 或其他 Agent 使用，还需要后续安装 plugin 或 skills。 |
+
+:::warning HTTP 仅用于临时排障
+如果必须临时切换到 `http://<IDMP_HOST>:6042` 排查连通性，请只在可信隔离网络中短时使用，并避免在 HTTP 下执行登录或传递真实密码、API Key、bearer token 等敏感凭证。
+:::
 
 在交互终端中，`config init` 和 `auth login` 可以提示输入缺失的敏感信息。为了便于复制和自动化复用，本文优先使用 `stdin` 传递密码或 API Key。
 
@@ -147,8 +151,15 @@ claude --plugin-dir "$env:USERPROFILE\.claude\plugins\idmp-plugin"
 
 **在线安装**
 
+如需先确认仓库中有哪些 skill，可先预览：
+
 ```bash
 npx --yes skills add taosdata/agent-skills -g -y --list
+```
+
+确认后再执行安装：
+
+```bash
 npx --yes skills add taosdata/agent-skills -g -y
 ```
 
@@ -252,9 +263,9 @@ idmp-cli doctor --offline
 
 以上三个命令分别用于确认已保存的环境、验证当前凭证是否被服务端接受，以及检查本地配置、会话存储和生成元数据是否完整。
 
-上述示例统一使用 IDMP 默认外部 HTTPS 端口 `6034`。如需临时排查证书或网络问题，可仅将协议和端口切换为 `http://<IDMP_HOST>:6042`，问题排除后再切回 HTTPS。
+上述示例统一使用 IDMP 默认外部 HTTPS 端口 `6034`。如需临时排查证书或网络问题，可仅将协议和端口切换为 `http://<IDMP_HOST>:6042`，但应只在可信隔离网络中做短时连通性排障，且避免在 HTTP 下登录或提交真实密码、API Key、bearer token 等敏感凭证。问题排除后再切回 HTTPS。
 
-如果当前环境使用的是自签证书，`idmp-cli` 默认不会跳过证书校验。只有当该证书或其签发 CA 已导入当前机器的系统信任链时，CLI 才能正常通过 `https://<IDMP_HOST>:6034` 访问 IDMP。若尚未导入信任链，可先切换到 `http://<IDMP_HOST>:6042` 做临时排障。当前 CLI 不提供类似 `--insecure` 的忽略证书校验参数。
+如果当前环境使用的是自签证书，`idmp-cli` 默认不会跳过证书校验。只有当该证书或其签发 CA 已导入当前机器的系统信任链时，CLI 才能正常通过 `https://<IDMP_HOST>:6034` 访问 IDMP。若尚未导入信任链，可先切换到 `http://<IDMP_HOST>:6042` 做临时排障，但同样应避免在 HTTP 下传递敏感凭证。当前 CLI 不提供类似 `--insecure` 的忽略证书校验参数。
 
 ## 15.4.6 理解命令模型
 
@@ -461,7 +472,7 @@ CLI 在自动化和 Agent 场景中经常具有写权限，因此建议在接入
 1. 如果自签证书或其 CA 已导入当前机器的系统信任链，CLI 可以正常使用 HTTPS。
 2. 如果尚未导入系统信任链，CLI 会在 TLS 校验阶段失败。
 3. 当前 CLI 不提供 `--insecure` 之类的跳过证书校验参数。
-4. 如需临时排查连通性问题，可先切换到 `http://<IDMP_HOST>:6042`，问题定位完成后再切回 HTTPS。
+4. 如需临时排查连通性问题，可先切换到 `http://<IDMP_HOST>:6042`，但仅建议在可信隔离网络中短时使用，且避免在 HTTP 下提交敏感凭证；问题定位完成后再切回 HTTPS。
 
 ### 15.4.11.4 不知道该使用哪个命令路径
 
