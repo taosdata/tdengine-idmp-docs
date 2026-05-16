@@ -20,7 +20,7 @@ If you are in any of the following situations, you can start with bulk modeling 
 
 ## 3.6.2 Bulk Modeling Methods in IDMP
 
-On the TDengine connection details page under **Admin → Connections → \[connection name\]**, IDMP provides the following four independent bulk-modeling methods that can be used as needed:
+On the TDengine connection details page under **Admin Console → Connections → \[connection name\]**, IDMP provides the following four independent bulk-modeling methods that can be used as needed:
 
 | Method                              | Suitable Scenario                                                                                                                                                                |
 | ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

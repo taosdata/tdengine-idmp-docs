@@ -40,7 +40,7 @@ The General Information area shows the following standard event fields, covering
 | **Current Value** | The value of the attribute that satisfied the trigger condition at the moment the event fired |
 | **Start Time** | When the event began |
 | **End Time** | When the event ended (blank if still active) |
-| **Associated Element(s)** | The element(s) involved in the analysis that triggered this event — click to navigate. An analysis may span multiple elements, so this field is a list. |
+| **Associated Element** | The element involved in the analysis that triggered this event — click to navigate. |
 | **Associated Analysis** | The analysis rule that generated this event — click to navigate to it |
 | **Parent Event** | For a child event, the parent event it belongs to — click to navigate; blank for ordinary events |
 | **Status** | Acknowledgment status (Unacknowledged / Acknowledged) |
