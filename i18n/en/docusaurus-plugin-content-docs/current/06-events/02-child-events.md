@@ -50,7 +50,7 @@ The parent event is automatically created when the second child event appears, b
 
 ## 6.2.5 Naming of Child Events
 
-The event template's naming rule applies uniformly to both parent and child events — by convention the name contains **element name + analysis name + timestamp** (the exact format is determined by the template's naming rule; see [6.1.2.2 Event Naming Rule](./01-event-templates.md#6122-event-naming-rule)). A child event appends the trigger name suffix to the parent event name:
+The event template's naming rule applies uniformly to both parent and child events — by convention the name contains **element name + analysis name + timestamp** (the exact format is determined by the template's naming rule; see [6.1.2.2 Event Naming Pattern](./01-event-templates.md#6122-event-naming-pattern)). A child event appends the trigger name suffix to the parent event name:
 
 ```text
 <parent event name> - <trigger name>
