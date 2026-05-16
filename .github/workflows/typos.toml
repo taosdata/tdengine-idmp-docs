@@ -6,6 +6,7 @@ datas = "datas"
 
 [default.extend-words]
 OT = "OT"
+PN = "PN"
 MAPE = "MAPE"
 mosquitto = "mosquitto"
 Sur = "Sur"

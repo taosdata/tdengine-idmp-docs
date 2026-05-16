@@ -4,7 +4,7 @@ sidebar_label: Industrial Data Modeling
 ---
 import DocCardList from '@theme/DocCardList';
 
-# 3. Industrial Data Modeling
+# 3 Industrial Data Modeling
 
 The foundation of industrial intelligence is not algorithms — it is the data model. In any real factory, **enterprise → plant → production line → equipment → sensor** forms a layered organizational structure, with business meaning at every level. TDengine IDMP brings this structure into the digital world through **industrial data modeling** — building an ordered, searchable knowledge catalog over your assets and their data, so that what used to be isolated data silos becomes a coherent, living whole.
 
@@ -88,4 +88,3 @@ Because this semantic system exists, the AI agents on IDMP can cross scattered d
 The following sections build up this semantic system layer by layer:
 
 <DocCardList />
-

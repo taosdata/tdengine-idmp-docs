@@ -21,7 +21,7 @@ The General Information toolbar provides the following action controls.
 | **Ack** | Acknowledge the event |
 | **Add to Group** | Add this event to one or more custom groups for quick access from the left sidebar |
 | **Root Cause Analysis** | Open a root cause analysis view for this event |
-| **Analysis Chart** | Open an analysis chart for the event's time range on its associated element |
+| **Analysis Chart** |  Add to Analysis Chart for the event's time range on its associated element |
 | **Resend** | Manually resend a notification for this event to its configured contact points |
 
 ### 6.4.1.2 Fields
@@ -40,7 +40,7 @@ The General Information area shows the following standard event fields, covering
 | **Current Value** | The value of the attribute that satisfied the trigger condition at the moment the event fired |
 | **Start Time** | When the event began |
 | **End Time** | When the event ended (blank if still active) |
-| **Associated Element** | The element(s) involved in the analysis that triggered this event — click to navigate. An analysis may span multiple elements, so this field is a list. |
+| **Associated Element(s)** | The element(s) involved in the analysis that triggered this event — click to navigate. An analysis may span multiple elements, so this field is a list. |
 | **Associated Analysis** | The analysis rule that generated this event — click to navigate to it |
 | **Parent Event** | For a child event, the parent event it belongs to — click to navigate; blank for ordinary events |
 | **Status** | Acknowledgment status (Unacknowledged / Acknowledged) |

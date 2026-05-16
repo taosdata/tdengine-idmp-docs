@@ -176,7 +176,7 @@ flowchart TB
     P2["Attribute<br/>TargetMoisture"]
     AN["Analysis<br/>Moisture Deviation Analysis"]
     EV["Event<br/>Moisture Deviation<br/>2026-05-12"]
-    PN["Panel / Dashboard"]
+    PNL["Panel / Dashboard"]
     CTX["Context Snapshot<br/>(related attributes, related elements, related documents)"]
     B["Element B<br/>(Drying-Shared-Airflow)"]
     C["Element C<br/>(Drum-Airflow-Drying)"]
@@ -187,7 +187,7 @@ flowchart TB
     A -- "Owns" --> P2
     AN -- "References Element / Attribute" --> A
     AN -- "References Element / Attribute" --> P1
-    PN -- "References Element / Attribute" --> A
+    PNL -- "References Element / Attribute" --> A
     P1 -- "Triggers" --> AN
     AN -- "Generates" --> EV
     EV -- "Related Element" --> A
@@ -209,7 +209,7 @@ flowchart TB
     class AN analysis
     class EV event
     class T tmpl
-    class PN,CTX misc
+    class PNL,CTX misc
 ```
 
 This network has several key characteristics:
