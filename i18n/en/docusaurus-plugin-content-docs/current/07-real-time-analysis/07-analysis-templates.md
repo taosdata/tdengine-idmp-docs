@@ -5,7 +5,7 @@ sidebar_label: Analysis Templates
 
 # 7.7 Analysis Templates
 
-An **analysis template** defines a reusable analysis rule — trigger, calculations, and event generation — as part of an [element template](../03-data-modeling/01-elements.md#316-element-templates). When an element is created from the template, all of its analysis templates are automatically instantiated, giving the new element a fully configured set of monitoring rules without any manual setup.
+An **analysis template** defines a reusable analysis rule — event generation, trigger, and calculations — as part of an [element template](../03-data-modeling/01-elements.md#316-element-templates). When an element is created from the template, all of its analysis templates are automatically instantiated, giving the new element a fully configured set of monitoring rules without any manual setup.
 
 ## 7.7.1 The Analysis Template Tab
 
@@ -14,7 +14,7 @@ The **Analysis Template** tab on an element template works similarly to the regu
 You can create analysis templates in two ways:
 
 - **AI-assisted:** Describe the analysis in the text box (e.g., "calculate hourly max voltage") and press Enter. IDMP also shows **Suggested Questions** for reference.
-- **Manual:** Click **+ Create New Analysis Manually** in the list to configure the trigger, calculations, and event generation yourself.
+- **Manual:** Click **+ Create New Analysis Manually** in the list to configure event generation, trigger, and calculations yourself.
 
 The toolbar includes an **On/Off** toggle to enable or disable all analysis templates on the element template at once.
 
@@ -29,7 +29,7 @@ The workflow for creating an analysis template is essentially the same as creati
 1. In **Libraries**, open the element template.
 2. Click the **Analysis Template** tab.
 3. Click **+ Create New Analysis Manually** or use the AI text box to describe the analysis.
-4. Configure the analysis — trigger, calculations, event generation — using substitution strings wherever element-specific values are needed.
+4. Configure the analysis — event generation, trigger, calculations — using substitution strings wherever element-specific values are needed.
 5. Click **Save**.
 
 See [Creating an Analysis](./02-creating-analysis.md) for full details on each configuration step.

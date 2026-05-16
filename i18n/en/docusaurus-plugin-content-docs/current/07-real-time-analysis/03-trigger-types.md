@@ -150,7 +150,7 @@ Fires when the value of an integer-type attribute changes from one state to anot
 
 ## 7.3.6 Event Window
 
-Fires based on a user-defined start condition and stop condition, expressed as expressions evaluated against element attributes.
+Fires based on a user-defined start condition and stop condition, expressed as expressions evaluated against element attributes. A single event window can produce either a single event or — within its lifetime — multiple **child events** distinguished by which hit condition matched. The latter is used to model "one situation, multiple severities" as a layered event stream. For the concept, production rules, timeline, naming, and notification/acknowledgment behavior of parent and child events, see [6.2 Child Events](../06-events/02-child-events.md).
 
 ### 7.3.6.1 When to Use
 
@@ -158,24 +158,48 @@ Fires based on a user-defined start condition and stop condition, expressed as e
 - You want to capture everything that happened during an abnormal episode: duration, peak values, averages
 - The boundary of the analysis window is defined by process behavior, not the clock
 - You need to filter out noise by requiring a condition to persist for a minimum duration before it counts
+- Within the same window you need to distinguish severity or acknowledgment requirements by hit condition — for example, generating different child events for "moderate" and "severe" voltage exceedances
 
 ### 7.3.6.2 Parameters
 
-| Parameter | Description |
-|---|---|
-| **Start Trigger — Expression** (required) | A condition expression that, when it evaluates to a positive value, opens the event window |
-| **Start Trigger — True for** | A minimum duration the start condition must remain true before the window opens. Prevents false triggers from momentary noise. |
-| **Stop Trigger — Expression** (required) | A condition expression that, when it evaluates to a positive value, closes the event window and fires the analysis |
+An event window consists of two parts: a **Start Trigger** and a **Stop Trigger**.
 
-Both expressions can be tested with the **Evaluate** button before saving.
+#### Start Trigger
+
+The Start Trigger defaults to a single row (single-event mode). A **+ Add Sub-expression** button beneath it appends another trigger row; once there are two or more rows, each row becomes a **sub-trigger**, and each match produces an independent **child event** (see [6.2 Child Events](../06-events/02-child-events.md)). The stream computation evaluates rows top to bottom and **stops on the first match** — subsequent rows are not evaluated.
+
+Each row contains the following fields:
+
+| Field | Description |
+| --- | --- |
+| **Trigger Name** | The row's identifier name. In the multi-row case, it is used as the suffix when generating child event names; see [6.2.5 Naming of Child Events](../06-events/02-child-events.md#625-naming-of-child-events). |
+| **Expression** (required) | The condition expression. A positive result counts as a match. |
+| **Duration** | The "True For" value — the minimum duration the expression must remain true to count as a match. Used to filter out momentary noise. |
+| **Severity Level** | The severity of the event (or child event) produced by a match on this row. |
+| **Allow Ack** | Whether the event (or child event) produced by a match on this row requires operator acknowledgment. |
+
+Row order is priority order — **higher-priority (more severe) rules must be placed earlier**. See [6.2.2 Trigger Order Is the Priority](../06-events/02-child-events.md#622-trigger-order-is-the-priority). Added sub-expressions can be removed with the delete icon at the end of each row; the first row cannot be deleted.
+
+#### Stop Trigger
+
+The Stop Trigger is a single condition editor that defines when the event window closes.
+
+| Field | Description |
+| --- | --- |
+| **Expression** (required) | The condition expression. When it evaluates to a positive value, the event window closes and the event is emitted. |
+
+#### Evaluation and Validation
+
+- All expressions can be tested with the **Evaluate** button against current data before saving.
+- Start Trigger names must be unique within the same analysis.
 
 ### 7.3.6.3 Examples
 
-**Temperature exceedance characterization.** The start condition is `temperature > 85`. The stop condition is `temperature < 80`. Every time the process runs hot, the analysis captures how long it lasted, the peak temperature reached, and the average temperature during the exceedance — turning a raw alarm into a structured event with full context.
+**Temperature exceedance characterization (single event).** Start Trigger is `temperature > 85`; Stop Trigger is `temperature < 80`. Every time the process runs hot, the analysis captures the duration of the exceedance, the peak temperature, and the average temperature — turning a raw alarm into a structured event with full context.
 
-**Compressor surge detection.** The start condition is `discharge_pressure > surge_limit AND flow < min_flow`. The "True for" setting is 5 seconds, filtering out transient noise. When a genuine surge condition is confirmed, the window opens. The stop condition closes it when pressure returns to normal. Each surge event is recorded with its duration and pressure profile.
+**Voltage exceedance with severity tiers (child events).** Click **+ Add Sub-expression** beneath the start trigger to add a second row, and configure two rows in highest-priority-first order: `severe` / `voltage > 240` / Critical, and `moderate` / `voltage > 230` / Major. The Stop Trigger is `voltage < 215`. During the window, every time the voltage crosses a higher threshold, a child event of the corresponding severity is produced; when two or more child events accumulate, a parent event is automatically created to summarize the whole exceedance episode. For the complete timeline, see the [6.2.9 example](../06-events/02-child-events.md#629-example-two-tier-severity-for-voltage-exceedance).
 
-**Low-efficiency production window.** The start condition is `oee < 0.75`. The stop condition is `oee > 0.85`. Each time OEE drops below the target and recovers, the analysis summarizes the episode — when it started, how long it lasted, and which component (availability, performance, or quality) drove the loss.
+**Compressor surge detection (single event).** Start Trigger is `discharge_pressure > surge_limit AND flow < min_flow`; "Duration" is set to 5 seconds to filter out transient noise. When a genuine surge condition is confirmed the window opens, and the Stop Trigger closes it when pressure returns to normal. Each surge event is recorded with its duration and pressure profile.
 
 ---
 

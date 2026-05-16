@@ -24,7 +24,7 @@ sidebar_label: 过程分析
 - **[相关分析](./07-correlation-analysis.md)** — 度量多个属性或设备之间的相关性
 - **[标记线分析](./08-marker-analysis.md)** — 在图表上放置两条参考标记线，实时比较标记线之间的时间与属性差异
 - **[相似度分析](./09-profile-search.md)** — 在历史数据中搜索与目标波形相似的时间片段
-- **[关联规则](./10-association-rules.md)** — 挖掘事件与属性之间的共现规律
+- **[模型开发与管理](./10-model-development.md)** — 在 IDMP 内完成机器学习模型的训练开发与部署管理
 
 import DocCardList from '@theme/DocCardList';
 
