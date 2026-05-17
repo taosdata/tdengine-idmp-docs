@@ -41,7 +41,7 @@ Every analysis belongs to exactly one element and is configured on that element'
 ## What's Covered in This Chapter
 
 - **[Browsing and Managing Analyses](./01-browsing-analyses.md)** — The analysis list, toolbar controls, and row actions
-- **[Creating an Analysis](./02-creating-analysis.md)** — The four-section creation form: General Information, Trigger, Calculation, and Event
+- **[Creating an Analysis](./02-creating-analysis.md)** — The four-section creation form: General Information, Event, Trigger, and Calculation
 - **[Trigger Types](./03-trigger-types.md)** — All eight trigger types and their specific parameters
 - **[Calculation](./04-calculation.md)** — Calculation target, window aggregation, output timestamp, and output attributes
 - **[Generating Events](./05-generating-events.md)** — Configuring an analysis to produce events

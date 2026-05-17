@@ -1,115 +1,50 @@
 ---
-title: Activate TDengine Historian
+title: License Management
+sidebar_label: License Management
 ---
 
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
+# 14.10 License Management
 
-This procedure describes how to activate a TDengine Historian license. The operations in this procedure are performed in TDengine TSDB-Enterprise, but the licensing applies to TDengine Historian, including both TDengine TSDB-Enterprise and TDengine IDMP.
+The License Management page provides a centralized view of the software licenses currently granted to a TDengine IDMP system and their usage, along with an optional configuration entry for ECS (Enterprise Certificate Service) licensing.
 
-## Prerequisites
+## 14.10.1 Opening License Management
 
-- Contact TDengine or an authorized reseller to purchase TDengine Historian.
-- Install and deploy TDengine Historian (TDengine TSDB-Enterprise and TDengine IDMP) on the actual machines that you intend to license.
+A **License Management** item is provided under **Admin Console → System Configuration**. Click it to open the IDMP License Management page.
 
-## Procedure
+## 14.10.2 License Contents
 
-### Obtain Your Activation Code
+The License Management page lists all licensed items granted to the current IDMP system in a table. Each row contains the following 4 columns:
 
-<Tabs>
-<TabItem value="TDengine CLI">
+| Column | Description |
+|---|---|
+| **Licensed Item** | The name of the feature or resource governed by the license |
+| **Available** | Whether this item is currently available in the system |
+| **Expiration** | The expiration time of this item |
+| **Quantity** | The licensed quantity and current usage, in the form `<used>/<limit>` — for example, `1/5` indicates that 5 users are licensed and 1 user currently exists in the system |
 
-1. On the machine running TDengine TSDB-Enterprise, open the TDengine CLI as the `root` user:
+The currently listed licensed items include: **Users**, **Time-Series Attributes**, **Non-Time-Series Attributes**, **Elements**, **IDMP Clusters**, **CPU**, **Core Features**, **Version Control**, **Data Forecasting**, **Anomaly Detection**, **Data Quality**, **Agentic AI**, and others.
 
-   ```shell
-   taos
-   ```
+![License Management home](./images/license-01.png)
 
-1. Run the following SQL statement to obtain required information for your deployment:
+## 14.10.3 ECS License Configuration
 
-   ```sql
-   SHOW CLUSTER MACHINES;
-   ```
+The toolbar at the top right of the License Management page provides a **Configure** button. Clicking it opens the **License Service Configuration** dialog with the following options:
 
-   Sample output is displayed as follows:
+| Field | Description |
+|---|---|
+| **Enable ECS Licensing** | Toggle that controls whether ECS licensing is enabled |
+| **Refresh Interval** | How often the client pulls license information from the ECS server |
+| **License Server URL** | The server URL of the ECS licensing service |
+| **License ID** | The license identifier issued by ECS |
+| **Quota ID** | The quota identifier associated with this license |
 
-   ```text
-            id         | dnode_num |          machine         | version  |
-   =======================================================================
-   3609687158593567855 | 1         | Bdw+qvOCyvAOc3SS5GIyEOIi | 3.3.6.13 |
-   ```
+![License configuration dialog](./images/license-02.png)
 
-1. Copy the entire output of the statement and send it to your account representative or authorized reseller. Also include the following information:
+## 14.10.4 Licensing Models
 
-   - The name of your company
-   - The name and email address of the primary technical contact
-   - The intended environment (production, PoC, or testing)
-   - The intended number of historian tags. For more information, see [TDengine Historian Pricing](https://tdengine.com/pricing/).
-   - The desired term of the license
+- **ECS licensing disabled** (default): the IDMP system automatically obtains its software license from a TSDB system on the same network segment. This is the licensing model used by most IDMP users today.
+- **ECS licensing enabled**: an independent IDMP software license is delivered centrally by the ECS service. This supports running multiple IDMP environments and managing per-environment quota.
 
-   Your account representative or reseller will send you an activation code that you use to activate your TDengine Historian deployment.
+TDengine has launched an independent licensing system for IDMP, including ECS (Enterprise Certificate Service) and CLS (Customer License Service).
 
-</TabItem>
-
-<TabItem value="TDengine TSDB Explorer">
-
-1. Log in to TDengine TSDB Explorer as the `root` user. The default URL is `http://127.0.0.1:6060`.
-
-1. From the main menu on the left, select **Management** and open the **License** tab.
-
-1. Copy the value of the Cluster ID and Machine Code values as shown below.
-
-   ![License tab](../assets/activate-01.png)
-
-1. Send these values to your account representative or authorized reseller. Also include the following information:
-
-   - The name of your company
-   - The name and email address of the primary technical contact
-   - The intended environment (production, PoC, or testing)
-   - The intended number of historian tags. For more information, see [TDengine Historian Pricing](https://tdengine.com/pricing/).
-   - The desired term of the license
-
-   Your account representative or reseller will send you an activation code that you use to activate your TDengine Historian deployment.
-
-</TabItem>
-</Tabs>
-
-### Activate Your Deployment
-
-<Tabs>
-<TabItem value="TDengine CLI">
-
-1. On the machine running TDengine TSDB-Enterprise, open the TDengine CLI as the `root` user.
-
-   ```shell
-   taos
-   ```
-
-1. Apply the activation code to your cluster:
-
-   ```sql
-   ALTER CLUSTER 'activeCode' '<your-activation-code>';
-   ```
-
-Your TDengine Historian deployment is now licensed. You can run the following SQL statement to view the details of your license, including expiration date:
-
-```sql
-SHOW GRANTS\G;
-```
-
-</TabItem>
-
-<TabItem value="TDengine TSDB Explorer">
-
-1. Once you receive your activation code, log in to TDengine TSDB Explorer as the `root` user. The default URL is `http://127.0.0.1:6060`.
-
-1. From the main menu on the left, select **Management**. Open the **License** tab and click **Activate License**.
-
-1. Enter your activation code and click **Confirm**.
-
-   ![Activate license](../assets/activate-02.png)
-
-Your TDengine Historian deployment is now licensed. You can view the details of your license, including expiration date, on the **License** tab.
-
-</TabItem>
-</Tabs>
+For information on purchasing an independent IDMP software license, or for any related questions, please contact TDengine sales.
