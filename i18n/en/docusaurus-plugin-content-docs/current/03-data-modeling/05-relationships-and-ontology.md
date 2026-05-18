@@ -168,49 +168,7 @@ This tree is the view IDMP users are most familiar with — almost all entry poi
 
 On top of the tree above, making explicit the references between elements, attributes, analyses, events, templates, and panels yields a relationship network of multiple industrial object types. It is no longer a tree but a directed graph carrying multiple kinds of business semantics:
 
-```mermaid
-flowchart TB
-    T["Element Template<br/>(SheetDryer Template)"]
-    A["Element A<br/>(SheetDryer-01)"]
-    P1["Attribute<br/>OutletMoisture"]
-    P2["Attribute<br/>TargetMoisture"]
-    AN["Analysis<br/>Moisture Deviation Analysis"]
-    EV["Event<br/>Moisture Deviation<br/>2026-05-12"]
-    PNL["Panel / Dashboard"]
-    CTX["Context Snapshot<br/>(related attributes, related elements, related documents)"]
-    B["Element B<br/>(Drying-Shared-Airflow)"]
-    C["Element C<br/>(Drum-Airflow-Drying)"]
-    D["Element D<br/>(Stem-Reconditioning)"]
-
-    T -- "Derived" --> A
-    A -- "Owns" --> P1
-    A -- "Owns" --> P2
-    AN -- "References Element / Attribute" --> A
-    AN -- "References Element / Attribute" --> P1
-    PNL -- "References Element / Attribute" --> A
-    P1 -- "Triggers" --> AN
-    AN -- "Generates" --> EV
-    EV -- "Related Element" --> A
-    EV -- "Related Analysis" --> AN
-    P1 -- "Dynamic Limit Reference" --> P2
-    EV -- "Context Snapshot" --> CTX
-    A -- "Weak" --> B
-    C -- "Weak" --> B
-    D -- "Weak" --> B
-
-    classDef element fill:#e8f0fe,stroke:#4285f4,color:#222
-    classDef attr fill:#fef3e8,stroke:#f4a142,color:#222
-    classDef analysis fill:#e8fef0,stroke:#42a142,color:#222
-    classDef event fill:#fee8e8,stroke:#f44242,color:#222
-    classDef tmpl fill:#f3e8fe,stroke:#a142f4,color:#222
-    classDef misc fill:#f5f5f5,stroke:#999,color:#222
-    class A,B,C,D element
-    class P1,P2 attr
-    class AN analysis
-    class EV event
-    class T tmpl
-    class PNL,CTX misc
-```
+![Industrial Ontology](./images/networking-02.png)
 
 This network has several key characteristics:
 
