@@ -51,6 +51,70 @@ The following figure shows that the event is triggered only when the symbol text
 
 ![Conditional Triggers](./images/canvas-07.gif)
 
+#### 5.2.2.2.1 Trigger Condition Data Structure
+
+A trigger condition is described by the `where` object on a symbol event and contains the following fields:
+
+- `type`: An arbitrary value; using the condition's functional name is recommended for readability. When empty, no trigger condition is applied.
+- `fn`: A condition function that returns a boolean value. Highest priority.
+- `fnJs`: A JavaScript code snippet for the condition. It can access the `pen` and `context` parameters and must return a boolean value. Second priority.
+- `key`: Compare against an attribute name. Lowest priority.
+- `comparison`: The comparison operator, used together with `key`.
+- `value`: The value to compare against, used together with `key`.
+
+The operators supported by `comparison` are:
+
+| Operator | Meaning                                                                                                                                     |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `>`      | Greater than                                                                                                                                |
+| `>=`     | Greater than or equal to                                                                                                                    |
+| `<`      | Less than                                                                                                                                   |
+| `<=`     | Less than or equal to                                                                                                                       |
+| `=`      | Equal to                                                                                                                                    |
+| `!=`     | Not equal to                                                                                                                                |
+| `[)`     | Between (mathematical interval). For example, `[0, 100)` means 0 to 100, including 0 but excluding 100; `[0, 100]` includes both 0 and 100. |
+| `![)`    | Not between, i.e., outside the "between" range.                                                                                             |
+| `[]`     | Belongs to a set, for example `[1,20,30..50,65]`. Strings are supported since version 1.0.48, for example `[1,20,aaa,value1]`.              |
+| `![]`    | Does not belong to the set above.                                                                                                           |
+
+### 5.2.2.3 Execute JavaScript
+
+When the event action is set to "Execute JavaScript," a user-defined JavaScript snippet runs after the event is triggered. This is useful for reporting data, calling APIs, refreshing business state, and similar scenarios. The following variables are available inside the snippet:
+
+- `pen`: The symbol object that triggered the event.
+- `params`: The parameters passed in from the event configuration.
+- `context`: The execution context.
+- `arguments`: The original event arguments.
+
+The equivalent symbol-event data structure looks like this:
+
+```typescript
+const pen = {
+  name: "rectangle",
+  text: "rectangle",
+  x: 100,
+  y: 100,
+  width: 100,
+  height: 100,
+  events: [
+    {
+      name: "click",
+      action: EventAction.JS,
+      params: "my params", // parameters passed to the code block
+      value: `
+        console.log('arguments', arguments);
+        console.log('current symbol', pen);
+        console.log('params', params);
+        console.log('context', context);
+      `, // code block
+    },
+  ],
+};
+
+// Example: calling an API
+// value: "fetch('/api/device/data?mock=1').then((e) => { e.text().then(data => console.log(data)); })"
+```
+
 ## 5.2.3 Animation Effects
 
 IDMP has many built-in symbol animation effects and also allows frame-by-frame custom animations.
