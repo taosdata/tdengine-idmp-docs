@@ -8,11 +8,16 @@ import TabItem from '@theme/TabItem';
 
 # 15.1.3 Authentication
 
-The IDMP SDK uses **Bearer Token (JWT)** for authentication. How you obtain a token depends on your deployment type.
+The IDMP SDK sends bearer credentials through the `Authorization` header. In self-hosted environments, you can use either of the following:
 
-## 15.1.3.1 Enterprise (Self-Hosted) Authentication
+- A JWT obtained from the login endpoint
+- A user API key created in Personal Settings
 
-For self-hosted deployments, obtain a token by calling the login endpoint with a username and password.
+In both cases, the final header format is `Authorization: Bearer <credential>`. The cloud service still requires an additional `Access-token` header.
+
+## 15.1.3.1 Enterprise (Self-Hosted) JWT Authentication
+
+For self-hosted deployments, obtain a JWT by calling the login endpoint with a username and password.
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -58,7 +63,55 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 </TabItem>
 </Tabs>
 
-## 15.1.3.2 Cloud Service Authentication
+## 15.1.3.2 User API Key Authentication
+
+User API keys are recommended for scripts, CLIs, MCP clients, and other integrations that need a stable credential. For the full UI workflow and lifecycle actions, see [Section 14.8](../../14-administration/08-profile-settings.md).
+
+**To obtain an API key:**
+
+1. Sign in to the IDMP Web UI.
+2. Open the avatar menu in the upper-right corner and select the top account item to open the personal settings dialog.
+3. Switch to the **API Key** tab, click **Add New API Key**, enter a unique title, and choose **Never** or a future **Expiration Date**.
+4. Copy the generated API key. The copied value starts with `api_` and does not include the `Bearer` prefix.
+
+| Item | Description |
+|---|---|
+| **Credential format** | `api_<key_id>.<secret>` |
+| **Header format** | `Authorization: Bearer <IDMP_API_KEY>` |
+| **Best for** | CLIs, scripts, MCP clients, and other long-lived integrations |
+| **Rotation** | Delete and recreate the key from **Personal Settings → API Key** |
+
+<Tabs groupId="language">
+<TabItem value="java" label="Java">
+
+```java
+import org.openapitools.client.ApiClient;
+
+ApiClient apiClient = new ApiClient("Authorization");
+apiClient.setBasePath(System.getenv("IDMP_HOST"));
+apiClient.setBearerToken(System.getenv("IDMP_API_KEY"));
+```
+
+</TabItem>
+<TabItem value="python" label="Python">
+
+```python
+import os, idmp_sdk
+
+configuration = idmp_sdk.Configuration(
+    host=os.environ["IDMP_HOST"],
+    access_token=os.environ["IDMP_API_KEY"]
+)
+```
+
+</TabItem>
+</Tabs>
+
+:::note
+An API key inherits the role permissions and element access scope of its owner. It becomes invalid immediately when it expires, is deleted, or its owner is deactivated or deleted. Requests authenticated by API key cannot manage API keys.
+:::
+
+## 15.1.3.3 Cloud Service Authentication
 
 The cloud service requires two tokens on each request: `Authorization` (Bearer Token) and `Access-token`.
 
@@ -116,19 +169,21 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 </TabItem>
 </Tabs>
 
-## 15.1.3.3 Token Lifetime and Refresh
+## 15.1.3.4 Credential Lifetime and Rotation
 
-| Deployment | Token Lifetime | How to Refresh |
+| Credential Type | Lifetime | How to Rotate |
 |---|---|---|
-| Enterprise (self-hosted) | Configured on the server (see `application.yml`) | Call the login endpoint again to get a new token |
+| Enterprise JWT | Configured on the server (see `application.yml`) | Call the login endpoint again to get a new JWT |
+| User API Key | Controlled by the expiration chosen at creation time, or set to never expire | Delete and recreate the key from **Personal Settings → API Key** |
 | Cloud service | Controlled by the browser session | Log in through the browser again and copy new tokens from DevTools |
 
 :::tip
-Wrap token acquisition and refresh in a utility function. Trigger a refresh automatically when you receive a `401 Unauthorized` response.
+Wrap credential acquisition and rotation in a utility function. When you receive a `401 Unauthorized` response, re-login or switch to a fresh API key based on the credential type you use.
 :::
 
-## 15.1.3.4 Security Best Practices
+## 15.1.3.5 Security Best Practices
 
-- **Never** hardcode tokens, usernames, or passwords in source code.
+- **Never** hardcode tokens, API keys, usernames, or passwords in source code.
 - Store credentials in environment variables or a secrets manager (Vault, AWS Secrets Manager, etc.).
+- Use least-privilege users or roles for automation, and rotate API keys regularly.
 - Always use HTTPS when connecting to an IDMP server in production.

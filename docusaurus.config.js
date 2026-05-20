@@ -22,6 +22,75 @@ const getGTMID = () => {
   return 'GTM-MLW247PH';
 };
 
+const getMenu = () => {
+  const locale = process.env.DOCUSAURUS_CURRENT_LOCALE || 'zh-Hans';
+  if (locale === 'en') {
+    return [
+      {
+        label: 'TSDB Docs',
+        to: 'https://docs.tdengine.com',
+        position: 'right',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+      {
+        label: 'Cloud',
+        to: 'https://cloud.tdengine.com',
+        position: 'right',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+      {
+        label: 'Contact Us',
+        to: 'https://tdengine.com/contact/',
+        position: 'right',
+        target: '_blank',
+        rel: 'noopener noreferrer',
+      },
+      {
+        type: 'search',
+        position: 'right',
+        className: 'navbarSearchTemp'
+      },
+    ]
+  }
+  return [
+    {
+      label: 'AI 问答',
+      to: '/redirect?target=chat',
+      position: 'right',
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    },
+    {
+      label: 'TSDB 文档',
+      to: '/redirect?target=tsdb',
+      position: 'right',
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    },
+    {
+      label: 'Cloud',
+      to: '/redirect?target=cloud',
+      position: 'right',
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    },
+    {
+      label: '联系我们',
+      to: '/redirect?target=contactus',
+      position: 'right',
+      target: '_blank',
+      rel: 'noopener noreferrer',
+    },
+    {
+      type: 'search',
+      position: 'right',
+      className: 'navbarSearchTemp'
+    },
+  ];
+};
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: getTitle(),
@@ -48,10 +117,15 @@ const config = {
     localeConfigs: {
       'en': {
         label: 'English',
-        htmlLang: 'en-US'
+        htmlLang: 'en-US',
+        baseUrl: '/',
+        url: 'https://idmpdocs.tdengine.com'
       },
       'zh-Hans': {
         label: '简体中文',
+        htmlLang: 'zh-CN',
+        baseUrl: '/',
+        url: 'https://idmpdocs.taosdata.com'
       },
     },
   },
@@ -121,42 +195,7 @@ const config = {
           alt: 'TDengine IDMP',
           src: '/img/tdengine-idmp.svg'
         },
-        items: [
-          {
-            label: 'AI 问答',
-            to: '/redirect?target=chat',
-            position: 'right',
-            target: '_blank', // 新标签页打开
-            rel: 'noopener noreferrer', // 安全性
-            locale: 'zh-Hans',
-          },
-          {
-            label: 'TSDB 文档',
-            to: '/redirect?target=tsdb',
-            position: 'right',
-            target: '_blank', // 新标签页打开
-            rel: 'noopener noreferrer', // 安全性
-          },
-          {
-            label: 'Cloud',
-            to: '/redirect?target=cloud',
-            position: 'right',
-            target: '_blank',
-            rel: 'noopener noreferrer',
-          },
-          {
-            label: '联系我们',
-            to: '/redirect?target=contactus',
-            position: 'right',
-            target: '_blank',
-            rel: 'noopener noreferrer',
-          },
-          {
-            type: 'search',
-            position: 'right',
-            className: 'navbarSearchTemp'
-          },
-        ],
+        items: getMenu(),
       },
       prism: {
         theme: tdengineTheme,
@@ -185,7 +224,7 @@ const config = {
   stylesheets: [
     '/fonts/css/ibm-plex.min.css'
   ],
-    customFields: {
+  customFields: {
     assembleConfig,
     versions,
     ltsVersion: assembleConfig.assembleVersions.lts.version,

@@ -30,13 +30,46 @@ export default function PkgList({
         const product = data.find((p) => p?.name === productName);
         const pkgVersion = versionProp || product?.filters?.versions[0];
         const all = product?.versions || [];
-        const matchedVersions = all.filter(
+        let matchedVersions = all.filter(
             (v) =>
                 v?.version === pkgVersion &&
                 v?.platform === platform &&
                 (!arch || v?.arch === arch) &&
                 (!pkgType || v?.["pkg-type"] === pkgType)
         );
+        // Fallback: if no packages found for the target version on this platform,
+        // use the latest available version for this platform.
+        if (matchedVersions.length === 0 && !versionProp) {
+            const platformVersions = all.filter(
+                (v) =>
+                    v?.platform === platform &&
+                    (!arch || v?.arch === arch) &&
+                    (!pkgType || v?.["pkg-type"] === pkgType)
+            );
+            if (platformVersions.length > 0) {
+                const latestVersion = platformVersions[0]?.version;
+                matchedVersions = platformVersions.filter(
+                    (v) => v?.version === latestVersion
+                );
+            }
+        }
+        // Fallback for macOS: infer .0 version URL from current version pattern
+        if (matchedVersions.length === 0 && platform === "macOS" && pkgVersion) {
+            const parts = pkgVersion.split(".");
+            if (parts.length === 4) {
+                parts[3] = "0";
+                const macVersion = parts.join(".");
+                const productSlug = productName.toLowerCase().replace(/\s+/g, "-");
+                matchedVersions = [{
+                    name: `${productSlug}-${macVersion}-macos-arm64.pkg`,
+                    "download-url": `https://downloads.taosdata.com/${productSlug}/${macVersion}/${productSlug}-${macVersion}-macos-arm64.pkg`,
+                    version: macVersion,
+                    platform: "macOS",
+                    arch: "arm64",
+                    size: "",
+                }];
+            }
+        }
         const seen = new Set();
         return matchedVersions.filter((v) => {
             const url = v?.["download-url"];
@@ -92,7 +125,7 @@ export default function PkgList({
             <ul>
                 {pkgs.map((p, idx) => (
                     <li key={p['download-url']} >
-                        <button className={styles.packageItem} onClick={() => openPopup(p)}>{p.name} ({p.size})</button>
+                        <button className={styles.packageItem} onClick={() => openPopup(p)}>{p.name}{p.size ? ` (${p.size})` : ''}</button>
                     </li>
                 ))}
             </ul>

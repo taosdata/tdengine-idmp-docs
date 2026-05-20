@@ -25,12 +25,8 @@ Easy Import works best when your TSDB supertables already have a tag that encode
 1. Select the **Database** and **Supertable** at the top of the page. Check **Ignore** to skip a supertable entirely.
 2. In the **Tags** section, configure each tag:
    - Check **Path** to use the tag value as the element's location in the asset tree. Set **Path Level** (0 = leaf) to control hierarchy depth. Optionally set a **Parent Element** to root the import under an existing element.
-   - When **Path** is checked, an **Element Path Expression** editor appears, allowing you to customize the path structure in the asset tree. The expression uses dots to separate hierarchy levels and supports both fixed text and `${tagName}` substitution variables. The default value is `{rename}.${tagName}`. Examples:
-     - `Location.${location}` — creates a fixed "Location" level with the `location` tag values expanded below it
-     - `${province}.${city}.${district}` — builds a multi-level path using multiple tags; the system automatically queries actual tag value combinations (avoiding cartesian products)
-     - If a tag value itself contains dots (e.g., `Beijing.Chaoyang`), it is automatically split into multiple hierarchy levels
    - Leave **Path** unchecked to import the tag as a static attribute (element property).
-   - Use the **Rename** field to give the attribute a display name different from the TSDB column name. When the rename is changed, the default prefix in the path expression is automatically updated.
+   - Use the **Rename** field to give the attribute a display name different from the TSDB column name.
    - Optionally assign an **Attribute Category**.
 3. In the **Metrics** section, check **Map STable to Element** for each metric column you want to import as a dynamic attribute. Use **Rename** and **Attribute Category** as needed.
 4. Optionally set an **Element Category** and a **Subtable Filter** (a SQL WHERE-style expression to include only matching child tables).
@@ -124,6 +120,6 @@ For each supertable in the database, configure:
 | **Path** | The tag column whose value represents the OPC node path |
 | **Data Column** | The metric column containing the data values |
 | **Quality Column** | Optional tag or column containing the data quality value |
-| **Path Level** | The starting level in the path hierarchy. For example, given the path `Objects.A.B`, if the starting level is set to 1, the path is processed as `A.B`. |
+| **Path Level** | The depth offset within the path hierarchy |
 
 Navigate between databases using **Previous Database** and **Next Database**, then click **Finish** to create the import task.

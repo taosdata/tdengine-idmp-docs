@@ -5,7 +5,7 @@ sidebar_label: Finding Elements and Data
 
 # 3.5 Finding Elements and Data
 
-As your asset model grows, quickly locating the right element or attribute becomes essential. TDengine IDMP provides several complementary ways to navigate and search your asset catalog: browsing the asset tree, searching by keyword or filter criteria, saving searches as reusable Element Filters, and organizing frequently accessed elements into custom groups for quick access.
+As your asset model grows, quickly locating the right element or attribute becomes essential. TDengine IDMP provides several complementary ways to navigate and search your asset catalog: browsing the asset tree, searching by keyword or filter criteria, saving searches as reusable Element Filters, and bookmarking frequently accessed elements as favorites.
 
 ## 3.5.1 Navigating the Asset Tree
 
@@ -18,7 +18,7 @@ The **asset tree** in the left sidebar of the Explorer page provides a hierarchi
 
 The asset tree supports arbitrarily deep hierarchies. Expand only the branches relevant to your current task and collapse the rest to keep the sidebar manageable.
 
-Below the asset tree, the sidebar also contains two additional sections: **Element Groups** and **Element Filters**, described in [3.5.4](#354-element-groups) and [3.5.5](#355-element-filters) below.
+Below the asset tree, the sidebar also contains two additional sections: **Favorite Elements** and **Element Filters**, described in [3.5.4](#354-favorite-elements) and [3.5.5](#355-element-filters) below.
 
 ## 3.5.2 Browsing an Element
 
@@ -77,20 +77,19 @@ Click **Advanced** to expand additional filter fields. For **Element** searches:
 
 For **Attribute** searches, the Advanced panel offers Attribute Name, Attribute Description, Attribute Categories, Attribute Value Type, Maximum Results, Order By, and an **Element Criteria** sub-section (Root Path, Name, Description, Categories) to restrict which elements the attributes are drawn from.
 
-## 3.5.4 Element Groups
+## 3.5.4 Favorite Elements
 
-You can organize elements into custom named **groups** for quick access. An element can belong to multiple groups.
+You can mark any element as a **favorite** for quick access without navigating the full asset tree.
 
-To add an element to a group:
+To add an element to favorites:
 
-1. Hover over the element in the asset tree, click **⋮**, and select **Add to Group**; or click the **Add to Group** icon in the General tab toolbar.
-2. The group dialog opens, listing all existing groups with checkboxes (groups that already contain this element appear pre-checked).
-3. Check the target groups. To create a new group, type a name in the input at the bottom and click **+**.
-4. Click **Confirm** to save.
+1. Select the element in the asset tree.
+2. In the General tab toolbar, click the **star icon** (☆).
+3. The star fills in and the element is added to **Favorite Elements**.
 
-To access your groups, click **Element Groups** in the left sidebar (below the asset tree). The group list shows each group's name and item count. Click a group name to view its elements; click any element name to navigate directly to it.
+To access your favorites, click **Favorite Elements** in the left sidebar (below the asset tree). This opens a flat list of all favorited elements. Click any entry to navigate directly to that element.
 
-To manage groups, click **⋮** in the group list to **Rename** or **Delete** a group.
+To remove an element from favorites, select it and click the star icon again to toggle it off.
 
 ## 3.5.5 Element Filters
 

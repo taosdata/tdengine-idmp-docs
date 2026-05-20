@@ -24,7 +24,7 @@ Process analytics, real-time analytics, and AI-powered insights share the same d
 - **[Correlation Analysis](./07-correlation-analysis.md)** — Measure correlations across multiple attributes or devices
 - **[Marker Analysis](./08-marker-analysis.md)** — Place two reference marker lines on the chart to compare attribute differences between two points in time
 - **[Profile Search](./09-profile-search.md)** — Search for time segments in historical data that match a target waveform
-- **[Association Rules](./10-association-rules.md)** — Discover co-occurrence patterns between events and attributes
+- **[Model Development and Management](./10-model-development.md)** — Train, deploy, and manage machine-learning models inside IDMP
 
 import DocCardList from '@theme/DocCardList';
 

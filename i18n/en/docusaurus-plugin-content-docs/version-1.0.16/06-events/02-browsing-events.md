@@ -33,9 +33,9 @@ The following filter controls support narrowing the event list by acknowledgment
 
 ### 6.2.1.3 Left Sidebar
 
-The left sidebar provides quick access to event groups and saved event filters.
+The left sidebar provides quick access to favorite events and saved event filters.
 
-- **Event Groups:** User-created named groups; any event can be added to one or more groups for quick access.
+- **Favorites Events:** Individual events that have been marked as favorites for quick access. Any event can be added to favorites.
 - **Event Filters:** Saved filter configurations (see [Saved Event Filters](#623-saved-event-filters) below)
 
 ### 6.2.1.4 Event List Columns

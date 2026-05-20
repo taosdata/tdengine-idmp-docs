@@ -40,15 +40,18 @@ Every event carries the following standard fields, which describe the event's ti
 | **Name** | Display name generated from the naming pattern in the event template |
 | **Start Time** | When the event began |
 | **End Time** | When the event ended (blank if still active) |
-| **Duration** | Elapsed time between start and end |
 | **Template** | The event template this event was created from |
 | **Severity Level** | Severity category (Critical, Major, Minor, Warning, Normal) |
+| **Operating Reason** | The operational reason that triggered this event, written by the analysis when the event is generated |
+| **Current Value** | The value of the key measurement at the event's start time |
 | **Reason Code** | Optional code identifying the cause |
 | **Categories** | Tags for filtering and grouping |
 | **Description** | Free-text description |
 | **Associated Element** | The element that generated this event |
 | **Associated Analysis** | The analysis rule that triggered this event |
+| **Parent Event** | For a child event, the parent event it belongs to; blank for ordinary events |
 | **Status** | Acknowledgment status of the event (Unacknowledged / Acknowledged) |
+| **Acknowledged By** | The user who acknowledged the event (blank if unacknowledged) |
 
 In addition to these standard fields, an event can carry **custom attributes** — named values recorded at the time of the event, such as the peak temperature during an exceedance or the batch ID at the time of a fault. Custom attributes are defined in the event template.
 
@@ -57,11 +60,13 @@ In addition to these standard fields, an event can carry **custom attributes** �
 This chapter covers the complete event management workflow, from template definition to event browsing, detail viewing, alert notifications, acknowledgment, and analysis chart.
 
 - **[Event Templates](./01-event-templates.md)** — Creating and managing event templates in Libraries
-- **[Browsing Events](./02-browsing-events.md)** — The global events view, element-level events, and filtering
-- **[Event Detail](./03-event-detail.md)** — Fields, attributes, annotations, and notification history
-- **[Alerts and Notifications](./04-alerts-and-notifications.md)** — Contact points, notification rules, and notification behavior
-- **[Acknowledgment](./05-acknowledgment.md)** — Acknowledging events and the acknowledgment workflow
-- **[Analysis Chart](./06-trend-analysis.md)** — Analyzing events with the analysis chart
+- **[Child Events](./02-child-events.md)** — Modeling "one situation, multiple severities" with parent and child events
+- **[Browsing Events](./03-browsing-events.md)** — The global events view, element-level events, and filtering
+- **[Event Detail](./04-event-detail.md)** — General information plus five bottom tabs: Attributes, Associated Attributes, Annotations, Notification Record, and Child Events
+- **[Alerts and Notifications](./05-alerts-and-notifications.md)** — Contact points, notification rules, and notification behavior
+- **[Acknowledgment](./06-acknowledgment.md)** — Acknowledging events and the acknowledgment workflow
+- **[Analysis Chart](./07-trend-analysis.md)** — Analyzing events with the analysis chart
+- **[Root Cause Analysis](./08-root-cause-analysis.md)** — Root cause analysis based on events
 
 import DocCardList from '@theme/DocCardList';
 
