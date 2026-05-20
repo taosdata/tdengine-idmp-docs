@@ -74,7 +74,7 @@ sidebar_label: 图元
 | `!=`   | 不等于                                                                                                  |
 | `[)`   | 介于，与数学区间含义相同。例如 `[0, 100)` 表示 0~100，包含 0 但不包含 100；`[0, 100]` 表示包含 0 和 100 |
 | `![)`  | 不介于，"介于"以外的范围                                                                                |
-| `[]`   | 属于集合，例如 `[1,20,30..50,65]`；1.0.48 版本后支持字符串，例如 `[1,20,aaa,值1]`                       |
+| `[]`   | 属于集合，例如 `[1,20,30..50,65]`，其中 `30..50` 表示 30 到 50 之间的连续整数区间；1.0.48 版本后支持字符串，例如 `[1,20,aaa,值1]`     |
 | `![]`  | 不属于，"属于"以外的集合                                                                                |
 
 ### 5.2.2.3 执行 JavaScript
@@ -89,6 +89,10 @@ sidebar_label: 图元
 图元事件的等效数据结构示例：
 
 ```typescript
+// EventAction 由画布运行时提供，这里内联以便示例自洽：
+// "JS" 即执行 JavaScript 代码块。
+const EventAction = { JS: "JS" };
+
 const pen = {
   name: "rectangle",
   text: "矩形",
@@ -110,9 +114,22 @@ const pen = {
     },
   ],
 };
+```
 
-// 调用接口示例：
-// value: "fetch('/api/device/data?mock=1').then((e) => { e.text().then(data => console.log(data)); })"
+调用接口的示例（将以下任意一个字符串赋值给事件的 `value` 字段）：
+
+```javascript
+// 使用链式 .then()
+fetch('/api/device/data?mock=1')
+  .then((res) => res.text())
+  .then((data) => console.log(data));
+
+// 或者使用 async/await
+(async () => {
+  const res = await fetch('/api/device/data?mock=1');
+  const data = await res.text();
+  console.log(data);
+})();
 ```
 
 ## 5.2.3 动效

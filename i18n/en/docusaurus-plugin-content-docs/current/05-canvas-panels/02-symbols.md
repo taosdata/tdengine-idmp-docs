@@ -72,9 +72,9 @@ The operators supported by `comparison` are:
 | `<=`     | Less than or equal to                                                                                                                       |
 | `=`      | Equal to                                                                                                                                    |
 | `!=`     | Not equal to                                                                                                                                |
-| `[)`     | Between (mathematical interval). For example, `[0, 100)` means 0 to 100, including 0 but excluding 100; `[0, 100]` includes both 0 and 100. |
-| `![)`    | Not between, i.e., outside the "between" range.                                                                                             |
-| `[]`     | Belongs to a set, for example `[1,20,30..50,65]`. Strings are supported since version 1.0.48, for example `[1,20,aaa,value1]`.              |
+| `[)`     | Between. The operator itself only denotes the "between" semantic; the actual interval boundaries are specified by the `value` field using standard mathematical interval notation, supporting all four combinations: `[]`, `[)`, `(]`, `()`. For example, a `value` of `[0, 100)` includes 0 but excludes 100; `(0, 100]` excludes 0 but includes 100; `[0, 100]` includes both 0 and 100. |
+| `![)`    | Not between, i.e., outside the "between" range. Interval boundaries are likewise specified by the `value` field.                            |
+| `[]`     | Belongs to a set, for example `[1,20,30..50,65]`, where `30..50` denotes the inclusive integer range from 30 to 50. Strings are supported since version 1.0.48, for example `[1,20,aaa,value1]`. |
 | `![]`    | Does not belong to the set above.                                                                                                           |
 
 ### 5.2.2.3 Execute JavaScript
@@ -89,6 +89,10 @@ When the event action is set to "Execute JavaScript," a user-defined JavaScript 
 The equivalent symbol-event data structure looks like this:
 
 ```typescript
+// EventAction is provided by the Canvas runtime; inlined here so the example
+// is self-contained. The value "JS" stands for the "Execute JavaScript" action.
+const EventAction = { JS: "JS" };
+
 const pen = {
   name: "rectangle",
   text: "rectangle",
@@ -110,9 +114,22 @@ const pen = {
     },
   ],
 };
+```
 
-// Example: calling an API
-// value: "fetch('/api/device/data?mock=1').then((e) => { e.text().then(data => console.log(data)); })"
+Example of calling an API (assign either snippet below as a string to the event's `value` field):
+
+```javascript
+// Using chained .then()
+fetch('/api/device/data?mock=1')
+  .then((res) => res.text())
+  .then((data) => console.log(data));
+
+// Or using async/await
+(async () => {
+  const res = await fetch('/api/device/data?mock=1');
+  const data = await res.text();
+  console.log(data);
+})();
 ```
 
 ## 5.2.3 Animation Effects
