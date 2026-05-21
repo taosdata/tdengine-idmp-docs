@@ -34,30 +34,28 @@ sidebar_label: IDMP CLI
 | 项目 | 说明 |
 |---|---|
 | IDMP 服务地址 | 使用当前环境真实可访问的地址。本文示例统一使用 `https://<IDMP_HOST>:6034`；如需排查证书或网络问题，可临时切换为 `http://<IDMP_HOST>:6042`。 |
-| 登录凭证 | 可使用用户名 + 密码，或使用已签发的 API Key。 |
+| 登录凭证 | 使用已签发的 API Key。 |
 | 本地依赖 | 在线安装与离线安装 CLI 的最低要求是 `Node.js 16+` 和 `npm`；建议优先使用当前仍受支持的 Node.js LTS 版本。 |
 | 支持平台 | CLI 支持 macOS、Linux、Windows，架构支持 `x64` 和 `arm64`。 |
 | 可选 Agent 环境 | 如果计划配合 Claude Code 或其他 Agent 使用，还需要后续安装 plugin 或 skills。 |
 
 :::warning HTTP 仅用于临时排障
-如果必须临时切换到 `http://<IDMP_HOST>:6042` 排查连通性，请只在可信隔离网络中短时使用，并避免在 HTTP 下执行登录或传递真实密码、API Key、bearer token 等敏感凭证。
+如果必须临时切换到 `http://<IDMP_HOST>:6042` 排查连通性，请只在可信隔离网络中短时使用，并避免在 HTTP 下传递 API Key 等敏感凭证。
 :::
 
-在交互终端中，`config init` 和 `auth login` 可以提示输入缺失的敏感信息。为了便于复制和自动化复用，本文优先使用 `stdin` 传递密码或 API Key。
+在交互终端中，`config init` 可以提示输入缺失的敏感信息。为了便于复制和自动化复用，本文优先使用 `stdin` 传递 API Key。
 
-以下示例中的 `<IDMP_HOST>`、`admin@example.com`、`$IDMP_PASSWORD` 和 `$IDMP_API_KEY` 都是占位值。执行前需要先替换为真实值，或先设置环境变量。
+以下示例中的 `<IDMP_HOST>` 和 `$IDMP_API_KEY` 都是占位值。执行前需要先替换为真实值，或先设置环境变量。
 
 **Linux / macOS**
 
 ```bash
-export IDMP_PASSWORD='<password>'
 export IDMP_API_KEY='api_<key_id>.<secret>'
 ```
 
 **Windows PowerShell**
 
 ```powershell
-$env:IDMP_PASSWORD = '<password>'
 $env:IDMP_API_KEY = 'api_<key_id>.<secret>'
 ```
 
@@ -100,11 +98,60 @@ installers\install-cli-offline.cmd
 
 `install-cli-offline.*` 会同时安装 CLI launcher 和当前平台对应的二进制 npm 包，并在执行前校验 `Node.js` / `npm` 可用性以及安装包版本是否匹配。
 
-## 15.4.4 与 Agent 配合使用
+## 15.4.4 初始化 profile 并登录
 
-`idmp-cli` 可以单独使用，也可以作为 Agent 的命令执行后端。推荐顺序是先安装 CLI，再按实际运行环境安装 plugin 或 skills。
+`profile` 可以理解为“一套保存好的环境配置”。第一次使用时，通常先创建 `default` profile 即可。`config init` 会在创建或更新 profile 的同时完成登录，并把会话保存到本地。
 
-### 15.4.4.1 Claude Code
+### 15.4.4.1 使用 API Key 登录
+
+**Linux / macOS**
+
+```bash
+printf '%s\n' "$IDMP_API_KEY" | idmp-cli config init \
+  --profile default \
+  --server https://<IDMP_HOST>:6034 \
+  --api-key-stdin
+```
+
+**Windows PowerShell**
+
+```powershell
+$env:IDMP_API_KEY | idmp-cli config init `
+  --profile default `
+  --server https://<IDMP_HOST>:6034 `
+  --api-key-stdin
+```
+
+CLI 会把当前会话识别为 `api_key` 认证方式，适合长期运行的脚本和 Agent 场景。
+
+该命令完成以下操作：
+
+1. 保存 `default` profile。
+2. 记录目标服务地址。
+3. 使用 API Key 完成认证。
+4. 持久化当前会话，供后续命令直接复用。
+
+### 15.4.4.2 验证当前状态
+
+首次登录完成后，建议立即执行以下检查：
+
+```bash
+idmp-cli profile list
+idmp-cli auth check --remote
+idmp-cli doctor --offline
+```
+
+以上三个命令分别用于确认已保存的环境、验证当前凭证是否被服务端接受，以及检查本地配置、会话存储和生成元数据是否完整。
+
+上述示例统一使用 IDMP 默认外部 HTTPS 端口 `6034`。如需临时排查证书或网络问题，可仅将协议和端口切换为 `http://<IDMP_HOST>:6042`，但应只在可信隔离网络中做短时连通性排障，且避免在 HTTP 下提交 API Key 等敏感凭证。问题排除后再切回 HTTPS。
+
+如果当前环境使用的是自签证书，`idmp-cli` 默认不会跳过证书校验。只有当该证书或其签发 CA 已导入当前机器的系统信任链时，CLI 才能正常通过 `https://<IDMP_HOST>:6034` 访问 IDMP。若尚未导入信任链，可先切换到 `http://<IDMP_HOST>:6042` 做临时排障，但同样应避免在 HTTP 下传递敏感凭证。当前 CLI 不提供类似 `--insecure` 的忽略证书校验参数。
+
+## 15.4.5 与 Agent 配合使用
+
+`idmp-cli` 可以单独使用，也可以作为 Agent 的命令执行后端。推荐顺序是先安装 CLI 并完成 profile 初始化，再按实际运行环境安装 plugin 或 skills。
+
+### 15.4.5.1 Claude Code
 
 如果本地使用的是 Claude Code，建议安装 TDengine 提供的 `idmp-plugin`。该 plugin 已内置匹配的 skills，不需要再向 Claude Code 重复安装同一套 skills。
 
@@ -145,7 +192,7 @@ claude --plugin-dir "$HOME/.claude/plugins/idmp-plugin"
 claude --plugin-dir "$env:USERPROFILE\.claude\plugins\idmp-plugin"
 ```
 
-### 15.4.4.2 其他 Agent
+### 15.4.5.2 其他 Agent
 
 如果使用的不是 Claude Code，而是支持 skills 目录或等价机制的 Agent，建议单独安装 `taosdata/agent-skills`。需要注意：`install-skills-offline.*` 的默认目标目录仍然是 Claude 的 skills 目录，也就是 `~/.claude/skills`；在 Windows 上对应 `%USERPROFILE%\.claude\skills`。因此，给其他 Agent 离线安装时，不要直接使用默认参数。
 
@@ -183,7 +230,7 @@ installers\install-skills-offline.cmd --target-dir C:\path\to\other-agent\skills
 
 对于没有独立 skills 目录的 Agent，可把离线包中的 `assets/skills/*` 复制到目标 Agent 的技能目录，或把各 skill 目录中的 Markdown 内容导入该 Agent 的可复用 prompt / instruction 系统中。无论使用哪种方式，都应先确保 `idmp-cli` 已安装并且在 `PATH` 中可用。
 
-### 15.4.4.3 推荐的 Agent 执行顺序
+### 15.4.5.3 推荐的 Agent 执行顺序
 
 建议将以下顺序写入 Agent 的执行规范中：
 
@@ -193,79 +240,6 @@ installers\install-skills-offline.cmd --target-dir C:\path\to\other-agent\skills
 4. 能使用快捷命令时优先使用快捷命令；需要精确控制时再使用结构化命令；原始 API 作为最后兜底方式。
 5. 对写操作先执行 `--dry-run`，确认后再执行 `--ack-risk`。
 6. 写入完成后，再次读取目标对象或执行 `auth check --remote` / `doctor` 进行确认。
-
-## 15.4.5 初始化 profile 并登录
-
-`profile` 可以理解为“一套保存好的环境配置”。第一次使用时，通常先创建 `default` profile 即可。`config init` 会在创建或更新 profile 的同时完成登录，并把会话保存到本地。
-
-### 15.4.5.1 使用用户名和密码登录
-
-**Linux / macOS**
-
-```bash
-printf '%s\n' "$IDMP_PASSWORD" | idmp-cli config init \
-  --profile default \
-  --server https://<IDMP_HOST>:6034 \
-  --username admin@example.com \
-  --password-stdin
-```
-
-**Windows PowerShell**
-
-```powershell
-$env:IDMP_PASSWORD | idmp-cli config init `
-  --profile default `
-  --server https://<IDMP_HOST>:6034 `
-  --username admin@example.com `
-  --password-stdin
-```
-
-该命令完成以下操作：
-
-1. 保存 `default` profile。
-2. 记录目标服务地址。
-3. 使用当前账号登录。
-4. 持久化当前会话，供后续命令直接复用。
-
-### 15.4.5.2 使用 API Key 登录
-
-如果当前环境已经签发 API Key，可直接改用以下方式：
-
-**Linux / macOS**
-
-```bash
-printf '%s\n' "$IDMP_API_KEY" | idmp-cli config init \
-  --profile default \
-  --server https://<IDMP_HOST>:6034 \
-  --api-key-stdin
-```
-
-**Windows PowerShell**
-
-```powershell
-$env:IDMP_API_KEY | idmp-cli config init `
-  --profile default `
-  --server https://<IDMP_HOST>:6034 `
-  --api-key-stdin
-```
-
-在这种模式下，CLI 会把当前会话识别为 `api_key` 认证方式。对于长期运行的脚本和 Agent，这种方式通常比手动维护登录态更稳定。
-
-### 15.4.5.3 验证当前状态
-
-首次登录完成后，建议立即执行以下检查：
-
-```bash
-idmp-cli profile list
-idmp-cli auth check --remote
-idmp-cli doctor --offline
-```
-
-以上三个命令分别用于确认已保存的环境、验证当前凭证是否被服务端接受，以及检查本地配置、会话存储和生成元数据是否完整。
-
-上述示例统一使用 IDMP 默认外部 HTTPS 端口 `6034`。如需临时排查证书或网络问题，可仅将协议和端口切换为 `http://<IDMP_HOST>:6042`，但应只在可信隔离网络中做短时连通性排障，且避免在 HTTP 下登录或提交真实密码、API Key、bearer token 等敏感凭证。问题排除后再切回 HTTPS。
-
-如果当前环境使用的是自签证书，`idmp-cli` 默认不会跳过证书校验。只有当该证书或其签发 CA 已导入当前机器的系统信任链时，CLI 才能正常通过 `https://<IDMP_HOST>:6034` 访问 IDMP。若尚未导入信任链，可先切换到 `http://<IDMP_HOST>:6042` 做临时排障，但同样应避免在 HTTP 下传递敏感凭证。当前 CLI 不提供类似 `--insecure` 的忽略证书校验参数。
 
 ## 15.4.6 理解命令模型
 
@@ -395,7 +369,6 @@ idmp-cli analysis analyses create \
 | 当前 profile | `--profile` 或 `IDMP_PROFILE` | 临时切换当前环境。 |
 | 服务地址 | `IDMP_BASE_URL` | 在未读取本地 profile 时，直接通过环境变量指定目标服务。 |
 | API Key | `IDMP_API_KEY` | 通过环境变量直接提供 API Key。 |
-| Token | `IDMP_TOKEN` | 通过环境变量直接提供 bearer token。 |
 | 配置目录覆盖 | `IDMP_CLI_CONFIG_DIR` | 将配置和会话重定向到自定义目录。 |
 | 会话存储方式 | `IDMP_CLI_SESSION_STORAGE` | 控制会话保存在 `file`、`keyring` 或 `auto` 模式。 |
 
@@ -415,7 +388,7 @@ CLI 在自动化和 Agent 场景中经常具有写权限，因此建议在接入
 
 建议优先采用以下方式处理敏感信息：
 
-1. 密码和 API Key 优先通过 `--password-stdin`、`--api-key-stdin` 或环境变量传递，不建议直接出现在命令行参数中。
+1. API Key 优先通过 `--api-key-stdin` 或环境变量传递，不建议直接出现在命令行参数中。
 2. 在共享终端、CI 和录屏环境中，避免把真实凭证写入脚本、命令历史或文档示例。
 3. 如需把会话令牌尽量保存在系统密钥链中，可根据运行环境设置 `IDMP_CLI_SESSION_STORAGE=auto` 或 `IDMP_CLI_SESSION_STORAGE=keyring`。
 4. `--debug-http` 只建议在排障时临时启用，且应避免把调试输出长期保存在共享日志系统中。
@@ -426,7 +399,7 @@ CLI 在自动化和 Agent 场景中经常具有写权限，因此建议在接入
 
 1. 为 `default`、`staging`、`prod` 等环境分别建立独立 profile。
 2. 在脚本和 CI 中显式传入 `--profile <name>`，不要依赖人工切换后的默认状态。
-3. 生产环境优先使用最小权限账号或最小权限 API Key，避免把高权限凭证直接交给通用 Agent。
+3. 生产环境优先使用最小权限账号签发的 API Key，避免把高权限凭证直接交给通用 Agent。
 4. 如需在 CI 或多用户主机上运行，可通过 `IDMP_CLI_CONFIG_DIR` 将配置目录重定向到独立路径，避免互相覆盖。
 
 ### 15.4.10.3 先预览，再执行变更
@@ -443,8 +416,7 @@ CLI 在自动化和 Agent 场景中经常具有写权限，因此建议在接入
 如果同时设置了本地 profile 和环境变量，需要特别注意以下覆盖关系：
 
 1. `IDMP_BASE_URL` 会覆盖 profile 中保存的服务地址。
-2. `IDMP_TOKEN` 和 `IDMP_API_KEY` 会覆盖本地保存的登录会话。
-3. 当两者同时存在时，`IDMP_TOKEN` 优先级高于 `IDMP_API_KEY`。
+2. `IDMP_API_KEY` 会覆盖本地保存的登录会话。
 
 排障前建议先检查这些环境变量是否已被设置，否则 CLI 可能连接到与当前 profile 不一致的环境。
 
@@ -462,7 +434,7 @@ CLI 在自动化和 Agent 场景中经常具有写权限，因此建议在接入
 建议按以下顺序排查：
 
 1. 重新执行 `idmp-cli config init`，确认 `--server` 地址没有写错。
-2. 确认当前密码或 API Key 仍然有效。
+2. 确认当前 API Key 仍然有效。
 3. 执行 `idmp-cli auth check --remote`，让服务端直接验证当前凭证。
 
 ### 15.4.11.3 如果 HTTPS 使用的是自签证书怎么办？
