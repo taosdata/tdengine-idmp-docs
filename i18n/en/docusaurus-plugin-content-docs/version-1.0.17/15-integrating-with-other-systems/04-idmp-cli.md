@@ -34,30 +34,28 @@ Prepare the following items before starting:
 | Item | Description |
 |---|---|
 | IDMP server URL | Use the real endpoint that your environment can reach. The examples below use `https://<IDMP_HOST>:6034`. For certificate or network troubleshooting, switch temporarily to `http://<IDMP_HOST>:6042`. |
-| Credential | Use either a username and password or a pre-issued API key. |
+| Credential | Use a pre-issued API key. |
 | Local dependency | The minimum requirement for both online and offline CLI installation is `Node.js 16+` and `npm`. Prefer a currently supported Node.js LTS release when possible. |
 | Supported platforms | The CLI supports macOS, Linux, and Windows on `x64` and `arm64`. |
 | Optional agent runtime | If the CLI will be used with Claude Code or another agent, install the related plugin or skills later in the process. |
 
 :::warning Use HTTP only for temporary troubleshooting
-If you must switch temporarily to `http://<IDMP_HOST>:6042` for connectivity checks, do so only inside a trusted, isolated network and avoid logging in or sending real passwords, API keys, bearer tokens, or other sensitive credentials over HTTP.
+If you must switch temporarily to `http://<IDMP_HOST>:6042` for connectivity checks, do so only inside a trusted, isolated network and avoid sending API keys or other sensitive credentials over HTTP.
 :::
 
-On an interactive terminal, `config init` and `auth login` can prompt for missing secrets. The examples in this page prefer `stdin` so they can be copied into scripts and automation flows directly.
+On an interactive terminal, `config init` can prompt for missing secrets. The examples in this page prefer `stdin` so they can be copied into scripts and automation flows directly.
 
-In the examples below, `<IDMP_HOST>`, `admin@example.com`, `$IDMP_PASSWORD`, and `$IDMP_API_KEY` are placeholders. Replace them with real values before running the commands, or set the environment variables first.
+In the examples below, `<IDMP_HOST>` and `$IDMP_API_KEY` are placeholders. Replace them with real values before running the commands, or set the environment variables first.
 
 **Linux / macOS**
 
 ```bash
-export IDMP_PASSWORD='<password>'
 export IDMP_API_KEY='api_<key_id>.<secret>'
 ```
 
 **Windows PowerShell**
 
 ```powershell
-$env:IDMP_PASSWORD = '<password>'
 $env:IDMP_API_KEY = 'api_<key_id>.<secret>'
 ```
 
@@ -100,11 +98,60 @@ installers\install-cli-offline.cmd
 
 `install-cli-offline.*` installs the launcher package plus the matching platform binary package, and validates `Node.js` / `npm` availability and package version consistency before changing the global npm state.
 
-## 15.4.4 Using IDMP CLI with Agents
+## 15.4.4 Creating a Profile and Logging In
 
-`idmp-cli` works on its own, but it also serves as an execution backend for agent workflows. The recommended order is to install the CLI first and then add the plugin or skills that match the target runtime.
+A `profile` is a saved environment configuration. For most first-time users, starting with the `default` profile is enough. `config init` can create or update that profile, authenticate immediately, and persist the session locally.
 
-### 15.4.4.1 Claude Code
+### 15.4.4.1 Log In with an API Key
+
+**Linux / macOS**
+
+```bash
+printf '%s\n' "$IDMP_API_KEY" | idmp-cli config init \
+  --profile default \
+  --server https://<IDMP_HOST>:6034 \
+  --api-key-stdin
+```
+
+**Windows PowerShell**
+
+```powershell
+$env:IDMP_API_KEY | idmp-cli config init `
+  --profile default `
+  --server https://<IDMP_HOST>:6034 `
+  --api-key-stdin
+```
+
+The CLI records the session as `api_key` authentication, which works well for long-running scripts and agent workflows.
+
+This command does 4 things in one step:
+
+1. Saves the `default` profile.
+2. Stores the target server URL.
+3. Authenticates with the API key.
+4. Persists the session for later commands.
+
+### 15.4.4.2 Verify the Current State
+
+After the first login, run the following checks immediately:
+
+```bash
+idmp-cli profile list
+idmp-cli auth check --remote
+idmp-cli doctor --offline
+```
+
+These commands confirm the saved environments, verify that the server accepts the current credential, and check whether local configuration, session storage, and generated metadata are all in place.
+
+These examples use IDMP's default external HTTPS port `6034`. When certificate or network troubleshooting is required, switch only the protocol and port temporarily to `http://<IDMP_HOST>:6042`, but only for short-lived troubleshooting inside a trusted, isolated network. Avoid sending API keys or other sensitive credentials over HTTP, and move back to HTTPS after the issue is resolved.
+
+If the environment uses a self-signed certificate, `idmp-cli` does not skip certificate verification by default. HTTPS works only when that certificate, or the CA that issued it, has already been imported into the current machine's system trust store. If the trust chain is not in place yet, use `http://<IDMP_HOST>:6042` only as a temporary troubleshooting path, and avoid sending sensitive credentials over HTTP. The CLI does not currently provide a `--insecure`-style flag to bypass certificate verification.
+
+## 15.4.5 Using IDMP CLI with Agents
+
+`idmp-cli` works on its own, but it also serves as an execution backend for agent workflows. The recommended order is to install the CLI and initialize a profile first, and then add the plugin or skills that match the target runtime.
+
+### 15.4.5.1 Claude Code
 
 For local Claude Code, the recommended installation path is the TDengine `idmp-plugin`. The plugin already bundles the matching skills, so the same skills should not be installed into Claude Code a second time.
 
@@ -145,7 +192,7 @@ claude --plugin-dir "$HOME/.claude/plugins/idmp-plugin"
 claude --plugin-dir "$env:USERPROFILE\.claude\plugins\idmp-plugin"
 ```
 
-### 15.4.4.2 Other Agents
+### 15.4.5.2 Other Agents
 
 For agents other than Claude Code, install `taosdata/agent-skills` separately when the runtime supports a skills directory or an equivalent mechanism. One important detail is that `install-skills-offline.*` still defaults to Claude's skills directory: `~/.claude/skills`, or `%USERPROFILE%\.claude\skills` on Windows. For non-Claude agents, do not rely on the default target.
 
@@ -183,7 +230,7 @@ If `--target-dir` is omitted, the script copies the skills into Claude's default
 
 If the target agent does not provide a dedicated skills directory, copy `assets/skills/*` from the offline bundle into that agent's skill location, or import each skill's Markdown content into the agent's reusable prompt or instruction system manually. In every case, make sure `idmp-cli` is already installed and available on `PATH`.
 
-### 15.4.4.3 Recommended Agent Workflow
+### 15.4.5.3 Recommended Agent Workflow
 
 The following execution order works well for most agent tasks:
 
@@ -193,79 +240,6 @@ The following execution order works well for most agent tasks:
 4. Prefer shortcut commands when they fit; switch to structured commands when more precision is needed; use raw API calls only as the final fallback.
 5. For write operations, run `--dry-run` first and execute the real command only after the preview looks correct.
 6. After a write, reread the target object or run `auth check --remote` / `doctor` when connection state must be confirmed.
-
-## 15.4.5 Creating a Profile and Logging In
-
-A `profile` is a saved environment configuration. For most first-time users, starting with the `default` profile is enough. `config init` can create or update that profile, authenticate immediately, and persist the session locally.
-
-### 15.4.5.1 Log In with Username and Password
-
-**Linux / macOS**
-
-```bash
-printf '%s\n' "$IDMP_PASSWORD" | idmp-cli config init \
-  --profile default \
-  --server https://<IDMP_HOST>:6034 \
-  --username admin@example.com \
-  --password-stdin
-```
-
-**Windows PowerShell**
-
-```powershell
-$env:IDMP_PASSWORD | idmp-cli config init `
-  --profile default `
-  --server https://<IDMP_HOST>:6034 `
-  --username admin@example.com `
-  --password-stdin
-```
-
-This command does 4 things in one step:
-
-1. Saves the `default` profile.
-2. Stores the target server URL.
-3. Logs in with the supplied account.
-4. Persists the session for later commands.
-
-### 15.4.5.2 Log In with an API Key
-
-If an API key is already available, use this flow instead:
-
-**Linux / macOS**
-
-```bash
-printf '%s\n' "$IDMP_API_KEY" | idmp-cli config init \
-  --profile default \
-  --server https://<IDMP_HOST>:6034 \
-  --api-key-stdin
-```
-
-**Windows PowerShell**
-
-```powershell
-$env:IDMP_API_KEY | idmp-cli config init `
-  --profile default `
-  --server https://<IDMP_HOST>:6034 `
-  --api-key-stdin
-```
-
-In this mode, the CLI records the session as `api_key` authentication. This is usually more stable than managing a login session manually in long-running scripts and agent workflows.
-
-### 15.4.5.3 Verify the Current State
-
-After the first login, run the following checks immediately:
-
-```bash
-idmp-cli profile list
-idmp-cli auth check --remote
-idmp-cli doctor --offline
-```
-
-These commands confirm the saved environments, verify that the server accepts the current credential, and check whether local configuration, session storage, and generated metadata are all in place.
-
-These examples use IDMP's default external HTTPS port `6034`. When certificate or network troubleshooting is required, switch only the protocol and port temporarily to `http://<IDMP_HOST>:6042`, but only for short-lived troubleshooting inside a trusted, isolated network. Avoid logging in or sending real passwords, API keys, bearer tokens, or other sensitive credentials over HTTP, and move back to HTTPS after the issue is resolved.
-
-If the environment uses a self-signed certificate, `idmp-cli` does not skip certificate verification by default. HTTPS works only when that certificate, or the CA that issued it, has already been imported into the current machine's system trust store. If the trust chain is not in place yet, use `http://<IDMP_HOST>:6042` only as a temporary troubleshooting path, and avoid sending sensitive credentials over HTTP. The CLI does not currently provide a `--insecure`-style flag to bypass certificate verification.
 
 ## 15.4.6 Understanding the Command Model
 
@@ -395,7 +369,6 @@ The following local paths and environment variables are especially useful in scr
 | Current profile | `--profile` or `IDMP_PROFILE` | Switch the active environment temporarily. |
 | Server URL | `IDMP_BASE_URL` | Point the CLI to a server directly without loading a local profile first. |
 | API key | `IDMP_API_KEY` | Supply an API key through the environment. |
-| Token | `IDMP_TOKEN` | Supply a bearer token through the environment. |
 | Config directory override | `IDMP_CLI_CONFIG_DIR` | Redirect config and session storage to a custom directory. |
 | Session storage mode | `IDMP_CLI_SESSION_STORAGE` | Choose `file`, `keyring`, or `auto` storage mode. |
 
@@ -415,7 +388,7 @@ For quick multi-environment switching, combine `profile use <name>`, `profile li
 
 Use the following defaults for sensitive data:
 
-1. Prefer `--password-stdin`, `--api-key-stdin`, or environment variables over inline secret flags on the command line.
+1. Prefer `--api-key-stdin` or environment variables over inline secret flags on the command line.
 2. Do not place real credentials in scripts, shared shell history, screenshots, or documentation examples.
 3. When the environment supports it, set `IDMP_CLI_SESSION_STORAGE=auto` or `IDMP_CLI_SESSION_STORAGE=keyring` so session tokens can be stored in the system keychain instead of relying only on local files.
 4. Enable `--debug-http` only for short-lived troubleshooting, and avoid shipping that output into shared or long-retention logs.
@@ -426,7 +399,7 @@ Treat environment isolation as part of the CLI setup:
 
 1. Keep separate profiles for `default`, `staging`, `prod`, and any other operational boundary.
 2. In scripts and CI, pass `--profile <name>` explicitly instead of relying on whichever profile is currently active.
-3. Use least-privilege accounts or API keys in production and avoid giving broad write access to general-purpose agents.
+3. Use API keys issued by least-privilege accounts in production and avoid giving broad write access to general-purpose agents.
 4. In CI or multi-user systems, use `IDMP_CLI_CONFIG_DIR` to redirect config and session data into an isolated directory.
 
 ### 15.4.10.3 Preview Changes Before Execution
@@ -443,8 +416,7 @@ For any non-readonly operation, keep the following sequence:
 When both saved profiles and environment variables are present, pay attention to these overrides:
 
 1. `IDMP_BASE_URL` overrides the server URL stored in the profile.
-2. `IDMP_TOKEN` and `IDMP_API_KEY` override the saved local session.
-3. If both are present, `IDMP_TOKEN` takes precedence over `IDMP_API_KEY`.
+2. `IDMP_API_KEY` overrides the saved local session.
 
 Check these values first during troubleshooting, or the CLI may talk to a different environment than the current profile suggests.
 
@@ -462,7 +434,7 @@ Check these 2 points first:
 Use this troubleshooting sequence:
 
 1. Run `idmp-cli config init` again and confirm the `--server` value is correct.
-2. Confirm that the current password or API key is still valid.
+2. Confirm that the current API key is still valid.
 3. Run `idmp-cli auth check --remote` so the server verifies the current credential directly.
 
 ### 15.4.11.3 What if HTTPS uses a self-signed certificate?
