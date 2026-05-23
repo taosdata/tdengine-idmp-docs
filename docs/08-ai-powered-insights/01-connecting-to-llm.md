@@ -68,7 +68,7 @@ IDMP 从同一 AI 连接中使用两个独立的模型：
 export IDMP_TLS_CA_BUNDLE=/etc/idmp/certs/ca.pem
 ```
 
-**多个文件（冒号分隔）：**
+**多个文件（使用系统路径分隔符）：**
 
 ```bash
 export IDMP_TLS_CA_BUNDLE=/etc/idmp/certs/ca1.pem:/etc/idmp/certs/ca2.crt

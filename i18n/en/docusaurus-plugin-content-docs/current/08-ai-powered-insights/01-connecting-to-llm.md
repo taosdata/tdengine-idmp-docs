@@ -68,7 +68,7 @@ Both variables also fall back to the Java system property of the same name.
 export IDMP_TLS_CA_BUNDLE=/etc/idmp/certs/ca.pem
 ```
 
-**Multiple files (colon-separated):**
+**Multiple files (using system path separator):**
 
 ```bash
 export IDMP_TLS_CA_BUNDLE=/etc/idmp/certs/ca1.pem:/etc/idmp/certs/ca2.crt
