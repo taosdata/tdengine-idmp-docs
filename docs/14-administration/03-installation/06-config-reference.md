@@ -114,3 +114,14 @@ tda:
   - username 和 password: 为 TDengine TSDB-Enterprise 的用户名和密码，默认为 root 和 taosdata
 - `enable-login-captcha-check` 表示是否启用验证码登录，默认为 `false` 即不启用，若想要开启可以设置为 `true`，也可以通过设置环境变量 `ENABLE_LOGIN_CAPTCHA_CHECK` 为 `true` 来开启。
 - 在 `tda.analysis` 下，`event.urls` 为 TDengine TSDB-Enterprise 访问 IDMP 服务的 WebSocket 地址。
+
+### AI 服务器 TLS 配置
+
+当 AI 服务器使用自签名证书时，通过以下环境变量配置 TLS：
+
+| 环境变量 | 说明 | 默认值 |
+|---|---|---|
+| `IDMP_TLS_CA_BUNDLE` | 自定义 CA 证书路径，支持冒号分隔的多路径、目录扫描和混合模式 | 空 |
+| `IDMP_TLS_SKIP_VERIFY` | 设为 `true` 跳过 TLS 验证（仅开发/测试环境） | 空 |
+
+两个变量均支持通过同名 Java 系统属性回退。详细使用说明见 [8.1.5 TLS/SSL 配置](../../08-ai-powered-insights/01-connecting-to-llm.md#815-tlsssl-配置)。

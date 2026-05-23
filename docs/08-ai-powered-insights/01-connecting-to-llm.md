@@ -47,7 +47,71 @@ IDMP 从同一 AI 连接中使用两个独立的模型：
 
 对于运行自托管大语言模型（如本地部署的 Ollama 或 vLLM 实例）的组织，将 **API 端点**设置为本地服务 URL，如果服务不需要身份验证则将 **API 密钥**留空。只要服务公开 OpenAI 兼容的 API，所有 IDMP AI 功能均可正常工作，无需任何修改。
 
-## 8.1.5 关闭 AI 功能
+## 8.1.5 TLS/SSL 配置
+
+当 AI 服务器使用自签名证书或私有 CA 签发的证书时，IDMP 默认的 TLS 验证会失败（PKIX path building failed）。需要通过环境变量配置自定义 CA 证书或跳过验证。
+
+### 环境变量
+
+| 环境变量 | 说明 | 默认值 |
+|---|---|---|
+| `IDMP_TLS_CA_BUNDLE` | 自定义 CA 证书路径，支持多路径（使用系统路径分隔符，Linux/macOS 为 `:`，Windows 为 `;`）、目录扫描和混合文件+目录模式 | 空（使用系统默认信任链） |
+| `IDMP_TLS_SKIP_VERIFY` | 设为 `true` 跳过 TLS 证书验证（仅建议开发/测试环境使用） | 空（不跳过） |
+
+两个变量均支持通过同名 Java 系统属性（System Property）回退。
+
+### IDMP_TLS_CA_BUNDLE 使用方式
+
+**单个 PEM 文件：**
+
+```bash
+export IDMP_TLS_CA_BUNDLE=/etc/idmp/certs/ca.pem
+```
+
+**多个文件（使用系统路径分隔符）：**
+
+```bash
+export IDMP_TLS_CA_BUNDLE=/etc/idmp/certs/ca1.pem:/etc/idmp/certs/ca2.crt
+```
+
+**目录扫描**（自动发现目录下所有 `.pem` 和 `.crt` 文件）：
+
+```bash
+export IDMP_TLS_CA_BUNDLE=/etc/idmp/certs/
+```
+
+**混合模式：**
+
+```bash
+export IDMP_TLS_CA_BUNDLE=/etc/idmp/certs/ca.pem:/etc/idmp/certs/extra/
+```
+
+### IDMP_TLS_SKIP_VERIFY 使用方式
+
+```bash
+export IDMP_TLS_SKIP_VERIFY=true
+```
+
+> **注意**：`IDMP_TLS_SKIP_VERIFY` 仅建议在开发或测试环境使用。生产环境应通过 `IDMP_TLS_CA_BUNDLE` 配置正确的 CA 证书。
+
+### Docker Compose 配置示例
+
+```yaml
+services:
+  idmp:
+    image: tdengine/idmp:latest
+    environment:
+      - IDMP_TLS_CA_BUNDLE=/etc/idmp/certs/ca.pem
+      # - IDMP_TLS_SKIP_VERIFY=true  # 仅开发环境
+    volumes:
+      - /path/to/certs:/etc/idmp/certs:ro
+```
+
+### 配置说明
+
+IDMP 采用 **Composite TrustManager** 策略：优先使用系统信任链验证，失败后自动回退到自定义 CA 证书进行验证。这意味着即使配置了自签名证书，系统 CA 库中的公开证书仍然有效，不会影响对其他服务的 TLS 连接。
+
+## 8.1.6 关闭 AI 功能
 
 如需在全系统范围内关闭 AI 功能，点击浏览器右上角的头像图标，进入**管理后台**（Admin Console），将 AI 连接暂停或删除即可。
 
