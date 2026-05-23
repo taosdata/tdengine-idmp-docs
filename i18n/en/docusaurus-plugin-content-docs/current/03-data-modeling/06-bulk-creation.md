@@ -35,7 +35,17 @@ All four methods share these common characteristics:
 - **Automatic synchronization**: after the import task runs, IDMP keeps watching TSDB metadata changes, and **new child tables** added to a configured supertable are automatically synced as new elements, with no manual intervention;
 - **Repeatable configuration**: supports Rebuild and remapping, making it easy to keep tuning the model during iteration.
 
-## 3.6.3 Refining the Data Model
+## 3.6.3 Bulk Creation via Copy and Paste
+
+In addition to the external-data-source import methods above, most objects inside IDMP — including **elements, attributes, panels, and analyses** — support **copy and paste** operations. This is a very practical "lightweight bulk modeling" technique, well suited for extending and reusing an existing model.
+
+- **Flexible element granularity**: copy and paste is supported not only on **a single element**, but also on **a mid- or upper-level node containing multi-level child nodes** in the element tree. The subtree structure, attributes, and attribute bindings are all copied together;
+- **Works across object types**: attributes, panels, and analyses likewise support copy and paste, making it easy to migrate configurations quickly between different elements or templates;
+- **Asynchronous execution for large batches**: when a copy-and-paste operation involves a large number of objects (such as copying a subtree containing hundreds or thousands of child nodes), the system automatically switches to an **asynchronous mode** and runs in the background. The front-end user **does not have to wait** and can keep working on other tasks; the results are refreshed once the job completes.
+
+Copy and paste can be **combined with** the import methods above: first use import to quickly generate the model skeleton, then use copy and paste to extend, reuse, and fine-tune local structures.
+
+## 3.6.4 Refining the Data Model
 
 After bulk modeling, users can continue to refine and locally adjust the data model:
 
