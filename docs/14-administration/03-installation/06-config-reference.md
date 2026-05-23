@@ -124,4 +124,4 @@ tda:
 | `IDMP_TLS_CA_BUNDLE` | 自定义 CA 证书路径，支持冒号分隔的多路径、目录扫描和混合模式 | 空 |
 | `IDMP_TLS_SKIP_VERIFY` | 设为 `true` 跳过 TLS 验证（仅开发/测试环境） | 空 |
 
-两个变量均支持通过同名 Java 系统属性回退。详细使用说明见 [8.1.5 TLS/SSL 配置](../../08-ai-powered-insights/01-connecting-to-llm.md#815-tlsssl-配置)。
+两个变量均支持通过同名 Java 系统属性回退。详细使用说明见 [8.1.5 TLS/SSL 配置](../../../08-ai-powered-insights/01-connecting-to-llm.md#815-tlsssl-配置)。

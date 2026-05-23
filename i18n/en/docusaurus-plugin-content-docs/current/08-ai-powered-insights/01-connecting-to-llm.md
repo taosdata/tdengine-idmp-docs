@@ -55,7 +55,7 @@ When the AI server uses a self-signed certificate or a certificate issued by a p
 
 | Variable | Description | Default |
 |---|---|---|
-| `IDMP_TLS_CA_BUNDLE` | Custom CA certificate paths. Supports colon-separated multi-paths, directory scanning, and mixed file+directory mode. | Empty (uses system default trust store) |
+| `IDMP_TLS_CA_BUNDLE` | Custom CA certificate paths. Supports multi-paths (using system path separator — `:` on Linux/macOS, `;` on Windows), directory scanning, and mixed file+directory mode. | Empty (uses system default trust store) |
 | `IDMP_TLS_SKIP_VERIFY` | Set to `true` to skip TLS certificate verification (development/test only) | Empty (no skip) |
 
 Both variables also fall back to the Java system property of the same name.
@@ -110,3 +110,9 @@ services:
 ### How It Works
 
 IDMP uses a **Composite TrustManager** strategy: it first attempts verification using the system trust chain, and falls back to the custom CA bundle if system verification fails. This means public certificates in the system CA store remain valid and TLS connections to other services are unaffected.
+
+## 8.1.6 Disabling AI Features
+
+To disable AI features system-wide, click the avatar icon in the top-right corner of the browser, navigate to **Admin Console**, and pause or delete the AI connection.
+
+You can also turn off AI suggestions directly from the analysis list or dashboard list page.

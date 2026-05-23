@@ -124,4 +124,4 @@ When the AI server uses a self-signed certificate, configure TLS via the followi
 | `IDMP_TLS_CA_BUNDLE` | Custom CA certificate paths. Supports colon-separated multi-paths, directory scanning, and mixed mode. | Empty |
 | `IDMP_TLS_SKIP_VERIFY` | Set to `true` to skip TLS verification (development/test only) | Empty |
 
-Both variables also fall back to the Java system property of the same name. See [8.1.5 TLS/SSL Configuration](../../08-ai-powered-insights/01-connecting-to-llm.md#815-tlsssl-configuration) for detailed usage.
+Both variables also fall back to the Java system property of the same name. See [8.1.5 TLS/SSL Configuration](../../../08-ai-powered-insights/01-connecting-to-llm.md#815-tlsssl-configuration) for detailed usage.
