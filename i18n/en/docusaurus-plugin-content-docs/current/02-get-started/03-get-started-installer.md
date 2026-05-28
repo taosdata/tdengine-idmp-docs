@@ -56,7 +56,15 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
        url: http://localhost:6041
        username: root
        password: taosdata
+       explorer-url: http://localhost:6060
    ```
+
+   | Parameter | Description |
+   |-----------|-------------|
+   | `url` | TDengine REST API address, default port 6041 |
+   | `username` | TDengine username |
+   | `password` | TDengine password |
+   | `explorer-url` | taosExplorer access URL, default port 6060. **For remote access, this must be set to the server's actual IP or domain name** (e.g. `http://192.168.1.100:6060`), otherwise the browser cannot connect to the Explorer service |
 
 1. (Optional) Test the connection to TDengine TSDB-Enterprise:
 
@@ -104,6 +112,7 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
        url: http://localhost:6041
        username: root
        password: taosdata
+       explorer-url: http://localhost:6060
    ```
 
 1. (Optional) Test the connection to TDengine TSDB-Enterprise:
@@ -152,6 +161,7 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
        url: http://localhost:6041
        username: root
        password: taosdata
+       explorer-url: http://localhost:6060
    ```
 
 1. (Optional) Test the connection to TDengine TSDB-Enterprise:
@@ -200,6 +210,7 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
        url: http://localhost:6041
        username: root
        password: taosdata
+       explorer-url: http://localhost:6060
    ```
 
 1. (Optional) Test the connection to TDengine TSDB-Enterprise:
@@ -254,6 +265,7 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
        url: http://localhost:6041
        username: root
        password: taosdata
+       explorer-url: http://localhost:6060
    ```
 
 1. (Optional) Test the connection to TDengine TSDB-Enterprise:

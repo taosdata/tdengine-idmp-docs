@@ -142,7 +142,15 @@ tda:
     url: http://localhost:6041
     username: root
     password: taosdata
+    explorer-url: http://localhost:6060
 ```
+
+| 参数 | 说明 |
+|------|------|
+| `url` | TDengine REST 接口地址，默认端口 6041 |
+| `username` | TDengine 用户名 |
+| `password` | TDengine 密码 |
+| `explorer-url` | taosExplorer 的访问地址，默认端口 6060。**如需远程访问 IDMP，必须将此地址配置为服务器的实际 IP 或域名**（例如 `http://192.168.1.100:6060`），否则浏览器将无法连接到 Explorer 服务 |
 
 （可选）执行以下命令测试与 TDengine TSDB-Enterprise 的连接：
 
