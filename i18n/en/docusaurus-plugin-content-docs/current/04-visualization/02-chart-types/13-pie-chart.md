@@ -37,12 +37,12 @@ Graph settings control the chart type, layout, and slice label content:
 
 The screenshot shows **Pie** (solid circle) type with **Slice Sort** set to Ascending — the smallest slice starts first and the largest ends last. The tooltip shows all series values on hover.
 
-| Setting | Description |
-|---|---|
-| **Pie Chart Type** | Rendering style: Pie (solid circle) or Donut (center hollow). Default is Donut |
-| **Orientation** | Overall layout direction: Horizontal or Vertical |
-| **Slice Sort** | Order of slices: Descending (largest first), Ascending (smallest first), or None (preserve data order) |
-| **Label Fields** | Content shown directly on each slice. Multi-select: Name, Value, Percent. Defaults to Value and Percent |
+| Setting            | Description                                                                                             |
+| ------------------ | ------------------------------------------------------------------------------------------------------- |
+| **Pie Chart Type** | Rendering style: Pie (solid circle) or Donut (center hollow). Default is Donut                          |
+| **Orientation**    | Overall layout direction: Horizontal or Vertical                                                        |
+| **Slice Sort**     | Order of slices: Descending (largest first), Ascending (smallest first), or None (preserve data order)  |
+| **Label Fields**   | Content shown directly on each slice. Multi-select: Name, Value, Percent. Defaults to Value and Percent |
 
 ### Tooltip and Legend
 
@@ -54,18 +54,18 @@ The screenshot shows **Table** mode legend below the chart, with Percent and Val
 
 **Tooltip settings:**
 
-| Setting | Description |
-|---|---|
+| Setting          | Description                                |
+| ---------------- | ------------------------------------------ |
 | **Tooltip Mode** | Hover display mode: Single, All, or Hidden |
-| **Max Width** | Maximum tooltip width in pixels |
+| **Max Width**    | Maximum tooltip width in pixels            |
 
 **Legend settings:**
 
-| Setting | Description |
-|---|---|
-| **Show** | Display mode: List, Table, or Hidden |
-| **Placement** | Position: Bottom or Right |
-| **Width** | Legend panel width in pixels. Available when placement is Right |
+| Setting           | Description                                                                                             |
+| ----------------- | ------------------------------------------------------------------------------------------------------- |
+| **Show**          | Display mode: List, Table, or Hidden                                                                    |
+| **Placement**     | Position: Bottom or Right                                                                               |
+| **Width**         | Legend panel width in pixels. Available when placement is Right                                         |
 | **Legend Values** | Statistics shown in table mode. Multiple selections supported: Max, Min, Mean, Sum, Percent, and others |
 
 ### Value Mappings
@@ -76,13 +76,13 @@ Value Mappings replace raw data values with custom display text and colors. In t
 
 Click **Edit Value Mappings** to add multiple mapping rules.
 
-| Mapping Type | Description |
-|---|---|
-| **Value** | Exact match on a specific value or text string |
-| **Range** | Match a numeric range |
-| **Regex** | Match using a regular expression and replace with substituted text |
-| **Special** | Match null, NaN, booleans, empty strings, and other special cases |
-| **Other** | Match all values not covered by the preceding rules |
+| Mapping Type | Description                                                        |
+| ------------ | ------------------------------------------------------------------ |
+| **Value**    | Exact match on a specific value or text string                     |
+| **Range**    | Match a numeric range                                              |
+| **Regex**    | Match using a regular expression and replace with substituted text |
+| **Special**  | Match null, NaN, booleans, empty strings, and other special cases  |
+| **Other**    | Match all values not covered by the preceding rules                |
 
 ### Standard Options and Color Thresholds
 
@@ -92,17 +92,17 @@ Color Thresholds dynamically change slice color based on value. In the screensho
 
 **Standard Options:**
 
-| Setting | Description |
-|---|---|
-| **Min** | Reference minimum value for display scaling. Leave blank for auto-calculation from data |
-| **Max** | Reference maximum value for display scaling. Leave blank for auto-calculation from data |
-| **Decimals** | Number of decimal places for value display. Leave blank for automatic precision |
+| Setting          | Description                                                                                                                                                                 |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Min**          | Reference minimum value for display scaling. Leave blank for auto-calculation from data                                                                                     |
+| **Max**          | Reference maximum value for display scaling. Leave blank for auto-calculation from data                                                                                     |
+| **Decimals**     | Number of decimal places for value display. Leave blank for automatic precision                                                                                             |
 | **Color Scheme** | How series colors are assigned: Single Color, Shades of Color (by series), From Thresholds (by value), Classic Palette, Classic Palette (by series name), or Custom Palette |
 
 **Color Threshold settings:**
 
-| Setting | Description |
-|---|---|
+| Setting           | Description                                                       |
+| ----------------- | ----------------------------------------------------------------- |
 | **Add Threshold** | Add a threshold rule consisting of a numeric boundary and a color |
 
 Color thresholds take effect when the **Color Scheme** in Standard Options is set to **From Thresholds (by value)**.
@@ -111,12 +111,12 @@ Color thresholds take effect when the **Color Scheme** in Standard Options is se
 
 Data Links attach clickable URLs to data points, allowing navigation from the chart to related detail pages:
 
-| Setting | Description |
-|---|---|
-| **Title** | Display name for the link |
-| **URL** | Target URL, supports variable interpolation |
-| **Open in New Tab** | Whether to open the link in a new browser tab |
-| **One-Click** | When enabled, clicking a data point immediately navigates to the URL. Only one link per panel can have this enabled |
+| Setting             | Description                                                                                                         |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| **Title**           | Display name for the link                                                                                           |
+| **URL**             | Target URL, supports variable interpolation                                                                         |
+| **Open in New Tab** | Whether to open the link in a new browser tab                                                                       |
+| **One-Click**       | When enabled, clicking a data point immediately navigates to the URL. Only one link per panel can have this enabled |
 
 ### Overrides
 
@@ -126,10 +126,10 @@ Overrides let you apply style settings to individual series, overriding the glob
 
 When query results contain too many data points, downsampling reduces the number of rendered points to improve display performance:
 
-| Setting | Description |
-|---|---|
-| **Enable Downsampling** | Toggle. Disabled by default |
-| **Max Data Points** | Maximum number of data points retained after downsampling |
+| Setting                  | Description                                                              |
+| ------------------------ | ------------------------------------------------------------------------ |
+| **Enable Downsampling**  | Toggle. Disabled by default                                              |
+| **Max Data Points**      | Maximum number of data points retained after downsampling                |
 | **Aggregation Function** | Aggregation method applied during downsampling, such as AVG, MAX, or MIN |
 
 ### Scheduled Report
@@ -143,4 +143,3 @@ The Pie Chart panel supports scheduled reports, which periodically deliver the c
 **Production share by site.** An operations manager groups by site name with total production as the metric. The donut chart shows each site's contribution to overall output, and the table legend lists exact values and percentages alongside each site.
 
 **Event distribution by severity.** An operations team groups by alarm severity category. The pie chart shows what fraction of events were critical, warning, or informational — useful for shift summary reports.
-

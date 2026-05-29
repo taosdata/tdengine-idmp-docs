@@ -31,13 +31,13 @@ Graph settings control the appearance of the grid cells:
 
 ![Graph settings](../../images/04/status-history-graph.png)
 
-| Setting | Description |
-|---|---|
-| **Show Values** | Whether to display a value label inside each cell: Auto, Always, Never |
-| **Border Width** | Width of the border between cells (0–10) |
-| **Row Height** | Relative height of each row (0–1) |
-| **Column Width** | Relative width of each time-bucket column (0–1) |
-| **Fill Opacity** | Transparency of the cell fill color (0–1) |
+| Setting          | Description                                                            |
+| ---------------- | ---------------------------------------------------------------------- |
+| **Show Values**  | Whether to display a value label inside each cell: Auto, Always, Never |
+| **Border Width** | Width of the border between cells (0–10)                               |
+| **Row Height**   | Relative height of each row (0–1)                                      |
+| **Column Width** | Relative width of each time-bucket column (0–1)                        |
+| **Fill Opacity** | Transparency of the cell fill color (0–1)                              |
 
 The time bucket size is controlled by the **Sliding Window** setting in the data configuration. For example, a 1-hour sliding window produces one column per hour.
 
@@ -47,13 +47,13 @@ The Status History panel configures only the X axis:
 
 ![Axis configuration](../../images/04/status-history-axis.png)
 
-| Setting | Description |
-|---|---|
-| **X Axis** | Show or hide the X axis |
+| Setting                | Description                                                          |
+| ---------------------- | -------------------------------------------------------------------- |
+| **X Axis**             | Show or hide the X axis                                              |
 | **X Axis Time Format** | Display format for X axis timestamps. Available when X axis is shown |
-| **Rotate Labels** | Rotation angle for X axis time labels, -90° to +90° |
-| **Label Interval** | Density of X axis labels: Auto, Small, Medium, Large |
-| **Show Grid Lines** | Whether to display X axis grid lines: Auto, On, Off |
+| **Rotate Labels**      | Rotation angle for X axis time labels, -90° to +90°                  |
+| **Label Interval**     | Density of X axis labels: Auto, Small, Medium, Large                 |
+| **Show Grid Lines**    | Whether to display X axis grid lines: Auto, On, Off                  |
 
 ### Tooltip
 
@@ -61,30 +61,30 @@ When hovering over a cell, the tooltip shows the time bucket's timestamp and the
 
 ![Tooltip showing cell value](../../images/04/status-history-tooltip.png)
 
-| Setting | Description |
-|---|---|
+| Setting          | Description                                                   |
+| ---------------- | ------------------------------------------------------------- |
 | **Tooltip Mode** | Display mode on hover: Single (hovered metric only) or Hidden |
-| **Max Width** | Maximum tooltip width in pixels |
+| **Max Width**    | Maximum tooltip width in pixels                               |
 
 ### Standard Options
 
-| Setting | Description |
-|---|---|
-| **Min** | Lower bound for values. Leave blank to auto-calculate from data |
-| **Max** | Upper bound for values. Leave blank to auto-calculate from data |
-| **Decimals** | Number of decimal places to display. Leave blank for auto |
+| Setting          | Description                                                                                                                                                                 |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Min**          | Lower bound for values. Leave blank to auto-calculate from data                                                                                                             |
+| **Max**          | Upper bound for values. Leave blank to auto-calculate from data                                                                                                             |
+| **Decimals**     | Number of decimal places to display. Leave blank for auto                                                                                                                   |
 | **Color Scheme** | How series colors are assigned: Single Color, Shades of Color (by series), From Thresholds (by value), Classic Palette, Classic Palette (by series name), or Custom Palette |
 
 ### Data Links
 
 Data links attach clickable URLs to cells:
 
-| Setting | Description |
-|---|---|
-| **Title** | Display name for the link |
-| **URL** | Target URL, supports variable interpolation |
-| **Open in New Tab** | Whether to open the link in a new browser tab |
-| **One-Click** | When enabled, clicking a cell immediately navigates to the URL. Only one link per panel can have this enabled |
+| Setting             | Description                                                                                                   |
+| ------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **Title**           | Display name for the link                                                                                     |
+| **URL**             | Target URL, supports variable interpolation                                                                   |
+| **Open in New Tab** | Whether to open the link in a new browser tab                                                                 |
+| **One-Click**       | When enabled, clicking a cell immediately navigates to the URL. Only one link per panel can have this enabled |
 
 ### Value Mappings
 
@@ -96,13 +96,13 @@ Click **Edit Value Mappings** to open the mapping dialog, where you select a map
 
 ![Value mappings dialog](../../images/04/status-history-valueMappings-dialog.png)
 
-| Mapping Type | Description |
-|---|---|
-| **Value** | Exact match on a specific value or text string |
-| **Range** | Match a numeric range |
-| **Regex** | Match using a regular expression and replace with substituted text |
-| **Special** | Match null, NaN, booleans, empty strings, and other special cases |
-| **Others** | Match all values not covered by the preceding rules |
+| Mapping Type | Description                                                        |
+| ------------ | ------------------------------------------------------------------ |
+| **Value**    | Exact match on a specific value or text string                     |
+| **Range**    | Match a numeric range                                              |
+| **Regex**    | Match using a regular expression and replace with substituted text |
+| **Special**  | Match null, NaN, booleans, empty strings, and other special cases  |
+| **Others**   | Match all values not covered by the preceding rules                |
 
 ### Color Thresholds
 
@@ -112,8 +112,8 @@ Color Thresholds define numeric ranges and their associated colors, making them 
 
 The screenshot configures a threshold of 245 (pink) and a Base (blue). Time buckets where voltage exceeds 245 V are shown in pink; all others are shown in blue.
 
-| Setting | Description |
-|---|---|
+| Setting           | Description                                                       |
+| ----------------- | ----------------------------------------------------------------- |
 | **Add Threshold** | Add a threshold rule consisting of a numeric boundary and a color |
 
 ### Overrides
@@ -124,10 +124,10 @@ Overrides let you apply style settings to individual metrics, overriding the glo
 
 When query results contain too many data points, downsampling reduces the number of rendered points to improve display performance:
 
-| Setting | Description |
-|---|---|
-| **Enable Downsampling** | Toggle. Disabled by default |
-| **Max Data Points** | Maximum number of data points retained after downsampling |
+| Setting                  | Description                                                              |
+| ------------------------ | ------------------------------------------------------------------------ |
+| **Enable Downsampling**  | Toggle. Disabled by default                                              |
+| **Max Data Points**      | Maximum number of data points retained after downsampling                |
 | **Aggregation Function** | Aggregation method applied during downsampling, such as AVG, MAX, or MIN |
 
 ### Scheduled Report
@@ -149,4 +149,3 @@ Use the Status History panel when:
 - You need to answer questions like "which hours this week had out-of-limit conditions?" or "which devices were in alarm on Monday?"
 
 For a continuous band showing every state transition in detail, use the State Timeline instead.
-

@@ -32,17 +32,17 @@ Graph settings control how data is bucketed, how multiple series are displayed, 
 
 The screenshot shows the Graph panel expanded with Bucket Size set to 3 (each interval spans 3 V), Gradient Mode set to None, and Stack Series set to Off. The tooltip shows the hovered bucket range (222–225) and its count (Voltage: 7).
 
-| Setting | Description |
-|---|---|
-| **Bucket Count** | Number of equal-width intervals to divide the data range into (1–1000). Leave blank for the default of 30 |
-| **Bucket Size** | Fixed width of each interval. Leave blank to auto-calculate from the data range and Bucket Count |
-| **Bucket Offset** | Offset for interval boundaries, used to align buckets (default 0) |
-| **Multi-Swimlane** | When enabled, each metric is displayed in its own lane with an independent Y axis. Disabled by default |
-| **Combine Series** | When enabled, all metrics are merged into a single distribution. Not available when Multi-Swimlane is enabled |
-| **Stack Series** | How multiple metric bars are stacked: Off (separate, default), Normal (absolute stacking), 100% (percentage stacking). Not available when Multi-Swimlane is enabled |
-| **Line Width** | Width of bar borders (0–10) |
-| **Fill Opacity** | Transparency of bar fill color (0–1) |
-| **Gradient Mode** | Gradient applied to bar fill: None, Opacity, Hue, Scheme |
+| Setting            | Description                                                                                                                                                         |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Bucket Count**   | Number of equal-width intervals to divide the data range into (1–1000). Leave blank for the default of 30                                                           |
+| **Bucket Size**    | Fixed width of each interval. Leave blank to auto-calculate from the data range and Bucket Count                                                                    |
+| **Bucket Offset**  | Offset for interval boundaries, used to align buckets (default 0)                                                                                                   |
+| **Multi-Swimlane** | When enabled, each metric is displayed in its own lane with an independent Y axis. Disabled by default                                                              |
+| **Combine Series** | When enabled, all metrics are merged into a single distribution. Not available when Multi-Swimlane is enabled                                                       |
+| **Stack Series**   | How multiple metric bars are stacked: Off (separate, default), Normal (absolute stacking), 100% (percentage stacking). Not available when Multi-Swimlane is enabled |
+| **Line Width**     | Width of bar borders (0–10)                                                                                                                                         |
+| **Fill Opacity**   | Transparency of bar fill color (0–1)                                                                                                                                |
+| **Gradient Mode**  | Gradient applied to bar fill: None, Opacity, Hue, Scheme                                                                                                            |
 
 **Stack Series: Normal** (screenshot below) stacks bars from multiple metrics so each bucket's total height equals the combined count across all metrics:
 
@@ -70,60 +70,60 @@ The screenshot shows the Tooltip panel with mode set to **All** and Values sort 
 
 **Tooltip settings:**
 
-| Setting | Description |
-|---|---|
-| **Tooltip mode** | Hover display mode: Single (hovered bucket only), All (all metrics), Hidden |
+| Setting               | Description                                                                 |
+| --------------------- | --------------------------------------------------------------------------- |
+| **Tooltip mode**      | Hover display mode: Single (hovered bucket only), All (all metrics), Hidden |
 | **Values sort order** | Sort order for multiple metrics in the tooltip: None, Ascending, Descending |
-| **Max width** | Maximum tooltip width in pixels |
-| **Max height** | Maximum tooltip height in pixels |
+| **Max width**         | Maximum tooltip width in pixels                                             |
+| **Max height**        | Maximum tooltip height in pixels                                            |
 
 **Legend settings:**
 
-| Setting | Description |
-|---|---|
-| **Show** | Display mode: List, Table, or Hidden |
-| **Placement** | Position: Bottom or Right |
-| **Width** | Legend panel width in pixels. Available when placement is Right |
-| **Legend Values** | Statistics shown in Table mode. Multiple selections supported |
+| Setting           | Description                                                     |
+| ----------------- | --------------------------------------------------------------- |
+| **Show**          | Display mode: List, Table, or Hidden                            |
+| **Placement**     | Position: Bottom or Right                                       |
+| **Width**         | Legend panel width in pixels. Available when placement is Right |
+| **Legend Values** | Statistics shown in Table mode. Multiple selections supported   |
 
 ### Standard Options
 
-| Setting | Description |
-|---|---|
-| **Min** | Lower bound for the X axis value range (leave blank to auto-calculate from data) |
-| **Max** | Upper bound for the X axis value range (leave blank to auto-calculate from data) |
-| **Decimals** | Number of decimal places to display (leave blank for auto) |
+| Setting          | Description                                                                                                                                                                 |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Min**          | Lower bound for the X axis value range (leave blank to auto-calculate from data)                                                                                            |
+| **Max**          | Upper bound for the X axis value range (leave blank to auto-calculate from data)                                                                                            |
+| **Decimals**     | Number of decimal places to display (leave blank for auto)                                                                                                                  |
 | **Color Scheme** | How series colors are assigned: Single Color, Shades of Color (by series), From Thresholds (by value), Classic Palette, Classic Palette (by series name), or Custom Palette |
 
 ### Data Links
 
 Data Links attach clickable URLs to bars:
 
-| Setting | Description |
-|---|---|
-| **Title** | Display name for the link |
-| **URL** | Target URL, supports variable interpolation |
-| **Open in New Tab** | Whether to open the link in a new browser tab |
-| **One-Click** | When enabled, clicking a bar immediately navigates to the URL. Only one link per panel can have this enabled |
+| Setting             | Description                                                                                                  |
+| ------------------- | ------------------------------------------------------------------------------------------------------------ |
+| **Title**           | Display name for the link                                                                                    |
+| **URL**             | Target URL, supports variable interpolation                                                                  |
+| **Open in New Tab** | Whether to open the link in a new browser tab                                                                |
+| **One-Click**       | When enabled, clicking a bar immediately navigates to the URL. Only one link per panel can have this enabled |
 
 ### Value Mappings
 
 Value Mappings translate raw data values into display text and colors:
 
-| Mapping Type | Description |
-|---|---|
-| **Value** | Exact match for a specific number or text |
-| **Range** | Match a numeric range |
-| **Regex** | Match using a regular expression and replace display text |
-| **Special** | Match null, NaN, booleans, empty strings, and other special cases |
-| **Other** | Catch-all for any value not matched by earlier rules |
+| Mapping Type | Description                                                       |
+| ------------ | ----------------------------------------------------------------- |
+| **Value**    | Exact match for a specific number or text                         |
+| **Range**    | Match a numeric range                                             |
+| **Regex**    | Match using a regular expression and replace display text         |
+| **Special**  | Match null, NaN, booleans, empty strings, and other special cases |
+| **Other**    | Catch-all for any value not matched by earlier rules              |
 
 ### Color Thresholds
 
 Color Thresholds define value ranges and their associated colors:
 
-| Setting | Description |
-|---|---|
+| Setting           | Description                                                       |
+| ----------------- | ----------------------------------------------------------------- |
 | **Add Threshold** | Add a threshold rule consisting of a numeric boundary and a color |
 
 Color thresholds take effect when the **Color Scheme** in Standard Options is set to **From Thresholds (by value)**.
@@ -146,13 +146,13 @@ In edit mode, click the **Data Analysis** button to open the analysis dialog. It
 
 Select the target metric in the **Attribute** dropdown. The table lists all configured limit lines. Each line can be independently toggled and styled:
 
-| Setting | Description |
-|---|---|
-| **Attribute** | The target metric to apply mark lines to |
-| **Show** | Whether to display this mark line on the chart |
-| **Name** | Mark line name (e.g., USL, LSL, M) and its configured value |
-| **Color** | Color of the mark line |
-| **Type** | Line style: Dashed, Solid, or Dotted |
+| Setting       | Description                                                 |
+| ------------- | ----------------------------------------------------------- |
+| **Attribute** | The target metric to apply mark lines to                    |
+| **Show**      | Whether to display this mark line on the chart              |
+| **Name**      | Mark line name (e.g., USL, LSL, M) and its configured value |
+| **Color**     | Color of the mark line                                      |
+| **Type**      | Line style: Dashed, Solid, or Dotted                        |
 
 ### 4.2.9.4.2 Process Capability Analysis
 
@@ -160,14 +160,14 @@ Select the target metric in the **Attribute** dropdown. The table lists all conf
 
 Once both USL and LSL are configured, the system automatically calculates and displays the following process capability indicators for each metric:
 
-| Indicator | Description |
-|---|---|
-| **μ (Mean)** | Arithmetic mean of the dataset |
-| **σ (Std Dev)** | Standard deviation of the dataset, reflecting spread |
-| **Cp** | Process capability index: Cp = (USL − LSL) / (6σ). Reflects spread only |
-| **Cpk** | Capability index accounting for mean offset: Cpk = min(Cpu, Cpl) |
-| **Cpu** | Upper capability index: Cpu = (USL − μ) / (3σ) |
-| **Cpl** | Lower capability index: Cpl = (μ − LSL) / (3σ) |
+| Indicator       | Description                                                             |
+| --------------- | ----------------------------------------------------------------------- |
+| **μ (Mean)**    | Arithmetic mean of the dataset                                          |
+| **σ (Std Dev)** | Standard deviation of the dataset, reflecting spread                    |
+| **Cp**          | Process capability index: Cp = (USL − LSL) / (6σ). Reflects spread only |
+| **Cpk**         | Capability index accounting for mean offset: Cpk = min(Cpu, Cpl)        |
+| **Cpu**         | Upper capability index: Cpu = (USL − μ) / (3σ)                          |
+| **Cpl**         | Lower capability index: Cpl = (μ − LSL) / (3σ)                          |
 
 ## 4.2.9.5 Example Scenarios
 
@@ -176,4 +176,3 @@ Once both USL and LSL are configured, the system automatically calculates and di
 **Multi-device distribution comparison.** A maintenance engineer adds voltage data from two devices as two separate metrics and switches to Multi-Swimlane mode. The two lanes show distinct distribution shapes — one device concentrates at 220–226 V while the other skews toward lower values, flagging a difference in device health.
 
 **Fleet-wide aggregate distribution.** A data engineer adds measurements from multiple sites as separate metrics and enables Combine Series to merge all data into a single distribution. Combined with USL/LSL reference lines, this quickly shows the overall pass rate across the entire fleet.
-

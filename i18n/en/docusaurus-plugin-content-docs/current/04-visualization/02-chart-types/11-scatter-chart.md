@@ -34,12 +34,12 @@ Graph settings control the visual appearance of data points:
 
 The screenshot sets the symbol style to **×** and increases Symbol Size to 16, making it easier to distinguish individual points in dense areas.
 
-| Setting | Description |
-|---|---|
-| **Style** | Symbol shape for data points (circle, ×, star, and others) |
-| **Symbol Size** | Size of each point. Default is 8 |
-| **Scatter Opacity** | Fill transparency of each point, 0–1. Default is 1.0 |
-| **Special Point** | Highlight the maximum or minimum of a selected metric with a distinct marker and custom color. Off by default |
+| Setting             | Description                                                                                                   |
+| ------------------- | ------------------------------------------------------------------------------------------------------------- |
+| **Style**           | Symbol shape for data points (circle, ×, star, and others)                                                    |
+| **Symbol Size**     | Size of each point. Default is 8                                                                              |
+| **Scatter Opacity** | Fill transparency of each point, 0–1. Default is 1.0                                                          |
+| **Special Point**   | Highlight the maximum or minimum of a selected metric with a distinct marker and custom color. Off by default |
 
 ### Axis
 
@@ -51,21 +51,21 @@ The screenshot shows the Axis panel expanded. The left Y axis title is set to "V
 
 **X Axis settings:**
 
-| Setting | Description |
-|---|---|
-| **X Axis** | Show or hide the X axis |
+| Setting                | Description                                                           |
+| ---------------------- | --------------------------------------------------------------------- |
+| **X Axis**             | Show or hide the X axis                                               |
 | **X Axis Time Format** | Display format for X axis timestamps (available when X axis is shown) |
-| **Rotate Labels** | Rotation angle for X axis labels (-90° to +90°) |
-| **Label Interval** | Density of X axis labels: Auto, Small, Medium, Large |
-| **Show Grid Lines** | X axis grid line visibility: Auto, On, Off |
+| **Rotate Labels**      | Rotation angle for X axis labels (-90° to +90°)                       |
+| **Label Interval**     | Density of X axis labels: Auto, Small, Medium, Large                  |
+| **Show Grid Lines**    | X axis grid line visibility: Auto, On, Off                            |
 
 **Y Axis settings:**
 
-| Setting | Description |
-|---|---|
-| **Left Y Axis Title** | Display name and units for the left Y axis |
-| **Value Range** | Minimum and maximum for the left Y axis (leave blank to auto-calculate) |
-| **Right Y Axis** | Enable a second independent Y axis on the right, for metrics with very different scales |
+| Setting               | Description                                                                             |
+| --------------------- | --------------------------------------------------------------------------------------- |
+| **Left Y Axis Title** | Display name and units for the left Y axis                                              |
+| **Value Range**       | Minimum and maximum for the left Y axis (leave blank to auto-calculate)                 |
+| **Right Y Axis**      | Enable a second independent Y axis on the right, for metrics with very different scales |
 
 ### Limits and Transform
 
@@ -85,20 +85,20 @@ The Limits panel is also visible in this screenshot, showing the **Add limit** o
 
 **Limits settings:**
 
-| Setting | Description |
-|---|---|
+| Setting       | Description                                                                                      |
+| ------------- | ------------------------------------------------------------------------------------------------ |
 | **Add Limit** | Add a reference line. Off by default. Types include Maximum, HiHi, Hi, Target, Lo, LoLo, Minimum |
-| **Show As** | How to render the limit: As dashed lines, Area, or Lines and Area |
+| **Show As**   | How to render the limit: As dashed lines, Area, or Lines and Area                                |
 
 **Transform settings:**
 
-| Setting | Description |
-|---|---|
-| **Transform Function Type** | Off (no transform), Data Aggregation (clustering), or Regression Analysis |
-| **Parameter Configuration** | For Data Aggregation: set Cluster Count |
-| **Cluster Configuration** | Assign a name and color to each cluster (Data Aggregation only) |
-| **Method** | Regression method (Regression Analysis only): Linear Regression, Exponential, or Polynomial |
-| **Show Function** | Whether to display the regression formula on the chart (Regression Analysis only). Off by default |
+| Setting                     | Description                                                                                       |
+| --------------------------- | ------------------------------------------------------------------------------------------------- |
+| **Transform Function Type** | Off (no transform), Data Aggregation (clustering), or Regression Analysis                         |
+| **Parameter Configuration** | For Data Aggregation: set Cluster Count                                                           |
+| **Cluster Configuration**   | Assign a name and color to each cluster (Data Aggregation only)                                   |
+| **Method**                  | Regression method (Regression Analysis only): Linear Regression, Exponential, or Polynomial       |
+| **Show Function**           | Whether to display the regression formula on the chart (Regression Analysis only). Off by default |
 
 ### Tooltip and Legend
 
@@ -110,60 +110,60 @@ The screenshot shows Tooltip mode set to **All**, displaying a crosshair and the
 
 **Tooltip settings:**
 
-| Setting | Description |
-|---|---|
-| **Tooltip Mode** | Hover display mode: Single, All, or Hidden |
+| Setting               | Description                                                                 |
+| --------------------- | --------------------------------------------------------------------------- |
+| **Tooltip Mode**      | Hover display mode: Single, All, or Hidden                                  |
 | **Values Sort Order** | Sort order for multiple metrics in the tooltip: None, Ascending, Descending |
-| **Hide Zeros** | When enabled, metrics with a value of 0 are hidden in the tooltip |
-| **Max Width** | Maximum tooltip width in pixels |
-| **Max Height** | Maximum tooltip height in pixels |
+| **Hide Zeros**        | When enabled, metrics with a value of 0 are hidden in the tooltip           |
+| **Max Width**         | Maximum tooltip width in pixels                                             |
+| **Max Height**        | Maximum tooltip height in pixels                                            |
 
 **Legend settings:**
 
-| Setting | Description |
-|---|---|
-| **Show** | Display mode: List, Table, or Hidden |
-| **Placement** | Position: Bottom or Right |
+| Setting           | Description                                                                                    |
+| ----------------- | ---------------------------------------------------------------------------------------------- |
+| **Show**          | Display mode: List, Table, or Hidden                                                           |
+| **Placement**     | Position: Bottom or Right                                                                      |
 | **Legend Values** | Statistics shown in Table mode. Multiple selections supported: Max, Min, Mean, Sum, and others |
 
 ### Standard Options
 
-| Setting | Description |
-|---|---|
-| **Min** | Lower bound for values (leave blank to auto-calculate from data) |
-| **Max** | Upper bound for values (leave blank to auto-calculate from data) |
-| **Decimals** | Number of decimal places to display (leave blank for auto) |
+| Setting          | Description                                                                                                                                                                 |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Min**          | Lower bound for values (leave blank to auto-calculate from data)                                                                                                            |
+| **Max**          | Upper bound for values (leave blank to auto-calculate from data)                                                                                                            |
+| **Decimals**     | Number of decimal places to display (leave blank for auto)                                                                                                                  |
 | **Color Scheme** | How series colors are assigned: Single Color, Shades of Color (by series), From Thresholds (by value), Classic Palette, Classic Palette (by series name), or Custom Palette |
 
 ### Data Links
 
 Data Links attach clickable URLs to data points:
 
-| Setting | Description |
-|---|---|
-| **Title** | Display name for the link |
-| **URL** | Target URL, supports variable interpolation |
-| **Open in New Tab** | Whether to open the link in a new browser tab |
-| **One-Click** | When enabled, clicking a data point immediately navigates to the URL. Only one link per panel can have this enabled |
+| Setting             | Description                                                                                                         |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| **Title**           | Display name for the link                                                                                           |
+| **URL**             | Target URL, supports variable interpolation                                                                         |
+| **Open in New Tab** | Whether to open the link in a new browser tab                                                                       |
+| **One-Click**       | When enabled, clicking a data point immediately navigates to the URL. Only one link per panel can have this enabled |
 
 ### Value Mappings
 
 Value Mappings translate raw data values into display text and colors:
 
-| Mapping Type | Description |
-|---|---|
-| **Value** | Exact match for a specific number or text |
-| **Range** | Match a numeric range |
-| **Regex** | Match using a regular expression and replace display text |
-| **Special** | Match null, NaN, booleans, empty strings, and other special cases |
-| **Other** | Catch-all for any value not matched by earlier rules |
+| Mapping Type | Description                                                       |
+| ------------ | ----------------------------------------------------------------- |
+| **Value**    | Exact match for a specific number or text                         |
+| **Range**    | Match a numeric range                                             |
+| **Regex**    | Match using a regular expression and replace display text         |
+| **Special**  | Match null, NaN, booleans, empty strings, and other special cases |
+| **Other**    | Catch-all for any value not matched by earlier rules              |
 
 ### Color Thresholds
 
 Color Thresholds define value ranges and their associated colors:
 
-| Setting | Description |
-|---|---|
+| Setting           | Description                                                       |
+| ----------------- | ----------------------------------------------------------------- |
 | **Add Threshold** | Add a threshold rule consisting of a numeric boundary and a color |
 
 Color thresholds take effect when the **Color Scheme** in Standard Options is set to **From Thresholds (by value)**.
@@ -176,10 +176,10 @@ Overrides let you apply style settings to individual series, overriding global g
 
 When query results contain too many data points, downsampling reduces the number of rendered points to improve display performance:
 
-| Setting | Description |
-|---|---|
-| **Enable Downsampling** | Toggle. Disabled by default |
-| **Max Data Points** | Maximum number of data points retained after downsampling |
+| Setting                  | Description                                                              |
+| ------------------------ | ------------------------------------------------------------------------ |
+| **Enable Downsampling**  | Toggle. Disabled by default                                              |
+| **Max Data Points**      | Maximum number of data points retained after downsampling                |
 | **Aggregation Function** | Aggregation method applied during downsampling, such as AVG, MAX, or MIN |
 
 ### Scheduled Report
@@ -195,4 +195,3 @@ The Scatter Chart panel supports scheduled reports, which periodically deliver t
 **Outlier detection.** A data engineer plots all raw readings for a sensor and enables Special Point to mark the maximum value. A point clearly outside the main distribution is highlighted with a distinct color, making it easy to locate and investigate further.
 
 Beyond basic plotting, the Scatter Chart supports data aggregation and regression analysis, making it the primary panel type for statistical and correlation-based analysis in TDengine IDMP.
-
