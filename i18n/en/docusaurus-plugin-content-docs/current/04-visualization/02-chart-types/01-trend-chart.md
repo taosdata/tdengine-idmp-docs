@@ -7,160 +7,238 @@ sidebar_label: Trend Chart
 
 ## 4.2.1.1 Overview
 
-The Trend Chart renders one or more time-series metrics as lines plotted against a time axis. It connects data points to show how values change over time, built for continuous measurements — temperatures, pressures, flow rates, energy consumption, vibration levels — where the shape of the data over time carries meaning. Multiple metrics can be plotted on the same chart, each as a separate line, to reveal correlations and relative behavior at a glance.
+The Trend Chart is the core panel type in TDengine IDMP. It plots one or more time-series attributes against a time axis as lines, bars, or points so that value changes over time can be inspected directly. Whether the signal is temperature, pressure, flow, energy consumption, or vibration, the Trend Chart is designed to make time-dependent behavior visible.
 
-![Trend chart showing multiple metrics over time](../images/trend-demo.png)
+![Trend chart edit mode overview](../../images/04/trend-demo.png)
 
-Beyond basic plotting, the Trend Chart is the primary panel type in TDengine IDMP and the entry point for advanced analytics: forecasting future values with AI, filling data gaps with imputation, overlaying historical periods with time-shift, and comparing batch occurrences on a normalized time axis.
+Multiple metrics can be overlaid in the same chart, with each metric rendered independently so that correlation, lag, and divergence can be identified quickly. Beyond basic plotting, the Trend Chart also integrates advanced analysis capabilities: AI forecasting, missing-data imputation, time-shift comparison, window analysis, and multi-swimlane layout for parallel inspection of signals without scale interference.
 
 ## 4.2.1.2 When to Use
 
 Use the Trend Chart when:
 
-- You need to monitor how a continuous measurement changes over time
-- You want to compare multiple related metrics side by side (e.g., inlet and outlet temperatures)
-- You need to spot anomalies, step changes, or gradual drift in a signal
-- You want to compare current behavior against a historical baseline using time-shift
-- You need to overlay limit lines to see how a value relates to its operating envelope
-- You are running forecasting or imputation analysis on a time-series attribute
+- You need to monitor how continuous measurements such as temperature, pressure, or flow evolve over time
+- You want to compare multiple related metrics on the same asset and identify correlation or lag
+- You need to detect anomalies, step changes, or gradual drift in a signal
+- You want to overlay a current curve with a historical baseline using time-shift
+- You need to display operating limits and see whether values remain inside a safe range
+- You want to run AI forecasting, gap-filling, or window analysis on a time-series attribute
 
-For discrete state signals (on/off, running/stopped), use the State Timeline instead. For correlation between two continuous attributes (one vs. the other rather than both vs. time), use the Scatter Chart.
+For discrete state signals such as on/off or running/stopped enumerations, use the State Timeline panel. For correlation analysis between two continuous variables where the comparison is X versus Y rather than both versus time, use the Scatter Chart panel.
 
 ## 4.2.1.3 Configuration
 
 ### View Mode Toolbar
 
-In addition to the [common view mode controls](../01-panels.md#413-panel-view-mode), the Trend Chart adds:
+The Trend Chart provides a set of chart-specific toolbar buttons in view mode (highlighted in the red box below) for quick analysis:
+
+![View mode toolbar](../../images/04/trend-toolbar-view.png)
 
 | Control | Description |
 |---|---|
-| **Enable Multi-Swimlane** | Display each metric in its own horizontal band instead of sharing a single Y axis |
-| **Disable Sampling** | Fetch raw data without downsampling. Use when you need to see every individual data point. |
-| **Imputation** | Enter imputation mode. Click and drag to select a gap in the data; IDMP fills the gap using AI-based trend estimation. |
-| **Reset Imputation** | Remove any imputation applied to the current chart |
-
-### Edit Mode Toolbar
-
-In addition to the [common edit mode controls](../01-panels.md#414-panel-edit-mode), the Trend Chart adds:
-
-| Control | Description |
-|---|---|
-| **Disable Sampling** | Toggle raw data mode for the preview |
-| **Show Forecast** | Overlay the AI forecast on the chart preview |
-| **Imputation** | Enter imputation mode in the preview |
-| **Reset Imputation** | Remove imputation from the preview |
-| **Save as Image** | Download the current preview as a PNG image |
-| **Full Screen** | Expand the editor preview to fill the browser window |
-| **Panel Insights** | Run AI analysis on the current preview data |
+| **Multi-Swimlane** | Display each metric in its own horizontal lane instead of sharing a single Y axis |
+| **Window Analysis** | Run a window analysis on the current time-series data. Supported types include sliding, state, event, anomaly detection, session, and count windows |
+| **Forecast** | Run AI forecasting for the metrics and extend the chart with predicted values beyond the time range |
+| **Imputation** | Enter imputation mode — drag across a data gap and the system fills it using AI-based trend estimation |
+| **Reset Imputation** | Remove all imputation results currently applied to the chart |
+| **Panel Insights** | Run AI interpretation on the current chart data and output a text summary |
+| **Open as Analysis Panel** | Open the current trend chart in a new window as an analysis panel |
 
 ### Graph Settings
 
-#### Line Style
+The Graph section determines rendering style and layout:
 
-The **Style** setting controls how data points are connected. Three options are available: **Lines** (straight segments between points), **Smooth** (a curved spline), and **Step** (a staircase line that holds the value until the next point).
-
-![Step line chart for discrete-change data](../images/trend-step.png)
-
-Step lines are well suited for signals that change discretely rather than continuously — for example, a setpoint, a mode code, or a price value that holds a constant level between changes.
-
-The **Line Style**, **Line Width**, **Line Opacity**, and **Fill Opacity** settings let you adjust how each line is rendered:
-
-![Line style, width, opacity, and fill settings](../images/trend-style.png)
-
-**Fill Opacity** draws a shaded area under each line. This is particularly effective for cumulative quantities — energy consumption, production volume — where the filled area reinforces the sense of accumulation.
+![Graph settings panel](../../images/04/trend-graph.png)
 
 | Setting | Description |
 |---|---|
-| **Style** | Line rendering mode: Lines, Smooth, or Step |
-| **Line Style** | Line pattern: Solid, Dashed, or Dotted |
-| **Line Width** | Stroke width (slider) |
-| **Line Opacity** | Transparency of lines, 0–1 |
-| **Fill Opacity** | Area fill below each line, 0–1 (0 = no fill) |
+| **Style** | Rendering mode: Lines, Bars, or Points |
+| **Line Interpolation** | How data points are connected in line mode: Linear, Smooth, Step Start, Step Middle, Step End |
+| **Line Style** | Stroke pattern: Solid, Dashed, or Dotted |
+| **Line Opacity** | Line opacity (0–1) |
+| **Line Width** | Stroke thickness (0–10) |
+| **Fill Opacity** | Opacity of the area fill below the series (0–1, 0 = no fill) |
+| **Connect null values** | How nulls are handled: Never, Always, or Threshold |
+| **Gradient Mode** | Color gradient: None, Opacity, Hue, or Scheme |
+| **Show points** | Point visibility: Auto, Always, or Never |
+| **Show values** | Toggle to display value labels on the chart |
+| **Point size** | Pixel size of data-point markers (1–40) |
+| **Stack Series** | Stacking mode: None, Same Sign, All, Positive Only, Negative Only |
+| **Multi-Swimlane** | Display each series in its own horizontal lane with an independent Y axis |
 
-#### Labels
+#### Stack Series
 
-When the time range is long or the chart is narrow, X-axis labels can overlap and become unreadable:
+When Stack Series is enabled, multiple series accumulate vertically — useful for showing how components contribute to a total:
 
-![Overlapping X-axis labels due to high label density](../images/trend-tendency.png)
+![Stack series effect](../../images/04/trend-graph-stack.png)
 
-Two settings address this:
+#### Multi-Swimlane
 
-1. **Rotate Labels** — rotate the label text to reduce overlap:
+When Multi-Swimlane is enabled, each metric gets its own horizontal lane with an independent Y-axis scale, preventing small signals from being compressed when ranges differ:
 
-![X-axis labels rotated to avoid overlap](../images/trend-rotate.png)
+![Multi-swimlane layout](../../images/04/trend-graph-lane.png)
 
-2. **Label Interval** — reduce the number of labels shown:
+### Axis
 
-![Label interval reduced to lower density](../images/trend-interval.png)
+The Axis section controls X-axis display format and Y-axis title, range, and dual-axis configuration:
 
-| Setting | Description |
-|---|---|
-| **Rotate Labels** | Rotation angle for X-axis labels, –90° to +90° |
-| **Label Interval** | Label density: Auto, Small, Medium, Large |
-
-#### Data Stacking
-
-When plotting multiple series that represent parts of a whole (for example, residential and industrial electricity consumption), **Stack Series** accumulates the values to reveal the total:
-
-![Stacked series showing total electricity consumption from two components](../images/trend-stack.png)
-
-Enabling Fill Opacity alongside stacking makes the cumulative effect visually clear.
+![Axis settings panel](../../images/04/trend-axis.png)
 
 | Setting | Description |
 |---|---|
-| **Stack Series** | Stacking mode: None, Same Sign, All, Positive, Negative |
-| **Multi-Swimlane** | Display each metric in its own horizontal band |
+| **X Axis** | Show or Hidden |
+| **X Axis Time Format** | Display format for X-axis timestamps (e.g., YYYY-MM-DD HH:mm) |
+| **Rotate Labels** | Rotation angle for X-axis labels (-90° to +90°, in 45° steps) |
+| **Label Interval** | Label density: auto, small, medium, large |
+| **Show grid lines** | Grid-line visibility: Auto, On, Off |
+| **Left Y Axis Title** | Label text for the left Y axis |
+| **Value Range** | Min and max for the left Y axis (leave blank to auto-scale) |
+| **Right Y Axis** | Enable a secondary Y axis on the right (toggle) |
+| **Right Y Axis Title** | Label text for the right Y axis (available when enabled) |
+| **Right Y Axis Series** | Select which series are bound to the right Y axis (available when enabled) |
+| **Value Range (Right)** | Min and max for the right Y axis (available when enabled) |
 
-### Axis Settings
+When two metrics differ by orders of magnitude (e.g., voltage 200+ V vs. current 4–10 A), enabling the right Y axis and binding the smaller signal to it lets both curves display clearly.
 
-#### Axis Title
+### Limits
 
-The left Y axis label can be configured with a title and unit:
+Limits overlay horizontal reference lines or shaded regions on the chart so that out-of-range conditions are immediately visible:
 
-![Y-axis title showing the metric name and unit](../images/trend-title.png)
+![Limits configuration and effect](../../images/04/trend-limit.png)
 
-#### Dual Y Axis
-
-When two metrics have very different scales, plotting them on the same Y axis causes the smaller signal to appear flat and unreadable:
-
-![Two metrics on a shared axis — the smaller signal is compressed](../images/trend-both.png)
-
-Enabling the **Right Y Axis** assigns the second metric to its own scale on the right side, making both signals readable:
-
-![Dual Y axis — each metric on its own scale](../images/trend-bothY.png)
+Select a metric source from the **Add limit** dropdown, then add predefined limit types: Maximum, HiHi, Hi, Target, Lo, LoLo, Minimum. Each limit supports a custom value and color.
 
 | Setting | Description |
 |---|---|
-| **Left Y Axis Title** | Label for the left Y axis |
-| **Value Range** | Min and Max for the left Y axis (blank = auto-scale) |
-| **Right Y Axis** | Enable a secondary Y axis on the right |
+| **Add limit** | Select the metric source, then choose a limit type from the dropdown (can be added multiple times) |
+| **Show as** | How limits are rendered: As lines, As filled regions, As filled regions and lines |
 
-### Limits Settings
+### Tooltip
 
-Attribute-defined operating limits — LoLo, Lo, Target, Hi, HiHi — can be displayed as horizontal reference lines on the chart. This makes it immediately clear when a value is inside or outside its normal operating range:
+Tooltip settings control what is shown on hover:
 
-![Trend chart with limit lines marking safe and alert zones](../images/trend-limit.png)
+![Tooltip settings panel](../../images/04/trend-tooltip.png)
 
-Limits are defined on the attribute itself (in the element's attribute configuration) and are automatically available here without re-entry.
+| Setting | Description |
+|---|---|
+| **Tooltip mode** | Hover display mode: Single, All, or Hidden |
+| **Values sort order** | Sort order in the tooltip: None, Ascending, Descending |
+| **Hide zeros** | Whether to hide values equal to 0 in the tooltip (toggle) |
+| **Max width** | Maximum tooltip width in pixels |
+| **Max height** | Maximum tooltip height in pixels |
 
-### Legend Settings
+### Legend
 
-The legend can display summary statistics alongside each series name, including minimum, maximum, mean, and last value. This is useful for at-a-glance comparison across multiple metrics:
+The legend supports list mode and table mode. In table mode, summary statistics (e.g., Count, Range, First) are displayed next to each series name for quick cross-metric comparison:
 
-![Legend in table mode showing min, max, and mean for each series](../images/trend-legend.png)
+![Legend settings panel](../../images/04/trend-legend.png)
 
 | Setting | Description |
 |---|---|
 | **Show** | Display mode: List, Table, or Hidden |
 | **Placement** | Position: Bottom or Right |
-| **Legend Values** | Statistics shown in Table mode: Last, Min, Max, Mean, Sum, etc. |
+| **Width** | Legend panel width in pixels (Right placement only) |
+| **Legend Values** | Statistics shown in table mode (multi-select): Max, Min, Mean, Sum, Count, First, Last, Range, etc. |
+
+### Standard Options
+
+Standard Options provide global display and color settings:
+
+![Standard Options panel](../../images/04/trend-standardOptions.png)
+
+| Setting | Description |
+|---|---|
+| **Decimals** | Number of decimal places for value display (leave blank for auto) |
+| **Color Schema** | How series colors are assigned: Single Color, Shades of Color (by series), From thresholds (by value), Classic palette, Classic palette (by series name), Custom palette |
+| **No Value** | Text to display when there is no data (default `-`) |
+
+### Data Links
+
+Data Links attach clickable URLs to data points. Once configured, a link entry appears at the bottom of the tooltip on hover:
+
+![Data Links effect](../../images/04/trend-datalink.png)
+
+Click **+ Add link** to open the edit dialog:
+
+![Data Links edit dialog](../../images/04/trend-datalink-dialog.png)
+
+| Setting | Description |
+|---|---|
+| **Title** | Display name for the link |
+| **URL** | Target URL, supports variable interpolation |
+| **Open in New Tab** | Whether to open the link in a new browser tab |
+| **One-Click** | When enabled, clicking a data point immediately navigates (only one link per panel can use this) |
+
+### Value Mappings
+
+Value Mappings replace raw data values with custom display text and colors. Once configured, matching values are highlighted in the tooltip with the mapped color:
+
+![Value Mappings effect](../../images/04/trend-valueMappings.png)
+
+Click **+ Edit Value Mappings** to open the edit dialog, which supports the following mapping types:
+
+![Value Mappings edit dialog](../../images/04/trend-valueMappings-dialog.png)
+
+| Mapping Type | Description |
+|---|---|
+| **Value** | Exact match on a specific value or text |
+| **Range** | Match a numeric range |
+| **Regex** | Match using a regular expression with replacement |
+| **Special** | Match null, NaN, booleans, empty strings, etc. |
+| **Others** | Match all values not covered by preceding rules |
+
+### Color Thresholds
+
+Color thresholds dynamically change series color based on value, highlighting data that exceeds normal operating ranges:
+
+![Thresholds configuration](../../images/04/trend-thresholds.png)
+
+| Setting | Description |
+|---|---|
+| **Thresholds Mode** | How threshold values are interpreted: Absolute or Percentage |
+| **Add threshold** | Add a threshold rule consisting of a numeric boundary and a color |
+
+Color thresholds take effect when the **Color Schema** in Standard Options is set to **From thresholds (by value)**.
+
+### Overrides
+
+Overrides let you apply style settings to individual series, overriding the global graph configuration:
+
+![Overrides panel](../../images/04/trend-overides.png)
+
+Select a target metric by name (Fields with name), then add properties to override, including: Graph Style > Style, Fill Opacity, Value Mappings, and more.
+
+### Downsampling
+
+When query results contain too many data points, downsampling reduces the rendering load and improves display performance:
+
+![Downsampling settings panel](../../images/04/trend-downSampling.png)
+
+| Setting | Description |
+|---|---|
+| **Down Sampling** | Toggle, off by default |
+| **Max Data Points** | Maximum number of data points retained after downsampling |
+| **Aggregation Function** | Aggregation method used when downsampling (e.g., AVG, MAX, MIN) |
+
+### Scheduled Report
+
+Scheduled Reports automatically generate and push panel snapshots at a preset interval:
+
+![Scheduled Report settings panel](../../images/04/trend-scheduledReport.png)
+
+| Setting | Description |
+|---|---|
+| **Frequency** | Send interval: Weekly, Daily, etc. |
+| **Job Start Time** | Date and time of the first execution |
+| **End Date** | When the scheduled task stops (leave blank for no end) |
+| **Notification Contact Point** | The contact point that receives the report |
 
 ## 4.2.1.4 Example Scenarios
 
-**Energy monitoring with stacking.** An energy manager needs to track electricity consumption across residential and industrial customers. Two metrics — residential consumption and industrial consumption — are added to the same trend chart with Stack Series enabled and Fill Opacity set to 0.4. The result shows both the individual contributions and the total load on a single chart.
+**Energy monitoring with stacking.** An energy manager needs to see voltage and current together with the total load. Two metrics are added to the same trend chart, Stack Series is set to Same Sign, and Fill Opacity is set to 0.5. The combined area makes total demand variation obvious.
 
-**Dual Y axis for mixed signals.** A process engineer is monitoring both voltage (hundreds of volts) and current (single-digit amps) on the same chart. With a shared Y axis, the current line is nearly flat. Enabling the Right Y Axis assigns voltage to the left scale and current to the right scale, making both trends visible.
+**Dual-signal monitoring with different ranges.** A process engineer needs to monitor voltage (200+ V) and current (4–10 A) on the same chart. With a shared Y axis the current line appears flat. Enabling the Right Y Axis and binding the current to it makes both curves readable.
 
-**Limit line monitoring.** An operations team monitors a pump's discharge pressure against its defined Hi and HiHi limits. With Limits enabled on the trend chart, any exceedance is immediately visible as the pressure line crosses the reference lines. The chart color-codes the limit zones to match the alarm severity defined on the attribute.
+**Real-time operating-limit monitoring.** An operations team monitors whether voltage exceeds the Maximum (240) or falls below the Minimum (210). After adding limits, the exceeding zones are shaded with limit colors (Show as: As filled regions and lines), making out-of-range periods instantly visible.
 
-**Shift comparison with time-shift.** A quality engineer compares today's batch temperature profile against yesterday's by adding the same temperature attribute twice — once without offset and once with a 24-hour time shift. The two lines overlay on the same time axis, highlighting where today's run deviates from the previous one.
+**Mixed-style overrides.** A maintenance engineer displays voltage as a line chart and current as a status history color band in the same panel. Using Overrides, the Current metric is set to Style = Status History, producing a hybrid view that shows continuous values alongside discrete intervals.

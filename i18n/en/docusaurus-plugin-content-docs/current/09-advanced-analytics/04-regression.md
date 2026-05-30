@@ -78,7 +78,7 @@ Steps:
 :::note
 In the current version, regression analysis is accessible from both the Analysis Chart panel and the Scatter Chart panel toolbar while in view mode. Future releases will expand the available algorithms and usage patterns.
 
-The Scatter Chart panel toolbar in view mode also provides a **Clustering** icon for grouping scatter data into clusters. For full Scatter Chart panel configuration details, see the [Scatter Chart](../04-visualization/02-chart-types/12-scatter-chart.md) chapter.
+The Scatter Chart panel toolbar in view mode also provides a **Clustering** icon for grouping scatter data into clusters. For full Scatter Chart panel configuration details, see the [Scatter Chart](../04-visualization/02-chart-types/11-scatter-chart.md) chapter.
 :::
 
 ## 9.4.5 Example
