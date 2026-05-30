@@ -202,3 +202,57 @@ quarkus:
    - `Custom`: fill in both `User Info URL` and `Custom Mapping Rules`
 5. Upload an icon, assign roles, and save the configuration.
 6. Sign out and verify that the new login option appears on the login page, and that the first OAuth login either reuses an existing email-matched account or auto-creates a new one.
+
+## 14.4.4 LDAP
+
+IDMP supports integrating with enterprise directory services (such as Active Directory or OpenLDAP) through the LDAP protocol for user synchronization and unified authentication. LDAP configuration is managed under **Admin Console → User Management → LDAP**.
+
+### 14.4.4.1 Configuring the LDAP Connection
+
+On the LDAP page, click the edit button and fill in the following fields:
+
+| Field | Required | Description |
+|---|:---:|---|
+| **Enabled** | — | Turns LDAP authentication on or off. When disabled, both LDAP user sync and LDAP login are unavailable. |
+| **URL** | Yes | LDAP server address, for example `ldap://localhost:389` or `ldaps://localhost:636`. |
+| **Bind DN** | No | LDAP bind account DN used to search for users, for example `cn=admin,dc=taosdata,dc=com`. Leave empty if the LDAP server allows anonymous search. |
+| **Password** | No | Password for the Bind DN account. The password is stored encrypted in the database and displayed as a masked value when editing. |
+| **Search Base DN** | Yes | The starting node for user search, for example `dc=taosdata,dc=com`. |
+| **Login Attribute** | Yes | The LDAP attribute used for login. Defaults to `uid`. If set to `mail`, users can log in directly with their email address. |
+| **Search Filter** | Yes | Additional LDAP search criteria, for example `(objectClass=inetOrgPerson)`. Leave empty to include all object types. |
+| **Roles** | Yes | Default roles automatically assigned to synchronized users. Each role can have its own configurable set of accessible elements. |
+
+Click save after completing the configuration. If the password field displays a masked value (`********`), the existing password is retained. Clear the field to remove the password.
+
+### 14.4.4.2 Synchronizing Users
+
+Click **Sync All Users** to have IDMP connect to the LDAP server using the configured Bind DN, search for all user entries under the Search Base DN and Search Filter, and synchronize them into IDMP.
+
+**LDAP attribute to IDMP user field mapping:**
+
+| LDAP Attribute | IDMP Field | Notes |
+|---|---|---|
+| Login attribute (e.g. `uid`) | Login Name | Determined by the "Login Attribute" configuration |
+| `mail`, or `EmailAddress` | Email | Required; the user is skipped if this attribute is missing |
+| `givenName`, `cn`, or login attribute | First Name | Tried in order; falls back to the login name |
+| `sn` | Last Name | Optional |
+| `mobile`, `Telephone`, or `telephoneNumber` | Phone | Tried in order |
+| Distinguished Name (DN) | Description | The user's full DN in the LDAP directory |
+
+**Sync logic:**
+
+- If a user with the same login name already exists in IDMP with login type LDAP, the user's information is updated.
+- If a user with the same login name exists but with login type Local, the LDAP user is skipped (local accounts are never overwritten).
+- If no matching user exists in IDMP, a new LDAP user is created and assigned the configured default roles.
+- If no matching login name is found but a user with the same email and login type LDAP exists, the match is made and the user is updated.
+- Users removed from LDAP are not automatically deleted from IDMP during sync.
+
+### 14.4.4.3 LDAP User Login
+
+LDAP users enter their login name (or email) and password on the login page. IDMP handles the login as follows:
+
+1. Looks up the IDMP user by login name.
+2. If not found and the input contains `@`, looks up an LDAP-type user by email.
+3. Once the user is found and the login type is LDAP, IDMP binds to the LDAP server using the supplied credentials.
+4. If LDAP authentication succeeds, IDMP issues a JWT token to complete the login.
+
