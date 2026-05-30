@@ -254,7 +254,6 @@ LDAP users enter their login name (or email) and password on the login page. IDM
 1. Looks up the IDMP user by login name.
 2. If not found and the input contains `@`, looks up an LDAP-type user by email.
 3. Once the user is found and the login type is LDAP, IDMP binds to the LDAP server using the supplied credentials.
-4. If LDAP authentication succeeds, IDMP issues a JWT token to complete the login. 
+4. If LDAP authentication succeeds, IDMP issues a JWT token to complete the login.
 
 LDAP user passwords are stored on the LDAP server; IDMP does not store LDAP user passwords.
-
