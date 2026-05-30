@@ -17,6 +17,7 @@ Ensure the following prerequisites are in place before installing:
 
 - The latest version of TDengine TSDB-Enterprise must be installed and running. See [Deploy from Package](https://docs.tdengine.com/get-started/package/).
 - Java 21 or later
+- Python 3.12 or later
 - On Linux: glibc 2.28 or later
 - SMTP email service (required for alert notifications; deploy internally if internet access is unavailable)
 - A correctly configured system timezone. Refer to your operating system's user manual for instructions.
