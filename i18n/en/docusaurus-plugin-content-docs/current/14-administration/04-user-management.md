@@ -219,7 +219,7 @@ On the LDAP page, click the edit button and fill in the following fields:
 | **Password** | No | Password for the Bind DN account. The password is stored encrypted in the database and displayed as a masked value when editing. |
 | **Search Base DN** | Yes | The starting node for user search, for example `dc=taosdata,dc=com`. |
 | **Login Attribute** | Yes | The LDAP attribute used for login. Defaults to `uid`. If set to `mail`, users can log in directly with their email address. |
-| **Search Filter** | Yes | Additional LDAP search criteria, for example `(objectClass=inetOrgPerson)`. Leave empty to include all object types. |
+| **Search Filter** | Yes | Additional LDAP search criteria, for example `(objectClass=inetOrgPerson)`. |
 | **Roles** | Yes | Default roles automatically assigned to synchronized users. Each role can have its own configurable set of accessible elements. |
 
 Click save after completing the configuration. If the password field displays a masked value (`********`), the existing password is retained. Clear the field to remove the password.
@@ -254,5 +254,7 @@ LDAP users enter their login name (or email) and password on the login page. IDM
 1. Looks up the IDMP user by login name.
 2. If not found and the input contains `@`, looks up an LDAP-type user by email.
 3. Once the user is found and the login type is LDAP, IDMP binds to the LDAP server using the supplied credentials.
-4. If LDAP authentication succeeds, IDMP issues a JWT token to complete the login.
+4. If LDAP authentication succeeds, IDMP issues a JWT token to complete the login. 
+
+LDAP user passwords are stored on the LDAP server; IDMP does not store LDAP user passwords.
 
