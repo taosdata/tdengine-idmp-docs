@@ -204,7 +204,7 @@ sidebar_label: 趋势图
 
 个性化配置允许对单个指标覆盖全局图形设置，实现每个系列的独立样式：
 
-![个性化配置面板](../../images/04/trend-overides.png)
+![个性化配置面板](../../images/04/trend-overrides.png)
 
 选定目标指标名称（Fields with name）后，可添加需要覆盖的属性，包括：系列样式（Graph Style > Style）、填充透明度（Fill Opacity）、值映射（Value Mappings）等。
 

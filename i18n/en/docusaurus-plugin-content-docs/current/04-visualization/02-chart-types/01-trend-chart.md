@@ -204,7 +204,7 @@ Color thresholds take effect when the **Color Schema** in Standard Options is se
 
 Overrides let you apply style settings to individual series, overriding the global graph configuration:
 
-![Overrides panel](../../images/04/trend-overides.png)
+![Overrides panel](../../images/04/trend-overrides.png)
 
 Select a target metric by name (Fields with name), then add properties to override, including: Graph Style > Style, Fill Opacity, Value Mappings, and more.
 
