@@ -67,7 +67,57 @@ Any user can reset their own password from the login page by clicking **Forgot P
 Ensure `tda.server-url` in your deployment configuration is set to an externally accessible URL or IP address. If it is not configured correctly, invited users will not be able to follow the email link to access IDMP.
 :::
 
-## 14.4.2 Roles
+## 14.4.2 User Groups
+
+User groups are used to manage users as a group and assign roles in bulk. In addition to flat grouping, user groups support tree hierarchies (for example: Group → Division → Plant → Workshop) so you can map real organizational structures and inherit permissions by level.
+
+### 14.4.2.1 Creating and Editing User Groups
+
+In **Admin Console → User Management → User Groups**, click **+** to create a user group, or edit an existing group from the list. Common fields are:
+
+| Field | Description |
+|---|---|
+| **Name** | User group name. Must be unique under the same parent group; identical names are allowed in different branches. |
+| **Description** | Optional notes to distinguish business purpose. |
+| **Parent Group** | Optional. Used to build the group hierarchy. If left empty, the group is created as a root group. |
+
+When creating or editing a group, you can also maintain members and roles in the same operation. Changes take effect after save. After a child group is created, its members can inherit roles granted to the parent group and upstream groups.
+
+### 14.4.2.2 Managing User Group Members
+
+In the members area of the group detail or edit page, you can:
+
+- Add members: add one or more users to the current group.
+- Remove members: remove users from the current group.
+
+When membership changes, permissions obtained through that group are updated accordingly.
+
+### 14.4.2.3 Managing User Group Roles
+
+In the roles area of the group detail or edit page, you can assign or remove roles for the group:
+
+- After a role is assigned, group members inherit that role.
+- After a role is removed, members lose that role if it was inherited from this group.
+
+Users can belong to multiple groups, and their effective permissions are the union of all permission sources.
+
+When the same user gets roles through multiple group paths, the system merges all available permissions.
+
+### 14.4.2.4 Hierarchy and Deletion Rules
+
+User groups support parent-child hierarchies, which are suitable for structures such as enterprise, plant, and workshop. Keep the following in mind:
+
+- Child groups can inherit roles granted by parent groups.
+- You can move a user group under a new parent group to match organizational changes.
+- You cannot move a user group under itself or any of its descendants.
+- Before deleting a group, handle its child groups first; a parent group with children cannot be deleted directly.
+- It is recommended to clean up and adjust in this order: children first, then parent.
+
+### 14.4.2.5 User-Centric Group Membership View
+
+On the user details page, you can see the user's group memberships, including direct membership and inherited membership. When editing a user, you can add the user to or remove the user from specific groups, so organizational membership and permission sources can be managed from the user perspective.
+
+## 14.4.3 Roles
 
 IDMP uses role-based access control (RBAC). Each role grants view, add, delete, and edit permissions on one or more resource types. A user can hold multiple roles; their effective permissions are the union of all assigned roles.
 
@@ -75,17 +125,17 @@ The system includes several built-in roles. You can also create custom roles by 
 
 **Resources covered by role permissions include:** Element Templates, AI features, Event Templates, Enumeration Sets, Analyses, External Tables, Email Configuration, Notification Rule Templates, Dashboard Templates, Data Backup, Dashboards, Elements, OAuth, Users, Roles, UOM, Panel Templates, Data In, and more.
 
-### 14.4.2.1 Element-Level Access Control
+### 14.4.3.1 Element-Level Access Control
 
 Because elements are organized in a tree hierarchy, element access is controlled separately from other permissions. Even if a role grants access to elements in general, each user's element visibility is further narrowed down to specific top-level nodes configured during invitation or user editing.
 
 Elements that a user cannot access are completely invisible in the asset tree — they do not appear even as collapsed nodes. Attributes, analyses, events, panels, and dashboards linked to inaccessible elements are equally hidden, ensuring strong data isolation between teams, sites, or business units.
 
-## 14.4.3 Single Sign-On (OAuth 2.0)
+## 14.4.4 Single Sign-On (OAuth 2.0)
 
 IDMP supports OAuth 2.0 SSO. OAuth configurations are managed under **Admin Console → User Management → OAuth**. On the login page, IDMP reads the configured provider list from the backend and starts authorization with each provider's authorization URL, client ID, redirect URL, and scope.
 
-### 14.4.3.1 Creating an OAuth Configuration
+### 14.4.4.1 Creating an OAuth Configuration
 
 Click **+** to add a new OAuth provider. Fill in the following fields:
 
@@ -104,7 +154,7 @@ Click **+** to add a new OAuth provider. Fill in the following fields:
 | **Custom Mapping Rules** | Required when `Custom` is selected | JSON object defining JSONPath expressions to extract `name`, `email`, and optional fields. |
 | **Roles** | Yes | Roles assigned to users who log in through this OAuth provider. |
 
-### 14.4.3.2 How Each Provider Type Works
+### 14.4.4.2 How Each Provider Type Works
 
 | Type | Source of user information | Special requirements |
 |---|---|---|
@@ -113,7 +163,7 @@ Click **+** to add a new OAuth provider. Fill in the following fields:
 | **ADFS** | Reads claims from the token response `id_token` and validates it through OIDC discovery and JWKS. | Leave `User Info URL` empty; `Scope` must include `openid`. |
 | **Custom** | Calls `User Info URL` and extracts fields using custom JSONPath rules. | `User Info URL` and `Custom Mapping Rules` are required, and `Custom Mapping Rules` must include `name` and `email`. |
 
-### 14.4.3.3 Custom Mapping Rules
+### 14.4.4.3 Custom Mapping Rules
 
 When **User Info Mapping Type** is `Custom`, provide a JSON object mapping field names to JSONPath expressions:
 
@@ -129,7 +179,7 @@ When **User Info Mapping Type** is `Custom`, provide a JSON object mapping field
 
 Supported fields are `name`, `email`, `nickname`, `description`, and `phone`. The `name` and `email` fields are required. All others are optional.
 
-### 14.4.3.4 ADFS Configuration Notes
+### 14.4.4.4 ADFS Configuration Notes
 
 For `ADFS`, use the standard ADFS OAuth/OIDC endpoints under the same base path, for example:
 
@@ -154,7 +204,7 @@ ADFS claim mapping is fixed in the current implementation:
 - Display name: `given_name + family_name`, with fallback to `unique_name` when `given_name` is missing
 - Nickname: `unique_name`
 
-### 14.4.3.5 OAuth Login and Automatic User Provisioning
+### 14.4.4.5 OAuth Login and Automatic User Provisioning
 
 OAuth login works as follows in the current implementation:
 
@@ -165,7 +215,7 @@ OAuth login works as follows in the current implementation:
 - If no such user exists, IDMP automatically creates an **Active** OAuth user and grants the roles configured on this OAuth provider.
 - Deleted or disabled users cannot log in through OAuth.
 
-### 14.4.3.6 Optional Deployment Settings
+### 14.4.4.6 Optional Deployment Settings
 
 The following settings affect the final login-page and OAuth behavior:
 
@@ -192,7 +242,7 @@ quarkus:
 `trust-all: true` is only recommended for test environments. In production, configure a proper trust store instead of disabling certificate validation.
 :::
 
-### 14.4.3.7 Setup Steps
+### 14.4.4.7 Setup Steps
 
 1. Register your application in the OAuth provider's developer console and obtain the Client ID, Client Secret, and configure the Redirect URL.
 2. Set the Redirect URL to the IDMP front-end callback page, for example `https://<idmp-host>/login/back`, and make sure it exactly matches the value registered with the provider.
