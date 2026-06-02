@@ -1,0 +1,75 @@
+name: Build Docs
+
+on:
+  workflow_call:
+  pull_request:
+    paths-ignore:
+      - 'docs/**'
+      - 'i18n/en/docusaurus-plugin-content-docs/current/**'
+    branches:
+      - main
+      
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-build-${{ github.event_name }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      NODE_VERSION: '24'
+      PNPM_VERSION: '10'
+      PYTHON_VERSION: '3.10'
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+          run_install: false 
+
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'pnpm'
+          cache-dependency-path: pnpm-lock.yaml
+
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Set Env
+        run: |
+          echo "VERSION=latest" >> $GITHUB_ENV
+          echo "DOCS_TYPE=tdasset" >> $GITHUB_ENV
+
+      - name: generate version config
+        run: |
+          python3 .github/scripts/generate_version.py \
+            $(git tag | egrep "v(.*)$" | xargs echo -n) > \
+            test_versions.json
+          cat test_versions.json
+
+      - name: Build Docs
+        run: |
+          pnpm install
+          pnpm run build
+          
+      - name: Upload Build Artifact
+        # Skip upload when called by PR workflows
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-build
+          path: |
+            build/
+            build-en/
+            .docsearch
+          include-hidden-files: true
+          retention-days: 1
