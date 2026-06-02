@@ -1,0 +1,46 @@
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+.feedback {
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  border-radius: 5px;
+  padding: 25px;
+  margin: 32px 0 0 0;
+  border: 1px solid #e0e0e0; /* 更低调的灰色 */
+  box-shadow: 0 2px 8px 0 rgba(60, 72, 88, 0.08); /* 更柔和的阴影 */
+  transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+}
+
+[data-theme='light'] .feedback {
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 2px 8px 0 rgba(60, 72, 88, 0.08);
+}
+
+[data-theme='dark'] .feedback {
+  background: var(--ifm-background-surface-color, #222);
+  border: 1px solid #222;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.24);
+}
+
+h4 {
+  font-weight: 900;
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+.feedback > p {
+  font-size: 16px;
+}
+
+.feedback > div {
+  font-size: 16px;
+}
+
+.feedback a {
+  color: #2d7df0;
+  text-decoration: none;
+}

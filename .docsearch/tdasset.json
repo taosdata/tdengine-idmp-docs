@@ -1,0 +1,46 @@
+{
+  "index_name": "tdasset_index",
+  "start_urls": [
+    {
+      "url": "https://idmpdocs.taosdata.com/",
+      "custom_fields": {
+        "language": "zh-Hans",
+        "docusaurus_tag": "docs-default-current"
+      }
+    },
+    {
+      "url": "https://idmpdocs.tdengine.com/",
+      "custom_fields": {
+        "language": "en",
+        "docusaurus_tag": "docs-default-current"
+      }
+    }
+  ],
+  "sitemap_urls": [
+    "https://idmpdocs.tdengine.com/sitemap.xml",
+    "https://idmpdocs.taosdata.com/sitemap.xml"
+  ],
+  "stop_urls": [],
+  "selectors": {
+    "lvl0": {
+      "selector": ".theme-doc-sidebar-menu .menu__link--active, .navbar__title",
+      "global": true,
+      "default_value": "Documentation"
+    },
+    "lvl1": "article h1, .markdown h1",
+    "lvl2": "article h2, .markdown h2",
+    "lvl3": "article h3, .markdown h3",
+    "lvl4": "article h4, .markdown h4",
+    "lvl5": "article h5, .markdown h5",
+    "text": "article p, article li, .markdown p, .markdown li, article pre, .markdown pre"
+  },
+  "custom_settings": {
+    "attributesForFaceting": [
+      "language",
+      "docusaurus_tag"
+    ],
+    "typoTolerance": false,
+    "queryType": "prefixAll",
+    "removeWordsIfNoResults": "none"
+  }
+}
