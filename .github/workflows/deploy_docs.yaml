@@ -1,0 +1,104 @@
+name: Deploy Docs
+
+concurrency: 
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  push:
+    paths:
+      - 'docs/**'
+      - 'i18n/en/docusaurus-plugin-content-docs/current/**'
+      - '.github/workflows/deploy_docs.yaml'
+      - '.docsearch/**'
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: ./.github/workflows/build_docs.yaml
+      
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+
+    env:
+      AZ_CLI_VERSION: 2.73.0
+
+    steps:
+    - name: Download Build Artifacts
+      uses: actions/download-artifact@v4
+      with:
+        name: docs-build
+        path: build-artifacts
+
+    - name: Azure Login
+      uses: azure/login@v2
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Upload CN Docs to Azure Blob Storage
+      uses: azure/cli@v2
+      with:
+        azcliversion: ${{ env.AZ_CLI_VERSION }}
+        inlineScript: |
+          az storage blob upload-batch \
+            --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
+            --destination '$web' \
+            --source build-artifacts/build \
+            --overwrite \
+            --auth-mode key
+          echo "Uploaded CN docs to Azure Blob Storage"
+
+    - name: Upload EN Docs to Azure Blob Storage
+      uses: azure/cli@v2
+      with:
+        azcliversion: ${{ env.AZ_CLI_VERSION }}
+        inlineScript: |
+          az storage blob upload-batch \
+            --account-name ${{ secrets.AZURE_STORAGE_ACCOUNT }} \
+            --destination '$web' \
+            --destination-path 'build-en' \
+            --source build-artifacts/build-en \
+            --overwrite \
+            --auth-mode key
+          echo "Uploaded EN docs to Azure Blob Storage"
+
+    - name: Purge Azure CDN Endpoint (CN)
+      uses: azure/cli@v2
+      with:
+        azcliversion: ${{ env.AZ_CLI_VERSION }}
+        inlineScript: |
+          az afd endpoint purge \
+            --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
+            --profile-name ${{ secrets.AZURE_CDN_PROFILE_CN }} \
+            --endpoint-name ${{ secrets.AZURE_CDN_ENDPOINT_CN }} \
+            --domains idmpdocs.taosdata.com \
+            --content-paths  "/*" "/index.html" "/"
+          echo "Azure CDN purged for idmpdocs.taosdata.com"
+
+    - name: Purge Azure CDN Endpoint (EN)
+      uses: azure/cli@v2
+      with:
+        azcliversion: ${{ env.AZ_CLI_VERSION }}
+        inlineScript: |
+          az afd endpoint purge \
+            --resource-group ${{ secrets.AZURE_RESOURCE_GROUP }} \
+            --profile-name ${{ secrets.AZURE_CDN_PROFILE_EN }} \
+            --endpoint-name ${{ secrets.AZURE_CDN_ENDPOINT_EN }} \
+            --domains idmpdocs.tdengine.com \
+            --content-paths  "/*" "/index.html" "/"
+          echo "Azure CDN purged for idmpdocs.tdengine.com"
+
+    - name: Run Docsearch Scraper
+      env:
+        APPLICATION_ID: ${{ secrets.ALGOLIA_APPLICATION_ID }}
+        API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
+      run: |
+        CONFIG="$(cat ${{ github.workspace }}/build-artifacts/.docsearch/tdasset.json | jq -c '.')"
+        docker run --rm \
+          -e APPLICATION_ID \
+          -e API_KEY \
+          -e CONFIG="$CONFIG" \
+          algolia/docsearch-scraper

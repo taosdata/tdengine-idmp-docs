@@ -1,0 +1,13 @@
+# AutoCorrect Configuration
+rules:
+  # 中英文之间加空格
+  space-word: 2
+  # 中文与数字之间加空格
+  space-punctuation: 2
+
+# 排除的文件和目录
+excludes:
+  - .claude/**
+  - node_modules/**
+  - build/**
+  - .git/**

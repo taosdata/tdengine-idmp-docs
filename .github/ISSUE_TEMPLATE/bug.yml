@@ -1,0 +1,62 @@
+name: 🐛 Bug Report
+description: Submit a bug report to help us improve
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before filing your issue, please:
+        - Open "Developer Tools" of your browser
+        - Go to "Network" tab
+        - Check "Disable cache"
+        - Refresh the page to check if the issue still exists
+
+        When filling your issue, please provide following information with us:
+
+        Console logs:
+        - Open "Developer Tools" of your browser
+        - Go to "Console" tab
+        - Right click the error in the console (if any), and select "Save as" to save the errors in a file
+
+        Network request details:
+        - Open "Developer Tools" of your browser
+        - Go to "Network" tab
+        - Right click the failed requests, and select Copy
+        - Copy request headers, response headers, response, stack trace (if available) and save them to a file
+
+        Backend logs:
+        - When installed natively, logs can be found `/usr/local/taos/idmp/logs`
+        - When started with Docker, logs can be copied from container with following command:
+          ```bash
+          docker cp tdengine-idmp:/app/logs/tda.log ./tda.log
+          docker cp tdengine-idmp:/app/logs/tda-error.log ./tda-error.log
+          ```
+
+  - type: textarea
+    attributes:
+      label: Description
+      description: A clear and concise description of what the bug is.
+      value: |
+        - TDengine IDMP version:
+        - Browser version:
+        - Operating system and version:
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Steps to reproduce
+      description: Write down the steps to reproduce the bug.
+      placeholder: |
+        1. Step 1...
+        2. Step 2...
+        3. Step 3...
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Attachments
+      description: |
+        Screenshots, console logs, network request details, backend logs
+      placeholder: Please upload screenshots and logs.

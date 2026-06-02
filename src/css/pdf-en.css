@@ -1,0 +1,77 @@
+@page {
+  size: Letter;
+
+  @bottom-center {
+    content: counter(page);
+  }
+}
+
+html {
+  font-family: "IBM Plex Serif", serif;
+  font-size: 10pt;
+}
+
+pre {
+  font-family: "IBM Plex Mono", monospace;
+  padding: 0.5em;
+  font-size: 95%;
+}
+
+nav,
+.col--3,
+.col--6,
+div[role=region],
+.clean-btn,
+.theme-doc-sidebar-container {
+  display: none;
+}
+
+img {
+  max-width: 100% !important;
+}
+
+table {
+  display: table;
+  width: 100%;
+  max-width: 100%;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+td,
+th {
+  padding: 0.5em;
+}
+
+li,
+li ol,
+li ul {
+  margin-bottom: 0.5em;
+}
+
+.theme-admonition {
+  border-left: 2px solid blue;
+  padding-left: 0.5em;
+}
+
+.theme-admonition svg {
+  width: 1em;
+  margin-bottom: -0.2em;
+  padding-right: 0.4em;
+}
+
+.theme-admonition div:first-child {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.theme-admonition pre {
+  text-transform: none;
+  font-weight: initial;
+}

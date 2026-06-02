@@ -1,0 +1,331 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+
+:root {
+  --ifm-color-primary: var(--accent);
+  --ifm-color-primary-dark: #126dee;
+  --ifm-color-primary-darker: #1066e2;
+  --ifm-color-primary-darkest: #0d54ba;
+  --ifm-color-primary-light: #488df2;
+  --ifm-color-primary-lighter: #5596f3;
+  --ifm-color-primary-lightest: #7daef6;
+  --ifm-color-secondary-dark: #d4d5d8;
+  --ifm-navbar-height: 80px;
+  --ifm-navbar-link-color: var(--contrast);
+  --ifm-navbar-link-hover-color: var(--accent);
+  --ifm-font-family-base: "IBM Plex Sans", sans-serif;
+  --ifm-font-family-monospace: "IBM Plex Mono", monospace;
+  --ifm-font-color-base: var(--contrast);
+  --ifm-h1-font-size: 2rem;
+  --ifm-h2-font-size: 1.75rem;
+  --ifm-h3-font-size: 1.5rem;
+  --ifm-h4-font-size: 1.25rem;
+  --ifm-heading-font-weight: 600;
+  --ifm-navbar-item-padding-horizontal: 10px;
+  --ifm-navbar-padding-vertical: 0;
+
+  --contrast: #141414;
+  --contrast-2: #595959;
+  --contrast-3: #AFAFAF;
+  --base: #F0F0F0;
+  --base-2: #F2F2F2;
+  --base-3: #FFFFFF;
+  --accent: #0041CE;
+  --accent-2: #6A85BD;
+  --accent-3: #00FFBA;
+  --accent-4: #F0A808;
+  --accent-5: #27EA66;
+  --accent-6: #FFFF00;
+  --accent-7: #FFD800;
+  --accent-8: #47CEFF;
+  --accent-9: #432EC0;
+  --accent-10: #0041CE;
+  --accent-11: #EB2828
+}
+
+.navbarSearchTemp {
+  display: none
+}
+
+/*
+.markdown h1:first-child {
+  font-size: 2rem
+}
+
+.markdown>h2 {
+  font-size: 1.75rem
+}
+
+.markdown>h3 {
+  font-size: 1.5rem
+}
+*/
+
+.markdown h1:first-child {
+  --ifm-h1-font-size: 2.2rem !important;
+}
+
+.markdown>h2 {
+  --ifm-h2-font-size: 1.9rem !important;
+}
+
+.markdown h3 {
+  font-size: 1.7rem !important;
+  font-weight: bold;
+  line-height: 1.6;
+}
+
+.markdown h4 {
+  font-size: 1.5rem !important;
+  font-weight: bold;
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
+  line-height: 1.4;
+}
+
+.markdown h5 {
+  font-size: 1.3rem !important;
+  font-weight: bold;
+  margin-top: 1.1em;
+  margin-bottom: 0.5em;
+  line-height: 1.4;
+}
+
+.markdown h6 {
+  font-size: 1.15rem !important;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  line-height: 1.4;
+}
+
+header h1 {
+  --ifm-h1-font-size: 2.2rem !important;
+  margin-bottom: calc(var(--ifm-leading)*1.25);
+}
+
+code {
+  vertical-align: baseline;
+  tab-size: 4;
+  overflow-wrap: break-word;
+  white-space: pre-wrap
+}
+
+article figure,
+article figcaption {
+  text-align: center
+}
+
+article figure {
+  margin-left: 60px;
+  margin-right: 60px
+}
+
+caption {
+  caption-side: bottom
+}
+
+/* Prevent first column from wrapping in Chinese locale tables.
+   Docusaurus sets html[lang="zh-CN"] (or zh) on Chinese pages, so this
+   selector is zero-touch — no Markdown changes required. */
+html[lang^="zh"] .markdown table td:first-child,
+html[lang^="zh"] .markdown table th:first-child,
+html[lang^="zh"] .markdown table td:first-child code,
+html[lang^="zh"] .markdown table th:first-child code,
+html[lang^="zh"] .markdown table td:first-child a,
+html[lang^="zh"] .markdown table th:first-child a {
+  white-space: nowrap;
+}
+
+.navbar {
+  background-blend-mode: normal;
+  background-color: var(--accent);
+  /* webpackIgnore: true */
+  background-image: url("/img/banner.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover
+}
+
+
+.navbar__logo {
+  width: 100%;
+  height: 36px;
+  display: flex;
+  align-items: center
+}
+
+.pagination-nav__label {
+  font-size: var(--ifm-pagination-font-size)
+}
+
+.package-list li {
+  align-items: center;
+  gap: 0.5rem;
+  /* 子弹与链接之间的间隔，保持一致 */
+  margin-bottom: 0.4rem;
+  padding-left: 0;
+}
+
+.menu,
+.navbar__link {
+  font-weight: var(--ifm-font-weight-normal)
+}
+
+.center-table {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  overflow-x: auto
+}
+
+.center-table th {
+  text-align: center
+}
+
+.center-table td {
+  text-align: center
+}
+
+.table-nowrap th,
+.table-nowrap td {
+  white-space: nowrap;
+}
+
+/* Ensure nowrap applies even against theme defaults inside Markdown tables */
+.markdown .table-nowrap table,
+.markdown .table-nowrap tr,
+.markdown .table-nowrap th,
+.markdown .table-nowrap td {
+  white-space: nowrap !important;
+}
+
+/* Prevent nested inline elements from re-wrapping inside nowrap tables */
+.table-nowrap a,
+.table-nowrap code,
+.table-nowrap span,
+.table-nowrap strong,
+.table-nowrap em {
+  white-space: nowrap;
+}
+
+/* Optional: when extremely long tokens exist, keep row height stable and allow horizontal scroll */
+.table-nowrap {
+  overflow-x: auto;
+}
+
+/* Optional: fixed layout makes column widths consistent; comment out if undesired */
+.table-nowrap table {
+  table-layout: fixed;
+}
+
+.DocSearch-Button {
+  border-radius: 0.25rem !important;
+  width: 28%;
+}
+
+.DocSearch-Button-Keys {
+  display: none !important
+}
+
+.DocSearch-Logo {
+  display: none !important
+}
+
+.Docsearch-Command-Tip {
+  font-size: 12px;
+  color: var(--docsearch-muted-color);
+  display: flex
+}
+
+.DocSearch-Commands-Key {
+  box-shadow: none !important;
+  background: none !important;
+  border: 0.5px solid !important
+}
+
+@media (max-width: 996px) {
+  article figure {
+    margin-left: 0;
+    margin-right: 0
+  }
+
+  .center-table {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    overflow-x: auto
+  }
+
+  .center-table a {
+    margin: 0 auto
+  }
+
+  .Docsearch-Command-Tip {
+    display: none
+  }
+}
+
+body {
+  counter-reset: section -1
+}
+
+ul.theme-doc-sidebar-menu li {
+  counter-reset: sub-section
+}
+
+ul.theme-doc-sidebar-menu ul li {
+  counter-reset: composite
+}
+
+ul.theme-doc-sidebar-menu ul ul li {
+  counter-reset: detail
+}
+
+ul.theme-doc-sidebar-menu ul ul ul li {
+  counter-reset: detail2
+}
+
+ul.theme-doc-sidebar-menu ul ul ul ul li {
+  counter-reset: detail3
+}
+
+ul.theme-doc-sidebar-menu a:before {
+  counter-increment: section;
+  content: counter(section) ".\00a0";
+  padding-right: 5px;
+}
+
+ul.theme-doc-sidebar-menu ul a:before {
+  counter-increment: sub-section;
+  content: counter(section) "." counter(sub-section) "\00a0";
+}
+
+ul.theme-doc-sidebar-menu ul ul a:before {
+  counter-increment: composite;
+  content: counter(section) "." counter(sub-section) "." counter(composite) "\00a0";
+}
+
+ul.theme-doc-sidebar-menu ul ul ul a:before {
+  counter-increment: detail;
+  content: counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) "\00a0";
+}
+
+ul.theme-doc-sidebar-menu ul ul ul ul a:before {
+  counter-increment: detail2;
+  content: counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(detail2) "\00a0";
+}
+
+ul.theme-doc-sidebar-menu ul ul ul ul ul a:before {
+  counter-increment: detail3;
+  content: counter(section) "." counter(sub-section) "." counter(composite) "." counter(detail) "." counter(detail2) "." counter(detail3) "\00a0";
+}

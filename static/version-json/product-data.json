@@ -1,0 +1,1956 @@
+[
+  {
+    "name": "TDengine TSDB-OSS",
+    "description": "开源、高性能、分布式的时序数据库，专为物联网、车联网、工业互联网、金融、IT 运维等场景打造。",
+    "filters": {
+      "versions": [
+        "3.3.7.5",
+        "3.3.6.13",
+        "3.3.5.8"
+      ],
+      "platforms": [
+        "Docker",
+        "Linux-Generic",
+        "Linux-Red Hat",
+        "Linux-Ubuntu",
+        "Windows",
+        "macOS"
+      ],
+      "archs": [
+        "x64",
+        "arm64"
+      ],
+      "types": [
+        "Server",
+        "Client"
+      ]
+    },
+    "versions": [
+      {
+        "name": "tdengine-tsdb-oss-3.3.7.5-linux-arm64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-3.3.7.5-linux-arm64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "arm64",
+        "size": "192.76MB",
+        "md5": "MD5: f4469ddb0d4fe1010a5660cd4c4e1c11",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-3.3.7.5-linux-arm64.tar.gz",
+          "tar -zxvf tdengine-tsdb-oss-3.3.7.5-linux-arm64.tar.gz && \\\ncd tdengine-tsdb-oss-3.3.7.5 && \\\nsudo ./install.sh",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "tdengine-tsdb-oss-3.3.7.5-linux-x64.deb",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-3.3.7.5-linux-x64.deb",
+        "version": "3.3.7.5",
+        "platform": "Linux-Ubuntu",
+        "arch": "x64",
+        "size": "95.43MB",
+        "md5": "MD5: 1dc3cb10382e57f7101b58622b88b97c",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-3.3.7.5-linux-x64.deb",
+          "sudo dpkg -i tdengine-tsdb-oss-3.3.7.5-linux-x64.deb",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "tdengine-tsdb-oss-3.3.7.5-linux-x64.rpm",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-3.3.7.5-linux-x64.rpm",
+        "version": "3.3.7.5",
+        "platform": "Linux-Red Hat",
+        "arch": "x64",
+        "size": "104.45MB",
+        "md5": "MD5: 2afe857cc3354c1c4d7b244b68b07e81",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-3.3.7.5-linux-x64.rpm",
+          "sudo rpm -ivh tdengine-tsdb-oss-3.3.7.5-linux-x64.rpm",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "tdengine-tsdb-oss-3.3.7.5-linux-x64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-3.3.7.5-linux-x64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "203.45MB",
+        "md5": "MD5: 0ce915cab8dc3f92528b0130d372bc95",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-3.3.7.5-linux-x64.tar.gz",
+          "tar -zxvf tdengine-tsdb-oss-3.3.7.5-linux-x64.tar.gz && \\\ncd tdengine-tsdb-oss-3.3.7.5 && \\\nsudo ./install.sh",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "tdengine-tsdb-oss-3.3.7.5-macos-arm64.pkg",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-3.3.7.5-macos-arm64.pkg",
+        "version": "3.3.7.5",
+        "platform": "macOS",
+        "arch": "arm64",
+        "size": "132.11MB",
+        "md5": "MD5: 870a81f4a76ff2e91b9cb7eaebe5fd56",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-3.3.7.5-macos-arm64.pkg",
+          "sudo installer -pkg tdengine-tsdb-oss-3.3.7.5-macos-arm64.pkg -target /",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "tdengine-tsdb-oss-3.3.7.5-macos-x64.pkg",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-3.3.7.5-macos-x64.pkg",
+        "version": "3.3.7.5",
+        "platform": "macOS",
+        "arch": "x64",
+        "size": "138.36MB",
+        "md5": "MD5: bee20354997c0011b938cfbf865b2957",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-3.3.7.5-macos-x64.pkg",
+          "sudo installer -pkg tdengine-tsdb-oss-3.3.7.5-macos-x64.pkg -target /",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "tdengine-tsdb-oss-client-3.3.7.5-linux-arm64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-client-3.3.7.5-linux-arm64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "arm64",
+        "size": "53.39MB",
+        "md5": "MD5: 6b86a6e7aa8bc56fa1eea1bf4d1470bb",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-client-3.3.7.5-linux-arm64.tar.gz",
+          "tar -zxvf tdengine-tsdb-oss-client-3.3.7.5-linux-arm64.tar.gz && \\\ncd tdengine-tsdb-oss-client-3.3.7.5 && \\\nsudo ./install_client.sh",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "tdengine-tsdb-oss-client-3.3.7.5-linux-x64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-client-3.3.7.5-linux-x64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "55.59MB",
+        "md5": "MD5: b4642a421a0899577b61b10e57e83dd4",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-client-3.3.7.5-linux-x64.tar.gz",
+          "tar -zxvf tdengine-tsdb-oss-client-3.3.7.5-linux-x64.tar.gz && \\\ncd tdengine-tsdb-oss-client-3.3.7.5 && \\\nsudo ./install_client.sh",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "tdengine-tsdb-oss-client-3.3.7.5-macos-arm64.pkg",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-client-3.3.7.5-macos-arm64.pkg",
+        "version": "3.3.7.5",
+        "platform": "macOS",
+        "arch": "arm64",
+        "size": "33.48MB",
+        "md5": "MD5: 4f3c256c33c2d6cb56f75b2836f506ef",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-client-3.3.7.5-macos-arm64.pkg",
+          "sudo installer -pkg tdengine-tsdb-oss-client-3.3.7.5-macos-arm64.pkg -target /",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "tdengine-tsdb-oss-client-3.3.7.5-macos-x64.pkg",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-client-3.3.7.5-macos-x64.pkg",
+        "version": "3.3.7.5",
+        "platform": "macOS",
+        "arch": "x64",
+        "size": "35MB",
+        "md5": "MD5: 38193c16a9629720ce837c86db842285",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-client-3.3.7.5-macos-x64.pkg",
+          "sudo installer -pkg tdengine-tsdb-oss-client-3.3.7.5-macos-x64.pkg -target /",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "tdengine-tsdb-oss-client-3.3.7.5-windows-x64.exe",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-client-3.3.7.5-windows-x64.exe",
+        "version": "3.3.7.5",
+        "platform": "Windows",
+        "arch": "x64",
+        "size": "10.31MB",
+        "md5": "MD5: fd9516e0252e683501e42ed7812ca713",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "# PowerShell\nInvoke-WebRequest -Uri 'https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-client-3.3.7.5-windows-x64.exe' -OutFile 'tdengine-tsdb-oss-client-3.3.7.5-windows-x64.exe'",
+          "# PowerShell\n.\\tdengine-tsdb-oss-client-3.3.7.5-windows-x64.exe /S",
+          "# PowerShell\ntaos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "tdengine-tsdb-oss-docker-3.3.7.5-linux-arm64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-docker-3.3.7.5-linux-arm64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Docker",
+        "arch": "arm64",
+        "size": "464.27MB",
+        "md5": "MD5: 8f701dcfd7253c40386e95f701314731",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "# Docker Hub\ndocker pull tdengine/tsdb:3.3.7.5\n\n# Offline Install\ndocker load -i tdengine-tsdb-oss-docker-3.3.7.5-linux-arm64.tar.gz\ndocker tag tdengine/tsdb-aarch64:3.3.7.5 tdengine/tsdb:3.3.7.5\ndocker tag tdengine/tsdb-aarch64:3.3.7.5 tdengine/tsdb:latest",
+          "docker run -d \\\n   -p 6030:6030 \\\n   -p 6041:6041 \\\n   -p 6043:6043 \\\n   -p 6044-6049:6044-6049 \\\n   -p 6044-6045:6044-6045/udp \\\n   -p 6060:6060 \\\n   tdengine/tsdb:3.3.7.5"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "tdengine-tsdb-oss-docker-3.3.7.5-linux-x64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-oss-docker-3.3.7.5-linux-x64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Docker",
+        "arch": "x64",
+        "size": "514.18MB",
+        "md5": "MD5: c694da73c00772db380bff8bc0b30df9",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "# Docker Hub\ndocker pull tdengine/tsdb:3.3.7.5\n\n# Offline Install\ndocker load -i tdengine-tsdb-oss-docker-3.3.7.5-linux-x64.tar.gz\ndocker tag tdengine/tsdb-amd64:3.3.7.5 tdengine/tsdb:3.3.7.5\ndocker tag tdengine/tsdb-amd64:3.3.7.5 tdengine/tsdb:latest",
+          "docker run -d \\\n   -p 6030:6030 \\\n   -p 6041:6041 \\\n   -p 6043:6043 \\\n   -p 6044-6049:6044-6049 \\\n   -p 6044-6045:6044-6045/udp \\\n   -p 6060:6060 \\\n   tdengine/tsdb:3.3.7.5"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-client-3.3.6.13-Linux-arm64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.6.13-Linux-arm64.tar.gz",
+        "version": "3.3.6.13",
+        "platform": "Linux-Generic",
+        "arch": "arm64",
+        "size": "48.62MB",
+        "md5": "MD5: 934366d02011b8a91b77156c0faa256a",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.6.13-Linux-arm64.tar.gz",
+          "tar -zxvf TDengine-client-3.3.6.13-Linux-arm64.tar.gz && \\\ncd TDengine-client-3.3.6.13 && \\\nsudo ./install_client.sh",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-client-3.3.6.13-Linux-x64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.6.13-Linux-x64.tar.gz",
+        "version": "3.3.6.13",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "52.25MB",
+        "md5": "MD5: 70ebb39e2ff96c85aa0661fb1fe77186",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.6.13-Linux-x64.tar.gz",
+          "tar -zxvf TDengine-client-3.3.6.13-Linux-x64.tar.gz && \\\ncd TDengine-client-3.3.6.13 && \\\nsudo ./install_client.sh",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-client-3.3.6.13-Windows-x64.exe",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.6.13-Windows-x64.exe",
+        "version": "3.3.6.13",
+        "platform": "Windows",
+        "arch": "x64",
+        "size": "9.94MB",
+        "md5": "MD5: 671f579a3a354eff5ea74a763b8a7887",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "# PowerShell\nInvoke-WebRequest -Uri 'https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.6.13-Windows-x64.exe' -OutFile 'TDengine-client-3.3.6.13-Windows-x64.exe'",
+          "# PowerShell\n.\\TDengine-client-3.3.6.13-Windows-x64.exe /S",
+          "# PowerShell\ntaos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-client-3.3.6.13-macOS-arm64.pkg",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.6.13-macOS-arm64.pkg",
+        "version": "3.3.6.13",
+        "platform": "macOS",
+        "arch": "arm64",
+        "size": "32.3MB",
+        "md5": "MD5: da0d92cf23ca6e643ab6f58a38c69feb",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.6.13-macOS-arm64.pkg",
+          "sudo installer -pkg TDengine-client-3.3.6.13-macOS-arm64.pkg -target /",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-client-3.3.6.13-macOS-x64.pkg",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.6.13-macOS-x64.pkg",
+        "version": "3.3.6.13",
+        "platform": "macOS",
+        "arch": "x64",
+        "size": "33.5MB",
+        "md5": "MD5: e3b9aed48d8ac1bc91d4ccb77a0fbfb1",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.6.13-macOS-x64.pkg",
+          "sudo installer -pkg TDengine-client-3.3.6.13-macOS-x64.pkg -target /",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-server-3.3.6.13-Linux-arm64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.6.13-Linux-arm64.tar.gz",
+        "version": "3.3.6.13",
+        "platform": "Linux-Generic",
+        "arch": "arm64",
+        "size": "167.82MB",
+        "md5": "MD5: df01be6d6c3b280085c7b908a550279b",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.6.13-Linux-arm64.tar.gz",
+          "tar -zxvf TDengine-server-3.3.6.13-Linux-arm64.tar.gz && \\\ncd TDengine-server-3.3.6.13 && \\\nsudo ./install.sh",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-server-3.3.6.13-Linux-x64.deb",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.6.13-Linux-x64.deb",
+        "version": "3.3.6.13",
+        "platform": "Linux-Ubuntu",
+        "arch": "x64",
+        "size": "81.84MB",
+        "md5": "MD5: 20ce0ffb7a02966a978f3055f9df946e",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.6.13-Linux-x64.deb",
+          "sudo dpkg -i TDengine-server-3.3.6.13-Linux-x64.deb",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-server-3.3.6.13-Linux-x64.rpm",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.6.13-Linux-x64.rpm",
+        "version": "3.3.6.13",
+        "platform": "Linux-Red Hat",
+        "arch": "x64",
+        "size": "89.49MB",
+        "md5": "MD5: 663a6eb2718f09be2ad9ccc81041edfa",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.6.13-Linux-x64.rpm",
+          "sudo rpm -ivh TDengine-server-3.3.6.13-Linux-x64.rpm",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-server-3.3.6.13-Linux-x64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.6.13-Linux-x64.tar.gz",
+        "version": "3.3.6.13",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "178.46MB",
+        "md5": "MD5: b7c202d9ac8fe1eb5a2f4fd049b043ad",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.6.13-Linux-x64.tar.gz",
+          "tar -zxvf TDengine-server-3.3.6.13-Linux-x64.tar.gz && \\\ncd TDengine-server-3.3.6.13 && \\\nsudo ./install.sh",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-server-3.3.6.13-macOS-arm64.pkg",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.6.13-macOS-arm64.pkg",
+        "version": "3.3.6.13",
+        "platform": "macOS",
+        "arch": "arm64",
+        "size": "129.86MB",
+        "md5": "MD5: b1837f48de0978c0f6de8f7942fda64c",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.6.13-macOS-arm64.pkg",
+          "sudo installer -pkg TDengine-server-3.3.6.13-macOS-arm64.pkg -target /",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-server-3.3.6.13-macOS-x64.pkg",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.6.13-macOS-x64.pkg",
+        "version": "3.3.6.13",
+        "platform": "macOS",
+        "arch": "x64",
+        "size": "134.73MB",
+        "md5": "MD5: bce17f4a9cc743ba630e921a1a1bd6a9",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.6.13-macOS-x64.pkg",
+          "sudo installer -pkg TDengine-server-3.3.6.13-macOS-x64.pkg -target /",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "docker-server-3.3.6.13-Linux-aarch64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/docker-server-3.3.6.13-Linux-aarch64.tar.gz",
+        "version": "3.3.6.13",
+        "platform": "Docker",
+        "arch": "arm64",
+        "size": "414.42MB",
+        "md5": "MD5: af101b25862ef9ddd3dc25522cfa856f",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "# Docker Hub\ndocker pull tdengine/tdengine:3.3.6.13\n\n# Offline Install\ndocker load -i docker-server-3.3.6.13-Linux-aarch64.tar.gz\ndocker tag tdengine/tdengine-aarch64:3.3.6.13 tdengine/tdengine:3.3.6.13\ndocker tag tdengine/tdengine-aarch64:3.3.6.13 tdengine/tdengine:latest",
+          "docker run -d \\\n   -p 6030:6030 \\\n   -p 6041:6041 \\\n   -p 6043:6043 \\\n   -p 6044-6049:6044-6049 \\\n   -p 6044-6045:6044-6045/udp \\\n   -p 6060:6060 \\\n   tdengine/tdengine:3.3.6.13"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "docker-server-3.3.6.13-Linux-amd64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/docker-server-3.3.6.13-Linux-amd64.tar.gz",
+        "version": "3.3.6.13",
+        "platform": "Docker",
+        "arch": "x64",
+        "size": "464.02MB",
+        "md5": "MD5: f3fb973d3f86467869362038cb237d2c",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "# Docker Hub\ndocker pull tdengine/tdengine:3.3.6.13\n\n# Offline Install\ndocker load -i docker-server-3.3.6.13-Linux-amd64.tar.gz\ndocker tag tdengine/tdengine-amd64:3.3.6.13 tdengine/tdengine:3.3.6.13\ndocker tag tdengine/tdengine-amd64:3.3.6.13 tdengine/tdengine:latest",
+          "docker run -d \\\n   -p 6030:6030 \\\n   -p 6041:6041 \\\n   -p 6043:6043 \\\n   -p 6044-6049:6044-6049 \\\n   -p 6044-6045:6044-6045/udp \\\n   -p 6060:6060 \\\n   tdengine/tdengine:3.3.6.13"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-client-3.3.5.8-Linux-arm64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.5.8-Linux-arm64.tar.gz",
+        "version": "3.3.5.8",
+        "platform": "Linux-Generic",
+        "arch": "arm64",
+        "size": "37.99MB",
+        "md5": "MD5: 0d58cec1df1f78a2c3baba4951a2bf9b",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.5.8-Linux-arm64.tar.gz",
+          "tar -zxvf TDengine-client-3.3.5.8-Linux-arm64.tar.gz && \\\ncd TDengine-client-3.3.5.8 && \\\nsudo ./install_client.sh",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-client-3.3.5.8-Linux-x64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.5.8-Linux-x64.tar.gz",
+        "version": "3.3.5.8",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "38.98MB",
+        "md5": "MD5: a32c05078a276070b0acb27695322d04",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.5.8-Linux-x64.tar.gz",
+          "tar -zxvf TDengine-client-3.3.5.8-Linux-x64.tar.gz && \\\ncd TDengine-client-3.3.5.8 && \\\nsudo ./install_client.sh",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-client-3.3.5.8-Windows-x64.exe",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.5.8-Windows-x64.exe",
+        "version": "3.3.5.8",
+        "platform": "Windows",
+        "arch": "x64",
+        "size": "10.68MB",
+        "md5": "MD5: a6393a568576f8c725d24a055277d440",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "# PowerShell\nInvoke-WebRequest -Uri 'https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.5.8-Windows-x64.exe' -OutFile 'TDengine-client-3.3.5.8-Windows-x64.exe'",
+          "# PowerShell\n.\\TDengine-client-3.3.5.8-Windows-x64.exe /S",
+          "# PowerShell\ntaos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-client-3.3.5.8-macOS-arm64.pkg",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.5.8-macOS-arm64.pkg",
+        "version": "3.3.5.8",
+        "platform": "macOS",
+        "arch": "arm64",
+        "size": "23.99MB",
+        "md5": "MD5: 1f80052d9295ed6fccd330ecb9c59d20",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.5.8-macOS-arm64.pkg",
+          "sudo installer -pkg TDengine-client-3.3.5.8-macOS-arm64.pkg -target /",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-client-3.3.5.8-macOS-x64.pkg",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.5.8-macOS-x64.pkg",
+        "version": "3.3.5.8",
+        "platform": "macOS",
+        "arch": "x64",
+        "size": "24.54MB",
+        "md5": "MD5: dce4c9c5995658c8c199c3dd918b5585",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-client-3.3.5.8-macOS-x64.pkg",
+          "sudo installer -pkg TDengine-client-3.3.5.8-macOS-x64.pkg -target /",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-server-3.3.5.8-Linux-arm64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.5.8-Linux-arm64.tar.gz",
+        "version": "3.3.5.8",
+        "platform": "Linux-Generic",
+        "arch": "arm64",
+        "size": "159.47MB",
+        "md5": "MD5: c3c32576b99588033498fccfd1f247ca",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.5.8-Linux-arm64.tar.gz",
+          "tar -zxvf TDengine-server-3.3.5.8-Linux-arm64.tar.gz && \\\ncd TDengine-server-3.3.5.8 && \\\nsudo ./install.sh",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-server-3.3.5.8-Linux-x64.deb",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.5.8-Linux-x64.deb",
+        "version": "3.3.5.8",
+        "platform": "Linux-Ubuntu",
+        "arch": "x64",
+        "size": "76.01MB",
+        "md5": "MD5: 98d565cae0154c2ef1699d6c44ce4c94",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.5.8-Linux-x64.deb",
+          "sudo dpkg -i TDengine-server-3.3.5.8-Linux-x64.deb",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-server-3.3.5.8-Linux-x64.rpm",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.5.8-Linux-x64.rpm",
+        "version": "3.3.5.8",
+        "platform": "Linux-Red Hat",
+        "arch": "x64",
+        "size": "82.61MB",
+        "md5": "MD5: bb4db04126c58612a7e00ea22afb0b31",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.5.8-Linux-x64.rpm",
+          "sudo rpm -ivh TDengine-server-3.3.5.8-Linux-x64.rpm",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-server-3.3.5.8-Linux-x64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.5.8-Linux-x64.tar.gz",
+        "version": "3.3.5.8",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "164.54MB",
+        "md5": "MD5: e39c5eebcbe2b2de09b6c0285b485d4c",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.5.8-Linux-x64.tar.gz",
+          "tar -zxvf TDengine-server-3.3.5.8-Linux-x64.tar.gz && \\\ncd TDengine-server-3.3.5.8 && \\\nsudo ./install.sh",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-server-3.3.5.8-macOS-arm64.pkg",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.5.8-macOS-arm64.pkg",
+        "version": "3.3.5.8",
+        "platform": "macOS",
+        "arch": "arm64",
+        "size": "116.09MB",
+        "md5": "MD5: e9d6193ac3774b1427b8a41657f80a02",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.5.8-macOS-arm64.pkg",
+          "sudo installer -pkg TDengine-server-3.3.5.8-macOS-arm64.pkg -target /",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-server-3.3.5.8-macOS-x64.pkg",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.5.8-macOS-x64.pkg",
+        "version": "3.3.5.8",
+        "platform": "macOS",
+        "arch": "x64",
+        "size": "119.39MB",
+        "md5": "MD5: 134b4764ef7e2da7aa1eca9252debd6b",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-server-3.3.5.8-macOS-x64.pkg",
+          "sudo installer -pkg TDengine-server-3.3.5.8-macOS-x64.pkg -target /",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "docker-server-3.3.5.8-Linux-aarch64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/docker-server-3.3.5.8-Linux-aarch64.tar.gz",
+        "version": "3.3.5.8",
+        "platform": "Docker",
+        "arch": "arm64",
+        "size": "407.98MB",
+        "md5": "MD5: a9484e8141f3c9b8b8a0dcb8548c35d0",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "# Docker Hub\ndocker pull tdengine/tdengine:3.3.5.8\n\n# Offline Install\ndocker load -i docker-server-3.3.5.8-Linux-aarch64.tar.gz\ndocker tag tdengine/tdengine-aarch64:3.3.5.8 tdengine/tdengine:3.3.5.8\ndocker tag tdengine/tdengine-aarch64:3.3.5.8 tdengine/tdengine:latest",
+          "docker run -d \\\n   -p 6030:6030 \\\n   -p 6041:6041 \\\n   -p 6043:6043 \\\n   -p 6044-6049:6044-6049 \\\n   -p 6044-6045:6044-6045/udp \\\n   -p 6060:6060 \\\n   tdengine/tdengine:3.3.5.8"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "docker-server-3.3.5.8-Linux-amd64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/docker-server-3.3.5.8-Linux-amd64.tar.gz",
+        "version": "3.3.5.8",
+        "platform": "Docker",
+        "arch": "x64",
+        "size": "443.21MB",
+        "md5": "MD5: b0f9c3c03d19125533d194b4e1d8a0ad",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "# Docker Hub\ndocker pull tdengine/tdengine:3.3.5.8\n\n# Offline Install\ndocker load -i docker-server-3.3.5.8-Linux-amd64.tar.gz\ndocker tag tdengine/tdengine-amd64:3.3.5.8 tdengine/tdengine:3.3.5.8\ndocker tag tdengine/tdengine-amd64:3.3.5.8 tdengine/tdengine:latest",
+          "docker run -d \\\n   -p 6030:6030 \\\n   -p 6041:6041 \\\n   -p 6043:6043 \\\n   -p 6044-6049:6044-6049 \\\n   -p 6044-6045:6044-6045/udp \\\n   -p 6060:6060 \\\n   tdengine/tdengine:3.3.5.8"
+        ],
+        "type": "Server"
+      }
+    ]
+  },
+  {
+    "name": "TDengine TSDB-Enterprise",
+    "description": "企业级、高性能、分布式的时序数据库。它能安全高效地将大量设备每天产生的高达 TB 甚至 PB 级的数据进行汇聚、存储、分析和分发，并提供 AI 智能体对数据进行预测与异常检测，提供实时的商业洞察。",
+    "filters": {
+      "versions": [
+        "3.3.7.5",
+        "3.3.6.13",
+        "3.3.5.8"
+      ],
+      "platforms": [
+        "Docker",
+        "Linux-Generic",
+        "Windows",
+        "macOS"
+      ],
+      "archs": [
+        "x64",
+        "arm64"
+      ],
+      "types": [
+        "Server",
+        "Client"
+      ]
+    },
+    "versions": [
+      {
+        "name": "tdengine-tsdb-enterprise-3.3.7.5-linux-arm64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-3.3.7.5-linux-arm64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "arm64",
+        "size": "427.42MB",
+        "md5": "MD5: b78de27853f8427259fc40033f2de89f",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-3.3.7.5-linux-arm64.tar.gz",
+          "tar -zxvf tdengine-tsdb-enterprise-3.3.7.5-linux-arm64.tar.gz && \\\ncd tdengine-tsdb-enterprise-3.3.7.5 && \\\nsudo ./install.sh",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "tdengine-tsdb-enterprise-3.3.7.5-linux-x64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-3.3.7.5-linux-x64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "437.58MB",
+        "md5": "MD5: 00523edfc7402b5b141e24598ad6b255",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-3.3.7.5-linux-x64.tar.gz",
+          "tar -zxvf tdengine-tsdb-enterprise-3.3.7.5-linux-x64.tar.gz && \\\ncd tdengine-tsdb-enterprise-3.3.7.5 && \\\nsudo ./install.sh",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "tdengine-tsdb-enterprise-3.3.7.5-windows-x64.exe",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-3.3.7.5-windows-x64.exe",
+        "version": "3.3.7.5",
+        "platform": "Windows",
+        "arch": "x64",
+        "size": "299.55MB",
+        "md5": "MD5: 0aae4642b87f9efd22eb934657f6e387",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "# PowerShell\nInvoke-WebRequest -Uri 'https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-3.3.7.5-windows-x64.exe' -OutFile 'tdengine-tsdb-enterprise-3.3.7.5-windows-x64.exe'",
+          "# PowerShell\n.\\tdengine-tsdb-enterprise-3.3.7.5-windows-x64.exe /S",
+          "# PowerShell\nC:\\TDengine\\start-all.bat"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "tdengine-tsdb-enterprise-client-3.3.7.5-linux-arm64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-client-3.3.7.5-linux-arm64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "arm64",
+        "size": "83.87MB",
+        "md5": "MD5: a2daf624bba1b8522034ee8737629ae2",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-client-3.3.7.5-linux-arm64.tar.gz",
+          "tar -zxvf tdengine-tsdb-enterprise-client-3.3.7.5-linux-arm64.tar.gz && \\\ncd tdengine-tsdb-enterprise-client-3.3.7.5 && \\\nsudo ./install_client.sh",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "tdengine-tsdb-enterprise-client-3.3.7.5-linux-x64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-client-3.3.7.5-linux-x64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "84.18MB",
+        "md5": "MD5: daae68c7115fb82e23078f7a6b603026",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-client-3.3.7.5-linux-x64.tar.gz",
+          "tar -zxvf tdengine-tsdb-enterprise-client-3.3.7.5-linux-x64.tar.gz && \\\ncd tdengine-tsdb-enterprise-client-3.3.7.5 && \\\nsudo ./install_client.sh",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "tdengine-tsdb-enterprise-client-3.3.7.5-macos-arm64.pkg",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-client-3.3.7.5-macos-arm64.pkg",
+        "version": "3.3.7.5",
+        "platform": "macOS",
+        "arch": "arm64",
+        "size": "33.53MB",
+        "md5": "MD5: 838ab6dca25f4bc8483238b769fe3106",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-client-3.3.7.5-macos-arm64.pkg",
+          "sudo installer -pkg tdengine-tsdb-enterprise-client-3.3.7.5-macos-arm64.pkg -target /",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "tdengine-tsdb-enterprise-client-3.3.7.5-macos-x64.pkg",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-client-3.3.7.5-macos-x64.pkg",
+        "version": "3.3.7.5",
+        "platform": "macOS",
+        "arch": "x64",
+        "size": "35.05MB",
+        "md5": "MD5: 3a9d707b68af5269fd890783b9fb01c9",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-client-3.3.7.5-macos-x64.pkg",
+          "sudo installer -pkg tdengine-tsdb-enterprise-client-3.3.7.5-macos-x64.pkg -target /",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "tdengine-tsdb-enterprise-client-3.3.7.5-windows-x64.exe",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-client-3.3.7.5-windows-x64.exe",
+        "version": "3.3.7.5",
+        "platform": "Windows",
+        "arch": "x64",
+        "size": "10.34MB",
+        "md5": "MD5: 6589192ef34f74990835ac81d2ff7e17",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "# PowerShell\nInvoke-WebRequest -Uri 'https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-client-3.3.7.5-windows-x64.exe' -OutFile 'tdengine-tsdb-enterprise-client-3.3.7.5-windows-x64.exe'",
+          "# PowerShell\n.\\tdengine-tsdb-enterprise-client-3.3.7.5-windows-x64.exe /S",
+          "# PowerShell\ntaos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "tdengine-tsdb-enterprise-docker-3.3.7.5-linux-arm64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-docker-3.3.7.5-linux-arm64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Docker",
+        "arch": "arm64",
+        "size": "1.13GB",
+        "md5": "MD5: b81bf836cb9b30e17a11053b802a3482",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "# Docker Hub\ndocker pull tdengine/tsdb-ee:3.3.7.5\n\n# Offline Install\ndocker load -i tdengine-tsdb-enterprise-docker-3.3.7.5-linux-arm64.tar.gz\ndocker tag tdengine/tsdb-ee-aarch64:3.3.7.5 tdengine/tsdb-ee:3.3.7.5\ndocker tag tdengine/tsdb-ee-aarch64:3.3.7.5 tdengine/tsdb-ee:latest",
+          "docker run -d \\\n   -p 6030:6030 \\\n   -p 6041:6041 \\\n   -p 6043:6043 \\\n   -p 6044-6049:6044-6049 \\\n   -p 6044-6045:6044-6045/udp \\\n   -p 6060:6060 \\\n   tdengine/tsdb-ee:3.3.7.5"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "tdengine-tsdb-enterprise-docker-3.3.7.5-linux-x64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-enterprise-docker-3.3.7.5-linux-x64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Docker",
+        "arch": "x64",
+        "size": "1.19GB",
+        "md5": "MD5: ecc4bc878d64f1de2d6ac354d856be83",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "# Docker Hub\ndocker pull tdengine/tsdb-ee:3.3.7.5\n\n# Offline Install\ndocker load -i tdengine-tsdb-enterprise-docker-3.3.7.5-linux-x64.tar.gz\ndocker tag tdengine/tsdb-ee-amd64:3.3.7.5 tdengine/tsdb-ee:3.3.7.5\ndocker tag tdengine/tsdb-ee-amd64:3.3.7.5 tdengine/tsdb-ee:latest",
+          "docker run -d \\\n   -p 6030:6030 \\\n   -p 6041:6041 \\\n   -p 6043:6043 \\\n   -p 6044-6049:6044-6049 \\\n   -p 6044-6045:6044-6045/udp \\\n   -p 6060:6060 \\\n   tdengine/tsdb-ee:3.3.7.5"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-enterprise-3.3.6.13-Linux-arm64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-3.3.6.13-Linux-arm64.tar.gz",
+        "version": "3.3.6.13",
+        "platform": "Linux-Generic",
+        "arch": "arm64",
+        "size": "404.81MB",
+        "md5": "MD5: de34d03db255000cbad2852475e9440d",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-3.3.6.13-Linux-arm64.tar.gz",
+          "tar -zxvf TDengine-enterprise-3.3.6.13-Linux-arm64.tar.gz && \\\ncd TDengine-enterprise-3.3.6.13 && \\\nsudo ./install.sh",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-enterprise-3.3.6.13-Linux-x64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-3.3.6.13-Linux-x64.tar.gz",
+        "version": "3.3.6.13",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "419.37MB",
+        "md5": "MD5: bbab12aae235fd888299b7d3ada7dd43",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-3.3.6.13-Linux-x64.tar.gz",
+          "tar -zxvf TDengine-enterprise-3.3.6.13-Linux-x64.tar.gz && \\\ncd TDengine-enterprise-3.3.6.13 && \\\nsudo ./install.sh",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-enterprise-3.3.6.13-Windows-x64.exe",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-3.3.6.13-Windows-x64.exe",
+        "version": "3.3.6.13",
+        "platform": "Windows",
+        "arch": "x64",
+        "size": "256.79MB",
+        "md5": "MD5: 88667df8f619687db44ffbb1d7bf3ee3",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "# PowerShell\nInvoke-WebRequest -Uri 'https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-3.3.6.13-Windows-x64.exe' -OutFile 'TDengine-enterprise-3.3.6.13-Windows-x64.exe'",
+          "# PowerShell\n.\\TDengine-enterprise-3.3.6.13-Windows-x64.exe /S",
+          "# PowerShell\nC:\\TDengine\\start-all.bat"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-enterprise-client-3.3.6.13-Linux-arm64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.6.13-Linux-arm64.tar.gz",
+        "version": "3.3.6.13",
+        "platform": "Linux-Generic",
+        "arch": "arm64",
+        "size": "75.37MB",
+        "md5": "MD5: 9abd6eb77656886d027abe15e8f53fb3",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.6.13-Linux-arm64.tar.gz",
+          "tar -zxvf TDengine-enterprise-client-3.3.6.13-Linux-arm64.tar.gz && \\\ncd TDengine-enterprise-client-3.3.6.13 && \\\nsudo ./install_client.sh",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-enterprise-client-3.3.6.13-Linux-x64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.6.13-Linux-x64.tar.gz",
+        "version": "3.3.6.13",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "81.12MB",
+        "md5": "MD5: 84c86140ebe9ca149058e291dd871124",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.6.13-Linux-x64.tar.gz",
+          "tar -zxvf TDengine-enterprise-client-3.3.6.13-Linux-x64.tar.gz && \\\ncd TDengine-enterprise-client-3.3.6.13 && \\\nsudo ./install_client.sh",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-enterprise-client-3.3.6.13-Windows-x64.exe",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.6.13-Windows-x64.exe",
+        "version": "3.3.6.13",
+        "platform": "Windows",
+        "arch": "x64",
+        "size": "9.96MB",
+        "md5": "MD5: c0b6b14a06e7532e830681b2262efa9c",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "# PowerShell\nInvoke-WebRequest -Uri 'https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.6.13-Windows-x64.exe' -OutFile 'TDengine-enterprise-client-3.3.6.13-Windows-x64.exe'",
+          "# PowerShell\n.\\TDengine-enterprise-client-3.3.6.13-Windows-x64.exe /S",
+          "# PowerShell\ntaos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-enterprise-client-3.3.6.13-macOS-arm64.pkg",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.6.13-macOS-arm64.pkg",
+        "version": "3.3.6.13",
+        "platform": "macOS",
+        "arch": "arm64",
+        "size": "32.33MB",
+        "md5": "MD5: 8f5d49db60bf6a82ded636384a8aa3a7",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.6.13-macOS-arm64.pkg",
+          "sudo installer -pkg TDengine-enterprise-client-3.3.6.13-macOS-arm64.pkg -target /",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-enterprise-client-3.3.6.13-macOS-x64.pkg",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.6.13-macOS-x64.pkg",
+        "version": "3.3.6.13",
+        "platform": "macOS",
+        "arch": "x64",
+        "size": "33.52MB",
+        "md5": "MD5: c2c2ac802304d1dd82ed019c84ded386",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.6.13-macOS-x64.pkg",
+          "sudo installer -pkg TDengine-enterprise-client-3.3.6.13-macOS-x64.pkg -target /",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "docker-enterprise-3.3.6.13-Linux-aarch64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/docker-enterprise-3.3.6.13-Linux-aarch64.tar.gz",
+        "version": "3.3.6.13",
+        "platform": "Docker",
+        "arch": "arm64",
+        "size": "1.09GB",
+        "md5": "MD5: 039e8f23cff5aa2de562a159addab915",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "# Docker Hub\ndocker pull tdengine/tdengine-ee:3.3.6.13\n\n# Offline Install\ndocker load -i docker-enterprise-3.3.6.13-Linux-aarch64.tar.gz\ndocker tag tdengine/tdengine-ee-aarch64:3.3.6.13 tdengine/tdengine-ee:3.3.6.13\ndocker tag tdengine/tdengine-ee-aarch64:3.3.6.13 tdengine/tdengine-ee:latest",
+          "docker run -d \\\n   -p 6030:6030 \\\n   -p 6041:6041 \\\n   -p 6043:6043 \\\n   -p 6044-6049:6044-6049 \\\n   -p 6044-6045:6044-6045/udp \\\n   -p 6060:6060 \\\n   tdengine/tdengine-ee:3.3.6.13"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "docker-enterprise-3.3.6.13-Linux-amd64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/docker-enterprise-3.3.6.13-Linux-amd64.tar.gz",
+        "version": "3.3.6.13",
+        "platform": "Docker",
+        "arch": "x64",
+        "size": "1.15GB",
+        "md5": "MD5: 2f78b82102cfbc1f2a734e127fbdf81c",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "# Docker Hub\ndocker pull tdengine/tdengine-ee:3.3.6.13\n\n# Offline Install\ndocker load -i docker-enterprise-3.3.6.13-Linux-amd64.tar.gz\ndocker tag tdengine/tdengine-ee-amd64:3.3.6.13 tdengine/tdengine-ee:3.3.6.13\ndocker tag tdengine/tdengine-ee-amd64:3.3.6.13 tdengine/tdengine-ee:latest",
+          "docker run -d \\\n   -p 6030:6030 \\\n   -p 6041:6041 \\\n   -p 6043:6043 \\\n   -p 6044-6049:6044-6049 \\\n   -p 6044-6045:6044-6045/udp \\\n   -p 6060:6060 \\\n   tdengine/tdengine-ee:3.3.6.13"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-enterprise-3.3.5.8-Linux-arm64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-3.3.5.8-Linux-arm64.tar.gz",
+        "version": "3.3.5.8",
+        "platform": "Linux-Generic",
+        "arch": "arm64",
+        "size": "372.58MB",
+        "md5": "MD5: 0bc6eaa82793bcae1b47878d520a78a2",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-3.3.5.8-Linux-arm64.tar.gz",
+          "tar -zxvf TDengine-enterprise-3.3.5.8-Linux-arm64.tar.gz && \\\ncd TDengine-enterprise-3.3.5.8 && \\\nsudo ./install.sh",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-enterprise-3.3.5.8-Linux-x64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-3.3.5.8-Linux-x64.tar.gz",
+        "version": "3.3.5.8",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "380.27MB",
+        "md5": "MD5: 7309fc9c44908cb4d9705d5cc5511967",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-3.3.5.8-Linux-x64.tar.gz",
+          "tar -zxvf TDengine-enterprise-3.3.5.8-Linux-x64.tar.gz && \\\ncd TDengine-enterprise-3.3.5.8 && \\\nsudo ./install.sh",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-enterprise-3.3.5.8-Windows-x64.exe",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-3.3.5.8-Windows-x64.exe",
+        "version": "3.3.5.8",
+        "platform": "Windows",
+        "arch": "x64",
+        "size": "246.03MB",
+        "md5": "MD5: daf57186fc2e5f0863cebe4d703d63ff",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "# PowerShell\nInvoke-WebRequest -Uri 'https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-3.3.5.8-Windows-x64.exe' -OutFile 'TDengine-enterprise-3.3.5.8-Windows-x64.exe'",
+          "# PowerShell\n.\\TDengine-enterprise-3.3.5.8-Windows-x64.exe /S",
+          "# PowerShell\nC:\\TDengine\\start-all.bat"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "TDengine-enterprise-client-3.3.5.8-Linux-arm64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.5.8-Linux-arm64.tar.gz",
+        "version": "3.3.5.8",
+        "platform": "Linux-Generic",
+        "arch": "arm64",
+        "size": "38.08MB",
+        "md5": "MD5: 979db2dccd1a84dcb69619d0b597ebff",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.5.8-Linux-arm64.tar.gz",
+          "tar -zxvf TDengine-enterprise-client-3.3.5.8-Linux-arm64.tar.gz && \\\ncd TDengine-enterprise-client-3.3.5.8 && \\\nsudo ./install_client.sh",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-enterprise-client-3.3.5.8-Linux-x64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.5.8-Linux-x64.tar.gz",
+        "version": "3.3.5.8",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "39.09MB",
+        "md5": "MD5: fad4c2ce645998301b21daa84630e099",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.5.8-Linux-x64.tar.gz",
+          "tar -zxvf TDengine-enterprise-client-3.3.5.8-Linux-x64.tar.gz && \\\ncd TDengine-enterprise-client-3.3.5.8 && \\\nsudo ./install_client.sh",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-enterprise-client-3.3.5.8-Windows-x64.exe",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.5.8-Windows-x64.exe",
+        "version": "3.3.5.8",
+        "platform": "Windows",
+        "arch": "x64",
+        "size": "10.8MB",
+        "md5": "MD5: 4a509c2112319e7723010369df938372",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "# PowerShell\nInvoke-WebRequest -Uri 'https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.5.8-Windows-x64.exe' -OutFile 'TDengine-enterprise-client-3.3.5.8-Windows-x64.exe'",
+          "# PowerShell\n.\\TDengine-enterprise-client-3.3.5.8-Windows-x64.exe /S",
+          "# PowerShell\ntaos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-enterprise-client-3.3.5.8-macOS-arm64.pkg",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.5.8-macOS-arm64.pkg",
+        "version": "3.3.5.8",
+        "platform": "macOS",
+        "arch": "arm64",
+        "size": "24.04MB",
+        "md5": "MD5: 20a80d59e3a898b28d658e917f2f6428",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.5.8-macOS-arm64.pkg",
+          "sudo installer -pkg TDengine-enterprise-client-3.3.5.8-macOS-arm64.pkg -target /",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "TDengine-enterprise-client-3.3.5.8-macOS-x64.pkg",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.5.8-macOS-x64.pkg",
+        "version": "3.3.5.8",
+        "platform": "macOS",
+        "arch": "x64",
+        "size": "24.59MB",
+        "md5": "MD5: c7d10386fc981b2e9eb0d9a361205910",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-client-3.3.5.8-macOS-x64.pkg",
+          "sudo installer -pkg TDengine-enterprise-client-3.3.5.8-macOS-x64.pkg -target /",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "docker-enterprise-3.3.5.8-Linux-aarch64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/docker-enterprise-3.3.5.8-Linux-aarch64.tar.gz",
+        "version": "3.3.5.8",
+        "platform": "Docker",
+        "arch": "arm64",
+        "size": "1.02GB",
+        "md5": "MD5: f2a6558e55171e558e03c8f3656abdc0",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "# Docker Hub\ndocker pull tdengine/tdengine-ee:3.3.5.8\n\n# Offline Install\ndocker load -i docker-enterprise-3.3.5.8-Linux-aarch64.tar.gz\ndocker tag tdengine/tdengine-ee-aarch64:3.3.5.8 tdengine/tdengine-ee:3.3.5.8\ndocker tag tdengine/tdengine-ee-aarch64:3.3.5.8 tdengine/tdengine-ee:latest",
+          "docker run -d \\\n   -p 6030:6030 \\\n   -p 6041:6041 \\\n   -p 6043:6043 \\\n   -p 6044-6049:6044-6049 \\\n   -p 6044-6045:6044-6045/udp \\\n   -p 6060:6060 \\\n   tdengine/tdengine-ee:3.3.5.8"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "docker-enterprise-3.3.5.8-Linux-amd64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/docker-enterprise-3.3.5.8-Linux-amd64.tar.gz",
+        "version": "3.3.5.8",
+        "platform": "Docker",
+        "arch": "x64",
+        "size": "1.07GB",
+        "md5": "MD5: eda93b02fb696a93a92c12a0a5c57095",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "# Docker Hub\ndocker pull tdengine/tdengine-ee:3.3.5.8\n\n# Offline Install\ndocker load -i docker-enterprise-3.3.5.8-Linux-amd64.tar.gz\ndocker tag tdengine/tdengine-ee-amd64:3.3.5.8 tdengine/tdengine-ee:3.3.5.8\ndocker tag tdengine/tdengine-ee-amd64:3.3.5.8 tdengine/tdengine-ee:latest",
+          "docker run -d \\\n   -p 6030:6030 \\\n   -p 6041:6041 \\\n   -p 6043:6043 \\\n   -p 6044-6049:6044-6049 \\\n   -p 6044-6045:6044-6045/udp \\\n   -p 6060:6060 \\\n   tdengine/tdengine-ee:3.3.5.8"
+        ],
+        "type": "Server"
+      }
+    ]
+  },
+  {
+    "name": "TDengine TSDB-Lite",
+    "description": "单节点、无副本、无集群，专为边缘计算场景打造的高性能、节省资源的企业版时序数据库。",
+    "filters": {
+      "versions": [
+        "3.3.7.5"
+      ],
+      "platforms": [
+        "Linux-Generic",
+        "Windows"
+      ],
+      "archs": [
+        "x64",
+        "arm64"
+      ],
+      "types": [
+        "Server",
+        "Client"
+      ]
+    },
+    "versions": [
+      {
+        "name": "tdengine-tsdb-lite-enterprise-3.3.7.5-linux-arm64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-lite-enterprise-3.3.7.5-linux-arm64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "arm64",
+        "size": "314.7MB",
+        "md5": "MD5: 9b54053d129c4905ef5032d7b5dd9b65",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-lite-enterprise-3.3.7.5-linux-arm64.tar.gz",
+          "tar -zxvf tdengine-tsdb-lite-enterprise-3.3.7.5-linux-arm64.tar.gz && \\\ncd tdengine-tsdb-lite-enterprise-3.3.7.5 && \\\nsudo ./install.sh",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "tdengine-tsdb-lite-enterprise-3.3.7.5-linux-x64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-lite-enterprise-3.3.7.5-linux-x64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "323.5MB",
+        "md5": "MD5: b6cf81fc04f47f1b4b223c2ccdb7c7df",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-lite-enterprise-3.3.7.5-linux-x64.tar.gz",
+          "tar -zxvf tdengine-tsdb-lite-enterprise-3.3.7.5-linux-x64.tar.gz && \\\ncd tdengine-tsdb-lite-enterprise-3.3.7.5 && \\\nsudo ./install.sh",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "tdengine-tsdb-lite-enterprise-3.3.7.5-windows-x64.exe",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-lite-enterprise-3.3.7.5-windows-x64.exe",
+        "version": "3.3.7.5",
+        "platform": "Windows",
+        "arch": "x64",
+        "size": "191.75MB",
+        "md5": "MD5: 7efd6401e1c23906d4d51e2eff5d9b3e",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "# PowerShell\nInvoke-WebRequest -Uri 'https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-lite-enterprise-3.3.7.5-windows-x64.exe' -OutFile 'tdengine-tsdb-lite-enterprise-3.3.7.5-windows-x64.exe'",
+          "# PowerShell\n.\\tdengine-tsdb-lite-enterprise-3.3.7.5-windows-x64.exe /S",
+          "# PowerShell\nC:\\TDengine\\start-all.bat"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "tdengine-tsdb-lite-enterprise-client-3.3.7.5-linux-arm64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-lite-enterprise-client-3.3.7.5-linux-arm64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "arm64",
+        "size": "83.87MB",
+        "md5": "MD5: 1bc1a6ae09b051bf499f626e8d6844d4",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-lite-enterprise-client-3.3.7.5-linux-arm64.tar.gz",
+          "tar -zxvf tdengine-tsdb-lite-enterprise-client-3.3.7.5-linux-arm64.tar.gz && \\\ncd tdengine-tsdb-lite-enterprise-client-3.3.7.5 && \\\nsudo ./install_client.sh",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "tdengine-tsdb-lite-enterprise-client-3.3.7.5-linux-x64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-lite-enterprise-client-3.3.7.5-linux-x64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "84.19MB",
+        "md5": "MD5: dcae44a91b03b81ef3d396c7932273c6",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-lite-enterprise-client-3.3.7.5-linux-x64.tar.gz",
+          "tar -zxvf tdengine-tsdb-lite-enterprise-client-3.3.7.5-linux-x64.tar.gz && \\\ncd tdengine-tsdb-lite-enterprise-client-3.3.7.5 && \\\nsudo ./install_client.sh",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      },
+      {
+        "name": "tdengine-tsdb-lite-enterprise-client-3.3.7.5-windows-x64.exe",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-lite-enterprise-client-3.3.7.5-windows-x64.exe",
+        "version": "3.3.7.5",
+        "platform": "Windows",
+        "arch": "x64",
+        "size": "10.34MB",
+        "md5": "MD5: 4fb1447694d0f08edfc451c5348a27f4",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "# PowerShell\nInvoke-WebRequest -Uri 'https://downloads.taosdata.com/tdengine-tsdb-enterprise/3.3.7.5/tdengine-tsdb-lite-enterprise-client-3.3.7.5-windows-x64.exe' -OutFile 'tdengine-tsdb-lite-enterprise-client-3.3.7.5-windows-x64.exe'",
+          "# PowerShell\n.\\tdengine-tsdb-lite-enterprise-client-3.3.7.5-windows-x64.exe /S",
+          "# PowerShell\ntaos -h <server_ip>"
+        ],
+        "type": "Client"
+      }
+    ]
+  },
+  {
+    "name": "TDengine TSDB-OSS-Lite",
+    "description": "轻量级开源版 TDengine TSDB 时序数据库, 只包含核心组件。",
+    "filters": {
+      "versions": [
+        "3.3.7.5"
+      ],
+      "platforms": [
+        "Linux-Generic"
+      ],
+      "archs": [
+        "x64"
+      ],
+      "types": [
+        "Server",
+        "Client"
+      ]
+    },
+    "versions": [
+      {
+        "name": "tdengine-tsdb-lite-oss-3.3.7.5-linux-x64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-lite-oss-3.3.7.5-linux-x64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "41.47MB",
+        "md5": "MD5: 1148897c50d0074c3892d6aa05bfe873",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-lite-oss-3.3.7.5-linux-x64.tar.gz",
+          "tar -zxvf tdengine-tsdb-lite-oss-3.3.7.5-linux-x64.tar.gz && \\\ncd tdengine-tsdb-lite-oss-3.3.7.5 && \\\nsudo ./install.sh",
+          "sudo ./start-all.sh"
+        ],
+        "type": "Server"
+      },
+      {
+        "name": "tdengine-tsdb-lite-oss-client-3.3.7.5-linux-x64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-lite-oss-client-3.3.7.5-linux-x64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "31.77MB",
+        "md5": "MD5: f0f12511a37d88255ee17778bc4f89b1",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-oss/3.3.7.5/tdengine-tsdb-lite-oss-client-3.3.7.5-linux-x64.tar.gz",
+          "tar -zxvf tdengine-tsdb-lite-oss-client-3.3.7.5-linux-x64.tar.gz && \\\ncd tdengine-tsdb-lite-oss-client-3.3.7.5 && \\\nsudo ./install_client.sh",
+          "taos -h <server_ip>"
+        ],
+        "type": "Client"
+      }
+    ]
+  },
+  {
+    "name": "TDengine TSDB Explorer-OSS",
+    "description": "开源版 TDengine TSDB 数据可视化和管理工具，提供仪表板、SQL 编辑器、系统监控等功能。",
+    "filters": {
+      "versions": [
+        "3.3.7.5"
+      ],
+      "platforms": [
+        "Linux-Generic",
+        "macOS"
+      ],
+      "archs": [
+        "x64",
+        "arm64"
+      ]
+    },
+    "versions": [
+      {
+        "name": "tdengine-tsdb-explorer-oss-3.3.7.5-linux-arm64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-explorer-oss/3.3.7.5/tdengine-tsdb-explorer-oss-3.3.7.5-linux-arm64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "arm64",
+        "size": "13.86MB",
+        "md5": "MD5: e27d3e28f617a148ba22b24ff537974c",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-explorer-oss/3.3.7.5/tdengine-tsdb-explorer-oss-3.3.7.5-linux-arm64.tar.gz",
+          "tar -zxvf tdengine-tsdb-explorer-oss-3.3.7.5-linux-arm64.tar.gz && \\\ncd tdengine-tsdb-explorer-oss-3.3.7.5 && \\\nsudo ./install.sh",
+          "sudo systemctl start taos-explorer"
+        ]
+      },
+      {
+        "name": "tdengine-tsdb-explorer-oss-3.3.7.5-linux-x64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-explorer-oss/3.3.7.5/tdengine-tsdb-explorer-oss-3.3.7.5-linux-x64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "14.17MB",
+        "md5": "MD5: 52c8d40902feb9591717445197d48d6a",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-explorer-oss/3.3.7.5/tdengine-tsdb-explorer-oss-3.3.7.5-linux-x64.tar.gz",
+          "tar -zxvf tdengine-tsdb-explorer-oss-3.3.7.5-linux-x64.tar.gz && \\\ncd tdengine-tsdb-explorer-oss-3.3.7.5 && \\\nsudo ./install.sh",
+          "sudo systemctl start taos-explorer"
+        ]
+      },
+      {
+        "name": "tdengine-tsdb-explorer-oss-3.3.7.5-macos-arm64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-explorer-oss/3.3.7.5/tdengine-tsdb-explorer-oss-3.3.7.5-macos-arm64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "macOS",
+        "arch": "arm64",
+        "size": "13.16MB",
+        "md5": "MD5: d80aceb83b6f693e12d4f80d37e01876",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-explorer-oss/3.3.7.5/tdengine-tsdb-explorer-oss-3.3.7.5-macos-arm64.tar.gz",
+          "tar -zxvf tdengine-tsdb-explorer-oss-3.3.7.5-macos-arm64.tar.gz && \\\ncd tdengine-tsdb-explorer-oss-3.3.7.5 && \\\nsudo ./install.sh",
+          "sudo launchctl start com.tdengine.taos-explorer"
+        ]
+      },
+      {
+        "name": "tdengine-tsdb-explorer-oss-3.3.7.5-macos-x64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-explorer-oss/3.3.7.5/tdengine-tsdb-explorer-oss-3.3.7.5-macos-x64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "macOS",
+        "arch": "x64",
+        "size": "13.53MB",
+        "md5": "MD5: 69549a9c4783996e51c112c76772c3ff",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-explorer-oss/3.3.7.5/tdengine-tsdb-explorer-oss-3.3.7.5-macos-x64.tar.gz",
+          "tar -zxvf tdengine-tsdb-explorer-oss-3.3.7.5-macos-x64.tar.gz && \\\ncd tdengine-tsdb-explorer-oss-3.3.7.5 && \\\nsudo ./install.sh",
+          "sudo launchctl start com.tdengine.taos-explorer"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "TDengine TSDB Explorer-Enterprise",
+    "description": "企业版 TDengine TSDB 数据可视化和管理工具，提供仪表板、SQL 编辑器、系统监控、零代码数据写入、数据备份和同步等功能。",
+    "filters": {
+      "versions": [
+        "3.3.7.5"
+      ],
+      "platforms": [
+        "Linux-Generic",
+        "Windows"
+      ],
+      "archs": [
+        "x64",
+        "arm64"
+      ]
+    },
+    "versions": [
+      {
+        "name": "tdengine-tsdb-explorer-enterprise-3.3.7.5-linux-arm64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-explorer-enterprise/3.3.7.5/tdengine-tsdb-explorer-enterprise-3.3.7.5-linux-arm64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "arm64",
+        "size": "103.49MB",
+        "md5": "MD5: def98d3ecfa16213a089727fa8e49bb2",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-explorer-enterprise/3.3.7.5/tdengine-tsdb-explorer-enterprise-3.3.7.5-linux-arm64.tar.gz",
+          "tar -zxvf tdengine-tsdb-explorer-enterprise-3.3.7.5-linux-arm64.tar.gz && \\\ncd tdengine-tsdb-explorer-enterprise-3.3.7.5 && \\\nsudo ./install.sh",
+          "sudo systemctl start taos-explorer"
+        ]
+      },
+      {
+        "name": "tdengine-tsdb-explorer-enterprise-3.3.7.5-linux-x64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-explorer-enterprise/3.3.7.5/tdengine-tsdb-explorer-enterprise-3.3.7.5-linux-x64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "103.63MB",
+        "md5": "MD5: e29c56d79fb255d202b5526f62069fe9",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-explorer-enterprise/3.3.7.5/tdengine-tsdb-explorer-enterprise-3.3.7.5-linux-x64.tar.gz",
+          "tar -zxvf tdengine-tsdb-explorer-enterprise-3.3.7.5-linux-x64.tar.gz && \\\ncd tdengine-tsdb-explorer-enterprise-3.3.7.5 && \\\nsudo ./install.sh",
+          "sudo systemctl start taos-explorer"
+        ]
+      },
+      {
+        "name": "tdengine-tsdb-explorer-enterprise-3.3.7.5-windows-x64.exe",
+        "download-url": "https://downloads.taosdata.com/tdengine-explorer-enterprise/3.3.7.5/tdengine-tsdb-explorer-enterprise-3.3.7.5-windows-x64.exe",
+        "version": "3.3.7.5",
+        "platform": "Windows",
+        "arch": "x64",
+        "size": "92.43MB",
+        "md5": "MD5: 08e56d41e8534f495a05e712c25f0606",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "# PowerShell\nInvoke-WebRequest -Uri 'https://downloads.taosdata.com/tdengine-explorer-enterprise/3.3.7.5/tdengine-tsdb-explorer-enterprise-3.3.7.5-windows-x64.exe' -OutFile 'tdengine-tsdb-explorer-enterprise-3.3.7.5-windows-x64.exe'",
+          "# PowerShell\n.\\tdengine-tsdb-explorer-enterprise-3.3.7.5-windows-x64.exe /S",
+          "# PowerShell (Admin required)\nsc.exe start taos-explorer"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "TDengine taosX-Agent",
+    "description": "taosX 数据同步代理，支持对接多种数据源，跨内外网同步数据至 TDengine 集群。",
+    "filters": {
+      "versions": [
+        "3.3.7.5",
+        "3.3.6.13",
+        "3.3.5.8"
+      ],
+      "platforms": [
+        "Linux-Generic",
+        "Windows"
+      ],
+      "archs": [
+        "x64"
+      ]
+    },
+    "versions": [
+      {
+        "name": "tdengine-taosx-agent-3.3.7.5-linux-x64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-taosx-agent-enterprise/3.3.7.5/tdengine-taosx-agent-3.3.7.5-linux-x64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "103.3MB",
+        "md5": "MD5: 4aeb5dcaf30fbc9a19ec33b21ba7c758",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-taosx-agent-enterprise/3.3.7.5/tdengine-taosx-agent-3.3.7.5-linux-x64.tar.gz",
+          "tar -zxvf tdengine-taosx-agent-3.3.7.5-linux-x64.tar.gz && \\\ncd tdengine-taosx-agent-3.3.7.5-linux-x64 && \\\nsudo ./install.sh",
+          "sudo systemctl start taosx-agent"
+        ]
+      },
+      {
+        "name": "tdengine-taosx-agent-3.3.7.5-windows-x64.exe",
+        "download-url": "https://downloads.taosdata.com/tdengine-taosx-agent-enterprise/3.3.7.5/tdengine-taosx-agent-3.3.7.5-windows-x64.exe",
+        "version": "3.3.7.5",
+        "platform": "Windows",
+        "arch": "x64",
+        "size": "99.86MB",
+        "md5": "MD5: 485d5e953961e172d335f0f60925aa22",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "# PowerShell\nInvoke-WebRequest -Uri 'https://downloads.taosdata.com/tdengine-taosx-agent-enterprise/3.3.7.5/tdengine-taosx-agent-3.3.7.5-windows-x64.exe' -OutFile 'tdengine-taosx-agent-3.3.7.5-windows-x64.exe'",
+          "# PowerShell\n.\\tdengine-taosx-agent-3.3.7.5-windows-x64.exe /S",
+          "# PowerShell (Admin required)\nsc.exe start taosx-agent"
+        ]
+      },
+      {
+        "name": "taosx-agent-3.3.6.13-linux-x64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/taosx-agent-3.3.6.13-linux-x64.tar.gz",
+        "version": "3.3.6.13",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "113.36MB",
+        "md5": "MD5: 6e46126846d8603128b36706b4cbe8ed",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/taosx-agent-3.3.6.13-linux-x64.tar.gz",
+          "tar -zxvf taosx-agent-3.3.6.13-linux-x64.tar.gz && \\\ncd taosx-agent-3.3.6.13-linux-x64 && \\\nsudo ./install.sh",
+          "sudo systemctl start taosx-agent"
+        ]
+      },
+      {
+        "name": "taosx-agent-3.3.6.13-windows-x64-installer.exe",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/taosx-agent-3.3.6.13-windows-x64-installer.exe",
+        "version": "3.3.6.13",
+        "platform": "Windows",
+        "arch": "x64",
+        "size": "108.57MB",
+        "md5": "MD5: b767152e4552d853d63e3451c175addf",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "# PowerShell\nInvoke-WebRequest -Uri 'https://www.taosdata.com/assets-download/3.0/taosx-agent-3.3.6.13-windows-x64-installer.exe' -OutFile 'taosx-agent-3.3.6.13-windows-x64-installer.exe'",
+          "# PowerShell\n.\\taosx-agent-3.3.6.13-windows-x64-installer.exe /S",
+          "# PowerShell (Admin required)\nsc.exe start taosx-agent"
+        ]
+      },
+      {
+        "name": "taosx-agent-3.3.5.8-linux-x64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/taosx-agent-3.3.5.8-linux-x64.tar.gz",
+        "version": "3.3.5.8",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "104.57MB",
+        "md5": "MD5: fca9ece7ee076860a481f466cf4545ed",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/taosx-agent-3.3.5.8-linux-x64.tar.gz",
+          "tar -zxvf taosx-agent-3.3.5.8-linux-x64.tar.gz && \\\ncd taosx-agent-3.3.5.8-linux-x64 && \\\nsudo ./install.sh",
+          "sudo systemctl start taosx-agent"
+        ]
+      },
+      {
+        "name": "taosx-agent-3.3.5.8-windows-x64-installer.exe",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/taosx-agent-3.3.5.8-windows-x64-installer.exe",
+        "version": "3.3.5.8",
+        "platform": "Windows",
+        "arch": "x64",
+        "size": "100.12MB",
+        "md5": "MD5: 1b1a6be8a57f998cc0eff7de7195ca88",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.5.8/",
+        "usage": [
+          "# PowerShell\nInvoke-WebRequest -Uri 'https://www.taosdata.com/assets-download/3.0/taosx-agent-3.3.5.8-windows-x64-installer.exe' -OutFile 'taosx-agent-3.3.5.8-windows-x64-installer.exe'",
+          "# PowerShell\n.\\taosx-agent-3.3.5.8-windows-x64-installer.exe /S",
+          "# PowerShell (Admin required)\nsc.exe start taosx-agent"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "TDengine TDgpt-OSS",
+    "description": "开源版时序数据分析智能体，一条 SQL 语句即可轻松体验时序数据预测、异常检测、补齐和分类功能。",
+    "filters": {
+      "versions": [
+        "3.3.7.5",
+        "3.3.6.13"
+      ],
+      "platforms": [
+        "Docker",
+        "Linux-Generic"
+      ],
+      "archs": [
+        "x64",
+        "arm64"
+      ]
+    },
+    "versions": [
+      {
+        "name": "tdengine-tdgpt-oss-docker-3.3.7.5-linux-arm64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tdgpt-oss/3.3.7.5/tdengine-tdgpt-oss-docker-3.3.7.5-linux-arm64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Docker",
+        "arch": "arm64",
+        "size": "916.36MB",
+        "md5": "MD5: 936295780d291decffe422e838abc365",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "# Docker Hub\ndocker pull tdengine/tdgpt:3.3.7.5\n\n# Offline Install\ndocker load -i tdengine-tdgpt-oss-docker-3.3.7.5-linux-arm64.tar.gz\ndocker tag tdengine/tdgpt-aarch64:3.3.7.5 tdengine/tdgpt:3.3.7.5\ndocker tag tdengine/tdgpt-aarch64:3.3.7.5 tdengine/tdgpt:latest",
+          "docker run -d \\\n   -p 6090:6090 \\\n   -p 5000:5000 \\\n   tdengine/tdgpt:3.3.7.5"
+        ]
+      },
+      {
+        "name": "tdengine-tdgpt-oss-docker-3.3.7.5-linux-x64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tdgpt-oss/3.3.7.5/tdengine-tdgpt-oss-docker-3.3.7.5-linux-x64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Docker",
+        "arch": "x64",
+        "size": "2.1GB",
+        "md5": "MD5: c2fed30d2be40d87a0a5916afaeb58f1",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "# Docker Hub\ndocker pull tdengine/tdgpt:3.3.7.5\n\n# Offline Install\ndocker load -i tdengine-tdgpt-oss-docker-3.3.7.5-linux-x64.tar.gz\ndocker tag tdengine/tdgpt-amd64:3.3.7.5 tdengine/tdgpt:3.3.7.5\ndocker tag tdengine/tdgpt-amd64:3.3.7.5 tdengine/tdgpt:latest",
+          "docker run -d \\\n   -p 6090:6090 \\\n   -p 5000:5000 \\\n   tdengine/tdgpt:3.3.7.5"
+        ]
+      },
+      {
+        "name": "TDengine-TDgpt-3.3.6.13-Linux-x64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-TDgpt-3.3.6.13-Linux-x64.tar.gz",
+        "version": "3.3.6.13",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "1.93GB",
+        "md5": "MD5: 1896177a2a87d6f7ab1dc4e34a759d9a",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-TDgpt-3.3.6.13-Linux-x64.tar.gz",
+          "tar -zxvf TDengine-TDgpt-3.3.6.13-Linux-x64.tar.gz && \\\ncd TDengine-TDgpt-3.3.6.13 && \\\nsudo ./install.sh",
+          "sudo systemctl start  taosanoded"
+        ]
+      },
+      {
+        "name": "docker-tdgpt-3.3.6.13-Linux-aarch64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/docker-tdgpt-3.3.6.13-Linux-aarch64.tar.gz",
+        "version": "3.3.6.13",
+        "platform": "Docker",
+        "arch": "arm64",
+        "size": "1.17GB",
+        "md5": "MD5: 63592d7cf993239bd6da209468141da4",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "# Docker Hub\ndocker pull tdengine/tdengine-tdgpt:3.3.6.13\n\n# Offline Install\ndocker load -i docker-tdgpt-3.3.6.13-Linux-aarch64.tar.gz\ndocker tag tdengine/tdengine-tdgpt-aarch64:3.3.6.13 tdengine/tdengine-tdgpt:3.3.6.13\ndocker tag tdengine/tdengine-tdgpt-aarch64:3.3.6.13 tdengine/tdengine-tdgpt:latest",
+          "docker run -d \\\n   -p 6090:6090 \\\n   -p 5000:5000 \\\n   tdengine/tdengine-tdgpt:3.3.6.13"
+        ]
+      },
+      {
+        "name": "docker-tdgpt-3.3.6.13-Linux-amd64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/docker-tdgpt-3.3.6.13-Linux-amd64.tar.gz",
+        "version": "3.3.6.13",
+        "platform": "Docker",
+        "arch": "x64",
+        "size": "3.6GB",
+        "md5": "MD5: 64e5af98ee16672d075bc2d4785a20ff",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "# Docker Hub\ndocker pull tdengine/tdengine-tdgpt:3.3.6.13\n\n# Offline Install\ndocker load -i docker-tdgpt-3.3.6.13-Linux-amd64.tar.gz\ndocker tag tdengine/tdengine-tdgpt-amd64:3.3.6.13 tdengine/tdengine-tdgpt:3.3.6.13\ndocker tag tdengine/tdengine-tdgpt-amd64:3.3.6.13 tdengine/tdengine-tdgpt:latest",
+          "docker run -d \\\n   -p 6090:6090 \\\n   -p 5000:5000 \\\n   tdengine/tdengine-tdgpt:3.3.6.13"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "TDengine TDgpt-Enterprise",
+    "description": "企业版时序数据分析智能体，一条 SQL 语句即可轻松体验时序数据预测、异常检测、补齐和分类功能，内置预测分析模型和异常检测模型有效性评估工具。",
+    "filters": {
+      "versions": [
+        "3.3.7.5",
+        "3.3.6.13"
+      ],
+      "platforms": [
+        "Linux-Generic"
+      ],
+      "archs": [
+        "x64"
+      ]
+    },
+    "versions": [
+      {
+        "name": "tdengine-tdgpt-enterprise-3.3.7.5-linux-x64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-tdgpt-enterprise/3.3.7.5/tdengine-tdgpt-enterprise-3.3.7.5-linux-x64.tar.gz",
+        "version": "3.3.7.5",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "1.6GB",
+        "md5": "MD5: a52b86c5a07ba00399cc2a04d2f36a0a",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.7.5/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tdgpt-enterprise/3.3.7.5/tdengine-tdgpt-enterprise-3.3.7.5-linux-x64.tar.gz",
+          "tar -zxvf tdengine-tdgpt-enterprise-3.3.7.5-linux-x64.tar.gz && \\\ncd tdengine-tdgpt-enterprise-3.3.7.5 && \\\nsudo ./install.sh",
+          "sudo systemctl start  taosanoded"
+        ]
+      },
+      {
+        "name": "TDengine-enterprise-TDgpt-3.3.6.13-Linux-x64.tar.gz",
+        "download-url": "https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-TDgpt-3.3.6.13-Linux-x64.tar.gz",
+        "version": "3.3.6.13",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "1.93GB",
+        "md5": "MD5: b8f46159312b88438673765fe796abff",
+        "release-notes-url": "https://docs.taosdata.com/releases/notes/3.3.6.13/",
+        "usage": [
+          "wget https://www.taosdata.com/assets-download/3.0/TDengine-enterprise-TDgpt-3.3.6.13-Linux-x64.tar.gz",
+          "tar -zxvf TDengine-enterprise-TDgpt-3.3.6.13-Linux-x64.tar.gz && \\\ncd TDengine-enterprise-TDgpt-3.3.6.13 && \\\nsudo ./install.sh",
+          "sudo systemctl start  taosanoded"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "TDengine IDMP-Enterprise",
+    "description": "AI 原生的物联网、工业数据管理平台。它通过经典的树状层次结构组织传感器、设备采集的数据，建立数据目录，对数据提供语境化、标准化的处理、并提供实时分析、可视化、事件管理与报警等功能。",
+    "filters": {
+      "versions": [
+        "1.0.2.3"
+      ],
+      "platforms": [
+        "Docker",
+        "Linux-Generic",
+        "Linux-Red Hat",
+        "Linux-Ubuntu",
+        "macOS"
+      ],
+      "archs": [
+        "x64",
+        "arm64"
+      ]
+    },
+    "versions": [
+      {
+        "name": "tdengine-idmp-enterprise-1.0.2.3-linux-generic.deb",
+        "download-url": "https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-1.0.2.3-linux-generic.deb",
+        "version": "1.0.2.3",
+        "platform": "Linux-Ubuntu",
+        "arch": "x64",
+        "size": "649.03MB",
+        "md5": "MD5: b29ee973b557fdc5eb01ecae6b8e4c17",
+        "release-notes-url": "https://idmpdocs.taosdata.com/release-history/1.0.2.3/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-1.0.2.3-linux-generic.deb",
+          "sudo dpkg -i tdengine-idmp-enterprise-1.0.2.3-linux-generic.deb",
+          "编辑 IDMP 的配置文件，具体步骤如下：\n用编辑器打开 TDengine IDMP 的配置文件 /usr/local/taos/idmp/config/application.yml\n在 tda.default-connection 下，配置 TDengine TSDB-Enterprise 的连接信息：\n\ntda:\n  default-connection:\n    enable: true\n    auth-type: UserPassword\n    url: http://<ip>:<port>\n    username: root\n    password: taosdata\n\n注意：将 <ip> 和 <port> 替换为实际的 TDengine TSDB-Enterprise 服务器的 IP 地址和 taosAdapter 组件的端口号（默认端口号为 6041）。\n",
+          "sudo svc-tdengine-idmp start\n# 更多详情请参考：通过安装包快速体验 TDengine IDMP\n# https://idmpdocs.taosdata.com/get-started/get-started-installer"
+        ]
+      },
+      {
+        "name": "tdengine-idmp-enterprise-1.0.2.3-linux-generic.deb",
+        "download-url": "https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-1.0.2.3-linux-generic.deb",
+        "version": "1.0.2.3",
+        "platform": "Linux-Ubuntu",
+        "arch": "arm64",
+        "size": "649.03MB",
+        "md5": "MD5: b29ee973b557fdc5eb01ecae6b8e4c17",
+        "release-notes-url": "https://idmpdocs.taosdata.com/release-history/1.0.2.3/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-1.0.2.3-linux-generic.deb",
+          "sudo dpkg -i tdengine-idmp-enterprise-1.0.2.3-linux-generic.deb",
+          "编辑 IDMP 的配置文件，具体步骤如下：\n用编辑器打开 TDengine IDMP 的配置文件 /usr/local/taos/idmp/config/application.yml\n在 tda.default-connection 下，配置 TDengine TSDB-Enterprise 的连接信息：\n\ntda:\n  default-connection:\n    enable: true\n    auth-type: UserPassword\n    url: http://<ip>:<port>\n    username: root\n    password: taosdata\n\n注意：将 <ip> 和 <port> 替换为实际的 TDengine TSDB-Enterprise 服务器的 IP 地址和 taosAdapter 组件的端口号（默认端口号为 6041）。\n",
+          "sudo svc-tdengine-idmp start\n# 更多详情请参考：通过安装包快速体验 TDengine IDMP\n# https://idmpdocs.taosdata.com/get-started/get-started-installer"
+        ]
+      },
+      {
+        "name": "tdengine-idmp-enterprise-1.0.2.3-linux-generic.rpm",
+        "download-url": "https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-1.0.2.3-linux-generic.rpm",
+        "version": "1.0.2.3",
+        "platform": "Linux-Red Hat",
+        "arch": "x64",
+        "size": "657.05MB",
+        "md5": "MD5: 7d6cb030e6e120e45341051ab0b7b768",
+        "release-notes-url": "https://idmpdocs.taosdata.com/release-history/1.0.2.3/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-1.0.2.3-linux-generic.rpm",
+          "sudo rpm -ivh --nodeps tdengine-idmp-enterprise-1.0.2.3-linux-generic.rpm",
+          "编辑 IDMP 的配置文件，具体步骤如下：\n用编辑器打开 TDengine IDMP 的配置文件 /usr/local/taos/idmp/config/application.yml\n在 tda.default-connection 下，配置 TDengine TSDB-Enterprise 的连接信息：\n\ntda:\n  default-connection:\n    enable: true\n    auth-type: UserPassword\n    url: http://<ip>:<port>\n    username: root\n    password: taosdata\n\n注意：将 <ip> 和 <port> 替换为实际的 TDengine TSDB-Enterprise 服务器的 IP 地址和 taosAdapter 组件的端口号（默认端口号为 6041）。\n",
+          "sudo svc-tdengine-idmp start\n# 更多详情请参考：通过安装包快速体验 TDengine IDMP\n# https://idmpdocs.taosdata.com/get-started/get-started-installer"
+        ]
+      },
+      {
+        "name": "tdengine-idmp-enterprise-1.0.2.3-linux-generic.rpm",
+        "download-url": "https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-1.0.2.3-linux-generic.rpm",
+        "version": "1.0.2.3",
+        "platform": "Linux-Red Hat",
+        "arch": "arm64",
+        "size": "657.05MB",
+        "md5": "MD5: 7d6cb030e6e120e45341051ab0b7b768",
+        "release-notes-url": "https://idmpdocs.taosdata.com/release-history/1.0.2.3/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-1.0.2.3-linux-generic.rpm",
+          "sudo rpm -ivh --nodeps tdengine-idmp-enterprise-1.0.2.3-linux-generic.rpm",
+          "编辑 IDMP 的配置文件，具体步骤如下：\n用编辑器打开 TDengine IDMP 的配置文件 /usr/local/taos/idmp/config/application.yml\n在 tda.default-connection 下，配置 TDengine TSDB-Enterprise 的连接信息：\n\ntda:\n  default-connection:\n    enable: true\n    auth-type: UserPassword\n    url: http://<ip>:<port>\n    username: root\n    password: taosdata\n\n注意：将 <ip> 和 <port> 替换为实际的 TDengine TSDB-Enterprise 服务器的 IP 地址和 taosAdapter 组件的端口号（默认端口号为 6041）。\n",
+          "sudo svc-tdengine-idmp start\n# 更多详情请参考：通过安装包快速体验 TDengine IDMP\n# https://idmpdocs.taosdata.com/get-started/get-started-installer"
+        ]
+      },
+      {
+        "name": "tdengine-idmp-enterprise-1.0.2.3-linux-generic.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-1.0.2.3-linux-generic.tar.gz",
+        "version": "1.0.2.3",
+        "platform": "Linux-Generic",
+        "arch": "x64",
+        "size": "669.38MB",
+        "md5": "MD5: 54ca3056455ce48f8efc3fbab640dd75",
+        "release-notes-url": "https://idmpdocs.taosdata.com/release-history/1.0.2.3/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-1.0.2.3-linux-generic.tar.gz",
+          "tar -zxvf tdengine-idmp-enterprise-1.0.2.3-linux-generic.tar.gz && \\\ncd tdengine-idmp-enterprise-1.0.2.3 && \\\nsudo ./install.sh",
+          "编辑 IDMP 的配置文件，具体步骤如下：\n用编辑器打开 TDengine IDMP 的配置文件 /usr/local/taos/idmp/config/application.yml\n在 tda.default-connection 下，配置 TDengine TSDB-Enterprise 的连接信息：\n\ntda:\n  default-connection:\n    enable: true\n    auth-type: UserPassword\n    url: http://<ip>:<port>\n    username: root\n    password: taosdata\n\n注意：将 <ip> 和 <port> 替换为实际的 TDengine TSDB-Enterprise 服务器的 IP 地址和 taosAdapter 组件的端口号（默认端口号为 6041）。\n",
+          "sudo svc-tdengine-idmp start\n# 更多详情请参考：通过安装包快速体验 TDengine IDMP\n# https://idmpdocs.taosdata.com/get-started/get-started-installer"
+        ]
+      },
+      {
+        "name": "tdengine-idmp-enterprise-1.0.2.3-linux-generic.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-1.0.2.3-linux-generic.tar.gz",
+        "version": "1.0.2.3",
+        "platform": "Linux-Generic",
+        "arch": "arm64",
+        "size": "669.38MB",
+        "md5": "MD5: 54ca3056455ce48f8efc3fbab640dd75",
+        "release-notes-url": "https://idmpdocs.taosdata.com/release-history/1.0.2.3/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-1.0.2.3-linux-generic.tar.gz",
+          "tar -zxvf tdengine-idmp-enterprise-1.0.2.3-linux-generic.tar.gz && \\\ncd tdengine-idmp-enterprise-1.0.2.3 && \\\nsudo ./install.sh",
+          "编辑 IDMP 的配置文件，具体步骤如下：\n用编辑器打开 TDengine IDMP 的配置文件 /usr/local/taos/idmp/config/application.yml\n在 tda.default-connection 下，配置 TDengine TSDB-Enterprise 的连接信息：\n\ntda:\n  default-connection:\n    enable: true\n    auth-type: UserPassword\n    url: http://<ip>:<port>\n    username: root\n    password: taosdata\n\n注意：将 <ip> 和 <port> 替换为实际的 TDengine TSDB-Enterprise 服务器的 IP 地址和 taosAdapter 组件的端口号（默认端口号为 6041）。\n",
+          "sudo svc-tdengine-idmp start\n# 更多详情请参考：通过安装包快速体验 TDengine IDMP\n# https://idmpdocs.taosdata.com/get-started/get-started-installer"
+        ]
+      },
+      {
+        "name": "tdengine-idmp-enterprise-1.0.2.3-macos-generic.pkg",
+        "download-url": "https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-1.0.2.3-macos-generic.pkg",
+        "version": "1.0.2.3",
+        "platform": "macOS",
+        "arch": "x64",
+        "size": "669.63MB",
+        "md5": "MD5: b8bc9174484eab8ab5422f4ab07bd7d9",
+        "release-notes-url": "https://idmpdocs.taosdata.com/release-history/1.0.2.3/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-1.0.2.3-macos-generic.pkg",
+          "sudo installer -pkg tdengine-idmp-enterprise-1.0.2.3-macos-generic.pkg -target /",
+          "编辑 IDMP 的配置文件，具体步骤如下：\n用编辑器打开 TDengine IDMP 的配置文件 /usr/local/taos/idmp/config/application.yml\n在 tda.default-connection 下，配置 TDengine TSDB-Enterprise 的连接信息：\n\ntda:\n  default-connection:\n    enable: true\n    auth-type: UserPassword\n    url: http://<ip>:<port>\n    username: root\n    password: taosdata\n\n注意：将 <ip> 和 <port> 替换为实际的 TDengine TSDB-Enterprise 服务器的 IP 地址和 taosAdapter 组件的端口号（默认端口号为 6041）。\n",
+          "sudo svc-tdengine-idmp start\n# 更多详情请参考：通过安装包快速体验 TDengine IDMP\n# https://idmpdocs.taosdata.com/get-started/get-started-installer"
+        ]
+      },
+      {
+        "name": "tdengine-idmp-enterprise-1.0.2.3-macos-generic.pkg",
+        "download-url": "https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-1.0.2.3-macos-generic.pkg",
+        "version": "1.0.2.3",
+        "platform": "macOS",
+        "arch": "arm64",
+        "size": "669.63MB",
+        "md5": "MD5: b8bc9174484eab8ab5422f4ab07bd7d9",
+        "release-notes-url": "https://idmpdocs.taosdata.com/release-history/1.0.2.3/",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-1.0.2.3-macos-generic.pkg",
+          "sudo installer -pkg tdengine-idmp-enterprise-1.0.2.3-macos-generic.pkg -target /",
+          "编辑 IDMP 的配置文件，具体步骤如下：\n用编辑器打开 TDengine IDMP 的配置文件 /usr/local/taos/idmp/config/application.yml\n在 tda.default-connection 下，配置 TDengine TSDB-Enterprise 的连接信息：\n\ntda:\n  default-connection:\n    enable: true\n    auth-type: UserPassword\n    url: http://<ip>:<port>\n    username: root\n    password: taosdata\n\n注意：将 <ip> 和 <port> 替换为实际的 TDengine TSDB-Enterprise 服务器的 IP 地址和 taosAdapter 组件的端口号（默认端口号为 6041）。\n",
+          "sudo svc-tdengine-idmp start\n# 更多详情请参考：通过安装包快速体验 TDengine IDMP\n# https://idmpdocs.taosdata.com/get-started/get-started-installer"
+        ]
+      },
+      {
+        "name": "tdengine-idmp-enterprise-docker-1.0.2.3-linux-arm64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-docker-1.0.2.3-linux-arm64.tar.gz",
+        "version": "1.0.2.3",
+        "platform": "Docker",
+        "arch": "arm64",
+        "size": "1000.85MB",
+        "md5": "MD5: ff3d7762f1386d02d6bfd52ad54bcd1e",
+        "release-notes-url": "https://idmpdocs.taosdata.com/release-history/1.0.2.3/",
+        "usage": [
+          "# 推荐您使用 Docker Compose 的方式体验 TDengine IDMP\ngit clone https://github.com/taosdata/tdengine-idmp-deployment.git",
+          "cd tdengine-idmp-deployment/docker\ndocker compose up -d\n# 更多详情请参考：通过 Docker 快速体验 TDengine IDMP\n# https://idmpdocs.taosdata.com/get-started/get-started-docker"
+        ]
+      },
+      {
+        "name": "tdengine-idmp-enterprise-docker-1.0.2.3-linux-x64.tar.gz",
+        "download-url": "https://downloads.taosdata.com/tdengine-idmp-enterprise/1.0.2.3/tdengine-idmp-enterprise-docker-1.0.2.3-linux-x64.tar.gz",
+        "version": "1.0.2.3",
+        "platform": "Docker",
+        "arch": "x64",
+        "size": "1.04GB",
+        "md5": "MD5: d0aa04a6d3aa8ace992db2e3c0b4764a",
+        "release-notes-url": "https://idmpdocs.taosdata.com/release-history/1.0.2.3/",
+        "usage": [
+          "# 推荐您使用 Docker Compose 的方式体验 TDengine IDMP\ngit clone https://github.com/taosdata/tdengine-idmp-deployment.git",
+          "cd tdengine-idmp-deployment/docker\ndocker compose up -d\n# 更多详情请参考：通过 Docker 快速体验 TDengine IDMP\n# https://idmpdocs.taosdata.com/get-started/get-started-docker"
+        ]
+      }
+    ]
+  },
+  {
+    "name": "TDengine TSDB Grafana-Plugin",
+    "description": "TDengine TSDB Grafana 插件，用于数据可视化",
+    "filters": {
+      "versions": [
+        "3.7.3"
+      ],
+      "platforms": [
+        "Linux-Generic",
+        "Windows",
+        "macOS"
+      ],
+      "archs": [
+        "Generic"
+      ]
+    },
+    "versions": [
+      {
+        "name": "tdengine-datasource-3.7.3.zip",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-datasource/3.7.3/tdengine-datasource-3.7.3.zip",
+        "version": "3.7.3",
+        "platform": "Linux-Generic",
+        "arch": "Generic",
+        "size": "46.63MB",
+        "md5": "MD5: 5ebeb3c13b61ad9c2ffc061a5ff2fdd7",
+        "release-notes-url": "https://github.com/taosdata/grafanaplugin/releases/tag/v3.7.3",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-datasource/3.7.3/tdengine-datasource-3.7.3.zip",
+          "sudo unzip tdengine-datasource-3.7.3.zip -d /var/lib/grafana/plugins/",
+          "sudo systemctl restart grafana-server\n# 更多详情请参考：\n# https://docs.taosdata.com/third-party/visual/grafana/"
+        ]
+      },
+      {
+        "name": "tdengine-datasource-3.7.3.zip",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-datasource/3.7.3/tdengine-datasource-3.7.3.zip",
+        "version": "3.7.3",
+        "platform": "macOS",
+        "arch": "Generic",
+        "size": "46.63MB",
+        "md5": "MD5: 5ebeb3c13b61ad9c2ffc061a5ff2fdd7",
+        "release-notes-url": "https://github.com/taosdata/grafanaplugin/releases/tag/v3.7.3",
+        "usage": [
+          "wget https://downloads.taosdata.com/tdengine-tsdb-datasource/3.7.3/tdengine-datasource-3.7.3.zip",
+          "sudo unzip tdengine-datasource-3.7.3.zip -d /var/lib/grafana/plugins/",
+          "sudo brew services restart grafana\n# 更多详情请参考：\n# https://docs.taosdata.com/third-party/visual/grafana/"
+        ]
+      },
+      {
+        "name": "tdengine-datasource-3.7.3.zip",
+        "download-url": "https://downloads.taosdata.com/tdengine-tsdb-datasource/3.7.3/tdengine-datasource-3.7.3.zip",
+        "version": "3.7.3",
+        "platform": "Windows",
+        "arch": "Generic",
+        "size": "46.63MB",
+        "md5": "MD5: 5ebeb3c13b61ad9c2ffc061a5ff2fdd7",
+        "release-notes-url": "https://github.com/taosdata/grafanaplugin/releases/tag/v3.7.3",
+        "usage": [
+          "# PowerShell\nInvoke-WebRequest -Uri 'https://downloads.taosdata.com/tdengine-tsdb-datasource/3.7.3/tdengine-datasource-3.7.3.zip' -OutFile 'tdengine-datasource-3.7.3.zip'",
+          "# PowerShell\nExpand-Archive -Path tdengine-datasource-3.7.3.zip -DestinationPath 'C:\\Program Files\\GrafanaLabs\\grafana\\data\\plugins\\'",
+          "# PowerShell (Admin required)\nRestart-Service Grafana\n# 更多详情请参考：\n# https://docs.taosdata.com/third-party/visual/grafana/"
+        ]
+      }
+    ]
+  }
+]
