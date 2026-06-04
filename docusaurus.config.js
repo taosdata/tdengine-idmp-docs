@@ -102,7 +102,7 @@ const config = {
   },
   url: 'https://idmpdocs.taosdata.com',
   trailingSlash: true,
-  baseUrl: '/',
+  baseUrl: process.env.DOCS_BASE_URL || '/',
   onBrokenAnchors: 'throw',
   markdown: {
     hooks: {
@@ -118,13 +118,13 @@ const config = {
       'en': {
         label: 'English',
         htmlLang: 'en-US',
-        baseUrl: '/',
+        // baseUrl: '/',
         url: 'https://idmpdocs.tdengine.com'
       },
       'zh-Hans': {
         label: '简体中文',
         htmlLang: 'zh-CN',
-        baseUrl: '/',
+        // baseUrl: '/',
         url: 'https://idmpdocs.taosdata.com'
       },
     },
@@ -222,7 +222,7 @@ const config = {
     ],
   ],
   stylesheets: [
-    '/fonts/css/ibm-plex.min.css'
+    `${process.env.DOCS_BASE_URL || '/'}fonts/css/ibm-plex.min.css`
   ],
   customFields: {
     assembleConfig,

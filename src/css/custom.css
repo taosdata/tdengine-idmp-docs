@@ -145,8 +145,7 @@ html[lang^="zh"] .markdown table th:first-child a {
 .navbar {
   background-blend-mode: normal;
   background-color: var(--accent);
-  /* webpackIgnore: true */
-  background-image: url("/img/banner.png");
+  background-image: url("@site/static/img/banner.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover
