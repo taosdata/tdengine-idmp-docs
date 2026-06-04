@@ -1,4 +1,5 @@
 import React from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from "./styles.module.css";
 import GitHubIcon from "/img/github.svg";
 import DiscordIcon from "/img/discord.svg";
@@ -7,6 +8,10 @@ import TwitterIcon from "/img/twitter.svg";
 import YouTubeIcon from "/img/youtube.svg";
 
 function Footer() {
+  const footerLogo = useBaseUrl('/img/footer-logo.svg');
+  const socImg = useBaseUrl('/img/soc-footer.png');
+  const iso27001Img = useBaseUrl('/img/iso27001-footer.png');
+  const iso27017Img = useBaseUrl('/img/iso27017-footer.png');
 
   return (
     <footer className={styles.footer}>
@@ -15,18 +20,18 @@ function Footer() {
           <div className={styles.left}>
             <div className={styles.imageContainer}>
               <a href="https://tdengine.com">
-                <img className={styles.logoImg} width="150" height="30" src="/img/footer-logo.svg"
+                <img className={styles.logoImg} width="150" height="30" src={footerLogo}
                   alt="TDengine" />
               </a>
               <div className={styles.certsContainer}>
                 <a href="https://tdengine.com/legal/soc-2/">
-                  <img className={styles.socImg} src="/img/soc-footer.png" alt="SOC 2 compliant" />
+                  <img className={styles.socImg} src={socImg} alt="SOC 2 compliant" />
                 </a>
                 <a href="https://tdengine.com/legal/iso-27001/">
-                  <img className={styles.isoImg} src="/img/iso27001-footer.png" alt="ISO 27001 compliant" />
+                  <img className={styles.isoImg} src={iso27001Img} alt="ISO 27001 compliant" />
                 </a>
                 <a href="https://tdengine.com/legal/iso-27001/">
-                  <img className={styles.isoImg} src="/img/iso27017-footer.png" alt="ISO 27017 compliant" />
+                  <img className={styles.isoImg} src={iso27017Img} alt="ISO 27017 compliant" />
                 </a>
               </div>
             </div>
