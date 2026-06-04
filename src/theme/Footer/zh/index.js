@@ -65,15 +65,15 @@ class TopLeft extends React.Component {
           <div className={styles.certsContainer}>
             <figure className={styles.socFig}><a href="https://www.taosdata.com/tdengine/tdengine-cloud-soc-2"><img
               className={styles.socImg}
-              src="/img/soc-footer.png"
+              src={require("/img/soc-footer.png").default}
               alt="SOC 2 Certified" /></a></figure>
             <figure className={styles.isoFig}><a href="https://www.taosdata.com/tdengine/iso-ice-27001-iso-ice-27017-certified"><img
               className={styles.isoImg}
-              src="/img/iso27001-footer.png"
+              src={require("/img/iso27001-footer.png").default}
               alt="ISO 27001 Certified" /></a></figure>
             <figure className={styles.isoFig}><a href="https://www.taosdata.com/tdengine/iso-ice-27001-iso-ice-27017-certified"><img
               className={styles.isoImg}
-              src="/img/iso27017-footer.png"
+              src={require("/img/iso27017-footer.png").default}
               alt="ISO 27017 Certified" /></a></figure>
           </div>
         </div>
@@ -246,7 +246,7 @@ class TopRight extends React.Component {
           <script src="https://inbound.tungee.com/im/bundle.js?deployId=65a78934bd591762738300b4" name="TGTouchCS"></script>*/}
           
           <div className={styles.fixAichat} id="bd-aichat-btn">
-            <img decoding="async" src="/img/aichat.png" alt="TDengine AI Chat" />
+            <img decoding="async" src={require("/img/aichat.png").default} alt="TDengine AI Chat" />
             <div className={styles.tipRight}>
               <div className={styles.rightTitle}>
                 <a href="https://chat.taosdata.com" target="_blank" rel="noopener noreferrer">
@@ -258,29 +258,29 @@ class TopRight extends React.Component {
           </div>
 
           <div className={styles.fixWechat} id="bd-wechat-btn">
-            <img decoding="async" className={styles.wechatLogo} src="/img/fixlogo2.png" />
+            <img decoding="async" className={styles.wechatLogo} src={require("/img/fixlogo2.png").default} />
             <div className={styles.tipRight}>
-              <img decoding="async" style={{ width: "100%" }} alt="TDengine Database" src="/img/tdengine-new.jpeg" className="" />
+              <img decoding="async" style={{ width: "100%" }} alt="TDengine Database" src={require("/img/tdengine-new.jpeg").default} className="" />
               <div>加小 T 为好友</div>
               <div style={{ color: "#333844" }}>即可加入物联网大数据技术前沿群</div>
             </div>
           </div>
           <div className={styles.fixPhone} id="bd-phone-btn">
-            <img decoding="async" src="/img/phone.svg" data-src="/img/phone.svg" />
+            <img decoding="async" src={require("/img/phone.svg").default} />
             <div className={styles.tipRight}>
               <div className={styles.rightTitle}><a href="tel:4006120020">联系销售</a></div>
               <div><a style={{ color: "#333844" }} href="tel:4006120020">4006120020</a></div>
             </div>
           </div>
           <div className={styles.fixForm} id="bd-contact-btn">
-            <img decoding="async" src="/img/fixlogo1.png" data-src="/img/fixlogo1.png" className="" />
+            <img decoding="async" src={require("/img/fixlogo1.png").default} className="" />
             <div className={styles.tipRight}>
               <div className={styles.rightTitle}><a onClick={this.contactSales.bind(this)} className="advice">点击填写表单</a></div>
               <div style={{ color: "#333844" }}>获得解决方案专家帮助</div>
             </div>
           </div>
           <div className="fix-github" id="bd-github-btn">
-            <img decoding="async" className="wechat-logo" src="/img/fixlogo3.png" data-src="/img/fixlogo3.png" />
+            <img decoding="async" className="wechat-logo" src={require("/img/fixlogo3.png").default} />
             <div className={styles.tipRight}>
               <div className={styles.rightTitle}><a href="https://github.com/taosdata/TDengine">点击前往 GitHub</a></div>
               <div><a style={{ color: "#333844" }} href="https://github.com/taosdata/TDengine">查看源代码</a></div>
