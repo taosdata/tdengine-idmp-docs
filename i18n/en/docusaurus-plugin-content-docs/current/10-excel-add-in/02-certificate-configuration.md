@@ -119,6 +119,9 @@ Ensure that the IDMP HTTPS port (default: **6034**) is in a listening state.
 
 ### Replacing the Certificate
 
+<Tabs>
+<TabItem value="package" label="Package Installation">
+
 1. Back up the existing certificates:
 
    ```bash
@@ -127,12 +130,77 @@ Ensure that the IDMP HTTPS port (default: **6034**) is in a listening state.
    mv privkey.pem certbundle.pem bak/
    ```
 
-2. Copy the newly generated `privkey.pem` and `certbundle.pem` to the `/usr/local/taos/idmp/config` directory:
+2. Copy the newly generated `privkey.pem` and `certbundle.pem` to the `/usr/local/taos/idmp/config` directory.
 
-   - **Package installation:** Copy and replace the files directly.
-   - **Docker deployment:** Use `docker cp` to copy files into the container, or replace through a mapped `config` volume.
+3. Restart the IDMP service for the new certificate to take effect:
 
-3. Restart the IDMP service for the new certificate to take effect.
+   ```bash
+   systemctl restart idmp
+   ```
+
+</TabItem>
+<TabItem value="docker-compose" label="Docker Compose Deployment">
+
+There are two ways to configure certificates in a Docker Compose deployment: **volume mounts (recommended)** and **docker cp**.
+
+#### Option 1: Volume Mounts (Recommended)
+
+Add volume mounts in `docker-compose.yml` to map certificate files from the host into the container. With this approach, updating certificates only requires replacing the files on the host and restarting the container.
+
+1. Create a certificate directory on the host and place the generated certificate files in it:
+
+   ```bash
+   mkdir -p /opt/idmp/certs
+   cp privkey.pem certbundle.pem /opt/idmp/certs/
+   ```
+
+2. Edit `docker-compose.yml` and add certificate file mappings to the `volumes` section of the `tdengine-idmp` service:
+
+   ```yaml
+   services:
+     tdengine-idmp:
+       # ... other configuration ...
+       volumes:
+         - idmp_data:/var/lib/taos
+         - idmp_log:/var/log/taos
+         - /opt/idmp/certs/privkey.pem:/usr/local/taos/idmp/config/privkey.pem:ro
+         - /opt/idmp/certs/certbundle.pem:/usr/local/taos/idmp/config/certbundle.pem:ro
+   ```
+
+   :::tip
+   `:ro` means read-only mount, preventing processes inside the container from accidentally modifying the certificate files.
+   :::
+
+3. Restart the IDMP container for the certificate to take effect:
+
+   ```bash
+   docker compose down
+   docker compose up -d
+   ```
+
+#### Option 2: docker cp
+
+If you prefer not to modify `docker-compose.yml`, you can use `docker cp` to copy certificate files directly into the running container.
+
+1. Copy the certificate files into the container:
+
+   ```bash
+   docker cp privkey.pem tdengine-idmp:/usr/local/taos/idmp/config/privkey.pem
+   docker cp certbundle.pem tdengine-idmp:/usr/local/taos/idmp/config/certbundle.pem
+   ```
+
+2. Restart the container for the certificate to take effect:
+
+   ```bash
+   docker compose restart tdengine-idmp
+   ```
+
+:::warning
+When using `docker cp`, if the container is recreated (e.g., after running `docker compose down` followed by `up`), the copied certificate files will be lost and must be copied again. Volume mounts are recommended to avoid this issue.
+:::
+
+</TabItem>
+</Tabs>
 
 ## 10.2.5 DNS Resolution Configuration
 
