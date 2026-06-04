@@ -24,7 +24,8 @@
 
 .popupTitle {
   border-radius: 8px 8px 0 0;
-  background-image: url("@site/static/img/banner.png");
+  /* webpackIgnore: true */
+  background-image: url("/img/banner.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;

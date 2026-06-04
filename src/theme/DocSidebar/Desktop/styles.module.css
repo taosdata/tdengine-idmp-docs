@@ -29,7 +29,8 @@
     max-height: var(--ifm-navbar-height);
     color: inherit !important;
     text-decoration: none !important;
-    background-image: url(@site/static/img/banner.png);
+    /* webpackIgnore: true */
+    background-image: url(/img/banner.png);
     width: 100%;
     left: -16px;
     position: relative;
