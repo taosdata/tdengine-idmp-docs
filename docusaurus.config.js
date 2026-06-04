@@ -6,6 +6,8 @@ import { buildDocsVersions } from './src/versions';
 import versions from './versions.json';
 import assembleConfig from './assemble_config.json';
 
+const docsBaseUrl = (process.env.DOCS_BASE_URL || '/').replace(/\/+$/, '/');
+
 const getTitle = () => {
   const locale = process.env.DOCUSAURUS_CURRENT_LOCALE || 'zh-Hans';
   if (locale === 'en') {
@@ -102,7 +104,7 @@ const config = {
   },
   url: 'https://idmpdocs.taosdata.com',
   trailingSlash: true,
-  baseUrl: '/',
+  baseUrl: docsBaseUrl,
   onBrokenAnchors: 'throw',
   markdown: {
     hooks: {
@@ -118,13 +120,13 @@ const config = {
       'en': {
         label: 'English',
         htmlLang: 'en-US',
-        baseUrl: '/',
+        // baseUrl: '/',
         url: 'https://idmpdocs.tdengine.com'
       },
       'zh-Hans': {
         label: '简体中文',
         htmlLang: 'zh-CN',
-        baseUrl: '/',
+        // baseUrl: '/',
         url: 'https://idmpdocs.taosdata.com'
       },
     },
@@ -222,7 +224,7 @@ const config = {
     ],
   ],
   stylesheets: [
-    '/fonts/css/ibm-plex.min.css'
+    `${docsBaseUrl}fonts/css/ibm-plex.min.css`
   ],
   customFields: {
     assembleConfig,
