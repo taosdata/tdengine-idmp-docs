@@ -120,6 +120,9 @@ openssl x509 -in certbundle.pem -text -noout | grep -A1 "Subject Alternative Nam
 
 ### 替换证书
 
+<Tabs>
+<TabItem value="package" label="安装包部署">
+
 1. 备份现有证书：
 
    ```bash
@@ -128,12 +131,77 @@ openssl x509 -in certbundle.pem -text -noout | grep -A1 "Subject Alternative Nam
    mv privkey.pem certbundle.pem bak/
    ```
 
-2. 将新生成的 `privkey.pem` 和 `certbundle.pem` 复制到 `/usr/local/taos/idmp/config` 目录：
+2. 将新生成的 `privkey.pem` 和 `certbundle.pem` 复制到 `/usr/local/taos/idmp/config` 目录。
 
-   - **安装包部署：** 直接复制替换即可。
-   - **Docker 部署：** 使用 `docker cp` 将文件复制到容器中，或通过映射 `config` 目录进行替换。
+3. 重启 IDMP 服务使证书生效：
 
-3. 重启 IDMP 服务使证书生效。
+   ```bash
+   systemctl restart idmp
+   ```
+
+</TabItem>
+<TabItem value="docker-compose" label="Docker Compose 部署">
+
+Docker Compose 部署有两种方式配置证书：**卷挂载（推荐）** 和 **docker cp**。
+
+#### 方式一：卷挂载（推荐）
+
+通过在 `docker-compose.yml` 中添加卷挂载，将宿主机上的证书文件映射到容器内。这种方式更新证书时只需替换宿主机文件并重启容器即可。
+
+1. 在宿主机上创建证书目录，并将生成的证书文件放入：
+
+   ```bash
+   mkdir -p /opt/idmp/certs
+   cp privkey.pem certbundle.pem /opt/idmp/certs/
+   ```
+
+2. 编辑 `docker-compose.yml`，在 `tdengine-idmp` 服务的 `volumes` 部分添加证书文件的映射：
+
+   ```yaml
+   services:
+     tdengine-idmp:
+       # ... 其他配置 ...
+       volumes:
+         - idmp_data:/var/lib/taos
+         - idmp_log:/var/log/taos
+         - /opt/idmp/certs/privkey.pem:/usr/local/taos/idmp/config/privkey.pem:ro
+         - /opt/idmp/certs/certbundle.pem:/usr/local/taos/idmp/config/certbundle.pem:ro
+   ```
+
+   :::tip
+   `:ro` 表示只读挂载，防止容器内进程意外修改证书文件。
+   :::
+
+3. 重启 IDMP 容器使证书生效：
+
+   ```bash
+   docker compose down
+   docker compose up -d
+   ```
+
+#### 方式二：docker cp
+
+如果不想修改 `docker-compose.yml`，可以使用 `docker cp` 将证书文件直接复制到运行中的容器内。
+
+1. 将证书文件复制到容器中：
+
+   ```bash
+   docker cp privkey.pem tdengine-idmp:/usr/local/taos/idmp/config/privkey.pem
+   docker cp certbundle.pem tdengine-idmp:/usr/local/taos/idmp/config/certbundle.pem
+   ```
+
+2. 重启容器使证书生效：
+
+   ```bash
+   docker compose restart tdengine-idmp
+   ```
+
+:::warning
+使用 `docker cp` 方式时，如果容器被重建（例如执行 `docker compose down` 后重新 `up`），复制的证书文件将丢失，需要重新执行复制操作。推荐使用卷挂载方式以避免此问题。
+:::
+
+</TabItem>
+</Tabs>
 
 ## 10.2.5 域名解析配置
 
