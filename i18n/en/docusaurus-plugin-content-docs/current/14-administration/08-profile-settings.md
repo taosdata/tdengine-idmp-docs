@@ -15,7 +15,7 @@ The personal settings dialog contains the following tabs:
 |---|---|
 | **Profile** | View and edit your name, email, phone number, position, and description |
 | **API Key** | Create, copy, update the expiration time of, and delete user API keys |
-| **MFA** | Reserved entry for multi-factor authentication. The current release shows an "under development" placeholder. |
+| **Passkey** | Register and manage passkeys used for multi-factor authentication (MFA). See [Section 14.10](10-mfa.md). |
 
 ## 14.8.2 Profile
 
@@ -81,6 +81,6 @@ Click the delete icon at the end of the row and confirm the action. The API key 
 
 For SDK and MCP examples that use API keys, see [Section 15.1.3](../15-integrating-with-other-systems/01-client-sdk/03-authentication.md) and [Section 15.2](../15-integrating-with-other-systems/02-mcp-interface.md).
 
-## 14.8.4 MFA
+## 14.8.4 Passkey
 
-In the current release, the **MFA** tab only shows an "under development" placeholder and does not yet support configuration.
+The **Passkey** tab is where you register and manage passkeys used for multi-factor authentication (MFA). A passkey is a WebAuthn-based passwordless credential whose private key is stored in your device's keychain; verification is confirmed via fingerprint, face recognition, or your device PIN. For the complete step-up verification flow, passkey registration and deletion, and administrator-side MFA exemption configuration, see [Section 14.10 Multi-Factor Authentication (MFA)](10-mfa.md).
