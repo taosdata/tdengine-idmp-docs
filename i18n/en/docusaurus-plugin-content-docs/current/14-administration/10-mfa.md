@@ -49,8 +49,10 @@ Manage passkeys in **Avatar menu → Profile Settings → Passkey**. The list sh
 Click the delete icon in the target passkey's row and confirm. Deletion removes only the **credential record stored on the IDMP server**; the passkey stored in your device's or operating system's keychain is not removed remotely. To remove it completely, delete it from your device's passkey/keychain settings.
 
 :::note
+
 - Passkeys are available only in **HTTPS or localhost** secure contexts; if the browser does not support them, a corresponding message is shown.
 - For security reasons, requests authenticated with an **API key** cannot manage passkeys (registration, listing, deletion). These operations must be performed in the signed-in Web UI.
+
 :::
 
 ## 14.10.3 MFA Management (Exemption Configuration)
