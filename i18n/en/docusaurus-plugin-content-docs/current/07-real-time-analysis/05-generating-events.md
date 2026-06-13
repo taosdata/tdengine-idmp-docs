@@ -5,7 +5,7 @@ sidebar_label: Generating Events
 
 # 7.5 Generating Events
 
-The Event section (section 2 of the analysis form) controls whether the analysis creates an event each time it fires, along with the event's structure, severity, and delivery policy.
+The Event section (section 3 of the analysis form) controls whether the analysis creates an event each time it fires, along with the event's structure, severity, and delivery policy.
 
 ## 7.5.1 Enabling Event Generation
 

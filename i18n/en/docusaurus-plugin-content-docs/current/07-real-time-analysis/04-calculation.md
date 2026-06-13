@@ -5,7 +5,7 @@ sidebar_label: Calculation
 
 # 7.4 Calculation
 
-The Calculation section (section 3 of the analysis form) defines what the analysis computes and where it stores the results. It contains four parts: **Apply Calculation On**, **Rollup On Window**, **Output Timestamp**, and **Output Attributes**.
+The Calculation section (section 4 of the analysis form) defines what the analysis computes and where it stores the results. It contains four parts: **Apply Calculation On**, **Rollup On Window**, **Output Timestamp**, and **Output Attributes**.
 
 ## 7.4.1 Apply Calculation On
 
@@ -56,7 +56,7 @@ Each row in the table has the following columns:
 |---|---|
 | **Expression** | A calculation expression. Click the cell to open the Expression Editor (see [Section 3.2.9](../03-data-modeling/02-attributes.md#329-expression-editor)). |
 | **Element Attribute** | The element attribute where the computed result is stored as a new time-series value |
-| **Event Attribute** | *(Visible only when event generation is enabled in section 4)* An event attribute to capture the computed value at the moment the event fires |
+| **Event Attribute** | *(Visible only when event generation is enabled in section 3)* An event attribute to capture the computed value at the moment the event fires |
 
 Use the **+** button at the bottom of the table to add additional output rows. Each row corresponds to an independent expression, supporting the computation of multiple metrics in a single analysis with results written to different attributes.
 
