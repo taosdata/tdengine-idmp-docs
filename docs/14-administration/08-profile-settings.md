@@ -15,7 +15,7 @@ sidebar_label: 个人设置与 API Key
 |---|---|
 | **个人信息** | 查看和编辑姓名、邮箱、手机号、职位、描述等个人资料 |
 | **密钥** | 创建、复制、更新到期时间和删除用户 API Key |
-| **MFA** | 预留的多因素认证入口；当前版本显示“开发中”占位内容 |
+| **Passkey** | 注册和管理用于二次认证（MFA）的 Passkey，详见[第 14.10 节](10-mfa.md) |
 
 ## 14.8.2 个人信息
 
@@ -81,6 +81,6 @@ sidebar_label: 个人设置与 API Key
 
 有关在 SDK 和 MCP 客户端中使用 API Key 的示例，请参见[第 15.1.3 节](../15-integrating-with-other-systems/01-client-sdk/03-authentication.md)和[第 15.2 节](../15-integrating-with-other-systems/02-mcp-interface.md)。
 
-## 14.8.4 MFA
+## 14.8.4 Passkey
 
-当前版本中的 **MFA** 页签仅显示“开发中”占位内容，尚不支持正式配置。
+**Passkey** 页签用于注册和管理用于二次认证（MFA）的 Passkey。Passkey 是基于 WebAuthn 的无密码凭据，私钥保存在你的设备钥匙串中，验证时通过指纹、面容或设备 PIN 确认本人。完整的二次认证流程、Passkey 注册与删除、以及管理员侧的 MFA 豁免配置，详见[第 14.10 节 二次认证（MFA）](10-mfa.md)。
