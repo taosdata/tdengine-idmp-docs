@@ -53,7 +53,7 @@ hosts 文件位置：
 | **网络连接**       | 需要能够访问下载安装脚本并连接 IDMP 服务             |
 | **Node.js**    | 启用日志记录时，Windows 上需要 Node.js 22.3 或更高版本 |
 
-## 10.1.2 安装
+## 10.1.2 在线安装
 
 <Tabs>
 <TabItem value="macos" label="macOS">
@@ -109,7 +109,96 @@ PowerShell 必须以管理员身份运行。安装期间 Excel 将被强制关�
 </TabItem>
 </Tabs>
 
-## 10.1.3 启用和禁用日志记录
+## 10.1.3 离线安装
+
+如果客户端无法访问外网，可在一台能联网的机器上下载安装文件，再拷贝到目标机器进行安装。
+
+<Tabs>
+<TabItem value="macos" label="macOS">
+
+### 下载安装文件
+
+| 文件 | 下载地址 |
+| ---- | -------- |
+| `install.sh` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh |
+| `manifest.xml` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml |
+
+在能访问互联网的机器上下载文件（可保存到不同目录）：
+
+```bash
+curl -fsSL https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh -o ~/Downloads/install.sh
+curl -fsSL https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml -o ~/manifest/manifest.xml
+chmod +x ~/Downloads/install.sh
+```
+
+将下载的文件拷贝到目标 macOS 机器后，运行：
+
+```bash
+~/Downloads/install.sh install --force-close --url https://idmp.tdengine.net:6034 --manifest-dir ~/manifest --enable-logging
+```
+
+将 `https://idmp.tdengine.net:6034`、`~/Downloads/install.sh` 和 `~/manifest` 替换为您的实际 IDMP HTTPS 地址、安装脚本路径，以及包含 `manifest.xml` 的目录。
+
+**参数说明：**
+
+| 参数 | 说明 |
+| ---- | ---- |
+| `--manifest-dir` | 包含 `manifest.xml` 的本地目录；指定后不再从网络下载 manifest |
+| `--force-close` | 安装期间强制关闭 Excel。运行前请保存工作内容。 |
+| `--url` | IDMP HTTPS 服务地址 |
+| `--enable-logging` | 启用安装和运行时日志记录 |
+
+:::warning
+安装期间 Excel 将被强制关闭。运行命令前请保存所有已打开的工作簿。
+:::
+
+</TabItem>
+<TabItem value="windows" label="Windows">
+
+### 下载安装文件
+
+| 文件 | 下载地址 |
+| ---- | -------- |
+| `install.ps1` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1 |
+| `manifest.xml` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml |
+
+在能访问互联网的机器上下载文件（可保存到不同目录）：
+
+```powershell
+Invoke-WebRequest -Uri https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1 -OutFile C:\Scripts\install.ps1
+Invoke-WebRequest -Uri https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml -OutFile C:\manifest\manifest.xml
+```
+
+将下载的文件拷贝到目标 Windows 机器后，以**管理员身份**打开 PowerShell 并运行：
+
+```powershell
+C:\Scripts\install.ps1 -Action Install -ForceCloseExcel -Url 'https://idmp.tdengine.net:6034' -ManifestDir 'C:\manifest' -EnableLogging
+```
+
+将 `https://idmp.tdengine.net:6034`、`C:\Scripts\install.ps1` 和 `C:\manifest` 替换为您的实际 IDMP HTTPS 地址、安装脚本路径，以及包含 `manifest.xml` 的目录。
+
+**参数说明：**
+
+| 参数 | 说明 |
+| ---- | ---- |
+| `-ManifestDir` | 包含 `manifest.xml` 的本地目录；指定后不再从网络下载 manifest |
+| `-Action Install` | 执行安装 |
+| `-ForceCloseExcel` | 安装期间强制关闭 Excel。运行前请保存工作内容。 |
+| `-Url` | IDMP HTTPS 服务地址 |
+| `-EnableLogging` | 启用安装和运行时日志记录 |
+
+:::warning
+PowerShell 必须以管理员身份运行。安装期间 Excel 将被强制关闭。运行命令前请保存所有已打开的工作簿。
+:::
+
+</TabItem>
+</Tabs>
+
+:::info
+离线安装时，目标机器仍需能访问 IDMP HTTPS 服务。离线安装仅避免从外网下载安装脚本和 manifest 文件。
+:::
+
+## 10.1.4 启用和禁用日志记录
 
 要单独切换日志记录状态（不重新安装）：
 
@@ -138,7 +227,7 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 </TabItem>
 </Tabs>
 
-## 10.1.4 卸载
+## 10.1.5 卸载
 
 <Tabs>
 <TabItem value="macos" label="macOS">
