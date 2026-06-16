@@ -120,8 +120,8 @@ PowerShell 必须以管理员身份运行。安装期间 Excel 将被强制关�
 
 | 文件 | 下载地址 |
 | ---- | -------- |
-| `install.sh` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh |
-| `manifest.xml` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml |
+| `install.sh` | [install.sh](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh) |
+| `manifest.xml` | [manifest.xml](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml) |
 
 在能访问互联网的机器上下载文件（可保存到不同目录）。若目录不存在，请先创建：
 
@@ -160,8 +160,8 @@ chmod +x ~/Downloads/install.sh
 
 | 文件 | 下载地址 |
 | ---- | -------- |
-| `install.ps1` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1 |
-| `manifest.xml` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml |
+| `install.ps1` | [install.ps1](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1) |
+| `manifest.xml` | [manifest.xml](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml) |
 
 在能访问互联网的机器上下载文件（可保存到不同目录）。若目录不存在，请先创建：
 

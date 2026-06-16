@@ -111,7 +111,7 @@ PowerShell must be run as Administrator. Excel will be force-closed during insta
 
 ## 10.1.3 Offline Installation
 
-If the client machine cannot access the public internet, download the installation files on a machine with network access, then copy them to the target machine for installation. 
+If the client machine cannot access the public internet, download the installation files on a machine with network access, then copy them to the target machine for installation.
 
 <Tabs>
 <TabItem value="macos" label="macOS">
@@ -120,8 +120,8 @@ If the client machine cannot access the public internet, download the installati
 
 | File | Download URL |
 | ---- | ------------ |
-| `install.sh` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh |
-| `manifest.xml` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml |
+| `install.sh` | [install.sh](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh) |
+| `manifest.xml` | [manifest.xml](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml) |
 
 On a machine with internet access, download the files (they can be saved to different directories). Create the directories first if they do not exist:
 
@@ -160,8 +160,8 @@ Excel will be force-closed during installation. Save all open workbooks before r
 
 | File | Download URL |
 | ---- | ------------ |
-| `install.ps1` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1 |
-| `manifest.xml` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml |
+| `install.ps1` | [install.ps1](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1) |
+| `manifest.xml` | [manifest.xml](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml) |
 
 On a machine with internet access, download the files (they can be saved to different directories). Create the directories first if they do not exist:
 
