@@ -123,9 +123,10 @@ PowerShell 必须以管理员身份运行。安装期间 Excel 将被强制关�
 | `install.sh` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh |
 | `manifest.xml` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml |
 
-在能访问互联网的机器上下载文件（可保存到不同目录）：
+在能访问互联网的机器上下载文件（可保存到不同目录）。若目录不存在，请先创建：
 
 ```bash
+mkdir -p ~/Downloads ~/manifest
 curl -fsSL https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh -o ~/Downloads/install.sh
 curl -fsSL https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml -o ~/manifest/manifest.xml
 chmod +x ~/Downloads/install.sh
@@ -162,9 +163,10 @@ chmod +x ~/Downloads/install.sh
 | `install.ps1` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1 |
 | `manifest.xml` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml |
 
-在能访问互联网的机器上下载文件（可保存到不同目录）：
+在能访问互联网的机器上下载文件（可保存到不同目录）。若目录不存在，请先创建：
 
 ```powershell
+New-Item -ItemType Directory -Force -Path C:\Scripts, C:\manifest
 Invoke-WebRequest -Uri https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1 -OutFile C:\Scripts\install.ps1
 Invoke-WebRequest -Uri https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml -OutFile C:\manifest\manifest.xml
 ```

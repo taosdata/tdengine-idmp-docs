@@ -123,9 +123,10 @@ If the client machine cannot access the public internet, download the installati
 | `install.sh` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh |
 | `manifest.xml` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml |
 
-On a machine with internet access, download the files (they can be saved to different directories):
+On a machine with internet access, download the files (they can be saved to different directories). Create the directories first if they do not exist:
 
 ```bash
+mkdir -p ~/Downloads ~/manifest
 curl -fsSL https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh -o ~/Downloads/install.sh
 curl -fsSL https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml -o ~/manifest/manifest.xml
 chmod +x ~/Downloads/install.sh
@@ -162,9 +163,10 @@ Excel will be force-closed during installation. Save all open workbooks before r
 | `install.ps1` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1 |
 | `manifest.xml` | https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml |
 
-On a machine with internet access, download the files (they can be saved to different directories):
+On a machine with internet access, download the files (they can be saved to different directories). Create the directories first if they do not exist:
 
 ```powershell
+New-Item -ItemType Directory -Force -Path C:\Scripts, C:\manifest
 Invoke-WebRequest -Uri https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1 -OutFile C:\Scripts\install.ps1
 Invoke-WebRequest -Uri https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml -OutFile C:\manifest\manifest.xml
 ```
