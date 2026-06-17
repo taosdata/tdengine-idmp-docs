@@ -8,7 +8,7 @@ Batch analysis is a critical method for analyzing discrete production processes 
 
 Through event analysis, IDMP enables systematic comparison of full-cycle data across batch production, chemical reactions, and manufacturing processes — helping users identify the key process factors that affect product quality, discover patterns and anomalies across batches, and provide a data foundation for process optimization and quality control.
 
-**The Analysis Chart is the primary entry point for event and batch analysis.** It is the only analysis workspace in IDMP that runs as an independent window, where users can perform window analysis, event comparison, correlation analysis, and other process-analytics workflows. The event analysis and exploration capabilities described in this section are all carried out from the Analysis Chart while in view mode.
+**The Analysis Workbench is the primary entry point for event and batch analysis.** It is the only analysis workspace in IDMP that runs as an independent window, where users can perform window analysis, event comparison, correlation analysis, and other process-analytics workflows. The event analysis and exploration capabilities described in this section are all carried out from the Analysis Workbench while in view mode.
 
 ## 9.6.1 Principles of Event and Batch Analysis
 
@@ -62,7 +62,7 @@ Event time boundaries can be defined in two ways:
 Event automatic generation can be implemented through the State Window trigger in element analysis. Configuration steps:
 
 1. **Prepare batch number attribute:** Ensure the equipment attributes include a **batch number** field (integer attribute), and that the batch number updates when each new batch starts.
-2. **Create analysis:** Navigate to the element's **Analysis** tab, click **+** to create a new analysis, and enter an analysis name (such as "Batch Process Summary").
+2. **Create analysis:** Navigate to the element's **RT analysis** tab, click **+** to create a new analysis, and enter an analysis name (such as "Batch Process Summary").
 3. **Configure trigger:** In the **Trigger** step, select **State Window** as the trigger type and set the **State** attribute to the batch number field.
 4. **Define summary metrics:** In the **Calculation** step, configure batch statistics to aggregate (such as average temperature, peak pressure, total duration, yield, etc.) and write calculation results to corresponding output attributes.
 5. **Enable event generation:** In the **Event** step, enable event generation, select the **event template** corresponding to the batch, and configure naming rules and custom attributes (such as batch ID, product type, etc.).
@@ -88,13 +88,13 @@ Ad hoc events participate in analysis just like formal events and can be overlai
 - **Supplementary comparison:** Precisely target an anomalous period and compare it side-by-side with normal or golden batches
 - **Hypothesis validation:** Define post-adjustment time periods as ad hoc events and compare with pre-adjustment batches to validate improvements
 
-## 9.6.4 Adding Events to the Analysis Chart
+## 9.6.4 Adding Events to the Analysis Workbench
 
-Once events have been generated, they need to be added to the Analysis Chart before in-depth comparison and analysis can begin. IDMP provides two methods.
+Once events have been generated, they need to be added to the Analysis Workbench before in-depth comparison and analysis can begin. IDMP provides two methods.
 
 ### Method 1: From the Event List
 
-IDMP provides powerful event search and filtering capabilities to help users quickly locate events and add them directly to the Analysis Chart. Batch events, as a special event type, can leverage the full suite of search capabilities.
+IDMP provides powerful event search and filtering capabilities to help users quickly locate events and add them directly to the Analysis Workbench. Batch events, as a special event type, can leverage the full suite of search capabilities.
 
 **Search Entry**
 
@@ -120,25 +120,25 @@ Click **Advanced** to expand additional filter criteria. You can precisely filte
 
 For frequently used filter criteria (such as "defective batches in last 30 days," "all batches for product line A," etc.), click **Save As** to save filter conditions as a named filter. Saved filters appear in the sidebar's **Element Filters** list for quick re-execution with a click.
 
-**Adding to the Analysis Chart**
+**Adding to the Analysis Workbench**
 
-After locating target events in the event list, you can add them to the Analysis Chart in the following ways:
+After locating target events in the event list, you can add them to the Analysis Workbench in the following ways:
 
-- Click the **more actions** menu (⋮) at the end of an event row and select **Add to Analysis Chart**
-- Select multiple events and use the batch action to add them all to the Analysis Chart at once
-- Click an event to open its details page, then jump directly into the Analysis Chart from there
+- Click the **more actions** menu (⋮) at the end of an event row and select **Add to Analysis Workbench**
+- Select multiple events and use the batch action to add them all to the Analysis Workbench at once
+- Click an event to open its details page, then jump directly into the Analysis Workbench from there
 
-Through flexible search and filtering, users can quickly locate key events of interest from massive historical data and add them to the Analysis Chart for comparative analysis, quality traceability, and process optimization.
+Through flexible search and filtering, users can quickly locate key events of interest from massive historical data and add them to the Analysis Workbench for comparative analysis, quality traceability, and process optimization.
 
 ### Method 2: Ad-Hoc Window Analysis
 
-The Analysis Chart integrates window analysis capabilities, enabling users to launch an ad-hoc window search directly from the chart to discover time segments of interest in historical data. Click the **Window Analysis** icon in the toolbar, select a window type and configure parameters, and the system scans data within the current time range, displaying matching segments as highlighted windows on the chart. For details on window analysis principles, window types, and usage, see [Window Analysis](./05-window-analysis.md).
+The Analysis Workbench integrates window analysis capabilities, enabling users to launch an ad-hoc window search directly from the chart to discover time segments of interest in historical data. Click the **Window Analysis** icon in the toolbar, select a window type and configure parameters, and the system scans data within the current time range, displaying matching segments as highlighted windows on the chart. For details on window analysis principles, window types, and usage, see [Window Analysis](./05-window-analysis.md).
 
-Once events have been added to the Analysis Chart, the following display and comparison features help users quickly grasp the overall picture:
+Once events have been added to the Analysis Workbench, the following display and comparison features help users quickly grasp the overall picture:
 
 ### Trend Overlay Comparison
 
-In the Analysis Chart, overlay event time ranges onto process parameter curves to visually present how each parameter evolved during the event. After selecting multiple events, overlay their curves in the same chart for comparison, quickly identifying process differences, parameter drift, and anomalous fluctuations between events.
+In the Analysis Workbench, overlay event time ranges onto process parameter curves to visually present how each parameter evolved during the event. After selecting multiple events, overlay their curves in the same chart for comparison, quickly identifying process differences, parameter drift, and anomalous fluctuations between events.
 
 ![Multi-event curve overlay comparison](./images/event-batch-04.png)
 
@@ -146,17 +146,17 @@ The figure above shows multi-event curve overlay comparison. By plotting complet
 
 ### Event Line Display Mode
 
-When a large number of events are loaded into the Analysis Chart, the default overlay style — which renders events as shaded regions behind the trend curves — can make the chart difficult to read. In this situation, click **Enable Event Line Mode** in the toolbar. Events then appear as colored lines above the attribute trend chart; hovering over a line reveals the key details of the corresponding event. This display mode keeps the chart legible at high event density and makes it easier to spot distribution patterns across events.
+When a large number of events are loaded into the Analysis Workbench, the default overlay style — which renders events as shaded regions behind the trend curves — can make the chart difficult to read. In this situation, click **Enable Event Line Mode** in the toolbar. Events then appear as colored lines above the attribute trend chart; hovering over a line reveals the key details of the corresponding event. This display mode keeps the chart legible at high event density and makes it easier to spot distribution patterns across events.
 
 ![Event line display mode](./images/event-batch-line.png)
 
 ## 9.6.5 Event Analysis and Exploration
 
-Once events have been added to the Analysis Chart, IDMP provides multiple comparison and visualization methods to help users understand differences and patterns across events from various perspectives.
+Once events have been added to the Analysis Workbench, IDMP provides multiple comparison and visualization methods to help users understand differences and patterns across events from various perspectives.
 
 ### Event and Attribute List
 
-Click the **Event and Attribute List** icon in the Analysis Chart toolbar to open a summary window that presents the event list, the attribute list, and key statistics for the current analysis scope — such as event count, duration statistics, and attribute means or extrema. This gives users a quick operational overview before moving into detailed analysis.
+Click the **Event and Attribute List** icon in the Analysis Workbench toolbar to open a summary window that presents the event list, the attribute list, and key statistics for the current analysis scope — such as event count, duration statistics, and attribute means or extrema. This gives users a quick operational overview before moving into detailed analysis.
 
 ![Event and attribute list](./images/event-batch-02.png)
 
@@ -194,11 +194,11 @@ Event template creation and management — including custom attribute definition
 
 **Background**
 
-An automotive parts plant's injection molding workshop operates 8 injection molding machines producing precision plastic housings, with each batch producing approximately 1,000 parts over a 6–8 hour cycle. Injection temperature, hold pressure, and cooling time are the critical parameters affecting housing dimensional accuracy and surface quality. Recently, defect rates for certain batches have been noticeably elevated, and the process team wants to use the Analysis Chart's event comparison capabilities to pinpoint the root cause.
+An automotive parts plant's injection molding workshop operates 8 injection molding machines producing precision plastic housings, with each batch producing approximately 1,000 parts over a 6–8 hour cycle. Injection temperature, hold pressure, and cooling time are the critical parameters affecting housing dimensional accuracy and surface quality. Recently, defect rates for certain batches have been noticeably elevated, and the process team wants to use the Analysis Workbench's event comparison capabilities to pinpoint the root cause.
 
 **Steps**
 
-1. **Configure automatic batch generation:** The injection molding machine equipment attributes already have a `Batch Number` integer attribute configured, which the MES system automatically writes a new batch number into at the start of each production batch. In the injection molding machine element's **Analysis** tab, create an "Injection Molding Batch Summary" analysis with trigger type set to **State Window** and state attribute set to `Batch Number`. In the calculation step, configure four summary metrics: average injection temperature, average hold pressure, average cooling time, and total batch duration. In the event step, enable event generation using the "Injection Molding Batch" event template. After saving, the system automatically generates event records for all batches from the past 3 months.
+1. **Configure automatic batch generation:** The injection molding machine equipment attributes already have a `Batch Number` integer attribute configured, which the MES system automatically writes a new batch number into at the start of each production batch. In the injection molding machine element's **RT analysis** tab, create an "Injection Molding Batch Summary" analysis with trigger type set to **State Window** and state attribute set to `Batch Number`. In the calculation step, configure four summary metrics: average injection temperature, average hold pressure, average cooling time, and total batch duration. In the event step, enable event generation using the "Injection Molding Batch" event template. After saving, the system automatically generates event records for all batches from the past 3 months.
 2. **Event comparison to pinpoint root cause:** In the event view, filter the 40 most recent batch events, divide them into two groups by defect rate, and use the trend overlay comparison and time alignment features to overlay both groups' injection temperature curves in the same chart. Analysis confirms that high-defect batches show injection temperature consistently falling below 220°C during the second half of production (approximately hours 5–8), while low-defect batches maintain stable temperature at 225–235°C throughout.
 3. **Envelope validation:** Select historical conforming batches to build an envelope, then compare recent high-defect batches against it. The temperature curve clearly deviates from the normal corridor after the 5th hour, further confirming the timing pattern of temperature decay.
 

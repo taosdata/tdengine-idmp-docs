@@ -15,7 +15,7 @@ SDK 对象与 IDMP 产品概念一一对应。理解这些映射关系有助于�
 | `ElementResourceApi` | 元素 | 资产树中的节点：设备、系统、区域 |
 | `AttributeResourceApi` | 属性 | 元素的命名属性；可绑定时序数据或静态值 |
 | `MetricResourceApi` | 指标 | 来自属性历史数据和实时数据的时序数据流 |
-| `EventResourceApi` | 事件 | 由分析规则触发的告警或状态变化记录 |
+| `EventResourceApi` | 事件 | 由实时分析规则触发的告警或状态变化记录 |
 | `PanelResourceApi` | 面板 | 与元素关联的可视化图表 |
 | `UserResourceApi` | 用户 | 用户管理与认证 |
 | `UomResourceApi` | 计量单位 | 计量单位分类与换算 |

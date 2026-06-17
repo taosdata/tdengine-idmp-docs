@@ -21,7 +21,7 @@ Imputation is complementary to TDengine's native interpolation functions (`INTER
 
 ## 8.9.2 Configuring Imputation
 
-This section introduces AI-powered missing-data imputation and its basic usage. For the full interactive workflow executed directly in the Trend Chart or Analysis Chart, see Chapter 9 [Missing Data Imputation](../09-advanced-analytics/02-missing-data-imputation.md).
+This section introduces AI-powered missing-data imputation and its basic usage. For the full interactive workflow executed directly in the Trend Chart or Analysis Workbench, see Chapter 9 [Missing Data Imputation](../09-advanced-analytics/02-missing-data-imputation.md).
 
 Imputation can be launched directly from the Trend Chart view page. Open a Trend Chart that displays the attribute with missing data, then use the **Imputation** icon in the toolbar to enable imputation and select the method.
 

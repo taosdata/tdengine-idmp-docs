@@ -13,7 +13,7 @@ IDMP supports AI-based time-series forecasting powered by **TDgpt**. Forecasting
 
 ## 8.8.1 Configuring Forecasting on an Attribute
 
-This section covers the **persistent, attribute-level configuration** of forecasting. Once configured, forecast results are automatically available in charts that include that attribute. For an on-demand workflow launched directly from the Trend Chart or Analysis Chart, see Chapter 9 [Time-Series Forecasting](../09-advanced-analytics/01-forecasting.md).
+This section covers the **persistent, attribute-level configuration** of forecasting. Once configured, forecast results are automatically available in charts that include that attribute. For an on-demand workflow launched directly from the Trend Chart or Analysis Workbench, see Chapter 9 [Time-Series Forecasting](../09-advanced-analytics/01-forecasting.md).
 
 Forecasting is configured per attribute in the **Forecast Configuration** section of the attribute properties.
 
