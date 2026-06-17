@@ -69,7 +69,7 @@ The **Associated Attributes** tab shows the element attributes related to the RT
 Event attributes and calculation output attributes come from the same window output configuration, differing only in their write target:
 
 - **Event attributes** are stored with the event and are visible only on the event record.
-- **Associated attributes** enter the element's time-series data and are available to downstream consumers such as dashboards and analysis workbenchs.
+- **Associated attributes** enter the element's time-series data and are available to downstream consumers such as dashboards and analysis workbenches.
 
 In the Associated Attributes tab of the event detail page, each entry shows the attribute name, the recorded value, and the value type — making it convenient to view both the "event-side record" and the "time-series record" of the calculation output in one place.
 
