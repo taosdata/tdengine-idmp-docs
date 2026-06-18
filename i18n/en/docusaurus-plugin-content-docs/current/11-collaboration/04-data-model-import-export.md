@@ -90,7 +90,7 @@ current,phase,power,voltage
 
 ### 11.4.4.3 Replay Behavior
 
-- **Timestamps**: generated continuously by the `ts` column as `start + step`, always advancing; on import, `start` is automatically rewritten to "now", so replayed data extends forward from the import moment.
+- **Timestamps**: generated continuously by the `ts` column as `start + step`, always advancing. If the `ts` column has **no** `start`, on import it is automatically set to roughly four days before now, so replayed data begins about four days ago and keeps advancing as `ts` increments, making it look freshly ingested while keeping a little history; if a `start` **is** specified, replay begins at that time.
 - **Write rate**: determined by the `ts` column's `step`. For example, `step: "100ms"` is about 10 rows per second; decrease/increase `step` to speed up/slow down.
 - **Looping**: with `repeat_read: true` and `rows_per_table: -1`, the historical measurement values are written in a repeating loop until the task is **manually stopped**.
 - **Background task**: replay runs as a background continuous-generation task and can be **stopped / resumed** from the Import/Export history page.
@@ -102,7 +102,7 @@ Replay is driven by the `tdengine/insert` step in the taosgen configuration. The
 | Field | Meaning |
 |---|---|
 | `schema.name` | The target super table name. |
-| `columns` | Column definitions; `ts` is the timestamp column, where `start` is the start time (epoch ms, auto-set to "now" on import), `step` is the row interval and also the write rate, and `precision` is the time precision. |
+| `columns` | Column definitions; `ts` is the timestamp column, where `start` is the start time (epoch ms) — when unspecified it is auto-set to ~4 days before now on import, and when specified replay begins at that time; `step` is the row interval and also the write rate, and `precision` is the time precision. |
 | `generation.rows_per_table` | `-1` means generate continuously; `interlace` is the number of interleaved rows. |
 | `from_csv.tags` | The subtable tag file (`subtable_*.csv`), which determines the subtables to write into; `tbname_index` specifies the column holding the table name. |
 | `from_csv.columns` | The historical data file; `loading_mode: preload` loads it into memory, `repeat_read: true` replays in a loop, and when `tbname_index` is **not** set all subtables share this data. |
@@ -126,7 +126,7 @@ insert-electricity_meters:
           columns:
             - name: "ts"
               type: "timestamp"
-              start: 1781509407300        # start time (epoch ms); auto-set to "now" on import
+              start: 1781509407300        # start time (epoch ms); used as-is if set, else auto-set to ~4 days before now on import
               step: "100ms"               # row interval; also sets the write rate (~1000/step rows per second)
               precision: "ms"
             - name: "`current`"

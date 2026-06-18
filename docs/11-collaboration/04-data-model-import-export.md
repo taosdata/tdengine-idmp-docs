@@ -90,7 +90,7 @@ current,phase,power,voltage
 
 ### 11.4.4.3 回放行为
 
-- **时间戳**：由 `ts` 列按 `start + step` 持续生成、不断前进；导入时 `start` 会自动改写为"当前时间"，因此回放数据从导入时刻开始向前延伸。
+- **时间戳**：由 `ts` 列按 `start + step` 持续生成、不断前进。若 `ts` 列**未指定** `start`，导入时会自动将其设为"当前时间约 4 天前"，使回放数据从约 4 天前开始、随 `ts` 递增不断向后延伸，看起来是新近写入且保留少量历史；若**已指定** `start`，则按指定时间开始。
 - **写入速率**：由 `ts` 列的 `step` 决定。例如 `step: "100ms"` 约为每秒 10 行；调小/调大 `step` 即可加快/放慢。
 - **循环不停**：配合 `repeat_read: true` 与 `rows_per_table: -1`，历史测点值会被反复循环写入，直到任务被**手动停止**。
 - **后台任务**：回放作为后台持续生成任务运行，可在导入/导出历史记录页对其执行**停止 / 恢复**。
@@ -102,7 +102,7 @@ current,phase,power,voltage
 | 配置项 | 含义 |
 |---|---|
 | `schema.name` | 目标超级表名。 |
-| `columns` | 列定义；其中 `ts` 为时间戳列，`start` 为起始时间（epoch 毫秒，导入时自动改为当前时间），`step` 为相邻行间隔并决定写入速率，`precision` 为时间精度。 |
+| `columns` | 列定义；其中 `ts` 为时间戳列，`start` 为起始时间（epoch 毫秒）——未指定时导入会自动设为当前时间约 4 天前，已指定则按指定时间开始；`step` 为相邻行间隔并决定写入速率，`precision` 为时间精度。 |
 | `generation.rows_per_table` | `-1` 表示持续不断地生成；`interlace` 为交错写入的行数。 |
 | `from_csv.tags` | 子表标签文件（`subtable_*.csv`），决定向哪些子表写入；`tbname_index` 指定表名所在列。 |
 | `from_csv.columns` | 历史数据文件；`loading_mode: preload` 预加载到内存，`repeat_read: true` 循环回放，**不设** `tbname_index` 时所有子表共用此数据。 |
@@ -126,7 +126,7 @@ insert-electricity_meters:
           columns:
             - name: "ts"
               type: "timestamp"
-              start: 1781509407300        # 起始时间(epoch 毫秒)，导入时自动改为"当前时间"
+              start: 1781509407300        # 起始时间(epoch 毫秒)；已指定则按此开始，留空则导入时自动设为"当前时间约 4 天前"
               step: "100ms"               # 相邻行间隔，同时决定写入速率(约 1000/step 行每秒)
               precision: "ms"
             - name: "`current`"
