@@ -3,15 +3,15 @@ title: License Management
 sidebar_label: License Management
 ---
 
-# 14.10 License Management
+# 14.11 License Management
 
 The License Management page provides a centralized view of the software licenses currently granted to a TDengine IDMP system and their usage, along with an optional configuration entry for ECS (Enterprise Certificate Service) licensing.
 
-## 14.10.1 Opening License Management
+## 14.11.1 Opening License Management
 
 A **License Management** item is provided under **Admin Console → System Configuration**. Click it to open the IDMP License Management page.
 
-## 14.10.2 License Contents
+## 14.11.2 License Contents
 
 The License Management page lists all licensed items granted to the current IDMP system in a table. Each row contains the following 4 columns:
 
@@ -26,7 +26,7 @@ The currently listed licensed items include: **Users**, **Time-Series Attributes
 
 ![License Management home](./images/license-01.png)
 
-## 14.10.3 ECS License Configuration
+## 14.11.3 ECS License Configuration
 
 The toolbar at the top right of the License Management page provides a **Configure** button. Clicking it opens the **License Service Configuration** dialog with the following options:
 
@@ -40,7 +40,7 @@ The toolbar at the top right of the License Management page provides a **Configu
 
 ![License configuration dialog](./images/license-02.png)
 
-## 14.10.4 Licensing Models
+## 14.11.4 Licensing Models
 
 - **ECS licensing disabled** (default): the IDMP system automatically obtains its software license from a TSDB system on the same network segment. This is the licensing model used by most IDMP users today.
 - **ECS licensing enabled**: an independent IDMP software license is delivered centrally by the ECS service. This supports running multiple IDMP environments and managing per-environment quota.

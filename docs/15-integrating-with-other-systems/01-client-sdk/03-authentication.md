@@ -71,7 +71,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 
 1. 登录 IDMP Web UI。
 2. 打开右上角头像菜单，点击顶部账户项，进入个人设置对话框。
-3. 切换到**密钥**页签，点击 **新增 API Key**，填写唯一标题，并选择**永不过期**或未来的**到期日期**。
+3. 切换到 **API Key** 页签，点击 **新增 API Key**，填写唯一标题，并选择**永不过期**或未来的**到期日期**。
 4. 复制生成的 API Key。该值本身以 `api_` 开头，不包含 `Bearer` 前缀。
 
 | 项目 | 说明 |
@@ -79,7 +79,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 | **凭据格式** | `api_<key_id>.<secret>` |
 | **请求头写法** | `Authorization: Bearer <IDMP_API_KEY>` |
 | **适用场景** | CLI、脚本、MCP 客户端和其他长期集成 |
-| **轮换方式** | 在**个人设置 → 密钥**中删除后重新创建 |
+| **轮换方式** | 在**个人设置 → API Key** 中删除后重新创建 |
 
 <Tabs groupId="language">
 <TabItem value="java" label="Java">
@@ -174,7 +174,7 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 | 凭据类型 | 有效期 | 轮换方式 |
 |---|---|---|
 | 企业版 JWT | 在服务器端配置（参见 `application.yml`） | 再次调用登录端点获取新 JWT |
-| 用户 API Key | 由创建时设置的到期时间控制，或配置为永不过期 | 在**个人设置 → 密钥**中删除后重新创建 |
+| 用户 API Key | 由创建时设置的到期时间控制，或配置为永不过期 | 在**个人设置 → API Key** 中删除后重新创建 |
 | 云服务 | 由浏览器会话控制 | 通过浏览器重新登录，并从开发者工具中复制新的 Token |
 
 :::tip
