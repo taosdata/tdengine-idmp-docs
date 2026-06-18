@@ -383,7 +383,6 @@ java -jar tda-generator-command.jar -f init.json -c
       "pagesize": 4,
       "precision": "ms",
       "replica": 1,
-      "wal_level": 1,
       "vgroups": 1,
       "single_stable": 0,
       "table_prefix": 0,

@@ -53,7 +53,7 @@ Hosts file locations:
 | **Network** | Network access is required to download the installation script and connect to the IDMP service |
 | **Node.js** | Node.js 22.3 or later required on Windows if logging is enabled |
 
-## 10.1.2 Installation
+## 10.1.2 Online Installation
 
 <Tabs>
 <TabItem value="macos" label="macOS">
@@ -109,7 +109,98 @@ PowerShell must be run as Administrator. Excel will be force-closed during insta
 </TabItem>
 </Tabs>
 
-## 10.1.3 Enabling and Disabling Logging
+## 10.1.3 Offline Installation
+
+If the client machine cannot access the public internet, download the installation files on a machine with network access, then copy them to the target machine for installation.
+
+<Tabs>
+<TabItem value="macos" label="macOS">
+
+### Download Installation Files
+
+| File | Download URL |
+| ---- | ------------ |
+| `install.sh` | [install.sh](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh) |
+| `manifest.xml` | [manifest.xml](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml) |
+
+On a machine with internet access, download the files (they can be saved to different directories). Create the directories first if they do not exist:
+
+```bash
+mkdir -p ~/Downloads ~/manifest
+curl -fsSL https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh -o ~/Downloads/install.sh
+curl -fsSL https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml -o ~/manifest/manifest.xml
+chmod +x ~/Downloads/install.sh
+```
+
+Copy the downloaded files to the target macOS machine, then run:
+
+```bash
+~/Downloads/install.sh install --force-close --url https://idmp.tdengine.net:6034 --manifest-dir ~/manifest --enable-logging
+```
+
+Replace `https://idmp.tdengine.net:6034`, `~/Downloads/install.sh`, and `~/manifest` with your actual IDMP HTTPS address, install script path, and the directory containing `manifest.xml`.
+
+**Parameters:**
+
+| Parameter | Description |
+| --------- | ----------- |
+| `--manifest-dir` | Local directory containing `manifest.xml`; when set, the manifest is not downloaded from the network |
+| `--force-close` | Force-closes Excel during installation. Save your work before running. |
+| `--url` | The IDMP HTTPS service address |
+| `--enable-logging` | Enables installation and runtime logging |
+
+:::warning
+Excel will be force-closed during installation. Save all open workbooks before running the command.
+:::
+
+</TabItem>
+<TabItem value="windows" label="Windows">
+
+### Download Installation Files
+
+| File | Download URL |
+| ---- | ------------ |
+| `install.ps1` | [install.ps1](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1) |
+| `manifest.xml` | [manifest.xml](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml) |
+
+On a machine with internet access, download the files (they can be saved to different directories). Create the directories first if they do not exist:
+
+```powershell
+New-Item -ItemType Directory -Force -Path C:\Scripts, C:\manifest
+Invoke-WebRequest -Uri https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1 -OutFile C:\Scripts\install.ps1
+Invoke-WebRequest -Uri https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml -OutFile C:\manifest\manifest.xml
+```
+
+Copy the downloaded files to the target Windows machine, then open PowerShell **as Administrator** and run:
+
+```powershell
+C:\Scripts\install.ps1 -Action Install -ForceCloseExcel -Url 'https://idmp.tdengine.net:6034' -ManifestDir 'C:\manifest' -EnableLogging
+```
+
+Replace `https://idmp.tdengine.net:6034`, `C:\Scripts\install.ps1`, and `C:\manifest` with your actual IDMP HTTPS address, install script path, and the directory containing `manifest.xml`.
+
+**Parameters:**
+
+| Parameter | Description |
+| --------- | ----------- |
+| `-ManifestDir` | Local directory containing `manifest.xml`; when set, the manifest is not downloaded from the network |
+| `-Action Install` | Runs the installation |
+| `-ForceCloseExcel` | Force-closes Excel during installation. Save your work before running. |
+| `-Url` | The IDMP HTTPS service address |
+| `-EnableLogging` | Enables installation and runtime logging |
+
+:::warning
+PowerShell must be run as Administrator. Excel will be force-closed during installation. Save all open workbooks before running the command.
+:::
+
+</TabItem>
+</Tabs>
+
+:::info
+During offline installation, the target machine must still be able to reach the IDMP HTTPS service. Offline installation only avoids downloading the install script and manifest from the public internet.
+:::
+
+## 10.1.4 Enabling and Disabling Logging
 
 To toggle logging independently of installation:
 
@@ -138,7 +229,7 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 </TabItem>
 </Tabs>
 
-## 10.1.4 Uninstallation
+## 10.1.5 Uninstallation
 
 <Tabs>
 <TabItem value="macos" label="macOS">

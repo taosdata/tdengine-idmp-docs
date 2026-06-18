@@ -41,8 +41,8 @@ The AI assistant can automatically parse user intent and map it to a complete an
 
 - **General Information** — a descriptive name and optional description
 - **Trigger** — the appropriate trigger type (typically Sliding Window) and its parameters
-- **Calculation** — the rollup interval, output timestamp, and a computed expression mapped to a new element attribute
 - **Event** — event generation settings, if the described condition implies alerting
+- **Calculation** — the rollup interval, output timestamp, and a computed expression mapped to a new element attribute
 
 ## 7.6.6 Limitations
 

@@ -41,12 +41,13 @@ IDMP 提供图形化配置界面，实际计算由 TDengine TSDB-Enterprise 流�
 ## 本章内容
 
 - **[浏览和管理分析](./01-browsing-analyses.md)** — 分析列表、工具栏控件和行操作
-- **[创建分析](./02-creating-analysis.md)** — 四段式创建表单：基本信息、事件、触发和计算
+- **[创建分析](./02-creating-analysis.md)** — 五段式创建表单：基本信息、触发、事件、计算和动作
 - **[触发类型](./03-trigger-types.md)** — 所有八种触发类型及其具体参数
 - **[计算](./04-calculation.md)** — 计算对象、窗口聚合、输出时间戳和输出属性
 - **[生成事件](./05-generating-events.md)** — 配置分析以产生事件
 - **[AI 辅助分析](./06-ai-analysis.md)** — 使用内置 AI 从自然语言创建分析
 - **[分析模板](./07-analysis-templates.md)** — 在元素模板中定义可复用的分析规则
+- **[配置动作](./08-actions.md)** — 在分析中引用动作模板，条件满足时自动执行动作
 
 import DocCardList from '@theme/DocCardList';
 
