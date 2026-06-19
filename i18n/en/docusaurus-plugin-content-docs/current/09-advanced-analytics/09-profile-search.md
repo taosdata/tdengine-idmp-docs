@@ -5,7 +5,7 @@ sidebar_label: Profile Search
 
 # 9.9 Profile Search
 
-Profile Search is used to find time segments in historical time-series data that are most similar to a user-specified target waveform. Users select a time window for a specific attribute in the Analysis Chart as the reference pattern, and the system scans the entire visible time range using a sliding window, computes the similarity between each candidate segment and the reference pattern, and overlays the best-matching results as highlighted windows on the chart.
+Profile Search is used to find time segments in historical time-series data that are most similar to a user-specified target waveform. Users select a time window for a specific attribute in the Analysis Workbench as the reference pattern, and the system scans the entire visible time range using a sliding window, computes the similarity between each candidate segment and the reference pattern, and overlays the best-matching results as highlighted windows on the chart.
 
 This capability addresses the common industrial need to "find similar operating conditions": after an engineer identifies an abnormal or characteristic curve, the system automatically searches historical data for all segments with a similar shape, enabling cross-comparison, frequency analysis, and root-cause investigation.
 
@@ -15,8 +15,8 @@ The core approach of profile search is: **use the waveform within a user-selecte
 
 The workflow is as follows:
 
-1. The user selects a time range for a specific attribute in the Analysis Chart by mouse. This selection becomes the **initial window**.
-2. The system generates a series of candidate windows by sliding across the entire time range of the current Analysis Chart.
+1. The user selects a time range for a specific attribute in the Analysis Workbench by mouse. This selection becomes the **initial window**.
+2. The system generates a series of candidate windows by sliding across the entire time range of the current Analysis Workbench.
 3. For the initial window and each candidate window, the data is first preprocessed according to the user-selected scaling method, and then the chosen algorithm computes the similarity.
 4. Based on the user-defined threshold or Top N criteria, the system filters qualifying similar windows, highlights them on the chart, and lists them in a result table sorted by similarity.
 
@@ -85,16 +85,16 @@ Both the Cosine Similarity and DTW algorithms require specifying a **Sliding Ste
 
 ## 9.9.4 Entry Point
 
-In the **Analysis Chart** view mode, click the **Profile Search** button in the toolbar.
+In the **Analysis Workbench** view mode, click the **Profile Search** button in the toolbar.
 
 ### Steps
 
-1. Open or create an **Analysis Chart** and add the element attributes you want to analyze.
+1. Open or create an **Analysis Workbench** and add the element attributes you want to analyze.
 2. In the chart's **view mode**, click the **Profile Search** button in the toolbar.
 3. Use the cursor to select a time range for the target attribute on the chart as the initial window.
 4. The system opens the Profile Search **configuration** dialog, in which you can configure the parameters for profile search.
 5. After clicking OK, the system traverses the candidate windows and performs similarity analysis.
-6. When analysis completes, the initial window and the discovered similar windows are highlighted on the Analysis Chart.
+6. When analysis completes, the initial window and the discovered similar windows are highlighted on the Analysis Workbench.
 
 ![Launch profile search](./images/profile-search-01.png)
 
@@ -113,28 +113,28 @@ Set the following parameters in the **Config** tab:
 | **Variable Window Step** | DTW only. The length by which the minimum-length candidate window is extended each time until it reaches the maximum candidate window length |
 | **Data Scaling** | Required for both DTW and Cosine Similarity. Choose Raw Value, Mean Centering, Min-Max Normalization, or Z-Score Standardization |
 | **Output Criteria** | Specify a similarity threshold, or return only the Top N most similar windows |
-| **Window Color** | Specify the highlight background color for the initial window and the target windows in the Analysis Chart |
+| **Window Color** | Specify the highlight background color for the initial window and the target windows in the Analysis Workbench |
 
 ![Profile search configuration](./images/profile-search-02.png)
 
-After clicking **OK**, the system starts traversing windows and computing similarity. Because the calculation involves multiple iterations across sliding windows, it may take some time. The Analysis Chart cannot perform other analytical operations while the task is running. Users can cancel the task at any time during execution.
+After clicking **OK**, the system starts traversing windows and computing similarity. Because the calculation involves multiple iterations across sliding windows, it may take some time. The Analysis Workbench cannot perform other analytical operations while the task is running. Users can cancel the task at any time during execution.
 
 ### Result Display
 
 After the profile search completes, results are presented in two forms:
 
-**Chart Highlights:** In the Analysis Chart, the initial window and the target windows discovered by profile search are overlaid on the chart. Both the initial window and similar windows are highlighted using the background color defined in the previous step. At this point, users can invoke the Analysis Chart's event analysis capabilities — such as event lines, start-time alignment, and normalization — to further investigate these window events.
+**Chart Highlights:** In the Analysis Workbench, the initial window and the target windows discovered by profile search are overlaid on the chart. Both the initial window and similar windows are highlighted using the background color defined in the previous step. At this point, users can invoke the Analysis Workbench's event analysis capabilities — such as event lines, start-time alignment, and normalization — to further investigate these window events.
 
 ![Profile search highlights](./images/profile-search-03.png)
 
-**Result Table:** Click the **Events & Attributes List** icon in the Analysis Chart toolbar. A dialog displays the detailed information of all similar windows; similar windows are presented as a class of events and sorted by similarity from high to low. An **Export** button in the upper-right corner of the dialog allows exporting the current list to a CSV file.
+**Result Table:** Click the **Events & Attributes List** icon in the Analysis Workbench toolbar. A dialog displays the detailed information of all similar windows; similar windows are presented as a class of events and sorted by similarity from high to low. An **Export** button in the upper-right corner of the dialog allows exporting the current list to a CSV file.
 
 On the Events & Attributes List page, users can view key information for all windows — such as start and end times, window duration, and similarity value — and can delete individual events.
 
 ![Profile search result table](./images/profile-search-04.png)
 
 :::note
-In the Analysis Chart, both the initial window and the target windows discovered by profile search are treated as a type of custom event. These windows, together with other system events, can be analyzed using the Analysis Chart's event analysis capabilities, greatly facilitating the exploration process.
+In the Analysis Workbench, both the initial window and the target windows discovered by profile search are treated as a type of custom event. These windows, together with other system events, can be analyzed using the Analysis Workbench's event analysis capabilities, greatly facilitating the exploration process.
 :::
 
 ## 9.9.5 Usage Example
@@ -145,7 +145,7 @@ An injection molding machine at an automotive parts factory exhibited an abnorma
 
 **Procedure**
 
-1. Open the injection pressure trend data for the molding machine in the Analysis Chart, with the time range set to the past 30 days.
+1. Open the injection pressure trend data for the molding machine in the Analysis Workbench, with the time range set to the past 30 days.
 2. Click the **Profile Search** button in the toolbar, then select the known abnormal pressure curve on the chart as the initial window.
 3. In the Config tab, select the **DTW** algorithm with a window size (radius) of 3, set data scaling to **Z-Score Standardization** (focusing only on waveform shape), and set the output criteria to Top 10.
 4. Click **OK**. The system performs a sliding scan across the 30-day data range.

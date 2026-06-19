@@ -61,11 +61,11 @@ When the P-value ≥ 0.1, the conclusion is typically marked as "Unreliable," in
 
 ## 9.7.4 How to Use
 
-In an **Analysis Chart** panel in view mode, click the **Correlation Analysis** icon in the toolbar to access the correlation analysis feature. Only time-series attributes that have already been added to the Analysis Chart can participate in the analysis.
+In an **Analysis Workbench** panel in view mode, click the **Correlation Analysis** icon in the toolbar to access the correlation analysis feature. Only time-series attributes that have already been added to the Analysis Workbench can participate in the analysis.
 
 Steps:
 
-1. Open or create an **Analysis Chart** panel and add the time-series attributes you want to analyze (at least two).
+1. Open or create an **Analysis Workbench** panel and add the time-series attributes you want to analyze (at least two).
 2. In the panel's **view mode**, click the **Correlation Analysis** icon in the toolbar. The system displays the correlation analysis configuration dialog.
 3. In the configuration dialog, select the attributes to analyze, configure the analysis parameters (described below), and click the **Calculate** button.
 4. The system performs pairwise correlation analysis on the selected attributes, and the results are displayed in the **Result in Graph** tab.
@@ -80,7 +80,7 @@ The configuration dialog contains the following settings:
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Correlation Algorithm** | Select one of the three algorithms: CORR, DTW, or TLCC                                                                                                                                              |
 | **Algorithm Parameters**  | CORR requires no additional parameters; DTW allows configuring the neighborhood radius (Radius), default 1; TLCC allows configuring the lag window start/end steps (Lag Start / Lag End), default 0 |
-| **Attribute List**        | Displays all attributes currently added to the Analysis Chart; users can select which attributes to include in the analysis                                                                         |
+| **Attribute List**        | Displays all attributes currently added to the Analysis Workbench; users can select which attributes to include in the analysis                                                                         |
 | **Time Range**            | Start time and end time; defaults to the current chart's time range, adjustable by the user                                                                                                         |
 
 ![Correlation analysis configuration page](./images/correlation-analysis-02.png)
@@ -102,7 +102,7 @@ If a correlation analysis has already been performed, clicking the **Correlation
 
 A chemical plant's distillation column experiences intermittent fluctuations in bottoms purity. The analysis team wants to quickly identify which production parameters are most correlated with bottoms purity.
 
-1. Open an Analysis Chart panel and add five attributes — `Bottoms Purity`, `Reflux Ratio`, `Feed Temperature`, `Column Top Pressure`, and `Reboiler Heat Duty` — with the time range set to the past 7 days.
+1. Open an Analysis Workbench panel and add five attributes — `Bottoms Purity`, `Reflux Ratio`, `Feed Temperature`, `Column Top Pressure`, and `Reboiler Heat Duty` — with the time range set to the past 7 days.
 2. Click **Correlation Analysis**, select the **CORR** algorithm, and click **Calculate**.
 3. Review the results:
 

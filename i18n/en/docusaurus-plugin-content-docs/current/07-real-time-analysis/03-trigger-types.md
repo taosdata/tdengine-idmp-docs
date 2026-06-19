@@ -5,7 +5,7 @@ sidebar_label: Trigger Types
 
 # 7.3 Trigger Types
 
-The trigger defines when an analysis fires. TDengine IDMP supports eight trigger types, selected from the **Trigger Type** dropdown in the Trigger section of the analysis form.
+The trigger defines when an RT analysis fires. TDengine IDMP supports eight trigger types, selected from the **Trigger Type** dropdown in the Trigger section of the analysis form.
 
 Triggers other than Periodic Window depend on an element's attributes having live data flowing through TDengine — specifically, the attributes must be of **TDengine Metric** data reference type. If an element has no such attributes, only Sliding Window and Session Window are available.
 
@@ -99,7 +99,7 @@ Fires whenever new data is written to a specific attribute — or any attribute 
 
 ### 7.3.4.1 When to Use
 
-- You want the analysis to react to every new measurement with the minimum possible delay
+- You want the RT analysis to react to every new measurement with the minimum possible delay
 - The value of the result depends on the very latest reading, not a time-aggregated window
 - You are computing derived attributes (unit conversions, calculated tags) that should always reflect current data
 - You want to evaluate a condition on every single incoming point
@@ -112,9 +112,9 @@ Fires whenever new data is written to a specific attribute — or any attribute 
 
 ### 7.3.4.3 Examples
 
-**Real-time unit conversion.** A pressure sensor reports in PSI. A Data Input analysis converts each reading to bar and writes it back as a derived attribute. Every downstream dashboard and analysis sees the converted value with no lag.
+**Real-time unit conversion.** A pressure sensor reports in PSI. A Data Input analysis converts each reading to bar and writes it back as a derived attribute. Every downstream dashboard and RT analysis sees the converted value with no lag.
 
-**Instant limit check.** A temperature attribute triggers an analysis on every new reading. If the value exceeds the operating limit, an event fires immediately — not at the next scheduled interval.
+**Instant limit check.** A temperature attribute triggers an RT analysis on every new reading. If the value exceeds the operating limit, an event fires immediately — not at the next scheduled interval.
 
 ---
 
@@ -205,7 +205,7 @@ The Stop Trigger is a single condition editor that defines when the event window
 
 ## 7.3.7 Session Window
 
-Fires when there has been no new data on the element for a specified inactivity period. The analysis runs once the silence gap is detected, covering the data from the preceding active period.
+Fires when there has been no new data on the element for a specified inactivity period. The RT analysis runs once the silence gap is detected, covering the data from the preceding active period.
 
 ### 7.3.7.1 When to Use
 
@@ -222,11 +222,11 @@ Fires when there has been no new data on the element for a specified inactivity 
 
 ### 7.3.7.3 Examples
 
-**Fleet trip analysis.** A delivery vehicle transmits GPS, speed, and fuel data only while the ignition is on. With a 10-minute no-activity interval, each trip becomes a session. When the driver parks and the data stream stops, the analysis fires — computing total distance, average speed, fuel consumed, and idle time for that trip.
+**Fleet trip analysis.** A delivery vehicle transmits GPS, speed, and fuel data only while the ignition is on. With a 10-minute no-activity interval, each trip becomes a session. When the driver parks and the data stream stops, the RT analysis fires — computing total distance, average speed, fuel consumed, and idle time for that trip.
 
 **Batch cycle summary.** A reactor sends process data during each batch run and goes silent between runs. Session Window fires at the end of each batch, computing average temperature, total reaction time, and yield — without any operator needing to mark the batch boundaries manually.
 
-**CNC job reporting.** A machining center transmits spindle load and feed rate data only during active jobs. Each job becomes a session, and the analysis at the end of each session records actual cutting time, peak load, and any anomalous vibration events detected during the job.
+**CNC job reporting.** A machining center transmits spindle load and feed rate data only during active jobs. Each job becomes a session, and the RT analysis at the end of each session records actual cutting time, peak load, and any anomalous vibration events detected during the job.
 
 ---
 

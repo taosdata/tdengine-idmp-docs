@@ -5,11 +5,11 @@ sidebar_label: AI-Assisted Analysis
 
 # 7.6 AI-Assisted Analysis
 
-TDengine IDMP includes a built-in AI assistant that supports creating analyses without manually filling in the trigger type, calculation expressions, and output attributes. There are two ways to use it.
+TDengine IDMP includes a built-in AI assistant that supports creating RT analyses without manually filling in the trigger type, calculation expressions, and output attributes. There are two ways to use it.
 
 ## 7.6.1 Opening the AI Panel
 
-The AI panel is shown by default in the Analyses tab. You can toggle it using the **AI** button in the toolbar filter area above the analysis list.
+The AI panel is shown by default in the RT analysis tab. You can toggle it using the **AI** button in the toolbar filter area above the RT analysis list.
 
 ## 7.6.2 Way 1: Use a System-Suggested Analysis
 
@@ -33,7 +33,7 @@ Regardless of which way you used, the result is the same:
 
 1. The AI opens the creation form pre-filled with a name, trigger type, sliding interval, rollup window, output expression, and a new output attribute.
 2. The user reviews the pre-filled form and can adjust any field before saving.
-3. Click **Save** to create the analysis.
+3. Click **Save** to create the RT analysis.
 
 ## 7.6.5 What the AI Configures
 
@@ -46,4 +46,4 @@ The AI assistant can automatically parse user intent and map it to a complete an
 
 ## 7.6.6 Limitations
 
-The AI assistant generates analysis configurations based on natural language intent. For scenarios involving complex custom conditions or advanced event window logic, reviewing and adjusting the AI-generated configuration before saving is recommended.
+The AI assistant generates RT analysis configurations based on natural language intent. For scenarios involving complex custom conditions or advanced event window logic, reviewing and adjusting the AI-generated configuration before saving is recommended.
