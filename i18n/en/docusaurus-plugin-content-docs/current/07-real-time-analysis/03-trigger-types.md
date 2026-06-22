@@ -120,7 +120,7 @@ Fires whenever new data is written to a specific attribute — or any attribute 
 
 ## 7.3.5 State Window
 
-Fires when the value of an integer-type attribute changes from one state to another.
+Fires when the value of one or more states changes, computing over the previous state segment. A state can be an integer, boolean, or string attribute, or an attribute expression.
 
 ### 7.3.5.1 When to Use
 
@@ -128,13 +128,19 @@ Fires when the value of an integer-type attribute changes from one state to anot
 - You need to know how long a machine spent in each state to calculate utilization or OEE
 - You want to capture a summary of what happened during each operating mode, not just the transitions
 - State-based grouping aligns more naturally with your process than time-based grouping
+- The window boundary should be determined jointly by multiple states (multiple columns), e.g. "running status" combined with "operating mode"
 - Each batch in your process carries a unique batch number attribute, and you want automatic per-batch summaries without manually marking start and end times
 
 ### 7.3.5.2 Parameters
 
 | Parameter | Description |
-|---|---|
-| **State** (required) | The integer attribute whose state changes trigger the analysis. Multiple state attributes can be selected; when multiple are chosen, the system automatically creates an independent sub-analysis for each attribute. |
+| --- | --- |
+| **State** (required) | The set of values used to decide whether the window continues. Supports integer/boolean/string attributes or attribute expressions (e.g. `${attributes['temp']} > 80`, `CASE WHEN ... END`). Multiple states can be added (multi-column state window): the window continues while all states stay unchanged and closes when any state changes. Multiple states are computed in a single analysis (single stream) — they are no longer split into separate sub-analyses. |
+| **True For (TRUE_FOR)** (optional) | The minimum persistence a window must satisfy to be valid: the window's duration ≥ the configured time, or its row count ≥ the configured count. Four modes: duration only, count only, duration and count, duration or count. |
+| **Extend (EXTEND)** (optional) | Window-boundary extension strategy: 0 = default (window start/end are the timestamps of the first/last rows of the state), 1 = extend backward, 2 = extend forward. Extend must be set whenever zeroth state is configured. |
+| **Zeroth State (ZEROTH_STATE)** (optional) | Designates a "zeroth state"; windows whose state value equals the zeroth state are filtered out and not computed or output. One constant value per state; use `NO_ZEROTH` for a state that does not participate in the zeroth-state check. |
+
+> Max Delay (MAX_DELAY) is common to all trigger types — see "7.3.9 Common Trigger Options" below.
 
 ### 7.3.5.3 Examples
 
@@ -253,3 +259,15 @@ Fires when a specified number of new records have been written to the element's 
 **Statistical process control.** A quality sensor on a production line takes a measurement every time a part passes. A Count Window analysis fires every 25 readings, computing the mean and standard deviation for that sample group. Control chart limits are evaluated against each group result, independent of how long the 25 parts took to produce.
 
 **Lab instrument batch.** A gas chromatograph reports one result per sample run. A Count Window fires every 10 results, computing the average concentration and flagging any outlier readings in the batch — matching the natural unit of work for the lab team.
+
+---
+
+## 7.3.9 Common Trigger Options
+
+The following options apply to all of the trigger types (windows) above and are offered uniformly in the trigger settings.
+
+### 7.3.9.1 Parameters
+
+| Parameter | Description |
+| --- | --- |
+| **Max Delay (MAX_DELAY)** (optional) | The maximum delay before a window fires. After a window opens, once this time is reached the window is computed even if it has not yet closed, reducing output latency for long windows. A time value, e.g. `5s`, `1m`. Leave empty to disable. |
