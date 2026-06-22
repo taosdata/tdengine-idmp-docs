@@ -34,5 +34,5 @@ The root cause analysis view supports the following interactive operations:
 | **Regenerate** | Click the **Regenerate** button to regenerate the root cause analysis report |
 
 :::note
-Root cause analysis relies on the correlation configuration between events. It is recommended to clearly define event dependencies in event templates and analysis rules to obtain more accurate root cause analysis results.
+Root cause analysis relies on the correlation configuration between events. It is recommended to clearly define event dependencies in event templates and RT analysis rules to obtain more accurate root cause analysis results.
 :::

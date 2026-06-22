@@ -13,7 +13,7 @@ Anomaly detection in IDMP is powered by **TDgpt**, TDengine's built-in time-seri
 
 ## 8.7.1 How It Works
 
-When an analysis is configured with the **Anomaly Detection** trigger, TDgpt continuously monitors the selected attribute's time-series data. It applies the chosen algorithm to model the expected behavior of the signal and flags periods where the observed values deviate significantly from that model. The analysis fires when an anomaly window is detected, and the event it generates captures the anomaly start and end times.
+When an RT analysis is configured with the **Anomaly Detection** trigger, TDgpt continuously monitors the selected attribute's time-series data. It applies the chosen algorithm to model the expected behavior of the signal and flags periods where the observed values deviate significantly from that model. The RT analysis fires when an anomaly window is detected, and the event it generates captures the anomaly start and end times.
 
 Because detection is model-based rather than rule-based, TDgpt can identify complex patterns — gradual drift, sudden spikes, seasonal deviations — that fixed thresholds would miss or falsely trigger on.
 
@@ -21,7 +21,7 @@ Because detection is model-based rather than rule-based, TDgpt can identify comp
 
 To create an anomaly detection analysis:
 
-1. Navigate to the element's **Analyses** tab and click **+** to create a new analysis.
+1. Navigate to the element's **RT analysis** tab and click **+** to create a new RT analysis.
 2. In the **Trigger** section, select **Anomaly Detection** as the trigger type.
 3. Configure the Anomaly Detection trigger fields:
 
@@ -50,6 +50,6 @@ The appropriate algorithm depends on the nature of the signal and the type of an
 
 ## 8.7.4 Output
 
-When TDgpt detects an anomaly window, the analysis fires and (if event generation is enabled) creates an event capturing the anomaly period. The start and end timestamps of the anomaly window are stored as event attributes.
+When TDgpt detects an anomaly window, the RT analysis fires and (if event generation is enabled) creates an event capturing the anomaly period. The start and end timestamps of the anomaly window are stored as event attributes.
 
 For the full trigger configuration reference, see [Trigger Types](../07-real-time-analysis/03-trigger-types.md).

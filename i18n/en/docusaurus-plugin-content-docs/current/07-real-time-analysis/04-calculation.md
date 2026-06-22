@@ -5,7 +5,7 @@ sidebar_label: Calculation
 
 # 7.4 Calculation
 
-The Calculation section (section 4 of the analysis form) defines what the analysis computes and where it stores the results. It contains four parts: **Apply Calculation On**, **Rollup On Window**, **Output Timestamp**, and **Output Attributes**.
+The Calculation section (section 4 of the analysis form) defines what the RT analysis computes and where it stores the results. It contains four parts: **Apply Calculation On**, **Rollup On Window**, **Output Timestamp**, and **Output Attributes**.
 
 ## 7.4.1 Apply Calculation On
 
@@ -58,10 +58,10 @@ Each row in the table has the following columns:
 | **Element Attribute** | The element attribute where the computed result is stored as a new time-series value |
 | **Event Attribute** | *(Visible only when event generation is enabled in section 3)* An event attribute to capture the computed value at the moment the event fires |
 
-Use the **+** button at the bottom of the table to add additional output rows. Each row corresponds to an independent expression, supporting the computation of multiple metrics in a single analysis with results written to different attributes.
+Use the **+** button at the bottom of the table to add additional output rows. Each row corresponds to an independent expression, supporting the computation of multiple metrics in a single RT analysis with results written to different attributes.
 
 ## 7.4.5 Output Filter
 
-The **Output Filter** is an optional condition expression that is evaluated after the analysis completes its calculation and before the result is written to the output attributes. The calculated result is written to the configured element attributes only when the filter evaluates to true.
+The **Output Filter** is an optional condition expression that is evaluated after the RT analysis completes its calculation and before the result is written to the output attributes. The calculated result is written to the configured element attributes only when the filter evaluates to true.
 
 Use this when you want to persist only results that satisfy a business condition, such as windows with valid samples, values outside an acceptable range, or outputs produced under a specific state. If the filter condition is not met, the trigger is still considered processed, but no value is written to the output attributes.

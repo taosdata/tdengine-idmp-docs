@@ -5,7 +5,7 @@ sidebar_label: Window Analysis
 
 # 9.5 Window Analysis
 
-Window analysis is an interactive historical data exploration tool provided by IDMP. It lets users search large volumes of historical time-series data on demand for meaningful time segments. Users select a window strategy, configure parameters, and the system scans the specified time range — surfacing qualifying segments as highlighted windows overlaid on the Analysis Chart, helping users quickly locate operating intervals of interest.
+Window analysis is an interactive historical data exploration tool provided by IDMP. It lets users search large volumes of historical time-series data on demand for meaningful time segments. Users select a window strategy, configure parameters, and the system scans the specified time range — surfacing qualifying segments as highlighted windows overlaid on the Analysis Workbench, helping users quickly locate operating intervals of interest.
 
 This capability is broadly comparable to Seeq's Value Search: an engineer-facing historical data search workflow that lets users locate time segments of interest through condition-based configuration rather than writing SQL or other query logic.
 
@@ -15,7 +15,7 @@ The core idea behind window analysis is: **apply a windowing strategy to divide 
 
 The process works as follows:
 
-1. In the Analysis Chart, the user selects a window type (such as Event Window, State Window, Anomaly Detection, etc.) and configures the corresponding parameters (threshold conditions, state attributes, time intervals, etc.).
+1. In the Analysis Workbench, the user selects a window type (such as Event Window, State Window, Anomaly Detection, etc.) and configures the corresponding parameters (threshold conditions, state attributes, time intervals, etc.).
 2. The system performs a one-time scan of historical data within the current chart's time range, finding all matching time segments according to the window rules.
 3. Discovered windows are overlaid as highlighted segments on the attribute trend curves, allowing users to visually observe data behavior within each window.
 
@@ -30,7 +30,7 @@ The six window types supported by window analysis share the same window semantic
 | **Execution mode** | Continuous, against live data streams | Interactive, against historical data, executed on demand |
 | **Output** | Creates events + writes calculation results | Generates highlighted windows on the chart |
 | **Creates events?** | Yes | No |
-| **Entry point** | Element → Analysis → Configure trigger | Analysis Chart in view mode → Window Analysis icon |
+| **Entry point** | Element → Analysis → Configure trigger | Analysis Workbench in view mode → Window Analysis icon |
 
 In short, real-time analysis triggers are like "security cameras" — configured once, running continuously; window analysis is like "reviewing recorded footage" — searching for specific scenes in historical data on demand.
 
@@ -78,7 +78,7 @@ These six window types share the same window semantics as [real-time analysis tr
 
 ## 9.5.4 How to Use
 
-Window analysis is accessed from the **Window Analysis** icon in the Analysis Chart toolbar while in view mode.
+Window analysis is accessed from the **Window Analysis** icon in the Analysis Workbench toolbar while in view mode.
 
 Steps:
 
@@ -86,7 +86,7 @@ Steps:
 
 ![Window analysis configuration](./images/windows-analysis-01.png)
 
-2. After the window configuration is confirmed, IDMP scans the historical data in the current time range and renders the matched segments as highlighted windows in the Analysis Chart. At that point, users can:
+2. After the window configuration is confirmed, IDMP scans the historical data in the current time range and renders the matched segments as highlighted windows in the Analysis Workbench. At that point, users can:
 
 - Run multiple window strategies in the same panel and compare the results side by side
 - Inspect the data behavior inside each highlighted window to decide whether deeper analysis is needed
@@ -102,7 +102,7 @@ An ethylene cracking furnace at a chemical plant normally operates with outlet t
 
 **Steps**
 
-1. In the Analysis Chart, open the cracking furnace's outlet temperature trend and set the time range to the past 30 days.
+1. In the Analysis Workbench, open the cracking furnace's outlet temperature trend and set the time range to the past 30 days.
 2. Click the **Window Analysis** icon in the toolbar, select **Event Window**, set the start condition to `outlet_temp < 830`, end condition to `outlet_temp > 835`, and minimum duration to 5 minutes (to filter brief fluctuations).
 3. The system scans 30 days of data and finds 12 low-temperature periods, highlighted on the chart.
 4. Switch the window type to **Anomaly Detection**, select the default algorithm, and run another search over the same time range. In addition to the low-temperature periods found above, the system identifies 3 additional segments where the temperature stayed within the 830–850°C range but exhibited oscillation patterns significantly different from normal periods.

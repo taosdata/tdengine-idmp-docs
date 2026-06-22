@@ -71,7 +71,7 @@ TDengine TSDB is a powerful time-series database, but a database alone is not en
 
 TDengine IDMP completes the picture. It provides the metadata management, business context, and analytical capabilities that TSDB deliberately leaves out of scope. When IDMP connects to TSDB, it can automatically synchronize the asset topology — if a new device is added or a configuration changes in TSDB, IDMP updates the asset hierarchy to reflect it. This keeps the data catalog accurate without manual reconciliation.
 
-It is worth being clear about the boundary between the two systems. IDMP does not store time-series data. Every query for a measurement value, every trend chart, every real-time analysis result — all of this data is retrieved from TSDB at query time. IDMP stores only the structural and contextual information: the element tree, attribute definitions, metadata, templates, event records, and analysis configurations. This separation means that adding IDMP to an existing TDengine TSDB deployment is non-destructive and does not duplicate data.
+It is worth being clear about the boundary between the two systems. IDMP does not store time-series data. Every query for a measurement value, every trend chart, every real-time analysis result — all of this data is retrieved from TSDB at query time. IDMP stores only the structural and contextual information: the element tree, attribute definitions, metadata, templates, event records, and RT analysis configurations. This separation means that adding IDMP to an existing TDengine TSDB deployment is non-destructive and does not duplicate data.
 
 IDMP is designed primarily for use with TDengine TSDB, where the integration is deepest and most efficient. Connections to other time-series databases are also supported.
 
@@ -98,7 +98,7 @@ The key differences reflect how the technology landscape has changed since tradi
 
 The current limitation of TDengine compared to mature historians is in data source connectivity. PI System supports a very wide range of industrial interfaces and protocols built up over decades. TDengine currently supports OPC-UA, OPC-DA, and MQTT natively, with additional sources supported through TDengine TSDB's data ingestion framework. This gap is narrowing with each release.
 
-For organizations evaluating a migration from PI System or another historian, the functional mapping is close enough that existing asset models and analysis logic can generally be re-expressed in TDengine IDMP without fundamental redesign.
+For organizations evaluating a migration from PI System or another historian, the functional mapping is close enough that existing asset models and RT analysis logic can generally be re-expressed in TDengine IDMP without fundamental redesign.
 
 ---
 
@@ -112,7 +112,7 @@ An **element** is the fundamental unit of the asset model. Every node in the ass
 
 Elements are arranged in a tree hierarchy. Each element can have zero or more child elements, and every element except the root has a parent. This hierarchy mirrors the real-world structure of the operation: a wind farm contains turbines, each turbine contains subsystems, each subsystem contains individual sensors. Navigating the tree is how users explore the operation and locate the data they need.
 
-Each element carries its own set of attributes, analyses, panels, and dashboards. It is the organizational anchor for everything else in the system.
+Each element carries its own set of attributes, RT analyses, panels, and dashboards. It is the organizational anchor for everything else in the system.
 
 ### 1.6.2 Attributes
 
@@ -126,19 +126,19 @@ Attributes can be of different kinds. Some are static configuration values store
 
 If you come from an OT background, you may be more familiar with the term **tag**. A tag — as used in PI System, SCADA systems, DCS platforms, and most industrial historians — is exactly the same concept: a single named measurement point that produces a continuous stream of timestamped values. The terms are interchangeable. TDengine uses "time series" to align with modern data terminology, but every tag in your existing system corresponds directly to one time series in TDengine TSDB.
 
-In IDMP, time series are not managed directly. Instead, they are accessed through the attributes of elements. When an attribute is linked to a time-series data reference, IDMP retrieves the values from TSDB on demand — for trend charts, analyses, AI queries, and any other operation that needs the underlying data. This indirection is intentional: it keeps the semantic layer (IDMP) cleanly separated from the storage layer (TSDB).
+In IDMP, time series are not managed directly. Instead, they are accessed through the attributes of elements. When an attribute is linked to a time-series data reference, IDMP retrieves the values from TSDB on demand — for trend charts, RT analyses, AI queries, and any other operation that needs the underlying data. This indirection is intentional: it keeps the semantic layer (IDMP) cleanly separated from the storage layer (TSDB).
 
 ### 1.6.4 Contextual Data
 
 **Contextual data** is the metadata that gives time-series values meaning. A raw sensor reading — "42.7 at 14:23:07" — is not useful without context. Contextual data answers the questions: What is being measured? Where? Under what conditions? To what standard?
 
-In IDMP, contextual data is attached to elements and their attributes. It includes descriptive information (what is this element, what does this attribute represent), physical dimensions (engineering unit, display precision, upper and lower limits, target value), and classification tags (category, location, organizational unit, operational condition). Contextual data is also what enables the AI features of IDMP: the system uses this structured business context to understand the operational scenario and generate relevant analyses and insights.
+In IDMP, contextual data is attached to elements and their attributes. It includes descriptive information (what is this element, what does this attribute represent), physical dimensions (engineering unit, display precision, upper and lower limits, target value), and classification tags (category, location, organizational unit, operational condition). Contextual data is also what enables the AI features of IDMP: the system uses this structured business context to understand the operational scenario and generate relevant RT analyses and insights.
 
 ### 1.6.5 Events
 
 An **event** is a discrete operational occurrence that has a defined start time, an end time, a duration, a severity level, and associated data captured at the time it occurred. Events are the bridge between continuous time-series data and discrete operational knowledge.
 
-Events in IDMP are generated by real-time analyses. When an analysis detects a condition — a threshold breach, a process deviation, the start or end of a production batch — it creates an event record that captures not just the occurrence but the relevant attribute values and computed results at that moment. Events can require acknowledgment, can trigger notifications to responsible personnel, and can be browsed, compared, and analyzed after the fact.
+Events in IDMP are generated by real-time analyses. When an RT analysis detects a condition — a threshold breach, a process deviation, the start or end of a production batch — it creates an event record that captures not just the occurrence but the relevant attribute values and computed results at that moment. Events can require acknowledgment, can trigger notifications to responsible personnel, and can be browsed, compared, and analyzed after the fact.
 
 This concept, known as Event Frames in the PI System, is one of the most powerful ideas in industrial data management. It converts continuous sensor streams into structured, named operational episodes that both engineers and AI systems can reason about: "How many compressor surge events occurred last quarter?" "Which batches deviated most from the target temperature profile?" "What happened in the 10 minutes before the motor failed?"
 
@@ -168,8 +168,8 @@ Insights are the layer where the industrial data foundation connects to the inte
 
 ### 1.6.9 Templates
 
-A **template** defines a reusable standard structure for an asset class or operational pattern. Instead of configuring each element, attribute, analysis, panel, or dashboard from scratch, you define the structure once in a template and apply it consistently across all assets of the same type.
+A **template** defines a reusable standard structure for an asset class or operational pattern. Instead of configuring each element, attribute, RT analysis, panel, or dashboard from scratch, you define the structure once in a template and apply it consistently across all assets of the same type.
 
-Templates exist at every level of the platform: element templates define the standard set of attributes for an asset class (e.g., Pump, Meter, Boiler); attribute templates define individual reusable measurement definitions; analysis templates capture standard detection logic; panel and dashboard templates standardize visualizations; event and notification templates standardize how operational occurrences are named and reported.
+Templates exist at every level of the platform: element templates define the standard set of attributes for an asset class (e.g., Pump, Meter, Boiler); attribute templates define individual reusable measurement definitions; RT analysis templates capture standard detection logic; panel and dashboard templates standardize visualizations; event and notification templates standardize how operational occurrences are named and reported.
 
 Templates are what make large-scale industrial deployments manageable. When you update a template, the change propagates to all elements derived from it — ensuring consistency across hundreds or thousands of assets without manual rework.

@@ -46,9 +46,9 @@ When the action type is set to **Notification**, the following configuration fie
 | Field | Description |
 |---|---|
 | **Contact Point** | The contact point used to send the notification, selected from the system's defined contact points. The contact point itself carries the channel type (email / Feishu / WeCom, etc.), which determines the channel through which the notification is sent. |
-| **Minimum Notification Interval (minutes)** | The minimum interval between two consecutive notifications sent by the same analysis to the same contact point. Default is 10 minutes. Limits notification frequency when a condition is met continuously, preventing notification overload. |
+| **Minimum Notification Interval (minutes)** | The minimum interval between two consecutive notifications sent by the same RT analysis to the same contact point. Default is 10 minutes. Limits notification frequency when a condition is met continuously, preventing notification overload. |
 | **Notification Title** | The notification title. Supports placeholders (see [13.4.3](#1343-placeholders-in-notification-content)). When left blank, a localized default title is used. |
-| **Notification Content** | The notification body. Supports placeholders, which are substituted at execution time with the actual information of the analysis's element and the output attribute values. |
+| **Notification Content** | The notification body. Supports placeholders, which are substituted at execution time with the actual information of the RT analysis's element and the output attribute values. |
 
 Click **Save** to create the action template.
 
@@ -60,7 +60,7 @@ Both the **Notification Title** and **Notification Content** support placeholder
 |---|---|
 | `{elementName}` | The name of the element to which the triggering analysis belongs |
 | `{elementPath}` | The full path of that element in the asset tree |
-| `{analysisName}` | The name of the triggering analysis |
+| `{analysisName}` | The name of the triggering RT analysis |
 | `{attributeName}` | The computed value of the corresponding output attribute, e.g., `{avg_voltage}` |
 
 Unresolved placeholders are left unchanged in the notification.
@@ -87,10 +87,10 @@ An analysis's **trigger condition** expression references output attributes usin
 
 To edit an action template, click its name in the list, then click **Edit**. To delete, use the **⋮** menu on the row or the delete button on the detail page.
 
-**Reference check before deletion.** Before an action template is deleted, the system checks whether any analysis currently references it. If a reference exists, deletion is rejected and the names of the referencing analyses are listed. You must first remove the reference to the template in the relevant analyses before the template can be deleted.
+**Reference check before deletion.** Before an action template is deleted, the system checks whether any RT analysis currently references it. If a reference exists, deletion is rejected and the names of the referencing analyses are listed. You must first remove the reference to the template in the relevant analyses before the template can be deleted.
 
 ## 13.4.5 Using Action Templates in an Analysis
 
-Once created, an action template is referenced in the **Actions** section (section 5) of the analysis creation form. Each action rule consists of a **trigger condition** and a referenced **action template**; the action runs when the condition is met. After referencing a template, you can make local adjustments to the notification's contact point, minimum notification interval, title, and content. These adjustments apply only to the current analysis and are not written back to the template.
+Once created, an action template is referenced in the **Actions** section (section 5) of the analysis creation form. Each action rule consists of a **trigger condition** and a referenced **action template**; the action runs when the condition is met. After referencing a template, you can make local adjustments to the notification's contact point, minimum notification interval, title, and content. These adjustments apply only to the current RT analysis and are not written back to the template.
 
 For full details on the analysis-side configuration and runtime behavior, see [Configuring Actions](../07-real-time-analysis/08-actions.md).
