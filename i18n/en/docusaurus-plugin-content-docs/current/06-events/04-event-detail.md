@@ -9,7 +9,7 @@ Clicking an event name — in either the global events view or an element's Even
 
 ## 6.4.1 General Information
 
-The General Information area displays all standard event fields and provides entry points for acknowledgment, adding to groups, root cause analysis, and analysis chart operations.
+The General Information area displays all standard event fields and provides entry points for acknowledgment, adding to groups, root cause analysis, and analysis workbench operations.
 
 ### 6.4.1.1 Toolbar
 
@@ -21,7 +21,7 @@ The General Information toolbar provides the following action controls.
 | **Ack** | Acknowledge the event |
 | **Add to Group** | Add this event to one or more custom groups for quick access from the left sidebar |
 | **Root Cause Analysis** | Open a root cause analysis view for this event |
-| **Analysis Chart** |  Add to Analysis Chart for the event's time range on its associated element |
+| **Analysis Workbench** |  Add to Analysis Workbench for the event's time range on its associated element |
 | **Resend** | Manually resend a notification for this event to its configured contact points |
 
 ### 6.4.1.2 Fields
@@ -36,12 +36,12 @@ The General Information area shows the following standard event fields, covering
 | **Reason Code** | The reason code, if set |
 | **Categories** | Category tags |
 | **Description** | Free-text description |
-| **Operating Reason** | The specific reason that triggered this event — for an ordinary event, the analysis condition that fired; for a child event, the trigger rule that matched and its expression |
+| **Operating Reason** | The specific reason that triggered this event — for an ordinary event, the RT analysis condition that fired; for a child event, the trigger rule that matched and its expression |
 | **Current Value** | The value of the attribute that satisfied the trigger condition at the moment the event fired |
 | **Start Time** | When the event began |
 | **End Time** | When the event ended (blank if still active) |
 | **Associated Element** | The element involved in the analysis that triggered this event — click to navigate. |
-| **Associated Analysis** | The analysis rule that generated this event — click to navigate to it |
+| **Associated Analysis** | The RT analysis rule that generated this event — click to navigate to it |
 | **Parent Event** | For a child event, the parent event it belongs to — click to navigate; blank for ordinary events |
 | **Status** | Acknowledgment status (Unacknowledged / Acknowledged) |
 | **Acknowledged By** | The user and time of acknowledgment (if any) |
@@ -52,7 +52,7 @@ Below the General Information area, five tabs provide access to extended event i
 
 ### 6.4.2.1 Attributes
 
-The **Attributes** tab shows the named values that the analysis captured onto the event record when it created the event — that is, the entries in the stream computation window's output configuration that are designated to be **written to event attributes**. They are defined by the [event template](./01-event-templates.md) and populated by the analysis that triggered the event. Typical uses include recording key data at the time of the event, such as the peak temperature during an exceedance or the batch ID at the time of a fault.
+The **Attributes** tab shows the named values that the RT analysis captured onto the event record when it created the event — that is, the entries in the stream computation window's output configuration that are designated to be **written to event attributes**. They are defined by the [event template](./01-event-templates.md) and populated by the RT analysis that triggered the event. Typical uses include recording key data at the time of the event, such as the peak temperature during an exceedance or the batch ID at the time of a fault.
 
 | Column | Description |
 |---|---|
@@ -64,12 +64,12 @@ Attribute values are read-only — they are set when the event is created and ca
 
 ### 6.4.2.2 Associated Attributes
 
-The **Associated Attributes** tab shows the element attributes related to the analysis window, along with the entries in the window's calculation output configuration that are designated to be **written to element attributes** — that is, the aggregated calculation results that the analysis writes back to the associated element's attribute list at the same time the event is produced.
+The **Associated Attributes** tab shows the element attributes related to the RT analysis window, along with the entries in the window's calculation output configuration that are designated to be **written to element attributes** — that is, the aggregated calculation results that the RT analysis writes back to the associated element's attribute list at the same time the event is produced.
 
 Event attributes and calculation output attributes come from the same window output configuration, differing only in their write target:
 
 - **Event attributes** are stored with the event and are visible only on the event record.
-- **Associated attributes** enter the element's time-series data and are available to downstream consumers such as dashboards and analysis charts.
+- **Associated attributes** enter the element's time-series data and are available to downstream consumers such as dashboards and analysis workbenches.
 
 In the Associated Attributes tab of the event detail page, each entry shows the attribute name, the recorded value, and the value type — making it convenient to view both the "event-side record" and the "time-series record" of the calculation output in one place.
 

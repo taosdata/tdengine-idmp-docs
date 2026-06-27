@@ -17,14 +17,14 @@ Events directly enable the industrial AI use cases that matter most: training pr
 
 ## Event Lifecycle
 
-Events in TDengine IDMP are always generated automatically by analysis rules associated with an element, following a standardized lifecycle from template definition to event creation and notification delivery.
+Events in TDengine IDMP are always generated automatically by RT analysis rules associated with an element, following a standardized lifecycle from template definition to event creation and notification delivery.
 
 ```text
 Event Template (defined in Libraries)
         ↓
-Analysis (configured on an element, references the template)
+RT Analysis (configured on an element, references the template)
         ↓
-Event (generated automatically when the analysis condition is met)
+Event (generated automatically when the RT analysis condition is met)
         ↓
 Notification (optionally sent to configured contact points)
 ```
@@ -42,13 +42,13 @@ Every event carries the following standard fields, which describe the event's ti
 | **End Time** | When the event ended (blank if still active) |
 | **Template** | The event template this event was created from |
 | **Severity Level** | Severity category (Critical, Major, Minor, Warning, Normal) |
-| **Operating Reason** | The operational reason that triggered this event, written by the analysis when the event is generated |
+| **Operating Reason** | The operational reason that triggered this event, written by the RT analysis when the event is generated |
 | **Current Value** | The value of the key measurement at the event's start time |
 | **Reason Code** | Optional code identifying the cause |
 | **Categories** | Tags for filtering and grouping |
 | **Description** | Free-text description |
 | **Associated Element** | The element that generated this event |
-| **Associated Analysis** | The analysis rule that triggered this event |
+| **Associated Analysis** | The RT analysis rule that triggered this event |
 | **Parent Event** | For a child event, the parent event it belongs to; blank for ordinary events |
 | **Status** | Acknowledgment status of the event (Unacknowledged / Acknowledged) |
 | **Acknowledged By** | The user who acknowledged the event (blank if unacknowledged) |
@@ -57,7 +57,7 @@ In addition to these standard fields, an event can carry **custom attributes** �
 
 ## What's Covered in This Chapter
 
-This chapter covers the complete event management workflow, from template definition to event browsing, detail viewing, alert notifications, acknowledgment, and analysis chart.
+This chapter covers the complete event management workflow, from template definition to event browsing, detail viewing, alert notifications, acknowledgment, and analysis workbench.
 
 - **[Event Templates](./01-event-templates.md)** — Creating and managing event templates in Libraries
 - **[Child Events](./02-child-events.md)** — Modeling "one situation, multiple severities" with parent and child events
@@ -65,7 +65,7 @@ This chapter covers the complete event management workflow, from template defini
 - **[Event Detail](./04-event-detail.md)** — General information plus five bottom tabs: Attributes, Associated Attributes, Annotations, Notification Record, and Child Events
 - **[Alerts and Notifications](./05-alerts-and-notifications.md)** — Contact points, notification rules, and notification behavior
 - **[Acknowledgment](./06-acknowledgment.md)** — Acknowledging events and the acknowledgment workflow
-- **[Analysis Chart](./07-trend-analysis.md)** — Analyzing events with the analysis chart
+- **[Analysis Workbench](./07-trend-analysis.md)** — Analyzing events with the analysis workbench
 - **[Root Cause Analysis](./08-root-cause-analysis.md)** — Root cause analysis based on events
 
 import DocCardList from '@theme/DocCardList';

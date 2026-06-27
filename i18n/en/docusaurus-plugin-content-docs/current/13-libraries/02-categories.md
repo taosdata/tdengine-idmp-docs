@@ -5,7 +5,7 @@ sidebar_label: Categories
 
 # 13.2 Categories
 
-**Categories** are classification tags that can be applied to objects in IDMP to make them easier to filter, search, and organize. Any element, attribute, event, dashboard, panel, or analysis can be tagged with one or more categories.
+**Categories** are classification tags that can be applied to objects in IDMP to make them easier to filter, search, and organize. Any element, attribute, event, dashboard, panel, or RT analysis can be tagged with one or more categories.
 
 Categories are managed under **Libraries → Categories**.
 
@@ -34,7 +34,7 @@ Click **Save** to create the category.
 
 ## 13.2.3 Using Categories
 
-When creating or editing an object (element, attribute, event, panel, dashboard, or analysis), you can assign one or more categories to it in the **Category** field. Categories must match the object type — for example, only categories of type **Element** appear when editing an element.
+When creating or editing an object (element, attribute, event, panel, dashboard, or RT analysis), you can assign one or more categories to it in the **Category** field. Categories must match the object type — for example, only categories of type **Element** appear when editing an element.
 
 Once assigned, categories appear as filter options throughout IDMP:
 

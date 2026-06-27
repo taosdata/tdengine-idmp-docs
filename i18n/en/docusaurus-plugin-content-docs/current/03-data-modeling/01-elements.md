@@ -72,14 +72,14 @@ Each node in this tree is an element. Every element can be associated not only w
 
 The asset tree is more than a navigation panel. When fully built out, it becomes your organization's **data catalog** — a structured, browsable map of every asset and every data stream in your industrial environment.
 
-Think of it this way: a data catalog is what allows AI and users alike to *locate, understand, and navigate* data assets without having to know the names of underlying database tables or the specifics of raw data schemas. Instead of asking "which supertable in TDengine contains the vibration data for Pump-3 at Site A?", a user or an AI agent can simply navigate to `Site A → Utilities → Pump-3 → Vibration` and immediately find the right data, along with its engineering units, historical trends, analysis rules, and related documents.
+Think of it this way: a data catalog is what allows AI and users alike to *locate, understand, and navigate* data assets without having to know the names of underlying database tables or the specifics of raw data schemas. Instead of asking "which supertable in TDengine contains the vibration data for Pump-3 at Site A?", a user or an AI agent can simply navigate to `Site A → Utilities → Pump-3 → Vibration` and immediately find the right data, along with its engineering units, historical trends, RT analysis rules, and related documents.
 
 This is exactly what makes TDengine IDMP AI-Ready. The AI engine in IDMP uses the asset tree as its index into your data. When you ask a question in AI Chat — such as "Which pumps at Site A exceeded their vibration threshold last week?" — the AI traverses the catalog to identify the relevant elements, retrieve the right attributes, and provide a grounded, asset-specific answer. A well-structured data catalog is therefore not just an organizational convenience: it is the foundation that makes AI queries accurate, context-aware, and actionable.
 
 Any element can have one or more child elements, forming a parent-child relationship that allows you to:
 
 - Aggregate data across a branch of the tree (for example, total energy usage across all machines on a production line)
-- Apply configurations, analysis rules, and dashboard templates at any level of the hierarchy
+- Apply configurations, RT analysis rules, and dashboard templates at any level of the hierarchy
 
 The root of the asset tree — the top-level element with no parent — typically represents an enterprise or site-level asset. You can create multiple root-level elements to represent separate sites or business units.
 
@@ -206,7 +206,7 @@ In addition to system-provided strings, you can define custom **KEYWORD** substi
 | Setting | Description |
 |---------|-------------|
 | **Base Template Only** | If enabled, this template can only be used as a parent for other templates, not to create elements directly. |
-| **Allow Extension** | If enabled, elements created from this template can have additional custom attributes, analyses, or panels added on top of the template-defined ones. If disabled, no customization is permitted. |
+| **Allow Extension** | If enabled, elements created from this template can have additional custom attributes, RT analyses, or panels added on top of the template-defined ones. If disabled, no customization is permitted. |
 | **Element Naming Pattern** | A pattern — composed of fixed strings and substitution strings — that determines the auto-generated name for each element created from this template. For example, `DEV-${KEYWORD1}` would name elements like `DEV-smeter-1`. |
 
 ### 3.1.6.4 General Tab Fields
@@ -222,7 +222,7 @@ When you open an element template, the **General** tab shows:
 | **Default Attribute** | The attribute shown by default when an element is displayed in summary views |
 | **Element Naming Pattern** | The auto-generated name pattern using substitution strings (e.g., `${KEYWORD1}`) |
 | **Base Template Only** | If true, this template cannot be used to create elements directly — only as a base for other templates |
-| **Allow Extension** | If true, elements may have custom attributes, analyses, or panels added beyond what the template defines |
+| **Allow Extension** | If true, elements may have custom attributes, RT analyses, or panels added beyond what the template defines |
 | **Location** | Default GPS coordinates (Altitude, Latitude, Longitude) inherited by elements |
 | **Keywords** | Custom KEYWORD substitution strings defined for this template, each with a descriptive help text shown at element creation time |
 | **Related Documents** | Files attached to the template, indexed by the AI engine |
@@ -236,7 +236,7 @@ Once a template is created, its detail page shows the following tabs. Each tab m
 | **General** | The element-level settings described above |
 | **Attribute Template** | The standard set of attributes, including TDengine TSDB data reference bindings. See [Attribute Templates](./02-attributes.md#attribute-templates). |
 | **Panel Template** | Standard panels (Trend Chart, Gauge, Table, etc.) auto-created for each element. See [Panel and Dashboard Templates](../04-visualization/07-panel-dashboard-templates.md). |
-| **Analysis Template** | Reusable analysis rules that run on every element of this type. See [Analysis Templates](../07-real-time-analysis/07-analysis-templates.md). |
+| **RT Analysis Template** | Reusable RT analysis rules that run on every element of this type. See [RT Analysis Templates](../07-real-time-analysis/07-analysis-templates.md). |
 | **Dashboard Template** | Standard dashboards auto-associated with each element. See [Panel and Dashboard Templates](../04-visualization/07-panel-dashboard-templates.md). |
 | **Notification Rule Template** | The default notification rule applied to elements created from this template, including contact point, resend interval, escalation settings, and message template. |
 
@@ -245,7 +245,7 @@ Once a template is created, its detail page shows the following tabs. Each tab m
 1. Navigate to **Libraries** in the main menu and select **Element Template**.
 2. Click **+** to open the element template creation form.
 3. Enter the template name, configure the key settings, define Keywords if needed, and click **Save**.
-4. From the template detail page, click each tab (**Attribute Template**, **Panel Template**, **Analysis Template**, **Dashboard Template**, **Notification Rule Template**) to add the corresponding sub-templates.
+4. From the template detail page, click each tab (**Attribute Template**, **Panel Template**, **RT Analysis Template**, **Dashboard Template**, **Notification Rule Template**) to add the corresponding sub-templates.
 
 ### 3.1.6.7 Example: Using KEYWORD to Map a TDengine Supertable
 

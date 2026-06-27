@@ -28,7 +28,7 @@ Child events are produced only by the Event Window trigger; the other seven trig
 
 Because the stream computation evaluates strictly top-to-bottom and stops on the first match, **the order of the triggers is the business priority** — higher-severity rules **must** be placed earlier, or a logical error will occur. For example, placing `moderate` before `severe` would mean any data above the moderate threshold matches moderate first and never reaches severe.
 
-To reduce mistakes, the analysis configuration page **automatically reorders** rows after the user changes a row's severity — higher-severity rows are pushed to the top. Keeping this automatic behavior is recommended; if business reasons require breaking "severity = priority", document the intent clearly in the event template description.
+To reduce mistakes, the RT analysis configuration page **automatically reorders** rows after the user changes a row's severity — higher-severity rows are pushed to the top. Keeping this automatic behavior is recommended; if business reasons require breaking "severity = priority", document the intent clearly in the event template description.
 
 ## 6.2.3 Time Range of Child Events
 

@@ -15,7 +15,7 @@ SDK objects map one-to-one with IDMP product concepts. Understanding these mappi
 | `ElementResourceApi` | Element | Nodes in the asset tree: equipment, systems, areas |
 | `AttributeResourceApi` | Attribute | Named properties of an element; can be bound to time-series data or static values |
 | `MetricResourceApi` | Metric | Time-series data stream from an attribute's historical and real-time data |
-| `EventResourceApi` | Event | Alarm or state-change records triggered by analysis rules |
+| `EventResourceApi` | Event | Alarm or state-change records triggered by RT analysis rules |
 | `PanelResourceApi` | Panel | Visualization chart associated with an element |
 | `UserResourceApi` | User | User management and authentication |
 | `UomResourceApi` | UOM | Unit of measurement classes and conversions |

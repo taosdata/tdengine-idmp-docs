@@ -62,7 +62,7 @@ Enterprise Resource Planning，企业资源规划。一类将核心业务流程�
 
 ## IDMP（工业数据管理平台）
 
-Industrial Data Management Platform，工业数据管理平台。TDengine IDMP 是 TDengine 平台的数据语义和智能层，构建于 TDengine TSDB 之上，提供工业资产建模、数据情景化、可视化、事件管理、实时分析和 AI 驱动洞察。IDMP 本身不存储时序数据——它从 TSDB 读取数据，仅存储结构和上下文信息：元素树、属性定义、元数据、模板、事件记录和分析配置。
+Industrial Data Management Platform，工业数据管理平台。TDengine IDMP 是 TDengine 平台的数据语义和智能层，构建于 TDengine TSDB 之上，提供工业资产建模、数据情景化、可视化、事件管理、实时分析和 AI 驱动洞察。IDMP 本身不存储时序数据——它从 TSDB 读取数据，仅存储结构和上下文信息：元素树、属性定义、元数据、模板、事件记录和实时分析配置。
 
 ## 洞察（Insight）
 
