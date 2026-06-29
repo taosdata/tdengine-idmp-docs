@@ -11,11 +11,11 @@ TDengine IDMP embeds AI intelligence throughout the platform, turning it from a 
 
 IDMP delivers AI insights in two complementary modes:
 
-**Push-driven (Zero-Query Intelligence).** The system proactively analyzes your data and pushes findings to you without waiting for you to ask. When you open an element's Panels tab, AI-generated visualizations are already waiting. When you navigate to an element's Analyses tab, the AI has already suggested relevant analyses. This is Zero-Query Intelligence: the system continuously works in the background, applying LLM reasoning over your asset hierarchy and time-series data to surface insights before you think to look for them.
+**Push-driven (Zero-Query Intelligence).** The system proactively analyzes your data and pushes findings to you without waiting for you to ask. When you open an element's Panels tab, AI-generated visualizations are already waiting. When you navigate to an element's Analyses tab, the AI has already suggested relevant RT analyses. This is Zero-Query Intelligence: the system continuously works in the background, applying LLM reasoning over your asset hierarchy and time-series data to surface insights before you think to look for them.
 
-**Pull-driven.** You ask, the system answers. You can describe a panel or an analysis in plain language — "show me daily average voltage as a bar chart" or "calculate the hourly max current and alert when it exceeds normal" — and the AI builds it for you. The AI Chat interface also accepts free-form questions about your data — "what was the average current for em-1 last week?" — and returns answers grounded in your actual TDengine data. Root Cause Analysis runs on demand from an event detail page and produces a structured investigative report.
+**Pull-driven.** You ask, the system answers. You can describe a panel or an RT analysis in plain language — "show me daily average voltage as a bar chart" or "calculate the hourly max current and alert when it exceeds normal" — and the AI builds it for you. The AI Chat interface also accepts free-form questions about your data — "what was the average current for em-1 last week?" — and returns answers grounded in your actual TDengine data. Root Cause Analysis runs on demand from an event detail page and produces a structured investigative report.
 
-Together, these AI features dramatically lower the barrier to operational intelligence. Engineers who are not data scientists can build dashboards, configure analyses, detect anomalies, and investigate incidents without writing SQL or mastering complex tooling. This makes advanced industrial analytics accessible to small and medium-sized businesses that cannot afford dedicated data analysts or full-time process engineers.
+Together, these AI features dramatically lower the barrier to operational intelligence. Engineers who are not data scientists can build dashboards, configure RT analyses, detect anomalies, and investigate incidents without writing SQL or mastering complex tooling. This makes advanced industrial analytics accessible to small and medium-sized businesses that cannot afford dedicated data analysts or full-time process engineers.
 
 ## AI Components
 
@@ -30,7 +30,7 @@ IDMP's AI capabilities are built on two underlying engines:
 - **[Connecting to LLM](./01-connecting-to-llm.md)** — Configuring the AI connection (LLM endpoint, models, authentication)
 - **[AI-Generated Panels](./02-ai-generated-panels.md)** — Panels automatically generated and suggested by AI on the element Panels tab
 - **[AI Panel Insights](./03-ai-panel-insights.md)** — Natural language summaries and interpretations generated for individual panels
-- **[AI-Generated Analyses](./04-ai-generated-analyses.md)** — Analyses automatically suggested and created by AI on the element Analyses tab
+- **[AI-Generated Analyses](./04-ai-generated-analyses.md)** — Analyses automatically suggested and created by AI on the element RT analysis tab
 - **[AI Composite Metrics](./05-ai-composite-metrics.md)** — AI-suggested formula and composite attribute definitions
 - **[Natural Language Queries](./06-natural-language-queries.md)** — The AI Chat interface for querying your data in plain language
 - **[Anomaly Detection](./07-anomaly-detection.md)** — TDgpt-powered anomaly detection as an analysis trigger type

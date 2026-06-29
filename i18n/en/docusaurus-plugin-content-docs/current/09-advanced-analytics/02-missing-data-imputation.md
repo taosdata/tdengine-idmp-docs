@@ -41,7 +41,7 @@ When calling through the `IMPUTATION()` SQL function, only the **Moment** (TDtsf
 
 ## 9.2.4 How to Use
 
-Missing data imputation is triggered from the toolbars in view mode of both the **Trend Chart** and the **Analysis Chart**.
+Missing data imputation is triggered from the toolbars in view mode of both the **Trend Chart** and the **Analysis Workbench**.
 
 ### Performing Imputation
 

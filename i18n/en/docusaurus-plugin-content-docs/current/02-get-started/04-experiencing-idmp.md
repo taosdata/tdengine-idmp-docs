@@ -81,19 +81,19 @@ The following steps use the **Utilities** scenario as an example. If you did not
 ## 2.4.4 Try AI-Powered Analysis
 
 1. Select the element **Utilities** > **California** > **San Diego County** > **Chula Vista** > **em-10**.
-2. In the context tab bar, select **Analyses**. Three AI-recommended questions are displayed.
+2. In the context tab bar, select **RT Analysis**. Three AI-recommended questions are displayed.
 3. Click a suggestion link to open the analysis creation page, where you can review and adjust the AI-generated configuration. Click **Save** to complete the setup.
-4. You can also describe an analysis in natural language using the input box next to the recommendations. For example:
+4. You can also describe an RT analysis in natural language using the input box next to the recommendations. For example:
 
    *"If power fluctuation for electricity meter em-10 exceeds plus or minus 20% for 30 minutes, generate a 'warning' level alert and calculate the fluctuation range."*
 
-   Press **Enter** to generate the analysis.
+   Press **Enter** to generate the RT analysis.
 
 ![AI-powered analysis](../assets/get-started-03.png)
 
 ## 2.4.5 Next Steps
 
-You have explored the IDMP interface and tried AI-generated panels and analyses. From here, you can:
+You have explored the IDMP interface and tried AI-generated panels and RT analyses. From here, you can:
 
 - Proceed to **Chapter 3** to learn how to build your own asset model with elements and attributes.
 - Proceed to **Chapter 12** to connect your own data sources and ingest real industrial data.

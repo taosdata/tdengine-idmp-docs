@@ -17,7 +17,7 @@ A conversational interface within TDengine IDMP that allows users to query indus
 
 ## Contextual Data
 
-The metadata that gives raw time-series values meaning. Contextual data answers: What is being measured? Where? Under what conditions? In IDMP, contextual data is attached to elements and their attributes. It includes descriptive information, physical dimensions (unit, precision, limits), and classification tags. Contextual data is the foundation that enables AI features — the system uses it to understand the operational scenario and generate relevant analyses and insights.
+The metadata that gives raw time-series values meaning. Contextual data answers: What is being measured? Where? Under what conditions? In IDMP, contextual data is attached to elements and their attributes. It includes descriptive information, physical dimensions (unit, precision, limits), and classification tags. Contextual data is the foundation that enables AI features — the system uses it to understand the operational scenario and generate relevant RT analyses and insights.
 
 ## Dashboard
 
@@ -49,7 +49,7 @@ Distributed Control System. A process control architecture in which control func
 
 ## Element
 
-The fundamental unit of the IDMP asset model. An element represents any physical or logical entity whose data you want to organize and track — a sensor, a motor, a production line, a plant, or a business unit. Elements are arranged in a tree hierarchy that mirrors the real-world structure of the operation. Each element carries its own attributes, analyses, panels, and dashboards, and serves as the organizational anchor for everything in the system. Also referred to as an asset.
+The fundamental unit of the IDMP asset model. An element represents any physical or logical entity whose data you want to organize and track — a sensor, a motor, a production line, a plant, or a business unit. Elements are arranged in a tree hierarchy that mirrors the real-world structure of the operation. Each element carries its own attributes, RT analyses, panels, and dashboards, and serves as the organizational anchor for everything in the system. Also referred to as an asset.
 
 ## ERP
 
@@ -61,15 +61,15 @@ A discrete operational occurrence with a defined start time, end time, duration,
 
 ## IDMP
 
-Industrial Data Management Platform. TDengine IDMP is the data semantics and intelligence layer of the TDengine platform. It sits on top of TDengine TSDB and provides industrial asset modeling, data contextualization, visualization, event management, real-time analytics, and AI-powered insights. IDMP does not store time-series data itself — it reads from TSDB and stores only the structural and contextual information: the element tree, attribute definitions, metadata, templates, event records, and analysis configurations.
+Industrial Data Management Platform. TDengine IDMP is the data semantics and intelligence layer of the TDengine platform. It sits on top of TDengine TSDB and provides industrial asset modeling, data contextualization, visualization, event management, real-time analytics, and AI-powered insights. IDMP does not store time-series data itself — it reads from TSDB and stores only the structural and contextual information: the element tree, attribute definitions, metadata, templates, event records, and RT analysis configurations.
 
 ## Insight
 
-An AI-generated analytical output produced from the data and context of an element. The IDMP insight engine can automatically detect the operational scenario of an element, generate relevant panels and analyses, answer natural language questions, detect anomalies, produce forecasts, impute missing values, and perform root-cause analysis — without requiring manual configuration.
+An AI-generated analytical output produced from the data and context of an element. The IDMP insight engine can automatically detect the operational scenario of an element, generate relevant panels and RT analyses, answer natural language questions, detect anomalies, produce forecasts, impute missing values, and perform root-cause analysis — without requiring manual configuration.
 
 ## LLM
 
-Large Language Model. A type of AI model trained on large volumes of text that can understand and generate natural language. In the context of TDengine IDMP, LLMs power the conversational and generative AI features: natural language queries over industrial data, AI-generated dashboards and analyses, root-cause explanation, and anomaly narrative generation. LLMs work best on industrial data when that data is well-contextualized — which is precisely what IDMP's asset model and metadata layer provide.
+Large Language Model. A type of AI model trained on large volumes of text that can understand and generate natural language. In the context of TDengine IDMP, LLMs power the conversational and generative AI features: natural language queries over industrial data, AI-generated dashboards and RT analyses, root-cause explanation, and anomaly narrative generation. LLMs work best on industrial data when that data is well-contextualized — which is precisely what IDMP's asset model and metadata layer provide.
 
 ## Machine Learning
 
@@ -141,7 +141,7 @@ In OT (Operational Technology) environments — PI System, SCADA, DCS, and indus
 
 ## Template
 
-A reusable standard structure for an asset class or operational pattern. Templates exist at every level of the IDMP platform: element templates define the standard attribute set for an asset class (Pump, Meter, Boiler); attribute templates define reusable measurement definitions; analysis, panel, dashboard, event, and notification templates standardize logic and presentation. Updating a template propagates the change to all elements derived from it, making large-scale deployments manageable.
+A reusable standard structure for an asset class or operational pattern. Templates exist at every level of the IDMP platform: element templates define the standard attribute set for an asset class (Pump, Meter, Boiler); attribute templates define reusable measurement definitions; RT analysis, panel, dashboard, event, and notification templates standardize logic and presentation. Updating a template propagates the change to all elements derived from it, making large-scale deployments manageable.
 
 ## Time Series
 

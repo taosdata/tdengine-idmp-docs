@@ -42,7 +42,7 @@ The Trend Chart provides a set of chart-specific toolbar buttons in view mode (h
 | **Imputation** | Enter imputation mode — drag across a data gap and the system fills it using AI-based trend estimation |
 | **Reset Imputation** | Remove all imputation results currently applied to the chart |
 | **Panel Insights** | Run AI interpretation on the current chart data and output a text summary |
-| **Open as Analysis Panel** | Open the current trend chart in a new window as an analysis panel |
+| **Open as Analysis Workbench** | Open the current trend chart in a new window as an analysis workbench |
 
 ### Graph Settings
 

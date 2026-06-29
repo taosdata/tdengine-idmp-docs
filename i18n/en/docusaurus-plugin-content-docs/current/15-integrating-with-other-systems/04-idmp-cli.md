@@ -234,7 +234,7 @@ If the target agent does not provide a dedicated skills directory, copy `assets/
 
 The following execution order works well for most agent tasks:
 
-1. Let the skill classify the task first: element, analysis, panel, data import/export, permissions, and so on.
+1. Let the skill classify the task first: element, RT analysis, panel, data import/export, permissions, and so on.
 2. Use `idmp-cli schema search <keyword>` to locate the real command path.
 3. For unfamiliar commands, inspect `idmp-cli schema <service.resource.method>` before execution.
 4. Prefer shortcut commands when they fit; switch to structured commands when more precision is needed; use raw API calls only as the final fallback.

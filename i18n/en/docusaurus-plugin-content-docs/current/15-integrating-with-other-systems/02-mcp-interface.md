@@ -202,7 +202,7 @@ The following section describes the Resource capabilities exposed through MCP.
 | Element hierarchy and path resolution | Before locating an element by name or building full asset-tree context | Hierarchy data, path relationships, and basic metadata |
 | Element templates and standard attributes | Before designing panels, analyses, or attribute queries | Element templates and standard attribute definitions |
 | Event semantics | Before interpreting template IDs, severities, and alarm meaning | Event template definitions and semantic metadata |
-| Analysis algorithm metadata | Before creating an analysis and selecting a trigger or algorithm type | Supported triggers, algorithms, and related metadata |
+| Analysis algorithm metadata | Before creating an RT analysis and selecting a trigger or algorithm type | Supported triggers, algorithms, and related metadata |
 
 ## 15.2.8 Prompt Capabilities
 
@@ -210,7 +210,7 @@ The following section describes the Prompt capabilities exposed through MCP.
 
 | Prompt capability | Typical use | Recommended context |
 |---|---|---|
-| Shift handover report generation | Summarize key events, annotations, and analysis results for one shift | Element context, event list, element annotations, analyses |
+| Shift handover report generation | Summarize key events, annotations, and RT analysis results for one shift | Element context, event list, element annotations, analyses |
 | Element health check | Diagnose the operating state of one element | Element context, key attributes, recent events |
 | Root-cause analysis | Investigate one alarm or event | Event details, element context, historical attributes, event annotations |
 | Batch review | Review one batch or bounded time window | Element context, event list, attribute history, analyses |
@@ -242,7 +242,7 @@ Whether an agent reads Resources or invokes Prompts depends on the agent's own i
 
 ### 15.2.9.6 Why do write actions fail?
 
-Write capabilities follow the current IDMP user's permission boundary. If the token does not grant access to the target element, analysis, panel, or notification rule, the write request will fail. Check the user's role and scope first.
+Write capabilities follow the current IDMP user's permission boundary. If the token does not grant access to the target element, RT analysis, panel, or notification rule, the write request will fail. Check the user's role and scope first.
 
 ### 15.2.9.7 Why does the connection succeed but no element data is returned?
 
