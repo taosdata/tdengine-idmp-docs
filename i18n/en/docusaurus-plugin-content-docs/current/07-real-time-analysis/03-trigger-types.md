@@ -5,7 +5,7 @@ sidebar_label: Trigger Types
 
 # 7.3 Trigger Types
 
-The trigger defines when an RT analysis fires. TDengine IDMP supports eight trigger types, selected from the **Trigger Type** dropdown in the Trigger section of the analysis form.
+The trigger defines when an RT analysis fires. TDengine IDMP supports ten trigger types, selected from the **Trigger Type** dropdown in the Trigger section of the analysis form.
 
 Triggers other than Periodic Window depend on an element's attributes having live data flowing through TDengine — specifically, the attributes must be of **TDengine Metric** data reference type. If an element has no such attributes, only Sliding Window and Session Window are available.
 
@@ -262,11 +262,87 @@ Fires when a specified number of new records have been written to the element's 
 
 ---
 
-## 7.3.9 Common Trigger Options
+## 7.3.9 Sliding Trigger
+
+Periodically triggers a calculation by a fixed sliding step, but without a bounded window interval (no INTERVAL). Each sliding period fires once over the current latest data, suitable for continuous sliding scenarios that need no fixed window length.
+
+### 7.3.9.1 When to Use
+
+- You need to compute continuously at a fixed cadence, but each calculation does not need to be bounded to a fixed-length window
+- The calculation depends only on the latest data or a custom range, rather than a fixed look-back window
+- Compared with the Sliding Window, the emphasis is on "trigger by period" rather than "aggregate by window"
+
+### 7.3.9.2 Parameters
+
+| Parameter | Description |
+| --- | --- |
+| **Sliding Step** | The time interval between two triggers (e.g. every 1 minute). At each step a calculation fires over the current data, without a bounded window interval. |
+
+### 7.3.9.3 Examples
+
+**Periodic latest-value calculation.** With a sliding step of 1 minute, the analysis fires once per minute over the latest data and writes the result to a derived attribute, keeping downstream dashboards continuously refreshed without binding to a fixed-length look-back window.
+
+---
+
+## 7.3.10 Statistical Process Control
+
+Monitors a target attribute in real time against Statistical Process Control (SPC) control-chart rules. Based on the attribute's configured center line and control limits, the system automatically detects out-of-control (non-random) patterns without manual thresholds. Each selected anomaly rule runs as one independent stream.
+
+### 7.3.10.1 When to Use
+
+- Manufacturing and quality-control scenarios that monitor critical dimensions or process parameters against standard control-chart rules (Nelson / Western Electric rules)
+- You need to detect trends, shifts, and stratification before data exceeds the specification limits
+- Statistical baselines such as mean and standard deviation are already configured on the attribute, and you want automatic anomaly detection based on them
+- You need to enable multiple anomaly rules for the same metric and raise alarms for each independently
+
+### 7.3.10.2 Prerequisites
+
+SPC can only select attributes whose data reference type is **TDengine Metric** and that have **all four limits — CL, Sigma, USL, LSL — configured**:
+
+| Limit | Meaning |
+| --- | --- |
+| **CL** | Center line (mean) |
+| **Sigma** | Standard deviation |
+| **USL** | Upper specification limit |
+| **LSL** | Lower specification limit |
+
+> The upper control limit (UCL) and lower control limit (LCL) are derived automatically by the system as `CL ± 3σ` and need not be configured manually. Limits are set in the attribute's Limits configuration; see [3.2.3.2 Limits Configuration](../03-data-modeling/02-attributes.md).
+
+### 7.3.10.3 Parameters
+
+| Parameter | Description |
+| --- | --- |
+| **Target Attribute** (required) | The metric attribute to monitor. Only TDengine Metric attributes that have all of CL, Sigma, USL, and LSL configured are listed. |
+| **Anomaly Rules** (required) | The control-chart rules to apply; multiple can be selected. For each selected rule the system creates one independent stream; when a rule is hit an event / notification is produced. |
+
+The eight selectable anomaly rules:
+
+| Rule | Condition |
+| --- | --- |
+| **Rule 1** | 1 point beyond UCL/LCL |
+| **Rule 2** | 9 points in a row on one side |
+| **Rule 3** | 6 points in a row trending up or down |
+| **Rule 4** | 14 points in a row alternating |
+| **Rule 5** | 2 of 3 points beyond 2σ (same side) |
+| **Rule 6** | 4 of 5 points beyond 1σ (same side) |
+| **Rule 7** | 15 points in a row within ±1σ |
+| **Rule 8** | 8 points in a row beyond ±1σ (both sides) |
+
+> When an SPC analysis is deleted, the system also cleans up the output table of each rule.
+
+### 7.3.10.4 Examples
+
+**Critical-dimension SPC monitoring.** Enable the SPC trigger on a machined critical-dimension attribute (with CL, Sigma, USL, LSL configured) and select rules 1, 2, and 5. When a single point goes out of limits, 9 points fall on one side, or 2 of 3 points land beyond 2σ, the corresponding event is generated — helping detect process drift before the dimension exceeds specification.
+
+**Fill-weight process control.** Enable rules 2, 3, and 6 on a filling-line net-weight attribute to monitor mean drift and trends. When multiple points fall on one side or trend continuously up / down, an early warning is raised to avoid batch out-of-spec.
+
+---
+
+## 7.3.11 Common Trigger Options
 
 The following options apply to all of the trigger types (windows) above and are offered uniformly in the trigger settings.
 
-### 7.3.9.1 Parameters
+### 7.3.11.1 Parameters
 
 | Parameter | Description |
 | --- | --- |
