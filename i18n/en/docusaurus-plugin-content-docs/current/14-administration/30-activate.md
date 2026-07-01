@@ -62,4 +62,3 @@ The toolbar at the top right of the License Management page provides a **Configu
 TDengine has launched an independent licensing system for IDMP, including ECS (Enterprise Certificate Service) and CLS (Customer License Service).
 
 For information on purchasing an independent IDMP software license, or for any related questions, please contact TDengine sales.
-
