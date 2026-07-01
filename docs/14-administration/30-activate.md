@@ -62,3 +62,4 @@ IDMP 系统对测点的定义与 OSIsoft PI 系统的 PI Tag（也叫 PI Point�
 涛思公司已经推出独立的 IDMP 软件授权管理体系，包括 ECS（Enterprise Certificate Service）、CLS（Customer License Service）等授权服务。
 
 如需了解独立 IDMP 软件许可的采购方式或有任何相关疑问，请联系涛思数据公司销售人员。
+
