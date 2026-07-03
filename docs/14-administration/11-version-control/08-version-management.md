@@ -11,7 +11,7 @@ sidebar_label: 版本发布管理
 
 点击左侧菜单 **管理控制台 → 版本控制 → 版本管理**。
 
-![版本管理页面](../images/enable-version-control.png)
+![版本管理页面](../images/vlist.png)
 
 ## 页面布局
 
@@ -46,7 +46,7 @@ sidebar_label: 版本发布管理
 - 无 tag 时显示 commit ID 的前 8 位
 - 未生成时显示"未生成"
 
-![页脚数据版本](../images/enable-version-control.png)
+![页脚数据版本](../images/version-bage.png)
 
 ## 手动发布版本（Manual 模式）
 
@@ -58,7 +58,7 @@ sidebar_label: 版本发布管理
 4. 输入管理员密码确认
 5. 点击 **发布**
 
-![手动发布版本对话框](../images/enable-version-control.png)
+![手动发布版本对话框](../images/pub-v.png)
 
 ## 自动发布（Auto-Push 模式）
 

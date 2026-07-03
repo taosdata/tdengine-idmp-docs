@@ -1,12 +1,19 @@
 ---
-title: Pull Request 管理
-sidebar_label: Pull Request 管理
+title: Pull Request 列表
+sidebar_label: Pull Request 列表
 ---
 
-# 14.11.7 Pull Request 管理
+# 14.11.7 Pull Request 列表
 
 在 **Review Required** 或 **E-Signature** 模式下，管理员可以在
 「管理控制台 → 版本控制 → Pull Requests」页面查看所有 MR/PR。
+
+:::info PR 管理在 Git 平台上进行
+IDMP 仅提供 PR 列表的查看功能。PR 的审核（Review）、评论（Comment）、
+批准（Approve）和合并（Merge）等管理操作需要在 GitLab 或 GitHub 上完成。
+点击 PR 行末的三点菜单 → **在 GitLab 查看**（或 **在 GitHub 查看**）
+即可跳转到对应的 Git 平台进行操作。
+:::
 
 ## 进入 PR 列表
 
