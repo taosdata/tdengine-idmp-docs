@@ -27,7 +27,7 @@ sidebar_label: 配置 Git 仓库
 
 点击左侧菜单 **管理控制台 → 版本控制 → 配置**。
 
-![版本控制配置页面](../images/enable-version-control.png)
+![版本控制配置页面](../images/vc-config.png)
 
 ### 3. 选择 Git 服务器类型
 
@@ -91,18 +91,20 @@ https://gitlab.example.com/your-org/idmp-data.git
 3. 触发事件选择 **Merge request events**
 4. Secret Token 使用您在个人设置中创建的 API Key
 
-![Webhook 配置](../images/enable-version-control.png)
+![Webhook 配置](../images/webhook.png)
 
 Webhook 在版本控制中有两个重要作用：
 
 - **自动发布**（Auto-Push 模式）：MR/PR 被合入后，GitLab/GitHub 通过 Webhook 通知 IDMP，IDMP 自动拉取最新版本并更新运行系统，无需管理员手动操作
 - **实时通知**：当 Reviewer 在 GitLab/GitHub 上手动合入 MR/PR 后，IDMP 通过 Webhook 收到事件，向提交者推送 SSE 通知，告知其 MR 已被合入
 
-> 如果 Webhook 未配置，自动发布模式不会生效，用户也无法收到 MR 合入的实时通知。
+:::info Webhook URL 说明
+IDMP 自动生成的 Webhook URL 中的 host 部分取自浏览器地址栏。如果 GitLab/GitHub 无法直接访问该地址（例如 IDMP 部署在内网），需要将 host 替换为 GitLab/GitHub 可访问的地址后再配置 Webhook。
+:::
 
 ## 修改模式与发布模式
 
-配置页面下方可以设置修改模式和发布模式，详见 [修改模式与发布模式](./01-concepts)。
+配置页面下方可以设置修改模式和发布模式，详见 [修改模式与发布模式](./01-concepts.md)。
 
 ## 常见问题
 
