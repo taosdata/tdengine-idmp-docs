@@ -45,8 +45,11 @@ https://gitlab.example.com/your-org/idmp-data.git
 
 在 **系统服务令牌** 输入框中填写 Personal Access Token。
 
-<details>
-<summary>GitLab Token 所需权限</summary>
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="gitlab" label="GitLab">
 
 在 GitLab 中创建 Personal Access Token 时，需要勾选以下权限范围：
 
@@ -56,10 +59,8 @@ https://gitlab.example.com/your-org/idmp-data.git
 
 创建路径：**用户头像 → Preferences → Access Tokens**
 
-</details>
-
-<details>
-<summary>GitHub Token 所需权限</summary>
+</TabItem>
+<TabItem value="github" label="GitHub">
 
 在 GitHub 中创建 Personal Access Token 时：
 
@@ -68,7 +69,8 @@ https://gitlab.example.com/your-org/idmp-data.git
 
 创建路径：**用户头像 → Settings → Developer settings → Personal access tokens**
 
-</details>
+</TabItem>
+</Tabs>
 
 :::info 系统服务令牌 vs 个人令牌
 系统服务令牌用于后台自动化操作（Webhook 自动合并、拉取远程、测试连接），建议使用专用 Bot 账号。用户发起的推送/MR 需要在「个人设置 → Git Token」中配置个人令牌。
@@ -90,7 +92,10 @@ https://gitlab.example.com/your-org/idmp-data.git
 
 ## Webhook 配置
 
-保存配置后，页面会显示 Webhook 回调 URL。将此 URL 配置到 GitLab/GitHub 仓库的 Webhook 设置中：
+保存配置后，页面会显示 Webhook 回调 URL。将此 URL 配置到 GitLab/GitHub 仓库的 Webhook 设置中。
+
+<Tabs>
+<TabItem value="gitlab" label="GitLab">
 
 1. 复制页面上的 **Webhook 回调 URL**
 2. 在 GitLab 项目 → Settings → Webhooks 中，粘贴 URL
@@ -98,6 +103,19 @@ https://gitlab.example.com/your-org/idmp-data.git
 4. Secret Token 使用您在个人设置中创建的 API Key
 
 ![Webhook 配置](../images/webhook.png)
+
+</TabItem>
+<TabItem value="github" label="GitHub">
+
+1. 复制页面上的 **Webhook 回调 URL**（GitHub 的 URL 中已包含 API Key 作为查询参数，格式为 `?token=api_xxx`）
+2. 在 GitHub 仓库 → Settings → Webhooks → Add webhook 中，粘贴到 **Payload URL**
+3. Content type 选择 **application/json**
+4. 触发事件选择 **Let me select individual events** → 勾选 **Pull requests**
+
+![GitHub Webhook 配置](../images/github-webhook.png)
+
+</TabItem>
+</Tabs>
 
 Webhook 在版本控制中有两个重要作用：
 
