@@ -16,7 +16,6 @@ sidebar_label: 变更列表与日常操作
 - 超过 99 时显示 "99"
 - 点击徽标直接跳转到变更列表页
 
-![右上角变更徽标](../images/enable-version-control.png)
 
 ## 变更列表页
 
@@ -31,7 +30,7 @@ sidebar_label: 变更列表与日常操作
 - **勾选框**：支持单选和全选
 - **三点菜单**：每行支持单独 Check-In 或 Undo
 
-![变更列表页](../images/enable-version-control.png)
+![变更列表页](../images/change-list.png)
 
 ### 顶部工具栏
 
@@ -47,8 +46,6 @@ sidebar_label: 变更列表与日常操作
 - **Diff 对比**：HEAD 版本与工作区版本的并排对比
 - **变更详情**：资源路径、变更类型、修改时间
 
-![Diff 对比面板](../images/enable-version-control.png)
-
 ## Check-In（签入）
 
 Check-In 将选中的变更提交到 Git 仓库。
@@ -60,7 +57,7 @@ Check-In 将选中的变更提交到 Git 仓库。
 3. 在弹出的对话框中填写**变更原因**（必填）
 4. 点击 **提交**
 
-![Check-In 对话框](../images/enable-version-control.png)
+![Check-In 对话框](../images/check-in.png)
 
 ### 变更原因
 
@@ -96,12 +93,3 @@ Undo 将选中的变更恢复到上一个版本（HEAD）。
 | **未跟踪（Untracked）** | 工作区中的新文件，未被 Git 追踪 |
 | **重命名（Renamed）** | 资源被重命名，显示新旧路径 |
 
-## 页脚数据版本
-
-页面底部显示当前数据版本号：
-
-- 有 tag 时显示 tag 名（如 `v1.0.0`）
-- 无 tag 时显示 commit ID 的前 8 位
-- 未生成时显示"未生成"
-
-![页脚数据版本](../images/enable-version-control.png)
