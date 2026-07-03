@@ -24,13 +24,13 @@ sidebar_label: 配置个人 Git Token
 
 点击右上角用户头像，在下拉菜单中选择带有邮箱的菜单项，打开个人设置弹窗。
 
-![打开个人设置]()
+![打开个人设置](../images/enable-version-control.png)
 
 ### 3. 切换到 Git 标签页
 
 在个人设置弹窗中，点击 **Git** 标签页。
 
-![Git Token 配置页面]()
+![Git Token 配置页面](../images/enable-version-control.png)
 
 ### 4. 填写 Token
 
@@ -54,7 +54,7 @@ sidebar_label: 配置个人 Git Token
 
 > GPG 密钥由管理员在「管理控制台 → 版本控制 → 电子签名密钥」页面中生成。详见 [GPG 密钥管理](./05-gpg-keys)。
 
-![GPG 公钥区域]()
+![GPG 公钥区域](../images/enable-version-control.png)
 
 ## 常见问题
 

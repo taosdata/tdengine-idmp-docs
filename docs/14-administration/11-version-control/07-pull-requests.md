@@ -12,7 +12,7 @@ sidebar_label: Pull Request 管理
 
 点击左侧菜单 **管理控制台 → 版本控制 → Pull Requests**。
 
-![Pull Request 列表页]()
+![Pull Request 列表页](../images/enable-version-control.png)
 
 ## PR 列表
 

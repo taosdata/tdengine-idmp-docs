@@ -11,7 +11,7 @@ sidebar_label: 版本发布管理
 
 点击左侧菜单 **管理控制台 → 版本控制 → 版本管理**。
 
-![版本管理页面]()
+![版本管理页面](../images/enable-version-control.png)
 
 ## 页面布局
 
@@ -51,7 +51,7 @@ sidebar_label: 版本发布管理
 4. 输入管理员密码确认
 5. 点击 **发布**
 
-![手动发布版本对话框]()
+![手动发布版本对话框](../images/enable-version-control.png)
 
 ## 自动发布（Auto-Push 模式）
 

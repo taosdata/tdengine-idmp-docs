@@ -23,13 +23,13 @@ GPG（GNU Privacy Guard）是一种基于非对称加密的电子签名技术。
 
 点击左侧菜单 **管理控制台 → 版本控制 → 电子签名密钥**。
 
-![GPG 密钥管理页面]()
+![GPG 密钥管理页面](../images/enable-version-control.png)
 
 ### 2. 点击生成按钮
 
 点击右上角的 **+** 按钮，弹出生成密钥对话框。
 
-![生成 GPG 密钥对话框]()
+![生成 GPG 密钥对话框](../images/enable-version-control.png)
 
 ### 3. 选择用户和邮箱
 
@@ -45,7 +45,7 @@ GPG（GNU Privacy Guard）是一种基于非对称加密的电子签名技术。
 
 点击 **生成** 按钮，系统会在后台生成 RSA 4096 位密钥对。
 
-![生成成功通知]()
+![生成成功通知](../images/enable-version-control.png)
 
 ## 查看和复制公钥
 
@@ -57,7 +57,7 @@ GPG（GNU Privacy Guard）是一种基于非对称加密的电子签名技术。
    - **GitLab**：用户设置 → GPG Keys
    - **GitHub**：Settings → SSH and GPG keys
 
-![查看公钥对话框]()
+![查看公钥对话框](../images/enable-version-control.png)
 
 > 用户也可以在「个人设置 → Git」标签页中查看和复制自己的 GPG 公钥。
 
@@ -99,4 +99,4 @@ GPG（GNU Privacy Guard）是一种基于非对称加密的电子签名技术。
 4. 签入对话框中显示"此提交将使用 GPG 电子签名自动签署"
 5. 提交后，在 GitLab/GitHub 中可以看到 commit 带有"Verified"标记
 
-![E-Signature 签入提示]()
+![E-Signature 签入提示](../images/enable-version-control.png)

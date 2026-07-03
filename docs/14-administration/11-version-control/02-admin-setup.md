@@ -27,7 +27,7 @@ sidebar_label: 配置 Git 仓库
 
 点击左侧菜单 **管理控制台 → 版本控制 → 配置**。
 
-![版本控制配置页面]()
+![版本控制配置页面](../images/enable-version-control.png)
 
 ### 3. 选择 Git 服务器类型
 
@@ -91,7 +91,7 @@ https://gitlab.example.com/your-org/idmp-data.git
 3. 触发事件选择 **Merge request events**
 4. Secret Token 使用您在个人设置中创建的 API Key
 
-![Webhook 配置]()
+![Webhook 配置](../images/enable-version-control.png)
 
 Webhook 在版本控制中有两个重要作用：
 
