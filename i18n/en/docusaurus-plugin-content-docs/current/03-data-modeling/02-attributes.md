@@ -335,3 +335,62 @@ TDengine/<database>/${KEYWORD1}/<column>
 ```
 
 Click **Check** to verify the binding resolves correctly for a test input.
+
+## 3.2.11 KPI Attributes
+
+A **KPI attribute** is a special aggregating attribute that continuously computes a source attribute (such as a TDengine Metric or Formula attribute) into a Key Performance Indicator (KPI) by an aggregation function and a statistical period. Unlike a regular attribute that holds a single measurement, one KPI attribute can contain multiple **sub-attributes**, each corresponding to one "aggregation function × statistical period" combination (e.g. "average / hourly", "sum / daily"). The system automatically creates the stream computation and the corresponding output table for the KPI attribute and maintains each sub-attribute's value in real time.
+
+### 3.2.11.1 Scope
+
+When creating a KPI attribute, first choose the source scope to aggregate from:
+
+| Scope | Description |
+| --- | --- |
+| **Child Elements** | Aggregate from the source attributes of all child elements of this element (unavailable when the element has no children) |
+| **This Element Only** | Compute only from this element's own source attributes |
+
+### 3.2.11.2 Source Attribute
+
+- When the scope is **Child Elements**, first select the child element's **attribute template**, then select the **source attribute** from that template.
+- When the scope is **This Element Only**, select the **source attribute** directly from this element's attributes.
+
+The source attribute's data reference type must be **TDengine Metric** or **Formula**; value types such as file, video, element reference, and KPI cannot be used as a KPI source.
+
+### 3.2.11.3 KPI Definition
+
+In the KPI Definition table, add one or more sub-attribute definitions, each containing:
+
+| Field | Description |
+| --- | --- |
+| **Name** | The logical name of the sub-attribute (e.g. `avg_power`) |
+| **Aggregation Function** | Aggregation method: AVG, MAX, MIN, SUM, COUNT, LAST, FIRST, HYPERLOGLOG, SPREAD, STDDEV, STDDEV_POP, VAR_POP, etc. |
+| **Period** | Statistical period, multi-select: hourly, daily, weekly, monthly, quarterly. Each selected period produces one sub-attribute (e.g. an hourly and a daily sub-attribute for `avg_power`) |
+
+### 3.2.11.4 Calculation Level
+
+How the aggregation unfolds across the asset hierarchy:
+
+| Level | Description |
+| --- | --- |
+| **From This Level** | Aggregate downward from the current element's level |
+| **From Top Level** | Aggregate downward from the top of the asset tree |
+| **This Level Only** | This level only, without recursing into children |
+
+### 3.2.11.5 Other Options
+
+| Option | Description |
+| --- | --- |
+| **Prefill From** | Optional. When a start time is set, the system backfills historical data from that time to now; leave empty to skip backfill |
+| **Display Value** | Optional. Which sub-attribute's value to show by default in panels and elsewhere |
+
+### 3.2.11.6 Build State
+
+After saving, the system creates the stream computation and output table, and the KPI attribute enters the build flow with the following states:
+
+| State | Description |
+| --- | --- |
+| **Building** | Creating the stream and output table |
+| **Active** | Build complete, computing normally |
+| **Failed** | Build error; the rebuild can be retried |
+
+> KPI attributes are the data source for the [KPI Report](../04-visualization/02-chart-types/19-kpi-report.md) panel. Select KPI sub-attributes as columns in a KPI Report to display and compare (MoM / YoY) each asset's KPI values by statistical period.
