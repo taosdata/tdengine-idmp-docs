@@ -36,7 +36,7 @@ sidebar_label: 标记线分析
 
 ## 9.8.3 使用入口
 
-在**分析工作台**（Analysis Chart）的查看模式下，点击操作栏中的**标记线**（Marker Line）按钮即可使用。
+在**分析工作台**（Analysis Workbench）的查看模式下，点击操作栏中的**标记线**（Marker Line）按钮即可使用。
 
 ### 操作步骤
 
