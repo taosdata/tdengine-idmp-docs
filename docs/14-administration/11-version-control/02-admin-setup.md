@@ -82,6 +82,12 @@ https://gitlab.example.com/your-org/idmp-data.git
 
 点击 **保存** 按钮，输入管理员密码确认。
 
+:::info 首次保存说明
+首次保存 Git 仓库配置时，IDMP 会自动初始化元数据仓库的远程跟踪，执行初始化提交，
+并将主工作空间的所有数据推送到远程仓库的 `main` 分支。如果后续更改了仓库地址，
+系统将自动重新执行以上初始化步骤。
+:::
+
 ## Webhook 配置
 
 保存配置后，页面会显示 Webhook 回调 URL。将此 URL 配置到 GitLab/GitHub 仓库的 Webhook 设置中：
