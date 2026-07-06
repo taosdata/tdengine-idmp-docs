@@ -245,7 +245,7 @@ java -jar tda-generator-command.jar -f init.json -c
   - name: 超级表名称；
   - start_timestamp: 数据写入起始时间戳，null 表示从 4 天前开始写入；
   - time_step: 数据时间步进，单位毫秒；
-  - non_stop_mode: false 表示按固定行数生成数据；true 表示持续生成数据，用于实时模拟；
+  - non_stop_mode: false 表示按固定行数生成数据；true 表示持续生成数据，用于实时模拟；与 `csv` 配置同时使用时表示启用 CSV 历史数据回放，见 [14.9.2.7 CSV 数据源配置](#14927-csv---csv-数据源配置)；
   - insert_rows: 需要写入的数据总行数；
   - batch_insert_num: 每批次写入数据行数；
   - insert_interval: 每批次写入间隔时间，单位毫秒，0 表示无间隔；
@@ -286,10 +286,49 @@ java -jar tda-generator-command.jar -f init.json -c
 ```
 
 - file: CSV 文件路径；支持绝对路径和相对路径；缺省时默认读取 `<超级表名称>.csv`；
-- timestamp_column: 时间列名称；缺省值为 `ts`；该列值将直接作为写入时间戳；
+- timestamp_column: 时间列名称；缺省值为 `ts`；该列值将直接作为写入时间戳；历史数据回放模式下无需配置，该列会被忽略；
 - sub_table_column: 子表名称列；必填；列值用于决定写入目标子表，CSV 表头中必须存在该列；
-- CSV 表头至少应包含 `timestamp_column`、`sub_table_column` 以及所有 `metrics.name` 对应的列名；多余列可以保留，但当前导入流程不会使用；
-- 启用 CSV 模式后，`start_timestamp`、`time_step`、`non_stop_mode`、`insert_rows`、`batch_insert_num` 和 `insert_interval` 无需再配置，实际写入时间和数据量以 CSV 内容为准；
+- CSV 表头至少应包含 `timestamp_column`（回放模式下可省略）、`sub_table_column` 以及所有 `metrics.name` 对应的列名；
+- 一次性导入模式下（`non_stop_mode` 缺省或为 `false`），`start_timestamp`、`time_step`、`insert_rows`、`batch_insert_num` 和 `insert_interval` 无需再配置，实际写入时间和数据量以 CSV 内容为准；
+- 将 `non_stop_mode` 设置为 `true` 可启用 CSV 历史数据回放模式，基于 CSV 数据持续模拟实时数据，详见下文；
+
+#### CSV 历史数据回放
+
+CSV 数据源默认为一次性导入：每行数据按 `timestamp_column` 列的原始时间写入一次，导入完成后不再产生新数据。若希望基于 CSV 中的历史数据持续模拟实时数据，可将超级表的 `non_stop_mode` 设置为 `true`，启用历史数据回放模式：
+
+```json
+{
+  "name": "meters",
+  "time_step": 60000,
+  "non_stop_mode": true,
+  "csv": {
+    "file": "csv/meters.csv",
+    "sub_table_column": "sub_table_name"
+  },
+  "metrics": [
+    {
+      "name": "current",
+      "title": "电流",
+      "description": "电流信息",
+      "type": "Float",
+      "tdType": "metric"
+    }
+  ]
+}
+```
+
+回放模式与一次性导入的行为差异：
+
+- 指标值循环读取：系统逐行读取 CSV 中的指标数据，读到文件末尾后回到开头继续读取，永不结束；
+- 时间戳由系统生成：写入时间戳不读取 CSV 的时间列，而是从 `start_timestamp`（缺省为 4 天前）开始，按 `time_step`（单位毫秒，缺省 1000）逐行递增，因此 CSV 文件可以不包含时间列；
+- 历史回填 + 实时续写：时间戳落后于当前时间的部分会快速回填；追上当前时间后，按 `time_step` 的节奏持续写入，模拟实时产生的数据；
+
+配置约束与运行说明：
+
+- 所有启用回放的 CSV 超级表必须位于同一个数据库中；
+- 同一配置中可与一次性导入的 CSV 超级表混合使用，系统会先完成全部一次性导入，再启动回放；
+- 回放运行期间示例保持「数据生成中」状态，可在示例数据页面暂停和恢复；恢复后系统会读取数据库中最后一条回放数据的时间戳，从断点继续回放，不会产生重复或缺失；
+- 卸载示例场景或执行命令行清理（`-c`）时，回放进程会被自动终止；命令行方式加载时，工具在导入完成后即退出，回放进程在后台持续运行；
 
 ### 14.9.2.8 trees - 元素树
 
@@ -327,7 +366,32 @@ java -jar tda-generator-command.jar -f init.json -c
 
 该配置用于创建元素，并构建整个元素的树状结构。
 
-### 14.9.2.9 完整示例
+### 14.9.2.9 panels / analyses - 面板与分析的元素名称引用
+
+除数据模型外，示例数据还支持在 `templates` 模板项或 `trees` 树节点下，通过 `panels`、`dashboards`、`analyses` 字段预置面板、仪表盘和分析。
+
+编写配置文件时元素尚未创建，因此这些配置对元素和模板的引用一律使用**名称**，加载时自动解析为实际 ID：
+
+- 引用字段填名称：如 `rootElementId`、`elementTemplate.rootElement` 填元素名称，`elementTemplate.id`、`otherElementTemplateId` 填模板名称；
+- 表达式引用：`attributeExpression`、`expression`、`filter` 等字段用 `元素名称|attributes['属性名']` 语法引用其他元素的属性；
+- `#ELEMENT_NAME` 占位符：`name`、`fileName` 中的 `#ELEMENT_NAME` 会被替换为所属元素名称。
+
+```json
+"analyses": [
+  {
+    "name": "物流公司车辆统计",
+    "elementTemplate": {
+      "id": "车辆",
+      "rootElement": "车辆场景"
+    },
+    "rootElementId": "车辆场景"
+  }
+]
+```
+
+注意：被面板或分析引用的元素名称必须在场景内唯一，重名或不存在都会导致加载失败。
+
+### 14.9.2.10 完整示例
 
 <details>
 <summary>展开查看完整 JSON 示例</summary>
@@ -906,5 +970,6 @@ java -jar tda-generator-command.jar -f init.json -c
 
 - 一个 JSON 对应一个示例场景
 - 模板名称建议使用统一前缀
+- 面板与分析通过元素名称关联，被引用的元素名称必须保持唯一
 - 持续写入请控制子表数量
 - 清理操作务必确认环境
