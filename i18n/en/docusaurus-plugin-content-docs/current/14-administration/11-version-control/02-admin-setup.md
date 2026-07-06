@@ -37,7 +37,7 @@ Select **GitLab** or **GitHub** from the **Git Server Type** dropdown.
 
 Enter the HTTPS address of the repository in the **Git Repository URL** field, for example:
 
-```
+```text
 https://gitlab.example.com/your-org/idmp-data.git
 ```
 

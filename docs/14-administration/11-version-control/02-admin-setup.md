@@ -37,7 +37,7 @@ sidebar_label: 配置 Git 仓库
 
 在 **Git 仓库 URL** 输入框中填写仓库的 HTTPS 地址，例如：
 
-```
+```text
 https://gitlab.example.com/your-org/idmp-data.git
 ```
 
