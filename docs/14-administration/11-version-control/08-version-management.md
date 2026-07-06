@@ -46,7 +46,7 @@ sidebar_label: 版本发布管理
 - 无 tag 时显示 commit ID 的前 8 位
 - 未生成时显示"未生成"
 
-![页脚数据版本](../images/version-bage.png)
+![页脚数据版本](../images/version-badge.png)
 
 ## 手动发布版本（Manual 模式）
 

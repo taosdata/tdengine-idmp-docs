@@ -50,7 +50,7 @@ During initialization, a workspace status badge appears next to the avatar in th
 - **Initialization Failed**: Red exclamation mark + error summary; click to retry
 - **Ready**: Badge auto-hides
 
-![Workspace Status Badge](../images/version-bage.png)
+![Workspace Status Badge](../images/version-badge.png)
 
 ## Deleting a Personal Workspace
 

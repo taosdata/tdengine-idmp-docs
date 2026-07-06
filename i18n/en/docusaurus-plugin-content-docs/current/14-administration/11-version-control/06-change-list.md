@@ -16,7 +16,7 @@ After modifying data, a red badge appears next to the avatar in the top-right co
 - Shows "99" when exceeding 99
 - Click the badge to jump directly to the change list page
 
-![Change Badge](../images/version-bage.png)
+![Change Badge](../images/version-badge.png)
 
 ## Change List Page
 
