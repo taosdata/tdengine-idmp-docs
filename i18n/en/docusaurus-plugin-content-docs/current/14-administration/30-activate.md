@@ -4,9 +4,9 @@ sidebar_label: License Management
 ---
 # 14.11 License Management
 
-## 14.11.1 Tags Overview
+## 14.12.1 Tags Overview
 
-A **Tag** is one of the core variables in IDMP software product pricing. A Tag represents the time-series data stream of a single observation metric. It typically consists of four information items: timestamp, observed value, quality flag, and annotation. Examples include the outlet temperature of a piece of equipment, the steam pressure of a production line, or the bearing vibration of a fan — each observation metric counts as one Tag.
+A **Tag** is one of the core variables in IDMP software product pricing. A Tag represents the time-series data stream of a single observation metric. It typically consists of four information items: timestamp, observed value, quality flag, and annotation. Examples include the outlet temperature of a piece of equipment, the steam pressure of a production line, or the bearing vibration of a fan �?each observation metric counts as one Tag.
 
 The IDMP system's definition of Tags is fully consistent with the PI Tag (also known as PI Point) of the OSIsoft PI System, following the same counting principles:
 
@@ -15,17 +15,17 @@ The IDMP system's definition of Tags is fully consistent with the PI Tag (also k
 - **Static descriptive information is not counted**: static metadata of observation metrics, such as limits, types, locations, and identifiers, is excluded from the Tag count.
 - **Only element time-series data is counted**: all internal administrative time-series data of the IDMP system (such as audit logs and operation records) is excluded from the Tag count.
 
-**Note that IDMP Tags and TSDB timeline counts are two completely independent statistical measures.** TSDB counts timelines at the database level, including all non-timestamp columns of time-series data tables (including quality flags and descriptive information) in its calculation. As a result, the TSDB timeline count is typically significantly larger than the IDMP Tag count. IDMP supports two software license management models: it can use the software license of a TSDB system on the same network segment directly, or it can obtain an independent IDMP software license through TDengine's ECS licensing service.
+**Note that IDMP Tags and TSDB time series counts are two completely independent statistical measures.** TSDB counts time series at the database level, including all non-timestamp columns of time-series data tables (including quality flags and descriptive information) in its calculation. As a result, the TSDB time series count is typically significantly larger than the IDMP Tag count. IDMP supports two software license management models: it can use the software license of a TSDB system on the same network segment directly, or it can obtain an independent IDMP software license through TDengine's ECS licensing service.
 
-## 14.11.2 License Management Page
+## 14.12.2 License Management Page
 
 The License Management page provides a centralized view of the software licenses currently granted to a TDengine IDMP system and their usage, along with an optional configuration entry for ECS (Enterprise Certificate Service) licensing.
 
-## 14.11.3 Opening License Management
+## 14.12.3 Opening License Management
 
-A **License Management** item is provided under **Admin Console → System Configuration**. Click it to open the IDMP License Management page.
+A **License Management** item is provided under **Admin Console �?System Configuration**. Click it to open the IDMP License Management page.
 
-## 14.11.4 License Contents
+## 14.12.4 License Contents
 
 The License Management page lists all licensed items granted to the current IDMP system in a table. Each row contains the following 4 columns:
 
@@ -34,13 +34,13 @@ The License Management page lists all licensed items granted to the current IDMP
 | **Licensed Item** | The name of the feature or resource governed by the license                                                                                                                  |
 | **Available**     | Whether this item is currently available in the system                                                                                                                       |
 | **Expiration**    | The expiration time of this item                                                                                                                                             |
-| **Quantity**      | The licensed quantity and current usage, in the form`<used>/<limit>` — for example, `1/5` indicates that 5 users are licensed and 1 user currently exists in the system |
+| **Quantity**      | The licensed quantity and current usage, in the form`<used>/<limit>` �?for example, `1/5` indicates that 5 users are licensed and 1 user currently exists in the system |
 
 The currently listed licensed items include: **Users**, **Time-Series Attributes**, **Non-Time-Series Attributes**, **Elements**, **IDMP Clusters**, **CPU**, **Core Features**, **Version Control**, **Data Forecasting**, **Anomaly Detection**, **Data Quality**, **Agentic AI**, and others.
 
 ![License Management home](./images/license-01.png)
 
-## 14.11.5 ECS License Configuration
+## 14.12.5 ECS License Configuration
 
 The toolbar at the top right of the License Management page provides a **Configure** button. Clicking it opens the **License Service Configuration** dialog with the following options:
 
@@ -54,7 +54,7 @@ The toolbar at the top right of the License Management page provides a **Configu
 
 ![License configuration dialog](./images/license-02.png)
 
-## 14.11.6 Licensing Models
+## 14.12.6 Licensing Models
 
 - **ECS licensing disabled** (default): the IDMP system automatically obtains its software license from a TSDB system on the same network segment. This is the licensing model used by most IDMP users today.
 - **ECS licensing enabled**: an independent IDMP software license is delivered centrally by the ECS service. This supports running multiple IDMP environments and managing per-environment quota.
