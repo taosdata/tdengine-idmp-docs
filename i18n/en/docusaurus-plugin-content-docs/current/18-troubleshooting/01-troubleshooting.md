@@ -61,6 +61,30 @@ docker cp tdengine-idmp:/var/log/taos/idmp-ai.log ./
 docker cp tdengine-idmp:/var/log/taos/idmp-ai-error.log ./
 ```
 
-## 18.1.4 Submitting an Issue
+## 18.1.4 Path Too Long on Windows
+
+By default, Windows limits file paths to 260 characters (`MAX_PATH`). In a Windows environment, if the element hierarchy contains too many levels, the resulting paths may exceed this limit and cause related operations to fail. Enable long path support in Windows using either of the following methods (requires Windows 10 version 1607 or later; a restart is required for the change to take effect).
+
+### Via the Registry
+
+1. Press `Win + R`, type `regedit`, and open the Registry Editor.
+2. Navigate to `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem`.
+3. Set the value of `LongPathsEnabled` to `1`. If the value does not exist, right-click the blank area and choose **New → DWORD (32-bit) Value** to create it.
+4. Restart the computer for the change to take effect.
+
+Alternatively, run PowerShell as administrator, execute the following command, and restart the computer:
+
+```powershell
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -Type DWord
+```
+
+### Via Group Policy
+
+1. Press `Win + R`, type `gpedit.msc`, and open the Local Group Policy Editor (available on Windows Pro/Enterprise editions only).
+2. Navigate to **Computer Configuration → Administrative Templates → System → Filesystem**.
+3. Double-click **Enable Win32 long paths**, select **Enabled**, and click **OK**.
+4. Restart the computer for the change to take effect.
+
+## 18.1.5 Submitting an Issue
 
 TDengine uses [GitHub Issues](https://github.com/taosdata/tdengine-idmp-docs/issues/new/choose) to track and manage bug reports and support requests. Follow the issue template and attach the information collected above. The support team will respond as soon as possible.
