@@ -48,3 +48,29 @@ For side-by-side comparison or multi-monitor setups, any saved panel can be open
 - **From view mode:** Click the **Open in New Window** button in the view mode toolbar.
 
 The panel opens in a new browser window in view mode, with its own toolbar and time range controls. This window operates independently: you can set a different time range in the new window than the one in the main tab.
+
+## 4.5.5 Managing Shared Links
+
+All generated shared links can be reviewed and maintained from a single place under **Admin Console** → **Share Management**. The list shows the key information of each shared link in a paginated table:
+
+- **Resource Name:** The name of the panel or dashboard the link points to.
+- **Resource Type:** Panel, Dashboard, Panel Template, or Dashboard Template.
+- **Element:** The element the resource belongs to.
+- **Expiration:** The moment the link becomes invalid.
+- **Status:** Enabled or Disabled.
+- **Count:** The number of times the link has been accessed.
+
+For security, the share token is masked (`••••••••`) in the list. To reveal the plain-text token, click the **View** button in the token column. If an administrator has enabled secondary verification for share tokens in the security configuration, revealing the token requires a second password or multi-factor verification.
+
+The top of the page provides filtering and actions:
+
+- **Resource type / element filters:** The two dropdowns in the top-left corner filter the list by resource type or by element.
+- **Refresh:** Reloads the latest list of shared links.
+- **Column settings:** Controls which columns are shown in the table.
+
+The **⋮** menu on each row offers the following actions for that shared link:
+
+- **View Details:** Opens a dialog showing the share address, available duration, expiration, status, and access count. The share address in the dialog can be copied with one click; copying fetches the full link, and secondary verification is required first if it is enabled.
+- **Update Expiration:** Sets a new expiration time via a date picker. The chosen time must be later than the current time.
+- **Enable / Disable:** Disabling invalidates the link immediately so recipients can no longer access it; re-enabling restores it.
+- **Delete:** Permanently removes the shared link.
