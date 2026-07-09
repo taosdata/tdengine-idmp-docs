@@ -243,7 +243,7 @@ java -jar tda-generator-command.jar -f init.json -c
 - location: 元素位置属性范围配置；通过 altitude、latitude、longitude 三个字段配置；
 - super_tables: 超级表列表配置；
   - name: 超级表名称；
-  - start_timestamp: 数据写入起始时间戳，null 表示从 4 天前开始写入；
+  - start_timestamp: 数据写入起始时间戳（字符串），null 表示从 4 天前开始写入；支持带时区偏移量的格式（如 `2025-06-10 20:00:00.000+08:00`、`2025-06-10T20:00:00.000Z`），不含时区则按系统默认时区解析；
   - time_step: 数据时间步进，单位毫秒；
   - non_stop_mode: false 表示按固定行数生成数据；true 表示持续生成数据，用于实时模拟；与 `csv` 配置同时使用时表示启用 CSV 历史数据回放，见 [14.9.2.7 CSV 数据源配置](#14927-csv---csv-数据源配置)；
   - insert_rows: 需要写入的数据总行数；
@@ -623,7 +623,7 @@ CSV 数据源默认为一次性导入：每行数据按 `timestamp_column` 列�
       "super_tables": [
         {
           "name": "water_meters_01",
-          "start_timestamp": "2025-06-10 20:00:00.000",
+          "start_timestamp": "2025-06-10 20:00:00.000+08:00",
           "time_step": 600000,
           "non_stop_mode": false,
           "slice_size": 10,
