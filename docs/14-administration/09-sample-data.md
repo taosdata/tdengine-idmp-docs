@@ -66,12 +66,13 @@ java -jar tda-generator-command.jar -f init.json -c
   "TDasset": {},
   "datasource": {},
   "databases": [],
+  "enumerations": [],
   "templates": [],
   "trees": {}
 }
 ```
 
-整个 JSON 配置文件包含 6 个部分：`info` 用于描述模拟场景，`TDasset` 用于描述 IDMP 的连接信息，`datasource` 用于描述时序数据库 TSDB 的连接信息，`databases` 用于描述数据库配置，`templates` 用于定义元素模板，`trees` 用于描述整个模拟场景的元素树结构。
+整个 JSON 配置文件包含 7 个部分：`info` 用于描述模拟场景，`TDasset` 用于描述 IDMP 的连接信息，`datasource` 用于描述时序数据库 TSDB 的连接信息，`databases` 用于描述数据库配置，`enumerations` 用于定义枚举类型，`templates` 用于定义元素模板，`trees` 用于描述整个模拟场景的元素树结构。
 
 ### 14.9.2.2 info - 示例数据场景信息说明
 
@@ -157,7 +158,80 @@ java -jar tda-generator-command.jar -f init.json -c
 - keep: 数据存储天数，默认 3650 天；
 - 其他参数请参考 TDengine 数据库创建说明；
 
-### 14.9.2.6 templates - 元素模板配置
+### 14.9.2.6 enumerations - 枚举类型定义
+
+枚举类型用于属性值为有限集合的场景。在 `enumerations` 中声明的枚举类型会在元素模板和元素属性创建之前自动导入系统。如果系统已存在同名枚举类型但缺少部分值，加载时会自动补充缺失的值。
+
+```json
+[
+  {
+    "name": "设备状态",
+    "code": "device_status",
+    "description": "设备运行状态枚举",
+    "valueType": "Varchar",
+    "valueLength": 64,
+    "values": [
+      {
+        "name": "运行",
+        "value": "1",
+        "description": "设备正在运行"
+      },
+      {
+        "name": "停止",
+        "value": "2",
+        "description": "设备已停止"
+      },
+      {
+        "name": "故障",
+        "value": "3",
+        "description": "设备故障",
+        "subValues": [
+          {
+            "name": "硬件故障",
+            "value": "3.1",
+            "description": "硬件类故障"
+          },
+          {
+            "name": "软件故障",
+            "value": "3.2",
+            "description": "软件类故障"
+          }
+        ]
+      }
+    ]
+  }
+]
+```
+
+- name: 枚举类型名称，保持唯一；
+- code: 枚举类型编码，缺省为 `enum`；
+- description: 枚举类型描述；
+- valueType: 枚举值的数据类型，如 `Varchar`、`Int` 等，缺省为 `Varchar`；
+- valueLength: 枚举值的长度，缺省为 64；
+- values: 枚举值列表；
+  - name: 枚举值名称；
+  - value: 枚举值实际值；
+  - description: 枚举值描述；
+  - subValues: 子枚举值列表，支持多级嵌套，用于表示层级关系；
+
+#### 在属性中引用枚举类型
+
+当元素模板的属性或元素属性需要使用枚举类型时，将 `type` 设置为 `Enumeration`，并通过 `defaultValue` 以名称路径格式引用枚举值：
+
+```json
+{
+  "name": "状态",
+  "type": "Enumeration",
+  "defaultValue": "设备状态.运行"
+}
+```
+
+- `defaultValue` 格式为 `枚举类型名称.枚举值名称路径`；
+- 对于层级枚举值，名称路径以点号连接，如 `设备状态.故障.硬件故障`；
+- 加载时系统会自动将名称路径解析为系统内部 ID，无需手动指定 ID；
+- 如果系统已存在同名枚举类型但缺少引用的值，加载时会自动补充；
+
+### 14.9.2.7 templates - 元素模板配置
 
 元素模板配置包含两部分：1. 通用信息，如名称、命名规则和位置信息；2. 属性列表，由 `super_tables` 描述，包括模拟数据生成方式、CSV 数据源配置以及 `metric` 和 `tag` 的定义。其中，`metric` 还可以指定模拟数据生成函数。
 
@@ -245,7 +319,7 @@ java -jar tda-generator-command.jar -f init.json -c
   - name: 超级表名称；
   - start_timestamp: 数据写入起始时间戳，null 表示从 4 天前开始写入；
   - time_step: 数据时间步进，单位毫秒；
-  - non_stop_mode: false 表示按固定行数生成数据；true 表示持续生成数据，用于实时模拟；与 `csv` 配置同时使用时表示启用 CSV 历史数据回放，见 [14.9.2.7 CSV 数据源配置](#14927-csv---csv-数据源配置)；
+  - non_stop_mode: false 表示按固定行数生成数据；true 表示持续生成数据，用于实时模拟；与 `csv` 配置同时使用时表示启用 CSV 历史数据回放，见 [14.9.2.8 CSV 数据源配置](#14928-csv---csv-数据源配置)；
   - insert_rows: 需要写入的数据总行数；
   - batch_insert_num: 每批次写入数据行数；
   - insert_interval: 每批次写入间隔时间，单位毫秒，0 表示无间隔；
@@ -261,7 +335,7 @@ java -jar tda-generator-command.jar -f init.json -c
     - fun: 数据生成函数，支持基本数学函数与 random() 函数，x 表示时间变量；
   - tags: 元素标签列表配置，同指标类似；
 
-### 14.9.2.7 csv - CSV 数据源配置
+### 14.9.2.8 csv - CSV 数据源配置
 
 当 `super_tables` 中的数据来自已有 CSV 文件而非按公式生成时，可在超级表节点下增加 `csv` 配置。CSV 模式仅切换数据来源，`metrics`、`tags` 和 `trees` 的定义方式保持不变。
 
@@ -330,7 +404,7 @@ CSV 数据源默认为一次性导入：每行数据按 `timestamp_column` 列�
 - 回放运行期间示例保持「数据生成中」状态，可在示例数据页面暂停和恢复；恢复后系统会读取数据库中最后一条回放数据的时间戳，从断点继续回放，不会产生重复或缺失；
 - 卸载示例场景或执行命令行清理（`-c`）时，回放进程会被自动终止；命令行方式加载时，工具在导入完成后即退出，回放进程在后台持续运行；
 
-### 14.9.2.8 trees - 元素树
+### 14.9.2.9 trees - 元素树
 
 此处描述整个树状结构。每个节点均可指定元素模板 `template`，子节点通过 `children` 描述。使用元素模板时，需要通过 `values` 为命名规则中的 `KEYWORD1` 赋值。
 
@@ -366,7 +440,7 @@ CSV 数据源默认为一次性导入：每行数据按 `timestamp_column` 列�
 
 该配置用于创建元素，并构建整个元素的树状结构。
 
-### 14.9.2.9 panels / analyses - 面板与分析的元素名称引用
+### 14.9.2.10 panels / analyses - 面板与分析的元素名称引用
 
 除数据模型外，示例数据还支持在 `templates` 模板项或 `trees` 树节点下，通过 `panels`、`dashboards`、`analyses` 字段预置面板、仪表盘和分析。
 
@@ -391,7 +465,7 @@ CSV 数据源默认为一次性导入：每行数据按 `timestamp_column` 列�
 
 注意：被面板或分析引用的元素名称必须在场景内唯一，重名或不存在都会导致加载失败。
 
-### 14.9.2.10 完整示例
+### 14.9.2.11 完整示例
 
 <details>
 <summary>展开查看完整 JSON 示例</summary>
@@ -459,6 +533,27 @@ CSV 数据源默认为一次性导入：每行数据按 `timestamp_column` 列�
       "compact_time_range": "0d,0d",
       "compact_time_offset": "0h",
       "dnodes": ""
+    }
+  ],
+  "enumerations": [
+    {
+      "name": "电表状态",
+      "code": "meter_status",
+      "description": "电表运行状态",
+      "valueType": "Varchar",
+      "valueLength": 64,
+      "values": [
+        {
+          "name": "正常",
+          "value": "0",
+          "description": "正常运行"
+        },
+        {
+          "name": "异常",
+          "value": "1",
+          "description": "运行异常"
+        }
+      ]
     }
   ],
   "templates": [
@@ -545,6 +640,14 @@ CSV 数据源默认为一次性导入：每行数据按 `timestamp_column` 列�
                   "defaultValue": "1"
                 }
               ]
+            },
+            {
+              "name": "status",
+              "title": "状态",
+              "description": "电表运行状态",
+              "type": "Enumeration",
+              "tdType": "metric",
+              "defaultValue": "电表状态.正常"
             }
           ],
           "tags": [
