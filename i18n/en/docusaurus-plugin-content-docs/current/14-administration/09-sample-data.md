@@ -312,7 +312,7 @@ Template configuration includes two parts: 1. general information such as the na
 - location: Location attribute range (altitude, latitude, longitude)
 - super_tables: Super table configuration list
   - name: Super table name
-  - start_timestamp: Data start timestamp (null = 4 days ago)
+  - start_timestamp: Data start timestamp (string; null = 4 days ago). Supports timezone offsets (e.g. `2025-06-10 20:00:00.000+08:00`, `2025-06-10T20:00:00.000Z`); parses as system default timezone if no offset is present.
   - time_step: Time step in milliseconds
   - non_stop_mode: false = fixed rows; true = continuous real-time simulation; combined with a `csv` block it enables CSV historical data replay, see [14.9.2.8 CSV Data Source Configuration](#14928-csv---csv-data-source-configuration)
   - insert_rows: Total rows to insert
@@ -723,7 +723,7 @@ Note: element names referenced by panels or analyses must be unique within the s
       "super_tables": [
         {
           "name": "water_meters_01",
-          "start_timestamp": "2025-06-10 20:00:00.000",
+          "start_timestamp": "2025-06-10 20:00:00.000+08:00",
           "time_step": 600000,
           "non_stop_mode": false,
           "slice_size": 10,
