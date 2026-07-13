@@ -37,6 +37,7 @@ IDMP 的 AI 能力建立在两个底层引擎之上：
 - **[预测](./08-forecasting.md)** — 由 TDgpt 驱动的元素属性时序预测
 - **[缺失数据填补](./09-missing-data-imputation.md)** — 由 TDgpt 驱动的时序数据缺口填充
 - **[根因分析](./10-root-cause-analysis.md)** — AI 生成的事件根因调查报告
+- **[AI Functions](./11-ai-functions.md)** — 分布在各页面的统一 AI 入口，结合当前页面上下文执行分析
 
 import DocCardList from '@theme/DocCardList';
 
