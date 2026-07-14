@@ -37,6 +37,7 @@ IDMP's AI capabilities are built on two underlying engines:
 - **[Forecasting](./08-forecasting.md)** — TDgpt-powered time-series forecasting for element attributes
 - **[Missing Data Imputation](./09-missing-data-imputation.md)** — TDgpt-powered gap filling for time-series data
 - **[Root Cause Analysis](./10-root-cause-analysis.md)** — AI-generated root cause investigation reports for events
+- **[AI Functions](./11-ai-functions.md)** — a unified AI entry point across pages that runs analysis using the current page context
 
 import DocCardList from '@theme/DocCardList';
 
