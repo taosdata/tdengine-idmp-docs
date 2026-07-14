@@ -255,12 +255,16 @@ Template configuration includes two parts: 1. general information such as the na
   "super_tables": [
     {
       "name": "electricity_meters",
-      "start_timestamp": null,
+      "start_timestamp": "2026-07-11 08:00:00+08:00",
       "time_step": 600000,
       "non_stop_mode": false,
       "insert_rows": 1440,
       "batch_insert_num": 500,
       "insert_interval": 0,
+      "history_window": {
+        "start_timestamp": "2026-07-05 08:00:00+08:00",
+        "duration": "2d"
+      },
       "metrics": [
         {
           "name": "current",
@@ -318,6 +322,7 @@ Template configuration includes two parts: 1. general information such as the na
   - insert_rows: Total rows to insert
   - batch_insert_num: Rows per batch
   - insert_interval: Interval between batches (ms; 0 = no delay)
+  - history_window: Optional; backfills a historical time range before the main write phase. See [14.9.2.8.1 history_window - Historical Data Window](#149281-history_window---historical-data-window).
   - metrics: List of metric attributes
     - name: Metric name
     - title: Metric title
@@ -398,6 +403,72 @@ Constraints and runtime behavior:
 - Replay super tables can be mixed with one-shot import CSV super tables in the same configuration. The system finishes all one-shot imports first, then starts the replay.
 - While the replay is running, the sample stays in the data generation state and can be paused and resumed on the Sample Data page. On resume, the system reads the timestamp of the last replayed row from the database and continues the replay from that point, without duplicates or gaps.
 - Unloading the sample scenario or running the command-line cleanup (`-c`) automatically terminates the replay process. When loading from the command line, the tool exits once the import completes and the replay process keeps running in the background.
+- To quickly backfill a recent historical range before the main replay starts, configure `history_window` on the same super table. See the next section.
+
+### 14.9.2.8.1 history_window - Historical Data Window
+
+`history_window` is an optional block under `super_tables`. It backfills a slice of historical time-series data (Phase 0) before the main write phase (Phase 1). Rows written during the history phase **do not** count toward `insert_rows`.
+
+```json
+{
+  "name": "public_point",
+  "start_timestamp": "2026-07-11 08:00:00+08:00",
+  "time_step": 60000,
+  "non_stop_mode": true,
+  "history_window": {
+    "start_timestamp": "2026-07-05 08:00:00+08:00",
+    "duration": "2d"
+  },
+  "csv": {
+    "file": "csv/public_point.csv",
+    "sub_table_column": "sub_table_name"
+  },
+  "metrics": []
+}
+```
+
+#### Fields
+
+- `start_timestamp`: Start of the history backfill window. Same format as the super-table-level `start_timestamp` (timezone offsets supported; omitted or `null` defaults to four days before the current time).
+- `duration`: **Required.** Length of the history window. Compact forms are supported: `30m`, `24h`, `6d`, `2w`, and so on.
+
+The window is left-closed and right-open: `[start_timestamp, start_timestamp + duration)`. In the example above, history covers six days from 2026-07-05 08:00:00; the instant 2026-07-11 08:00:00 is excluded.
+
+#### Execution order and row count
+
+1. **Phase 0 (history)**: Runs first when the window is valid and overlap short-circuit does not apply (see below).
+2. **Phase 1 (main)**: Then runs using the super-table `start_timestamp`, `insert_rows`, `non_stop_mode`, and other existing settings.
+
+History row count is `duration ÷ time_step` (integer division). It is independent of `insert_rows`.
+
+#### Overlap handling
+
+Let `history_end = history_window.start_timestamp + duration`. If `history_end >` the super-table `start_timestamp`, the windows overlap:
+
+- The separate history phase is **not** run, and no standalone history taosgen config is generated.
+- The main write / CSV replay start becomes `min(history_window.start_timestamp, start_timestamp)`, so writing continues from the earlier of the two.
+
+When `history_end == start_timestamp`, there is no overlap and the history phase still runs on its own.
+
+#### Behavior by data source
+
+| Data source | `non_stop_mode` | History phase behavior |
+| ----------- | --------------- | ---------------------- |
+| Formula generation (no `csv`) | Any | Generate metric values from `history_window.start_timestamp`, advancing by `time_step` |
+| CSV one-shot import | `false` | Import CSV rows whose `timestamp_column` falls in the history window, **using the original CSV timestamps** |
+| CSV replay | `true` | **Loop** metric values from the CSV; timestamps start at `history_window.start_timestamp` and advance by `time_step` (same as main replay; the CSV time column is not used) |
+
+:::tip
+For CSV replay super tables (`non_stop_mode: true`), `history_window.start_timestamp` sets where historical backfill begins on the timeline, not the timestamps stored in the source CSV. This is useful when the CSV contains older timestamps but the demo should align with a recent time range.
+:::
+
+#### Resume behavior
+
+When a sample resumes from a checkpoint or after pause, the `history_window` phase is **not** run again. Only the main phase continues (including CSV replay), consistent with current production behavior.
+
+#### Runtime order (with CSV)
+
+When history windows and CSV replay coexist in one configuration, the system runs all history imports first (including each table's `history_window`), then all one-shot CSV imports, and finally starts CSV replay processes.
 
 ### 14.9.2.9 trees - Element Tree and Child Table Generation
 
@@ -1154,4 +1225,5 @@ Note: element names referenced by panels or analyses must be unique within the s
 - Use consistent prefixes for template names
 - Panels and analyses are linked by element name; keep referenced element names unique
 - Control child table count when using continuous data generation
+- To show historical trends on a recent timeline, configure `history_window` on the super table; if it overlaps the table-level `start_timestamp`, the system continues the main write from the earlier start instead of running a separate history backfill
 - Always confirm the environment before running cleanup operations
