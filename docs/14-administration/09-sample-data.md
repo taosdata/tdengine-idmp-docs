@@ -260,12 +260,16 @@ java -jar tda-generator-command.jar -f init.json -c
   "super_tables": [
     {
       "name": "electricity_meters",
-      "start_timestamp": null,
+      "start_timestamp": "2026-07-11 08:00:00+08:00",
       "time_step": 600000,
       "non_stop_mode": false,
       "insert_rows": 1440,
       "batch_insert_num": 500,
       "insert_interval": 0,
+      "history_window": {
+        "start_timestamp": "2026-07-05 08:00:00+08:00",
+        "duration": "2d"
+      },
       "metrics": [
         {
           "name": "current",
@@ -323,6 +327,7 @@ java -jar tda-generator-command.jar -f init.json -c
   - insert_rows: 需要写入的数据总行数；
   - batch_insert_num: 每批次写入数据行数；
   - insert_interval: 每批次写入间隔时间，单位毫秒，0 表示无间隔；
+  - history_window: 可选；在主数据写入之前追加一段历史回填，详见 [14.9.2.8.1 history_window - 历史数据窗口](#149281-history_window---历史数据窗口)；
   - metrics: 元素指标列表配置；
     - name: 指标名称；
     - title: 指标标题；
@@ -403,6 +408,72 @@ CSV 数据源默认为一次性导入：每行数据按 `timestamp_column` 列�
 - 同一配置中可与一次性导入的 CSV 超级表混合使用，系统会先完成全部一次性导入，再启动回放；
 - 回放运行期间示例保持「数据生成中」状态，可在示例数据页面暂停和恢复；恢复后系统会读取数据库中最后一条回放数据的时间戳，从断点继续回放，不会产生重复或缺失；
 - 卸载示例场景或执行命令行清理（`-c`）时，回放进程会被自动终止；命令行方式加载时，工具在导入完成后即退出，回放进程在后台持续运行；
+- 若还需要在主回放开始前快速回填一段近期历史数据，可为该超级表配置 `history_window`，详见下一节；
+
+### 14.9.2.8.1 history_window - 历史数据窗口
+
+`history_window` 是 `super_tables` 下的可选配置，用于在主数据写入（Phase 1）之前，先回填一段历史时序数据（Phase 0）。历史阶段写入的行数**不计入** `insert_rows`。
+
+```json
+{
+  "name": "public_point",
+  "start_timestamp": "2026-07-11 08:00:00+08:00",
+  "time_step": 60000,
+  "non_stop_mode": true,
+  "history_window": {
+    "start_timestamp": "2026-07-05 08:00:00+08:00",
+    "duration": "2d"
+  },
+  "csv": {
+    "file": "csv/public_point.csv",
+    "sub_table_column": "sub_table_name"
+  },
+  "metrics": []
+}
+```
+
+#### 字段说明
+
+- `start_timestamp`：历史回填区间的起始时间，格式与超级表级 `start_timestamp` 相同（支持时区偏移；省略或 `null` 时默认为当前时间减去 4 天）；
+- `duration`：**必填**；历史窗口时长，支持紧凑写法：`30m`、`24h`、`6d`、`2w` 等；
+
+历史窗口为左闭右开区间 `[start_timestamp, start_timestamp + duration)`。例如上例中历史区间为 2026-07-05 08:00:00 起、持续 6 天，结束时刻为 2026-07-11 08:00:00（该时刻本身不属于历史窗口）。
+
+#### 执行顺序与行数
+
+1. **Phase 0（历史）**：若配置有效且未触发重叠短路（见下文），先完成历史回填；
+2. **Phase 1（主流程）**：再按表级 `start_timestamp`、`insert_rows`、`non_stop_mode` 等原有逻辑写入；
+
+历史行数由 `duration ÷ time_step` 计算（向下取整），与 `insert_rows` 无关。
+
+#### 重叠时的处理
+
+设 `history_end = history_window.start_timestamp + duration`。若 `history_end >` 表级 `start_timestamp`，视为与主窗口重叠：
+
+- **不再**单独执行历史阶段，也**不会**生成独立的 history taosgen 配置；
+- 主写入 / CSV 回放的起始时间取 `min(history_window.start_timestamp, start_timestamp)`，从更早的那个起点继续按原主流程写入。
+
+边界相等（`history_end == start_timestamp`）时不视为重叠，历史阶段仍会单独执行。
+
+#### 按数据来源区分的行为
+
+| 数据来源 | `non_stop_mode` | 历史阶段行为 |
+| -------- | --------------- | ------------ |
+| 公式生成（无 `csv`） | 任意 | 从 `history_window.start_timestamp` 起，按 `time_step` 生成指标值并写入 |
+| CSV 一次性导入 | `false` | 从 CSV 中筛选 `timestamp_column` 落在历史窗口内的行，**按 CSV 原始时间戳**写入 |
+| CSV 回放 | `true` | 指标值按 CSV **循环回放**，时间戳从 `history_window.start_timestamp` 起按 `time_step` 递增生成（与主回放一致，不使用 CSV 时间列） |
+
+:::tip
+对启用 CSV 回放的超级表（`non_stop_mode: true`），`history_window.start_timestamp` 决定历史回填的起始时间，而不是源 CSV 文件中的时间列。适用于源 CSV 时间较旧、但希望演示数据落在近期时间轴的场景。
+:::
+
+#### 恢复（Resume）说明
+
+示例从检查点恢复或暂停后继续时，**不会重新执行** `history_window` 历史阶段，与当前线上行为一致，仅续做主流程（含 CSV 回放）。
+
+#### 运行顺序（含 CSV）
+
+同一配置中若同时存在历史窗口与 CSV 回放：系统先执行全部历史导入（含各表的 `history_window`），再执行一次性 CSV 导入，最后启动 CSV 回放进程。
 
 ### 14.9.2.9 trees - 元素树
 
@@ -1075,4 +1146,5 @@ CSV 数据源默认为一次性导入：每行数据按 `timestamp_column` 列�
 - 模板名称建议使用统一前缀
 - 面板与分析通过元素名称关联，被引用的元素名称必须保持唯一
 - 持续写入请控制子表数量
+- 需要近期时间轴上的历史曲线时，可为超级表配置 `history_window`；若与表级 `start_timestamp` 重叠，系统会改用更早的起点继续主写入，而不再单独回填 history
 - 清理操作务必确认环境
