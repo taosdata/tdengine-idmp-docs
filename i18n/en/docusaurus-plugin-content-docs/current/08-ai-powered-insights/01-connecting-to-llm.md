@@ -47,6 +47,8 @@ In the AI Chat interface, users can toggle **Deep Thinking** mode to route their
 
 For organizations running a self-hosted LLM (such as a locally deployed Ollama or vLLM instance), set the **API Endpoint** to the local service URL and leave the **API Key** blank if the service does not require authentication. As long as the service exposes an OpenAI-compatible API, all IDMP AI features work without modification.
 
+> **Note**: For self-hosted LLM deployments, the minimum recommended model configuration is **Qwen/Qwen3.5-27B**. This is the minimum model requirement for the product's AI features to function properly.
+
 ## 8.1.5 TLS/SSL Configuration
 
 When the AI server uses a self-signed certificate or a certificate issued by a private CA, IDMP's default TLS verification fails with a PKIX path building error. You need to configure custom CA certificates or skip verification via environment variables.
