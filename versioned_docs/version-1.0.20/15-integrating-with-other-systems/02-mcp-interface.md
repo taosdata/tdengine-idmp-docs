@@ -27,11 +27,33 @@ IDMP 通过反向代理对外提供 MCP 接口。AI 智能体无需在本地安�
 
 下文中，`<IDMP_API_KEY>` 表示从界面复制的原始 API Key 值，形如 `api_<key_id>.<secret>`；示例中的 `Authorization` Header 会显式添加 `Bearer` 前缀。
 
-## 15.2.3 Streamable HTTP 接入
+## 15.2.3 MCP 模板机制
+
+IDMP 通过 **MCP 模板** 统一管理 MCP 服务器连接配置。管理员在**基础库 → Agentic AI → MCP 模板**中创建模板，定义连接类型（HTTP / SSE / 命令）、URL 或命令、请求头以及需用户填写的变量。用户则在**个人设置 → Agent** 标签页中基于模板填写变量值，完成个人 MCP 连接的配置。
+
+### 使用场景
+
+- **管理员：** 在基础库中统一维护组织的 MCP 连接规范，避免每个用户重复配置。
+- **用户：** 在个人设置中填写模板变量（如个人 API Key），系统自动拼装完整的 MCP 连接配置。
+
+### 配置流程
+
+1. 管理员在**基础库 → Agentic AI → MCP 模板**中创建模板，详见[第 13.5.2 节](../13-libraries/05-agentic-ai.md#1352-mcp-模板)。
+2. 用户在**个人设置 → Agent** 标签页中为模板填写变量值，详见[第 14.8.5 节](../14-administration/08-profile-settings.md#1485-agent)。
+3. MCP 客户端（如 Claude Code、Codex 等）使用 IDMP 提供的 MCP 端点地址进行连接（见下方各客户端配置示例）。
+
+### 模板变量说明
+
+模板中的 URL 和请求头支持 `${varName}` 占位符，用户在配置时填写具体值。例如：
+
+- URL 模板：`https://example.com/mcp?token=${API_TOKEN}` → 用户在 Agent 设置中填写 `API_TOKEN` 的值
+- 请求头模板：`{"Authorization": "Bearer ${API_KEY}"}` → 用户在 Agent 设置中填写 `API_KEY` 的值
+
+## 15.2.4 Streamable HTTP 接入
 
 Streamable HTTP 是推荐的远程 MCP 接入方式，适用于优先支持新版 MCP transport 的客户端。
 
-### 15.2.3.1 接入地址与鉴权
+### 15.2.4.1 接入地址与鉴权
 
 | 项目 | 说明 |
 |---|---|
@@ -44,7 +66,7 @@ Streamable HTTP 是推荐的远程 MCP 接入方式，适用于优先支持新�
 
 将示例中的 `<IDMP_HOST>` 替换为您的实际 IDMP 域名或 IP。`<IDMP_API_KEY>` 表示从界面复制的原始 API Key 值，形如 `api_<key_id>.<secret>`，不包含 `Bearer` 前缀。生产环境建议优先使用 HTTPS；仅在证书或网络排障时，才临时切换到 HTTP 地址。
 
-### 15.2.3.2 Claude Code
+### 15.2.4.2 Claude Code
 
 Claude Code 支持通过命令行添加远程 MCP Server：
 
@@ -56,7 +78,7 @@ claude mcp add --transport http tdengine-idmp \
 
 如果希望将配置共享给当前项目，可额外加上 `--scope project`。
 
-### 15.2.3.3 Codex
+### 15.2.4.3 Codex
 
 Codex 可通过 `~/.codex/config.toml` 配置远程 MCP Server。推荐使用环境变量保存令牌：
 
@@ -68,7 +90,7 @@ bearer_token_env_var = "IDMP_API_KEY"
 
 启动 Codex 前，请先在当前终端设置 `IDMP_API_KEY`，并确保其值为原始 `api_...` 形式，不包含 `Bearer` 前缀。
 
-### 15.2.3.4 Copilot CLI
+### 15.2.4.4 Copilot CLI
 
 GitHub Copilot CLI 支持通过交互式命令 `/mcp add` 添加远程 MCP Server。进入 `copilot` 交互界面后，执行：
 
@@ -101,7 +123,7 @@ GitHub Copilot CLI 支持通过交互式命令 `/mcp add` 添加远程 MCP Serve
 }
 ```
 
-### 15.2.3.5 通用表单与 JSON 配置示例
+### 15.2.4.5 通用表单与 JSON 配置示例
 
 如果 Agent 提供交互式表单，请填写以下字段：
 
@@ -128,11 +150,11 @@ GitHub Copilot CLI 支持通过交互式命令 `/mcp add` 添加远程 MCP Serve
 }
 ```
 
-## 15.2.4 SSE 接入
+## 15.2.5 SSE 接入
 
 SSE 适用于仍依赖 SSE transport 的客户端。只有在 Agent 明确要求 SSE 时，才建议使用这一方式。
 
-### 15.2.4.1 接入地址与鉴权
+### 15.2.5.1 接入地址与鉴权
 
 | 项目 | 说明 |
 |---|---|
@@ -145,7 +167,7 @@ SSE 适用于仍依赖 SSE transport 的客户端。只有在 Agent 明确要求
 
 将示例中的 `<IDMP_HOST>` 替换为您的实际 IDMP 域名或 IP。`<IDMP_API_KEY>` 表示从界面复制的原始 API Key 值，形如 `api_<key_id>.<secret>`，不包含 `Bearer` 前缀。生产环境建议优先使用 HTTPS；如需排查证书或网络问题，请保留 `/api/v1/mcp/sse` 路径，仅将协议和端口临时切换为 HTTP 和 `6042`。
 
-### 15.2.4.2 通用表单与 JSON 配置示例
+### 15.2.5.2 通用表单与 JSON 配置示例
 
 如果 Agent 提供交互式表单，请填写以下字段：
 
@@ -172,13 +194,13 @@ SSE 适用于仍依赖 SSE transport 的客户端。只有在 Agent 明确要求
 }
 ```
 
-## 15.2.5 接入方式选择建议
+## 15.2.6 接入方式选择建议
 
 1. 新接入场景或新版 MCP 客户端，优先使用 Streamable HTTP。
 1. 现有 Agent 明确只支持 SSE，或必须沿用既有的 SSE 兼容配置时，再使用 SSE。
 1. 排障时请保留当前 transport 的接口路径，只临时将协议和端口从 HTTPS `6034` 切换为 HTTP `6042`。
 
-## 15.2.6 Tool 功能
+## 15.2.7 Tool 功能
 
 以下内容对应 MCP 中的 Tool 功能。
 
@@ -193,7 +215,7 @@ SSE 适用于仍依赖 SSE transport 的客户端。只有在 Agent 明确要求
 | AI 与系统元数据 | 调用 IDMP AI，并读取系统配置、分类和推荐结果 | 自然语言问答、能力推荐、元数据读取 |
 | 受控写入 | 创建属性、元素标注、事件标注和通知规则更新等 | 在权限范围内完成受控配置变更 |
 
-## 15.2.7 Resource 功能
+## 15.2.8 Resource 功能
 
 以下内容对应 MCP 中的 Resource 功能。
 
@@ -204,7 +226,7 @@ SSE 适用于仍依赖 SSE transport 的客户端。只有在 Agent 明确要求
 | 事件语义 | 解释事件模板 ID、严重级别和告警含义 | 事件模板定义和语义信息 |
 | 分析算法元数据 | 创建分析任务前了解支持的触发方式和算法类型 | 分析算法、触发类型及相关元数据 |
 
-## 15.2.8 Prompt 功能
+## 15.2.9 Prompt 功能
 
 以下内容对应 MCP 中的 Prompt 功能。
 
@@ -218,32 +240,32 @@ SSE 适用于仍依赖 SSE transport 的客户端。只有在 Agent 明确要求
 | 维保到期梳理 | 生成待维护元素清单并给出处理建议 | 元素上下文、事件、元素标注、AI 建议 |
 | 告警分诊 | 对全系统未确认告警进行优先级排序 | 告警计数、事件详情、元素上下文、AI 判断 |
 
-## 15.2.9 常见问题
+## 15.2.10 常见问题
 
-### 15.2.9.1 HTTPS 证书校验不通过怎么办？
+### 15.2.10.1 HTTPS 证书校验不通过怎么办？
 
 请先确认域名解析、证书链和客户端信任链是否正确。如果只是临时排查连通性问题，请保留当前 transport 的接口路径，再临时切换到 HTTP：Streamable HTTP 使用 `http://<IDMP_HOST>:6042/api/v1/mcp/stream`，SSE 使用 `http://<IDMP_HOST>:6042/api/v1/mcp/sse`。排障完成后再切回 HTTPS。
 
-### 15.2.9.2 为什么更推荐 Streamable HTTP？
+### 15.2.10.2 为什么更推荐 Streamable HTTP？
 
 因为新版 MCP 客户端通常优先支持 Streamable HTTP，且它的交互语义、错误处理和长期兼容性都更好。只有在现有 Agent 明确只支持 SSE 时，才建议使用 SSE。
 
-### 15.2.9.3 为什么示例优先使用 `6034` 端口？
+### 15.2.10.3 为什么示例优先使用 `6034` 端口？
 
 `6034` 是 IDMP 默认的 HTTPS 端口，文档库中的外部访问示例也统一使用这一端口。`6042` 可用于 HTTP 访问和排障，但生产环境更建议使用 `6034` 对外提供安全入口。
 
-### 15.2.9.4 为什么连接成功后看不到全部 Tool、Resource 或 Prompt 功能？
+### 15.2.10.4 为什么连接成功后看不到全部 Tool、Resource 或 Prompt 功能？
 
 不同 Agent 对 Tool、Resource 和 Prompt 的展示方式不完全一致。有些 Agent 会隐藏暂未使用的功能，有些只显示自己支持的部分，因此“能连上”并不意味着界面一定会完整列出所有功能。
 
-### 15.2.9.5 为什么某些 Resource 或 Prompt 功能没有生效？
+### 15.2.10.5 为什么某些 Resource 或 Prompt 功能没有生效？
 
 是否读取 Resource、是否调用 Prompt，取决于 Agent 自身的实现策略。有些 Agent 只主动调用基础 Tool，不一定会自动消费所有 Resource 或 Prompt 功能。
 
-### 15.2.9.6 为什么写入类操作失败？
+### 15.2.10.6 为什么写入类操作失败？
 
 MCP 写入能力遵循 IDMP 当前登录用户的权限边界。如果令牌对应的用户没有目标元素、分析任务、面板或通知规则的权限，相关写入请求会失败。请优先检查角色授权和元素访问范围。
 
-### 15.2.9.7 为什么连接成功但查询不到元素数据？
+### 15.2.10.7 为什么连接成功但查询不到元素数据？
 
 请依次检查元素路径是否正确、当前用户是否具备访问权限、查询时间范围是否覆盖实际数据，以及目标环境中是否已经写入对应属性或事件数据。对于历史趋势类查询，建议显式指定时间范围，而不要完全依赖 Agent 自动推断。
