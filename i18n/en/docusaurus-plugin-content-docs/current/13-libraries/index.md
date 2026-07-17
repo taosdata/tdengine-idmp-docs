@@ -20,6 +20,7 @@ The Libraries menu contains the following sections:
 | **UOM** | Manage units of measurement and automatic conversion |
 | **Composite Metric** | Define virtual metrics computed from other attributes (see [Chapter 7](../07-real-time-analysis/index.md)) |
 | **Action Template** | Define reusable automated actions that analyses invoke when a trigger condition is met |
+| **Agentic AI** | Manage Skills and MCP templates available to AI Agents |
 
 This chapter covers Enumeration Sets, Categories, UOM, and Action Templates.
 
