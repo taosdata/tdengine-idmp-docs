@@ -84,4 +84,3 @@ sidebar_label: 个人设置与 API Key
 ## 14.8.4 Passkey
 
 **Passkey** 页签用于注册和管理用于二次认证（MFA）的 Passkey。Passkey 是基于 WebAuthn 的无密码凭据，私钥保存在你的设备钥匙串中，验证时通过指纹、面容或设备 PIN 确认本人。完整的二次认证流程、Passkey 注册与删除、以及管理员侧的 MFA 豁免配置，详见[第 14.10 节 二次认证（MFA）](10-mfa.md)。
-
