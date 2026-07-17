@@ -5,7 +5,7 @@ sidebar_label: Agentic AI
 
 # 13.5 Agentic AI
 
-**Agentic AI** 是 IDMP 中管理 AI Agent 可复用能力的中央入口，涵盖 **Skills（技能）** 和 **MCP 模板** 两大类资源。管理员在此处定义和维护组织级别的 AI 能力，用户则在[个人设置](../../versioned_docs/version-1.0.20/14-administration/08-profile-settings.md)中基于这些模板配置自己的 MCP 连接。
+**Agentic AI** 是 IDMP 中管理 AI Agent 可复用能力的中央入口，涵盖 **Skills（技能）** 和 **MCP 模板** 两大类资源。管理员在此处定义和维护组织级别的 AI 能力，用户则在[个人设置](../14-administration/08-profile-settings.md)中基于这些模板配置自己的 MCP 连接。
 
 Agentic AI 在**基础库 → Agentic AI** 中管理，包含以下子页面：
 
@@ -35,7 +35,7 @@ Skills 页面用于上传和管理 AI Agent 可使用的技能文件。技能定
 
 ## 13.5.2 MCP 模板
 
-MCP 模板定义了 MCP 服务器的连接规范，包括连接类型、地址、请求头和用户可配置的变量。管理员创建模板后，用户在[个人设置的 Agent 标签页](../../versioned_docs/version-1.0.20/14-administration/08-profile-settings.md#1485-agent)中基于模板填写变量值，即可完成个人 MCP 连接的配置。
+MCP 模板定义了 MCP 服务器的连接规范，包括连接类型、地址、请求头和用户可配置的变量。管理员创建模板后，用户在[个人设置的 Agent 标签页](../14-administration/08-profile-settings.md#1485-agent)中基于模板填写变量值，即可完成个人 MCP 连接的配置。
 
 ### 13.5.2.1 MCP 模板列表
 
@@ -94,4 +94,4 @@ MCP 模板定义了 MCP 服务器的连接规范，包括连接类型、地址�
 
 ### 13.5.2.5 使用 MCP 模板
 
-MCP 模板由管理员统一维护。用户登录后在**个人设置 → Agent** 标签页中，可看到所有已启用的模板，并根据自身需要填写变量值来完成 MCP 连接的配置。具体操作参见[第 14.8.5 节 Agent 标签页](../../versioned_docs/version-1.0.20/14-administration/08-profile-settings.md#1485-agent)。
+MCP 模板由管理员统一维护。用户登录后在**个人设置 → Agent** 标签页中，可看到所有已启用的模板，并根据自身需要填写变量值来完成 MCP 连接的配置。具体操作参见[第 14.8.5 节 Agent 标签页](../14-administration/08-profile-settings.md#1485-agent)。

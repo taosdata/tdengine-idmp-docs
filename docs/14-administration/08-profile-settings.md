@@ -88,7 +88,7 @@ sidebar_label: 个人设置与 API Key
 
 ## 14.8.5 Agent
 
-**Agent** 标签页用于基于 MCP 模板配置个人 MCP 服务器连接。管理员在[基础库 → Agentic AI → MCP 模板](../../../docs/13-libraries/05-agentic-ai.md#1352-mcp-模板)中定义模板后，用户在此处为每个模板填写变量值，完成个人 MCP 连接的配置。
+**Agent** 标签页用于基于 MCP 模板配置个人 MCP 服务器连接。管理员在[基础库 → Agentic AI → MCP 模板](../13-libraries/05-agentic-ai.md#1352-mcp-模板)中定义模板后，用户在此处为每个模板填写变量值，完成个人 MCP 连接的配置。
 
 ### 14.8.5.1 模板列表
 
