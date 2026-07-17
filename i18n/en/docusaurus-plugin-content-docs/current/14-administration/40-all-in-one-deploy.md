@@ -1,15 +1,15 @@
 ---
-title: TDengine All-in-One Installation and Deployment
-sidebar_label: TDengine All-in-One Installation and Deployment
+title: TDengine Historian Installation and Deployment
+sidebar_label: TDengine Historian Installation and Deployment
 ---
 
-# 14.13 TDengine All-in-One Installation and Deployment
+# 14.13 TDengine Historian Installation and Deployment
 
-TDengine All-in-One is an AI industrial data platform for a wide range of business scenarios. It integrates multiple functional components, including IDMP, TSDB, TDgpt, and TDmodel.
-TDengine All-in-One uses scripts as the entry point for installation and deployment. Linux, Windows, and Docker deployments all use a unified deployment method. Key features include:
+TDengine Historian is an AI industrial data platform for a wide range of business scenarios. It integrates multiple functional components, including IDMP, TSDB, TDgpt, and TDmodel.
+TDengine Historian uses scripts as the entry point for installation and deployment. Linux, Windows, and Docker deployments all use a unified deployment method. Key features include:
 
 - Support for multiple scenarios:
-  - TSDB + IDMP + TDgpt + TDmodel: the typical All-in-One scenario
+  - TSDB + IDMP + TDgpt + TDmodel: the typical Historian scenario
   - IDMP: deploy IDMP when TSDB has already been deployed
   - TSDB: deploy TSDB only
 - Support for configuring deployment topology, component versions, dependencies, installation packages, and resource packages through deployment YAML and component YAML files
@@ -38,13 +38,13 @@ For Docker, the minimum runtime requirement is Docker Engine 20.10 or later.
 
 1. The user runs the installation command to download and execute the installation script from the internet.
 2. The user is prompted to configure SSH passwordless login automatically or manually.
-3. The user is prompted to select a deployment mode: All-in-One, IDMP, or TSDB.
+3. The user is prompted to select a deployment mode: Historian, IDMP, or TSDB.
 4. The deployment script runs and completes automated installation and deployment:
     1. Download installation packages, dependency packages, and resource packages.
     2. Upload them to the target deployment nodes and complete deployment.
     3. Start the services.
 
-By default, one-click deployment deploys all All-in-One components on the local machine.
+By default, one-click deployment deploys all Historian components on the local machine.
 
 If you need a customized deployment, after downloading the apex deployment tool, exit the deployment process, create a customized deployment script based on `~/.apex/manifests/deployment-xxx.yaml`, and run `apex deploy -f <custom-yaml>` to complete the deployment.
 
@@ -56,7 +56,7 @@ The default deployment provides three options. The corresponding YAML files are:
 
 ## 14.13.3 Install SSH Server
 
-Each node where TDengine All-in-One will be deployed must have SSH Server installed. By default, this is the local machine.
+Each node where TDengine Historian will be deployed must have SSH Server installed. By default, this is the local machine.
 
 Install OpenSSH Server on Linux:
 
@@ -85,7 +85,7 @@ Set-Service -Name sshd -StartupType 'Automatic'
 
 ## 14.13.4 Configure SSH Passwordless Login
 
-During TDengine All-in-One installation, SSH passwordless login must be configured for each node. This is required even when deploying to the local machine.
+During TDengine Historian installation, SSH passwordless login must be configured for each node. This is required even when deploying to the local machine.
 
 ```SQL
 # Generate an ed25519 key pair
@@ -110,7 +110,7 @@ PermitEmptyPasswords no
 #     AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys
 ```
 
-## 14.13.5 Run the All-in-One Deployment Command
+## 14.13.5 Run the Historian Deployment Command
 
 Linux and Windows support both host and Docker installation modes. macOS supports only Docker installation. On Linux and macOS, open a terminal and run the command there. On Windows, open a PowerShell terminal as administrator and run the command there. On Linux, the installation and deployment must be run as root. On Windows, they must be run as administrator. Currently, Linux host deployment supports only Ubuntu. Support for domestic operating systems and mainstream distributions will be added later.
 
@@ -191,7 +191,7 @@ sc restart docker
 After making the changes, click Apply & Restart at the bottom to restart.
 ```
 
-## 14.13.7 TDengine All-in-One Component Start, Stop, and Uninstall Commands
+## 14.13.7 TDengine Historian Component Start, Stop, and Uninstall Commands
 
 **Linux host deployment mode**
 
