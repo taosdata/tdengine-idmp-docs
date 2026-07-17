@@ -201,13 +201,3 @@ After making the changes, click Apply & Restart at the bottom to restart.
 |**IDMP**|`svc-tdengine-idmp start`|`svc-tdengine-idmp stop`|`rmidmp`|
 |**TDgpt**|`systemctl start taosanoded`|`systemctl stop taosanoded`|`rmtaosanode`|
 |**TDmodel**|`systemctl start tdmodeld`|`systemctl stop tdmodeld`|`rmtdmodel`|
-
-**Docker deployment mode**
-
-```JSON
-# Linux & macOS
-cd ~/.apex/docker && idmp.sh stop
-
-# Windows
-
-```

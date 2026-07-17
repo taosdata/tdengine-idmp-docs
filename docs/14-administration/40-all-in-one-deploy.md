@@ -1,6 +1,6 @@
 ---
-title: TDengine All-in-One 安装部署
-sidebar_label: TDengine All-in-One 安装部署
+title: TDengine All-in-One 一键部署
+sidebar_label: TDengine All-in-One 一键部署
 ---
 
 # 14.13 TDengine All-in-One 安装部署
@@ -198,13 +198,3 @@ sc restart docker
 |**IDMP**|`svc-tdengine-idmp start`|`svc-tdengine-idmp stop`|`rmidmp`|
 |**TDgpt**|`systemctl start taosanoded`|`systemctl stop taosanoded`|`rmtaosanode`|
 |**TDmodel**|`systemctl start tdmodeld`|`systemctl stop tdmodeld`|`rmtdmodel`|
-
-**Docker部署方式**
-
-```JSON
-# Linux & macOS
-cd ~/.apex/docker && idmp.sh stop
-
-# Windows
-
-```
