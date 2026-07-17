@@ -31,8 +31,8 @@ To add or edit an AI connection:
 | **Q&A Model** | The model used for standard natural language queries and panel/analysis generation (e.g., `gpt-4o`) |
 | **Deep Thinking Model** | The model used for complex analytical tasks that require extended reasoning, such as root cause analysis (e.g., `o1` or `o3`) |
 
-4. Click **Test Connection** to verify the endpoint and credentials.
-5. Click **Save**.
+1. Click **Test Connection** to verify the endpoint and credentials.
+2. Click **Save**.
 
 ## 8.1.3 Two Model Configuration
 
