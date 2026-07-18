@@ -12,7 +12,7 @@ The module is positioned as a **fast, simple, low-barrier machine-learning toolk
 The biggest advantage of this module is its deep integration with the TDengine ecosystem: **a model trained in IDMP can be published to TDgpt with one click and called as a SQL function directly inside TDengine TSDB**. Visualization panels, dashboards, real-time analyses, and event / process analyses no longer need any extra ML-inference service — a single line of SQL is enough to score the model.
 
 :::note Continuously evolving
-The current version supports **forecasting** and **anomaly detection**. The remaining three modeling scenarios — **clustering, classification, and regression** — are under development and will be released in subsequent versions.
+This module is currently in public beta. The current version already supports **forecasting**, **anomaly detection**, and **regression** modeling scenarios. **Clustering** and **classification** are under development and will be released in subsequent versions.
 :::
 
 ## 9.10.1 How the Module Works
@@ -52,18 +52,23 @@ The module covers five typical modeling scenarios for industrial use, each backe
 
 | Modeling Scenario    | Description                                                                | Representative Algorithms                                       |
 | -------------------- | -------------------------------------------------------------------------- | --------------------------------------------------------------- |
-| **Forecasting**      | Predict future values from historical time-series data                     | ARIMA, Holt-Winters, Prophet, LSTM, TDtsfm, etc.                |
-| **Anomaly Detection** | Find anomalous values / anomalous curves / anomalous elements via unsupervised learning | Shesd, LOF, IQR, KSigma, Grubbs, etc.                          |
-| **Clustering**       | Unsupervised partitioning of samples into clusters                          | KNN, K-Means, DBSCAN, GMM, etc.                                 |
-| **Classification**   | Sample classification based on tree-family algorithms                       | Random Forest, XGBoost, GBDT, LightGBM, etc.                    |
-| **Regression**       | Fit a dependent variable / output estimate from multiple independent variables | Linear regression, logistic regression, GLM, etc.               |
+| **Forecasting**      | Predict future values from historical time-series data                     | ARIMA, Prophet, etc.                |
+| **Anomaly Detection** | Find anomalous values / anomalous curves / anomalous elements via unsupervised learning | iforest-window, iforest-point, Support Vector Machine, etc.                          |
+| **Clustering**       | Unsupervised partitioning of samples into clusters                          | Coming soon                                 |
+| **Classification**   | Sample classification based on tree-family algorithms                       | Coming soon                    |
+| **Regression**       | Fit a dependent variable / output estimate from multiple independent variables | Linear Regression, Ridge, Lasso, ElasticNet, etc.               |
+
+:::note
+We are continuously adding more algorithms and analytical scenarios — stay tuned.
+:::
 
 ## 9.10.4 Entry Point
 
-Use this module from the **Admin Console → Model** menu. It contains two sub-items:
+Use this module from the **Admin Console → Model** menu. It contains three sub-items:
 
 - **Model Development**: lists the models in the Training Store and provides configuration and training capabilities for machine-learning models.
 - **Model Management**: lists the models in the Model Inventory and provides deployment and monitoring capabilities for machine-learning models.
+- **Model Dataset**: lists model-related datasets and provides dataset creation, variable selection, and data processing capabilities.
 
 ![Model home page](./images/model-01.png)
 
@@ -74,6 +79,10 @@ The Model Development page lists the training-store models with their name, desc
 The Model Management page lists every model registered to the inventory, including its name, description, category, status, version, algorithm, and last-update time, and supports **view, search, edit, export, delete, deploy, retire, and send back** for any registered model.
 
 ![Model management page](./images/model-03.png)
+
+The Model Dataset page lists model-related datasets with their name, status, sampling interval, time-series count, row count, size, and creation time, and supports **view, create, edit, export, delete, variable selection, downsampling, interpolation**, and other data operations.
+
+![Model dataset page](./images/model-10.png)
 
 ### Workflow
 
