@@ -8,6 +8,10 @@ import assembleConfig from './assemble_config.json';
 
 const docsBaseUrl = (process.env.DOCS_BASE_URL || '/').replace(/\/+$/, '/');
 
+// 产品打包（idmp frontend/scripts/build-docs.sh）只需要当前版本文档；
+// 官方文档站独立构建（just build / pnpm build）不设该变量，仍全量构建归档版本。
+const onlyCurrentVersion = process.env.DOCS_ONLY_CURRENT === 'true';
+
 const getTitle = () => {
   const locale = process.env.DOCUSAURUS_CURRENT_LOCALE || 'zh-Hans';
   if (locale === 'en') {
@@ -143,7 +147,8 @@ const config = {
           sidebarItemsGenerator: customSidebarItemsGenerator,
           versions: buildDocsVersions(versions),
           includeCurrentVersion: true,
-          lastVersion: 'current'
+          lastVersion: 'current',
+          ...(onlyCurrentVersion ? { onlyIncludeVersions: ['current'] } : {})
         },
         googleTagManager: {
           containerId: getGTMID()
@@ -229,6 +234,7 @@ const config = {
   customFields: {
     assembleConfig,
     versions,
+    onlyCurrentVersion,
     ltsVersion: assembleConfig.assembleVersions.lts.version,
     latestVersion: assembleConfig.assembleVersions.latest.version
   }
