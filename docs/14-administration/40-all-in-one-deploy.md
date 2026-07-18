@@ -25,6 +25,7 @@ Linux 系统，运行环境最低要求如下：
 1. Linux 内核版本：3.10.0-1160 以上
 2. glibc 版本：2.28 及以上
 3. OpenSSH Server
+4. 如部署 TDgpt 并启用 moirai 模型，CPU 需支持 AVX 指令集；Docker 部署时需确保宿主机向容器暴露 AVX。
 
 Windows 系统，运行环境最低要求如下：
 
