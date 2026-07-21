@@ -89,18 +89,18 @@ Check the main request log before inspecting the email sending implementation.
 
 Main log file:
 
-- `/var/log/taos/idmp/logs/idmp.log`
+- `/var/log/taos/idmp/logs/tda.log`
 
 Search for the request:
 
 ```bash
-grep -nE 'Request: POST.*/api/v1/users/' idmp.log
+grep -nE 'Request: POST.*/api/v1/users/' tda.log
 ```
 
 Filter for the relevant email endpoints:
 
 ```bash
-grep -nE 'Request: POST.*/users/send/register-code|Request: POST.*/users/send/verifycode|Request: POST.*/users/password-reset-email' idmp.log
+grep -nE 'Request: POST.*/users/send/register-code|Request: POST.*/users/send/verifycode|Request: POST.*/users/password-reset-email' tda.log
 ```
 
 Expected results:
@@ -108,7 +108,7 @@ Expected results:
 - A `Request: POST ...` entry is present.
 - A matching `Response: POST ... 200 duration ...ms` entry follows.
 
-If no request log exists, the request likely never entered the backend. Focus on the gateway, ingress, reverse proxy, frontend endpoint configuration, and archived logs such as `idmp.log.yyyy-MM-dd.gz`.
+If no request log exists, the request likely never entered the backend. Focus on the gateway, ingress, reverse proxy, frontend endpoint configuration, and archived logs such as `tda.log.yyyy-MM-dd.gz`.
 
 ### 18.2.3.3 Inspect the Send Flow Logs
 
@@ -133,19 +133,19 @@ Common failure logs:
 Recommended commands:
 
 ```bash
-grep -nE 'send email to|send message success|send msg success detailId' idmp.log
+grep -nE 'send email to|send message success|send msg success detailId' tda.log
 ```
 
 ```bash
-grep -nEi 'failed|exception|error' idmp-error.log | grep -i mail
+grep -nEi 'failed|exception|error' tda-error.log | grep -i mail
 ```
 
 ```bash
-grep -nE 'Authentication failed|Invalid credentials' idmp.log
+grep -nE 'Authentication failed|Invalid credentials' tda.log
 ```
 
 ```bash
-grep -nE 'connection failed|timeout|refused' idmp.log
+grep -nE 'connection failed|timeout|refused' tda.log
 ```
 
 Interpret the results as follows:

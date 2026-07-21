@@ -93,18 +93,18 @@ curl -X POST 'http://idmp.example.com:6042/api/v1/users/send/verifycode' \
 
 主日志文件如下：
 
-- `/var/log/taos/idmp/logs/idmp.log`
+- `/var/log/taos/idmp/logs/tda.log`
 
 可先检查接口触发日志：
 
 ```bash
-grep -nE 'Request: POST.*/api/v1/users/' idmp.log
+grep -nE 'Request: POST.*/api/v1/users/' tda.log
 ```
 
 针对具体接口过滤：
 
 ```bash
-grep -nE 'Request: POST.*/users/send/register-code|Request: POST.*/users/send/verifycode|Request: POST.*/users/password-reset-email' idmp.log
+grep -nE 'Request: POST.*/users/send/register-code|Request: POST.*/users/send/verifycode|Request: POST.*/users/password-reset-email' tda.log
 ```
 
 预期现象如下：
@@ -112,7 +112,7 @@ grep -nE 'Request: POST.*/users/send/register-code|Request: POST.*/users/send/ve
 - 能看到 `Request: POST ...` 日志。
 - 同一请求后还能看到对应的 `Response: POST ... 200 duration ...ms` 日志。
 
-如果完全没有请求日志，通常说明请求尚未进入后端。此时应重点排查网关、Ingress、反向代理、前端调用路径和环境地址配置。如果请求发生在日志切分前，还需补查历史归档日志 `idmp.log.yyyy-MM-dd.gz`。
+如果完全没有请求日志，通常说明请求尚未进入后端。此时应重点排查网关、Ingress、反向代理、前端调用路径和环境地址配置。如果请求发生在日志切分前，还需补查历史归档日志 `tda.log.yyyy-MM-dd.gz`。
 
 ### 18.2.3.3 检查消息发送链路日志
 
@@ -137,19 +137,19 @@ grep -nE 'Request: POST.*/users/send/register-code|Request: POST.*/users/send/ve
 推荐命令如下：
 
 ```bash
-grep -nE 'send email to|send message success|send msg success detailId' idmp.log
+grep -nE 'send email to|send message success|send msg success detailId' tda.log
 ```
 
 ```bash
-grep -nEi 'failed|exception|error' idmp-error.log | grep -i mail
+grep -nEi 'failed|exception|error' tda-error.log | grep -i mail
 ```
 
 ```bash
-grep -nE 'Authentication failed|Invalid credentials' idmp.log
+grep -nE 'Authentication failed|Invalid credentials' tda.log
 ```
 
 ```bash
-grep -nE 'connection failed|timeout|refused' idmp.log
+grep -nE 'connection failed|timeout|refused' tda.log
 ```
 
 建议按以下原则判断：

@@ -42,8 +42,8 @@ sidebar_label: 常见问题排查
 
 | 组件 | 日志文件路径 |
 | --- | --- |
-| TDengine IDMP 日志 | `/var/log/taos/idmp.log` |
-| TDengine IDMP 错误日志 | `/var/log/taos/idmp-error.log` |
+| TDengine IDMP 日志 | `/var/log/taos/tda.log` |
+| TDengine IDMP 错误日志 | `/var/log/taos/tda-error.log` |
 | TDengine IDMP AI 日志 | `/var/log/taos/idmp-ai.log` |
 | TDengine IDMP AI 错误日志 | `/var/log/taos/idmp-ai-error.log` |
 | TDengine TSDB-Enterprise 日志 | `/var/log/taos/taosdlog.*` |
@@ -54,8 +54,8 @@ sidebar_label: 常见问题排查
 
 ```bash
 docker cp tdengine-tsdb:/var/log/taos/taosdlog.* ./
-docker cp tdengine-idmp:/var/log/taos/idmp.log ./
-docker cp tdengine-idmp:/var/log/taos/idmp-error.log ./
+docker cp tdengine-idmp:/var/log/taos/tda.log ./
+docker cp tdengine-idmp:/var/log/taos/tda-error.log ./
 docker cp tdengine-idmp:/var/log/taos/idmp-ai.log ./
 docker cp tdengine-idmp:/var/log/taos/idmp-ai-error.log ./
 ```
