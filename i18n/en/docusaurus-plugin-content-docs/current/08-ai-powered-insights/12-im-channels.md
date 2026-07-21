@@ -27,6 +27,8 @@ IDMP currently supports three message channels:
 
 Go to **Admin Console → AI Management → Channel Management** to manage message channel Bot configurations.
 
+![Channel Configuration](./images/im-config-1.png)
+
 ### Channel List
 
 The channel list displays all three channels in a table, each showing the channel name, enable toggle, running status, and a "Details" action:
@@ -124,6 +126,9 @@ Status descriptions:
 4. Confirm login on your phone.
 5. The system automatically polls the QR code status and completes binding upon confirmation.
 6. After successful binding, the popup closes automatically and the status updates to "Bound."
+7. In WeChat on your phone, tap the newly added WeChat Clawbot to customize settings such as nickname, pin to top, or change profile picture.
+
+![Channel Configuration](./images/im-config-2.png)
 
 ### Unbinding
 
