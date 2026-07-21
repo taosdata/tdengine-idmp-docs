@@ -43,8 +43,8 @@ For a locally installed deployment, log files are located at the following paths
 
 | Component | Log File Path |
 | --- | --- |
-| TDengine IDMP | `/var/log/taos/tda.log` |
-| TDengine IDMP error log | `/var/log/taos/tda-error.log` |
+| TDengine IDMP | `/var/log/taos/idmp.log` |
+| TDengine IDMP error log | `/var/log/taos/idmp-error.log` |
 | TDengine IDMP AI | `/var/log/taos/idmp-ai.log` |
 | TDengine IDMP AI error log | `/var/log/taos/idmp-ai-error.log` |
 | TDengine TSDB-Enterprise | `/var/log/taos/taosdlog.*` |
@@ -55,8 +55,8 @@ For a Docker-based deployment, copy the log files out of the containers using th
 
 ```bash
 docker cp tdengine-tsdb:/var/log/taos/taosdlog.* ./
-docker cp tdengine-idmp:/var/log/taos/tda.log ./
-docker cp tdengine-idmp:/var/log/taos/tda-error.log ./
+docker cp tdengine-idmp:/var/log/taos/idmp.log ./
+docker cp tdengine-idmp:/var/log/taos/idmp-error.log ./
 docker cp tdengine-idmp:/var/log/taos/idmp-ai.log ./
 docker cp tdengine-idmp:/var/log/taos/idmp-ai-error.log ./
 ```

@@ -30,7 +30,7 @@ quarkus:
     file:
       rotation:
         max-file-size: 300M  # Log rotation file size
-        max-backup-index: "15" # Number of log backup files
+        max-backup-index: "3" # Number of log backup files
 ```
 
 #### HTTPS Configuration Instructions

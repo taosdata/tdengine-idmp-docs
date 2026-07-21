@@ -178,7 +178,7 @@ TDengine IDMP requires TDengine TSDB-Enterprise 3.3.7.0 or later. If your enviro
         file:
           rotation:
             max-file-size: 300M  # max file size for log rotation
-            max-backup-index: "15" # max backup index for log rotation
+            max-backup-index: "3" # max backup index for log rotation
       profile: prod
     tda:
       data-dir: /var/lib/taos/idmp  # data directory

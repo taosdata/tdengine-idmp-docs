@@ -181,7 +181,7 @@ quarkus:
     file:
       rotation:
         max-file-size: 300M  # max file size for log rotation
-        max-backup-index: "15" # max backup index for log rotation
+        max-backup-index: "3" # max backup index for log rotation
   profile: prod
 tda:
   data-dir: /var/lib/taos/idmp  # data directory

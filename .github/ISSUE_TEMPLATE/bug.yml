@@ -28,9 +28,10 @@ body:
         - When installed natively, logs can be found `/usr/local/taos/idmp/logs`
         - When started with Docker, logs can be copied from container with following command:
           ```bash
-          docker cp tdengine-idmp:/app/logs/tda.log ./tda.log
-          docker cp tdengine-idmp:/app/logs/tda-error.log ./tda-error.log
+          docker cp tdengine-idmp:/app/logs/idmp.log ./idmp.log
+          docker cp tdengine-idmp:/app/logs/idmp-error.log ./idmp-error.log
           ```
+          (older versions name the files `tda.log` / `tda-error.log`)
 
   - type: textarea
     attributes:

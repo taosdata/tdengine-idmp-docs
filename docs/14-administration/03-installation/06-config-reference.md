@@ -30,7 +30,7 @@ quarkus:
     file:
       rotation:
         max-file-size: 300M  # 日志轮转文件大小
-        max-backup-index: "15" # 日志备份文件数量
+        max-backup-index: "3" # 日志备份文件数量
 ```
 
 #### HTTPS 配置说明
