@@ -31,5 +31,6 @@ Together these integration points mean that IDMP data can flow freely into AI mo
 | **MCP Interface** | LLM agent integration via the Model Context Protocol with tools, resources, and prompts. MCP connections are managed through MCP templates — administrators define templates in Libraries, and users configure connections in Profile Settings. |
 | **Embedding Panels and Dashboards** | Embed IDMP visualizations in external web applications |
 | **IDMP CLI** | Command-line tool for terminals, scripts, and agents with config, auth, command discovery, and safe execution |
+| **Connecting to Community TSDB** | Connect IDMP to an existing local TDengine TSDB instance (including Community Edition), with configuration steps and known limitations |
 
 <DocCardList />
