@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "cut-doc-version": "node ./scripts/cut-doc-version.mjs",
     "docusaurus": "docusaurus",
     "start": "docusaurus start --poll",
     "build": "docusaurus build --locale=zh-Hans && docusaurus build --locale=en --out-dir=build-en",
