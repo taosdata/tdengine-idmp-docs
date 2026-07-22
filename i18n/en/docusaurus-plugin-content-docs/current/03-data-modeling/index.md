@@ -4,7 +4,7 @@ sidebar_label: Industrial Data Modeling
 ---
 import DocCardList from '@theme/DocCardList';
 
-# 3 Industrial Data Modeling
+# 3. Industrial Data Modeling
 
 The foundation of industrial intelligence is not algorithms — it is the data model. In any real factory, **enterprise → plant → production line → equipment → sensor** forms a layered organizational structure, with business meaning at every level. TDengine IDMP brings this structure into the digital world through **industrial data modeling** — building an ordered, searchable knowledge catalog over your assets and their data, so that what used to be isolated data silos becomes a coherent, living whole.
 
@@ -14,7 +14,27 @@ Model once, benefit everywhere. A well-built data model not only powers accurate
 
 ## What is Industrial Data Modeling
 
-Industrial data modeling sits between the **data storage layer** and the **data application layer**, providing a unified **industrial ontology layer**. This layer stores no raw data of its own; it sits on top of the raw data and builds a **semantic network** that AI, applications, and humans can all understand, access, and use. It consists of three parts: a unified data portal for AI / applications / humans, a data map and catalog, and a data relationship network.
+Industrial data modeling sits between the **data storage layer** and the **data application layer**, providing a unified **industrial ontology layer**. This layer stores no raw data of its own; it sits on top of the raw data and builds a **semantic network** that AI, applications, and humans can all understand, access, and use.
+
+The industrial ontology built by TDengine comprises a multi-layer information architecture.
+
+At the base is the **data source and storage layer** — the ontology itself does not store raw data. In industrial scenarios, SCADA, DCS, OPC, and other industrial systems continuously generate raw monitoring signals. TDengine uses its high-performance TSDB time-series engine to collect and store this massive data.
+
+Above that is the core — the **data model layer**. TDengine defines the information structure of digital objects in the industrial world across four dimensions:
+
+- **Industrial objects** — the entities that need to be managed and accessed in industrial scenarios, including elements, attributes, real-time analyses, events, metrics, panels, analytical models, and business rules. In TDengine's industrial ontology, every physical or logical asset in the industrial environment — a factory, a production line, a piece of equipment, or a sensor — is represented as an element. Elements are the fundamental building blocks of the ontology. Elements contain attributes. Attribute changes trigger real-time analyses that generate events. Elements have statistical metrics, visualization panels, associated business rules, and analytical models.
+
+- **Object relationships** — the reference connections between industrial objects. Elements connect to other elements through strong references, weak references, composition references, and other relationship types. Attributes are attached to elements or events. Attributes reference and are calculated from other attributes, with limit-value associations. Analyses and events connect to elements and attributes through "references," and are chained together through "triggers" and "generations" into monitoring-to-alerting pipelines. Templates and instances are linked through "derivation," enabling "define once, take effect everywhere." Beyond references, elements also carry production process relationships, control redundancy relationships, and influence propagation relationships — such as upstream/downstream relationships in production flows and interlock relationships.
+
+- **Decisions and actions** — the actions and tasks that elements and events can trigger, such as notification reminders, internal operations, and external commands. TDengine converges all execution capabilities that can "change the real-world state" into a globally unified action template management system.
+
+- **Access control and permissions** — the permission management of resources within the industrial ontology. Different users and agents have different levels of access and management permissions for different resources. For specific sensitive operations, well-defined process loop definitions exist, such as Human in the Loop.
+
+Above the data model layer is the **information organization** layer. TDengine uses the **Tree model** to construct the asset hierarchy skeleton and the **Graph model** to complement cross-level horizontal relationships. Only when the Tree model and the Graph model overlay each other does a complete industrial ontology emerge.
+
+The **data service layer** transforms the information from the industrial ontology into three categories of externally consumable data services: **Data Catalog** hides the complexity of underlying data, making data discoverable, searchable, and governable; **Data Context** infuses every value with business semantics — units, ranges, ownership, operating conditions — making data understandable; **Data Standards** automatically perform multi-source data transformations, ensuring global consistency in data standards and statistical conventions.
+
+These data services of the industrial ontology are delivered to external consumers through the **information consumption layer** — humans access data through zero-code web interfaces and natural language Q&A, AI agents traverse the industrial ontology and invoke platform capabilities through MCP, and external systems and applications consume data through REST APIs, SDKs, and message queues. Three types of consumers, multiple channels, sharing a single semantic model.
 
 ### 1. A Data Portal for AI, Applications, and Humans
 
@@ -24,7 +44,7 @@ This idea aligns closely with the long-discussed **Data Fabric** vision: a metad
 
 - **Data → Asset**: Raw time-series points are given a name, unit, limits, target value, category, location, and ownership, becoming engineering quantities the business can understand. IDMP defines these contextualization fields uniformly in element templates and attribute templates, deriving them to every instance — "define once, take effect everywhere" (see [3.3 Data Contextualization](./03-data-contextualization.md));
 - **Dataset → Asset Library**: Scattered assets are gathered into a single governable, searchable, subscribable, authorizable asset catalog — an enterprise-grade data asset library. IDMP uses the **asset tree** as the unified entry point: drill down by path, filter by template / category / attribute, perform full-text search, and grant subtree-level permissions and sharing (see [3.7 Finding Elements and Data](./07-finding-elements.md));
-- **Data Consumption → Service**: Humans browse via Explorer, view panels, and ask AI questions; systems consume via REST API / JDBC / ODBC / Kafka / MQTT; AI Agents call directly via MCP — all three consumer types share the same semantic model. IDMP exposes a single element / attribute / analysis / event model through native REST/JDBC/ODBC interfaces, streaming Kafka/MQTT subscriptions, and the MCP protocol for AI Agents, so applications and AI never need to adapt to each data source individually (see [15. Integrating with Other Systems](../15-integrating-with-other-systems/index.md)).
+- **Data Consumption → Service**: Humans browse via Explorer, view panels, and ask AI questions; systems consume via REST API / JDBC / ODBC / Kafka / MQTT; AI Agents call directly via MCP — all three consumer types share the same semantic model. IDMP exposes a single element / attribute / analysis / event model through native REST/JDBC/ODBC interfaces, streaming Kafka/MQTT subscriptions, and the MCP protocol for AI Agents (see [15. Integrating with Other Systems](../15-integrating-with-other-systems/index.md)).
 
 This is what fundamentally distinguishes IDMP from traditional time-series databases and SCADA-style platforms: it manages not tables and columns, but **data assets and their semantic relationships**.
 
