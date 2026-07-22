@@ -40,6 +40,7 @@ TDengine 官网下载中心提供了 All-in-one 安装方式，可以一行命�
    cd tdengine-idmp-enterprise-{{VERSION}}
    sudo ./install.sh
    ```
+
 3. TDengine IDMP 的默认安装路径为 `/usr/local/taos/idmp`，安装成功后，可以看到终端展示 "TDengine IDMP has been installed successfully!"。
 
 :::tip
@@ -57,6 +58,7 @@ TDengine 官网下载中心提供了 All-in-one 安装方式，可以一行命�
    ```bash
    sudo dpkg -i tdengine-idmp-enterprise-{{VERSION}}-linux-x64.deb
    ```
+
 3. TDengine IDMP 的默认安装路径为 `/usr/local/taos/idmp`，安装成功后，可以看到终端展示 "TDengine IDMP has been installed successfully!"。
 
 :::tip
@@ -74,6 +76,7 @@ TDengine 官网下载中心提供了 All-in-one 安装方式，可以一行命�
    ```bash
    sudo rpm -ivh --nodeps tdengine-idmp-enterprise-{{VERSION}}-linux-x64.rpm
    ```
+   
 3. TDengine IDMP 的默认安装路径为 `/usr/local/taos/idmp`，安装成功后，可以看到终端展示 "TDengine IDMP has been installed successfully!"。
 
 :::tip
