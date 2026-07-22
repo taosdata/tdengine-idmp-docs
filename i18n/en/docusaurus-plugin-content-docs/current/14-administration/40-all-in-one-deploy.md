@@ -25,6 +25,7 @@ For Linux, the minimum runtime requirements are as follows:
 1. Linux kernel version 3.10.0-1160 or later
 2. glibc 2.28 or later
 3. OpenSSH Server
+4. If deploying TDgpt with the moirai model enabled, the CPU must support the AVX instruction set; for Docker deployments, ensure the host exposes AVX to the container.
 
 For Windows, the minimum runtime requirements are as follows:
 
@@ -35,6 +36,8 @@ For Windows, the minimum runtime requirements are as follows:
 For Docker, the minimum runtime requirement is Docker Engine 20.10 or later.
 
 ## 14.13.2 One-Click Deployment Process
+
+Visit the TDengine Download Center website to find the All-in-One installation guide and one-click deployment command.
 
 1. The user runs the installation command to download and execute the installation script from the internet.
 2. The user is prompted to configure SSH passwordless login automatically or manually.

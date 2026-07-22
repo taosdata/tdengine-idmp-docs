@@ -12,7 +12,7 @@ TDengine All-in-One 采用脚本作为安装部署入口，无论是 Linux、Win
   - TSDB + IDMP + TDgpt + TDmodel: All-in-One的典型场景
   - IDMP: 已部署TSDB，新增部署IDMP的场景
   - TSDB: 仅部署TSDB
-- 支持通过部署YAML、组件YAML 配置部署拓扑、组件版本、依赖关系、安装包和资源包
+- 支持通过部署 YAML、组件 YAML 配置部署拓扑、组件版本、依赖关系、安装包和资源包
 - 一个安装入口，同时支持在线和离线安装
 - 支持 Linux、Windows 和 Docker 交付形态
 - 支持单机部署，和集群、分布式部署
@@ -20,25 +20,27 @@ TDengine All-in-One 采用脚本作为安装部署入口，无论是 Linux、Win
 
 ## 14.13.1 环境要求
 
-Linux 系统，运行环境最低要求如下：
+对于 Linux 系统，运行环境最低要求如下：
 
 1. Linux 内核版本：3.10.0-1160 以上
 2. glibc 版本：2.28 及以上
 3. OpenSSH Server
 4. 如部署 TDgpt 并启用 moirai 模型，CPU 需支持 AVX 指令集；Docker 部署时需确保宿主机向容器暴露 AVX。
 
-Windows 系统，运行环境最低要求如下：
+对于 Windows 系统，运行环境最低要求如下：
 
 1. Windows 10 SP3 、Windows 11 以上
 2. Windows Server 2019 以上
 3. OpenSSH Server
 
-Docker 运行环境最低要求：Docker Engine 20.10 以上
+而 Docker 运行环境的最低要求是：Docker Engine 20.10 以上
 
 ## 14.13.2 一键部署流程
 
+访问涛思官网下载中心网站，可以看到 All-in-One 安装手册与一键部署命令。
+
 1. 用户执行安装命令，从互联网下载并执行安装脚本
-2. 提示用户自动配置ssh免密登录，或手动配置
+2. 提示用户自动配置 ssh 免密登录，或手动配置
 3. 提示用户选择部署方式：All\-in\-One、IDMP、TSDB
 4. 执行部署脚本，完成自动化安装部署
     1. 下载安装包、依赖包及资源包
@@ -47,9 +49,9 @@ Docker 运行环境最低要求：Docker Engine 20.10 以上
 
 一键部署默认在本机部署All-in-one的所有组件。
 
-如用户期望定制部署，可以在完成下载部署工具apex后，退出部署流程，参照 `~/.apex/manifests/deployment-xxx.yaml` 创建定制的部署脚本，执行 `apex deploy -f <定制yaml>` 完成部署。
+如用户期望定制部署，可以在完成下载部署工具 apex 后，退出部署流程，参照 `~/.apex/manifests/deployment-xxx.yaml` 创建定制的部署脚本，执行 `apex deploy -f <定制yaml>` 完成部署。
 
-默认部署有三个选项，对应的YAML文件为：
+默认部署有三个选项，对应的 YAML 文件为：
 
 1. deployment-single-node.yaml
 2. deployment-idmp-only.yaml
@@ -57,9 +59,9 @@ Docker 运行环境最低要求：Docker Engine 20.10 以上
 
 ## 14.13.3 安装SSH Server
 
-待部署TDengine All-in-One的节点必须安装SSH Server，默认为本机。
+待部署 TDengine All-in-One 的节点必须安装SSH Server，默认为本机。
 
-在Linux系统上安装OpenSSH Server
+在 Linux 系统上安装 OpenSSH Server，如下。
 
 ```SQL
 # Ubuntu
@@ -73,7 +75,7 @@ yum install openssh-server -y && firewall-cmd --permanent --add-service=ssh && f
  systemctl start sshd && systemctl enable sshd
 ```
 
-在Windows 10/11 或 Windows Server上安装OpenSSH Server，可以通过Powershell命令来完成
+在 Windows 10/11 或 Windows Server上安装 OpenSSH Server，可以通过 Powershell 命令来完成
 
 ```SQL
 下载并安装 OpenSSH Server
@@ -86,7 +88,7 @@ Set-Service -Name sshd -StartupType 'Automatic'
 
 ## 14.13.4 配置SSH免密登录
 
-TDengine All\-in\-One安装过程中需要各节点配置SSH免密登录，即便部署至本机也同样需要配置。
+TDengine All\-in\-One安装过程中需要各节点配置 SSH 免密登录，即便部署至本机也同样需要配置。
 
 ```SQL
 # 生成 ed25519 算法的密钥对
@@ -112,7 +114,7 @@ PermitEmptyPasswords no
 
 ## 14.13.5 执行 All\-in\-One 部署命令
 
-Linux和Windows操作系统，均支持主机、Docker两种安装方式；macOS操作系统，仅支持Docker安装方式。Linux与macOS需打开终端，在终端中执行命令；Windows需以管理员身份打开Powershell终端，在终端中执行命令。Linux 须以 root 身份执行安装部署，Windows 须以 管理员 身份执行。目前Linux主机部署方式仅支持 Ubuntu 发行版，后续将覆盖所有国产化操作系统、主流发行版本。
+Linux 和 Windows 操作系统，均支持主机、Docker 两种安装方式；macOS 操作系统，仅支持 Docker 安装方式。Linux 与 macOS 需打开终端，在终端中执行命令；Windows 需以管理员身份打开 Powershell 终端，在终端中执行命令。Linux 须以 root 身份执行安装部署，Windows 须以 管理员 身份执行。目前 Linux 主机部署方式仅支持 Ubuntu 发行版，后续将覆盖所有国产化操作系统、主流发行版本。
 
 ```SQL
 # Linux
@@ -128,7 +130,7 @@ curl -fsSL https://downloads.taosdata.com/apex/install.sh | bash -s -- -m docker
 & ([scriptblock]::Create((iwr https://downloads.taosdata.com/apex/install.ps1 -UseBasicParsing).Content)) -Mode docker
 ```
 
-上述命令将从互联网下载涛思部署工具apex，然后执行安装部署流程。在主机模式安装时遇异常退出\(如未安装OpenSSH Sever\)，希望重新启动部署，可执行以下命令
+上述命令将从互联网下载涛思部署工具 apex，然后执行安装部署流程。在主机模式安装时遇异常退出\(如未安装 OpenSSH Sever \)，希望重新启动部署，可执行以下命令
 
 ```SQL
 ~/.apex/deploy-scripts/linux/deploy.sh
@@ -136,7 +138,7 @@ curl -fsSL https://downloads.taosdata.com/apex/install.sh | bash -s -- -m docker
 
 ## 14.13.6 TDengine Docker 镜像下载加速
 
-如果采用Docker部署方式，用户大概率会遇到在国内下载速度缓慢的问题。目前国内用户下载 TDengine 的 Docker 镜像时，需要从 Docker Hub 拉取镜像。受限于网络环境，从 Docker Hub 下载带宽很窄导致拉取镜像体验不佳。为解决这个问题，涛思在阿里云容器镜像服务上托管了 TDengine Docker 镜像，大幅提升国内用户下载带宽，改善用户体验。
+如果采用 Docker 部署方式，用户大概率会遇到在国内下载速度缓慢的问题。目前国内用户下载 TDengine 的 Docker 镜像时，需要从 Docker Hub 拉取镜像。受限于网络环境，从 Docker Hub 下载带宽很窄导致拉取镜像体验不佳。为解决这个问题，涛思在阿里云容器镜像服务上托管了 TDengine Docker 镜像，大幅提升国内用户下载带宽，改善用户体验。
 
 ### 14.13.6.1 Linux 系统
 
@@ -149,7 +151,7 @@ curl -fsSL https://downloads.taosdata.com/apex/install.sh | bash -s -- -m docker
   ]
 }
 
-# 重新载入配置文件、重启Docker服务
+# 重新载入配置文件、重启 Docker 服务
 systemctl daemon-reload && systemctl restart docker
 ```
 
@@ -165,7 +167,7 @@ systemctl daemon-reload && systemctl restart docker
   ]
 }
 
-# 重启Docker服务
+# 重启 Docker 服务
 # Docker Desktop
 修改完成后，点击下方的 Apply & Restart 完成重启
 # Windows Server
@@ -177,7 +179,7 @@ sc restart docker
 ### 14.13.6.3 macOS系统
 
 ```JSON
-# 在Docker Desktop的设置中，找到 Docker Engine 选项卡，参照一下内容编辑JSON配置
+# 在 Docker Desktop 的设置中，找到 Docker Engine 选项卡，参照一下内容编辑 JSON 配置
 {
   "registry-mirrors": [
     "https://tdengine-registry.cn-beijing.cr.aliyuncs.com",
@@ -185,7 +187,7 @@ sc restart docker
   ]
 }
 
-# 重启Docker服务 Docker Desktop
+# 重启 Docker 服务 Docker Desktop
 修改完成后，点击下方的 Apply & Restart 完成重启
 ```
 
