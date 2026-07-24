@@ -5,10 +5,10 @@ sidebar_label: TDengine All-in-One 一键部署
 
 # 14.13 TDengine All-in-One 安装部署
 
-TDengine All-in-One 是面向各种业务场景的AI工业数据平台，它集成了 IDMP、TSDB、TDgpt和TDmodel等多个功能组件。
-TDengine All-in-One 采用脚本作为安装部署入口，无论是 Linux、Windows还是Docker，均采用统一的方式进行部署。主要特点有：
+TDengine All-in-One 是面向各种业务场景的AI工业数据平台，它集成了 IDMP、TSDB、TDgpt 和TDmodel等多个功能组件。
+TDengine All-in-One 采用脚本作为安装部署入口，无论是 Linux、Windows 还是 Docker，均采用统一的方式进行部署。主要特点有：
 
-- 支持 TSDB + IDMP + TDgpt + TDmodel: All-in-One的典型场景
+- 支持 TSDB + IDMP + TDgpt + TDmodel: All-in-One 的典型场景
 - 支持通过部署 YAML、组件 YAML 配置部署拓扑、组件版本、依赖关系、安装包和资源包
 - 一个安装入口，同时支持在线和离线安装
 - 支持 Linux、Windows 和 Docker 交付形态
@@ -22,7 +22,7 @@ TDengine All-in-One 采用脚本作为安装部署入口，无论是 Linux、Win
 1. Linux 内核版本：3.10.0-1160 以上
 2. glibc 版本：2.28 及以上
 3. 多节点主机方式部署时，需提前在各节点安装 OpenSSH Server
-4. 如部署 TDgpt 并启用 moirai 模型，CPU 需支持 AVX 指令集；Docker 部署时需确保宿主机向容器暴露 AVX。
+4. 如部署 TDgpt 并启用 moirai 模型，CPU 需支持 AVX2 指令集；Docker 部署时需确保宿主机向容器暴露 AVX2。
 
 对于 Windows 系统，运行环境最低要求如下：
 
@@ -77,8 +77,8 @@ iwr https://downloads.taosdata.com/apex/install.ps1 -UseBasicParsing -OutFile $e
 
 ## 14.13.4 TDengine Docker 镜像下载加速
 
-用户可以选择在安装过程中，不跳过registry自动配置，由安装部署脚本自动配置、重启Docker服务。
-如果用户希望手动配置 registry-mirrors，可参照下面的指引来完成。
+用户可以选择在安装过程中，不跳过 registry 自动配置，由安装部署脚本自动配置、重启Docker服务。
+如果用户希望手动配置 registry-mirrors ，可参照下面的指引来完成。
 背景：在国内采用 Docker 部署方式，用户大概率会遇到在国内下载速度缓慢的问题。目前国内用户下载 TDengine 的 Docker 镜像时，需要从 Docker Hub 拉取镜像。受限于网络环境，从 Docker Hub 下载带宽很窄导致拉取镜像体验不佳。为解决这个问题，涛思在阿里云容器镜像服务上托管了 TDengine Docker 镜像，大幅提升国内用户下载带宽，改善用户体验。
 
 ### 14.13.4.1 Linux 系统
@@ -134,7 +134,7 @@ sc restart docker
 
 ## 14.13.5 安装SSH Server
 
-当部署多节点时，所有待部署 TDengine All-in-One 的节点必须安装SSH Server。
+当部署多节点时，所有待部署 TDengine All-in-One 的节点必须安装 SSH Server。
 
 在 Linux 系统上安装 OpenSSH Server，如下。
 
@@ -169,13 +169,13 @@ Set-Service -Name sshd -StartupType 'Automatic'
 # 生成 ed25519 算法的密钥对
 ssh-keygen -t ed25519
 
-# Linux系统拷贝公钥至目标主机，请将 remote_host替换为主机IP地址
+# Linux系统拷贝公钥至目标主机，请将 remote_host 替换为主机 IP 地址
 ssh-copy-id root@<remote_host>
 
 # Windows系统 Powershell终端中拷贝公钥至目标主机
 Get-Content $env:USERPROFILE\.ssh\id_ed25519.pub | ssh administrator@127.0.0.1 "mkdir -p ~/.ssh && cat > ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
 
-#打开ssh配置文件，确保以下四行内容没有被注释，最后两行已被注释，保存退出
+#打开 ssh 配置文件，确保以下四行内容没有被注释，最后两行已被注释，保存退出
 #重启sshd服务以生效 Restart-Service sshd
 notepad C:\ProgramData\ssh\sshd_config
 
@@ -197,3 +197,25 @@ PermitEmptyPasswords no
 |**IDMP**|`svc-tdengine-idmp start`|`svc-tdengine-idmp stop`|`rmidmp`|
 |**TDgpt**|`systemctl start taosanoded`|`systemctl stop taosanoded`|`rmtaosanode`|
 |**TDmodel**|`systemctl start tdmodeld`|`systemctl stop tdmodeld`|`rmtdmodel`|
+
+**Windows 系统主机部署方式**
+
+**启停**
+打开 services.msc，找到对应的 TDengine 服务，点击鼠标右键可执行 启动 或 停止 服务。
+
+TDengine Windows 服务列表
+- taosd
+- taosadapter
+- taoskeeper
+- taos-explorer
+- taosx
+- TDengine Analytics Node
+- tdengine-idmp-h2
+- tdengine-idmp-ui
+- tdengine-idmp-backend
+- tdengine-idmp-chat
+- tdengine-idmp-cls
+
+
+**卸载**
+Windows 系统打开 设置 - 应用 - 安装的应用，逐一卸载 TDengine IDMP、TDengine TSDB、TDengine TDgpt 三个应用，即告完成卸载。
