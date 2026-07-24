@@ -204,6 +204,7 @@ PermitEmptyPasswords no
 打开 services.msc，找到对应的 TDengine 服务，点击鼠标右键可执行 启动 或 停止 服务。
 
 TDengine Windows 服务列表
+
 - taosd
 - taosadapter
 - taoskeeper
@@ -215,7 +216,6 @@ TDengine Windows 服务列表
 - tdengine-idmp-backend
 - tdengine-idmp-chat
 - tdengine-idmp-cls
-
 
 **卸载**
 Windows 系统打开 设置 - 应用 - 安装的应用，逐一卸载 TDengine IDMP、TDengine TSDB、TDengine TDgpt 三个应用，即告完成卸载。
