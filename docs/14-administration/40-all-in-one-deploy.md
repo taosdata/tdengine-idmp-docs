@@ -8,10 +8,7 @@ sidebar_label: TDengine All-in-One 一键部署
 TDengine All-in-One 是面向各种业务场景的AI工业数据平台，它集成了 IDMP、TSDB、TDgpt和TDmodel等多个功能组件。
 TDengine All-in-One 采用脚本作为安装部署入口，无论是 Linux、Windows还是Docker，均采用统一的方式进行部署。主要特点有：
 
-- 支持多种场景：
-  - TSDB + IDMP + TDgpt + TDmodel: All-in-One的典型场景
-  - IDMP: 已部署TSDB，新增部署IDMP的场景
-  - TSDB: 仅部署TSDB
+- 支持 TSDB + IDMP + TDgpt + TDmodel: All-in-One的典型场景
 - 支持通过部署 YAML、组件 YAML 配置部署拓扑、组件版本、依赖关系、安装包和资源包
 - 一个安装入口，同时支持在线和离线安装
 - 支持 Linux、Windows 和 Docker 交付形态
