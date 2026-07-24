@@ -110,6 +110,16 @@ Every attribute has the following configurable properties:
 | **Data Reference Setting** | The path to the TDengine TSDB data source in the format `ConnectionName/DatabaseName/TableName/ColumnName`, optionally with a quality column suffix as `.../ColumnName:QualityColumnName` |
 | **Path** | The full path of the attribute within the asset model (read-only, auto-generated) |
 
+:::note Naming rules
+Attribute names must satisfy the following rules (the same rules apply to attribute templates):
+
+- The name cannot be empty and cannot exceed 255 characters.
+- The name cannot contain the special characters `$`, `{`, or `}` (these conflict with the `${...}` substitution parameter syntax).
+- The name must be unique within its element (or element template); child attribute and trait names must also be unique under the same parent attribute.
+
+Saving is rejected with an error message if any rule is violated. In addition, the description cannot exceed 2048 characters.
+:::
+
 ### 3.2.3.2 Limits Configuration
 
 Define operational thresholds for the attribute. Each limit has a name and a numeric value:
@@ -304,7 +314,7 @@ An **attribute template** defines a standard attribute — including its name, d
 
 | Field | Description |
 |---|---|
-| **Name** | Attribute name |
+| **Name** | Attribute name; the same naming rules as attributes apply (see the naming rules in [3.2.3.1](#3231-basic-fields)) |
 | **Description** | Optional description |
 | **Configuration** | Additional configuration flags (e.g., hidden, constant) |
 | **Categories** | Category tags |

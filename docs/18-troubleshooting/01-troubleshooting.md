@@ -3,6 +3,9 @@ title: 常见问题排查
 sidebar_label: 常见问题排查
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 18.1 常见问题排查
 
 ## 18.1.1 确认问题
@@ -38,7 +41,12 @@ sidebar_label: 常见问题排查
 
 ### 本地安装方式
 
-如果您是通过本地安装方式部署的 TDengine IDMP，日志文件可以在以下位置找到：
+如果您是通过本地安装方式部署的 TDengine IDMP，日志文件的位置因操作系统而异。请根据您的操作系统查看对应路径：
+
+<Tabs>
+<TabItem label="Linux / macOS" value="linux">
+
+Linux / macOS 的日志目录默认为 `/var/log/taos`：
 
 | 组件 | 日志文件路径 |
 | --- | --- |
@@ -48,9 +56,25 @@ sidebar_label: 常见问题排查
 | TDengine IDMP AI 错误日志 | `/var/log/taos/idmp-ai-error.log` |
 | TDengine TSDB-Enterprise 日志 | `/var/log/taos/taosdlog.*` |
 
+</TabItem>
+<TabItem label="Windows" value="windows">
+
+Windows 的日志目录默认为 `C:\TDengine\log`：
+
+| 组件 | 日志文件路径 |
+| --- | --- |
+| TDengine IDMP 日志 | `C:\TDengine\log\tda.log` |
+| TDengine IDMP 错误日志 | `C:\TDengine\log\tda-error.log` |
+| TDengine IDMP AI 日志 | `C:\TDengine\log\idmp-ai.log` |
+| TDengine IDMP AI 错误日志 | `C:\TDengine\log\idmp-ai-error.log` |
+| TDengine TSDB-Enterprise 日志 | `C:\TDengine\log\taosdlog.*` |
+
+</TabItem>
+</Tabs>
+
 ### 容器化部署方式
 
-如果您是通过容器化方式部署的 TDengine IDMP，可以通过以下命令将日志文件从容器内复制到本地：
+如果您是通过容器化方式部署的 TDengine IDMP，容器内部始终使用 Linux 路径（`/var/log/taos`），与宿主机操作系统无关。可以通过以下命令将日志文件从容器内复制到宿主机的当前目录（在 Windows 宿主机上同样适用，仅需将目标路径 `./` 替换为相应的 Windows 目录，例如 `C:\logs\`）：
 
 ```bash
 docker cp tdengine-tsdb:/var/log/taos/taosdlog.* ./

@@ -3,6 +3,9 @@ title: Common Troubleshooting
 sidebar_label: Common Troubleshooting
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # 18.1 Common Troubleshooting
 
 ## 18.1.1 Confirming the Problem
@@ -39,7 +42,12 @@ If the problem persists, follow the steps below to collect frontend and backend 
 
 ### Local Installation
 
-For a locally installed deployment, log files are located at the following paths:
+For a locally installed deployment, the location of the log files depends on the operating system. Refer to the paths for your OS below:
+
+<Tabs>
+<TabItem label="Linux / macOS" value="linux">
+
+On Linux / macOS, the default log directory is `/var/log/taos`:
 
 | Component | Log File Path |
 | --- | --- |
@@ -49,9 +57,25 @@ For a locally installed deployment, log files are located at the following paths
 | TDengine IDMP AI error log | `/var/log/taos/idmp-ai-error.log` |
 | TDengine TSDB-Enterprise | `/var/log/taos/taosdlog.*` |
 
+</TabItem>
+<TabItem label="Windows" value="windows">
+
+On Windows, the default log directory is `C:\TDengine\log`:
+
+| Component | Log File Path |
+| --- | --- |
+| TDengine IDMP | `C:\TDengine\log\tda.log` |
+| TDengine IDMP error log | `C:\TDengine\log\tda-error.log` |
+| TDengine IDMP AI | `C:\TDengine\log\idmp-ai.log` |
+| TDengine IDMP AI error log | `C:\TDengine\log\idmp-ai-error.log` |
+| TDengine TSDB-Enterprise | `C:\TDengine\log\taosdlog.*` |
+
+</TabItem>
+</Tabs>
+
 ### Docker Deployment
 
-For a Docker-based deployment, copy the log files out of the containers using the following commands:
+For a Docker-based deployment, the paths inside the container are always Linux paths (`/var/log/taos`), regardless of the host operating system. Copy the log files out of the containers to the current directory on the host using the following commands (these also work on a Windows host; just replace the destination `./` with a Windows directory such as `C:\logs\`):
 
 ```bash
 docker cp tdengine-tsdb:/var/log/taos/taosdlog.* ./
