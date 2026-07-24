@@ -73,4 +73,4 @@ IDMP 系统对测点的定义与 OSIsoft PI 系统的 PI Tag（也叫 PI Point�
 
 TDengine CLS 可以部署于局域网，通过离线密钥文件的方式与云端的 ELS 进行信息交互。本地部署的 IDMP 需要定期与 CLS 进行交互，以确认当前系统的许可状态。CLS 是一个极为轻量的服务，建议将 CLS 模型部署在 IDMP 的同一环境内。
 
-请注意，在这种授权模式下，IDMP 的软件授权与 TSDB 完全独立，两者分开管理，互不影响。对于 TDengine All-in-One 免费版部署场景下的许可管理与限制政策，请参考[免费版说明](https://www.taosdata.com/tdengine-free-edition) 
+请注意，在这种授权模式下，IDMP 的软件授权与 TSDB 完全独立，两者分开管理，互不影响。对于 TDengine All-in-One 免费版部署场景下的许可管理与限制政策，请参考[免费版说明](https://www.taosdata.com/tdengine-free-edition)。
