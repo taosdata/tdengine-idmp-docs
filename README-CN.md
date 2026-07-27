@@ -14,6 +14,7 @@
     - [2.4 安装项目依赖](#24-安装项目依赖)
   - [3. 本地调试及生产部署](#3-本地调试及生产部署)
     - [3.1 启动预览](#31-启动预览)
+    - [3.1.1 同时预览中英文](#311-同时预览中英文)
     - [3.2 生产构建](#32-生产构建)
     - [3.3 生产部署](#33-生产部署)
   - [4. 目录结构](#4-目录结构)
@@ -116,6 +117,29 @@ just start-en
 > # 清除生成的资源、缓存和构建产物
 > pnpm run clear
 > ```
+
+#### 3.1.1 同时预览中英文
+
+不要在同一个工作目录中同时启动中文和英文 Docusaurus 开发服务器。每个开发
+服务器都会将生成的路由和前端资源写入 `.docusaurus/`，不同 locale 的进程
+会互相覆盖临时文件，导致路由缺失或页面错误。
+
+应为其中一个 locale 使用独立的检出目录或 Git worktree。例如，在主工作目录
+中启动中文预览后，可以创建隔离 worktree 启动英文预览：
+
+```bash
+# 在仓库根目录执行。
+git worktree add --detach ../idmp-docs-en-preview HEAD
+
+# 在隔离 worktree 中启动英文预览。
+cd ../idmp-docs-en-preview/tdengine-idmp-docs
+just install
+pnpm start --host 0.0.0.0 --locale en --port 3001
+```
+
+中文预览地址为 `http://localhost:3000/`，英文预览地址为
+`http://localhost:3001/en/`。请确保隔离 worktree 包含需要预览的文档改动；
+主工作目录中的未提交改动不会自动复制。
 
 ### 3.2 生产构建
 
