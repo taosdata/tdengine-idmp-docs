@@ -10,7 +10,7 @@ TDengine IDMP（Industrial Data Management Platform，工业数据管理平台�
 
 本手册是 TDengine IDMP 的完整用户指南，涵盖从基本概念到系统管理的全部内容。无论您担任什么职务，以下阅读建议将帮助您找到最有效的路径。
 
-如果您只是想快速了解 IDMP 是什么，阅读**[第 1 章产品简介](./01-introduction.md)**即可。无论您是哪种角色，都建议认真阅读[第 1 章的核心概念](./01-introduction.md#16-核心概念)部分——**元素**是整个平台的基本单元，理解它是使用一切功能的前提。
+如果您只是想快速了解 IDMP 是什么，阅读[第 1 章产品简介](./01-introduction.md)即可。无论您是哪种角色，都建议认真阅读[第 1 章的核心概念](./01-introduction.md#16-核心概念)部分——**元素**是整个平台的基本单元，理解它是使用一切功能的前提。
 
 如果您是**业务管理人员或运营人员**，主要需要查看面板和事件，请重点阅读[第 4 章（可视化与仪表板）](./04-visualization/index.md)和[第 6 章（事件）](./06-events/index.md)。面板的创建与配置部分可以跳过。此外，强烈建议您体验[第 8 章](./08-ai-powered-insights/index.md)的 AI 功能——您可以用自然语言直接提问运营数据，无需任何技术背景。
 
@@ -22,7 +22,7 @@ TDengine IDMP（Industrial Data Management Platform，工业数据管理平台�
 
 作为 AI 时代的产品，IDMP 的设计理念是让用户无需翻阅手册即可上手。大部分功能在界面上一目了然，本手册着重于概念说明和进阶配置，而非逐一描述每个按钮。如有疑问，善用界面中的 AI 功能，用自然语言提问，即可获得基于您实际数据的回答。
 
-无论您担任什么职务，都欢迎体验**[无问智推](./08-ai-powered-insights/02-ai-generated-panels.md)**与**[智能问数](./08-ai-powered-insights/06-natural-language-queries.md)**以及[其他 AI 的功能](./08-ai-powered-insights/index.md)——它们将使用门槛降到最低，让每个人都能从采集的数据里随时挖掘出业务价值，真正做到让数据自己说话。
+无论您担任什么职务，都欢迎体验[无问智推](./08-ai-powered-insights/02-ai-generated-panels.md)与[智能问数](./08-ai-powered-insights/06-natural-language-queries.md)以及[其他 AI 的功能](./08-ai-powered-insights/index.md)——它们将使用门槛降到最低，让每个人都能从采集的数据里随时挖掘出业务价值，真正做到让数据自己说话。
 
 如果您发现文档有任何错误或描述不清晰的地方，欢迎在每个页面底部点击"编辑本文档"直接提交修改。
 

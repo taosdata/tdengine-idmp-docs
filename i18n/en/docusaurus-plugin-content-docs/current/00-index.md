@@ -10,7 +10,7 @@ TDengine IDMP (Industrial Data Management Platform) is an AI-native industrial d
 
 This manual is the complete user guide for TDengine IDMP, covering everything from core concepts to system administration. The reading guidance below will help you find the most effective path for your role.
 
-If you only want a quick overview of what IDMP is, reading **[Chapter 1 — Introduction](./01-introduction.md)** is sufficient. Regardless of your role, we recommend everyone read the [core concepts section](./01-introduction.md#16-core-concepts) in Chapter 1 carefully. The **element** is the fundamental building block of the entire platform, and understanding it is a prerequisite for using any feature.
+If you only want a quick overview of what IDMP is, reading [Chapter 1 — Introduction](./01-introduction.md) is sufficient. Regardless of your role, we recommend everyone read the [core concepts section](./01-introduction.md#16-core-concepts) in Chapter 1 carefully. The **element** is the fundamental building block of the entire platform, and understanding it is a prerequisite for using any feature.
 
 If you are a **business manager or operations staff member** who primarily needs to view panels and events, focus on [Chapter 4 (Visualization and Dashboards)](./04-visualization/index.md) and [Chapter 6 (Events)](./06-events/index.md). You can skip the sections on creating and configuring panels and RT analyses. We also strongly recommend trying the AI features in [Chapter 8](./08-ai-powered-insights/index.md) — you can ask questions about your operational data in plain language without any technical background.
 
@@ -22,7 +22,7 @@ If you are an **OT/IT integration engineer** connecting existing industrial syst
 
 IDMP is designed with the philosophy that users should be able to get started without reading a manual. Most features are self-explanatory in the interface, so this manual focuses on conceptual explanations and advanced configuration rather than button-by-button walkthroughs. When in doubt, use the AI features directly in the application — ask any question in natural language and get answers grounded in your actual data.
 
-Regardless of your role, we invite you to explore the **[zero query intelligence](./08-ai-powered-insights/02-ai-generated-panels.md)** and **[Chat BI](./08-ai-powered-insights/06-natural-language-queries.md)** capabilities, along with the [other AI features](./08-ai-powered-insights/index.md). They lower the barrier to industrial analytics to zero, so anyone can unlock business value from collected data at any time — letting the data speak for itself.
+Regardless of your role, we invite you to explore the [zero query intelligence](./08-ai-powered-insights/02-ai-generated-panels.md) and [Chat BI](./08-ai-powered-insights/06-natural-language-queries.md) capabilities, along with the [other AI features](./08-ai-powered-insights/index.md). They lower the barrier to industrial analytics to zero, so anyone can unlock business value from collected data at any time — letting the data speak for itself.
 
 If you find any errors or unclear descriptions, click "Edit this page" at the bottom of any page to submit a correction directly.
 
