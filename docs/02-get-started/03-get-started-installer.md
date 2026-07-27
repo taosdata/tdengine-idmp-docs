@@ -35,7 +35,7 @@ TDengine 官网下载中心提供了 All-in-one 安装方式，可以一行命�
    <PkgListV37 productName="TDengine IDMP-Enterprise" platform="Linux-Generic" />
 2. 执行以下命令，解压并安装，以 x64 架构为例：
 
-   ```bash
+   ```bash idmp-ee
    tar zxvf tdengine-idmp-enterprise-{{VERSION}}-linux-x64.tar.gz
    cd tdengine-idmp-enterprise-{{VERSION}}
    sudo ./install.sh
@@ -55,7 +55,7 @@ TDengine 官网下载中心提供了 All-in-one 安装方式，可以一行命�
    <PkgListV37 productName="TDengine IDMP-Enterprise" platform="Linux-Ubuntu" />
 2. 执行以下命令，安装 deb 包，以 x64 架构为例：
 
-   ```bash
+   ```bash idmp-ee
    sudo dpkg -i tdengine-idmp-enterprise-{{VERSION}}-linux-x64.deb
    ```
 
@@ -73,7 +73,7 @@ TDengine 官网下载中心提供了 All-in-one 安装方式，可以一行命�
    <PkgListV37 productName="TDengine IDMP-Enterprise" platform="Linux-Red Hat" />
 2. 执行以下命令，安装 rpm 包，以 x64 架构为例：
 
-   ```bash
+   ```bash idmp-ee
    sudo rpm -ivh --nodeps tdengine-idmp-enterprise-{{VERSION}}-linux-x64.rpm
    ```
 
