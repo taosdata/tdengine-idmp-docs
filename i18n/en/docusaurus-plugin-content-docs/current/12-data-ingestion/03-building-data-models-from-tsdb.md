@@ -97,7 +97,49 @@ The task history table shows: **Created At**, **Status**, **File Name**, and **R
 - The **Element Name Expression** supports substitution strings like `${tbname}` (child table name) or tag values like `${tag_name}`.
 - The **Element Path Expression** supports the same substitutions. A dot in the value automatically creates hierarchy levels.
 - **Reference Type** must be `TDengineMetric` or `TDengineTag`.
+- **Attribute Template Name** references an existing attribute template in Libraries by name. If left blank or the name does not exist, an attribute template is created automatically using the **Super Table Column Name** (and tagged with the "auto-imported" category).
+- The header row is locale-specific (Chinese and English templates have different headers). The header of the file you import must match the template for your language; do not mix them.
 - The file must be encoded in **UTF-8** (not UTF-8 with BOM). If editing in Excel on Windows, convert the encoding before uploading.
+
+**CSV column reference:**
+
+| Column | Description |
+|---|---|
+| Database Name | The source TDengine database. Required on the first row of each block. |
+| Super Table Name | The source supertable. Required on the first row of each block. |
+| Element Template Name | The target element template. If blank, one is created using the supertable name. |
+| Element Template Categories | Category expression for the element template (optional) |
+| Sub Table Name | Per-child-table configuration (generated when **Export child table names** is checked), allowing a specific element name and path for each child table. Tasks with child table names configured do not auto-sync new child tables. |
+| Sub Table Filter | SQL WHERE-style expression to include only matching child tables |
+| Element Name Expression | Element name. Supports substitution strings like `${tbname}` (child table name) or `${tag_name}`. |
+| Element Description Expression | Element description. Supports the same substitution strings. |
+| Element Path Expression | The element's location in the asset tree. Dots separate hierarchy levels. Supports the same substitution strings. |
+| Super Table Column Name | The tag or metric column this row maps |
+| Attribute Template Name | The attribute template to map. A value starting with `Quality:` marks a quality column configuration row — see "Configuring quality columns" below. |
+| Reference Type | `TDengineMetric` (metric) or `TDengineTag` (tag) |
+| Attribute Template Categories | Category expression for the attribute template (optional) |
+| Attribute Template Description | Description of the attribute template (optional) |
+| Attribute Template Hidden | `true` / `false` (optional) |
+| Attribute Template Excluded | `true` / `false` (optional) |
+| Attribute Template Default UoM | Unit of measure name or abbreviation (optional) |
+| Attribute Template Display UoM | Unit of measure used for display (optional) |
+| Attribute Template Default Value | Default value of the attribute (optional) |
+| Attribute Template Display Digits | Number of decimal places used for display (optional) |
+
+**Configuring quality columns:**
+
+To configure a data quality column for a metric, add an extra row in the block that the metric belongs to:
+
+- Set **Reference Type** to `TDengineMetric`.
+- Set **Attribute Template Name** to `Quality:<metric attribute template name>`, for example `Quality:voltage` (the prefix is case-sensitive — `quality:` and `QUALITY:` do not work).
+- Set **Super Table Column Name** to the name of the column in the source supertable that holds the quality values, for example `quality`.
+
+Notes:
+
+- A quality column configuration row does not create an attribute template; it only records the quality column name on the metric's attribute template (updating it directly if the template already exists).
+- Place the quality column configuration row **after** the corresponding metric row, so that the attribute template has already been created and the configuration takes effect immediately.
+- After the import completes, a `<metric column>_q` quality column is added to the virtual supertable automatically, making quality values available in panels and history queries.
+- Exported CSV templates do not include quality column configuration rows; add them manually.
 
 :::note
 If new supertables are added to the database after a CSV import, create a new import task for those supertables. Existing tasks do not pick up new supertables automatically.
