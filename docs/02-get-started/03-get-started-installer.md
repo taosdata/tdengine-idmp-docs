@@ -10,7 +10,7 @@ import PkgListV37 from "/src/components/PkgListZh";
 
 TDengine IDMP 支持在 Linux、macOS 或 Windows 机器上进行本地安装。
 
-TDengine 官网下载中心提供了 All-in-one 安装方式，可以一行命令完成 TDengine 所有模块包含 IDMP 的安装部署，支持 Docker、Linux 和 Windows 等部署环境，详细过程请阅读[第 14.13 节](../14-administration/40-all-in-one-deploy.md)
+TDengine 官网下载中心提供了 All-in-one 安装方式，可以一行命令完成 TDengine 所有模块包含 IDMP 的安装部署，支持 Docker、Linux 和 Windows 等部署环境，详细过程请阅读[第 14.13 节](../14-administration/40-all-in-one-deploy/index.md)
 
 ## 2.3.1 系统要求
 

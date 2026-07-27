@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 TDengine IDMP 支持连接用户本地已经部署的 TDengine TSDB 实例，不论是商业版（Enterprise）还是开源版（Community），只需修改 IDMP 的配置文件即可完成对接。
 
 :::note
-本文介绍的是将 IDMP 连接到**已有** TSDB 实例的方法。如果是全新部署，推荐使用 All-in-one 安装方式一步完成 IDMP 和 TSDB 的安装部署，详见[第 14.13 节](../14-administration/40-all-in-one-deploy.md)。
+本文介绍的是将 IDMP 连接到**已有** TSDB 实例的方法。如果是全新部署，推荐使用 All-in-one 安装方式一步完成 IDMP 和 TSDB 的安装部署，详见[第 14.13 节](../14-administration/40-all-in-one-deploy/index.md)。
 :::
 
 ## 15.5.1 配置文件位置

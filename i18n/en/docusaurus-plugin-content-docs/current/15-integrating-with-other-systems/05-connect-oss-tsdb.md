@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 TDengine IDMP can connect to an existing local TDengine TSDB instance — whether Enterprise or Community Edition — by simply modifying the IDMP configuration file.
 
 :::note
-This section describes how to connect IDMP to an **existing** TSDB instance. For a fresh deployment, the All-in-one installation method deploys IDMP and TSDB together in a single step. See [Section 14.13](../14-administration/40-all-in-one-deploy.md) for details.
+This section describes how to connect IDMP to an **existing** TSDB instance. For a fresh deployment, the All-in-one installation method deploys IDMP and TSDB together in a single step. See [Section 14.13](../14-administration/40-all-in-one-deploy/index.md) for details.
 :::
 
 ## 15.5.1 Configuration File Location
