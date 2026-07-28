@@ -37,6 +37,8 @@ iwr 'https://downloads.taosdata.com/apex/install.ps1' -UseBasicParsing -OutFile 
 
 When the deployment prompt appears, press Enter to continue the installation.
 
+![Windows installation prompt](../images/windows-installation-prompt.jpeg)
+
 ## 14.13.2.3 Troubleshooting
 
 If deployment is not successful, verify the following:
