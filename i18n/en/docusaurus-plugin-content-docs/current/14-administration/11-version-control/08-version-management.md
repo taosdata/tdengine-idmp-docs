@@ -72,6 +72,12 @@ Version Management page and can click the Publish button to manually retry.
 
 ## Version Rollback
 
-:::warning Under Development
-The version rollback feature is currently under development and is not yet available.
-:::
+The version rollback feature allows the system to be restored to a historical version. It is useful for scenarios such as accidental operations, incorrect bulk changes, or issues discovered after a release. By using rollback, administrators can quickly restore the system to a previously correct state, avoid manual one-by-one recovery, and ensure that the related data, such as index data, remains consistent with the current data version.
+
+Use the following steps:
+
+1. Go to **Management Console → Version Control → Version Management**.
+2. In the version list, find the historical version you want to roll back to.
+3. Select that version and click **Rollback to This Version**.
+4. The system will automatically perform Git revert and synchronize the related data stores and version records.
+5. After the rollback completes, the system will create a new version record and audit log, which administrators can view on the Version Management page.
