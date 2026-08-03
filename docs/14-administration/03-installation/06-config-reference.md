@@ -12,32 +12,49 @@ TDengine IDMP 的配置文件为 `application.yml`，默认位置：
 
 ## 14.3.5.1 基础配置
 
-### HTTP/HTTPS 服务配置
+### TLS/HTTPS 证书配置
 
-```yaml
-quarkus:
-  http:
-    port: 6042 # IDMP HTTP 服务端口
-    ssl-port: 6034 # IDMP HTTPS 服务端口
-    insecure-requests: enabled # 允许 HTTP 和 HTTPS 同时工作
-    ssl:
-      enabled: true # 启用 SSL/HTTPS
-      certificate:
-        files: /usr/local/taos/idmp/config/certbundle.pem # 证书文件路径
-        key-files: /usr/local/taos/idmp/config/privkey.pem # 私钥文件路径
-  log:
-    level: INFO # 日志级别
-    file:
-      rotation:
-        max-file-size: 300M  # 日志轮转文件大小
-        max-backup-index: "3" # 日志备份文件数量
+TDengine IDMP 采用 **TLS 在前端（nginx）终结** 的架构：浏览器通过 HTTPS 访问前端 nginx，nginx 再以 HTTP 反向代理到后端 Java 服务。**对外 HTTPS 只需在前端配置证书，后端无需启用 TLS。**
+
+```text
+浏览器 --HTTPS(6034)--> 前端 nginx --HTTP--> 后端 Quarkus
 ```
 
-#### HTTPS 配置说明
+#### 本机安装（Linux / macOS / Windows）
 
-**内置测试证书**：
+HTTPS 证书由 nginx（UI 服务）使用，放在安装目录的 `config/` 下：
 
-- 安装包内置了一个有效期为 3 个月的测试证书
+- **Linux/macOS**：`/usr/local/taos/idmp/config/certbundle.pem`、`privkey.pem`
+- **Windows**：`C:\TDengine\idmp\config\certbundle.pem`、`privkey.pem`
+
+**配置方法**：
+
+1. 将证书和私钥分别命名为 `certbundle.pem`、`privkey.pem`，覆盖上述文件。
+2. 若使用其他文件名或路径，修改 nginx 配置中的 `ssl_certificate`、`ssl_certificate_key`（Linux/macOS：`config/nginx.conf`；Windows：`config/nginx-win.conf`）。
+3. 重启 UI 服务：`svc-tdengine-idmp restart ui`（Linux/macOS）；Windows 以管理员身份下重启 `tdengine-idmp-ui` 服务。
+
+HTTPS 访问端口为 `6034`。升级安装会保留已有证书，无需重新配置。
+
+#### Docker 部署
+
+HTTPS 证书仅配置在前端容器（`tdengine-idmp-ui`），路径为 `/etc/nginx/ssl/certbundle.pem`、`privkey.pem`。镜像已内置测试证书，生产环境可通过挂载替换：
+
+**配置方法**：
+
+在 `docker-compose` 中为 `tdengine-idmp-ui` 挂载证书，然后重启该容器：
+
+```yaml
+tdengine-idmp-ui:
+  volumes:
+    - /path/to/your/certbundle.pem:/etc/nginx/ssl/certbundle.pem:ro
+    - /path/to/your/privkey.pem:/etc/nginx/ssl/privkey.pem:ro
+```
+
+HTTPS 访问端口为宿主机 `6034`（映射到容器 `443`）。后端容器无需配置 TLS 证书。
+
+#### 内置测试证书
+
+- 安装包 / 镜像内置了一个有效期为 3 个月的测试证书
 - 测试证书绑定的域名为：`idmp.tdengine.net`
 - 该证书仅适用于功能演示、测试等场景，**不建议生产环境使用**
 
@@ -54,18 +71,28 @@ quarkus:
 - **Linux/macOS**: `/etc/hosts`
 - **Windows**: `C:\Windows\System32\drivers\etc\hosts`
 
-**生产环境证书配置**：
+### 后端 HTTP 服务配置
 
-在生产环境中，应使用正式的 SSL 证书。修改配置文件中的证书路径：
+以下为本机安装完成后的典型后端配置（TLS 由 nginx 处理，后端不启用 HTTPS）：
 
 ```yaml
 quarkus:
   http:
+    port: 16042 # 本机安装：后端内部 HTTP 端口（nginx 代理 6042/6034）
+    ssl-port: -1
     ssl:
-      certificate:
-        files: /path/to/your/certificate.pem  # 您的证书文件
-        key-files: /path/to/your/private-key.pem  # 您的私钥文件
+      enabled: false
+  log:
+    level: INFO # 日志级别
+    file:
+      rotation:
+        max-file-size: 300M  # 日志轮转文件大小
+        max-backup-index: "3" # 日志备份文件数量
 ```
+
+:::note
+**Docker 部署**：后端容器内 `quarkus.http.port` 为 `6042`，同样不对外提供 HTTPS；用户访问 `https://<host>:6034` 时由前端 nginx 终结 TLS。
+:::
 
 ### TDengine 连接配置
 

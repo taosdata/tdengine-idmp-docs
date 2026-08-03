@@ -12,38 +12,55 @@ The TDengine IDMP configuration file is `application.yml`, located at:
 
 ## 14.3.5.1 Basic Configuration
 
-### HTTP/HTTPS Service Configuration
+### TLS/HTTPS Certificate Configuration
 
-```yaml
-quarkus:
-  http:
-    port: 6042 # IDMP HTTP service port
-    ssl-port: 6034 # IDMP HTTPS service port
-    insecure-requests: enabled # Allow HTTP and HTTPS to work simultaneously
-    ssl:
-      enabled: true # Enable SSL/HTTPS
-      certificate:
-        files: /usr/local/taos/idmp/config/certbundle.pem # Certificate file path
-        key-files: /usr/local/taos/idmp/config/privkey.pem # Private key file path
-  log:
-    level: INFO # Log level
-    file:
-      rotation:
-        max-file-size: 300M  # Log rotation file size
-        max-backup-index: "3" # Number of log backup files
+TDengine IDMP uses **TLS termination at the frontend (nginx)**. Browsers connect to nginx over HTTPS; nginx then reverse-proxies to the backend Java service over plain HTTP. **Only the frontend needs TLS certificates for external HTTPS; the backend does not need TLS enabled.**
+
+```text
+Browser --HTTPS(6034)--> Frontend nginx --HTTP--> Backend Quarkus
 ```
 
-#### HTTPS Configuration Instructions
+#### Native Installation (Linux / macOS / Windows)
 
-**Built-in Test Certificate**:
+HTTPS certificates are used by nginx (UI service) and stored under the install directory `config/`:
 
-- The installation package includes a built-in test certificate valid for 3 months
+- **Linux/macOS**: `/usr/local/taos/idmp/config/certbundle.pem`, `privkey.pem`
+- **Windows**: `C:\TDengine\idmp\config\certbundle.pem`, `privkey.pem`
+
+**How to configure**:
+
+1. Name your certificate and private key `certbundle.pem` and `privkey.pem`, and overwrite the files above.
+2. If you use different file names or paths, update `ssl_certificate` and `ssl_certificate_key` in the nginx config (Linux/macOS: `config/nginx.conf`; Windows: `config/nginx-win.conf`).
+3. Restart the UI service: `svc-tdengine-idmp restart ui` (Linux/macOS); restart the `tdengine-idmp-ui` service as Administrator on Windows.
+
+HTTPS is served on port `6034`. Upgrades preserve existing certificates.
+
+#### Docker Deployment
+
+HTTPS certificates are configured only in the frontend container (`tdengine-idmp-ui`) at `/etc/nginx/ssl/certbundle.pem` and `privkey.pem`. Images include a built-in test certificate; mount your own for production:
+
+**How to configure**:
+
+Mount certificates for `tdengine-idmp-ui` in `docker-compose`, then restart the container:
+
+```yaml
+tdengine-idmp-ui:
+  volumes:
+    - /path/to/your/certbundle.pem:/etc/nginx/ssl/certbundle.pem:ro
+    - /path/to/your/privkey.pem:/etc/nginx/ssl/privkey.pem:ro
+```
+
+HTTPS is served on host port `6034` (mapped to container `443`). The backend container does not need TLS certificates.
+
+#### Built-in Test Certificate
+
+- The installation package / images include a built-in test certificate valid for 3 months
 - The test certificate is bound to the domain: `idmp.tdengine.net`
-- This certificate is only suitable for function demonstration, testing and other scenarios, **not recommended for production environments**
+- This certificate is only suitable for demos and testing, **not recommended for production**
 
-**Accessing HTTPS with Test Certificate**:
+**Accessing HTTPS with the test certificate**:
 
-If using the built-in test certificate, you need to configure domain name resolution. Add the following mapping to the client's hosts file:
+If using the built-in test certificate, configure domain name resolution on the client. Add the following mapping to the hosts file:
 
 ```text
 192.168.1.100  idmp.tdengine.net  # Replace with your actual server IP
@@ -54,18 +71,28 @@ If using the built-in test certificate, you need to configure domain name resolu
 - **Linux/macOS**: `/etc/hosts`
 - **Windows**: `C:\Windows\System32\drivers\etc\hosts`
 
-**Production Environment Certificate Configuration**:
+### Backend HTTP Service Configuration
 
-In production environments, you should use official SSL certificates. Modify the certificate paths in the configuration file:
+The following shows a typical backend configuration after native installation (TLS is handled by nginx; HTTPS is not enabled on the backend):
 
 ```yaml
 quarkus:
   http:
+    port: 16042 # Native install: internal backend HTTP port (nginx exposes 6042/6034)
+    ssl-port: -1
     ssl:
-      certificate:
-        files: /path/to/your/certificate.pem  # Your certificate file
-        key-files: /path/to/your/private-key.pem  # Your private key file
+      enabled: false
+  log:
+    level: INFO # Log level
+    file:
+      rotation:
+        max-file-size: 300M  # Log rotation file size
+        max-backup-index: "3" # Number of log backup files
 ```
+
+:::note
+**Docker deployment**: the backend container uses `quarkus.http.port: 6042` and does not expose HTTPS externally. Users access `https://<host>:6034`; TLS is terminated by frontend nginx.
+:::
 
 ### TDengine Connection Configuration
 
