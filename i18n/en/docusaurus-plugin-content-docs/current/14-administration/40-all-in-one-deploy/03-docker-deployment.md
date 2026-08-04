@@ -75,7 +75,26 @@ iwr https://downloads.taosdata.com/apex/install.ps1 -UseBasicParsing -OutFile $e
 
 When the deployment prompt appears, press Enter to continue the installation.
 
-## 14.13.3.4 Access and Activate IDMP
+## 14.13.3.4 Troubleshooting
+
+If deployment is not successful, verify the following:
+
+- Docker is installed and running.
+- The host has internet access to download installation packages.
+- Required ports are available and not blocked by the firewall.
+
+**Note:** If you encounter an issue related to the log files, stop the IDMP
+container and delete the log files from the mounted log volume, or delete them
+from inside the container if the logs are not persisted.
+Example (inside the container):
+
+```text
+rm -rf /var/log/taos
+```
+
+Then rerun the deployment command above.
+
+## 14.13.3.5 Access and Activate IDMP
 
 After deployment completes successfully, open IDMP in a browser:
 

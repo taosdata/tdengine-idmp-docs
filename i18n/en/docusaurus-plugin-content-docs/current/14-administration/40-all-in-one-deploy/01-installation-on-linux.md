@@ -52,6 +52,15 @@ If deployment is not successful, verify the following:
 - The server has internet access to download installation packages.
 - Required ports are available and not blocked by the firewall.
 
+**Note:** If you encounter an issue related to the log files, stop IDMP and
+delete the following directory:
+
+```text
+/var/log/taos
+```
+
+Then rerun the deployment command above.
+
 ## 14.13.1.4 Access and Activate IDMP
 
 After deployment completes successfully, open IDMP in a browser:
