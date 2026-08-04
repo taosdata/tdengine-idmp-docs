@@ -109,6 +109,32 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name
 3. Double-click **Enable Win32 long paths**, select **Enabled**, and click **OK**.
 4. Restart the computer for the change to take effect.
 
-## 18.1.5 Submitting an Issue
+## 18.1.5 Retrieving the Registration Code Offline or Without a Private Mail Server
+
+If the environment cannot reach the public internet and no private mail server is available, the registration activation code cannot be delivered by email. You can still complete first-time activation by reading the code from the backend log.
+
+1. Open IDMP, enter the email and organization name, then click **Get verification code**.
+2. If the mail server configuration dialog appears and you have no private SMTP, click **Cancel**. The backend has usually already generated the code and written it to the log.
+3. Search the server log for `register verify code for`, enter the 6 digits after the colon on the activation page, then click **Activate**. Confirm that the email in the log matches the form, and prefer the newest line (codes are valid for about 10 minutes).
+
+More specific keywords:
+
+- `Sending register verify code for`: when the registration email send path runs
+- `Generated register verify code for debug`: offline or default SMTP unavailable (most common)
+
+Docker example (container name is often `tdengine-idmp`):
+
+```bash
+docker exec -it tdengine-idmp sh -c \
+  'grep -n "register verify code for" /var/log/taos/tda.log | tail -10'
+```
+
+Log paths are listed in [Collecting Backend Logs](#1813-collecting-backend-logs). If the default file is missing, also try `/app/logs/tda.log` inside the container.
+
+:::note
+If the phone verification step on the Chinese activation page cannot receive SMS offline, search the logs for `phone verification code`. For fuller email delivery troubleshooting, see [Section 18.2](./02-email.md).
+:::
+
+## 18.1.6 Submitting an Issue
 
 TDengine uses [GitHub Issues](https://github.com/taosdata/tdengine-idmp-docs/issues/new/choose) to track and manage bug reports and support requests. Follow the issue template and attach the information collected above. The support team will respond as soon as possible.

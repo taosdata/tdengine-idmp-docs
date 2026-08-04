@@ -108,6 +108,32 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name
 3. 双击**启用 Win32 长路径**，选择**已启用**，然后单击**确定**。
 4. 重启计算机使配置生效。
 
-## 18.1.5 提交问题
+## 18.1.5 断网或无私有邮件时如何获取注册激活码
+
+当环境无法连接外网、且没有可用的私有邮件服务器时，注册激活码无法通过邮件送达，但仍可在后端日志中取码完成首次激活。
+
+1. 打开 IDMP，填写邮箱与组织名称，点击**获取验证码**。
+2. 若弹出邮件服务器配置对话框且没有私有 SMTP，直接点**取消**即可（后端通常已生成验证码并写入日志）。
+3. 在服务器日志中检索关键词 `register verify code for`，取冒号后的 6 位数字填回激活页后点击**激活**。请核对日志中的邮箱与页面填写一致，并优先使用最新一条（有效期约 10 分钟）。
+
+更精确时可分别搜索：
+
+- `Sending register verify code for`：触发发送注册邮件时
+- `Generated register verify code for debug`：断网或默认 SMTP 不可用时（最常见）
+
+Docker 示例（容器名常见 `tdengine-idmp`）：
+
+```bash
+docker exec -it tdengine-idmp sh -c \
+  'grep -n "register verify code for" /var/log/taos/tda.log | tail -10'
+```
+
+日志路径见上文 [收集后端日志](#1813-收集后端日志)。若主路径无文件，可再试容器内 `/app/logs/tda.log`。
+
+:::note
+激活后的手机验证码步骤（中文界面）若因断网收不到短信，可在日志中检索 `phone verification code` 取码。更完整的邮件链路排查见 [第 18.2 节](./02-email.md)。
+:::
+
+## 18.1.6 提交问题
 
 我们使用 [GitHub Issues](https://github.com/taosdata/tdengine-idmp-docs/issues/new/choose) 来跟踪和管理问题。请按照 GitHub Issues 的模板，提交以上收集到的信息，我们的支持团队会尽快回复并帮助您解决问题。
