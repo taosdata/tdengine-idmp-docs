@@ -36,13 +36,16 @@ The Trend Chart provides a set of chart-specific toolbar buttons in view mode (h
 
 | Control | Description |
 |---|---|
+| **Edit** | Enter the edit page for the current panel |
+| **Add to Group** | Add the current panel to a custom group for quick access |
+| **Downsampling** | Enable or disable downsampling |
 | **Multi-Swimlane** | Display each metric in its own horizontal lane instead of sharing a single Y axis |
 | **Window Analysis** | Run a window analysis on the current time-series data. Supported types include sliding, state, event, anomaly detection, session, and count windows |
-| **Forecast** | Run AI forecasting for the metrics and extend the chart with predicted values beyond the time range |
-| **Imputation** | Enter imputation mode — drag across a data gap and the system fills it using AI-based trend estimation |
+| **Forecast** | Run AI forecasting for the metrics on the chart and extend it with predicted values beyond the time range |
+| **Imputation** | Enter imputation mode — drag across a data gap on the chart and the system fills it using AI-based trend estimation |
 | **Reset Imputation** | Remove all imputation results currently applied to the chart |
-| **Panel Insights** | Run AI interpretation on the current chart data and output a text summary |
-| **Open as Analysis Workbench** | Open the current trend chart in a new window as an analysis workbench |
+| **Show Annotations** | Display annotation information for the current chart on the right side of the page |
+| **AI Interpretation** | Run AI panel interpretation or general analysis on the current chart, output a text analysis report, and optionally add and execute custom AI Functions |
 
 ### Graph Settings
 
@@ -187,9 +190,9 @@ Click **+ Edit Value Mappings** to open the edit dialog, which supports the foll
 | **Special** | Match null, NaN, booleans, empty strings, etc. |
 | **Others** | Match all values not covered by preceding rules |
 
-### Color Thresholds
+### Thresholds
 
-Color thresholds dynamically change series color based on value, highlighting data that exceeds normal operating ranges:
+Thresholds dynamically change series color based on data values, highlighting segments that exceed normal operating ranges:
 
 ![Thresholds configuration](../../images/04/trend-thresholds.png)
 
