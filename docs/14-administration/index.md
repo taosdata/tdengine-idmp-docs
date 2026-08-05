@@ -15,7 +15,7 @@ import DocCardList from '@theme/DocCardList';
 |---|---|
 | **部署架构** | 单实例与高可用部署拓扑概述 |
 | **规划** | 硬件要求、操作系统支持、端口分配及目录结构 |
-| **安装部署** | Docker、安装包、Ansible、Helm 等多种部署方式的详细指南（Excel 插件安装见[第 10 章](../10-excel-add-in/01-installation.md)） |
+| **安装部署** | Docker、安装包等部署方式的详细指南（Excel 插件安装见[第 10 章](../10-excel-add-in/01-installation.md)；All-in-One 一键部署见[第 14.13 节](./40-all-in-one-deploy/index.md)） |
 | **用户管理** | 用户、角色、权限，以及通过 OAuth 2.0 实现单点登录（SSO） |
 | **个人设置与 API Key** | 管理个人资料、头像、密码，以及用户级 API Key |
 | **二次认证（MFA）** | 敏感操作的二次认证流程、Passkey 管理与 MFA 豁免配置 |

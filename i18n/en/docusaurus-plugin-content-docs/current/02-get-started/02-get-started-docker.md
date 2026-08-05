@@ -8,157 +8,71 @@ import TabItem from '@theme/TabItem';
 
 # 2.2 Get Started with Docker
 
-TDengine IDMP is offered as a Docker Compose setup to make deployment easy. This installs TDengine TSDB-Enterprise along with TDengine IDMP and automatically establishes a connection between them.
+TDengine IDMP provides a one-click Docker Compose deployment that simplifies local setup. This installs TDengine TSDB-Enterprise together with TDengine IDMP and automatically establishes the connection between them.
+
+The TDengine Download Center provides an All-in-One installation method that deploys all TDengine modules, including IDMP, with a single command. It supports Docker, Linux, and Windows. For details, see [section 14.13](../14-administration/40-all-in-one-deploy/index.md).
 
 ## 2.2.1 Environment Requirements
 
-- Ensure that your local machine meets the minimum system requirements for TDengine IDMP. See [Planning](../14-administration/02-planning.md).
-- Install Git on your local machine. See [the official Git website](https://git-scm.com) to download the installer.
-- Install Docker Desktop on your local machine and ensure that it is running. See [the official Docker website](https://www.docker.com/) to download the installer.
-- Ensure that TDengine TSDB and TDengine IDMP are not running on your machine locally or in Docker containers. If TDengine TSDB or TDengine IDMP are running, stop all TDengine services or containers before beginning this procedure.
+- Docker Engine 20.10 or later. See [Install Docker Engine](https://docs.docker.com/engine/install/).
+- Docker Compose 1.29.2 or later. See [Install Docker Compose](https://docs.docker.com/compose/install/).
+- A stable internet connection
 
-## 2.2.2 Procedure
+## 2.2.2 Installation
 
-<Tabs>
-<TabItem value="Linux">
+Follow the Docker command provided for TDengine All-in-One in the Download Center.
 
-1. Clone the TDengine IDMP deployment repository:
+All-in-One one-click deployment of TDengine IDMP automatically switches to `https://tdengine-registry.cn-beijing.cr.aliyuncs.com` to pull images and significantly improve download speed.
 
-   ```bash
-   git clone https://github.com/taosdata/tdengine-idmp-deployment.git
-   ```
+## 2.2.3 Start TDengine IDMP with Docker
 
-2. Start TDengine IDMP with Docker
+:::tip
+After All-in-One installation completes, IDMP and related services start automatically. You can also start them manually. On Linux and macOS:
 
-   ```bash
-   cd tdengine-idmp-deployment/docker
-   export TZ="UTC"
-   chmod +x idmp.sh
-   ./idmp.sh start
-   ```
+```bash
+cd ~/.apex/docker
+./idmp.sh start
+```
 
-   This command will prompt you to select a deployment mode:
+:::
 
-   - **Standard** — TDengine TSDB Enterprise + IDMP
-   - **Full** — TDengine TSDB Enterprise + IDMP + TDgpt (adds AI/ML algorithms for time-series forecasting and anomaly detection)
+This command prompts you to select a deployment mode:
 
-   The AI service is deployed as an independent image `tdengine/idmp-ai-ee`. The Docker Compose configuration will automatically include this service.
+- **Standard** — TDengine TSDB Enterprise + IDMP
+- **Full** — TDengine TSDB Enterprise + IDMP + TDgpt (time-series forecasting and anomaly detection)
 
-   The required images will be pulled automatically if not already present locally.
+The AI service is deployed as the independent image `tdengine/idmp-ai-ee` and is included automatically in the Docker Compose configuration.
 
-   If you want to install a specific version, execute the following
+Required images are pulled automatically if they are not present locally.
 
-   ```bash
-   cd tdengine-idmp-deployment/docker
-   export TZ="UTC"
-   chmod +x idmp.sh
-   IDMP_TAG=1.0.14.4 ./idmp.sh start
-   ```
+By default, the TDengine IDMP service listens on the following host ports:
 
-   remember to replace "1.0.14.4" with the version number you want
+- HTTP: `http://localhost:6042` or `http://ip:6042`
+- HTTPS: `https://localhost:6034` or `https://ip:6034`
+
+## 2.2.4 Activation
+
+1. On first access, activate the service. After entering your email address and organization, click **Get Code**. The system sends an activation email. Enter the code from the email and click **Activate**.
 
    :::note
-   Set the `TZ` environment variable to match your environment. `UTC` is a good default for server environments. All containers in the Compose stack inherit this setting — an incorrect timezone will cause analysis triggers and event timestamps to be misaligned.
+   To make it easier to try AI features, IDMP ships with a DeepSeek API key that is valid for 7 days. After it expires, update your API key under **Admin Console → Connections** in TDengine IDMP.
    :::
 
-</TabItem>
+2. After the activation code is verified, the **Privacy Settings** dialog appears. Select the diagnostic items you want to share. Shared information helps us improve the product. Your business and production data are never collected. When finished, click **Agree**.
 
-<TabItem value="Windows">
+## 2.2.5 Configure User Information
 
-1. From the Start Menu, open Git CMD. In the terminal displayed, run the following command to clone the TDengine IDMP deployment repository to your local machine:
+1. After activation, you enter the user information page.
+2. Follow the prompts to enter your name and phone number.
+3. Set the system login password.
+4. After the password is validated, user information configuration is complete. Click **Continue**.
 
-   ```shell
-   git clone https://github.com/taosdata/tdengine-idmp-deployment.git
-   ```
+## 2.2.6 Configure License Type
 
-1. Open the `docker` directory within the repository:
+1. After user information is configured, you enter the software license selection page.
+2. You can choose a free license or a commercial license.
+3. If you choose a free license, the system generates a free license after you agree to the free edition terms.
+4. If you choose a commercial license, enter the commercial license code obtained from TDengine.
+5. After license configuration is complete, the system redirects to the sample scenario loading page.
 
-   ```shell
-   cd tdengine-idmp-deployment\docker
-   ```
-
-1. Run Docker Compose to spin up TDengine containers.
-   - To deploy TDengine TSDB and TDengine IDMP without TDgpt, run the following command:
-
-     ```shell
-     docker compose up -d
-     ```
-
-   - To deploy TDengine TSDB and TDengine IDMP with TDgpt, run the following command:
-
-     ```shell
-     docker compose -f docker-compose-tdgpt.yml up -d
-     ```
-
-   These commands pull the required Docker images and spin up TDengine TSDB and TDengine IDMP containers.
-
-</TabItem>
-</Tabs>
-
-## 2.2.3 Activate and Initialize the System
-
-1. In a web browser, access TDengine IDMP at `http://localhost:6042` or `https://localhost:6034`.
-2. Under **Activate TDengine IDMP**, enter your email address and organization.
-3. Click **Get Code** and enter the code sent to your email address.
-
-   :::tip
-   If the email does not arrive, check your spam or junk folder.
-   :::
-
-4. Read the User Agreement and Privacy Policy and click **Activate**.
-5. In the **Privacy Settings** dialog, select which diagnostic information you want to share with TDengine, then click **Agree**.
-
-## 2.2.4 Enter Account Information
-
-1. Enter your name, phone number, position, and password.
-
-   :::note
-   - Your password must be 8 to 20 characters long.
-   - Your password must contain letters, digits, and special characters.
-   - Supported special characters: `. ~ ! @ # $ ^ & *`
-   :::
-
-2. (Optional) Select a profile picture. JPG and PNG files under 1 MB are supported.
-3. Click **Continue**.
-
-Your TDengine IDMP instance is now ready to use. Continue to [Section 2.4](./04-experiencing-idmp.md) to load sample data and explore IDMP features.
-
-## 2.2.5 Uninstalling TDengine
-
-You can use Docker Compose to remove TDengine containers from your system if desired.
-
-1. In a terminal, open the `docker` directory from which you deployed TDengine in Docker.
-1. Run Docker Compose to spin down TDengine containers.
-   - If you deployed TDengine TSDB and TDengine IDMP without TDgpt, run the following command:
-
-     ```shell
-     docker compose down -v
-     ```
-
-   - If you deployed TDengine TSDB and TDengine IDMP with TDgpt, run the following command:
-
-     ```shell
-     docker compose -f docker-compose-tdgpt.yml down -v
-     ```
-
-The TDengine containers and volumes created during the deployment process are removed. You can also use Docker Desktop to view and delete containers, images, and volumes.
-
-## 2.2.6 Troubleshooting
-
-Commonly encountered issues are described as follows:
-
-1. **Issue:** When you run a Docker Compose command, the following error occurs:
-
-   ```text
-   unable to get image 'tdengine/tsdb-ee:latest': failed to connect to the docker API at npipe:////./pipe/dockerDesktopLinuxEngine; check if the path is correct and if the daemon is running: open //./pipe/dockerDesktopLinuxEngine: The system cannot find the file specified.
-   ```
-
-   **Solution:** This indicates that Docker is not running. Ensure that you have started the Docker Desktop application and that it is operating normally, then run the Docker Compose command again.
-
-1. **Issue:** When you run the `docker compose up` command, the following error occurs:
-
-   ```text
-   Error response from daemon: ports are not available: exposing port TCP 0.0.0.0:6041 -> 127.0.0.1:0: listen tcp 0.0.0.0:6041: bind: Only one usage of each socket address (protocol/network address/port) is normally permitted.
-   ```
-
-   **Solution:** This indicates that TDengine is already installed and running on your machine. Uninstall TDengine or stop all TDengine services before spinning up TDengine in Docker.
+Continue to [section 2.4](./04-experiencing-idmp.md) to explore IDMP features.
