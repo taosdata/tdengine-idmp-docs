@@ -10,7 +10,7 @@ export default function SidebarTop() {
     const { activeVersion } = useActivePluginAndVersion();
     const { siteConfig } = useDocusaurusContext();
     const { baseUrl } = siteConfig;
-    const { versions, ltsVersion, latestVersion } = siteConfig.customFields;
+    const { versions, ltsVersion, latestVersion, onlyCurrentVersion } = siteConfig.customFields;
     const dropdownVersions = [latestVersion, ...versions];
 
     const versionOptions = useMemo(() => dropdownVersions.map((version) => ({
@@ -36,13 +36,16 @@ export default function SidebarTop() {
 
     return (
         <div className={styles.sidebarTop}>
-            <select className={styles.versionSelect} value={activeVersion.name} onChange={onChange}>
-                {versionOptions.map((version) => (
-                    <option key={version.value} value={version.value}>
-                        {version.label}
-                    </option>
-                ))}
-            </select>
+            {/* 产品打包只含 current 版本，归档版本无路由，隐藏版本下拉 */}
+            {!onlyCurrentVersion && (
+                <select className={styles.versionSelect} value={activeVersion.name} onChange={onChange}>
+                    {versionOptions.map((version) => (
+                        <option key={version.value} value={version.value}>
+                            {version.label}
+                        </option>
+                    ))}
+                </select>
+            )}
             <SearchBar />
         </div>
     );

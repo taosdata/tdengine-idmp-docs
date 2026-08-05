@@ -11,6 +11,7 @@
 # Generated files
 .docusaurus
 .cache-loader
+.idmp-build-stamp
 
 # Misc
 .DS_Store

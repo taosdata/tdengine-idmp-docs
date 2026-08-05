@@ -14,6 +14,7 @@ English | [简体中文](README-CN.md)
     - [2.4 Install Project Dependencies](#24-install-project-dependencies)
   - [3. Local Development and Production Deployment](#3-local-development-and-production-deployment)
     - [3.1 Start Preview](#31-start-preview)
+    - [3.1.1 Preview Both Locales](#311-preview-both-locales)
     - [3.2 Production Build](#32-production-build)
     - [3.3 Production Deployment](#33-production-deployment)
   - [4. Directory Structure](#4-directory-structure)
@@ -116,6 +117,32 @@ just start-en
 > # Clear generated assets, caches, and build artifacts
 > pnpm run clear
 > ```
+
+#### 3.1.1 Preview Both Locales
+
+Do not run the Chinese and English development servers from the same working
+directory. Each Docusaurus development server writes generated routes and
+client assets to `.docusaurus/`, so concurrent locale servers can overwrite
+each other's temporary files and cause missing routes or incorrect pages.
+
+Use a separate checkout or Git worktree for one locale. For example, start the
+Chinese preview in the primary checkout, then create an isolated worktree for
+the English preview:
+
+```bash
+# Run from the repository root.
+git worktree add --detach ../idmp-docs-en-preview HEAD
+
+# Start the English preview from the isolated worktree.
+cd ../idmp-docs-en-preview/tdengine-idmp-docs
+just install
+pnpm start --host 0.0.0.0 --locale en --port 3001
+```
+
+The Chinese preview is available at `http://localhost:3000/`, and the English
+preview is available at `http://localhost:3001/en/`. Ensure that the isolated
+worktree contains the documentation changes you want to review; uncommitted
+changes in the primary checkout are not copied automatically.
 
 ### 3.2 Production Build
 

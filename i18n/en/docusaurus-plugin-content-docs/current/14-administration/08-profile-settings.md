@@ -16,6 +16,7 @@ The personal settings dialog contains the following tabs:
 | **Profile** | View and edit your name, email, phone number, position, and description |
 | **API Key** | Create, copy, update the expiration time of, and delete user API keys |
 | **Passkey** | Register and manage passkeys used for multi-factor authentication (MFA). See [Section 14.10](10-mfa.md). |
+| **Agent** | Configure personal MCP server connections based on MCP templates |
 
 ## 14.8.2 Profile
 
@@ -84,3 +85,35 @@ For SDK and MCP examples that use API keys, see [Section 15.1.3](../15-integrati
 ## 14.8.4 Passkey
 
 The **Passkey** tab is where you register and manage passkeys used for multi-factor authentication (MFA). A passkey is a WebAuthn-based passwordless credential whose private key is stored in your device's keychain; verification is confirmed via fingerprint, face recognition, or your device PIN. For the complete step-up verification flow, passkey registration and deletion, and administrator-side MFA exemption configuration, see [Section 14.10 Multi-Factor Authentication (MFA)](10-mfa.md).
+
+## 14.8.5 Agent
+
+The **Agent** tab is used to configure personal MCP server connections based on MCP templates. After an administrator defines templates in [Libraries → Agentic AI → MCP Templates](../13-libraries/05-agentic-ai.md#1352-mcp-templates), users fill in variable values here for each template to complete their personal MCP connection configuration.
+
+### 14.8.5.1 Template List
+
+The list displays all MCP templates created by administrators that are currently enabled, with the following information:
+
+| Column         | Description                                                                 |
+| -------------- | --------------------------------------------------------------------------- |
+| **Name**       | MCP template name                                                           |
+| **URL / Command** | Displays the URL for HTTP/SSE types, or the startup command for command types |
+| **Status**     | Connection status, depending on whether the template includes variables and whether they have been configured |
+
+Each template's status falls into one of the following categories:
+
+| Status              | Description                                                              |
+| ------------------- | ------------------------------------------------------------------------ |
+| **Auto-available**  | The template defines no variables; it can be used directly without user configuration |
+| **Configuration required** | The template defines variables, but values have not been filled in yet |
+| **Configured**      | Variables have been filled in; the connection is ready to use            |
+
+### 14.8.5.2 Configuring Variables
+
+For templates that include variables, click the settings icon at the end of the row to open the **Variable Configuration** dialog. The dialog lists all variables defined by the template along with their descriptions. Fill in each variable value and save.
+
+To modify variable values, reopen the Variable Configuration dialog and make changes. To clear configured variable values, click the delete icon at the end of the row to restore the unconfigured state.
+
+### 14.8.5.3 Sensitive Variables
+
+If a variable is marked as sensitive, its value is always displayed in masked form in the UI. Once configured, the value of a sensitive variable cannot be viewed again and can only be overwritten by entering a new value.

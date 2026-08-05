@@ -91,9 +91,11 @@ curl -X POST 'http://idmp.example.com:6042/api/v1/users/send/verifycode' \
 
 请求日志通常记录在主日志文件中。若接口未真正到达后端，后续发送链路排查将没有意义。
 
-主日志文件如下：
+主日志文件如下（路径因操作系统而异）：
 
-- `/var/log/taos/idmp/logs/tda.log`
+- Linux / macOS：`/var/log/taos/tda.log`
+- Windows：`C:\TDengine\log\tda.log`
+- 容器化部署：容器内为 `/var/log/taos/tda.log`
 
 可先检查接口触发日志：
 

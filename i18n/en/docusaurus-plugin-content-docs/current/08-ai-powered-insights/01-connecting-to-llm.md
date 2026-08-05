@@ -31,8 +31,8 @@ To add or edit an AI connection:
 | **Q&A Model** | The model used for standard natural language queries and panel/analysis generation (e.g., `gpt-4o`) |
 | **Deep Thinking Model** | The model used for complex analytical tasks that require extended reasoning, such as root cause analysis (e.g., `o1` or `o3`) |
 
-4. Click **Test Connection** to verify the endpoint and credentials.
-5. Click **Save**.
+1. Click **Test Connection** to verify the endpoint and credentials.
+2. Click **Save**.
 
 ## 8.1.3 Two Model Configuration
 
@@ -46,6 +46,18 @@ In the AI Chat interface, users can toggle **Deep Thinking** mode to route their
 ## 8.1.4 Local Deployment
 
 For organizations running a self-hosted LLM (such as a locally deployed Ollama or vLLM instance), set the **API Endpoint** to the local service URL and leave the **API Key** blank if the service does not require authentication. As long as the service exposes an OpenAI-compatible API, all IDMP AI features work without modification.
+
+> **Note**: For self-hosted LLM deployments, to ensure the product's AI features function properly, it is recommended to use models at the capability level of **Qwen/Qwen3.5-27B** or above.
+>
+> Below is a list of recommended reference models (ranked by priority from highest to lowest):
+>
+> - `qwen3.5-plus`
+> - `glm-5.2`
+> - `kimi-k2.6`
+> - `deepseek-v4-pro`
+> - `Qwen/Qwen3.5-27B` (**Recommended Configuration**)
+> - `gpt-oss-120b`
+> - `gemma-4-31b-it`
 
 ## 8.1.5 TLS/SSL Configuration
 

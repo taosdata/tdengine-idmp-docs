@@ -87,9 +87,11 @@ If the request fails immediately, verify the API path, request payload, service 
 
 Check the main request log before inspecting the email sending implementation.
 
-Main log file:
+Main log file (the path depends on the operating system):
 
-- `/var/log/taos/idmp/logs/tda.log`
+- Linux / macOS: `/var/log/taos/tda.log`
+- Windows: `C:\TDengine\log\tda.log`
+- Docker deployment: `/var/log/taos/tda.log` inside the container
 
 Search for the request:
 
