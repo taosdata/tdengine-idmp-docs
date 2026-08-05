@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # 2.2 Docker 快速上手
 
-TDengine IDMP 提供 Docker Compose 部署方式，可简化本地部署流程。该方式将同时安装 TDengine TSDB-Enterprise 与 TDengine IDMP，并自动建立两者之间的连接。
+TDengine IDMP 提供基于 Docker Compose 的一键部署方式，可简化本地部署流程。该方式将同时安装 TDengine TSDB-Enterprise 与 TDengine IDMP，并自动建立两者之间的连接。
 
 TDengine 官网下载中心提供了 All-in-one 安装方式，可以一行命令完成 TDengine 所有模块包含 IDMP 的安装部署，支持 Docker、Linux 和 Windows 等部署环境，详细过程请阅读[第 14.13 节](../14-administration/40-all-in-one-deploy/index.md)
 
@@ -16,57 +16,24 @@ TDengine 官网下载中心提供了 All-in-one 安装方式，可以一行命�
 
 - Docker Engine 20.10 或更高版本。参见 [Install Docker Engine](https://docs.docker.com/engine/install/)。
 - Docker Compose 1.29.2 或更高版本。参见 [Install Docker Compose](https://docs.docker.com/compose/install/)。
-- 已在本地机器上安装 Git。参见 [git-scm.com](https://git-scm.com/)。
+- 稳定连接互联网
 
-## 2.2.2 准备 Docker 环境
+## 2.2.2 安装
 
-:::tip
-使用 Docker 方式部署 TDengine IDMP 需要从 Docker Hub 拉取镜像。如果您无法正常访问 Docker Hub，可以从 [TDengine 下载中心](https://www.taosdata.com/download-center) 下载容器镜像文件，然后执行以下命令加载镜像（以 x64 架构为例）：
-
-```bash
-docker load -i tdengine-tsdb-enterprise-docker-<version>-linux-x64.tar.gz
-docker load -i tdengine-idmp-enterprise-docker-<version>-linux-x64.tar.gz
-docker load -i tdengine-idmp-ai-enterprise-docker-<version>-linux-x64.tar.gz
-
-docker tag tdengine/tsdb-ee-amd64:<version> tdengine/tsdb-ee:latest
-docker tag tdengine/idmp-ee-amd64:<version> tdengine/idmp-ee:latest
-docker tag tdengine/idmp-ai-ee-amd64:<version> tdengine/idmp-ai-ee:latest
-```
-
-待镜像导入成功后，再继续执行以下步骤。
-:::
-
-克隆 TDengine IDMP 部署仓库：
-
-<Tabs>
-<TabItem label="GitHub" value="github">
-
-从 GitHub 的 [TDengine IDMP Deployment](https://github.com/taosdata/tdengine-idmp-deployment) 仓库克隆代码：
-
-```bash
-git clone https://github.com/taosdata/tdengine-idmp-deployment.git
-```
-
-</TabItem>
-<TabItem label="Gitee（国内镜像）" value="gitee">
-
-对于无法正常访问 GitHub 的用户，可从 Gitee 的 [TDengine IDMP Deployment](https://gitee.com/taosdata/tdengine-idmp-deployment) 镜像仓库克隆代码：
-
-```bash
-git clone https://gitee.com/taosdata/tdengine-idmp-deployment.git
-```
-
-</TabItem>
-</Tabs>
+请参照官网下载中心 TDengine All-in-One 提供的 Docker 命令行，进行安装。
+使用 All-in-One 一键部署 TDengine IDMP 将自动切换到 `https://tdengine-registry.cn-beijing.cr.aliyuncs.com` 拉取镜像，大幅提升拉取镜像的速度。
 
 ## 2.2.3 通过 Docker 启动 TDengine IDMP
 
+:::tip
+通过 All-in-One 一键部署安装完成后，将自动启动 IDMP 及相关服务。您也可以手动启动服务，以 Linux & macOS 为例，启动命令如下：
+
 ```bash
-cd tdengine-idmp-deployment/docker
-export TZ="Asia/Shanghai"
-chmod +x idmp.sh
+cd ~/.apex/docker
 ./idmp.sh start
 ```
+
+:::
 
 该命令将提示您选择部署模式：
 
@@ -81,10 +48,6 @@ AI 服务已作为独立镜像 `tdengine/idmp-ai-ee` 部署，Docker Compose 配
 
 - HTTP 访问：`http://localhost:6042` 或 `http://ip:6042`
 - HTTPS 访问：`https://localhost:6034` 或 `https://ip:6034`
-
-:::note
-请将 `TZ` 环境变量设置为与您的实际环境匹配的时区。`Asia/Shanghai` 适用于北京时间环境。Compose 中的所有容器将继承该设置——时区配置错误将导致实时分析触发时间和事件时间戳出现偏差。
-:::
 
 ## 2.2.4 激活
 

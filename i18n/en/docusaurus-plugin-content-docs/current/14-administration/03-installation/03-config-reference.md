@@ -3,14 +3,14 @@ title: Configuration File Reference
 sidebar_label: Configuration File Reference
 ---
 
-# 14.3.5 TDengine IDMP Configuration File Reference
+# 14.3.3 TDengine IDMP Configuration File Reference
 
 The TDengine IDMP configuration file is `application.yml`, located at:
 
 - **Linux/macOS**: `/usr/local/taos/idmp/config/application.yml`
 - **Windows**: `C:\TDengine\idmp\config\application.yml`
 
-## 14.3.5.1 Basic Configuration
+## 14.3.3.1 Basic Configuration
 
 ### TLS/HTTPS Certificate Configuration
 

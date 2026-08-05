@@ -3,87 +3,87 @@ title: Local Deployment
 sidebar_label: Local Deployment
 ---
 
-# 14.3.2 Local Deployment
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import GatewayBasePathConfig from './common/_gateway-base-path.md'
 
-This document describes how to install TDengine IDMP on your local machine.
+# 14.3.2 Local Deployment
+
+This guide explains how to deploy TDengine IDMP with an installer package on Linux, macOS, or Windows.
+
+To install TSDB, IDMP, TDgpt, and other modules together with a single command, use All-in-One deployment. See [section 14.13](../40-all-in-one-deploy/index.md).
 
 ## 14.3.2.1 Prerequisites
 
-- Ensure that your local machine meets the minimum requirements for TDengine IDMP. For details, see [Planning Your Deployment](../02-planning.md).
-- Install TDengine TSDB-Enterprise version 3.3.7.0 or higher. For instructions, see [Deploy TDengine TSDB-Enterprise](https://docs.tdengine.com/operations-and-maintenance/deploy-your-cluster/).
-- Install Java 21 or later.
-- Install glibc 2.25 or later.
-- On Debian and Ubuntu systems, install the `python3-venv` package.
+:::warning
+TDengine IDMP requires TDengine TSDB-Enterprise 3.4.1.7 or later. Install and start TDengine TSDB-Enterprise before installing TDengine IDMP.
+:::
+
+Before installation, confirm the following:
+
+- TDengine TSDB-Enterprise 3.4.1.7 or later is installed and running. See [Deploy with an installer package](https://docs.tdengine.com/get-started/package/).
+- Java 21 or later (installed automatically by the install command)
+- glibc 2.28 or later (Linux only)
+- Microsoft Visual C++ Redistributable 14.44 or later (installed automatically by the install command; Windows only)
+- A stable internet connection
+- A correctly configured system time zone. See your operating system documentation.
+
+For complete hardware and OS requirements, see [Planning](../02-planning.md).
 
 ## 14.3.2.2 Install TDengine IDMP
 
-Select your operating system to display the appropriate installation procedure.
+Follow the one-line install command provided for TDengine IDMP-Enterprise in the TDengine Download Center. Copy and paste it into a terminal to install.
 
 :::tip
+On Linux, run the command as `root`. On Windows, open an elevated PowerShell window as Administrator before running the command.
+:::
 
-Your machine must be connected to the internet when you install TDengine IDMP. Dependencies are downloaded and installed during the TDengine IDMP installation process.
+### Common installation errors
+
+IDMP requires a supported Java runtime. During installation, the script checks whether Java is installed and whether the version meets the requirement. Common errors:
+
+1. `Java Version 21+ is required, but not found at: ...`
+   - Java is not installed. Install Java 21 or later.
+   - Java is installed but not found. Create a symlink, for example: `ln -s /path/to/your-java-executable /usr/local/bin/java`.
+2. `Java Version 21+ is required, but version X is found at: ...`
+   - The Java version is too low. Install Java 21 or later.
+   - A qualifying Java is installed but not found first on `PATH`. Create a symlink as above, and ensure the correct Java executable has the highest priority on `PATH`. The error message prints the search path used by the installer.
+
+## 14.3.2.3 Configure the TSDB connection
+
+TDengine IDMP requires TDengine TSDB-Enterprise 3.4.1.7 or later. Before starting IDMP, configure the TDengine TSDB-Enterprise connection. Open the IDMP configuration file with a text editor. The default location is:
+
+- Linux/macOS: `/usr/local/taos/idmp/config/application.yml`
+- Windows: `C:\TDengine\idmp\config\application.yml`
+
+Under `tda.default-connection`, set the connection details:
+
+```yaml
+tda:
+  default-connection:
+    enable: true
+    auth-type: UserPassword # can be set to UserPassword or Token
+    url: http://192.168.1.100:6041
+    username: root
+    password: taosdata
+    explorer-url: http://192.168.1.100:6060
+```
+
+Where:
+
+- **auth-type:** Authentication method. Supports UserPassword (default) and Token.
+- **url:** The IP address and port of the taosAdapter component in TDengine TSDB-Enterprise. The default port is 6041.
+- **username** and **password:** Credentials for TDengine TSDB-Enterprise. Defaults are `root` and `taosdata`.
+- **explorer-url:** The taosExplorer URL. The default port is 6060. **If you access IDMP remotely, set this to the server's actual IP address or domain name**; otherwise the browser cannot reach Explorer.
+
+:::info Complete Configuration Reference
+
+- For the complete IDMP configuration file reference, see: [TDengine IDMP Configuration File Reference](/administration/installation/config-reference/)
+- <GatewayBasePathConfig />
 
 :::
 
-1. In a web browser, access the [TDengine Download Center](https://tdengine.com/downloads/?product=TDengine+IDMP-Enterprise&platform=Linux-Generic).
-
-1. Select the installation package for your operating system and download it.
-
-1. Follow the instructions in the Download Center to install TDengine IDMP.
-
-:::important
-
-Do not start TDengine IDMP until you have configured the TDengine TSDB-Enterprise connection as described in the following section.
-
-:::
-
-## 14.3.2.3 Configure TSDB Connection
-
-1. Configure the TDengine TSDB-Enterprise connection in TDengine IDMP:
-
-   1. Open the TDengine IDMP configuration file with a text editor. The default location is:
-      - Linux/macOS: `/usr/local/taos/idmp/config/application.yml`
-      - Windows: `C:\TDengine\idmp\config\application.yml`
-
-   1. Under the `tda.default-connection` section, set the TDengine TSDB-Enterprise connection details as shown in the following example:
-
-      ```yaml
-      tda:
-        default-connection:
-          enable: true
-          auth-type: UserPassword
-          url: http://<hostname>:<port>
-          username: <username>
-          password: <password>
-      ```
-
-      - **url:** Specify the URL and port number of your taosAdapter instance.
-
-      - **username:** Enter a TDengine TSDB-Enterprise user.
-
-      - **password:** Enter the password for the TDengine TSDB-Enterprise user.
-
-   :::info Complete Configuration Reference
-
-   - For complete IDMP configuration file documentation, please refer to: [TDengine IDMP Configuration File Reference](/administration/installation/config-reference/).
-   - <GatewayBasePathConfig />
-
-   :::
-
-1. (Optional) Run the following command to test the connection to TDengine TSDB-Enterprise:
-
-   ```bash
-   curl --request POST \
-     --user <username>:<password> \
-     --url http://<hostname>:<port>/rest/sql \
-     --data 'show databases;'
-   ```
-
-   If the connection is successful, the list of databases in TDengine TSDB-Enterprise will be displayed.
+After you finish this configuration, you can start the TDengine IDMP service.
 
 ## 14.3.2.4 Start TDengine IDMP
 
@@ -97,25 +97,40 @@ Run the following command to start TDengine IDMP:
 sudo svc-tdengine-idmp start
 ```
 
-You can also use other `svc-tdengine-idmp` commands to check the service status, stop the service, and perform other operations:
+You can also use other `svc-tdengine-idmp` commands to check status or stop the service:
 
 ```bash
 sudo svc-tdengine-idmp status # Check service status
 sudo svc-tdengine-idmp stop   # Stop service
 ```
 
-You can manually manage the TDengine IDMP service using `systemctl`. For example:
+You can also manage services with `systemctl`. After installation, the service names are:
+
+- `tdengine-idmp-h2`
+- `tdengine-idmp-backend`
+- `tdengine-idmp-ui`
+- `tdengine-idmp-chat`
+- `tdengine-idmp-cls`
+
+For example:
 
 ```bash
-sudo systemctl start tdengine-idmp
-sudo systemctl stop tdengine-idmp
-sudo systemctl status tdengine-idmp
-sudo systemctl restart tdengine-idmp
+sudo systemctl start tdengine-idmp-h2
+sudo systemctl start tdengine-idmp-backend
+sudo systemctl start tdengine-idmp-ui
+sudo systemctl start tdengine-idmp-chat
+
+sudo systemctl status tdengine-idmp-backend
+sudo systemctl stop tdengine-idmp-ui
+sudo systemctl stop tdengine-idmp-backend
+sudo systemctl stop tdengine-idmp-chat
+sudo systemctl stop tdengine-idmp-h2
 ```
 
 :::info
 
-Root permissions are required to run these commands.
+Root permissions are required to run these commands. On non-root accounts, prefix the command with `sudo`.
+You can also operate a single component, for example: `sudo svc-tdengine-idmp start backend`.
 
 :::
 
@@ -129,27 +144,37 @@ Run the following command to start TDengine IDMP:
 sudo svc-tdengine-idmp start
 ```
 
-You can also use other `svc-tdengine-idmp` commands to check the service status, stop the service, and perform other operations:
+You can also use other `svc-tdengine-idmp` commands:
 
 ```bash
-sudo svc-tdengine-idmp status # Check service status
-sudo svc-tdengine-idmp stop   # Stop service
+sudo svc-tdengine-idmp status
+sudo svc-tdengine-idmp stop
 ```
 
-You can manually manage the TDengine IDMP service using `launchctl`. For example:
+To manage services manually with `launchctl`, use these LaunchDaemon names:
+
+- `com.taosdata.tdengine-idmp-h2`
+- `com.taosdata.tdengine-idmp-backend`
+- `com.taosdata.tdengine-idmp-ui`
+- `com.taosdata.tdengine-idmp-chat`
+
+For example:
 
 ```bash
-sudo launchctl start com.taosdata.tdengine-idmp
-sudo launchctl stop com.taosdata.tdengine-idmp
+sudo launchctl start com.taosdata.tdengine-idmp-h2
+sudo launchctl start com.taosdata.tdengine-idmp-backend
+sudo launchctl start com.taosdata.tdengine-idmp-ui
+sudo launchctl start com.taosdata.tdengine-idmp-chat
+
 sudo launchctl list | grep tdengine-idmp
-sudo launchctl print system/com.taosdata.tdengine-idmp
+sudo launchctl print system/com.taosdata.tdengine-idmp-backend
 ```
 
 :::info
 
 - Root privileges are required to run these commands.
-- The command `sudo launchctl list | grep tdengine-idmp` returns the PID of the TDengine IDMP Java process in the first column. If the command returns `-`, the TDengine IDMP service is not running.
-- If the service is not working properly, check the system log (`launchd.log`) or the logs located in the `/usr/local/taos/idmp/logs` directory for more information.
+- The first column returned by `sudo launchctl list | grep tdengine-idmp` is the process PID. `-` means the service is not running.
+- If the service is unhealthy, check `launchd.log` or logs under `/usr/local/taos/idmp/logs`.
 
 :::
 
@@ -157,159 +182,144 @@ sudo launchctl print system/com.taosdata.tdengine-idmp
 
 <TabItem label="Windows" value="windows">
 
-Run the following command to start TDengine IDMP:
+After installation, the TDengine IDMP services are registered as Windows services but do not start automatically. Start them as follows.
+
+**Recommended: batch script**
 
 ```batch
 C:\TDengine\idmp\bin\start-tdengine-idmp.bat
 ```
 
-You can also manage TDengine IDMP services through Windows Service Manager:
+**Windows Services Manager:**
 
-1. Press `Win + R`, type `services.msc`, and press Enter to open Services
-2. Find the following services:
-   - `tdengine-idmp`
+1. Press `Win + R`, type `services.msc`, and press Enter.
+2. Start the following services:
    - `tdengine-idmp-h2`
    - `tdengine-idmp-chat`
-3. Right-click on each service to Start, Stop, or Restart
+   - `tdengine-idmp-cls`
+   - `tdengine-idmp-backend`
+   - `tdengine-idmp-ui`
 
-To stop TDengine IDMP, run:
+**sc command:**
+
+```batch
+sc.exe start tdengine-idmp-h2
+sc.exe start tdengine-idmp-chat
+sc.exe start tdengine-idmp-cls
+sc.exe start tdengine-idmp-backend
+sc.exe start tdengine-idmp-ui
+```
+
+**Check status:**
+
+```batch
+sc.exe query tdengine-idmp-h2
+sc.exe query tdengine-idmp-chat
+sc.exe query tdengine-idmp-cls
+sc.exe query tdengine-idmp-backend
+sc.exe query tdengine-idmp-ui
+```
+
+**Stop services:**
 
 ```batch
 C:\TDengine\idmp\bin\stop-tdengine-idmp.bat
 ```
 
+Or:
+
+```batch
+sc.exe stop tdengine-idmp-ui
+sc.exe stop tdengine-idmp-backend
+sc.exe stop tdengine-idmp-cls
+sc.exe stop tdengine-idmp-chat
+sc.exe stop tdengine-idmp-h2
+```
+
 :::info
 
-- Administrator privileges are required to run these commands.
-- If the services are not working properly, check the logs located in the `C:\TDengine\idmp\logs` directory for more information.
+- Run batch scripts as Administrator. If you hit a permission error, right-click the script and choose **Run as administrator**.
+- If a service is unhealthy, check logs under `C:\TDengine\log` or use Event Viewer.
 
 :::
 
 </TabItem>
 </Tabs>
 
-Once TDengine IDMP starts successfully, it includes the following three services:
+By default, the TDengine IDMP service listens on:
 
-- `tdengine-idmp-h2`: Stores metadata and configuration for TDengine IDMP.
-- `tdengine-idmp-chat`: Handles AI-related tasks and analytics.
-- `tdengine-idmp`: The core service responsible for managing and providing data access.
+- HTTP: `http://localhost:6042` or `http://ip:6042`
+- HTTPS: `https://localhost:6034` or `https://ip:6034`
 
 ## 14.3.2.5 Uninstall TDengine IDMP
 
 <Tabs>
-<TabItem label="Linux-Generic" value="targz">
-Run the following command to uninstall TDengine IDMP:
+
+<TabItem label="Linux/macOS" value="unix">
+
+Uninstall TDengine IDMP:
 
 ```bash
-rmidmp -e [yes | no]
+rmidmp -e yes
 ```
 
-To retain data, log, and configuration files, specify `no`. To delete these files, specify `yes`.
+To keep data, logs, and configuration:
 
-</TabItem>
-<TabItem label="Linux-Red Hat" value="rpm">
+```bash
+rmidmp -e no
+```
 
-Run the following command to uninstall TDengine IDMP:
+If installed with **rpm** (Linux):
 
 ```bash
 rpm -e tdengine-idmp
 ```
 
-</TabItem>
-<TabItem label="Linux-Ubuntu" value="deb">
-Run the following command to uninstall TDengine IDMP:
+If installed with **deb** (Linux):
 
 ```bash
 dpkg -r tdengine-idmp
 ```
 
 </TabItem>
-<TabItem label="macOS" value="macos">
-Run the following command to uninstall TDengine IDMP:
-
-```bash
-rmidmp -e [yes | no]
-```
-
-To retain data, log, and configuration files, specify `no`. To delete these files, specify `yes`.
-
-</TabItem>
 
 <TabItem label="Windows" value="windows">
 
-Double-click `C:\TDengine\idmp\unins000.exe` and follow the uninstallation wizard to complete the process.
-
-Alternatively, you can uninstall TDengine IDMP through **Control Panel** → **Programs** → **Programs and Features**:
-
-1. Find **TDengine IDMP** in the list
-2. Right-click and select **Uninstall**
-3. Follow the uninstallation wizard to complete the process
+Double-click `C:\TDengine\idmp\unins000.exe` and follow the uninstall wizard.
 
 </TabItem>
+
 </Tabs>
 
 ## 14.3.2.6 Upgrade TDengine IDMP
 
-To upgrade TDengine IDMP, you download the installation package for the new version of TDengine IDMP, stop all TDengine IDMP services, install the new version, and start TDengine IDMP services again. It is not necessary to uninstall the previous version before upgrading, and all existing configuration, logs, and data are retained after upgrade.
+Use the official install script to upgrade. The script detects an existing installation and enters upgrade mode so user data and configuration remain safe:
+
+- **Automatic upgrade detection:** The script determines whether the run is an upgrade.
+- **Data and configuration protection:** In upgrade mode, the script does not overwrite or modify these directories:
 
 <Tabs>
 <TabItem label="Linux/macOS" value="unix">
 
-1. Back up the contents of the following directories:
-
-   - `data/idmp`: User data directory
-   - `idmp/venv`: Python virtual environment
-   - `idmp/config`: Configuration directory
-   - `logs`: Log directory
-
-1. Stop all TDengine IDMP services:
-
-   ```shell
-   sudo svc-tdengine-idmp stop
-   ```
-
-1. Install the new version of TDengine IDMP:
-
-   ```shell idmp-ee
-   tar -zxvf tdengine-idmp-enterprise-{{VERSION}}-linux-x64.tar.gz
-   cd tdengine-idmp-enterprise-{{VERSION}}
-   sudo ./install.sh
-   ```
-
-1. Start TDengine IDMP services:
-
-   ```shell
-   sudo svc-tdengine-idmp start
-   ```
-
-1. Log in to TDengine IDMP and verify that the desired version has been installed.
+- `data/idmp`: user data
+- `idmp/venv`: Python virtual environment
+- `idmp/config`: configuration
+- `logs`: logs
 
 </TabItem>
-
 <TabItem label="Windows" value="windows">
 
-1. Back up the contents of the following directories:
-
-   - `data\idmp`: User data directory
-   - `idmp\venv`: Python virtual environment
-   - `idmp\config`: Configuration directory
-   - `logs`: Log directory
-
-1. Run the following file as an administrator to stop all TDengine IDMP services:
-
-   ```shell
-   C:\TDengine\idmp\bin\stop-tdengine-idmp.bat
-   ```
-
-1. Run the installation package to install the new version of TDengine IDMP.
-
-1. Run the following file as an administrator to start all TDengine IDMP services:
-
-   ```shell
-   C:\TDengine\idmp\bin\start-tdengine-idmp.bat
-   ```
-
-1. Log in to TDengine IDMP and verify that the desired version has been installed.
+- `data\idmp`: user data
+- `idmp\venv`: Python virtual environment
+- `idmp\config`: configuration
+- `logs`: logs
 
 </TabItem>
 </Tabs>
+
+- **Program files only:** The upgrade updates program files and dependencies while leaving user data and configuration unchanged.
+- **Fresh install:** On a first install, all directories and files are initialized.
+
+:::info
+Always upgrade with the official install script. If you need a manual backup, copy the directories above before upgrading. After the upgrade, check service status and logs to confirm success.
+:::
