@@ -14,7 +14,7 @@ SDK objects map one-to-one with IDMP product concepts. Understanding these mappi
 | `ApiClient` | — | SDK entry point; manages connection, authentication, and request dispatch |
 | `ElementResourceApi` | Element | Nodes in the asset tree: equipment, systems, areas |
 | `AttributeResourceApi` | Attribute | Named properties of an element; can be bound to time-series data or static values |
-| `MetricResourceApi` | Metric | Time-series data stream from an attribute's historical and real-time data |
+| `MetricsResourceApi` | Observability metrics | Queries real-time observability metrics for the IDMP service |
 | `EventResourceApi` | Event | Alarm or state-change records triggered by RT analysis rules |
 | `PanelResourceApi` | Panel | Visualization chart associated with an element |
 | `UserResourceApi` | User | User management and authentication |
@@ -34,7 +34,7 @@ Element
 
 1. Use `ElementResourceApi` to find the target element (by name, path, or ID).
 2. Use the element ID to query its attribute list (`AttributeResourceApi`).
-3. Use the attribute ID to query time-series data (`MetricResourceApi`).
+3. Use IDMP data source or attribute APIs to continue accessing business time-series data; `MetricsResourceApi` does not query attribute history.
 
 ## 15.1.4.3 Pagination
 
@@ -42,18 +42,18 @@ All list endpoints support pagination. The response format is:
 
 ```json
 {
-  "data": [...],        // records on the current page
+  "current": 1,         // current page number (1-based)
+  "size": 20,           // records per page
   "total": 100,         // total record count
-  "pageNum": 1,         // current page number (1-based)
-  "pageSize": 20        // records per page
+  "rows": [...]         // records on the current page
 }
 ```
 
-Control pagination with the `pageNum` and `pageSize` query parameters:
+List endpoints that use the standard pagination DTO accept the `current` and `size` query parameters:
 
 ```python
 # Python example
-result = element_api.api_v1_elements_get(page_num=1, page_size=50)
+result = element_api.api_v1_elements_get(current=1, size=50)
 ```
 
 ## 15.1.4.4 Request and Response Structure

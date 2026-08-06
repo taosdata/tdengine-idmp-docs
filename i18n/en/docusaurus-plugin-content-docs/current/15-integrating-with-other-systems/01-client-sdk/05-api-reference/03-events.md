@@ -13,12 +13,14 @@ import IdmpSdkVersion from "/src/components/IdmpSdkVersion";
 
 ## Method List
 
-| Method | HTTP | Description |
-|---|---|---|
-| `apiV1EventsGet` | GET /api/v1/events | Paginated query of the event list |
-| `apiV1EventsIdGet` | GET /api/v1/events/\{id\} | Get a single event by ID |
-| `apiV1EventsIdAcknowledgePut` | PUT /api/v1/events/\{id\}/acknowledge | Acknowledge an event |
-| `apiV1EventsIdResolvePut` | PUT /api/v1/events/\{id\}/resolve | Resolve an event |
+Java and Python SDK method names follow their respective generated-code conventions. Use the name in the column for your language.
+
+| Java Method | Python Method | HTTP | Description |
+|---|---|---|---|
+| `apiV1EventsGet` | `api_v1_events_get` | GET /api/v1/events | Paginated query of the event list |
+| `apiV1EventsEventIdGet` | `api_v1_events_event_id_get` | GET /api/v1/events/\{eventId\} | Get a single event by ID |
+| `apiV1EventsEventIdConfirmPatch` | `api_v1_events_event_id_confirm_patch` | PATCH /api/v1/events/\{eventId\}/confirm | Confirm an event |
+| `apiV1EventsEventIdDelete` | `api_v1_events_event_id_delete` | DELETE /api/v1/events/\{eventId\} | Delete an event |
 
 ---
 
@@ -30,13 +32,12 @@ Returns a paginated list of events with optional filtering by time range, status
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| from | long | No | Start time, Unix millisecond timestamp |
-| to | long | No | End time, Unix millisecond timestamp |
-| status | string | No | Event status: `active`, `acknowledged`, `resolved` |
-| severity | string | No | Severity level: `critical`, `warning`, `info` |
-| elementId | string | No | Filter by element ID |
-| pageNum | integer | No | Page number |
-| pageSize | integer | No | Records per page |
+| fromTime | long | No | Start time, Unix millisecond timestamp |
+| toTime | long | No | End time, Unix millisecond timestamp |
+| status | EventStatus | No | Filter by event status |
+| elementId | integer | No | Filter by element ID |
+| current | integer | No | Page number, 1-based |
+| size | integer | No | Records per page |
 
 ### Example
 
@@ -44,14 +45,13 @@ Returns a paginated list of events with optional filtering by time range, status
 <TabItem value="java" label="Java">
 
 ```java
-// Query unacknowledged critical events in the last 24 hours
-// EventResourceApi eventApi = apiClient.buildClient(EventResourceApi.class);
-// {QUERY_PARAMS_CLASS} params = new {QUERY_PARAMS_CLASS}()
-//     .from(System.currentTimeMillis() - 86400_000L)
-//     .status("active")
-//     .severity("critical");
-// PageOfEventDTO events = eventApi.apiV1EventsGet(params);
-// System.out.println("Critical events: " + events.getTotal());
+EventResourceApi eventApi = apiClient.buildClient(EventResourceApi.class);
+ApiV1EventsGetQueryParams params = new ApiV1EventsGetQueryParams()
+    .current(1)
+    .size(50)
+    .fromTime(System.currentTimeMillis() - 86400_000L);
+PageOfEventDetailDTO events = eventApi.apiV1EventsGet(params);
+System.out.println("Events: " + events.getTotal());
 ```
 
 </TabItem>
@@ -62,13 +62,13 @@ import time
 
 event_api = idmp_sdk.EventResourceApi(api_client)
 
-# Query unacknowledged critical events in the last 24 hours
-# events = event_api.api_v1_events_get(
-#     from_ts=int(time.time() * 1000) - 86400 * 1000,
-#     status="active",
-#     severity="critical"
-# )
-# print(f"Critical events: {events.total}")
+# Query events from the last 24 hours
+events = event_api.api_v1_events_get(
+    current=1,
+    size=50,
+    from_time=int(time.time() * 1000) - 86400 * 1000
+)
+print(f"Events: {events.total}")
 ```
 
 </TabItem>

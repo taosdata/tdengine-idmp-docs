@@ -14,7 +14,7 @@ SDK 对象与 IDMP 产品概念一一对应。理解这些映射关系有助于�
 | `ApiClient` | — | SDK 入口点；管理连接、认证和请求分发 |
 | `ElementResourceApi` | 元素 | 资产树中的节点：设备、系统、区域 |
 | `AttributeResourceApi` | 属性 | 元素的命名属性；可绑定时序数据或静态值 |
-| `MetricResourceApi` | 指标 | 来自属性历史数据和实时数据的时序数据流 |
+| `MetricsResourceApi` | 可观测性指标 | 查询 IDMP 服务的实时可观测性指标 |
 | `EventResourceApi` | 事件 | 由实时分析规则触发的告警或状态变化记录 |
 | `PanelResourceApi` | 面板 | 与元素关联的可视化图表 |
 | `UserResourceApi` | 用户 | 用户管理与认证 |
@@ -34,7 +34,7 @@ IDMP SDK 的数据访问遵循以下层级：
 
 1. 使用 `ElementResourceApi` 找到目标元素（通过名称、路径或 ID）。
 2. 使用元素 ID 查询其属性列表（`AttributeResourceApi`）。
-3. 使用属性 ID 查询时序数据（`MetricResourceApi`）。
+3. 通过 IDMP 的数据源或属性接口继续访问业务时序数据；`MetricsResourceApi` 不提供属性历史数据查询。
 
 ## 15.1.4.3 分页
 
@@ -42,18 +42,18 @@ IDMP SDK 的数据访问遵循以下层级：
 
 ```json
 {
-  "data": [...],        // 当前页的记录
+  "current": 1,         // 当前页码（从 1 开始）
+  "size": 20,           // 每页记录数
   "total": 100,         // 总记录数
-  "pageNum": 1,         // 当前页码（从 1 开始）
-  "pageSize": 20        // 每页记录数
+  "rows": [...]         // 当前页的记录
 }
 ```
 
-使用 `pageNum` 和 `pageSize` 查询参数控制分页：
+使用 `current` 和 `size` 查询参数控制分页：
 
 ```python
 # Python 示例
-result = element_api.api_v1_elements_get(page_num=1, page_size=50)
+result = element_api.api_v1_elements_get(current=1, size=50)
 ```
 
 ## 15.1.4.4 请求与响应结构

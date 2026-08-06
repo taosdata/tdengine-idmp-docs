@@ -13,12 +13,14 @@ import IdmpSdkVersion from "/src/components/IdmpSdkVersion";
 
 ## 方法列表
 
-| 方法 | HTTP | 说明 |
-|---|---|---|
-| `apiV1EventsGet` | GET /api/v1/events | 分页查询事件列表 |
-| `apiV1EventsIdGet` | GET /api/v1/events/\{id\} | 根据 ID 获取单个事件 |
-| `apiV1EventsIdAcknowledgePut` | PUT /api/v1/events/\{id\}/acknowledge | 确认事件 |
-| `apiV1EventsIdResolvePut` | PUT /api/v1/events/\{id\}/resolve | 解决事件 |
+Java 与 Python SDK 的方法名遵循各自语言的生成规则。调用时请使用对应语言列中的名称。
+
+| Java 方法 | Python 方法 | HTTP | 说明 |
+|---|---|---|---|
+| `apiV1EventsGet` | `api_v1_events_get` | GET /api/v1/events | 分页查询事件列表 |
+| `apiV1EventsEventIdGet` | `api_v1_events_event_id_get` | GET /api/v1/events/\{eventId\} | 根据 ID 获取单个事件 |
+| `apiV1EventsEventIdConfirmPatch` | `api_v1_events_event_id_confirm_patch` | PATCH /api/v1/events/\{eventId\}/confirm | 确认事件 |
+| `apiV1EventsEventIdDelete` | `api_v1_events_event_id_delete` | DELETE /api/v1/events/\{eventId\} | 删除事件 |
 
 ---
 
@@ -30,13 +32,12 @@ import IdmpSdkVersion from "/src/components/IdmpSdkVersion";
 
 | 名称 | 类型 | 必填 | 说明 |
 |---|---|---|---|
-| from | long | 否 | 开始时间，Unix 毫秒时间戳 |
-| to | long | 否 | 结束时间，Unix 毫秒时间戳 |
-| status | string | 否 | 事件状态：`active`、`acknowledged`、`resolved` |
-| severity | string | 否 | 严重级别：`critical`、`warning`、`info` |
-| elementId | string | 否 | 按元素 ID 过滤 |
-| pageNum | integer | 否 | 页码 |
-| pageSize | integer | 否 | 每页记录数 |
+| fromTime | long | 否 | 开始时间，Unix 毫秒时间戳 |
+| toTime | long | 否 | 结束时间，Unix 毫秒时间戳 |
+| status | EventStatus | 否 | 按事件状态过滤 |
+| elementId | integer | 否 | 按元素 ID 过滤 |
+| current | integer | 否 | 页码，从 1 开始 |
+| size | integer | 否 | 每页记录数 |
 
 ### 示例
 
@@ -44,14 +45,13 @@ import IdmpSdkVersion from "/src/components/IdmpSdkVersion";
 <TabItem value="java" label="Java">
 
 ```java
-// Query unacknowledged critical events in the last 24 hours
-// EventResourceApi eventApi = apiClient.buildClient(EventResourceApi.class);
-// {QUERY_PARAMS_CLASS} params = new {QUERY_PARAMS_CLASS}()
-//     .from(System.currentTimeMillis() - 86400_000L)
-//     .status("active")
-//     .severity("critical");
-// PageOfEventDTO events = eventApi.apiV1EventsGet(params);
-// System.out.println("Critical events: " + events.getTotal());
+EventResourceApi eventApi = apiClient.buildClient(EventResourceApi.class);
+ApiV1EventsGetQueryParams params = new ApiV1EventsGetQueryParams()
+    .current(1)
+    .size(50)
+    .fromTime(System.currentTimeMillis() - 86400_000L);
+PageOfEventDetailDTO events = eventApi.apiV1EventsGet(params);
+System.out.println("Events: " + events.getTotal());
 ```
 
 </TabItem>
@@ -62,13 +62,13 @@ import time
 
 event_api = idmp_sdk.EventResourceApi(api_client)
 
-# Query unacknowledged critical events in the last 24 hours
-# events = event_api.api_v1_events_get(
-#     from_ts=int(time.time() * 1000) - 86400 * 1000,
-#     status="active",
-#     severity="critical"
-# )
-# print(f"Critical events: {events.total}")
+# Query events from the last 24 hours
+events = event_api.api_v1_events_get(
+    current=1,
+    size=50,
+    from_time=int(time.time() * 1000) - 86400 * 1000
+)
+print(f"Events: {events.total}")
 ```
 
 </TabItem>

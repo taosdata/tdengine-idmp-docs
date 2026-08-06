@@ -19,7 +19,7 @@ The SDK wraps all API errors in a single `ApiException` class. You can retrieve 
 import org.openapitools.client.ApiException;
 
 try {
-    ElementDTO element = elementApi.apiV1ElementsIdGet("nonexistent-id");
+    ElementDTO element = elementApi.apiV1ElementsElementIdGet(123L);
 } catch (ApiException e) {
     System.err.println("HTTP status: " + e.getCode());
     System.err.println("Error message: " + e.getMessage());
@@ -34,7 +34,7 @@ try {
 from idmp_sdk.rest import ApiException
 
 try:
-    element = element_api.api_v1_elements_id_get("nonexistent-id")
+    element = element_api.api_v1_elements_element_id_get(123)
 except ApiException as e:
     print(f"HTTP status: {e.status}")
     print(f"Reason: {e.reason}")
@@ -86,7 +86,7 @@ def call_with_retry(fn, max_retries=3, base_delay=1.0):
 
 # Usage
 result = call_with_retry(
-    lambda: element_api.api_v1_elements_get(page_num=1, page_size=50)
+    lambda: element_api.api_v1_elements_get(current=1, size=50)
 )
 ```
 

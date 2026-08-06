@@ -12,13 +12,15 @@ import TabItem from '@theme/TabItem';
 
 ## 方法列表
 
-| 方法 | HTTP | 说明 |
-|---|---|---|
-| `apiV1ElementsGet` | GET /api/v1/elements | 分页查询元素列表 |
-| `apiV1ElementsIdGet` | GET /api/v1/elements/\{id\} | 根据 ID 获取单个元素 |
-| `apiV1ElementsPost` | POST /api/v1/elements | 创建元素 |
-| `apiV1ElementsIdPut` | PUT /api/v1/elements/\{id\} | 更新元素 |
-| `apiV1ElementsIdDelete` | DELETE /api/v1/elements/\{id\} | 删除元素 |
+Java 与 Python SDK 的方法名遵循各自语言的生成规则。调用时请使用对应语言列中的名称。
+
+| Java 方法 | Python 方法 | HTTP | 说明 |
+|---|---|---|---|
+| `apiV1ElementsGet` | `api_v1_elements_get` | GET /api/v1/elements | 分页查询元素列表 |
+| `apiV1ElementsElementIdGet` | `api_v1_elements_element_id_get` | GET /api/v1/elements/\{elementId\} | 根据 ID 获取单个元素 |
+| `apiV1ElementsPost` | `api_v1_elements_post` | POST /api/v1/elements | 创建元素 |
+| `apiV1ElementsElementIdPut` | `api_v1_elements_element_id_put` | PUT /api/v1/elements/\{elementId\} | 更新元素 |
+| `apiV1ElementsElementIdDelete` | `api_v1_elements_element_id_delete` | DELETE /api/v1/elements/\{elementId\} | 删除元素 |
 
 ---
 
@@ -30,10 +32,10 @@ import TabItem from '@theme/TabItem';
 
 | 名称 | 类型 | 必填 | 默认值 | 说明 |
 |---|---|---|---|---|
-| pageNum | integer | 否 | 1 | 页码，从 1 开始 |
-| pageSize | integer | 否 | 20 | 每页记录数 |
-| parentId | string | 否 | — | 按父元素 ID 过滤 |
-| name | string | 否 | — | 按元素名称模糊搜索 |
+| current | integer | 否 | 1 | 页码，从 1 开始 |
+| size | integer | 否 | 20 | 每页记录数 |
+| parentId | integer | 否 | — | 按父元素 ID 过滤 |
+| keyword | string | 否 | — | 按关键字过滤 |
 
 **返回：** `PageOfBasicElementDTO`
 
@@ -45,8 +47,8 @@ import TabItem from '@theme/TabItem';
 ```java
 ElementResourceApi elementApi = apiClient.buildClient(ElementResourceApi.class);
 ApiV1ElementsGetQueryParams params = new ApiV1ElementsGetQueryParams()
-    .pageNum(1)
-    .pageSize(50);
+    .current(1)
+    .size(50);
 PageOfBasicElementDTO result = elementApi.apiV1ElementsGet(params);
 System.out.println("Total elements: " + result.getTotal());
 ```
@@ -56,9 +58,9 @@ System.out.println("Total elements: " + result.getTotal());
 
 ```python
 element_api = idmp_sdk.ElementResourceApi(api_client)
-result = element_api.api_v1_elements_get(page_num=1, page_size=50)
+result = element_api.api_v1_elements_get(current=1, size=50)
 print(f"Total elements: {result.total}")
-for elem in result.data:
+for elem in result.rows or []:
     print(f"  {elem.id}: {elem.name}")
 ```
 
@@ -67,13 +69,13 @@ for elem in result.data:
 
 ---
 
-## apiV1ElementsIdGet——获取单个元素
+## 获取单个元素
 
 ### 参数
 
 | 名称 | 类型 | 必填 | 说明 |
 |---|---|---|---|
-| id | string | 是 | 元素 ID |
+| elementId | integer | 是 | 元素 ID |
 
 **返回：** `ElementDTO`
 
@@ -85,7 +87,7 @@ for elem in result.data:
 <TabItem value="java" label="Java">
 
 ```java
-ElementDTO element = elementApi.apiV1ElementsIdGet("element-id-123");
+ElementDTO element = elementApi.apiV1ElementsElementIdGet(123L);
 System.out.println(element.getName());
 ```
 
@@ -93,7 +95,7 @@ System.out.println(element.getName());
 <TabItem value="python" label="Python">
 
 ```python
-element = element_api.api_v1_elements_id_get("element-id-123")
+element = element_api.api_v1_elements_element_id_get(123)
 print(element.name)
 ```
 

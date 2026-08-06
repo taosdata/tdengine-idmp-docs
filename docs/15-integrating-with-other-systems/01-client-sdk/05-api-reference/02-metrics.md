@@ -9,34 +9,27 @@ import IdmpSdkVersion from "/src/components/IdmpSdkVersion";
 
 # 15.1.5.2 指标 API
 
-`MetricResourceApi` 提供时序数据的读写操作，是 SDK 中最常用的模块之一。
+`MetricsResourceApi` 提供 IDMP 服务实时可观测性指标查询。
 
 ## 方法列表
 
-| 方法 | HTTP | 说明 |
-|---|---|---|
-| `apiV1MetricsGet` | GET /api/v1/metrics | 查询指标列表 |
-| `apiV1MetricsIdHistoryGet` | GET /api/v1/metrics/\{id\}/history | 查询指标历史数据 |
-| `apiV1MetricsIdLatestGet` | GET /api/v1/metrics/\{id\}/latest | 查询指标最新值 |
-| `apiV1MetricsIdDataPost` | POST /api/v1/metrics/\{id\}/data | 向指标写入数据 |
+| Java 方法 | Python 方法 | HTTP | 说明 |
+|---|---|---|---|
+| `apiV1ObservabilityMetricsGet` | `api_v1_observability_metrics_get` | GET /api/v1/observability/metrics | 查询实时可观测性指标 |
 
 ---
 
-## 查询历史数据
+## 查询实时可观测性指标
 
-返回指定时间范围内的指标数据，支持可选聚合。
+返回 IDMP 服务的实时可观测性指标。
 
 ### 参数
 
 | 名称 | 类型 | 必填 | 说明 |
 |---|---|---|---|
-| id | string | 是 | 指标 ID |
-| from | long | 是 | 开始时间，Unix 毫秒时间戳 |
-| to | long | 是 | 结束时间，Unix 毫秒时间戳 |
-| interval | string | 否 | 聚合时间窗口，如 `1m`、`1h`。省略则返回原始数据。 |
-| aggregate | string | 否 | 聚合函数：`avg`、`max`、`min`、`sum` |
+| metricCodes | string | 否 | 按指标代码过滤；省略时查询全部可用指标 |
 
-**返回：** `MetricDataDTO`
+**返回：** `MetricsDTO`
 
 ### 示例
 
@@ -44,35 +37,18 @@ import IdmpSdkVersion from "/src/components/IdmpSdkVersion";
 <TabItem value="java" label="Java">
 
 ```java
-// Query the last 1 hour, 1-minute average
-long now = System.currentTimeMillis();
-long oneHourAgo = now - 3600_000L;
-
-// See the OpenAPI spec or Swagger UI for the full method signature
-// MetricResourceApi metricApi = apiClient.buildClient(MetricResourceApi.class);
-// MetricDataDTO data = metricApi.apiV1MetricsIdHistoryGet(
-//     "metric-id-123", oneHourAgo, now, "1m", "avg");
+MetricsResourceApi metricsApi = apiClient.buildClient(MetricsResourceApi.class);
+MetricsDTO result = metricsApi.apiV1ObservabilityMetricsGet(null);
+System.out.println(result);
 ```
 
 </TabItem>
 <TabItem value="python" label="Python">
 
 ```python
-import time
-
-metric_api = idmp_sdk.MetricResourceApi(api_client)
-
-now_ms = int(time.time() * 1000)
-one_hour_ago_ms = now_ms - 3600 * 1000
-
-# See the OpenAPI spec or Swagger UI for the full method signature
-# result = metric_api.api_v1_metrics_id_history_get(
-#     id="metric-id-123",
-#     from_ts=one_hour_ago_ms,
-#     to_ts=now_ms,
-#     interval="1m",
-#     aggregate="avg"
-# )
+metrics_api = idmp_sdk.MetricsResourceApi(api_client)
+result = metrics_api.api_v1_observability_metrics_get()
+print(result)
 ```
 
 </TabItem>
@@ -80,32 +56,9 @@ one_hour_ago_ms = now_ms - 3600 * 1000
 
 ---
 
-## 查询最新值
-
-返回指标最近一个数据点，适用于实时监控场景。
-
-### 示例
-
-<Tabs groupId="language">
-<TabItem value="java" label="Java">
-
-```java
-// See the OpenAPI spec or Swagger UI for the full method signature
-// LatestValueDTO latest = metricApi.apiV1MetricsIdLatestGet("metric-id-123");
-// System.out.println("Latest value: " + latest.getValue() + " @ " + latest.getTimestamp());
-```
-
-</TabItem>
-<TabItem value="python" label="Python">
-
-```python
-# See the OpenAPI spec or Swagger UI for the full method signature
-# latest = metric_api.api_v1_metrics_id_latest_get("metric-id-123")
-# print(f"Latest value: {latest.value} @ {latest.timestamp}")
-```
-
-</TabItem>
-</Tabs>
+:::note
+`2.0.0.10` SDK 中没有 `MetricResourceApi`，也没有指标历史、最新值或写入数据的方法。请勿使用旧版文档中的 `api_v1_metrics_*` 方法。
+:::
 
 :::note
 完整的方法签名和参数请参考 SDK 包中的 OpenAPI 规范文件（<code>idmp-v<IdmpSdkVersion />.json</code>），或在您的 IDMP 服务器上访问 `/swagger-ui.html` 浏览 Swagger UI。

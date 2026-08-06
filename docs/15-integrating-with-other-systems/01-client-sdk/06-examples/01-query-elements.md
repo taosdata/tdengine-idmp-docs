@@ -36,21 +36,21 @@ public class QueryElementsExample {
 
         // 2. Paginate through all elements
         ElementResourceApi elementApi = apiClient.buildClient(ElementResourceApi.class);
-        int pageNum = 1;
+        int current = 1;
         int pageSize = 100;
 
         while (true) {
             ApiV1ElementsGetQueryParams params = new ApiV1ElementsGetQueryParams()
-                .pageNum(pageNum)
-                .pageSize(pageSize);
+                .current(current)
+                .size(pageSize);
             PageOfBasicElementDTO result = elementApi.apiV1ElementsGet(params);
 
-            for (BasicElementDTO elem : result.getData()) {
+            for (BasicElementDTO elem : result.getRows()) {
                 System.out.printf("ID: %-30s  Name: %s%n", elem.getId(), elem.getName());
             }
 
-            if (result.getData().size() < pageSize) break;  // last page
-            pageNum++;
+            if (result.getRows().size() < pageSize) break;  // last page
+            current++;
         }
     }
 }
@@ -85,19 +85,20 @@ def get_api_client():
 def list_all_elements(api_client, page_size=100):
     """Paginate through all elements and print their IDs and names."""
     element_api = idmp_sdk.ElementResourceApi(api_client)
-    page_num = 1
+    current = 1
 
     while True:
         result = element_api.api_v1_elements_get(
-            page_num=page_num,
-            page_size=page_size
+            current=current,
+            size=page_size
         )
-        for elem in result.data:
+        rows = result.rows or []
+        for elem in rows:
             print(f"ID: {elem.id:<30}  Name: {elem.name}")
 
-        if len(result.data) < page_size:
+        if len(rows) < page_size:
             break  # last page
-        page_num += 1
+        current += 1
 
 if __name__ == "__main__":
     with get_api_client() as api_client:

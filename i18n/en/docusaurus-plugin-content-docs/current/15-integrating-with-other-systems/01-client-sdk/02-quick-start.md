@@ -120,8 +120,9 @@ configuration = idmp_sdk.Configuration(
 with idmp_sdk.ApiClient(configuration) as api_client:
     element_api = idmp_sdk.ElementResourceApi(api_client)
     elements = element_api.api_v1_elements_get()
-    print(f"Found {len(elements.data)} elements")
-    for elem in elements.data:
+    rows = elements.rows or []
+    print(f"Found {len(rows)} elements")
+    for elem in rows:
         print(f"  - {elem.name} ({elem.id})")
 ```
 

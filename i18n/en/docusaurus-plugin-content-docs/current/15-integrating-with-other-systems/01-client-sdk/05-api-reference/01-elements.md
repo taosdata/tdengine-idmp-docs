@@ -12,13 +12,15 @@ import TabItem from '@theme/TabItem';
 
 ## Method List
 
-| Method | HTTP | Description |
-|---|---|---|
-| `apiV1ElementsGet` | GET /api/v1/elements | Paginated query of the element list |
-| `apiV1ElementsIdGet` | GET /api/v1/elements/\{id\} | Get a single element by ID |
-| `apiV1ElementsPost` | POST /api/v1/elements | Create an element |
-| `apiV1ElementsIdPut` | PUT /api/v1/elements/\{id\} | Update an element |
-| `apiV1ElementsIdDelete` | DELETE /api/v1/elements/\{id\} | Delete an element |
+Java and Python SDK method names follow their respective generated-code conventions. Use the name in the column for your language.
+
+| Java Method | Python Method | HTTP | Description |
+|---|---|---|---|
+| `apiV1ElementsGet` | `api_v1_elements_get` | GET /api/v1/elements | Paginated query of the element list |
+| `apiV1ElementsElementIdGet` | `api_v1_elements_element_id_get` | GET /api/v1/elements/\{elementId\} | Get a single element by ID |
+| `apiV1ElementsPost` | `api_v1_elements_post` | POST /api/v1/elements | Create an element |
+| `apiV1ElementsElementIdPut` | `api_v1_elements_element_id_put` | PUT /api/v1/elements/\{elementId\} | Update an element |
+| `apiV1ElementsElementIdDelete` | `api_v1_elements_element_id_delete` | DELETE /api/v1/elements/\{elementId\} | Delete an element |
 
 ---
 
@@ -30,10 +32,10 @@ Returns a paginated list of elements accessible to the current user, with option
 
 | Name | Type | Required | Default | Description |
 |---|---|---|---|---|
-| pageNum | integer | No | 1 | Page number, 1-based |
-| pageSize | integer | No | 20 | Records per page |
-| parentId | string | No | — | Filter by parent element ID |
-| name | string | No | — | Fuzzy search by element name |
+| current | integer | No | 1 | Page number, 1-based |
+| size | integer | No | 20 | Records per page |
+| parentId | integer | No | — | Filter by parent element ID |
+| keyword | string | No | — | Filter by keyword |
 
 **Returns:** `PageOfBasicElementDTO`
 
@@ -45,8 +47,8 @@ Returns a paginated list of elements accessible to the current user, with option
 ```java
 ElementResourceApi elementApi = apiClient.buildClient(ElementResourceApi.class);
 ApiV1ElementsGetQueryParams params = new ApiV1ElementsGetQueryParams()
-    .pageNum(1)
-    .pageSize(50);
+    .current(1)
+    .size(50);
 PageOfBasicElementDTO result = elementApi.apiV1ElementsGet(params);
 System.out.println("Total elements: " + result.getTotal());
 ```
@@ -56,9 +58,9 @@ System.out.println("Total elements: " + result.getTotal());
 
 ```python
 element_api = idmp_sdk.ElementResourceApi(api_client)
-result = element_api.api_v1_elements_get(page_num=1, page_size=50)
+result = element_api.api_v1_elements_get(current=1, size=50)
 print(f"Total elements: {result.total}")
-for elem in result.data:
+for elem in result.rows or []:
     print(f"  {elem.id}: {elem.name}")
 ```
 
@@ -67,13 +69,13 @@ for elem in result.data:
 
 ---
 
-## apiV1ElementsIdGet — Get Single Element
+## Get Single Element
 
 ### Parameters
 
 | Name | Type | Required | Description |
 |---|---|---|---|
-| id | string | Yes | Element ID |
+| elementId | integer | Yes | Element ID |
 
 **Returns:** `ElementDTO`
 
@@ -85,7 +87,7 @@ for elem in result.data:
 <TabItem value="java" label="Java">
 
 ```java
-ElementDTO element = elementApi.apiV1ElementsIdGet("element-id-123");
+ElementDTO element = elementApi.apiV1ElementsElementIdGet(123L);
 System.out.println(element.getName());
 ```
 
@@ -93,7 +95,7 @@ System.out.println(element.getName());
 <TabItem value="python" label="Python">
 
 ```python
-element = element_api.api_v1_elements_id_get("element-id-123")
+element = element_api.api_v1_elements_element_id_get(123)
 print(element.name)
 ```
 
