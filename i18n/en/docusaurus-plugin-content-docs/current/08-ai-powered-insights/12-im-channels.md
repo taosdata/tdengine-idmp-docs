@@ -15,13 +15,14 @@ Message channels involve three layers:
 2. **User binding**: Each user binds their IM account to their IDMP user account.
 3. **Daily use**: Once bound, you can talk to AI Agent directly in IM.
 
-IDMP currently supports three message channels:
+IDMP currently supports four message channels:
 
 | Channel | Bot Configuration | User Binding Method | Notes |
 | --- | --- | --- | --- |
 | **Feishu (Lark)** | App ID + App Secret | Scan QR code, send any message to get 6-digit binding code | Commonly used by enterprises; requires creating a Feishu app |
 | **Telegram** | Bot Token (± Proxy) | Open Bot link, send command to get 6-digit binding code | Commonly used by individuals; requires creating a Bot via @BotFather |
 | **WeChat** | System toggle, no Bot credentials needed | Scan QR code + phone confirmation | Bind personal WeChat; user scans code to complete automatically |
+| **DingTalk** | Client ID + Client Secret + Bot Name | Search the bot in DingTalk, send a message to get 6-digit binding code | Commonly used by enterprises; requires creating a Stream-mode bot on the DingTalk Open Platform |
 
 ## 8.12.2 Configuring Message Channels (Admin)
 
@@ -31,13 +32,13 @@ Go to **Admin Console → AI Management → Channel Management** to manage messa
 
 ### Channel List
 
-The channel list displays all three channels in a table, each showing the channel name, enable toggle, running status, and a "Details" action:
+The channel list displays all four channels in a table, each showing the channel name, enable toggle, running status, and a "Details" action:
 
 | Column | Description |
 | --- | --- |
-| **Name** | Channel icon + name (Feishu / Telegram / WeChat) |
-| **Enabled** | Toggle switch. Feishu/Telegram cannot be enabled without saved Bot configuration; WeChat controls the system-level toggle directly |
-| **Status** | Feishu/Telegram show Running / Stopped; WeChat does not display a status |
+| **Name** | Channel icon + name (Feishu / Telegram / WeChat / DingTalk) |
+| **Enabled** | Toggle switch. Feishu/Telegram/DingTalk cannot be enabled without saved Bot configuration; WeChat controls the system-level toggle directly |
+| **Status** | Feishu/Telegram/DingTalk show Running / Stopped; WeChat does not display a status |
 | **Actions** | "Details" button to enter the channel's detailed configuration page |
 
 ### Feishu Channel Configuration
@@ -73,6 +74,50 @@ Click the "Details" button on the Telegram row in the channel list to enter the 
 
 **Viewing bound users:** The lower half of the configuration page shows the list of bound users.
 
+### DingTalk Channel Configuration
+
+Click the "Details" button on the DingTalk row in the channel list to enter the DingTalk channel configuration page.
+
+**Initial setup (create an app on the DingTalk Open Platform):**
+
+1. Visit the DingTalk Open Platform ([https://open.dingtalk.com](https://open.dingtalk.com)), sign in, go to the Developer Console, click **Create App**, and select **Enterprise Internal App**.
+
+   ![Create App](./images/dingtalk-platform-0-create-app.png)
+
+2. In the app development page, go to **App Capabilities → Bot**, click **Add Bot**, and select **Stream Mode** as the message receiving mode.
+
+   ![Add Bot](./images/dingtalk-platform-1-add-function-bot.png)
+
+3. Fill in the bot name and other details in the bot configuration. After saving, the app has Stream-mode bot capability.
+
+   ![Bot Configuration](./images/dingtalk-platform-2-app-config-bot.png)
+
+4. In **Permissions Management**, apply for the following permissions:
+   - **Interactive Card (qyapi_im_card)** — shows the "thinking…" card while processing messages;
+   - **Message Send (qyapi_robot_sendmsg)** — required to reply to users and send proactive pushes.
+
+   ![Interactive Card Permission](./images/dingtalk-platform-3-permission-card-streaming-write.png)
+
+   ![Message Send Permission](./images/dingtalk-platform-3-permission-qyapi_robot_sendmsg.png)
+
+5. In **Version Management & Release**, create a version and release the app so it takes effect within your organization.
+
+   ![Publish App](./images/dingtalk-platform-4-publish-app.png)
+
+6. In **Credentials & Basic Info**, obtain the **Client ID** (AppKey) and **Client Secret** (AppSecret).
+
+   ![Client Credentials](./images/dingtalk-platform-5-client-id-secret.png)
+
+**Configure in IDMP:**
+
+1. Enter the **Client ID**, **Client Secret**, and **Bot Name** (matching the DingTalk console; used in the binding hint) on the IDMP DingTalk configuration page, then click **Save**.
+2. Enable the channel toggle after saving.
+3. Click **Start** to start message listening.
+
+**Modifying configuration:** Click the edit icon. Leave Client Secret blank to keep the original value unchanged.
+
+**Viewing bound users:** The lower half of the configuration page shows the list of bound users.
+
 ### WeChat Channel Configuration
 
 The WeChat channel does not require Bot credentials. Click the "Details" button on the WeChat row in the channel list to enter the WeChat configuration page, which only displays the bound user list.
@@ -83,12 +128,13 @@ Use the **Enabled** toggle on the channel list page to control the global availa
 
 ### Viewing Channel Status
 
-In the **IM Binding** section of your personal settings page, the status cards for all three channels are always displayed, regardless of whether you have bound them:
+In the **IM Binding** section of your personal settings page, the status cards for all four channels are always displayed, regardless of whether you have bound them:
 
 ```text
 [Feishu icon]  Feishu    Status: Listening  |  ID: ou_xxxx  [Unbind]
 [Telegram]     Telegram  Status: Listening stopped  |  [Start Listening]
 [WeChat icon]  WeChat    Status: Not bound  |  [Bind User]
+[DingTalk icon] DingTalk Status: Listening  |  [Bind User]
 ```
 
 Status descriptions:
@@ -130,6 +176,15 @@ Status descriptions:
 
 ![Channel Configuration](./images/im-config-2.png)
 
+### Binding DingTalk
+
+1. Make sure the administrator has configured the DingTalk channel and listening is running.
+2. In the IM Binding section, when the DingTalk row shows "Listening," click **Bind User**.
+3. The dialog tells you to search for the **bot name** configured by the administrator (e.g., `IDMPbot`) in DingTalk, or add the bot to a group chat to start chatting.
+4. Send any message to the bot in DingTalk. The bot replies with a 6-digit binding code.
+5. Return to the IDMP dialog, enter the 6-digit code, and click **Bind**.
+6. After successful binding, the status updates to "Bound."
+
 ### Unbinding
 
 For a bound channel, click the **Unbind** button. Click **Confirm** in the confirmation dialog, and the system unbinds your IM account from your IDMP account.
@@ -154,6 +209,14 @@ A: Search for @BotFather in Telegram, send the `/newbot` command, and follow the
 **Q: What if my binding code expires?**
 
 A: Binding codes are valid for 5 minutes. After expiry, send a message to the Bot again to get a new 6-digit code, then enter the new code in the dialog.
+
+**Q: The DingTalk bot cannot reply or send proactive messages?**
+
+A: On the DingTalk Open Platform, make sure the app has applied for and released the following permissions: **Interactive Card (qyapi_im_card)** and **Message Send (qyapi_robot_sendmsg)**. Permission changes take effect only after publishing a new version. Also confirm the Client ID and Client Secret on the IDMP DingTalk configuration page are correct.
+
+**Q: The bot name shown in the DingTalk binding hint is wrong?**
+
+A: The binding hint uses the **bot name** filled in by the administrator on the IDMP DingTalk configuration page. Make sure it matches the bot name in the DingTalk console (e.g., `IDMPbot`) so users can find the bot in DingTalk.
 
 **Q: Can AI Agent still contact me via IM after unbinding?**
 
