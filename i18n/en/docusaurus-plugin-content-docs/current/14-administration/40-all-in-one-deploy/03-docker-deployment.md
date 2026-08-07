@@ -7,6 +7,8 @@ sidebar_label: All-in-One on Docker
 
 This guide explains how to deploy TDengine All-in-One using Docker.
 
+**Watch TDengine Tutorial Videos:** [**Docker Deployment Video**](https://www.youtube.com/watch?v=v807Z4dwh9k&list=PLQ3OTMvx-LOQ&index=7)
+
 Docker deployment supports Linux, Windows, and macOS. macOS supports Docker deployment only.
 
 ## 14.13.3.1 Environment Requirements

@@ -7,6 +7,8 @@ sidebar_label: All-in-One on Linux
 
 This guide describes how to deploy TDengine All-in-One in host mode on Linux.
 
+**Watch TDengine Tutorial Videos:** [**Linux Installation Video**](https://www.youtube.com/watch?v=Jz-ojTF--kQ&list=PLQ3OTMvx-LOQ&index=6)
+
 ## 14.13.1.1 Environment Requirements
 
 Before deployment, ensure that the target server meets the following requirements.

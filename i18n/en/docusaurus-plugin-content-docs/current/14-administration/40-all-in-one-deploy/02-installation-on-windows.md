@@ -7,6 +7,8 @@ sidebar_label: All-in-One on Windows
 
 This guide describes how to deploy TDengine All-in-One in host mode on a Windows server.
 
+**Watch TDengine Tutorial Videos:** [**Windows Installation Video**](https://www.youtube.com/watch?v=4nW4bA9UEJc&list=PLQ3OTMvx-LOQ&index=5)
+
 ## 14.13.2.1 Environment Requirements
 
 Before deployment, ensure that the target server meets the following requirements.
