@@ -19,4 +19,4 @@ IDMP symbol library is an extensible and open graphic library that can customize
 
 Symbol library management can configure whether to display the symbol library, and you can choose to display only the symbol libraries you need.
 
-![Symbol Library Management](./images/canvas-16.png)
+![Symbol Library Management](./images/canvas-symbol-libraries.png)

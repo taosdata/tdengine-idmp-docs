@@ -16,7 +16,7 @@ TDengine IDMP 支持 Grafana 风格的面板之外，还支持工业场景流行
 
 下面是一个典型的组态编辑界面：
 
-![组态编辑界面](./images/canvas-01.png)
+![组态编辑界面](./images/canvas-layout.png)
 
 整个编辑画面由几大块组成：
 

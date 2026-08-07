@@ -84,4 +84,4 @@ IDMP has built-in three animation effects for lines, making the visuals more dyn
 - Animation line width (≥0), animation color, animation speed, reverse flow, number of loops.
 - Next animation: tag, autoplay, maintain animation state, linear playback: yes/no.
 
-![Line Animations](./images/canvas-10.gif)
+![Line Animations](./images/canvas-animation.gif)

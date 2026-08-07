@@ -16,7 +16,7 @@ TDengine IDMP supports not only Grafana-style panels but also configuration pane
 
 Below is a typical configuration editing interface:
 
-![Configuration Editing Interface](./images/canvas-01.png)
+![Configuration Editing Interface](./images/canvas-layout.png)
 
 The entire editing screen consists of several major parts:
 

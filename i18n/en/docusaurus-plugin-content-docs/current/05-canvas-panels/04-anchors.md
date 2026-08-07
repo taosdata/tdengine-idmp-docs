@@ -15,7 +15,7 @@ Press the keyboard shortcut "A", hover the mouse over a symbol, and click the le
 
 Press the keyboard shortcut "A", hover the mouse over an anchor point, and click the left mouse button to delete the anchor point.
 
-![Delete Anchor Point](./images/canvas-11.png)
+![Delete Anchor Point](./images/canvas-anchor.gif)
 
 ## 5.4.2 Moving Anchor Points (G)
 
@@ -31,7 +31,7 @@ Handles allow precise adjustment of local shapes without damaging the shape of o
 2. **Adjust the curve arc and curvature**: Dragging the handle changes its length and angle, directly adjusting the degree of curve bending: the longer the handle, the gentler the curvature; the shorter the handle, the steeper the curvature.
 3. **Achieve smooth transitions and sharp corner switching**: Symmetrical handles on both sides can create continuous, smooth curves; independently adjustable handles on one side can achieve a mix of polyline + curve at the same anchor point, meeting complex shape requirements.
 
-![Handles](./images/canvas-12.gif)
+![Handles](./images/canvas-handler.gif)
 
 ### 5.4.3.2 Adding Handles (H) / Deleting Handles (D)
 

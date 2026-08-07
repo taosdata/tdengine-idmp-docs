@@ -23,13 +23,13 @@ sidebar_label: Toolbox
 
 Used to observe details in the image.
 
-![Magnifier](./images/canvas-14.png)
+![Magnifier](./images/canvas-zoomout.gif)
 
 ## 5.6.4 Overview Map (Thumbnail)
 
 The global view of the configuration diagram. Clicking on the overview map allows you to quickly switch the center position on the canvas.
 
-![Overview Map](./images/canvas-15.png)
+![Overview Map](./images/canvas-map.gif)
 
 ## 5.6.5 Line Start Arrow
 

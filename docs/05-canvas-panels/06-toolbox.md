@@ -23,13 +23,13 @@ sidebar_label: 工具箱
 
 用来观察图中细节。
 
-![放大镜](./images/canvas-14.png)
+![放大镜](./images/canvas-zoomout.gif)
 
 ## 5.6.4 鹰眼地图（缩略图）
 
 组态图的全局视图，鼠标点击鹰眼地图，可以在画布中快速切换中心位置。
 
-![鹰眼地图](./images/canvas-15.png)
+![鹰眼地图](./images/canvas-map.gif)
 
 ## 5.6.5 连线起点
 

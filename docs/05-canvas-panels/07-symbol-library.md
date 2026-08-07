@@ -19,4 +19,4 @@ IDMP 组态软件图形库是一种可扩展、开放性的图形库，可根据
 
 图元库管理可以配置是否显示图元库，可以仅显示您所需要的图元库。
 
-![图元库管理](./images/canvas-16.png)
+![图元库管理](./images/canvas-symbol-libraries.png)

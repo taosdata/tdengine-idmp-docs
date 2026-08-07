@@ -7,12 +7,12 @@ sidebar_label: Creating Canvas Panel
 
 Select the element, then select the panel, click `New Panel`, and then select `Canvas` to enter the canvas editing interface.
 
-![Canvas Creation Entry](./images/canvas-02.png)
+![Canvas Creation Entry](./images/canvas-entrance.png)
 
 Designing the canvas involves the following steps:
 
 1. Set the properties of the canvas, including layout, color, background color, grid, etc.
-   ![Canvas Properties](./images/canvas-03.png)
+   ![Canvas Properties](./images/canvas-properties.png)
 2. Select symbols from the symbol library and drag them onto the canvas.
 3. Edit and configure symbols, including:
    - Configure text, color, background color, etc. for symbols
@@ -23,6 +23,6 @@ Designing the canvas involves the following steps:
 4. Connect related symbols with lines, and configure line types and line animations.
 5. During the editing process, you can preview, and after editing, save it.
 
-![Canvas Properties](./images/canvas-04.png)
+![Canvas Properties](./images/canvas-process.png)
 
 These steps do not need to be performed in a fixed order and can be rearranged.
