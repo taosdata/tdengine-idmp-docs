@@ -53,8 +53,8 @@ On Linux / macOS, the default log directory is `/var/log/taos`:
 | --- | --- |
 | TDengine IDMP | `/var/log/taos/tda.log` |
 | TDengine IDMP error log | `/var/log/taos/tda-error.log` |
-| TDengine IDMP AI | `/var/log/taos/idmp-ai.log` |
-| TDengine IDMP AI error log | `/var/log/taos/idmp-ai-error.log` |
+| TDengine IDMP AI | `/var/log/taos/ai-agent.log` |
+| TDengine IDMP AI error log | `/var/log/taos/ai-agent-error.log` |
 | TDengine TSDB-Enterprise | `/var/log/taos/taosdlog.*` |
 
 </TabItem>
@@ -66,8 +66,8 @@ On Windows, the default log directory is `C:\TDengine\log`:
 | --- | --- |
 | TDengine IDMP | `C:\TDengine\log\tda.log` |
 | TDengine IDMP error log | `C:\TDengine\log\tda-error.log` |
-| TDengine IDMP AI | `C:\TDengine\log\idmp-ai.log` |
-| TDengine IDMP AI error log | `C:\TDengine\log\idmp-ai-error.log` |
+| TDengine IDMP AI | `C:\TDengine\log\ai-agent.log` |
+| TDengine IDMP AI error log | `C:\TDengine\log\ai-agent-error.log` |
 | TDengine TSDB-Enterprise | `C:\TDengine\log\taosdlog.*` |
 
 </TabItem>
@@ -78,11 +78,13 @@ On Windows, the default log directory is `C:\TDengine\log`:
 For a Docker-based deployment, the paths inside the container are always Linux paths (`/var/log/taos`), regardless of the host operating system. Copy the log files out of the containers to the current directory on the host using the following commands (these also work on a Windows host; just replace the destination `./` with a Windows directory such as `C:\logs\`):
 
 ```bash
-docker cp tdengine-tsdb:/var/log/taos/taosdlog.* ./
-docker cp tdengine-idmp:/var/log/taos/tda.log ./
-docker cp tdengine-idmp:/var/log/taos/tda-error.log ./
-docker cp tdengine-idmp:/var/log/taos/idmp-ai.log ./
-docker cp tdengine-idmp:/var/log/taos/idmp-ai-error.log ./
+for f in $(docker exec tdengine-tsdb ls /var/log/taos/taosdlog.* 2>/dev/null); do
+    docker cp tdengine-tsdb:$f .
+done
+docker cp tdengine-idmp-backend:/var/log/taos/tda.log ./
+docker cp tdengine-idmp-backend:/var/log/taos/tda-error.log ./
+docker cp tdengine-idmp-ai:/var/log/taos/ai-agent.log ./
+docker cp tdengine-idmp-ai:/var/log/taos/ai-agent-error.log ./
 ```
 
 ## 18.1.4 Path Too Long on Windows

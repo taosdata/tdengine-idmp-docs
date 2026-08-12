@@ -52,8 +52,8 @@ Linux / macOS 的日志目录默认为 `/var/log/taos`：
 | --- | --- |
 | TDengine IDMP 日志 | `/var/log/taos/tda.log` |
 | TDengine IDMP 错误日志 | `/var/log/taos/tda-error.log` |
-| TDengine IDMP AI 日志 | `/var/log/taos/idmp-ai.log` |
-| TDengine IDMP AI 错误日志 | `/var/log/taos/idmp-ai-error.log` |
+| TDengine IDMP AI 日志 | `/var/log/taos/ai-agent.log` |
+| TDengine IDMP AI 错误日志 | `/var/log/taos/ai-agent-error.log` |
 | TDengine TSDB-Enterprise 日志 | `/var/log/taos/taosdlog.*` |
 
 </TabItem>
@@ -65,8 +65,8 @@ Windows 的日志目录默认为 `C:\TDengine\log`：
 | --- | --- |
 | TDengine IDMP 日志 | `C:\TDengine\log\tda.log` |
 | TDengine IDMP 错误日志 | `C:\TDengine\log\tda-error.log` |
-| TDengine IDMP AI 日志 | `C:\TDengine\log\idmp-ai.log` |
-| TDengine IDMP AI 错误日志 | `C:\TDengine\log\idmp-ai-error.log` |
+| TDengine IDMP AI 日志 | `C:\TDengine\log\ai-agent.log` |
+| TDengine IDMP AI 错误日志 | `C:\TDengine\log\ai-agent-error.log` |
 | TDengine TSDB-Enterprise 日志 | `C:\TDengine\log\taosdlog.*` |
 
 </TabItem>
@@ -77,11 +77,13 @@ Windows 的日志目录默认为 `C:\TDengine\log`：
 如果您是通过容器化方式部署的 TDengine IDMP，容器内部始终使用 Linux 路径（`/var/log/taos`），与宿主机操作系统无关。可以通过以下命令将日志文件从容器内复制到宿主机的当前目录（在 Windows 宿主机上同样适用，仅需将目标路径 `./` 替换为相应的 Windows 目录，例如 `C:\logs\`）：
 
 ```bash
-docker cp tdengine-tsdb:/var/log/taos/taosdlog.* ./
-docker cp tdengine-idmp:/var/log/taos/tda.log ./
-docker cp tdengine-idmp:/var/log/taos/tda-error.log ./
-docker cp tdengine-idmp:/var/log/taos/idmp-ai.log ./
-docker cp tdengine-idmp:/var/log/taos/idmp-ai-error.log ./
+for f in $(docker exec tdengine-tsdb ls /var/log/taos/taosdlog.* 2>/dev/null); do
+    docker cp tdengine-tsdb:$f .
+done
+docker cp tdengine-idmp-backend:/var/log/taos/tda.log ./
+docker cp tdengine-idmp-backend:/var/log/taos/tda-error.log ./
+docker cp tdengine-idmp-ai:/var/log/taos/ai-agent.log ./
+docker cp tdengine-idmp-ai:/var/log/taos/ai-agent-error.log ./
 ```
 
 ## 18.1.4 Windows 环境路径过长问题
