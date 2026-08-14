@@ -104,7 +104,7 @@ EasyUse 通过 MCP 协议调用 TDengine IDMP，鉴权方式为在请求头中�
 
 5. **立即复制并妥善保存**——列表页后续仅显示掩码。
 
-> **备注** API Key 继承创建者的角色权限与元素访问范围。若后续被删除或所属用户被停用，API Key 立即失效。请求头格式固定为 Authorization: Bearer <api_...>，其中 **不需要**手动加 Bearer 前缀到 Key 本身。
+> **备注** API Key 继承创建者的角色权限与元素访问范围。若后续被删除或所属用户被停用，API Key 立即失效。请求头格式固定为 Authorization: Bearer api_XXX，其中 **不需要**手动加 Bearer 前缀到 Key 本身。
 
 ---
 
@@ -242,8 +242,8 @@ EasyUse 需要通过 MCP 与 IDMP 通讯。修改 OpenCode 配置文件 ~/.confi
 |字段|值|
 |---|---|
 |**名称**|idmp-mcp（EasyUse 技能内约定名称，请勿修改）|
-|**URL**|http://<idmp-host>:6042/api/v1/mcp/stream|
-|**鉴权**|Authorization: Bearer <14.14.4 中创建的 API Key>|
+|**URL**|http://idmp-host:6042/api/v1/mcp/stream|
+|**鉴权**|Authorization: Bearer 14.14.4 中创建的 API Key|
 
 > **备注** 若 IDMP 部署在其他机器，需将 [localhost](http://localhost) 替换为对应主机名或 IP，并确保 6042 端口对 OpenCode 所在机器可达。修改配置后重新启动 OpenCode 会话使其生效。
 
