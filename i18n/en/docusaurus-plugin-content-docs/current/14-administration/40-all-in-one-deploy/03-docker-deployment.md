@@ -113,3 +113,5 @@ Enter your email address, organization name, and verification code to activate I
 For the Free Edition, review the license agreement and select **Agree and Activate Free License**.
 
 ![TDengine Free Edition license activation](../images/license-activation.jpg)
+
+**Watch TDengine Tutorial Videos:** [**TDengine Tutorial Videos**](https://www.youtube.com/playlist?list=PLQ3OTMvx-LOQ)

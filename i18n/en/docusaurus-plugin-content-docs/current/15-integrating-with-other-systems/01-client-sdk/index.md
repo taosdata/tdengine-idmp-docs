@@ -39,7 +39,7 @@ If you need a language other than Java or Python, use OpenAPI Generator with the
 **Step 1 — Download the OpenAPI Generator CLI:**
 
 ```bash
-wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.6.0/openapi-generator-cli-7.6.0.jar \
+wget https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/7.24.0/openapi-generator-cli-7.24.0.jar \
      -O openapi-generator-cli.jar
 ```
 
