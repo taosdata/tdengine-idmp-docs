@@ -1,4 +1,8 @@
-# 14\.14 TDengine EasyUse：通过自然语言一键式搭建 TDengine Demo
+---
+title: 通过自然语言一键式搭建 TDengine Demo
+sidebar_label: 通过自然语言一键式搭建 TDengine Demo
+---
+# 14\.14 通过自然语言一键式搭建 TDengine Demo
 
 TDengine EasyUse 是一个面向 TDengine 的"一键式"自动化编排技能。用户只需用自然语言描述业务场景（例如：污水处理厂智能监控），即可自动完成**数据建模 → 资产目录构建 → 实时分析规则设置 → 可视化面板配置**的完整链路。
 
