@@ -133,3 +133,70 @@ The result of a function applied to an attribute carries the same UOM as the fun
 :::tip
 When editing a formula expression on an attribute, click the **Evaluate** button in the expression editor to preview the computed value and automatically detect unit errors. If the attribute has no UOM assigned yet, IDMP will suggest the UOM inferred from the last evaluation result.
 :::
+
+## 13.3.7 Importing and Exporting UOM Definitions
+
+IDMP uses JSON files to transfer UOM classes and unit definitions between environments, for migration, backup, or reuse. Exports carry no environment-local IDs; names are used as references, and the target environment assigns new IDs on import.
+
+### 13.3.7.1 File Format
+
+Import and export use the same JSON format. `format` is always `idmp-uom` and `version` is always `1`. `uomClasses` is an array of classes, so a single file can transfer multiple classes. Each class contains its name, canonical unit, base UOM classes, and unit list; units reference each other by `refUom` name.
+
+```json
+{
+  "format": "idmp-uom",
+  "version": 1,
+  "uomClasses": [
+    {
+      "name": "Length",
+      "description": "Length units",
+      "baseClasses": [],
+      "canonicalUom": "meter",
+      "canonicalAbbr": "m",
+      "uoms": [
+        {
+          "name": "meter",
+          "abbreviation": "m",
+          "refUom": null,
+          "refFactor": 1.0,
+          "refOffset": 0.0
+        },
+        {
+          "name": "kilometer",
+          "abbreviation": "km",
+          "refUom": "meter",
+          "refFactor": 1000.0,
+          "refOffset": 0.0
+        }
+      ]
+    }
+  ]
+}
+```
+
+### 13.3.7.2 Importing and Exporting UOM Classes
+
+On the UOM class list, select one or more classes and click **Export UOM Classes**. IDMP downloads `uom-classes.json`, which contains the selected classes, canonical units, units, and conversion relationships.
+
+Click **Import UOM Classes** and select a previously exported JSON file to create the classes in the current environment. A file may contain multiple classes, and base UOM classes can refer to either existing classes in the target environment or new classes in the same file.
+
+### 13.3.7.3 Importing and Exporting Units in a Class
+
+Open a UOM class, select one or more units, and click **Export UOMs**. IDMP automatically includes the canonical unit and the reference units that the selected units depend on, so the exported units can be imported independently.
+
+Click **Import UOMs** and select a JSON file to add units to the current class. The file must contain exactly one class, and its canonical unit name and abbreviation must match the current class.
+
+### 13.3.7.4 Errors and Conflicts
+
+| Scenario | Behavior |
+|---|---|
+| Incorrect `format` or `version` | Import is rejected with the specific field and value |
+| Class name already exists | The whole import is rejected; existing classes are not overwritten |
+| Duplicate class names in the same file | The whole import is rejected |
+| Duplicate unit name or abbreviation in an existing class | The whole import is rejected; nothing is updated, overwritten, or skipped |
+| Duplicate unit name or abbreviation within the file | The whole import is rejected |
+| Canonical unit in the file differs from the target class | Import is rejected; the target class is unchanged |
+| Missing reference unit, circular reference, or invalid factor | Import is rejected |
+| Class name contains a path separator or `..` | Import is rejected to prevent writing outside the UOM directory |
+
+Imports are validated as a whole: if any check fails, nothing in the file is imported and no partial data is produced. Name and abbreviation comparisons are case-sensitive and must be unique within a single class.
