@@ -4,7 +4,7 @@ sidebar_label: AI Agent 消息通道
 ---
 # 8.12 AI Agent 消息通道
 
-AI Agent 支持通过即时通讯工具与您交互。配置消息通道后，您可以在飞书、Telegram 或微信上与 AI Agent 对话，而无需始终打开 IDMP Web 界面。系统管理员配置通道后，每个用户需将自己的 IM 账号与 IDMP 用户账号绑定，以建立安全的对话通道。
+AI Agent 支持通过即时通讯工具与您交互。配置消息通道后，您可以在飞书、Telegram、微信或 Slack 上与 AI Agent 对话，而无需始终打开 IDMP Web 界面。系统管理员配置通道后，每个用户需将自己的 IM 账号与 IDMP 用户账号绑定，以建立安全的对话通道。
 
 ## 8.12.1 通道概览
 
@@ -14,7 +14,7 @@ AI Agent 支持通过即时通讯工具与您交互。配置消息通道后，�
 2. **用户绑定**：每个用户将自己的 IM 账号与 IDMP 用户绑定。
 3. **日常使用**：绑定后，您可以直接在 IM 中与 AI Agent 对话。
 
-IDMP 目前支持四种消息通道：
+IDMP 目前支持五种消息通道：
 
 | 通道               | Bot 配置                | 用户绑定方式                            | 特点                                     |
 | ------------------ | ----------------------- | --------------------------------------- | ---------------------------------------- |
@@ -22,6 +22,7 @@ IDMP 目前支持四种消息通道：
 | **Telegram** | Bot Token（± Proxy）   | 打开 Bot 链接发送指令获取 6 位绑定码    | 个人用户常用，需通过 @BotFather 创建 Bot |
 | **微信**     | 系统开关，无需 Bot 凭证 | 二维码扫码 + 手机确认                   | 个人微信绑定，用户扫码后自动完成         |
 | **钉钉**     | Client ID + Client Secret + Bot 名称 | 在钉钉中搜索 Bot 发送消息获取 6 位绑定码 | 企业用户常用，需在钉钉开放平台创建 Stream 模式机器人 |
+| **Slack**    | Bot Token + App Token   | 在 Slack 中向 Bot 发送消息获取 6 位绑定码 | 海外企业常用，需在 Slack API 控制台创建 App 并启用 Socket Mode |
 
 ## 8.12.2 配置消息通道（管理员）
 
@@ -31,13 +32,13 @@ IDMP 目前支持四种消息通道：
 
 ### 通道列表
 
-通道列表以表格形式展示四个通道，每行包含通道名称、启用开关、运行状态和「详情」操作：
+通道列表以表格形式展示五个通道，每行包含通道名称、启用开关、运行状态和「详情」操作：
 
 | 列             | 说明                                                                      |
 | -------------- | ------------------------------------------------------------------------- |
-| **名称** | 通道图标 + 名称（飞书 / Telegram / WeChat / 钉钉）                         |
-| **启用** | 切换开关。飞书/Telegram/钉钉在未保存 Bot 配置时不可用；微信直接控制系统级开关 |
-| **状态** | 飞书/Telegram/钉钉显示运行中 / 已停止；微信不显示                          |
+| **名称** | 通道图标 + 名称（飞书 / Telegram / WeChat / 钉钉 / Slack）                   |
+| **启用** | 切换开关。飞书/Telegram/钉钉/Slack 在未保存 Bot 配置时不可用；微信直接控制系统级开关 |
+| **状态** | 飞书/Telegram/钉钉/Slack 显示运行中 / 已停止；微信不显示                      |
 | **操作** | 「详情」按钮，进入该通道的详细配置页                                      |
 
 ### 飞书通道配置
@@ -123,17 +124,52 @@ IDMP 目前支持四种消息通道：
 
 在通道列表页通过**启用**开关控制该通道的全局可用性。
 
+### Slack 通道配置
+
+在通道管理列表中点击 Slack 行的「详情」进入 Slack 通道配置页。
+
+**首次配置（在 Slack API 控制台创建 App）：**
+
+1. 访问 Slack API 控制台（[https://api.slack.com/apps](https://api.slack.com/apps)），点击 **Create New App**，选择 **From a manifest** 或 **From scratch**。
+
+2. 在应用配置页面，进入 **OAuth & Permissions**，添加以下 Bot Token Scopes：
+   - `app_mentions:read` — 读取 @提及
+   - `chat:write` — 发送消息
+   - `im:history` — 读取 DM 历史
+   - `im:read` — 读取 DM 频道信息
+   - `im:write` — 创建 DM 对话
+   - `users:read` — 读取用户信息
+
+3. 进入 **Event Subscriptions**，启用事件订阅并添加以下 Bot Events：
+   - `app_mention` — @提及事件
+   - `message.im` — DM 消息事件
+
+4. 进入 **Socket Mode**，启用 Socket Mode 并创建 App-Level Token，勾选 `connections:write` scope。记下生成的 **App Token**（格式 `xapp-`）。
+
+5. 回到 **OAuth & Permissions**，点击 **Install to Workspace** 安装应用，记下生成的 **Bot Token**（格式 `xoxb-`）。
+
+**在 IDMP 中配置：**
+
+1. 在 IDMP Slack 配置页填入 **Bot Token**（`xoxb-`）和 **App Token**（`xapp-`），点击**保存**。
+2. 保存后启用通道开关。
+3. 点击**启动**按钮启动消息监听（通过 Socket Mode 建立 WebSocket 长连接）。
+
+**修改配置：** 点击编辑图标，Bot Token 和 App Token 留空表示保持原值不变。您也可以随时删除 Slack 配置。
+
+**查看绑定用户：** 配置页下半部分展示已绑定的用户列表。
+
 ## 8.12.3 用户绑定 IM 账号
 
 ### 查看通道状态
 
-在个人设置页的 **IM 绑定**区域，始终显示四个通道的状态卡片，无论您是否已绑定：
+在个人设置页的 **IM 绑定**区域，始终显示五个通道的状态卡片，无论您是否已绑定：
 
 ```text
 [飞书图标]  飞书     状态：正常监听  |  ID: ou_xxxx  [解除绑定]
 [Telegram]  Telegram  状态：监听未启动  |  [启动监听]
 [微信图标]  WeChat    状态：未绑定  |  [绑定用户]
 [钉钉图标]  钉钉      状态：正常监听  |  [绑定用户]
+[Slack图标] Slack     状态：正常监听  |  [绑定用户]
 ```
 
 各状态的含义：
@@ -184,6 +220,15 @@ IDMP 目前支持四种消息通道：
 5. 返回 IDMP 对话框，输入 6 位绑定码，点击**绑定**。
 6. 绑定成功后，状态更新为「已绑定」。
 
+### 绑定 Slack
+
+1. 确保管理员已配置 Slack 通道且监听正常运行。
+2. 点击页面右上角个人头像，在 IM 绑定区域，Slack 行状态为「正常监听」时，点击**绑定用户**。
+3. 对话框中提示在 Slack 中找到 IDMP Bot 并向其发送任意消息。
+4. 在 Slack 中向 Bot 发送 DM，Bot 回复 6 位绑定码和 IDMP 系统地址。
+5. 返回 IDMP 对话框，输入 6 位绑定码，点击**绑定**。
+6. 绑定成功后，状态更新为「已绑定」。您可以在 Slack 中直接向 Bot 发送消息与 AI 助手对话。
+
 ### 解除绑定
 
 对于已绑定的通道，点击**解除绑定**按钮。在确认弹窗中点击确定后，系统即解除您的 IM 账号与 IDMP 账号的绑定关系。
@@ -220,3 +265,21 @@ A：绑定提示使用管理员在 IDMP 钉钉配置页填写的**机器人名�
 **Q：解除绑定后 AI Agent 还能通过 IM 联系我吗？**
 
 A：不能。解除绑定后，AI Agent 将不再向您的 IM 账号发送消息。如需恢复，重新绑定即可。
+
+**Q：Slack App 创建后 Bot 无法收到消息？**
+
+A：请确认以下配置：
+
+1. 在 Slack API 控制台中已启用 **Socket Mode** 并创建了 App-Level Token（`xapp-`，需 `connections:write` scope）。
+2. 已在 **Event Subscriptions** 中订阅了 `app_mention` 和 `message.im` 事件。
+3. 已在 **OAuth & Permissions** 中添加了所有必需的 Bot Token Scopes（`chat:write`、`im:history`、`im:read`、`im:write`、`users:read`）。
+4. 已通过 **Install to Workspace** 安装应用到工作区。
+5. IDMP Slack 配置页中的 Bot Token（`xoxb-`）和 App Token（`xapp-`）正确无误，且 Bot 已启动。
+
+**Q：Slack Bot Token 和 App Token 有什么区别？**
+
+A：**Bot Token**（`xoxb-`）用于 API 调用（发送消息、读取用户信息等），在 OAuth & Permissions 页面安装应用后生成。**App Token**（`xapp-`）用于建立 Socket Mode WebSocket 连接，在 Socket Mode 页面创建时生成。两者缺一不可。
+
+**Q：Slack 绑定码过期了怎么办？**
+
+A：绑定码有效期为 10 分钟。过期后重新在 Slack 中向 Bot 发送消息获取新的 6 位绑定码，然后在 IDMP 中输入新码即可。
