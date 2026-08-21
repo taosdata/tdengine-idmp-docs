@@ -60,7 +60,11 @@ Each row in the table has the following columns:
 
 Use the **+** button at the bottom of the table to add additional output rows. Each row corresponds to an independent expression, supporting the computation of multiple metrics in a single RT analysis with results written to different attributes.
 
-## 7.4.5 Output Filter
+## 7.4.5 Trigger Window Pseudo Columns
+
+The stream trigger window pseudo columns `_twstart`, `_twend`, and `_twduration` are only effective during stream computation. They are not evaluated during expression evaluation and return empty values.
+
+## 7.4.6 Output Filter
 
 The **Output Filter** is an optional condition expression that is evaluated after the RT analysis completes its calculation and before the result is written to the output attributes. The calculated result is written to the configured element attributes only when the filter evaluates to true.
 

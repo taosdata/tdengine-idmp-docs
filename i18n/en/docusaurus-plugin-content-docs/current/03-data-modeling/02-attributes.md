@@ -69,6 +69,12 @@ The special replacement parameter `TIME` is available — it is substituted with
 Formula attributes can only reference attributes of the same element. To use a value from another element, add a new attribute to the current element that maps to the same data source.
 :::
 
+:::warning Use FILL_FORWARD when referenced attributes are not timestamp-aligned
+If the attributes referenced by a formula are not aligned on timestamps (their data points are not written at the same moments), each timestamp carries values for only some of the attributes and NULL for the rest — and any operation involving NULL turns the entire formula result into NULL. In this case, you must wrap the referenced attributes with the `FILL_FORWARD()` function, which fills each NULL with the previous non-NULL value of that column, for example: `fill_forward(current) * fill_forward(voltage) + 10`.
+
+For the full reference of `FILL_FORWARD`, see the [TDengine documentation](https://docs.tdengine.com/tdengine-sql/data-query/function/#fill_forward).
+:::
+
 ### 3.2.2.4 String Builder
 
 Similar to Formula but the output is a string. The input can be any attribute of the current element (not limited to numeric types). Common functions include:

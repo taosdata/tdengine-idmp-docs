@@ -69,6 +69,12 @@ log(current) * voltage + 10
 公式属性只能引用同一元素的属性。如需使用其他元素的值，请在当前元素上新增一个属性，使其指向相同的数据源。
 :::
 
+:::warning 引用的属性时间戳不对齐时必须使用 FILL_FORWARD
+公式引用的多个属性若时间戳不对齐（各属性的数据点并非写入在同一时刻），则每个时间戳上只有部分属性有值、其余为 NULL，而 NULL 参与任何运算都会使整个公式的结果变为 NULL。此时必须为引用的属性包裹 `FILL_FORWARD()` 函数，将空值填充为该列上一个非空值，例如：`fill_forward(current) * fill_forward(voltage) + 10`。
+
+`FILL_FORWARD` 函数的详细说明请参阅 [TDengine 官方文档](https://docs.taosdata.com/tdengine-sql/data-query/function/#fill_forward)。
+:::
+
 ### 3.2.2.4 字符串构建器
 
 与公式类似，但输出为字符串。输入可以是当前元素的任意属性（不限于数值类型）。常用函数包括：
