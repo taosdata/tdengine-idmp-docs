@@ -68,7 +68,7 @@ TDengine EasyUse 将上述工作压缩为**一句自然语言**：客户或售�
 
 EasyUse 的所有能力都通过 MCP 调用 TDengine IDMP 后端接口来实现，因此**必须先有一套可访问的 TDengine 环境**。
 
-推荐使用 TDengine All-in-One 一键部署，参考[第 14.13 节](https://idmpdocs.taosdata.com/administration/all-in-one-deploy/)。
+推荐使用 TDengine All-in-One 一键部署，参考[第 14.13 节](./40-all-in-one-deploy/index.md)。
 
 **14.14.3.1 部署步骤**
 
@@ -82,7 +82,7 @@ EasyUse 的所有能力都通过 MCP 调用 TDengine IDMP 后端接口来实现�
 http://localhost:6042
 ```
 
-4. 使用初始账号登录，按照页面提示激活产品许可（详见[第 14.12 节 许可管理](https://idmpdocs.taosdata.com/administration/activate/)）。
+4. 使用初始账号登录，按照页面提示激活产品许可（详见[第 14.12 节 许可管理](./30-activate.md)）。
 
 > **备注** 如不需要 TDmodel，可继续使用默认的 deployment-single-node-no-tdmodel.yaml 清单。EasyUse 本身不依赖 TDmodel。
 
@@ -90,7 +90,7 @@ http://localhost:6042
 
 ## 14.14.4 创建 API Key
 
-EasyUse 通过 MCP 协议调用 TDengine IDMP，鉴权方式为在请求头中携带用户级 API Key。创建方式参考[第 14.8.3 节](https://idmpdocs.taosdata.com/administration/profile-settings/)。
+EasyUse 通过 MCP 协议调用 TDengine IDMP，鉴权方式为在请求头中携带用户级 API Key。创建方式参考[第 14.8.3 节](./08-profile-settings.md)。
 
 **14.14.4.1 操作步骤**
 
