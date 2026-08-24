@@ -32,24 +32,24 @@ After All-in-One installation completes, IDMP and related services start automat
 
 ```bash
 cd ~/.apex/docker
-./idmp.sh start
+./tdengine.sh start
 ```
 
 ```bash
 cd ~/.apex/docker
-./idmp.sh stop
+./tdengine.sh stop
 ```
 
 **Windows (Administrator PowerShell):**
 
 ```powershell
 cd $env:USERPROFILE\.apex\docker
-.\idmp.ps1 start
+.\tdengine.ps1 start
 ```
 
 ```powershell
 cd $env:USERPROFILE\.apex\docker
-.\idmp.ps1 stop
+.\tdengine.ps1 stop
 ```
 
 When starting, you are prompted to select a deployment mode:

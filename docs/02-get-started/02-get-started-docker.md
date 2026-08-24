@@ -30,7 +30,7 @@ TDengine 官网下载中心提供了 All-in-one 安装方式，可以一行命�
 
 ```bash
 cd ~/.apex/docker
-./idmp.sh start
+./tdengine.sh start
 ```
 
 :::

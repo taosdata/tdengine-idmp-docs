@@ -13,48 +13,9 @@ sidebar_label: 示例数据
 
 ## 14.9.1 使用说明
 
-以下说明假设 JSON 配置文件名为 init.json。
+在 IDMP 管理界面中进入**示例数据**模块。系统已预置若干行业场景，也可以上传自定义 JSON 配置文件，或包含 JSON、图片与 CSV 的压缩包。选择场景后加载即可；卸载会清理该场景创建的元数据与时序数据。
 
-### 14.9.1.1 命令行方式
-
-#### 运行环境要求
-
-| 组件          | 要求             |
-| ------------- | ---------------- |
-| Java          | JDK 8 及以上     |
-| TDengine      | 已部署并可访问   |
-| IDMP          | 已部署并可访问   |
-| JSON 配置文件 | 示例数据描述文件 |
-
-#### 工具位置说明
-
-在 TDasset Docker 容器中：
-
-```bash
-/app/tda-generator-command.jar
-```
-
-#### 基本运行命令
-
-##### 根据 JSON 生成示例数据
-
-```bash
-java -jar tda-generator-command.jar -f init.json
-```
-
-##### 清理示例数据
-
-```bash
-java -jar tda-generator-command.jar -f init.json -c
-```
-
-:::warning
-仅限测试环境使用。
-:::
-
-### 14.9.1.2 图形界面方式
-
-在 IDMP 管理界面中，进入**示例数据**模块，选择或上传 JSON 配置文件，点击 **保存** 或 **取消** 按钮完成操作。
+安装包和 Docker 镜像不再附带独立的命令行工具 `tda-generator-command.jar`。加载与卸载均通过管理控制台完成。
 
 ## 14.9.2 配置说明（JSON 文件）
 
@@ -72,7 +33,7 @@ java -jar tda-generator-command.jar -f init.json -c
 }
 ```
 
-整个 JSON 配置文件包含 7 个部分：`info` 用于描述模拟场景，`TDasset` 用于描述 IDMP 的连接信息，`datasource` 用于描述时序数据库 TSDB 的连接信息，`databases` 用于描述数据库配置，`enumerations` 用于定义枚举类型，`templates` 用于定义元素模板，`trees` 用于描述整个模拟场景的元素树结构。
+整个 JSON 配置文件包含 7 个部分：`info` 用于描述模拟场景，`TDasset` 在管理控制台加载时可省略，`datasource` 用于描述时序数据库 TSDB 的连接信息，`databases` 用于描述数据库配置，`enumerations` 用于定义枚举类型，`templates` 用于定义元素模板，`trees` 用于描述整个模拟场景的元素树结构。
 
 ### 14.9.2.2 info - 示例数据场景信息说明
 
@@ -95,19 +56,7 @@ java -jar tda-generator-command.jar -f init.json -c
 
 ### 14.9.2.3 TDasset - IDMP 连接配置
 
-仅在 **命令行模式** 下生效。
-
-```json
-{
-  "url": "http://localhost:8010/api/v1",
-  "user": "admin",
-  "password": "123456"
-}
-```
-
-- url: IDMP 访问地址；
-- user: IDMP 用户名；
-- password: IDMP 登录密码；
+在管理控制台加载示例时无需配置此项。服务在进程内直调 IDMP API，不读取该连接信息。自定义 JSON 中可省略 `TDasset` 字段。
 
 ### 14.9.2.4 datasource - TDengine 连接配置
 
@@ -407,7 +356,7 @@ CSV 数据源默认为一次性导入：每行数据按 `timestamp_column` 列�
 - 所有启用回放的 CSV 超级表必须位于同一个数据库中；
 - 同一配置中可与一次性导入的 CSV 超级表混合使用，系统会先完成全部一次性导入，再启动回放；
 - 回放运行期间示例保持「数据生成中」状态，可在示例数据页面暂停和恢复；恢复后系统会读取数据库中最后一条回放数据的时间戳，从断点继续回放，不会产生重复或缺失；
-- 卸载示例场景或执行命令行清理（`-c`）时，回放进程会被自动终止；命令行方式加载时，工具在导入完成后即退出，回放进程在后台持续运行；
+- 卸载示例场景时，回放进程会被自动终止；
 - 若还需要在主回放开始前快速回填一段近期历史数据，可为该超级表配置 `history_window`，详见下一节；
 
 ### 14.9.2.8.1 history_window - 历史数据窗口

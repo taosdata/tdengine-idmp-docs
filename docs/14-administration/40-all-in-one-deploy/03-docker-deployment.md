@@ -148,28 +148,28 @@ docker logs <container-name>
 
 ```bash
 cd ~/.apex/docker
-./idmp.sh stop
+./tdengine.sh stop
 ```
 
 停止所有容器 - Windows：
 
 ```bash
 cd C:\Users\Administrator\.apex\docker
-./idmp.ps1 stop
+./tdengine.ps1 stop
 ```
 
 启动所有容器 - Linux & macOS：
 
 ```bash
 cd ~/.apex/docker
-./idmp.sh start
+./tdengine.sh start
 ```
 
 启动所有容器 - Windows：
 
 ```bash
 cd C:\Users\Administrator\.apex\docker
-./idmp.ps1 start
+./tdengine.ps1 start
 ```
 
 不要删除生成的部署目录。该目录中可能包含 Docker Compose 文件、环境文件、卷映射、网络配置、组件配置以及升级或维护相关的元数据。
@@ -329,12 +329,12 @@ http://localhost:6042
 
 ```bash
 cd ~/.apex/docker
-./idmp.sh clean
+./tdengine.sh clean
 ```
 
 - Windows：
 
 ```bash
 cd C:\Users\Administrator\.apex\docker
-./idmp.ps1 clean
+./tdengine.ps1 clean
 ```

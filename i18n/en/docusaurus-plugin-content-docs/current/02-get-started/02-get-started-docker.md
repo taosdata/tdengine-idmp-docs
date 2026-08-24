@@ -31,7 +31,7 @@ After All-in-One installation completes, IDMP and related services start automat
 
 ```bash
 cd ~/.apex/docker
-./idmp.sh start
+./tdengine.sh start
 ```
 
 :::

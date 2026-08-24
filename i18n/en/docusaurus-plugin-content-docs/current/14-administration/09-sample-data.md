@@ -13,46 +13,9 @@ Sample Data is accessed from **Admin Console → Sample Data**.
 
 ## 14.9.1 Usage Instructions
 
-### 14.9.1.1 Command-Line Mode
+Open the **Sample Data** module in the IDMP management interface. The system includes several industry scenarios out of the box. You can also upload a custom JSON configuration file, or an archive that contains JSON, images, and CSV files. Load a scenario to generate metadata and time-series data; unload it to clean up what that scenario created.
 
-#### Environment Requirements
-
-| Component | Requirement               |
-| --------- | ------------------------- |
-| Java      | JDK 8 or later            |
-| TDengine  | Installed and accessible  |
-| IDMP      | Installed and accessible  |
-| JSON File | Sample data configuration |
-
-#### Tool Location
-
-Inside the TDasset Docker container:
-
-```bash
-/app/tda-generator-command.jar
-```
-
-#### Basic Commands
-
-##### Generate sample data
-
-```bash
-java -jar tda-generator-command.jar -f init.json
-```
-
-##### Clean up sample data
-
-```bash
-java -jar tda-generator-command.jar -f init.json -c
-```
-
-:::warning
-For testing environments only.
-:::
-
-### 14.9.1.2 GUI Mode
-
-In the IDMP management interface, open the **Sample Data** module, select or upload a JSON configuration file, then click **Save** or **Cancel** to complete the operation.
+Installation packages and Docker images no longer ship a standalone `tda-generator-command.jar` CLI. Load and unload sample data from the Admin Console.
 
 ## 14.9.2 Configuration Guide (JSON)
 
@@ -90,19 +53,7 @@ Used only for display in the IDMP UI.
 
 ### 14.9.2.3 TDasset — IDMP Connection
 
-Effective only in command-line mode.
-
-```json
-{
-  "url": "http://localhost:8010/api/v1",
-  "user": "admin",
-  "password": "123456"
-}
-```
-
-- url: IDMP access URL
-- user: IDMP username
-- password: IDMP login password
+Not required when loading sample data from the Admin Console. The server invokes IDMP APIs in-process and does not read this connection block. You can omit the `TDasset` field in a custom JSON file.
 
 ### 14.9.2.4 datasource — TDengine Connection
 
@@ -402,7 +353,7 @@ Constraints and runtime behavior:
 - All replay-enabled CSV super tables must belong to the same database.
 - Replay super tables can be mixed with one-shot import CSV super tables in the same configuration. The system finishes all one-shot imports first, then starts the replay.
 - While the replay is running, the sample stays in the data generation state and can be paused and resumed on the Sample Data page. On resume, the system reads the timestamp of the last replayed row from the database and continues the replay from that point, without duplicates or gaps.
-- Unloading the sample scenario or running the command-line cleanup (`-c`) automatically terminates the replay process. When loading from the command line, the tool exits once the import completes and the replay process keeps running in the background.
+- Unloading the sample scenario automatically terminates the replay process.
 - To quickly backfill a recent historical range before the main replay starts, configure `history_window` on the same super table. See the next section.
 
 ### 14.9.2.8.1 history_window - Historical Data Window

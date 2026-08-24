@@ -32,24 +32,24 @@ import GatewayBasePathConfig from './common/_gateway-base-path.md'
 
 ```bash
 cd ~/.apex/docker
-./idmp.sh start
+./tdengine.sh start
 ```
 
 ```bash
 cd ~/.apex/docker
-./idmp.sh stop
+./tdengine.sh stop
 ```
 
 **Windows（管理员 PowerShell）：**
 
 ```powershell
 cd $env:USERPROFILE\.apex\docker
-.\idmp.ps1 start
+.\tdengine.ps1 start
 ```
 
 ```powershell
 cd $env:USERPROFILE\.apex\docker
-.\idmp.ps1 stop
+.\tdengine.ps1 stop
 ```
 
 启动时将提示您选择部署模式：
