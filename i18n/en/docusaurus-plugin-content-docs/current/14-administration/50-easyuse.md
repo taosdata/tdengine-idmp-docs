@@ -215,8 +215,6 @@ Back in the OpenCode session, run:
 
 The list should include idmp-easyuse, idmp-sample-data-generator, and idmp-structure-exporter.
 
-![Confirm skills](./images/easyuse-confirm-skill.png)
-
 ---
 
 ## 14.14.8 Configure the IDMP MCP Server
@@ -288,8 +286,6 @@ Once generation completes, you can view the asset tree, panels, and alerts direc
 Taking the command /idmp-easyuse create a wastewater treatment demo… as an example, EasyUse created the following objects in one pass:
 
 Make sure **not** to specify any existing database! There is a risk that the specified database gets deleted during execution.
-
-![Run skill](./images/easyuse-run-skill.png)
 
 **14.14.10.1 Data Modeling (wastewater_treatment database)**
 
