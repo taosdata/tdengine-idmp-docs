@@ -20,7 +20,22 @@ Basic Configuration contains system-level global settings:
 | **Quality Analysis Menu** | Whether to enable a standalone Quality Analysis menu |
 | **Public Access URL** | The public access URL for the current system |
 | **Week Start** | Whether the first day of the week is Sunday or Monday |
+| **Element Sort Rule** | The global default element sort rule: System Default, Element Name, or Creation Time |
 | **System Color** | Configuration of the default system color |
+
+### Element Sort Rule Specification
+
+Element sort rule defines the default ordering used by the element tree and the child-element list when no explicit sort is specified. Available options:
+
+| Option | Sort basis |
+| --- | --- |
+| **System Default** | Sort by the element's `element_order` field. This field is generated automatically when an element is created and is adjusted dynamically when users **move up**, **move down**, or **pin to top** an element. Therefore, "System Default" is essentially "creation order plus user-defined ordering" — new elements are ordered by creation, and users can manually adjust their relative positions on top of that. |
+| **Element Name** | Sort by element name in ascending lexicographic order. |
+| **Creation Time** | Sort by element creation time (newest first). |
+
+:::info
+This setting only serves as the **global default**. In the element tree, users can override it for a specific node via the **sort** button next to the element node; in the child-element list, they can also specify a sort order via the column header.
+:::
 
 Click the edit (pencil) icon to modify these settings.
 
@@ -49,7 +64,16 @@ IDMP ships with built-in templates for common notification scenarios. Click a te
 
 ## 14.5.4 Email Server Configuration
 
-Email Server Configuration defines the SMTP server that IDMP uses to send outbound email. Click the edit (pencil) icon to modify and update the settings.
+Email Server Configuration defines the SMTP server that IDMP uses to send **event alert email** and **panel scheduled notifications**. Click the edit (pencil) icon to update the settings.
+
+:::note
+Transactional email — system activation (verification code), user invitations, password resets, and license-expiration notifications — is
+delivered by the TDengine-hosted shared mail service (Capability Gateway). It does not use the settings on
+this page, and no SMTP parameters need to be set in `application.yml`.
+These settings affect **only** event alert email and panel scheduled notifications: while unset, those two
+kinds of notification cannot be delivered, and the UI marks email-type contact points as unavailable under
+"Notification Channel".
+:::
 
 | Field                           | Description                                                                |
 | ------------------------------- | -------------------------------------------------------------------------- |
@@ -61,7 +85,12 @@ Email Server Configuration defines the SMTP server that IDMP uses to send outbou
 | **Enable TLS**            | Whether to use TLS encryption for the SMTP connection                      |
 | **Enable Authentication** | Whether SMTP authentication is required                                    |
 
-IDMP sends email for several purposes: system activation (verification code), user invitations, password resets, and event alert notifications. By default, IDMP uses a TDengine-provided mail service, and users can also modify the configuration to use a custom email service.
+IDMP delivers email over two separate paths:
+
+| Email type                                                          | Delivery path                                          | Needs these settings |
+| ------------------------------------------------------------------- | ------------------------------------------------------ | -------------------- |
+| System activation (verification code), user invitations, password resets, license-expiration notifications | TDengine shared mail service (Capability Gateway)      | No                   |
+| Event alert email, panel scheduled notifications                    | The SMTP server configured on this page                | **Yes**              |
 
 ### 14.5.4.1 Using MailHog for Air-Gapped Environments
 

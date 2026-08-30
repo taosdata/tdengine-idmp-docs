@@ -154,7 +154,13 @@ import TabItem from '@theme/TabItem';
 
 ## 提示框
 
+优先使用 Docusaurus 内置 callout（`:::` 围栏），**不要**用 Markdown 引用块 `>` 表达提示/说明/警告。
+
 ```markdown
+:::info
+信息提示，补充说明（中性信息）
+:::
+
 :::tip
 提示信息，有用的建议
 :::

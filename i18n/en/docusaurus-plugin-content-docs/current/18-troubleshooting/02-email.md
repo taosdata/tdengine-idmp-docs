@@ -159,14 +159,21 @@ Interpret the results as follows:
 
 ### 18.2.3.4 Check Which Email Configuration Is Active
 
-The effective email configuration may come from system settings or the application configuration file, so confirm the active source before changing any settings.
+First identify which delivery path the failing email takes — the two paths draw their configuration from entirely different places:
 
-Configuration priority:
+| Email type | Delivery path | Configuration source |
+| --- | --- | --- |
+| Registration code, login code, password reset, license-expiration notification | Shared mail service (Capability Gateway) | `tda.capability-gateway.*` (`enabled`, `mail-send-url`, `identity-directory`) |
+| Event alert email, panel scheduled notifications | SMTP server in system settings | System settings page "Email Server Configuration" (stored in the database) |
 
-1. If email service settings are configured in system settings, those settings take precedence.
-2. If no email configuration exists there, the application falls back to the default email settings in `application.yml`.
+:::note
+`application.yml` no longer contains any `quarkus.mailer.*` entries, and the application no longer falls back
+to file-based default mail settings when system settings are missing.
+Transactional email does not read the SMTP parameters from system settings; event alert email and panel
+scheduled notifications fail outright while those settings are missing.
+:::
 
-In system settings, focus on the following fields:
+For event alert email and panel scheduled notifications, focus on the following fields in system settings:
 
 - `host`
 - `port`
@@ -182,8 +189,9 @@ When you need to separate an application issue from an SMTP environment issue, v
 
 Available application endpoints:
 
-- `POST /api/v1/system/email/default-connectivity`: tests the current default email configuration.
-- `POST /api/v1/system/email/connectivity`: tests a specified SMTP configuration.
+- `POST /api/v1/system/email/default-connectivity`: probes whether the shared mail service (Capability Gateway) is available; use it for transactional email.
+- `POST /api/v1/system/email/connectivity`: tests a specified SMTP configuration; use it for event alert email and panel scheduled notifications.
+- `POST /api/v1/system/email/connectivity-detail`: same as above, but also returns an `errorCode` (for example `MAIL_AUTH_FAILED`, `MAIL_CONNECT_FAILED`) to pinpoint the failing step.
 
 For network-level checks on the host:
 
@@ -308,7 +316,7 @@ Recommended checks:
 
 To avoid missing critical evidence, inspect the email sending status from both configuration and logs.
 
-- Configuration: confirm whether the database email configuration is enabled. If it is not, determine which default file configuration is used, and verify `host`, `port`, `username`, `from`, `tls`, and `auth`.
+- Configuration: first determine which path the failing email belongs to. For transactional email, verify `tda.capability-gateway.*` (whether it is enabled, whether `mail-send-url` is reachable, whether the credentials directory is mounted). For event alert email and panel scheduled notifications, verify `host`, `port`, `username`, `from`, `tls`, and `auth` in the database email configuration.
 - Logs: confirm that request logs, asynchronous send-task logs, sender logs, and authentication, connection, or retry failures are all covered.
 
 ## 18.2.7 Best Practices

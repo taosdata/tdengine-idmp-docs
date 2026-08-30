@@ -15,6 +15,7 @@ The **asset tree** in the left sidebar of the Explorer page provides a hierarchi
 - Click the **▼** arrow to collapse a branch.
 - Click an element name to select it and open its detail view in the main pane.
 - Hover over any element in the tree to reveal the **⋮** menu, which provides quick actions: New Child Element, Delete, and others.
+- Hover over an element node and click the **sort** button next to the refresh button to toggle its child elements between "sort by name" and "system default order". By default, it follows the system-wide Element Sort Rule (see [14.5.1 Basic Configuration](../14-administration/05-system-configuration.md#1451-basic-configuration)).
 
 The asset tree supports arbitrarily deep hierarchies. Expand only the branches relevant to your current task and collapse the rest to keep the sidebar manageable.
 

@@ -163,14 +163,19 @@ grep -nE 'connection failed|timeout|refused' tda.log
 
 ### 18.2.3.4 确认实际生效的邮件配置
 
-邮件配置可能来自系统配置或配置文件，排查时应先确认当前请求实际使用的是哪一套配置。
+排查时应先按邮件类型确认走的是哪一条投递链路，两条链路的配置来源完全不同：
 
-配置优先级如下：
+| 邮件类型 | 投递链路 | 配置来源 |
+| --- | --- | --- |
+| 注册验证码、登录验证码、密码重置、License 到期通知 | 共享邮件服务（Capability Gateway） | `tda.capability-gateway.*`（`enabled`、`mail-send-url`、`identity-directory`） |
+| 事件告警邮件、面板定时通知 | 系统配置中的 SMTP 服务器 | 系统配置页面「邮件服务器配置」（存于数据库） |
 
-1. 如果系统配置中已配置邮件服务，则优先使用系统配置。
-2. 如果没有邮件配置，则回退到 `application.yml` 中的默认邮件配置。
+:::note
+`application.yml` 中已不存在 `quarkus.mailer.*` 配置项，也不再有「系统配置缺失时回退到配置文件默认邮件配置」的行为。
+事务类邮件不读取系统配置中的 SMTP 参数；事件告警邮件与面板定时通知在系统配置缺失时直接发送失败。
+:::
 
-系统配置建议重点核对以下字段：
+事件告警邮件与面板定时通知的系统配置，建议重点核对以下字段：
 
 - `host`
 - `port`
@@ -186,8 +191,9 @@ grep -nE 'connection failed|timeout|refused' tda.log
 
 应用内可用的检测接口如下：
 
-- `POST /api/v1/system/email/default-connectivity`：检测当前默认邮件配置是否可连通。
-- `POST /api/v1/system/email/connectivity`：检测指定 SMTP 配置是否可连通。
+- `POST /api/v1/system/email/default-connectivity`：探测共享邮件服务（Capability Gateway）是否可用，用于事务类邮件排查。
+- `POST /api/v1/system/email/connectivity`：检测指定 SMTP 配置是否可连通，用于事件告警邮件与面板定时通知排查。
+- `POST /api/v1/system/email/connectivity-detail`：同上，但额外返回 `errorCode`（如 `MAIL_AUTH_FAILED`、`MAIL_CONNECT_FAILED`），便于定位失败环节。
 
 如果只做网络层排查，可直接在部署机执行以下命令：
 
@@ -312,7 +318,7 @@ nslookup smtp.example.com
 
 为避免遗漏关键信息，建议从配置和日志两个维度同步核对邮件发送状态。
 
-- 配置维度：确认是否启用了数据库邮件配置，若未启用数据库配置，当前语言会命中哪套默认文件配置，并核对 `host`、`port`、`username`、`from`、`tls`、`auth` 是否完整一致。
+- 配置维度：先确认故障邮件属于哪条链路。事务类邮件核对 `tda.capability-gateway.*`（是否启用、`mail-send-url` 可达性、凭据目录是否挂载）；事件告警与面板定时通知核对数据库邮件配置的 `host`、`port`、`username`、`from`、`tls`、`auth` 是否完整一致。
 - 日志维度：确认是否存在接口请求日志、异步发送任务日志、具体发信日志，以及认证失败、连接失败和重试失败等异常信息。
 
 ## 18.2.7 最佳实践
