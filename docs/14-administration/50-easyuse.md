@@ -178,7 +178,7 @@ DeepSeek V4 Flash
 
 ## 14.14.7 部署 EasyUse 技能包
 
-EasyUse 由三个协同工作的技能组成，需要从内部 GitLab 拉取后放入 OpenCode 的技能目录 .opencode/。
+EasyUse 由三个协同工作的技能组成，需要从 GitHub 拉取后放入 OpenCode 的技能目录 .opencode/。
 
 **14.14.7.1 拉取仓库**
 
@@ -189,12 +189,14 @@ cd agent-skills
 
 **14.14.7.2 复制技能到 OpenCode**
 
-在你**运行 OpenCode 的工作目录**下执行（该目录会包含一个 .opencode/ 子目录）：
+在你**运行 OpenCode 的工作目录**下执行：
 
 ```Plain Text
-cp -r skills/idmp-easyuse                  .opencode/
-cp -r skills/idmp-sample-data-generator    .opencode/
-cp -r skills/idmp-structure-exporter       .opencode/
+mkdir .opencode
+
+cp -r agent-skills的路径/skills/idmp-easyuse                  .opencode/skills/idmp-easyuse
+cp -r agent-skills的路径/skills/idmp-sample-data-generator    .opencode/skills/idmp-sample-data-generator
+cp -r agent-skills的路径/skills/idmp-structure-exporter       .opencode/skills/idmp-structure-exporter
 ```
 
 三个技能的分工如下：
@@ -214,6 +216,7 @@ cp -r skills/idmp-structure-exporter       .opencode/
 ```
 
 列表应包含 idmp-easyuse、idmp-sample-data-generator、idmp-structure-exporter 三项。
+若没有列出，请退出重启 OpenCode。
 
 ![确认skill](./images/easyuse-confirm-skill.png)
 
