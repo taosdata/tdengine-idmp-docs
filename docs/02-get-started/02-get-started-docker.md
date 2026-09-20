@@ -20,20 +20,36 @@ TDengine 官网下载中心提供了 All-in-one 安装方式，可以一行命�
 
 ## 2.2.2 安装
 
-请参照官网下载中心 TDengine All-in-One 提供的 Docker 命令行，进行安装。
-使用 All-in-One 一键部署 TDengine IDMP 将自动切换到 `https://tdengine-registry.cn-beijing.cr.aliyuncs.com` 拉取镜像，大幅提升拉取镜像的速度。
+请参考 TDengine 下载中心 [TDengine All-in-One](https://www.taosdata.com/download-center?product=TDengine+All-in-One&platform=Docker) 产品页面提供的安装指南，进行安装。
+
+:::tip
+
+使用 All-in-One 一键部署 TDengine IDMP 将自动切换至 [TDengine 镜像源](https://tdengine-registry.cn-beijing.cr.aliyuncs.com) 拉取镜像，大幅提升拉取镜像的速度。
+
+:::
 
 ## 2.2.3 通过 Docker 启动 TDengine IDMP
 
-:::tip
-通过 All-in-One 一键部署安装完成后，将自动启动 IDMP 及相关服务。您也可以手动启动服务，以 Linux & macOS 为例，启动命令如下：
+通过 All-in-One 一键部署安装完成后，将自动启动 IDMP 及相关服务。手动启动的命令，如下所示：
+
+<Tabs>
+<TabItem label="Linux/macOS" value="linux">
 
 ```bash
 cd ~/.apex/docker
 ./tdengine.sh start
 ```
 
-:::
+</TabItem>
+<TabItem label="Windows" value="windows">
+
+```batch
+cd C:\ProgramData\TDengine\Apex\docker
+.\tdengine.ps1 start
+```
+
+</TabItem>
+</Tabs>
 
 该命令将提示您选择部署模式：
 
@@ -41,8 +57,6 @@ cd ~/.apex/docker
 - **完整部署** — TDengine TSDB Enterprise + IDMP + TDgpt（支持时序数据预测和异常检测功能）
 
 AI 服务已作为独立镜像 `tdengine/idmp-ai-ee` 部署，Docker Compose 配置中将自动包含该服务。
-
-如果本地不存在所需镜像，将自动从远端拉取。
 
 默认情况下，TDengine IDMP 服务监听主机的以下端口：
 

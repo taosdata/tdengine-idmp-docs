@@ -24,7 +24,7 @@ sidebar_label: All-in-One on Linux
 以 `root` 身份执行以下命令：
 
 ```bash
-curl -fsSL https://downloads.taosdata.com/apex/install.sh | bash -s -- -m apex
+curl -fsSL https://downloads.taosdata.com/apex/latest/install.sh | bash -s -- -m apex
 ```
 
 该命令会下载 Apex 部署工具并启动部署流程。

@@ -22,6 +22,6 @@ The Libraries menu contains the following sections:
 | **Action Template** | Define reusable automated actions that analyses invoke when a trigger condition is met |
 | **Agentic AI** | Manage Skills and MCP templates available to AI Agents |
 
-This chapter covers Enumeration Sets, Categories, UOM, and Action Templates.
+This chapter covers Enumeration Sets, Categories, UOM, Action Templates, Agentic AI, and Knowledge Graph.
 
 <DocCardList />

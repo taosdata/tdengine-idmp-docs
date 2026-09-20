@@ -20,13 +20,7 @@ sidebar_label: All-in-One on Windows
 
 ## 14.13.2.2 部署 TDengine All-in-One
 
-在以管理员身份打开的 PowerShell 中执行以下命令：
-
-```powershell
-iwr 'https://downloads.taosdata.com/apex/install.ps1' -UseBasicParsing -OutFile "$env:TEMP\apex-install.ps1"; & "$env:TEMP\apex-install.ps1" -Mode apex
-```
-
-当部署提示出现时，按 Enter 继续安装。
+点击 [TDengineSetup-x64.exe](https://downloads.taosdata.com/apex/latest/TDengineSetup-x64.exe) 下载 TDengine 安装器，然后双击执行，并选择主机方式安装。
 
 ## 14.13.2.3 为多节点部署安装 OpenSSH Server
 
@@ -54,8 +48,6 @@ PubkeyAuthentication yes
 AuthorizedKeysFile  .ssh/authorized_keys
 PasswordAuthentication yes
 PermitEmptyPasswords no
-# Match Group administrators
-#     AuthorizedKeysFile __PROGRAMDATA__/ssh/administrators_authorized_keys
 ```
 
 如果修改了配置，请重启 `sshd` 服务使变更生效。
@@ -64,37 +56,25 @@ PermitEmptyPasswords no
 
 ### 14.13.2.5.1 启动和停止
 
-打开 `services.msc`，找到相关 TDengine 服务，并通过右键菜单执行启动或停止。
+打开新的 Powershell 窗口，输入命令执行对应操作：
 
-Windows 服务列表包括：
+- `apex-component-start.ps1`        启动 TDengine 所有服务
+- `apex-component-stop.ps1`         停止 TDengine 所有服务
 
-- `taosd`
-- `taosadapter`
-- `taoskeeper`
-- `taos-explorer`
-- `taosx`
-- `TDengine Analytics Node`
-- `tdengine-idmp-h2`
-- `tdengine-idmp-ui`
-- `tdengine-idmp-backend`
-- `tdengine-idmp-chat`
-- `tdengine-idmp-cls`
+### 14.13.2.5.2 卸载和彻底清除
 
-### 14.13.2.5.2 卸载
+打开新的 Powershell 窗口，输入命令执行对应操作：
 
-打开“设置 > 应用 > 已安装的应用”，然后依次卸载以下程序：
-
-- TDengine IDMP
-- TDengine TSDB
-- TDengine TDgpt
+- `apex-component-uninstall.ps1`        卸载 TDengine 所有组件
+- `apex-component-purge.ps1`            卸载 TDengine 所有组件并清除所有数据
 
 ## 14.13.2.6 故障排查 {#faq}
 
 如果部署未成功，请检查以下内容：
 
-- 是否以管理员身份运行 PowerShell
-- 是否可以联网下载安装包
-- 所需端口是否可用且未被 Windows 防火墙阻止
+- 是否账户拥有管理员权限
+- 是否可以联网下载 TDengineSetup 安装包
+- 所需端口是否未被占用且未被 Windows 防火墙阻止
 
 ### 如果 Windows 系统的用户名为中文，安装时报错，应该如何解决？
 

@@ -10,7 +10,7 @@ import TabItem from '@theme/TabItem';
 
 TDengine IDMP provides a one-click Docker Compose deployment that simplifies local setup. This installs TDengine TSDB-Enterprise together with TDengine IDMP and automatically establishes the connection between them.
 
-The TDengine Download Center provides an All-in-One installation method that deploys all TDengine modules, including IDMP, with a single command. It supports Docker, Linux, and Windows. For details, see [section 14.13](../14-administration/40-all-in-one-deploy/index.md).
+The TDengine Download Center provides an All-in-One installation method that deploys all TDengine modules, including IDMP, with a single command. For details, see [section 14.13](../14-administration/40-all-in-one-deploy/index.md).
 
 ## 2.2.1 Environment Requirements
 
@@ -20,21 +20,30 @@ The TDengine Download Center provides an All-in-One installation method that dep
 
 ## 2.2.2 Installation
 
-Follow the Docker command provided for TDengine All-in-One in the Download Center.
-
-All-in-One one-click deployment of TDengine IDMP automatically switches to `https://tdengine-registry.cn-beijing.cr.aliyuncs.com` to pull images and significantly improve download speed.
+Please follow the guide provided on the [TDengine All-in-One](https://tdengine.com/downloads/?product=TDengine+All-in-One&platform=Docker) product page in the TDengine Download Center.
 
 ## 2.2.3 Start TDengine IDMP with Docker
 
-:::tip
-After All-in-One installation completes, IDMP and related services start automatically. You can also start them manually. On Linux and macOS:
+After All-in-One installation completes, IDMP and related services are started automatically. You can also start them manually.
+
+<Tabs>
+<TabItem label="Linux/macOS" value="linux">
 
 ```bash
 cd ~/.apex/docker
 ./tdengine.sh start
 ```
 
-:::
+</TabItem>
+<TabItem label="Windows" value="windows">
+
+```batch
+cd C:\ProgramData\TDengine\Apex\docker
+.\tdengine.ps1 start
+```
+
+</TabItem>
+</Tabs>
 
 This command prompts you to select a deployment mode:
 

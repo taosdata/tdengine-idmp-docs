@@ -22,6 +22,6 @@ import DocCardList from '@theme/DocCardList';
 | **动作模板**   | 定义可复用的自动化动作，供分析在触发条件满足时调用                                    |
 | **Agentic AI** | 管理 AI Agent 可用的 Skills（技能）和 MCP 模板                                        |
 
-本章介绍枚举集、分类、计量单位和动作模板。
+本章介绍枚举集、分类、计量单位、动作模板、Agentic AI 与知识图谱。
 
 <DocCardList />

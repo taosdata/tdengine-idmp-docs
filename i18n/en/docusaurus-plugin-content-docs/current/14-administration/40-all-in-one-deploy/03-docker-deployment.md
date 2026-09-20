@@ -7,33 +7,24 @@ sidebar_label: All-in-One on Docker
 
 This guide explains how to deploy TDengine All-in-One using Docker.
 
-**Watch TDengine Tutorial Videos:** [**Docker Deployment Video**](https://www.youtube.com/watch?v=v807Z4dwh9k&list=PLQ3OTMvx-LOQ&index=7)
-
 Docker deployment supports Linux, Windows, and macOS. macOS supports Docker deployment only.
+
+**Watch TDengine Tutorial Videos:** [**Deploy & Activate with Docker**](https://youtu.be/v807Z4dwh9k)
 
 ## 14.13.3.1 Environment Requirements
 
-Before deployment, ensure that the platform meets the following requirements.
+Before deployment, confirm that the system meets the following requirements.
 
 | Platform | Requirement |
 | --- | --- |
 | Linux | Docker Engine 20.10 or later |
 | Windows | Docker Engine or Docker Desktop |
 | macOS | Docker Desktop |
-
-The host also requires stable internet access. Windows requires administrator privileges, and Linux requires `root` privileges.
-
-**Recommended configuration:**
-
-| Resource | Recommended |
-| --- | --- |
-| CPU | 12 cores |
-| Memory | 16 GB RAM |
-| Storage | 100 GB available disk space |
+| All platforms | OpenSSH Server and passwordless SSH access |
 
 ## 14.13.3.2 Prepare Docker
 
-Confirm that Docker is installed and running.
+Confirm that Docker Desktop is installed and running.
 
 Check the Docker version:
 
@@ -51,7 +42,7 @@ docker info
 
 ### Linux
 
-Run the following command as `root`:
+Run the following command as the root user:
 
 ```bash
 curl -fsSL https://downloads.taosdata.com/apex/install.sh | bash -s -- -m docker
@@ -65,53 +56,64 @@ Open a terminal and run:
 curl -fsSL https://downloads.taosdata.com/apex/install.sh | bash -s -- -m docker
 ```
 
-Docker Desktop must be running before you start deployment.
+Docker Desktop must be running before you start the deployment.
 
 ### Windows
 
-Open PowerShell as Administrator and run:
+#### Download the Installer
 
-```powershell
-iwr https://downloads.taosdata.com/apex/install.ps1 -UseBasicParsing -OutFile $env:TEMP\apex-install.ps1; & $env:TEMP\apex-install.ps1 -Mode docker
-```
+Download [TDengineSetup-x64.exe](https://downloads.tdengine.com/apex/latest/ApexSetup-x64.exe) and double-click to start the deployment.
 
-When the deployment prompt appears, press Enter to continue the installation.
+#### Run the Installer
 
-## 14.13.3.4 Troubleshooting
+Locate **ApexSetup-x64.exe**, right-click the file, and select **Run as administrator**.
 
-If deployment is not successful, verify the following:
+If prompted by Windows User Account Control (UAC), click **Yes**.
 
-- Docker is installed and running.
-- The host has internet access to download installation packages.
-- Required ports are available and not blocked by the firewall.
+#### Select the Deployment Type
 
-**Note:** If you encounter an issue related to the log files, stop the IDMP
-container and delete the log files from the mounted log volume, or delete them
-from inside the container if the logs are not persisted.
+When the installer appears, click **Continue** and select **All In One (Docker)**.
+
+#### Start the Deployment
+
+When the PowerShell deployment prompt appears, press **Enter** to continue the installation.
+
+Wait for the deployment process to complete. Do not close the PowerShell window while the installation is running.
+
 Example (inside the container):
 
 ```text
-rm -rf /var/log/taos
+rm -rf /opt/TDengine/idmp/log
 ```
 
 Then rerun the deployment command above.
 
-## 14.13.3.5 Access and Activate IDMP
+## 14.13.3.4 Access and Activate IDMP
 
-After deployment completes successfully, open IDMP in a browser:
+After the deployment completes successfully, open the following application:
+
+**IDMP**
+
+Used to manage your industrial data, create asset models, build dashboards, configure analyses, set up notifications, and manage data integration.
+
+**URL:**
 
 ```text
 http://localhost:6042
 ```
 
-If you access the service from another machine, replace `localhost` with the host name or IP address of the server where TDengine is installed.
-
-Enter your email address, organization name, and verification code to activate IDMP.
-
 ![IDMP activation page](../images/idmp-activation.jpg)
 
-For the Free Edition, review the license agreement and select **Agree and Activate Free License**.
+**Activate your License Free Forever!**
 
 ![TDengine Free Edition license activation](../images/license-activation.jpg)
+
+**Note:** If your mail server doesn't work or you lack an internet connection, please run this to retrieve your verification code:
+
+```bash
+docker logs <idmp-container> 2>&1 | grep -E "Generated register verify code|Generated verify code|Sending register verify code" | tail -1
+```
+
+**Note:** If you are connecting from another machine, replace `localhost` with the host name or IP address of the server where TDengine is installed.
 
 **Watch TDengine Tutorial Videos:** [**TDengine Tutorial Videos**](https://www.youtube.com/playlist?list=PLQ3OTMvx-LOQ)
