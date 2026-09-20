@@ -27,13 +27,16 @@ For full hardware and OS requirements, see [Planning Your Deployment](../14-admi
 
 ## 2.3.2 Install TDengine IDMP
 
-Follow the one-line install command provided for TDengine IDMP-Enterprise in the Download Center. Copy and paste it into a terminal to install.
+Please install by following the installation guide provided on the [TDengine All-in-One](https://tdengine.com/downloads/?product=TDengine+All-in-One) product page in the TDengine Download Center.
 
 :::tip
-On Linux, run the command as `root`. On Windows, open an elevated PowerShell window as Administrator before running the command.
+
+1. On Windows, please disable antivirus software temporarily.
+1. On Linux, run the command as `root`.
+
 :::
 
-## 2.3.3 Configure the Connection to TDengine TSDB
+## 2.3.3 Configure TDengine TSDB Connection (Optional)
 
 Open the configuration file in a text editor:
 
@@ -60,7 +63,7 @@ tda:
 | `password` | TDengine password |
 | `explorer-url` | taosExplorer access URL, default port 6060. **For remote access, this must be set to the server's actual IP or domain name** (for example `http://192.168.1.100:6060`); otherwise the browser cannot connect to the Explorer service |
 
-(Optional) Test the connection to TDengine TSDB-Enterprise:
+Test the connection to TDengine TSDB-Enterprise:
 
 ```bash
 curl --request POST \
@@ -72,6 +75,8 @@ curl --request POST \
 If the connection is successful, the list of databases in TDengine TSDB-Enterprise is displayed.
 
 ## 2.3.4 Start the IDMP Service
+
+IDMP service will be started automatically after the TDengine All-in-One deployment. It can also be started manually with the command below:
 
 <Tabs>
 <TabItem label="Linux/macOS" value="linux">

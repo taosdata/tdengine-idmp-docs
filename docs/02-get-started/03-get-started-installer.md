@@ -2,15 +2,13 @@
 title: 安装包快速上手
 sidebar_label: 安装包
 ---
+
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import PkgListV37 from "/src/components/PkgListZh";
 
 # 2.3 安装包快速上手
 
-TDengine IDMP 支持在 Linux、macOS 或 Windows 机器上进行本地安装。
-
-TDengine 官网下载中心提供了 All-in-one 安装方式，可以一行命令完成 TDengine 所有模块包含 IDMP 的安装部署，支持 Docker、Linux 和 Windows 等部署环境，详细过程请阅读[第 14.13 节](../14-administration/40-all-in-one-deploy/index.md)
+TDengine 下载中心 [TDengine All-in-One](https://www.taosdata.com/download-center?product=TDengine+All-in-One) 产品页面，提供了安装命令，可以快速完成包含 IDMP 在内的所有模块的安装部署，支持 Windows、Linux 等操作系统，详细过程请阅读[第 14.13 节](../14-administration/40-all-in-one-deploy/index.md)
 
 ## 2.3.1 系统要求
 
@@ -27,10 +25,13 @@ TDengine 官网下载中心提供了 All-in-one 安装方式，可以一行命�
 
 ## 2.3.2 安装 TDengine IDMP
 
-请参照官网下载中心 TDengine IDMP-Enterprise 提供的一键部署命令行，复制粘贴至终端，进行安装。
+请参照 TDengine 下载中心 [TDengine All-in-One](https://www.taosdata.com/download-center?product=TDengine+All-in-One) 产品页面，提供的安装指南进行安装。
 
 :::tip
-在 Linux 系统中，需以 `root` 身份执行命令行；在 Windows 系统中，需以管理员身份打开 Powershell 窗口，执行命令行。
+
+1. 在 Windows 系统中，请临时关闭安全防护，再启动 TDengine 安装器；
+1. 在 Linux 系统中，需以 `root` 身份执行命令行；
+
 :::
 
 ## 2.3.3 配置与 TDengine TSDB 的连接
@@ -72,6 +73,8 @@ curl --request POST \
 连接成功时，将返回 TDengine TSDB-Enterprise 的数据库列表。
 
 ## 2.3.4 启动 IDMP 服务
+
+TDengine 安装器安装完成后，IDMP 服务会自动启动；手动启动的命令，如下所示：
 
 <Tabs>
 <TabItem label="Linux/macOS" value="linux">

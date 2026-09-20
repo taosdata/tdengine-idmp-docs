@@ -35,7 +35,7 @@ Run all installation commands as `root`.
 Run the following command as `root`:
 
 ```bash
-curl -fsSL https://downloads.taosdata.com/apex/install.sh | bash -s -- -m apex
+curl -fsSL https://downloads.taosdata.com/apex/latest/install.sh | bash -s -- -m apex
 ```
 
 The command downloads the Apex deployment tool and starts the deployment process. During deployment, select the All-in-One option to deploy the complete TDengine platform.

@@ -65,15 +65,15 @@ class TopLeft extends React.Component {
           <div className={styles.certsContainer}>
             <figure className={styles.socFig}><a href="https://www.taosdata.com/tdengine/tdengine-cloud-soc-2"><img
               className={styles.socImg}
-              src={require("/img/soc-footer.png").default}
+              src="/img/soc-footer.png"
               alt="SOC 2 Certified" /></a></figure>
             <figure className={styles.isoFig}><a href="https://www.taosdata.com/tdengine/iso-ice-27001-iso-ice-27017-certified"><img
               className={styles.isoImg}
-              src={require("/img/iso27001-footer.png").default}
+              src="/img/iso27001-footer.png"
               alt="ISO 27001 Certified" /></a></figure>
             <figure className={styles.isoFig}><a href="https://www.taosdata.com/tdengine/iso-ice-27001-iso-ice-27017-certified"><img
               className={styles.isoImg}
-              src={require("/img/iso27017-footer.png").default}
+              src="/img/iso27017-footer.png"
               alt="ISO 27017 Certified" /></a></figure>
           </div>
         </div>
@@ -86,7 +86,7 @@ class TopLeft extends React.Component {
             <span className={styles.icon}> <svg alt="TDengine Database" role="img" viewBox="0 0 576 512" height="30" width="30" xmlns="http://www.w3.org/2000/svg" > <path d="M385.2 167.6c6.4 0 12.6.3 18.8 1.1C387.4 90.3 303.3 32 207.7 32 100.5 32 13 104.8 13 197.4c0 53.4 29.3 97.5 77.9 131.6l-19.3 58.6 68-34.1c24.4 4.8 43.8 9.7 68.2 9.7 6.2 0 12.1-.3 18.3-.8-4-12.9-6.2-26.6-6.2-40.8-.1-84.9 72.9-154 165.3-154zm-104.5-52.9c14.5 0 24.2 9.7 24.2 24.4 0 14.5-9.7 24.2-24.2 24.2-14.8 0-29.3-9.7-29.3-24.2.1-14.7 14.6-24.4 29.3-24.4zm-136.4 48.6c-14.5 0-29.3-9.7-29.3-24.2 0-14.8 14.8-24.4 29.3-24.4 14.8 0 24.4 9.7 24.4 24.4 0 14.6-9.6 24.2-24.4 24.2zM563 319.4c0-77.9-77.9-141.3-165.4-141.3-92.7 0-165.4 63.4-165.4 141.3S305 460.7 397.6 460.7c19.3 0 38.9-5.1 58.6-9.9l53.4 29.3-14.8-48.6C534 402.1 563 363.2 563 319.4zm-219.1-24.5c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.8 0 24.4 9.7 24.4 19.3 0 10-9.7 19.6-24.4 19.6zm107.1 0c-9.7 0-19.3-9.7-19.3-19.6 0-9.7 9.7-19.3 19.3-19.3 14.5 0 24.4 9.7 24.4 19.3.1 10-9.9 19.6-24.4 19.6z" fill="var(--white)" ></path> </svg> </span>
             <div className={styles.wechatSocialImg}>
               <div className={styles.indexModuleTooltipInner}>
-                <img src={require("/img/tdengineqrcode_1.jpeg").default} alt="TDengine Database 公众号"></img>
+                <img src="/img/tdengineqrcode_1.jpeg" alt="TDengine Database 公众号"></img>
                 <div>
                   <p>添加公众号：</p>
                   <p>TDengine</p>
@@ -105,7 +105,7 @@ class TopLeft extends React.Component {
             </span>
             <div className={styles.wechatSocialImg}>
               <div className={styles.indexModuleTooltipInner}>
-                <img src={require("/img/tdengine-new.jpeg").default} alt="TDengine Database 技术交流群"></img>
+                <img src="/img/tdengine-new.jpeg" alt="TDengine Database 技术交流群"></img>
                 <div>
                   <p>加小T为好友，即可加入物联网大数据技术前沿群</p>
                 </div>
@@ -246,7 +246,7 @@ class TopRight extends React.Component {
           <script src="https://inbound.tungee.com/im/bundle.js?deployId=65a78934bd591762738300b4" name="TGTouchCS"></script>*/}
           
           <div className={styles.fixAichat} id="bd-aichat-btn">
-            <img decoding="async" src={require("/img/aichat.png").default} alt="TDengine AI Chat" />
+            <img decoding="async" src="/img/aichat.png" alt="TDengine AI Chat" />
             <div className={styles.tipRight}>
               <div className={styles.rightTitle}>
                 <a href="https://chat.taosdata.com" target="_blank" rel="noopener noreferrer">
@@ -258,29 +258,29 @@ class TopRight extends React.Component {
           </div>
 
           <div className={styles.fixWechat} id="bd-wechat-btn">
-            <img decoding="async" className={styles.wechatLogo} src={require("/img/fixlogo2.png").default} />
+            <img decoding="async" className={styles.wechatLogo} src="/img/fixlogo2.png" />
             <div className={styles.tipRight}>
-              <img decoding="async" style={{ width: "100%" }} alt="TDengine Database" src={require("/img/tdengine-new.jpeg").default} className="" />
+              <img decoding="async" style={{ width: "100%" }} alt="TDengine Database" src="/img/tdengine-new.jpeg" className="" />
               <div>加小 T 为好友</div>
               <div style={{ color: "#333844" }}>即可加入物联网大数据技术前沿群</div>
             </div>
           </div>
           <div className={styles.fixPhone} id="bd-phone-btn">
-            <img decoding="async" src={require("/img/phone.svg").default} />
+            <img decoding="async" src="/img/phone.svg" />
             <div className={styles.tipRight}>
               <div className={styles.rightTitle}><a href="tel:4006120020">联系销售</a></div>
               <div><a style={{ color: "#333844" }} href="tel:4006120020">4006120020</a></div>
             </div>
           </div>
           <div className={styles.fixForm} id="bd-contact-btn">
-            <img decoding="async" src={require("/img/fixlogo1.png").default} className="" />
+            <img decoding="async" src="/img/fixlogo1.png" className="" />
             <div className={styles.tipRight}>
               <div className={styles.rightTitle}><a onClick={this.contactSales.bind(this)} className="advice">点击填写表单</a></div>
               <div style={{ color: "#333844" }}>获得解决方案专家帮助</div>
             </div>
           </div>
           <div className="fix-github" id="bd-github-btn">
-            <img decoding="async" className="wechat-logo" src={require("/img/fixlogo3.png").default} />
+            <img decoding="async" className="wechat-logo" src="/img/fixlogo3.png" />
             <div className={styles.tipRight}>
               <div className={styles.rightTitle}><a href="https://github.com/taosdata/TDengine">点击前往 GitHub</a></div>
               <div><a style={{ color: "#333844" }} href="https://github.com/taosdata/TDengine">查看源代码</a></div>

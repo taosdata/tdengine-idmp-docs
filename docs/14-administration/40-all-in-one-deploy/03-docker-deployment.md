@@ -47,7 +47,7 @@ docker info
 以 `root` 身份执行以下命令：
 
 ```bash
-curl -fsSL https://downloads.taosdata.com/apex/install.sh | bash -s -- -m docker
+curl -fsSL https://downloads.taosdata.com/apex/latest/install.sh | bash -s -- -m docker
 ```
 
 ### 14.13.3.3.2 macOS
@@ -55,20 +55,14 @@ curl -fsSL https://downloads.taosdata.com/apex/install.sh | bash -s -- -m docker
 打开终端并执行：
 
 ```bash
-curl -fsSL https://downloads.taosdata.com/apex/install.sh | bash -s -- -m docker
+curl -fsSL https://downloads.taosdata.com/apex/latest/install.sh | bash -s -- -m docker
 ```
 
 开始部署前，必须先启动 Docker Desktop。
 
 ### 14.13.3.3.3 Windows
 
-以管理员身份打开 PowerShell 并执行：
-
-```powershell
-iwr https://downloads.taosdata.com/apex/install.ps1 -UseBasicParsing -OutFile $env:TEMP\apex-install.ps1; & $env:TEMP\apex-install.ps1 -Mode docker
-```
-
-当部署提示出现时，按 Enter 继续安装。
+点击 [TDengineSetup-x64.exe](https://downloads.taosdata.com/apex/latest/TDengineSetup-x64.exe) 下载 TDengine 安装器，然后双击执行，并选择容器方式安装。
 
 ## 14.13.3.4 标准部署文件
 
@@ -154,7 +148,7 @@ cd ~/.apex/docker
 停止所有容器 - Windows：
 
 ```bash
-cd C:\Users\Administrator\.apex\docker
+cd C:\ProgramData\TDengine\Apex\docker
 ./tdengine.ps1 stop
 ```
 
@@ -168,7 +162,7 @@ cd ~/.apex/docker
 启动所有容器 - Windows：
 
 ```bash
-cd C:\Users\Administrator\.apex\docker
+cd C:\ProgramData\TDengine\Apex\docker
 ./tdengine.ps1 start
 ```
 
@@ -335,6 +329,6 @@ cd ~/.apex/docker
 - Windows：
 
 ```bash
-cd C:\Users\Administrator\.apex\docker
+cd C:\ProgramData\TDengine\apex\docker
 ./tdengine.ps1 clean
 ```

@@ -5,11 +5,11 @@ sidebar_label: MCP 接口
 
 # 15.2 MCP 接口
 
-IDMP 通过反向代理对外提供 MCP 接口。AI 智能体无需在本地安装 MCP 服务端，只需连接 IDMP 提供的远程地址，即可读取元素上下文、时序属性、事件、分析结果、面板与 Dashboard，并在权限范围内执行受控写操作。推荐优先使用 Streamable HTTP；如果现有 Agent 仅支持 SSE，也可以通过 SSE 方式接入。
+IDMP 通过反向代理对外提供 MCP 接口。AI 智能体无需在本地安装 MCP 服务端，只需连接 IDMP 提供的远程地址，即可读取元素上下文、时序属性、事件、分析结果、面板与仪表板，并在权限范围内执行受控写操作。推荐优先使用 Streamable HTTP；如果现有 Agent 仅支持 SSE，也可以通过 SSE 方式接入。
 
 ## 15.2.1 适用场景
 
-- 让支持 MCP 的智能体直接访问 IDMP 中的元素、属性、事件、分析任务、面板和 Dashboard。
+- 让支持 MCP 的智能体直接访问 IDMP 中的元素、属性、事件、分析任务、面板和仪表板。
 - 将实时工业上下文接入 LLM 工作流，用于元素健康检查、告警根因分析和自然语言问答。
 - 把交接班、告警分诊、批次复盘等多步运维流程标准化，减少人工整理上下文的成本。
 - 在受控边界内创建分析任务、告警规则、面板、属性和元素标注，减少手工配置。
@@ -189,7 +189,7 @@ SSE 适用于仍依赖 SSE transport 的客户端。只有在 Agent 明确要求
 | 事件与告警 | 查询事件、确认告警、补充标注、查看通知历史 | 告警分诊、事件复盘、通知追踪 |
 | 分析任务 | 查询、创建、暂停、恢复和删除分析任务或告警规则 | 实时分析、规则下发、告警自动化 |
 | 面板 | 查询、生成、创建和删除面板 | 单个元素的可视化配置与展示 |
-| Dashboard | 搜索和关联 Dashboard | 跨面板汇总、场景级数据展示 |
+| 仪表板 | 搜索和关联仪表板 | 跨面板汇总、场景级数据展示 |
 | AI 与系统元数据 | 调用 IDMP AI，并读取系统配置、分类和推荐结果 | 自然语言问答、能力推荐、元数据读取 |
 | 受控写入 | 创建属性、元素标注、事件标注和通知规则更新等 | 在权限范围内完成受控配置变更 |
 
@@ -218,32 +218,148 @@ SSE 适用于仍依赖 SSE transport 的客户端。只有在 Agent 明确要求
 | 维保到期梳理 | 生成待维护元素清单并给出处理建议 | 元素上下文、事件、元素标注、AI 建议 |
 | 告警分诊 | 对全系统未确认告警进行优先级排序 | 告警计数、事件详情、元素上下文、AI 判断 |
 
-## 15.2.9 常见问题
+## 15.2.9 权限参考
 
-### 15.2.9.1 HTTPS 证书校验不通过怎么办？
+### 15.2.9.1 权限模型
+
+MCP API Key 继承其创建者当前角色的权限，角色权限变更后，已有 API Key 的有效权限也随之变化。一个 Tool 如果在当前分支中调用多个接口，用户必须同时具备这些接口所需的全部权限。
+
+权限关系统一使用以下写法：`或` 表示满足其中任意一项即可，`和` 表示必须同时具备多项权限。“说明”用于解释多个权限的来源或特殊行为，不表示额外的权限要求。
+
+未通过身份认证时接口返回 `401`；服务拒绝授权时通常返回 `403`，MCP 会将其转换为对应的上游错误。文档中标记为“已认证用户”的接口当前没有单独的角色权限点，但仍要求有效身份认证，并可能受到元素范围、资源归属或业务校验限制。`confirm=true` 只是破坏性操作的二次确认门槛，不能替代 RBAC 授权。
+
+### 15.2.9.2 元素与层级
+
+- **`search_elements`、`list_elements`、`list_element_children`、`count_branch_elements`**
+  - 权限：查看元素 (`view:element`)
+- **`get_element_by_path`、`get_element_fullpath`、`get_elements_by_ids`**
+  - 权限：查看元素 (`view:element`)
+- **`list_element_changes`**
+  - 权限：查看元素 (`view:element`)
+- **`list_element_templates`**
+  - 权限：查看元素模板 (`view:element:template`)
+- **`list_element_templates_in_scope`**
+  - 权限：查看元素 (`view:element`)
+- **`get_element_context`**
+  - 权限：查看元素 (`view:element`)；按选项追加查看事件列表、元素分析或元素面板和仪表板权限
+  - 说明：按选项调用不同数据分支；未具备对应权限的分支返回错误。
+
+### 15.2.9.3 属性数据
+
+- **`get_attribute_value`、`get_attribute_history`**
+  - 权限：查看元素 (`view:element`)
+- **`get_attributes_by_path`、`get_batch_attribute_data`**
+  - 权限：查看元素 (`view:element`)
+- **`list_element_attributes`、`search_attributes`**
+  - 权限：查看元素 (`view:element`)
+- **`create_attribute`**
+  - 权限：添加元素 (`add:element`)
+  - 说明：默认复用属性时还需要查看元素 (`view:element`)；设置 `reuse_if_exists=false` 时跳过读取。
+
+### 15.2.9.4 事件与告警
+
+- **`list_events`、`search_events`、`get_event`、`get_event_annotations`、`get_event_count_unacknowledged`**
+  - 权限：查看事件列表 (`view:event-list`)
+- **`acknowledge_event`**
+  - 权限：编辑事件列表 (`edit:event-list`)
+- **`add_event_annotation`**
+  - 权限：查看事件列表 (`view:event-list`)
+  - 说明：事件标注权限归在事件详情查看节点。
+- **`get_notification_history`**
+  - 权限：已认证用户，当前无单独角色权限点
+  - 说明：无 `event_id` 时按当前用户联系人筛选；有 `event_id` 时不应用该筛选条件，可能返回该事件的全部通知记录。
+
+### 15.2.9.5 分析任务
+
+- **`list_analyses`、`get_analysis`**
+  - 权限：查看元素分析 (`view:element:analysis`)
+- **`search_analyses`**
+  - 权限：查看元素分析 (`view:element:analysis`) 或查看系统所有分析 (`view:system:analyses`)
+  - 说明：两个权限点分别覆盖元素分析和系统分析入口，任一权限点均可授权该搜索。
+- **`create_analysis`**
+  - 权限：添加元素分析 (`add:element:analysis`)
+- **`create_alarm_rule`**
+  - 权限：添加元素分析 (`add:element:analysis`)
+  - 说明：层级展开读取后代元素和属性，因此还需要查看元素 (`view:element`)。
+- **`add_analysis`**
+  - 权限：AI 分析 (`ai:analysis`) 和添加元素分析 (`add:element:analysis`)
+  - 说明：该操作同时调用 AI 分析和元素分析创建能力，因此两项权限均为必需。
+- **`manage_analysis` (`PAUSE` / `RESUME`)**
+  - 权限：添加元素分析 (`add:element:analysis`) 或编辑元素分析 (`edit:element:analysis`)
+  - 说明：两个权限点都覆盖暂停和恢复操作，任一权限点均可授权该操作。
+- **`manage_analysis` (`DELETE`)**
+  - 权限：删除元素 (`delete:element`)
+  - 说明：删除属于破坏性操作，必须设置 `confirm=true`；该参数不能替代删除权限。
+
+### 15.2.9.6 面板与仪表板
+
+- **`list_panels`、`search_panels`、`search_dashboards`**
+  - 权限：查看元素面板和仪表板 (`view:element:dashboard`)
+- **`get_panel`**
+  - 权限：查看元素面板和仪表板 (`view:element:dashboard`)
+- **`get_panel_dashboard_counts`**
+  - 权限：查看元素面板和仪表板 (`view:element:dashboard`)
+- **`create_panel`**
+  - 权限：添加元素面板和仪表板 (`add:element:dashboard`)
+- **`add_panel`**
+  - 权限：AI 面板 (`ai:panel`) 和添加元素面板和仪表板 (`add:element:dashboard`)
+  - 说明：该操作同时调用 AI 面板和面板/仪表板创建能力，因此两项权限均为必需。
+- **`delete_panel`**
+  - 权限：编辑元素面板和仪表板 (`edit:element:dashboard`) 或删除元素 (`delete:element`)
+  - 说明：两个权限点均可授权删除；删除属于破坏性操作，必须设置 `confirm=true`。
+
+### 15.2.9.7 AI 与推荐
+
+- **`ask_idmp`**
+  - 权限：AI 对话 (`ai:chat`)
+- **`recommend_analyses`**
+  - 权限：AI 分析 (`ai:analysis`)
+- **`recommend_panels`**
+  - 权限：AI 面板 (`ai:panel`)
+
+### 15.2.9.8 系统元数据、分类、标注与通知规则
+
+- **`get_system_config`**
+  - 权限：已认证用户，当前无单独角色权限点
+- **`list_categories`**
+  - 权限：查看分类 (`view:category`)
+- **`list_element_annotations`**
+  - 权限：需要通过统一身份认证，当前无单独的元素注解角色权限点
+  - 说明：按传入的元素 ID 查询，不额外校验调用者的元素访问范围。
+- **`create_element_annotation`**
+  - 权限：需要通过统一身份认证，当前无单独的元素注解角色权限点
+  - 说明：按传入的元素 ID 创建并记录作者，后续修改或删除仅限注解所有者。
+- **`list_contact_points`**
+  - 权限：编辑通知规则 (`edit:notifyRule`)
+- **`update_contact_point`**
+  - 权限：编辑通知规则 (`edit:notifyRule`)
+
+## 15.2.10 常见问题
+
+### 15.2.10.1 HTTPS 证书校验不通过怎么办？
 
 请先确认域名解析、证书链和客户端信任链是否正确。如果只是临时排查连通性问题，请保留当前 transport 的接口路径，再临时切换到 HTTP：Streamable HTTP 使用 `http://<IDMP_HOST>:6042/api/v1/mcp/stream`，SSE 使用 `http://<IDMP_HOST>:6042/api/v1/mcp/sse`。排障完成后再切回 HTTPS。
 
-### 15.2.9.2 为什么更推荐 Streamable HTTP？
+### 15.2.10.2 为什么更推荐 Streamable HTTP？
 
 因为新版 MCP 客户端通常优先支持 Streamable HTTP，且它的交互语义、错误处理和长期兼容性都更好。只有在现有 Agent 明确只支持 SSE 时，才建议使用 SSE。
 
-### 15.2.9.3 为什么示例优先使用 `6034` 端口？
+### 15.2.10.3 为什么示例优先使用 `6034` 端口？
 
 `6034` 是 IDMP 默认的 HTTPS 端口，文档库中的外部访问示例也统一使用这一端口。`6042` 可用于 HTTP 访问和排障，但生产环境更建议使用 `6034` 对外提供安全入口。
 
-### 15.2.9.4 为什么连接成功后看不到全部 Tool、Resource 或 Prompt 功能？
+### 15.2.10.4 为什么连接成功后看不到全部 Tool、Resource 或 Prompt 功能？
 
 不同 Agent 对 Tool、Resource 和 Prompt 的展示方式不完全一致。有些 Agent 会隐藏暂未使用的功能，有些只显示自己支持的部分，因此“能连上”并不意味着界面一定会完整列出所有功能。
 
-### 15.2.9.5 为什么某些 Resource 或 Prompt 功能没有生效？
+### 15.2.10.5 为什么某些 Resource 或 Prompt 功能没有生效？
 
 是否读取 Resource、是否调用 Prompt，取决于 Agent 自身的实现策略。有些 Agent 只主动调用基础 Tool，不一定会自动消费所有 Resource 或 Prompt 功能。
 
-### 15.2.9.6 为什么写入类操作失败？
+### 15.2.10.6 为什么写入类操作失败？
 
 MCP 写入能力遵循 IDMP 当前登录用户的权限边界。如果令牌对应的用户没有目标元素、分析任务、面板或通知规则的权限，相关写入请求会失败。请优先检查角色授权和元素访问范围。
 
-### 15.2.9.7 为什么连接成功但查询不到元素数据？
+### 15.2.10.7 为什么连接成功但查询不到元素数据？
 
 请依次检查元素路径是否正确、当前用户是否具备访问权限、查询时间范围是否覆盖实际数据，以及目标环境中是否已经写入对应属性或事件数据。对于历史趋势类查询，建议显式指定时间范围，而不要完全依赖 Agent 自动推断。

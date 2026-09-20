@@ -24,7 +24,6 @@ sidebar_label: 示例数据
 ```json
 {
   "info": {},
-  "TDasset": {},
   "datasource": {},
   "databases": [],
   "enumerations": [],
@@ -33,7 +32,7 @@ sidebar_label: 示例数据
 }
 ```
 
-整个 JSON 配置文件包含 7 个部分：`info` 用于描述模拟场景，`TDasset` 在管理控制台加载时可省略，`datasource` 用于描述时序数据库 TSDB 的连接信息，`databases` 用于描述数据库配置，`enumerations` 用于定义枚举类型，`templates` 用于定义元素模板，`trees` 用于描述整个模拟场景的元素树结构。
+整个 JSON 配置文件包含 6 个部分：`info` 用于描述模拟场景，`datasource` 用于描述时序数据库 TSDB 的连接信息，`databases` 用于描述数据库配置，`enumerations` 用于定义枚举类型，`templates` 用于定义元素模板，`trees` 用于描述整个模拟场景的元素树结构。
 
 ### 14.9.2.2 info - 示例数据场景信息说明
 
@@ -54,11 +53,7 @@ sidebar_label: 示例数据
 - file: 保持与文件名称一致；
 - image: 展示示例场景列表时显示的图片；
 
-### 14.9.2.3 TDasset - IDMP 连接配置
-
-在管理控制台加载示例时无需配置此项。服务在进程内直调 IDMP API，不读取该连接信息。自定义 JSON 中可省略 `TDasset` 字段。
-
-### 14.9.2.4 datasource - TDengine 连接配置
+### 14.9.2.3 datasource - TDengine 连接配置
 
 ```json
 {
@@ -84,7 +79,7 @@ sidebar_label: 示例数据
 - min_idle: 连接池最小空闲连接数；
 - 其他参数请参考 TDengine JDBC 连接池配置说明；
 
-### 14.9.2.5 databases - 数据库定义
+### 14.9.2.4 databases - 数据库定义
 
 ```json
 {
@@ -107,7 +102,7 @@ sidebar_label: 示例数据
 - keep: 数据存储天数，默认 3650 天；
 - 其他参数请参考 TDengine 数据库创建说明；
 
-### 14.9.2.6 enumerations - 枚举类型定义
+### 14.9.2.5 enumerations - 枚举类型定义
 
 枚举类型用于属性值为有限集合的场景。在 `enumerations` 中声明的枚举类型会在元素模板和元素属性创建之前自动导入系统。如果系统已存在同名枚举类型但缺少部分值，加载时会自动补充缺失的值。
 
@@ -180,7 +175,7 @@ sidebar_label: 示例数据
 - 加载时系统会自动将名称路径解析为系统内部 ID，无需手动指定 ID；
 - 如果系统已存在同名枚举类型但缺少引用的值，加载时会自动补充；
 
-### 14.9.2.7 templates - 元素模板配置
+### 14.9.2.6 templates - 元素模板配置
 
 元素模板配置包含两部分：1. 通用信息，如名称、命名规则和位置信息；2. 属性列表，由 `super_tables` 描述，包括模拟数据生成方式、CSV 数据源配置以及 `metric` 和 `tag` 的定义。其中，`metric` 还可以指定模拟数据生成函数。
 
@@ -272,11 +267,11 @@ sidebar_label: 示例数据
   - name: 超级表名称；
   - start_timestamp: 数据写入起始时间戳（字符串），null 表示从 4 天前开始写入；支持带时区偏移量的格式（如 `2025-06-10 20:00:00.000+08:00`、`2025-06-10T20:00:00.000Z`），不含时区则按系统默认时区解析；
   - time_step: 数据时间步进，单位毫秒；
-  - non_stop_mode: false 表示按固定行数生成数据；true 表示持续生成数据，用于实时模拟；与 `csv` 配置同时使用时表示启用 CSV 历史数据回放，见 [14.9.2.8 CSV 数据源配置](#14928-csv---csv-数据源配置)；
+  - non_stop_mode: false 表示按固定行数生成数据；true 表示持续生成数据，用于实时模拟；与 `csv` 配置同时使用时表示启用 CSV 历史数据回放，见 [14.9.2.7 CSV 数据源配置](#14927-csv---csv-数据源配置)；
   - insert_rows: 需要写入的数据总行数；
   - batch_insert_num: 每批次写入数据行数；
   - insert_interval: 每批次写入间隔时间，单位毫秒，0 表示无间隔；
-  - history_window: 可选；在主数据写入之前追加一段历史回填，详见 [14.9.2.8.1 history_window - 历史数据窗口](#149281-history_window---历史数据窗口)；
+  - history_window: 可选；在主数据写入之前追加一段历史回填，详见 [history_window - 历史数据窗口](#history_window---历史数据窗口)；
   - metrics: 元素指标列表配置；
     - name: 指标名称；
     - title: 指标标题；
@@ -289,7 +284,7 @@ sidebar_label: 示例数据
     - fun: 数据生成函数，支持基本数学函数与 random() 函数，x 表示时间变量；
   - tags: 元素标签列表配置，同指标类似；
 
-### 14.9.2.8 csv - CSV 数据源配置
+### 14.9.2.7 csv - CSV 数据源配置
 
 当 `super_tables` 中的数据来自已有 CSV 文件而非按公式生成时，可在超级表节点下增加 `csv` 配置。CSV 模式仅切换数据来源，`metrics`、`tags` 和 `trees` 的定义方式保持不变。
 
@@ -359,7 +354,7 @@ CSV 数据源默认为一次性导入：每行数据按 `timestamp_column` 列�
 - 卸载示例场景时，回放进程会被自动终止；
 - 若还需要在主回放开始前快速回填一段近期历史数据，可为该超级表配置 `history_window`，详见下一节；
 
-### 14.9.2.8.1 history_window - 历史数据窗口
+#### history_window - 历史数据窗口
 
 `history_window` 是 `super_tables` 下的可选配置，用于在主数据写入（Phase 1）之前，先回填一段历史时序数据（Phase 0）。历史阶段写入的行数**不计入** `insert_rows`。
 
@@ -424,7 +419,7 @@ CSV 数据源默认为一次性导入：每行数据按 `timestamp_column` 列�
 
 同一配置中若同时存在历史窗口与 CSV 回放：系统先执行全部历史导入（含各表的 `history_window`），再执行一次性 CSV 导入，最后启动 CSV 回放进程。
 
-### 14.9.2.9 trees - 元素树
+### 14.9.2.8 trees - 元素树
 
 此处描述整个树状结构。每个节点均可指定元素模板 `template`，子节点通过 `children` 描述。使用元素模板时，需要通过 `values` 为命名规则中的 `KEYWORD1` 赋值。
 
@@ -460,7 +455,7 @@ CSV 数据源默认为一次性导入：每行数据按 `timestamp_column` 列�
 
 该配置用于创建元素，并构建整个元素的树状结构。
 
-### 14.9.2.10 panels / analyses - 面板与分析的元素名称引用
+### 14.9.2.9 panels / analyses - 面板与分析的元素名称引用
 
 除数据模型外，示例数据还支持在 `templates` 模板项或 `trees` 树节点下，通过 `panels`、`dashboards`、`analyses` 字段预置面板、仪表盘和分析。
 
@@ -485,7 +480,7 @@ CSV 数据源默认为一次性导入：每行数据按 `timestamp_column` 列�
 
 注意：被面板或分析引用的元素名称必须在场景内唯一，重名或不存在都会导致加载失败。
 
-### 14.9.2.11 完整示例
+### 14.9.2.10 完整示例
 
 <details>
 <summary>展开查看完整 JSON 示例</summary>
@@ -498,11 +493,6 @@ CSV 数据源默认为一次性导入：每行数据按 `timestamp_column` 列�
     "description": "智能表计监控系统通过实时采集电表、水表数据，实现能源消耗的精细化管理和异常预警。系统支持区域用量分析、异常检测和用量预测，帮助优化资源配置，降低运营成本，提升公共服务质量。",
     "file": "smart_meters.json",
     "image": "smart_meters.png"
-  },
-  "TDasset": {
-    "url": "http://127.0.0.1:6042",
-    "user": "",
-    "password": ""
   },
   "datasource": {
     "db": {
