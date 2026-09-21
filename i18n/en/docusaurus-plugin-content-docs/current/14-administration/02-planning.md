@@ -10,10 +10,8 @@ sidebar_label: Planning
 The minimum hardware requirements to run TDengine IDMP are:
 
 - **CPU:** 4 cores
-- **Memory:** 16 GB
+- **Memory:** 10 GB
 - **Disk:** 50 GB free space
-
-Typically, an 8-core server with 16 GB of memory will be sufficient to run TDengine TSDB and TDengine IDMP up to 10,000 elements.
 
 For production deployments, size resources based on the number of elements (assets) managed.
 
@@ -21,11 +19,11 @@ For production deployments, size resources based on the number of elements (asse
 
 | Element Scale | CPU | Memory | Disk | Typical Use Case |
 |:---:|:---:|:---:|:---:|:---|
-| < 10,000 | 4 cores | 16 GB | 50 GB | PoC / demo / small projects |
-| 10,000 – 100,000 | 8 cores | 16 GB | 100 GB | Small to medium production |
-| 100,000 – 500,000 | 16 cores | 32 GB | 200 GB | Medium production |
-| 500,000 – 1,000,000 | 32 cores | 64 GB | 500 GB | Large production |
-| > 1,000,000 | 64+ cores | 128+ GB | 1 TB+ | Very large production |
+| < 5,000 | 4 cores | 10 GB | 50 GB | PoC / demo / small projects |
+| 5,000 – 50,000 | 8 cores | 16 GB | 100 GB | Small to medium production |
+| 50,000 – 100,000 | 16 cores | 32 GB | 200 GB | Medium production |
+| 100,000 – 500,000 | 32 cores | 64 GB | 500 GB | Large production |
+| > 500,000 | 64+ cores | 128+ GB | 1 TB+ | Very large production |
 
 ### 14.2.1.2 External Dependency Resources
 
@@ -46,6 +44,21 @@ When element scale is large, plan dedicated resources for external dependency co
 :::note
 These figures are reference guidelines. Actual resource needs depend on modeling complexity and workload characteristics. For TDengine TSDB capacity planning, refer to the [TDengine TSDB documentation](https://docs.tdengine.com/operations-and-maintenance/system-requirements/).
 :::
+
+### 14.2.1.4 Recommended Hardware Configurations
+
+When TDengine TSDB, IDMP, and a privately deployed large model are delivered and deployed together as an integrated appliance, use one of the following four tiers for overall hardware sizing. Each tier satisfies the IDMP service resource and external dependency resource requirements described above, and additionally covers the TSDB and privately deployed large model requirements.
+
+| Tier | Supported Scale | Server Configuration | Machines | Power |
+| :--- | :--- | :--- | :---: | :---: |
+| **Entry** | 10K time series / 5,000 elements | 1 × PC Server (TSDB and IDMP co-located, 32 cores / 128 GB, 2×4T HDD)<br />1 × GPU Server (4×RTX 5090 32G, 128 GB VRAM) | 2 | 5 kW |
+| **Standard** | 50K time series / 30K elements | 3 × TSDB Server (32 cores / 128 GB, 8×4T HDD, three replicas)<br />1 × IDMP Server (16 cores / 64 GB)<br />1 × GPU Server (8×RTX 5090 32G, 256 GB VRAM) | 5 | 10 kW |
+| **Advanced** | 500K time series / 250K elements | 3 × TSDB Server (2×32 cores / 256 GB, 8×4T SSD + 8×24T HDD, three replicas)<br />1 × IDMP Server (32 cores / 128 GB)<br />1 × GPU Server (4×H200 SXM 141G, 564 GB VRAM) | 5 | 15 kW |
+| **Flagship** | 1M time series / 500K elements | 3 × TSDB Server (2×64 cores / 512 GB, 8×8T SSD + 16×32T HDD, three replicas)<br />3 × IDMP Server (2 instances + 1 API gateway, 32 cores / 256 GB)<br />2 × GPU Server (8×H200 SXM 141G each, 2256 GB VRAM in total) | 8 | 30 kW |
+
+Deployment topology per tier: Entry uses [Single Instance](./01-deployment-architecture.md#1412-single-instance); Standard and Advanced use a single IDMP instance with a three-replica TSDB cluster; Flagship uses [HA Minimal](./01-deployment-architecture.md#1413-ha-minimal) (API gateway plus two IDMP instances).
+
+Recommended privately deployed large models per tier: Entry and Standard use Qwen3.8-27B; Advanced and Flagship use DeepSeek-V4-Flash.
 
 ## 14.2.2 Supported Operating Systems
 
