@@ -133,4 +133,4 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 
 - 了解所有认证选项，包括云服务认证 → [认证](./03-authentication.md)
 - 了解 SDK 中的核心对象 → [核心概念](./04-core-concepts.md)
-- 浏览完整 API 参考 → [API 参考](./05-api-reference/index.md)
+- 浏览完整 API 参考 → [API 参考](./05-api-reference.md)

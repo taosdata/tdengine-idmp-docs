@@ -34,10 +34,92 @@ To create a new contact point, click **+** and fill in the name, type, address, 
 | **DingTalk**                  | Sends notifications via a DingTalk custom bot webhook.                             |
 | **Slack**                     | Sends notifications via a Slack Incoming Webhook.                                  |
 | **Microsoft Teams**           | Sends notifications via a Microsoft Teams Workflow Webhook.                        |
+| **Webhook**                   | Sends a generic JSON notification to any HTTP(S) endpoint.                          |
 
 :::tip
 Contact points are shared across the system. The same contact point can be referenced by notification rules on many different elements. Create one contact point per recipient or channel, then reuse it wherever needed.
 :::
+
+### 6.5.1.2 Webhook Contact Points
+
+Webhook contact points are a generic delivery channel that sends notifications as JSON to any HTTP(S) endpoint. Unlike platform-specific channels such as Feishu, DingTalk, and Slack, the Webhook channel applies no platform-specific formatting, making it suitable for integrating with your own alerting systems, IT operations platforms, or third-party services.
+
+#### 6.5.1.2.1 Configuration
+
+1. In the contact point list, click **+** and select **Webhook** as the type.
+2. In the **Address** field, enter the HTTP(S) URL that receives notifications.
+3. Only HTTPS URLs are allowed by default. To send to an HTTP endpoint, enable the **Allow non-HTTPS URL** toggle.
+
+:::note Security validation
+To prevent server-side request forgery (SSRF), Webhook URLs are validated: loopback addresses (`127.x.x.x`, `::1`, `localhost`), link-local addresses (`169.254.x.x`), and cloud metadata hostnames are rejected. Private network addresses (`10.x`, `172.16.x`, `192.168.x`) are allowed so you can integrate with on-premises receivers.
+:::
+
+#### 6.5.1.2.2 Message body format
+
+The message body for a Webhook contact point is edited in JSON format and supports variable substitution — placeholders are replaced with the corresponding event field values. In the notification rule message editor, when a Webhook contact point is selected, a **View JSON example** entry appears next to the message label for quick access to the template.
+
+A typical JSON message body looks like this:
+
+```json
+{
+  "elementName": "{elementName}",
+  "elementPath": "{elementPath}",
+  "eventName": "{eventName}",
+  "analysisName": "{analysisName}",
+  "startTime": "{startTime}",
+  "endTime": "{endTime}",
+  "ackRequired": "{ackRequired}",
+  "severityLevel": "{severityLevel}",
+  "unAckedEventCount": "{unAckedEventCount}",
+  "eventUrl": "{eventUrl}",
+  "reasonCodeDisplayName": "{reasonCodeDisplayName}",
+  "eventRealtimeValues": "{eventRealtimeValues}",
+  "eventCustomAttributes": "{eventCustomAttributes}"
+}
+```
+
+The supported variables are:
+
+| Placeholder               | Description                 |
+| ------------------------- | --------------------------- |
+| `{elementName}`           | Element name                |
+| `{elementPath}`           | Element path                |
+| `{eventName}`             | Event name                  |
+| `{analysisName}`          | Corresponding analysis      |
+| `{startTime}`             | Start time                  |
+| `{endTime}`               | End time                    |
+| `{ackRequired}`           | Acknowledgment required     |
+| `{severityLevel}`         | Severity level              |
+| `{unAckedEventCount}`     | Unacknowledged event count  |
+| `{eventUrl}`              | Event URL                   |
+| `{reasonCodeDisplayName}` | Reason code                 |
+| `{eventRealtimeValues}`   | Event realtime values       |
+| `{eventCustomAttributes}` | Event custom attributes     |
+
+#### 6.5.1.2.3 Payload
+
+When an event triggers a notification, the system sends a JSON request to the Webhook address via HTTP POST with the following body structure:
+
+```json
+{
+  "title": "Notification title",
+  "data": {
+    "content": "Raw message body string (after variable substitution)",
+    "contentJson": {
+      "elementName": "actual element name",
+      "eventName": "actual event name"
+    }
+  }
+}
+```
+
+| Field               | Description                                                                                    |
+| ------------------- | ---------------------------------------------------------------------------------------------- |
+| `title`             | Notification title (after variable substitution).                                              |
+| `data.content`      | Raw message body string, always present.                                                       |
+| `data.contentJson`  | Present only when the message body is a valid JSON object or array; the parsed native JSON value. Otherwise omitted. |
+
+Therefore, by configuring the message body as valid JSON (as in the example above), the receiver can read the `data.content` string or directly access the `data.contentJson` structured object without parsing it themselves.
 
 ## 6.5.2 Notification Rules
 

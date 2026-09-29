@@ -43,6 +43,9 @@ The **Output Timestamp** dropdown specifies which timestamp is written to the ou
 |---|---|
 | **Window Start** | The timestamp of the beginning of the window |
 | **Window End** | The timestamp of the end of the window (default) |
+| **Timestamp** | The raw timestamp (`_c0`), i.e. the data ingestion time. Suited to row-wise streaming output scenarios such as period triggers and anomaly detection, preserving the true ingestion time of each result row |
+
+When **Timestamp** (`_c0`) is selected, the system automatically decides the output form based on the trigger type: data-window aggregations (sliding window with interval, count window, session window, etc.) output the aggregated moment `last(_c0)`; row-wise streaming calculations (period triggers, anomaly detection, sliding without interval, etc.) output the raw `_c0` directly.
 
 The **Offset** field adds a time offset (number + unit, default 0 seconds) to the selected window boundary. This can be useful to shift the output timestamp for display alignment.
 
@@ -54,15 +57,30 @@ Each row in the table has the following columns:
 
 | Column | Description |
 |---|---|
-| **Expression** | A calculation expression. Click the cell to open the Expression Editor (see [Section 3.2.9](../03-data-modeling/02-attributes.md#329-expression-editor)). |
-| **Element Attribute** | The element attribute where the computed result is stored as a new time-series value |
+| **Expression** | A calculation expression. Click the cell to open the Expression Editor (see [Section 3.2.10](../03-data-modeling/02-attributes.md#3210-expression-editor)). |
+| **Target Element** | The element where this row's result is saved. Defaults to the current element and can be switched to another element — the result is written to the target element's attribute, useful for persisting aggregation/statistics results onto summary elements. Analysis templates do not support cross-element saving (the column is hidden). |
+| **Element Attribute** | The element attribute where the computed result is stored as a new time-series value (following the row's selected target element) |
 | **Event Attribute** | *(Visible only when event generation is enabled in section 3)* An event attribute to capture the computed value at the moment the event fires |
 
-Use the **+** button at the bottom of the table to add additional output rows. Each row corresponds to an independent expression, supporting the computation of multiple metrics in a single RT analysis with results written to different attributes.
+Use the **+** button at the bottom of the table to add additional output rows. Each row corresponds to an independent expression, supporting the computation of multiple metrics in a single RT analysis with results written to different attributes (each row may target a different element).
+
+:::note Referencing child attributes and KPI sub-attributes
+Expressions throughout the analysis (output attribute expressions, trigger pre-filters, event window conditions, etc.) can reference attribute **child attributes** and the **sub-attributes of KPI attributes**. In the expression editor's attribute tree, expand the parent attribute (or the KPI attribute) and click a sub-attribute node to insert a reference of the form `${attributes['ParentName']|childAttributes['ChildName']}`. A KPI attribute holds no value itself and cannot be referenced directly — you must select one of its sub-attributes.
+
+When a KPI sub-attribute that has finished building is referenced, the computation follows the KPI data in real time; when a building-state or derived monthly/quarterly KPI sub-attribute is referenced, the stream reads the tag snapshot value (not the precise derived aggregate) — for precise derived aggregation values, use a KPI panel or query the sub-attribute directly. When an expression references a KPI sub-attribute, the UI shows a data-access semantics hint next to the expression. When a **formula-type child attribute** is referenced, its formula is inlined into the generated SQL (same behavior as panels) — no materialized column is required.
+:::
 
 ## 7.4.5 Trigger Window Pseudo Columns
 
-The stream trigger window pseudo columns `_twstart`, `_twend`, and `_twduration` are only effective during stream computation. They are not evaluated during expression evaluation and return empty values.
+The stream trigger window pseudo columns are only effective during stream computation. They are not evaluated during expression evaluation and return empty values:
+
+| Pseudo Column | Meaning |
+|---|---|
+| `_twstart` | Start time of the trigger window |
+| `_twend` | End time of the trigger window |
+| `_twduration` | Duration of the trigger window |
+
+In the Expression Editor for **Output Attributes**, the left tree provides a **Window Pseudo Columns** category (above **Substitution Parameters**): expand it and click a pseudo column node to insert it. Typing in the expression input also shows matching completion suggestions.
 
 ## 7.4.6 Output Filter
 

@@ -52,10 +52,12 @@ Runs an anomaly detection algorithm against a target attribute on a sliding sche
 | Parameter | Description |
 |---|---|
 | **Sliding** | How often to run the anomaly check |
-| **Target** (required) | The attribute to analyze for anomalies. Multiple targets can be selected; when multiple targets are chosen, the system automatically creates an independent sub-analysis for each target attribute. |
+| **Target** (required) | The attributes to analyze for anomalies, configured as **attribute groups**. One group is provided by default; click **Add Attribute Group** to add more. Each group generates an independent anomaly detection sub-analysis. When no additional groups are added (a single group), selecting multiple targets automatically creates an independent sub-analysis for each target attribute. |
 | **Algorithm** (required) | The anomaly detection algorithm to apply |
 | **White Noise Data Check** | When enabled, skips the anomaly check if the data appears to be white noise (no meaningful signal) |
 | **Algorithm Parameters** | Optional algorithm-specific parameters in `a=1,b=2,c=3` format |
+
+**Attribute groups (covariate detection)**: multiple attributes within the same group enter one anomaly detection window (`ANOMALY_WINDOW`) together as covariates, suited for multi-metric joint anomaly scenarios. For example, the group `[Current, Voltage]` jointly detects electrical anomalies, while the group `[Temperature]` independently detects overheating. The delete button is disabled when only one group remains.
 
 ### 7.3.2.3 Examples
 

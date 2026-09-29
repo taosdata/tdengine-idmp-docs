@@ -34,10 +34,92 @@ sidebar_label: 告警与通知
 | **钉钉**            | 通过钉钉自定义机器人 Webhook 发送通知          |
 | **Slack**           | 通过 Slack Incoming Webhook 发送通知           |
 | **Microsoft Teams** | 通过 Microsoft Teams Workflow Webhook 发送通知 |
+| **Webhook**         | 通过通用 Webhook 向任意 HTTP(S) 端点发送 JSON 通知 |
 
 :::tip
 联系途径在系统范围内共享。同一联系途径可被多个不同元素的通知规则引用。为每个收件人或渠道创建一个联系途径，然后在需要的地方复用。
 :::
+
+### 6.5.1.2 Webhook 联系途径
+
+Webhook 联系途径是一种通用的投递渠道，可将通知以 JSON 格式发送到任意 HTTP(S) 端点。与飞书、钉钉、Slack 等平台专用渠道不同，Webhook 渠道不对消息做平台化格式化，适合接入自有告警系统、IT 运维平台或第三方服务。
+
+#### 6.5.1.2.1 配置方式
+
+1. 在通知联系途径列表中点击 **+**，类型选择 **Webhook**。
+2. 在 **地址** 字段填写接收通知的 HTTP(S) URL。
+3. 默认仅允许 HTTPS URL。如需向 HTTP 端点发送，开启 **允许非 HTTPS URL** 开关。
+
+:::note 安全校验
+为防止服务端请求伪造（SSRF），Webhook URL 会做安全校验：拒绝回环地址（`127.x.x.x`、`::1`、`localhost`）、链路本地地址（`169.254.x.x`）以及云元数据主机名；私有网络地址（`10.x`、`172.16.x`、`192.168.x`）允许，以便对接企业内网接收端。
+:::
+
+#### 6.5.1.2.2 消息体格式
+
+Webhook 联系途径的消息正文以 JSON 格式编辑，正文支持变量替换，占位符会被替换为对应的事件字段值。在通知规则的消息编辑器中，选择 Webhook 联系途径后，消息标签旁会提供 **查看 JSON 示例** 入口，可快速获取模板。
+
+一个典型的 JSON 消息体如下：
+
+```json
+{
+  "elementName": "{elementName}",
+  "elementPath": "{elementPath}",
+  "eventName": "{eventName}",
+  "analysisName": "{analysisName}",
+  "startTime": "{startTime}",
+  "endTime": "{endTime}",
+  "ackRequired": "{ackRequired}",
+  "severityLevel": "{severityLevel}",
+  "unAckedEventCount": "{unAckedEventCount}",
+  "eventUrl": "{eventUrl}",
+  "reasonCodeDisplayName": "{reasonCodeDisplayName}",
+  "eventRealtimeValues": "{eventRealtimeValues}",
+  "eventCustomAttributes": "{eventCustomAttributes}"
+}
+```
+
+支持的变量如下：
+
+| 占位符                  | 说明             |
+| ----------------------- | ---------------- |
+| `{elementName}`         | 元素名称         |
+| `{elementPath}`         | 元素路径         |
+| `{eventName}`           | 事件名称         |
+| `{analysisName}`        | 关联的分析       |
+| `{startTime}`           | 开始时间         |
+| `{endTime}`             | 结束时间         |
+| `{ackRequired}`         | 是否需要确认     |
+| `{severityLevel}`       | 严重级别         |
+| `{unAckedEventCount}`   | 未确认事件数量   |
+| `{eventUrl}`            | 事件地址         |
+| `{reasonCodeDisplayName}` | 原因代码         |
+| `{eventRealtimeValues}` | 事件实时值       |
+| `{eventCustomAttributes}` | 事件自定义属性   |
+
+#### 6.5.1.2.3 接口内容
+
+事件触发通知时，系统通过 HTTP POST 向 Webhook 地址发送 JSON 请求，请求体结构如下：
+
+```json
+{
+  "title": "通知标题",
+  "data": {
+    "content": "消息正文的原始字符串（变量替换后）",
+    "contentJson": {
+      "elementName": "具体元素名",
+      "eventName": "具体事件名"
+    }
+  }
+}
+```
+
+| 字段                | 说明                                                                                     |
+| ------------------- | ---------------------------------------------------------------------------------------- |
+| `title`             | 通知标题（变量替换后）。                                                                 |
+| `data.content`      | 消息正文的原始字符串，始终存在。                                                         |
+| `data.contentJson`  | 仅当消息正文是合法的 JSON 对象或数组时附带，为解析后的原生 JSON 值；否则省略该字段。    |
+
+因此，将消息正文配置为合法 JSON（如上面的示例），接收端既可读取 `data.content` 字符串，也可直接读取 `data.contentJson` 结构化对象，无需自行解析。
 
 ## 6.5.2 通知规则
 

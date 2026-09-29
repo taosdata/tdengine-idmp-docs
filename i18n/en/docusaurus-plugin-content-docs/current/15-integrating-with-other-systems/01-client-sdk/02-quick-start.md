@@ -133,4 +133,4 @@ with idmp_sdk.ApiClient(configuration) as api_client:
 
 - Understand all authentication options including cloud service auth → [Authentication](./03-authentication.md)
 - Understand the core objects in the SDK → [Core Concepts](./04-core-concepts.md)
-- Browse the full API reference → [API Reference](./05-api-reference/index.md)
+- Browse the full API reference → [API Reference](./05-api-reference.md)

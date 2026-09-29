@@ -160,6 +160,12 @@ Each row in the Metrics table represents one data series:
 
 Use the action icons at the end of each row to edit or delete a metric.
 
+:::note Referencing child attributes and KPI sub-attributes in expressions
+The expressions and filter conditions of metrics and dimensions can reference attribute **child attributes** and the **sub-attributes of KPI attributes**. In the expression editor's attribute tree, expand the parent attribute (or the KPI attribute) and click a sub-attribute node to insert a reference of the form `${attributes['ParentName']|childAttributes['ChildName']}`. A KPI attribute holds no value itself and cannot be referenced directly — you must select one of its sub-attributes.
+
+Panels require a referenced KPI sub-attribute to have finished building (the attribute tree only shows built KPI sub-attributes); building-state and derived monthly/quarterly KPI sub-attributes cannot be referenced, and a clear error is raised on save. When combining general child attribute references with real-time attributes in a calculation, watch out for timestamp misalignment and wrap references with `FILL_FORWARD()` if necessary (see the [Formula attribute](../03-data-modeling/02-attributes.md#3223-formula) notes).
+:::
+
 ### 4.1.4.7 Dimensions
 
 The Dimensions section defines grouping dimensions for aggregate queries. This is used when grouping data by a categorical field (similar to SQL GROUP BY). Each dimension row has:
