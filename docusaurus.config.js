@@ -158,6 +158,9 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           sidebarItemsGenerator: customSidebarItemsGenerator,
           versions: buildDocsVersions(versions),
+          ...(process.env.PDF_BUILD === 'true'
+            ? { exclude: ['**/21-release-history/**'] }
+            : {}),
           includeCurrentVersion: true,
           lastVersion: 'current',
           ...(onlyCurrentVersion ? { onlyIncludeVersions: ['current'] } : {})

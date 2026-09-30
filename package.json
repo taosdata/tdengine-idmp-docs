@@ -8,7 +8,8 @@
     "start": "docusaurus start --poll",
     "build": "docusaurus build --locale=zh-Hans && docusaurus build --locale=en --out-dir=build-en",
     "build-zh": "docusaurus build --locale=zh-Hans",
-    "build-en": "docusaurus build --locale=en",
+    "build-en": "docusaurus build --locale=en --out-dir=build-en",
+    "pdf": "bash ./scripts/build-pdf.sh",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -34,7 +35,8 @@
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.9.2",
-    "@docusaurus/types": "3.9.2"
+    "@docusaurus/types": "3.9.2",
+    "docusaurus-prince-pdf": "1.2.1"
   },
   "browserslist": {
     "production": [

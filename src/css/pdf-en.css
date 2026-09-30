@@ -19,7 +19,7 @@
 }
 
 html {
-  font-family: "IBM Plex Serif", serif;
+  font-family: "IBM Plex Serif", "PingFang SC", "Arial Unicode MS", serif;
   font-size: 10pt;
 }
 
@@ -34,8 +34,11 @@ nav,
 .col--6,
 div[role=region],
 .clean-btn,
-.theme-doc-sidebar-container {
-  display: none;
+.theme-doc-sidebar-container,
+[class^="feedback_"],
+[class*="footer_"],
+[id^="menuShow_"] {
+  display: none !important;
 }
 
 img {
