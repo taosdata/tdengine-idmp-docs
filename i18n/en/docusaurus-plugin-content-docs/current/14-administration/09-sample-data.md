@@ -479,6 +479,73 @@ Because elements do not exist yet when the configuration file is written, these 
 
 Note: element names referenced by panels or analyses must be unique within the scenario; a duplicate or missing name causes the load to fail.
 
+#### Relative Encoding of Time Fields
+
+To allow a downloaded sample to be loaded at a different time while preserving the original intervals between time-series data, events, and panel windows, fixed absolute times in the downloaded configuration are converted to relative-time objects and a `timeEncoding` marker is added at the root. Before any generator starts, the load operation resolves and persists the time anchor, then restores the relative values to the absolute runtime representation.
+
+```json
+{
+  "timeEncoding": {
+    "version": 2
+  },
+  "events": [
+    {
+      "eventTime": {
+        "offsetMs": 547738350,
+        "anchorTable": "db_chemical_demo.stb_reactor"
+      },
+      "startTime": {
+        "offsetMs": 79980000,
+        "anchorTable": "db_chemical_demo.stb_reactor"
+      },
+      "endTime": {
+        "durationMs": 10800000
+      }
+    }
+  ],
+  "panels": [
+    {
+      "profileWindows": [
+        {
+          "window": {
+            "startOffsetMs": 3600000,
+            "durationMs": 1800000,
+            "anchorTable": "db_chemical_demo.stb_reactor"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+- `offsetMs`: Millisecond offset from the time anchor. On reload, the absolute time is the current load anchor plus `offsetMs`.
+- `durationMs`: Duration of a time range. For example, when both `startTime` and `endTime` are present, `endTime.durationMs` is the interval between them.
+- `startOffsetMs`: Start offset for an array-based time range. An original `[start, end]` value is represented by `startOffsetMs` and `durationMs`.
+- `anchorTable`: Super-table identity used by version 2, in `database.super_table` format. The time value moves with that super table's `start_timestamp`.
+- `timeEncoding.version`: Version 1 uses one shared sample-data anchor for all encoded times. Version 2 uses table-relative offsets and associates each encoded time with a super table through `anchorTable`. The unit is milliseconds when omitted.
+- `timeEncoding.anchorTables`: Optional for version 1. It records the super tables whose data actually participated in calculating the shared T₀ anchor. On reload, only the frozen start times of these tables are used to restore T₀, so an empty or newly added table does not change the time base.
+
+For example, the shared-anchor form can include the tables that participated in calculating the anchor:
+
+```json
+{
+  "timeEncoding": {
+    "version": 1,
+    "anchorTables": [
+      "db_chemical_demo.stb_reactor",
+      "db_chemical_demo.stb_power"
+    ]
+  }
+}
+```
+
+Version 2 uses table-relative offsets. `timeEncoding` declares the encoding mode, while each time object's `anchorTable` together with `offsetMs` (or `startOffsetMs`) carries the actual offset. Events and panel times can therefore be restored against their own super tables even when those tables have different start times. The internal offsets of table start times from the common base are persisted in the load task's time checkpoint and do not need to be included in the downloaded configuration.
+
+Relative encoding applies to `eventTime`, paired `startTime` / `endTime`, `fromText` / `toText`, `fillHistoryStartTime`, `window`, `initialWindow`, `windows`, and `window` values nested under `profileWindows`. Dynamic expressions such as `now` remain unchanged. Each load may produce different absolute times, but the intervals between encoded fields remain unchanged.
+
+For backward compatibility, numeric timestamps in configurations without `timeEncoding` are still interpreted as absolute times. A legacy `history_window` can still be loaded. During download, the system first converts the related times to relative encoding and then removes `history_window` from the downloaded configuration, so that historical backfill phase is not run after the configuration is loaded again.
+
 ### 14.9.2.10 Full Example
 
 <details>

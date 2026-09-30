@@ -480,6 +480,73 @@ CSV 数据源默认为一次性导入：每行数据按 `timestamp_column` 列�
 
 注意：被面板或分析引用的元素名称必须在场景内唯一，重名或不存在都会导致加载失败。
 
+#### 时间字段的相对编码
+
+为使下载后的示例数据能够在不同时间重新加载，同时保持事件、面板窗口与时序数据之间的原有间隔，下载配置中的固定绝对时间会转换为相对时间对象，并在根节点增加 `timeEncoding`。加载时，系统会在所有生成器启动前确定并持久化时间锚点，再将相对值还原为运行时所需的绝对时间。
+
+```json
+{
+  "timeEncoding": {
+    "version": 2
+  },
+  "events": [
+    {
+      "eventTime": {
+        "offsetMs": 547738350,
+        "anchorTable": "db_chemical_demo.stb_reactor"
+      },
+      "startTime": {
+        "offsetMs": 79980000,
+        "anchorTable": "db_chemical_demo.stb_reactor"
+      },
+      "endTime": {
+        "durationMs": 10800000
+      }
+    }
+  ],
+  "panels": [
+    {
+      "profileWindows": [
+        {
+          "window": {
+            "startOffsetMs": 3600000,
+            "durationMs": 1800000,
+            "anchorTable": "db_chemical_demo.stb_reactor"
+          }
+        }
+      ]
+    }
+  ]
+}
+```
+
+- `offsetMs`：相对于时间锚点的毫秒偏移量。重新加载时，绝对时间为“本次加载的锚点 + `offsetMs`”。
+- `durationMs`：时间段的持续时长。例如同时存在 `startTime` 和 `endTime` 时，`endTime.durationMs` 表示结束时间与开始时间的间隔。
+- `startOffsetMs`：数组形式时间范围的起点偏移量；原来的 `[start, end]` 会转换为 `startOffsetMs` 与 `durationMs`。
+- `anchorTable`：版本 2 使用的超级表标识，格式为 `数据库名.超级表名`。该时间值随对应超级表的 `start_timestamp` 移动。
+- `timeEncoding.version`：版本 1 表示所有时间共享同一个示例数据锚点；版本 2 表示使用表相对偏移，每个时间值按 `anchorTable` 分别关联超级表。未显式配置时，时间单位均为毫秒。
+- `timeEncoding.anchorTables`：版本 1 可选字段，记录实际参与共享锚点 T₀ 计算的超级表。重新加载时只使用这些表的冻结开始时间恢复 T₀，避免无数据的表或后来新增的表改变时间基准。
+
+例如，共享锚点模式可以包含参与锚点计算的表：
+
+```json
+{
+  "timeEncoding": {
+    "version": 1,
+    "anchorTables": [
+      "db_chemical_demo.stb_reactor",
+      "db_chemical_demo.stb_power"
+    ]
+  }
+}
+```
+
+版本 2 则是按表计算相对偏移。`timeEncoding` 声明编码模式，具体偏移由每个时间对象中的 `anchorTable` 与 `offsetMs`（或 `startOffsetMs`）共同表示。因此，不同超级表即使开始时间不同，也能分别恢复各自的事件和面板时间。表开始时间相对于统一基准的内部偏移会随加载任务的时间检查点持久化，不需要写入下载配置。
+
+相对编码适用于 `eventTime`、成对的 `startTime` / `endTime`、`fromText` / `toText`、`fillHistoryStartTime`、`window`、`initialWindow`、`windows`，以及嵌套在 `profileWindows` 中的 `window`。`now` 等动态表达式保持原样。每次加载可以产生新的绝对时间，但各字段之间的时间间隔保持不变。
+
+为兼容旧配置，不包含 `timeEncoding` 的数值时间戳仍按绝对时间处理。旧配置中的 `history_window` 仍可加载；下载时系统会先将相关时间转换为相对编码，再从下载配置中移除 `history_window`，重新加载后不再执行该历史回填阶段。
+
 ### 14.9.2.10 完整示例
 
 <details>

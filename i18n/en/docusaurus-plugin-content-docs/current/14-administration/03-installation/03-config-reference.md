@@ -56,7 +56,7 @@ HTTPS is served on host port `6034` (mapped to container `443`). The backend con
 
 - The installation package / images include a built-in test certificate valid for 3 months
 - The test certificate is bound to the domain: `idmp.tdengine.net`
-- This certificate is only suitable for demos and testing, **not recommended for production**
+- This certificate is intended solely for demonstration and testing. **Under no circumstances shall it be deployed in production environments; otherwise, severe security vulnerabilities may arise.**
 
 **Accessing HTTPS with the test certificate**:
 
