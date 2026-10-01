@@ -13,7 +13,7 @@ IDMP provides four approaches, all accessible from the TDengine connection detai
 |---|---|
 | **Easy Import** | Well-structured TSDB data with hierarchical location tags — fastest path to a complete model |
 | **Map STable to Element** | Data without location tags, or when mapping multiple supertables to one element template |
-| **Import from File** | Bulk configuration via Markdown files, with multi-file upload and batch expansion — suited for large-scale modeling |
+| **Import from CSV** | Bulk configuration via a CSV file, especially for single-column data models with many supertables |
 | **Import from OPC** | OPC-structured data already in TSDB |
 
 ## 12.3.1 Easy Import
@@ -74,79 +74,75 @@ Click **Finish** to create the asset model. Each asset model covers one supertab
 If new supertables are added to the database after setup, you must manually add a new asset model for each. New supertables are not picked up automatically.
 :::
 
-## 12.3.3 Import from File
+## 12.3.3 Import from CSV
 
-Import from File is a bulk alternative to Map STable to Element. When you need to configure many supertables and elements, describing the model in a Markdown file — one element per block — is far more efficient than working through the UI. Team members can also each prepare their own files and upload multiple files at once for batch import.
+CSV import is a bulk alternative to Map STable to Element. It is most useful when you have many supertables to configure — especially single-column models — and prefer to define all mappings in a spreadsheet rather than through the UI.
 
 **Workflow:**
 
-1. Click **Generate Base MD** in the toolbar to generate a base configuration file from your TSDB schema. Select the databases and supertables to include. Optionally check **Include child tables** to generate a fixed-block skeleton per child table — useful when each child table needs a specific element name or path. The generated file is a skeleton to be edited: the `待补充` (to-be-filled) root path must be replaced with your real business path before uploading.
-2. Edit the generated file to fill in element paths, descriptions, attribute mappings, and other settings. A blank reference template in your current UI language is available for download inside the import dialog.
-3. Click **Import** in the toolbar, select one or more completed `.md` files, and submit them together. The import task starts immediately. A multi-file submission creates a single batch task that processes the files serially in upload order.
+1. Click the **export** icon (download) in the toolbar to export a CSV configuration template based on your TSDB schema. Select the databases and supertables to include. Optionally check **Export child table names** to include individual child table names for cases where each child table needs a specific element name or path.
+2. Edit the CSV file to fill in element name expressions, element path expressions, attribute template mappings, and other settings.
+3. Click the **import** icon (upload) in the toolbar to upload the completed CSV file. The import task starts immediately.
 
-The task history table shows: **Created At**, **Status**, **File Name** (all files of a batch task, each downloadable individually), **Subscription Status**, and **Reason** (on failure, including a per-file failure summary for batch tasks). During import, the progress dialog shows per-file status (pending, running, finished, failed with reason); a single file failure does not affect the other files.
+The task history table shows: **Created At**, **Status**, **File Name**, and **Reason** (if failed).
 
-**Auto-sync:** After an import task containing batch-expansion blocks completes, IDMP monitors the TSDB for metadata changes. New child tables matching the subtable filter are automatically synced as new elements. The subscription can be started or stopped separately from the task list.
+**Auto-sync:** Tasks without a specific child table name filter automatically sync new child tables added to the database.
 
-**MD file format rules:**
+**CSV file format rules:**
 
-- A file consists of element blocks; each block starts with the `element:start` comment marker and ends with the `element:end` comment marker (language-neutral reserved words — never translate or modify them). Content outside blocks is ignored; use it for notes.
-- `## Element: <path>` is the only source of the element path and name; segments are separated by an English period `.` and the last segment is the element name. Missing intermediate nodes are created automatically.
-- The first two rows of each table (header and separator) are skipped by position. Data rows must have exactly two columns. Field keys must not repeat within one table. Escape a literal pipe as `\|` and a literal backslash as `\\` in values.
-- An empty cell, whitespace-only cell, or the literals `（空）` / `(空)` are all treated as "not filled in".
-- Field keys are matched against a union of Chinese, English, Korean, and Spanish keys; blank reference templates per language can be downloaded from the import dialog.
-- The element template may be left blank (fixed block): no element template is created and the element is created as a template-less free element. For batch blocks, a blank template is auto-created as `<database name>_<supertable name>`.
-- The file must be encoded in **UTF-8** (BOM tolerated; LF or CRLF line endings both accepted).
+- Comment lines start with `#` and are required — do not delete them.
+- The first non-comment row is the header row.
+- Data is divided into blocks; each block starts with a row that sets the **Database Name** and **Supertable Name**.
+- If no element template is specified, one is created automatically using the supertable name.
+- The **Element Name Expression** supports substitution strings like `${tbname}` (child table name) or tag values like `${tag_name}`.
+- The **Element Path Expression** supports the same substitutions. A dot in the value automatically creates hierarchy levels.
+- **Reference Type** must be `TDengineMetric` or `TDengineTag`.
+- **Attribute Template Name** references an existing attribute template in Libraries by name. If left blank or the name does not exist, an attribute template is created automatically using the **Super Table Column Name** (and tagged with the "auto-imported" category).
+- The header row is locale-specific (Chinese and English templates have different headers). The header of the file you import must match the template for your language; do not mix them.
+- The file must be encoded in **UTF-8** (not UTF-8 with BOM). If editing in Excel on Windows, convert the encoding before uploading.
 
-**Two block modes:**
+**CSV column reference:**
 
-- **Fixed block:** the element path contains no `${...}` expression and no subtable filter is set. Every attribute must specify a concrete child table; different attributes may reference different databases, supertables, and child tables.
-- **Batch block:** the element path contains a `${...}` expression or a subtable filter is set. Child tables of the supertable are expanded into elements in bulk by the filter. Expressions support `${tbname}` (child table name) and `${tagName}` (tag value), and are allowed in the element path, description, and categories.
-
-**Basic info and general info fields:**
-
-| Field | Description |
+| Column | Description |
 |---|---|
-| Element Template | The target element template. Blank in a fixed block means a template-less free element; blank in a batch block auto-creates one as `<database name>_<supertable name>`; a non-existent name is created automatically from the block's attributes; an existing template only gains missing attributes |
-| Sub-table Filter | SQL WHERE-style filter expression (expansion condition of a batch block), e.g. `line_tag is not null` |
-| Location · Altitude (m) | Numeric. Fixed blocks only (optional) |
-| Location · Longitude | Numeric, -180 to 180. Fixed blocks only (optional) |
-| Location · Latitude | Numeric, -90 to 90. Fixed blocks only (optional) |
-| Description | Element description; `${...}` expressions supported in batch blocks (optional) |
-| Categories | Comma-separated category names; expressions supported in batch blocks (optional) |
-
-**Attribute fields:**
-
-Each attribute starts with a `#### Attribute N` section heading (N is a readability-only ordinal). The table inside the section has the following fields:
-
-| Field | Description |
-|---|---|
-| Attribute Name | The attribute name (i.e., the attribute template name) — the first row of each attribute table. A value starting with `Quality:` marks a quality column configuration section; see "Configuring quality columns" below. If blank, it defaults to the **Super Table Column** name |
-| Database Name | The source TDengine database (required) |
-| Super Table | The supertable holding the measurement data (required) |
-| Super Table Column | The column holding the data; in a quality column section, the quality column name (required) |
-| Reference Type | `TDengineMetric` (metric) or `TDengineTag` (tag); inferred from the supertable schema if blank (optional) |
-| Sub-table | Required for fixed blocks with a concrete child table name; must be blank in batch blocks (refers to the currently expanded child table) |
-| Attribute Description | Description of the attribute (optional) |
-| Attribute Categories | Comma-separated (optional) |
-| Default UOM | May only reference a unit of measure that already exists in the system (matched by name or abbreviation); referencing a missing unit fails the entire file before anything is created, listing all missing units at once (optional) |
-| Display UOM | The unit of measure used for display; same rules as above (optional) |
-| Display Digits | Number of decimal places used for display, a non-negative integer (optional) |
+| Database Name | The source TDengine database. Required on the first row of each block. |
+| Super Table Name | The source supertable. Required on the first row of each block. |
+| Element Template Name | The target element template. If blank, one is created using the supertable name. |
+| Element Template Categories | Category expression for the element template (optional) |
+| Sub Table Name | Per-child-table configuration (generated when **Export child table names** is checked), allowing a specific element name and path for each child table. Tasks with child table names configured do not auto-sync new child tables. |
+| Sub Table Filter | SQL WHERE-style expression to include only matching child tables |
+| Element Name Expression | Element name. Supports substitution strings like `${tbname}` (child table name) or `${tag_name}`. |
+| Element Description Expression | Element description. Supports the same substitution strings. |
+| Element Path Expression | The element's location in the asset tree. Dots separate hierarchy levels. Supports the same substitution strings. |
+| Super Table Column Name | The tag or metric column this row maps |
+| Attribute Template Name | The attribute template to map. A value starting with `Quality:` marks a quality column configuration row — see "Configuring quality columns" below. |
+| Reference Type | `TDengineMetric` (metric) or `TDengineTag` (tag) |
+| Attribute Template Categories | Category expression for the attribute template (optional) |
+| Attribute Template Description | Description of the attribute template (optional) |
+| Attribute Template Hidden | `true` / `false` (optional) |
+| Attribute Template Excluded | `true` / `false` (optional) |
+| Attribute Template Default UoM | Unit of measure name or abbreviation (optional) |
+| Attribute Template Display UoM | Unit of measure used for display (optional) |
+| Attribute Template Default Value | Default value of the attribute (optional) |
+| Attribute Template Display Digits | Number of decimal places used for display (optional) |
 
 **Configuring quality columns:**
 
-To configure a data quality column for a metric, add an extra attribute section in the same element block:
+To configure a data quality column for a metric, add an extra row in the block that the metric belongs to:
 
-- Set **Attribute Name** to `Quality:<metric attribute name>`, for example `Quality:Rotation Speed` (the prefix is case-sensitive — `quality:` and `QUALITY:` do not work).
-- Set **Super Table Column** to the name of the column in the source supertable that holds the quality values, for example `val_q`.
+- Set **Reference Type** to `TDengineMetric`.
+- Set **Attribute Template Name** to `Quality:<metric attribute template name>`, for example `Quality:voltage` (the prefix is case-sensitive — `quality:` and `QUALITY:` do not work).
+- Set **Super Table Column Name** to the name of the column in the source supertable that holds the quality values, for example `quality`.
 
 Notes:
 
-- A quality column configuration section does not create an attribute template; it only records the quality column name on the metric's attribute template (updating it directly if the template already exists).
-- After the import completes, the corresponding quality column is added to the virtual supertable automatically, making quality values available in panels and history queries.
+- A quality column configuration row does not create an attribute template; it only records the quality column name on the metric's attribute template (updating it directly if the template already exists).
+- Place the quality column configuration row **after** the corresponding metric row, so that the attribute template has already been created and the configuration takes effect immediately.
+- After the import completes, a `<metric column>_q` quality column is added to the virtual supertable automatically, making quality values available in panels and history queries.
+- Exported CSV templates do not include quality column configuration rows; add them manually.
 
 :::note
-If new supertables are added to the database after an import-from-file task, create a new import task for those supertables. Existing tasks do not pick up new supertables automatically.
+If new supertables are added to the database after a CSV import, create a new import task for those supertables. Existing tasks do not pick up new supertables automatically.
 :::
 
 ## 12.3.4 Import from OPC
