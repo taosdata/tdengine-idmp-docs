@@ -20,7 +20,7 @@ TDengine 官网下载中心提供了 All-in-one 安装方式，可以一行命�
 
 ## 2.2.2 安装
 
-请参考 TDengine 下载中心 [TDengine All-in-One](https://www.taosdata.com/download-center?product=TDengine+All-in-One&platform=Docker) 产品页面提供的安装指南，进行安装。
+请参考 TDengine 下载中心 [TDengine All-in-One](https://taosdata.com/downloads?product=TDengine+All-in-One&platform=Docker) 产品页面提供的安装指南，进行安装。
 
 :::tip
 

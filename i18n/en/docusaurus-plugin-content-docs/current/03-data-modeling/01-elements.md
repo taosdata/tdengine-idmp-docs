@@ -267,9 +267,9 @@ Create three attribute templates on the `Smart Meter` template:
 |-----------|--------------------|-----------------------|
 | Current | TDengine Metric | `TDengine/smdb/${KEYWORD1}/current` |
 | Voltage | TDengine Metric | `TDengine/smdb/${KEYWORD1}/voltage` |
-| Model | TDengine Tag | `TDengine/smdb/${KEYWORD1}/model` |
+| Model | Static Value | `TDengine/smdb/${KEYWORD1}/model` |
 
-For each attribute, set the **Data Reference Type** to **TDengine Metric** or **TDengine Tag**, then open the Data Reference Setting dialog. Select the TDengine connection and database `smdb`. In the **Table Name Pattern** field, click **+** and select `KEYWORD1`. Enter the column name (`current`, `voltage`, or `model`). Click **Check** with a sample child table name to verify the binding.
+For each attribute, set the **Data Reference Type** to **TDengine Metric** or **Static Value**, then open the Data Reference Setting dialog. Select the TDengine connection and database `smdb`. In the **Table Name Pattern** field, click **+** and select `KEYWORD1`. Enter the column name (`current`, `voltage`, or `model`). Click **Check** with a sample child table name to verify the binding.
 
 #### Step 3 — Create elements from the template
 

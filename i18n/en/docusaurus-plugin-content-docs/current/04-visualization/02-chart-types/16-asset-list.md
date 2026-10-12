@@ -44,7 +44,7 @@ Open the panel editor to configure:
 | Setting | Description |
 |---|---|
 | **Asset Type (Template)** | Required. Filters the list to elements of the selected template. Only when a template is selected can template-specific attribute columns be added. |
-| **Display Fields** | Configurable set of columns and their display order. Includes IDMP management attributes (Name, Path, Description, Template, Categories) and reference attributes (TDengine Tags and TDengine Metrics). |
+| **Display Fields** | Configurable set of columns and their display order. Includes IDMP management attributes (Name, Path, Description, Template, Categories) and reference attributes (Static Value and TDengine Metric attributes). |
 
 ## 4.2.16.4 Example Scenarios
 

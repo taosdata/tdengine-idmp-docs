@@ -18,12 +18,12 @@ The TDengine IDMP SDK gives you programmatic access to the full data asset: elem
 - Feed industrial context into AI/ML pipelines
 
 :::note Coming Soon
-Version and compatibility information will be published here when the SDK reaches general availability. Download the latest SDK package from the [TDengine Download Center](https://www.taosdata.com/download-center).
+Version and compatibility information will be published here when the SDK reaches general availability. Download the latest SDK package from the [TDengine Download Center](https://tdengine.com/downloads).
 :::
 
 ## SDK Package Contents
 
-Download the SDK package from the [TDengine Download Center](https://www.taosdata.com/download-center). The package has the following structure:
+Download the SDK package from the [TDengine Download Center](https://tdengine.com/downloads). The package has the following structure:
 
 ```bash idmp-ee-sdk
 idmp-sdk-{{VERSION}}/

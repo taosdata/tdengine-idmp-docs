@@ -18,12 +18,12 @@ TDengine IDMP SDK 提供对完整数据资产的编程访问：元素、属性�
 - 将工业上下文输送到 AI/ML 管道
 
 :::note 即将推出
-SDK 正式发布时，版本和兼容性信息将在此发布。请从 [涛思数据下载中心](https://www.taosdata.com/download-center) 下载最新 SDK 包。
+SDK 正式发布时，版本和兼容性信息将在此发布。请从 [涛思数据下载中心](https://taosdata.com/downloads) 下载最新 SDK 包。
 :::
 
 ## SDK 包内容
 
-从 [涛思数据下载中心](https://www.taosdata.com/download-center) 下载 SDK 包，其结构如下：
+从 [涛思数据下载中心](https://taosdata.com/downloads) 下载 SDK 包，其结构如下：
 
 ```bash idmp-ee-sdk
 idmp-sdk-{{VERSION}}/

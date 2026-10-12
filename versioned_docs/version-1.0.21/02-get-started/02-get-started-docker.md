@@ -19,7 +19,7 @@ TDengine IDMP 提供 Docker Compose 部署方式，可简化本地部署流程�
 ## 2.2.2 准备 Docker 环境
 
 :::tip
-使用 Docker 方式部署 TDengine IDMP 需要从 Docker Hub 拉取镜像。如果您无法正常访问 Docker Hub，可以从 [TDengine 下载中心](https://www.taosdata.com/download-center) 下载容器镜像文件，然后执行以下命令加载镜像（以 x64 架构为例）：
+使用 Docker 方式部署 TDengine IDMP 需要从 Docker Hub 拉取镜像。如果您无法正常访问 Docker Hub，可以从 [TDengine 下载中心](https://taosdata.com/downloads) 下载容器镜像文件，然后执行以下命令加载镜像（以 x64 架构为例）：
 
 ```bash
 docker load -i tdengine-tsdb-enterprise-docker-<version>-linux-x64.tar.gz

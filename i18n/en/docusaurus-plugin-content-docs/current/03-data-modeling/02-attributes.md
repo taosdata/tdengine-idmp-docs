@@ -45,9 +45,9 @@ The data type of the quality column must be INT.
 
 The external connection's parent TDengine connection must be the same connection that hosts the attribute's virtual table. MySQL and PostgreSQL source tables must have exactly one timestamp column in their primary key; InfluxDB uses the `time` column. External metric references currently do not support filters.
 
-### 3.2.2.2 Tag
+### 3.2.2.2 Static Value
 
-References a tag value in a TDengine TSDB table. Tags are static metadata fields attached to a table (such as device ID, location, or installation floor). Use this type for attributes whose values come from TSDB tags rather than time-series columns.
+References a tag value in a TDengine TSDB table. Tags are static metadata fields attached to a table (such as device ID, location, or installation floor). Use this type for attributes whose values come from TSDB tags rather than time-series columns. In the **Data Reference Type** list this option is labeled **Static Value**, because a tag value is static metadata of each table.
 
 The format is the same as Metric:
 
@@ -57,7 +57,7 @@ ConnectionName/DatabaseName/TableName/TagName
 
 Example: `TDengine/idmp_sample_utility/em-17/location`
 
-**External tags:** Select **Tag** as the data reference type. In **Data Reference Setting**, select a MySQL, PostgreSQL, or InfluxDB connection, then choose the database, table, and value column. For PostgreSQL, also select a Schema. External tags can read ordinary columns, making them suitable for metadata such as device names and regions.
+**External tags:** Select **Static Value** as the data reference type. In **Data Reference Setting**, select a MySQL, PostgreSQL, or InfluxDB connection, then choose the database, table, and value column. For PostgreSQL, also select a Schema. External tags can read ordinary columns, making them suitable for metadata such as device names and regions.
 
 - **Row selection**: **Unique row** requires exactly one result row. **Latest row by timestamp** also requires a **Timestamp column**; validation fails if multiple rows share the latest timestamp.
 - **Filters**: Click **Add condition** and enter the column name, value type, and value. Up to 16 equality conditions are supported, joined with AND or OR. AND takes precedence over OR.
@@ -128,7 +128,7 @@ Every attribute has the following configurable properties:
 | **Default UOM** | The unit in which the attribute value is stored (e.g., ampere, °C, bar) |
 | **Display UOM** | The unit used when displaying the value in panels and dashboards. Can differ from Default UOM — IDMP applies the conversion automatically. |
 | **Display Digits** | Positive values indicate the number of digits after the decimal point; negative values indicate the number of significant digits. |
-| **Data Reference Type** | Where the attribute value comes from: Metric, Tag, Formula, String Builder, or None (see [3.2.2](#322-data-reference-types)) |
+| **Data Reference Type** | Where the attribute value comes from: Metric, Static Value, Formula, String Builder, or None (see [3.2.2](#322-data-reference-types)) |
 | **Data Reference Setting** | Select the source connection, database, table, and column. Native TDengine references use `ConnectionName/DatabaseName/TableName/ColumnName`, optionally followed by `:QualityColumnName`. External connections also offer Schema, tag row selection, and filter settings (see [3.2.2](#322-data-reference-types)). |
 | **Path** | The full path of the attribute within the asset model (read-only, auto-generated) |
 
@@ -315,7 +315,7 @@ The left panel is titled **Attributes**. By default, it lists the attributes of 
 | Group | Contents |
 |---|---|
 | **Metric** | Attributes that reference metric columns. If an attribute has configured limits, it can be expanded to list and insert those limits. |
-| **Tag** | Attributes that reference tag values, including tags synchronized from external data sources. |
+| **Static Value attributes** | Attributes that reference tag values, including tags synchronized from external data sources. |
 | **Formula** | Formula-type attributes. |
 | **String Builder** | String Builder attributes. |
 | **Regular Attributes** | Any remaining attributes outside the categories above. |
@@ -398,9 +398,9 @@ The **Data Reference Type** determines how the attribute is connected to time-se
 |---|---|
 | **None** | No TSDB binding — the attribute holds a static or calculated value only. |
 | **Metric** | Binds the attribute to a time-series metric column in TDengine or an external data source. |
-| **Tag** | References a TDengine tag value or a metadata value from an external data source. |
+| **Static Value** | References a TDengine tag value or a metadata value from an external data source. |
 
-When you select **Metric** or **Tag**, configure the binding by specifying the source connection, database, table name (using substitution strings such as `${KEYWORD1}` so each element binds to its own table), and column name. For a TDengine connection, the Data Reference Setting takes the form:
+When you select **Metric** or **Static Value**, configure the binding by specifying the source connection, database, table name (using substitution strings such as `${KEYWORD1}` so each element binds to its own table), and column name. For a TDengine connection, the Data Reference Setting takes the form:
 
 ```text
 TDengine/<database>/${KEYWORD1}/<column>

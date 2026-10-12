@@ -21,14 +21,14 @@ Excel 插件仅通过 **HTTPS** 连接 IDMP。安装前，请确保 IDMP 的 HTT
 ```yaml
 quarkus:
   http:
-    port: 6042          # IDMP HTTP 服务端口
-    ssl-port: 6034      # IDMP HTTPS 服务端口
-    insecure-requests: enabled      # 允许 HTTP 和 HTTPS 同时工作
+    port: 6042 # IDMP HTTP 服务端口
+    ssl-port: 6034 # IDMP HTTPS 服务端口
+    insecure-requests: enabled # 允许 HTTP 和 HTTPS 同时工作
     ssl:
-      enabled: true     # 启用 SSL/HTTPS
+      enabled: true # 启用 SSL/HTTPS
       certificate:
-        files: /usr/local/taos/idmp/config/certbundle.pem   # 证书文件路径
-        key-files: /usr/local/taos/idmp/config/privkey.pem  # 私钥文件路径
+        files: /usr/local/taos/idmp/config/certbundle.pem # 证书文件路径
+        key-files: /usr/local/taos/idmp/config/privkey.pem # 私钥文件路径
 ```
 
 **内置测试证书：** IDMP 附带一个有效期为 3 个月的测试证书，绑定到域名 `idmp.tdengine.net`。该证书适用于评估和测试，不建议在生产环境中使用。如需配置更长有效期的自签名证书，请参阅 [Excel 插件证书配置](./02-certificate-configuration.md)。
@@ -46,11 +46,11 @@ hosts 文件位置：
 
 ### 系统要求
 
-| 要求                 | 详情                                                   |
-| -------------------- | ------------------------------------------------------ |
-| **Excel 版本** | Excel 2016 及更高版本（Windows 或 macOS）              |
+| 要求           | 详情                                                   |
+| -------------- | ------------------------------------------------------ |
+| **Excel 版本** | Excel 2021 及更高版本（Windows 或 macOS）              |
 | **权限**       | Windows 上需要管理员权限                               |
-| **网络连接**       | 需要能够访问下载安装脚本并连接 IDMP 服务             |
+| **网络连接**   | 需要能够访问下载安装脚本并连接 IDMP 服务               |
 | **Node.js**    | 启用日志记录时，Windows 上需要 Node.js 22.3 或更高版本 |
 
 ## 10.1.2 在线安装
@@ -68,8 +68,8 @@ curl -LsSf https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/in
 
 **参数说明：**
 
-| 参数                 | 说明                                           |
-| -------------------- | ---------------------------------------------- |
+| 参数               | 说明                                           |
+| ------------------ | ---------------------------------------------- |
 | `--force-close`    | 安装期间强制关闭 Excel。运行前请保存工作内容。 |
 | `--url`            | IDMP HTTPS 服务地址                            |
 | `--enable-logging` | 启用安装和运行时日志记录                       |
@@ -93,8 +93,8 @@ powershell -ExecutionPolicy ByPass -c "& ([scriptblock]::Create((irm https://tao
 
 **参数说明：**
 
-| 参数                 | 说明                                           |
-| -------------------- | ---------------------------------------------- |
+| 参数               | 说明                                           |
+| ------------------ | ---------------------------------------------- |
 | `-Action Install`  | 执行安装                                       |
 | `-ForceCloseExcel` | 安装期间强制关闭 Excel。运行前请保存工作内容。 |
 | `-Url`             | IDMP HTTPS 服务地址                            |
@@ -118,9 +118,9 @@ PowerShell 必须以管理员身份运行。安装期间 Excel 将被强制关�
 
 ### 下载安装文件
 
-| 文件 | 下载地址 |
-| ---- | -------- |
-| `install.sh` | [install.sh](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh) |
+| 文件           | 下载地址                                                                                        |
+| -------------- | ----------------------------------------------------------------------------------------------- |
+| `install.sh`   | [install.sh](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh)     |
 | `manifest.xml` | [manifest.xml](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml) |
 
 在能访问互联网的机器上下载文件（可保存到不同目录）。若目录不存在，请先创建：
@@ -142,12 +142,12 @@ chmod +x ~/Downloads/install.sh
 
 **参数说明：**
 
-| 参数 | 说明 |
-| ---- | ---- |
-| `--manifest-dir` | 包含 `manifest.xml` 的本地目录；指定后不再从网络下载 manifest |
-| `--force-close` | 安装期间强制关闭 Excel。运行前请保存工作内容。 |
-| `--url` | IDMP HTTPS 服务地址 |
-| `--enable-logging` | 启用安装和运行时日志记录 |
+| 参数               | 说明                                                          |
+| ------------------ | ------------------------------------------------------------- |
+| `--manifest-dir`   | 包含 `manifest.xml` 的本地目录；指定后不再从网络下载 manifest |
+| `--force-close`    | 安装期间强制关闭 Excel。运行前请保存工作内容。                |
+| `--url`            | IDMP HTTPS 服务地址                                           |
+| `--enable-logging` | 启用安装和运行时日志记录                                      |
 
 :::warning
 安装期间 Excel 将被强制关闭。运行命令前请保存所有已打开的工作簿。
@@ -158,9 +158,9 @@ chmod +x ~/Downloads/install.sh
 
 ### 下载安装文件
 
-| 文件 | 下载地址 |
-| ---- | -------- |
-| `install.ps1` | [install.ps1](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1) |
+| 文件           | 下载地址                                                                                        |
+| -------------- | ----------------------------------------------------------------------------------------------- |
+| `install.ps1`  | [install.ps1](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1)   |
 | `manifest.xml` | [manifest.xml](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml) |
 
 在能访问互联网的机器上下载文件（可保存到不同目录）。若目录不存在，请先创建：
@@ -181,13 +181,13 @@ C:\Scripts\install.ps1 -Action Install -ForceCloseExcel -Url 'https://idmp.tdeng
 
 **参数说明：**
 
-| 参数 | 说明 |
-| ---- | ---- |
-| `-ManifestDir` | 包含 `manifest.xml` 的本地目录；指定后不再从网络下载 manifest |
-| `-Action Install` | 执行安装 |
-| `-ForceCloseExcel` | 安装期间强制关闭 Excel。运行前请保存工作内容。 |
-| `-Url` | IDMP HTTPS 服务地址 |
-| `-EnableLogging` | 启用安装和运行时日志记录 |
+| 参数               | 说明                                                          |
+| ------------------ | ------------------------------------------------------------- |
+| `-ManifestDir`     | 包含 `manifest.xml` 的本地目录；指定后不再从网络下载 manifest |
+| `-Action Install`  | 执行安装                                                      |
+| `-ForceCloseExcel` | 安装期间强制关闭 Excel。运行前请保存工作内容。                |
+| `-Url`             | IDMP HTTPS 服务地址                                           |
+| `-EnableLogging`   | 启用安装和运行时日志记录                                      |
 
 :::warning
 PowerShell 必须以管理员身份运行。安装期间 Excel 将被强制关闭。运行命令前请保存所有已打开的工作簿。

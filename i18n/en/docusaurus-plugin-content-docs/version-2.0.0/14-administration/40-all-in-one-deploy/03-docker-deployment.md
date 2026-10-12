@@ -54,7 +54,7 @@ docker info
 Run the following command as `root`:
 
 ```bash
-curl -fsSL https://downloads.taosdata.com/apex/install.sh | bash -s -- -m docker
+curl -fsSL https://downloads.tdengine.com/apex/latest/install.sh | bash -s -- -m docker
 ```
 
 ### macOS
@@ -62,7 +62,7 @@ curl -fsSL https://downloads.taosdata.com/apex/install.sh | bash -s -- -m docker
 Open a terminal and run:
 
 ```bash
-curl -fsSL https://downloads.taosdata.com/apex/install.sh | bash -s -- -m docker
+curl -fsSL https://downloads.tdengine.com/apex/latest/install.sh | bash -s -- -m docker
 ```
 
 Docker Desktop must be running before you start deployment.

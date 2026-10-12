@@ -14,7 +14,7 @@ The APIs listed in this section are commonly used methods summarized from the SD
 
 For the **complete** API documentation, download the SDK source package from the official website, which includes the full OpenAPI spec file (<code>idmp-v<IdmpSdkVersion />.json</code>).
 
-- Chinese download center: [https://www.taosdata.com/download-center](https://www.taosdata.com/download-center)
+- Chinese download center: [https://taosdata.com/downloads](https://taosdata.com/downloads)
 - English download center: [https://tdengine.com/downloads](https://tdengine.com/downloads)
 :::
 

@@ -47,7 +47,7 @@ docker info
 以 `root` 身份执行以下命令：
 
 ```bash
-curl -fsSL https://downloads.taosdata.com/apex/install.sh | bash -s -- -m docker
+curl -fsSL https://downloads.tdengine.com/apex/latest/install.sh | bash -s -- -m docker
 ```
 
 ### 14.13.3.3.2 macOS
@@ -55,7 +55,7 @@ curl -fsSL https://downloads.taosdata.com/apex/install.sh | bash -s -- -m docker
 打开终端并执行：
 
 ```bash
-curl -fsSL https://downloads.taosdata.com/apex/install.sh | bash -s -- -m docker
+curl -fsSL https://downloads.tdengine.com/apex/latest/install.sh | bash -s -- -m docker
 ```
 
 开始部署前，必须先启动 Docker Desktop。

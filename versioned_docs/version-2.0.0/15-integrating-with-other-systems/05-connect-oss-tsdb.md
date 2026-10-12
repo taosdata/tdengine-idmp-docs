@@ -93,7 +93,7 @@ IDMP 连接开源版（Community）TSDB 时，大部分核心功能可以正常�
 
 **开源版 TSDB 默认不包含 taosExplorer 组件**。Explorer 是 TSDB 的 Web 管理界面，IDMP 系统内嵌了 Explorer 页面。如果您希望在连接开源版 TSDB 的同时使用这些前端页面功能，可以通过**单独安装 taosExplorer** 来解决：
 
-1. 从 [TDengine 下载中心](https://www.taosdata.com/download-center) 获取 taosExplorer 安装包
+1. 从 [TDengine 下载中心](https://taosdata.com/downloads) 获取 taosExplorer 安装包
 2. 按照安装说明部署 taosExplorer 服务
 3. 在 IDMP 配置文件的 `explorer-url` 中指向 taosExplorer 的实际地址
 

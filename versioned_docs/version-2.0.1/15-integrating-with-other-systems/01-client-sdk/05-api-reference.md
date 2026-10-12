@@ -14,7 +14,7 @@ import IdmpSdkVersion from "/src/components/IdmpSdkVersion";
 
 如需获取**完整**的 API 文档，请从官网下载 SDK 源码包，其中包含完整的 OpenAPI 规范文件（<code>idmp-v<IdmpSdkVersion />.json</code>）。
 
-- 中文下载中心：[https://www.taosdata.com/download-center](https://www.taosdata.com/download-center)
+- 中文下载中心：[https://taosdata.com/downloads](https://taosdata.com/downloads)
 - 英文下载中心：[https://tdengine.com/downloads](https://tdengine.com/downloads)
 :::
 

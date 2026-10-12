@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 
 # 2.3 安装包快速上手
 
-TDengine 下载中心 [TDengine All-in-One](https://www.taosdata.com/download-center?product=TDengine+All-in-One) 产品页面，提供了安装命令，可以快速完成包含 IDMP 在内的所有模块的安装部署，支持 Windows、Linux 等操作系统，详细过程请阅读[第 14.13 节](../14-administration/40-all-in-one-deploy/index.md)
+TDengine 下载中心 [TDengine All-in-One](https://taosdata.com/downloads?product=TDengine+All-in-One) 产品页面，提供了安装命令，可以快速完成包含 IDMP 在内的所有模块的安装部署，支持 Windows、Linux 等操作系统，详细过程请阅读[第 14.13 节](../14-administration/40-all-in-one-deploy/index.md)
 
 ## 2.3.1 系统要求
 
@@ -25,7 +25,7 @@ TDengine 下载中心 [TDengine All-in-One](https://www.taosdata.com/download-ce
 
 ## 2.3.2 安装 TDengine IDMP
 
-请参照 TDengine 下载中心 [TDengine All-in-One](https://www.taosdata.com/download-center?product=TDengine+All-in-One) 产品页面，提供的安装指南进行安装。
+请参照 TDengine 下载中心 [TDengine All-in-One](https://taosdata.com/downloads?product=TDengine+All-in-One) 产品页面，提供的安装指南进行安装。
 
 :::tip
 

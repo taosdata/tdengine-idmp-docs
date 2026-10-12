@@ -94,7 +94,7 @@ When connecting IDMP to the Community Edition of TDengine TSDB, most core featur
 
 **The Community Edition of TDengine TSDB does not include taosExplorer**. Explorer is the web-based management interface for TSDB, and IDMP embeds Explorer pages within its UI. If you want these embedded Explorer pages to work while connected to Community Edition TSDB, you can resolve this by **installing taosExplorer separately**:
 
-1. Download the taosExplorer package from the [TDengine Download Center](https://www.taosdata.com/download-center)
+1. Download the taosExplorer package from the [TDengine Download Center](https://tdengine.com/downloads)
 2. Install and deploy taosExplorer following its installation guide
 3. Point `explorer-url` in the IDMP configuration file to the taosExplorer instance
 

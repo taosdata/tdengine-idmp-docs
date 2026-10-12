@@ -21,14 +21,14 @@ To enable HTTPS, add the following to the IDMP configuration file (`application.
 ```yaml
 quarkus:
   http:
-    port: 6042          # IDMP HTTP service port
-    ssl-port: 6034      # IDMP HTTPS service port
-    insecure-requests: enabled      # Allow both HTTP and HTTPS
+    port: 6042 # IDMP HTTP service port
+    ssl-port: 6034 # IDMP HTTPS service port
+    insecure-requests: enabled # Allow both HTTP and HTTPS
     ssl:
-      enabled: true     # Enable SSL/HTTPS
+      enabled: true # Enable SSL/HTTPS
       certificate:
-        files: /usr/local/taos/idmp/config/certbundle.pem   # Certificate file path
-        key-files: /usr/local/taos/idmp/config/privkey.pem  # Private key file path
+        files: /usr/local/taos/idmp/config/certbundle.pem # Certificate file path
+        key-files: /usr/local/taos/idmp/config/privkey.pem # Private key file path
 ```
 
 **Built-in test certificate.** IDMP ships with a test certificate valid for 3 months, bound to the domain `idmp.tdengine.net`. This certificate is suitable for evaluation and testing. It is not recommended for production use. To configure a self-signed certificate with a longer validity period, see [Certificate Configuration](./02-certificate-configuration.md).
@@ -46,12 +46,12 @@ Hosts file locations:
 
 ### System Requirements
 
-| Requirement | Details |
-|---|---|
-| **Excel version** | Excel 2016 or later (Windows or macOS) |
-| **Permissions** | Administrator rights required on Windows |
-| **Network** | Network access is required to download the installation script and connect to the IDMP service |
-| **Node.js** | Node.js 22.3 or later required on Windows if logging is enabled |
+| Requirement       | Details                                                                                        |
+| ----------------- | ---------------------------------------------------------------------------------------------- |
+| **Excel version** | Excel 2021 or later (Windows or macOS)                                                         |
+| **Permissions**   | Administrator rights required on Windows                                                       |
+| **Network**       | Network access is required to download the installation script and connect to the IDMP service |
+| **Node.js**       | Node.js 22.3 or later required on Windows if logging is enabled                                |
 
 ## 10.1.2 Online Installation
 
@@ -68,11 +68,11 @@ Replace `https://idmp.tdengine.net:6034` with your actual IDMP HTTPS address.
 
 **Parameters:**
 
-| Parameter | Description |
-|---|---|
-| `--force-close` | Force-closes Excel during installation. Save your work before running. |
-| `--url` | The IDMP HTTPS service address |
-| `--enable-logging` | Enables installation and runtime logging |
+| Parameter          | Description                                                            |
+| ------------------ | ---------------------------------------------------------------------- |
+| `--force-close`    | Force-closes Excel during installation. Save your work before running. |
+| `--url`            | The IDMP HTTPS service address                                         |
+| `--enable-logging` | Enables installation and runtime logging                               |
 
 Log file location: `~/Library/Containers/com.microsoft.Excel/Data/tdengine_eai.log`
 
@@ -93,12 +93,12 @@ Replace `https://idmp.tdengine.net:6034` with your actual IDMP HTTPS address.
 
 **Parameters:**
 
-| Parameter | Description |
-|---|---|
-| `-Action Install` | Runs the installation |
+| Parameter          | Description                                                            |
+| ------------------ | ---------------------------------------------------------------------- |
+| `-Action Install`  | Runs the installation                                                  |
 | `-ForceCloseExcel` | Force-closes Excel during installation. Save your work before running. |
-| `-Url` | The IDMP HTTPS service address |
-| `-EnableLogging` | Enables installation and runtime logging |
+| `-Url`             | The IDMP HTTPS service address                                         |
+| `-EnableLogging`   | Enables installation and runtime logging                               |
 
 Log file location: `C:\Users\<your-username>\AppData\Roaming\Microsoft\AddIns\VueOfficeAddin\Logs\tdengine_eai.log`
 
@@ -118,9 +118,9 @@ If the client machine cannot access the public internet, download the installati
 
 ### Download Installation Files
 
-| File | Download URL |
-| ---- | ------------ |
-| `install.sh` | [install.sh](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh) |
+| File           | Download URL                                                                                    |
+| -------------- | ----------------------------------------------------------------------------------------------- |
+| `install.sh`   | [install.sh](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.sh)     |
 | `manifest.xml` | [manifest.xml](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml) |
 
 On a machine with internet access, download the files (they can be saved to different directories). Create the directories first if they do not exist:
@@ -142,12 +142,12 @@ Replace `https://idmp.tdengine.net:6034`, `~/Downloads/install.sh`, and `~/manif
 
 **Parameters:**
 
-| Parameter | Description |
-| --------- | ----------- |
-| `--manifest-dir` | Local directory containing `manifest.xml`; when set, the manifest is not downloaded from the network |
-| `--force-close` | Force-closes Excel during installation. Save your work before running. |
-| `--url` | The IDMP HTTPS service address |
-| `--enable-logging` | Enables installation and runtime logging |
+| Parameter          | Description                                                                                          |
+| ------------------ | ---------------------------------------------------------------------------------------------------- |
+| `--manifest-dir`   | Local directory containing `manifest.xml`; when set, the manifest is not downloaded from the network |
+| `--force-close`    | Force-closes Excel during installation. Save your work before running.                               |
+| `--url`            | The IDMP HTTPS service address                                                                       |
+| `--enable-logging` | Enables installation and runtime logging                                                             |
 
 :::warning
 Excel will be force-closed during installation. Save all open workbooks before running the command.
@@ -158,9 +158,9 @@ Excel will be force-closed during installation. Save all open workbooks before r
 
 ### Download Installation Files
 
-| File | Download URL |
-| ---- | ------------ |
-| `install.ps1` | [install.ps1](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1) |
+| File           | Download URL                                                                                    |
+| -------------- | ----------------------------------------------------------------------------------------------- |
+| `install.ps1`  | [install.ps1](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/install.ps1)   |
 | `manifest.xml` | [manifest.xml](https://taosinstallers.blob.core.windows.net/tdengine-excel-add-in/manifest.xml) |
 
 On a machine with internet access, download the files (they can be saved to different directories). Create the directories first if they do not exist:
@@ -181,13 +181,13 @@ Replace `https://idmp.tdengine.net:6034`, `C:\Scripts\install.ps1`, and `C:\mani
 
 **Parameters:**
 
-| Parameter | Description |
-| --------- | ----------- |
-| `-ManifestDir` | Local directory containing `manifest.xml`; when set, the manifest is not downloaded from the network |
-| `-Action Install` | Runs the installation |
-| `-ForceCloseExcel` | Force-closes Excel during installation. Save your work before running. |
-| `-Url` | The IDMP HTTPS service address |
-| `-EnableLogging` | Enables installation and runtime logging |
+| Parameter          | Description                                                                                          |
+| ------------------ | ---------------------------------------------------------------------------------------------------- |
+| `-ManifestDir`     | Local directory containing `manifest.xml`; when set, the manifest is not downloaded from the network |
+| `-Action Install`  | Runs the installation                                                                                |
+| `-ForceCloseExcel` | Force-closes Excel during installation. Save your work before running.                               |
+| `-Url`             | The IDMP HTTPS service address                                                                       |
+| `-EnableLogging`   | Enables installation and runtime logging                                                             |
 
 :::warning
 PowerShell must be run as Administrator. Excel will be force-closed during installation. Save all open workbooks before running the command.
