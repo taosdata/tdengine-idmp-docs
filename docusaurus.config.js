@@ -121,6 +121,7 @@ const config = {
   url: 'https://idmpdocs.taosdata.com',
   trailingSlash: true,
   baseUrl: docsBaseUrl,
+  onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
   markdown: {
     hooks: {

@@ -62,11 +62,11 @@ Docker Desktop must be running before you start the deployment.
 
 #### Download the Installer
 
-Download [TDengineSetup-x64.exe](https://downloads.tdengine.com/apex/latest/ApexSetup-x64.exe) and double-click to start the deployment.
+Download [TDengineSetup-x64.exe](https://downloads.tdengine.com/apex/latest/TDengineSetup-x64.exe) and double-click to start the deployment.
 
 #### Run the Installer
 
-Locate **ApexSetup-x64.exe**, right-click the file, and select **Run as administrator**.
+Locate **TDengineSetup-x64.exe**, right-click the file, and select **Run as administrator**.
 
 If prompted by Windows User Account Control (UAC), click **Yes**.
 
