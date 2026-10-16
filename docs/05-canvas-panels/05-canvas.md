@@ -3,6 +3,9 @@ title: 画布
 sidebar_label: 画布
 ---
 
+import LoopVideo from '@site/src/components/LoopVideo';
+import combineUrl from './images/canvas-combine.mp4';
+
 # 5.5 画布
 
 ## 5.5.1 设置画布属性
@@ -16,7 +19,7 @@ sidebar_label: 画布
 
 选择多个图元时，你可以设置画布的布局，可以进行对齐操作：左对齐、右对齐、顶部对齐、底部对齐、垂直居中、水平居中、等距分布左右对齐、等距分布上下对齐、相同大小、格式刷。
 
-![布局](./images/canvas-combine.gif)
+<LoopVideo src={combineUrl} label="布局" />
 
 ## 5.5.3 查看图元列表
 

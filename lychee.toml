@@ -29,4 +29,8 @@ exclude = [
   'your-maven-repo',
   'your-pypi-server',
   '\[host',
+  # Admin portals bot-wall CI runners (redirect loops / 403) while staying
+  # valid for browsers; skipping them here keeps the reader-facing links.
+  'admin\.google\.com',
+  'entra\.microsoft\.com',
 ]

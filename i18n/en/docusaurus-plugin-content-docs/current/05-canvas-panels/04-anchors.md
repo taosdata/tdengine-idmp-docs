@@ -3,6 +3,10 @@ title: Anchor Points
 sidebar_label: Anchor Points
 ---
 
+import LoopVideo from '@site/src/components/LoopVideo';
+import anchorUrl from './images/canvas-anchor.mp4';
+import handlerUrl from './images/canvas-handler.mp4';
+
 # 5.4 Anchor Points
 
 Anchor points are the "magic buckles" that keep device connections intact, ensuring that when you move device elements, the connected pipelines automatically adjust to maintain a tidy layout.
@@ -15,7 +19,7 @@ Press the keyboard shortcut "A", hover the mouse over a symbol, and click the le
 
 Press the keyboard shortcut "A", hover the mouse over an anchor point, and click the left mouse button to delete the anchor point.
 
-![Delete Anchor Point](./images/canvas-anchor.gif)
+<LoopVideo src={anchorUrl} label="Delete Anchor Point" />
 
 ## 5.4.2 Moving Anchor Points (G)
 
@@ -31,7 +35,7 @@ Handles allow precise adjustment of local shapes without damaging the shape of o
 2. **Adjust the curve arc and curvature**: Dragging the handle changes its length and angle, directly adjusting the degree of curve bending: the longer the handle, the gentler the curvature; the shorter the handle, the steeper the curvature.
 3. **Achieve smooth transitions and sharp corner switching**: Symmetrical handles on both sides can create continuous, smooth curves; independently adjustable handles on one side can achieve a mix of polyline + curve at the same anchor point, meeting complex shape requirements.
 
-![Handles](./images/canvas-handler.gif)
+<LoopVideo src={handlerUrl} label="Handles" />
 
 ### 5.4.3.2 Adding Handles (H) / Deleting Handles (D)
 
