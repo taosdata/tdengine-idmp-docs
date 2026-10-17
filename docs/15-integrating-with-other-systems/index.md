@@ -32,5 +32,6 @@ TDengine IDMP 打破了这一壁垒：
 | **嵌入面板与仪表盘** | 将 IDMP 可视化内容嵌入外部 Web 应用                                                                                                                          |
 | **IDMP CLI**         | 面向终端、脚本与 Agent 的命令行工具，提供配置、认证、命令发现与安全执行                                                                                      |
 | **连接开源版 TSDB**   | 将 IDMP 连接到本地已有的 TDengine TSDB 实例（包括开源版），含配置步骤与功能限制说明                                                                          |
+| **WorkBuddy 集成**  | 在 WorkBuddy 中安装 TDengine 连接器与专家插件，用自然语言操作 IDMP 工业数据                                                                                  |
 
 <DocCardList />
