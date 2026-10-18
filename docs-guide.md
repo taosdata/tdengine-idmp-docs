@@ -273,7 +273,7 @@ idmp-v{SDK_VERSION}.tar.gz      ← no escaping needed inside code blocks
 Before pushing, run the local check script:
 
 ```bash
-.agent/skills/doc-writing/scripts/check-local.sh
+.agent/skills/idmp-doc-writing/scripts/check-local.sh
 ```
 
 This runs markdownlint, typos, and AutoCorrect locally. Fix all issues before opening a PR.
@@ -351,7 +351,7 @@ Claude will write the page, apply all format rules, and save it directly to the 
 2. **Verify terminology:** Confirm any terms you are unsure about against the live UI in both Chinese and English.
 3. **Draft the page:** Ask Claude to write the documentation page based on the UI exploration. Specify the target file path.
 4. **Review and refine:** Read the draft and ask Claude to adjust tone, add examples, or expand sections.
-5. **Run CI checks:** Ask Claude to run `.agent/skills/doc-writing/scripts/check-local.sh` and fix any issues.
+5. **Run CI checks:** Ask Claude to run `.agent/skills/idmp-doc-writing/scripts/check-local.sh` and fix any issues.
 
 ### Useful Prompts
 

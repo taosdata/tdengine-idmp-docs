@@ -10,13 +10,13 @@
 
 ### 文档编写 (doc-writing)
 
-**位置：** `.agent/skills/doc-writing/`
+**位置：** `.agent/skills/idmp-doc-writing/`
 
 **用途：** 编写符合项目规范的 Markdown 文档
 
 **使用方式：**
 
-- 使用 `/doc-writing` 命令
+- 使用 `/idmp-doc-writing` 命令
 
 **主要规范：**
 
@@ -28,7 +28,7 @@
 **本地检查：**
 
 ```bash
-bash .agent/skills/doc-writing/scripts/check-local.sh
+bash .agent/skills/idmp-doc-writing/scripts/check-local.sh
 ```
 
 ## 文档质量检查
@@ -50,8 +50,8 @@ bash .agent/skills/doc-writing/scripts/check-local.sh
 
 如果你是 AI Agent，在编写或修改文档时：
 
-1. 先读取 `.agent/skills/doc-writing/SKILL.md` 了解完整规范
-2. 参考 `.agent/skills/doc-writing/CHEATSHEET.md` 快速查阅常见场景
+1. 先读取 `.agent/skills/idmp-doc-writing/SKILL.md` 了解用户手册工作流
+2. 参考 `.agent/skills/idmp-doc-writing/CHEATSHEET.md` 快速查阅常见场景
 3. 遵循项目的文档编写规范
 4. 完成后简要说明修改内容
 

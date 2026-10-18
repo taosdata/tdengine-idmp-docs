@@ -19,7 +19,7 @@ static/                                            # Static assets served at sit
 static/docs-img/                                   # Shared images, referenced as /docs-img/...
 src/                                               # Docusaurus site source (pages, components)
 .github/workflows/                                 # CI: check_docs.yaml, build_docs.yaml
-.agent/skills/doc-writing/                         # Doc-writing skill (SKILL.md, CHEATSHEET.md)
+.agent/skills/idmp-doc-writing/                    # User-manual skill (SKILL.md, CHEATSHEET.md)
 docs-guide.md                                      # Full documentation writing guide
 justfile                                           # Task runner recipes
 mise.toml                                          # Node 24, pnpm 10, just (version pins)
@@ -52,7 +52,7 @@ just install        # pnpm install
 
 ## Documentation Conventions
 
-Read `.agent/skills/doc-writing/SKILL.md` for the full rules. The critical points are:
+Read `.agent/skills/idmp-doc-writing/SKILL.md` for the user-manual workflow. The critical points are:
 
 ### File Naming
 
@@ -157,6 +157,6 @@ All checks must pass before a PR can be merged.
 ## Key References
 
 - Full writing guide: [`docs-guide.md`](./docs-guide.md)
-- Doc-writing skill: [`.agent/skills/doc-writing/SKILL.md`](./.agent/skills/doc-writing/SKILL.md)
-- Quick-reference cheatsheet: [`.agent/skills/doc-writing/CHEATSHEET.md`](./.agent/skills/doc-writing/CHEATSHEET.md)
+- User-manual skill: [`.agent/skills/idmp-doc-writing/SKILL.md`](./.agent/skills/idmp-doc-writing/SKILL.md)
+- Quick-reference cheatsheet: [`.agent/skills/idmp-doc-writing/CHEATSHEET.md`](./.agent/skills/idmp-doc-writing/CHEATSHEET.md)
 - Site config: [`docusaurus.config.js`](./docusaurus.config.js)

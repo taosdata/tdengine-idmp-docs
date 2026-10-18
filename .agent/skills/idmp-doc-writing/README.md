@@ -1,10 +1,11 @@
-# doc-writing
+# idmp-doc-writing
 
-Write and review TDengine IDMP Markdown documentation following project CI standards.
+Create and maintain TDengine IDMP end-user manuals and Docusaurus product documentation.
 
 ## Description
 
-This skill helps AI agents write high-quality Markdown documentation that passes all CI checks:
+This skill helps AI agents write user-facing IDMP documentation that passes all CI checks:
+
 - markdownlint (format validation)
 - typos (spell checking)
 - AutoCorrect (Chinese formatting)
@@ -18,16 +19,19 @@ This skill helps AI agents write high-quality Markdown documentation that passes
 ## Usage
 
 ### Claude Code
-```
-/doc-writing
+
+```text
+/idmp-doc-writing
 ```
 
 ### Other AI Agents
-Read `SKILL.md` as context when working with documentation.
+
+Read `SKILL.md` for IDMP user manuals, operation guides, administration guides, API references, translations, or documentation CI failures. Use `idmp-doc-fs` for RS, FS, requirements, architecture, and technical design documents.
 
 ### Manual Validation
+
 ```bash
-bash .agent/skills/doc-writing/scripts/check-local.sh
+bash .agent/skills/idmp-doc-writing/scripts/check-local.sh
 ```
 
 ## Key Rules
@@ -41,11 +45,12 @@ bash .agent/skills/doc-writing/scripts/check-local.sh
 ## CI Integration
 
 This skill aligns with `.github/workflows/check_docs.yaml` which runs:
+
 - markdownlint-cli / markdownlint-cli2
 - typos (with `.github/workflows/typos.toml`)
 - AutoCorrect
 
 ## References
 
-- Agent Skills specification: https://agentskills.io/specification
+- [Agent Skills specification](https://agentskills.io/specification)
 - Project CI workflow: `.github/workflows/check_docs.yaml`

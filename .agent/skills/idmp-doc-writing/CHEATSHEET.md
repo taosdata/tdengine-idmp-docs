@@ -125,7 +125,7 @@ https://example.com
 
 ## Tabs 组件
 
-```markdown
+````markdown
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -147,10 +147,11 @@ import TabItem from '@theme/TabItem';
 </Tabs>
 
 ✅ 要点：
+
 - 组件标签前后要有空行
 - </TabItem> 前要有空行
 - value 用于代码标识，label 用于显示
-```
+````
 
 ## 提示框
 
@@ -194,7 +195,7 @@ import TabItem from '@theme/TabItem';
 
 ## 文件命名
 
-```
+```text
 ✅ 正确：
 docs/
 ├── 01-intro/
@@ -230,7 +231,7 @@ docs/
 
 ```bash
 # 运行本地检查
-bash .agent/skills/doc-writing/scripts/check-local.sh
+bash .agent/skills/idmp-doc-writing/scripts/check-local.sh
 ```
 
 ## 中文技术文档语言风格

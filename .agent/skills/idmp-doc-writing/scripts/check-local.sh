@@ -238,6 +238,6 @@ else
     echo ""
     echo "提示:"
     echo "  - 运行 'bash check-local.sh --fix' 尝试自动修复"
-    echo "  - 查看 .claude/skills/doc-writing/SKILL.md 了解规范"
+    echo "  - 查看 .agent/skills/idmp-doc-writing/SKILL.md 了解规范"
     exit 1
 fi
