@@ -2,11 +2,10 @@
 title: Connecting to TDengine Community Edition
 sidebar_label: Connecting to Community TSDB
 ---
-
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# 15.5 Connecting to TDengine Community Edition
+# 15.5 Connecting to TDengine TSDB
 
 TDengine IDMP can connect to an existing local TDengine TSDB instance — whether Enterprise or Community Edition — by simply modifying the IDMP configuration file.
 
@@ -18,10 +17,10 @@ This section describes how to connect IDMP to an **existing** TSDB instance. For
 
 The connection between IDMP and TSDB is configured in a single YAML file:
 
-| Operating System | Configuration File Path |
-| ---------------- | ----------------------- |
+| Operating System | Configuration File Path                       |
+| ------------------ | ------------------------------------------- |
 | Linux / macOS    | `/usr/local/taos/idmp/config/application.yml` |
-| Windows          | `C:\TDengine\idmp\config\application.yml` |
+| Windows          | `C:\TDengine\idmp\config\application.yml`     |
 
 In Docker deployments, this file is managed through container volume mounts or environment variables. The configuration parameters are identical to the direct-install scenario.
 
@@ -42,12 +41,12 @@ tda:
 
 Key parameters:
 
-| Parameter       | Description |
-| --------------- | ----------- |
-| `url`           | TDengine TSDB REST API address, default port `6041`. If TSDB is deployed on a different machine, replace `localhost` with the actual IP address or hostname |
-| `username`      | TDengine TSDB username |
-| `password`      | TDengine TSDB password |
-| `explorer-url`  | taosExplorer access URL, default port `6060`. **For remote IDMP access, this must be set to the server's actual IP address or domain name**, otherwise the browser cannot connect to the Explorer service |
+| Parameter      | Description                                                                                                                                                                                               |
+| ---------------- | ------------------------------------ |
+| `url`          | TDengine TSDB REST API address, default port `6041`. If TSDB is deployed on a different machine, replace `localhost` with the actual IP address or hostname                                               |
+| `username`     | TDengine TSDB username                                                                                                                                                                                    |
+| `password`     | TDengine TSDB password                                                                                                                                                                                    |
+| `explorer-url` | taosExplorer access URL, default port `6060`. **For remote IDMP access, this must be set to the server's actual IP address or domain name**, otherwise the browser cannot connect to the Explorer service |
 
 (Optional) Test the connection using the following command:
 

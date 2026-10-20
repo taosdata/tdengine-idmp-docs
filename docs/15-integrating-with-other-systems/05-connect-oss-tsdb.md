@@ -5,7 +5,7 @@ sidebar_label: 连接开源版 TSDB
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-# 15.5 连接开源版 TSDB
+# 15.5 连接 TDengine TSDB
 
 TDengine IDMP 支持连接用户本地已经部署的 TDengine TSDB 实例，不论是商业版（Enterprise）还是开源版（Community），只需修改 IDMP 的配置文件即可完成对接。
 

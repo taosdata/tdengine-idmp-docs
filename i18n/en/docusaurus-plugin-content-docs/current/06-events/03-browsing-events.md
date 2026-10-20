@@ -17,6 +17,8 @@ The toolbar provides search, filtering, and data export functions for the event 
 
 | Control | Description |
 |---|---|
+| **Filter** | Add multiple filter conditions and combine them with AND/OR logic to filter the event list |
+| **Group** | Add event attributes as grouping conditions to display the event list in groups |
 | **Search** | Search events by name or other text |
 | **Column selector** | Show or hide optional columns. The **Path** column (element hierarchy path) is hidden by default |
 | **Refresh** | Reload the events list |
