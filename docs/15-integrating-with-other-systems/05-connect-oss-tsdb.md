@@ -1,6 +1,6 @@
 ---
-title: 连接开源版 TSDB
-sidebar_label: 连接开源版 TSDB
+title: 连接 TDengine TSDB
+sidebar_label: 连接 TDengine TSDB
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';

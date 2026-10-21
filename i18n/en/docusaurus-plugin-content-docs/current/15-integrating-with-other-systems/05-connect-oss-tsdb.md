@@ -1,6 +1,6 @@
 ---
-title: Connecting to TDengine Community Edition
-sidebar_label: Connecting to Community TSDB
+title: Connecting to TDengine TSDB
+sidebar_label: Connecting to TDengine TSDB
 ---
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
