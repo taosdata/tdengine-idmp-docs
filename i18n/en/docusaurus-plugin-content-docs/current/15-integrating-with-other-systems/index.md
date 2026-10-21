@@ -33,5 +33,6 @@ Together these integration points mean that IDMP data can flow freely into AI mo
 | **IDMP CLI** | Command-line tool for terminals, scripts, and agents with config, auth, command discovery, and safe execution |
 | **Connecting to Community TSDB** | Connect IDMP to an existing local TDengine TSDB instance (including Community Edition), with configuration steps and known limitations |
 | **WorkBuddy Integration** | Install the TDengine Connector and expert plugins in WorkBuddy and operate IDMP industrial data in natural language |
+| **[Integrating with CesiumJS](./07-integrating-with-cesiumjs.md)** | Visualize TDengine time-series data on a CesiumJS globe |
 
 <DocCardList />

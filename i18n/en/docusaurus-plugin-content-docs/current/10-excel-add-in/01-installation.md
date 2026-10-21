@@ -14,24 +14,15 @@ The TDengine IDMP Excel Add-In allows you to retrieve time-series data and eleme
 
 ### HTTPS Requirement
 
-The Excel Add-In connects to IDMP over **HTTPS only**. Before installing, ensure that the IDMP HTTPS service is enabled and accessible (default port: **6034**).
+The Excel Add-In connects to IDMP over **HTTPS only**. The default port is **6034**.
 
-To enable HTTPS, add the following to the IDMP configuration file (`application.yml`):
+IDMP terminates TLS at the frontend nginx. Clients reach nginx over HTTPS, and nginx reverse-proxies to the backend over HTTP. The installation package and Docker images already expose this HTTPS endpoint. The backend does not enable TLS. On a native install, `application.yml` keeps `ssl-port: -1` and `ssl.enabled: false`.
 
-```yaml
-quarkus:
-  http:
-    port: 6042 # IDMP HTTP service port
-    ssl-port: 6034 # IDMP HTTPS service port
-    insecure-requests: enabled # Allow both HTTP and HTTPS
-    ssl:
-      enabled: true # Enable SSL/HTTPS
-      certificate:
-        files: /usr/local/taos/idmp/config/certbundle.pem # Certificate file path
-        key-files: /usr/local/taos/idmp/config/privkey.pem # Private key file path
-```
+After installation, confirm that clients can open `https://<server-address>:6034`.
 
-**Built-in test certificate.** IDMP ships with a test certificate valid for 3 months, bound to the domain `idmp.tdengine.net`. This certificate is suitable for evaluation and testing. It is not recommended for production use. To configure a self-signed certificate with a longer validity period, see [Certificate Configuration](./02-certificate-configuration.md).
+**Built-in test certificate.** The package and images include a test certificate valid for 3 months and bound to `idmp.tdengine.net`. This certificate is intended solely for demonstration and testing. **Under no circumstances shall it be deployed in production environments; otherwise, severe security vulnerabilities may arise.** For how to replace the HTTPS certificate in production, see [Chapter 14, section 14.3.3 Configuration File Reference: TLS/HTTPS Certificate Configuration](../14-administration/03-installation/03-config-reference.md#tlshttps-certificate-configuration).
+
+For a self-signed certificate with a longer validity period, see [Certificate Configuration](./02-certificate-configuration.md).
 
 If you are using the built-in test certificate, add the following entry to the hosts file on the client machine (replace the IP with your actual server address):
 

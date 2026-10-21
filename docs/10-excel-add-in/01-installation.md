@@ -14,24 +14,15 @@ TDengine IDMP Excel 插件让您能够直接在 Microsoft Excel 中检索时序�
 
 ### HTTPS 要求
 
-Excel 插件仅通过 **HTTPS** 连接 IDMP。安装前，请确保 IDMP 的 HTTPS 服务已启用且可访问（默认端口：**6034**）。
+Excel 插件仅通过 **HTTPS** 连接 IDMP。默认端口为 **6034**。
 
-要启用 HTTPS，请在 IDMP 配置文件（`application.yml`）中添加以下内容：
+IDMP 的 TLS 在前端 nginx 终结：客户端通过 HTTPS 访问前端，nginx 再以 HTTP 反向代理到后端。安装包和 Docker 镜像默认已提供该 HTTPS 入口。后端不启用 TLS，本机安装时 `application.yml` 中 `ssl-port` 为 `-1`、`ssl.enabled` 为 `false`。
 
-```yaml
-quarkus:
-  http:
-    port: 6042 # IDMP HTTP 服务端口
-    ssl-port: 6034 # IDMP HTTPS 服务端口
-    insecure-requests: enabled # 允许 HTTP 和 HTTPS 同时工作
-    ssl:
-      enabled: true # 启用 SSL/HTTPS
-      certificate:
-        files: /usr/local/taos/idmp/config/certbundle.pem # 证书文件路径
-        key-files: /usr/local/taos/idmp/config/privkey.pem # 私钥文件路径
-```
+安装完成后，确认客户端可以访问 `https://<服务器地址>:6034`。
 
-**内置测试证书：** IDMP 附带一个有效期为 3 个月的测试证书，绑定到域名 `idmp.tdengine.net`。该证书适用于评估和测试，不建议在生产环境中使用。如需配置更长有效期的自签名证书，请参阅 [Excel 插件证书配置](./02-certificate-configuration.md)。
+**内置测试证书：** 安装包和镜像内置一个有效期为 3 个月的测试证书，绑定域名 `idmp.tdengine.net`。该证书仅适用于功能演示与测试，**生产环境决不能使用，否则有严重安全漏洞**。生产环境替换 HTTPS 证书的方法，参见[第 14 章 14.3.3「配置文件参考」的 TLS/HTTPS 证书配置](../14-administration/03-installation/03-config-reference.md#tlshttps-证书配置)。
+
+更长有效期的自签名证书见 [Excel 插件证书配置](./02-certificate-configuration.md)。
 
 如果使用内置测试证书，请在客户端机器的 hosts 文件中添加以下条目（将 IP 替换为您的实际服务器地址）：
 
