@@ -33,4 +33,7 @@ exclude = [
   # valid for browsers; skipping them here keeps the reader-facing links.
   'admin\.google\.com',
   'entra\.microsoft\.com',
+  # DingTalk open platform rejects lychee's HTTP/2 handshake
+  # ("HTTP/2 protocol error") while the page loads in browsers.
+  'open\.dingtalk\.com',
 ]
