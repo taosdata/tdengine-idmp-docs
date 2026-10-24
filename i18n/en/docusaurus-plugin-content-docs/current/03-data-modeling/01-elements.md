@@ -238,7 +238,7 @@ Once a template is created, its detail page shows the following tabs. Each tab m
 | **Panel Template** | Standard panels (Trend Chart, Gauge, Table, etc.) auto-created for each element. See [Panel and Dashboard Templates](../04-visualization/07-panel-dashboard-templates.md). |
 | **RT Analysis Template** | Reusable RT analysis rules that run on every element of this type. See [RT Analysis Templates](../07-real-time-analysis/07-analysis-templates.md). |
 | **Dashboard Template** | Standard dashboards auto-associated with each element. See [Panel and Dashboard Templates](../04-visualization/07-panel-dashboard-templates.md). |
-| **Notification Rule Template** | The default notification rule applied to elements created from this template, including contact point, resend interval, escalation settings, and message template. |
+| **Notification Rule Template** | A set of notification rules defined on this template and inherited automatically by every element created from it, including contact points, non-repetition and resend intervals, escalation settings, and message templates; each rule can individually set **Enable notification rules when created from template**. See [Notification Rule Template](../06-events/05-alerts-and-notifications.md#654-notification-rule-template). |
 
 ### 3.1.6.6 Creating an Element Template
 

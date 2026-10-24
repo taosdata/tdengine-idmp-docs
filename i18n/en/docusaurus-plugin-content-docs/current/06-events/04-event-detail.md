@@ -22,7 +22,7 @@ The General Information toolbar provides the following action controls.
 | **Add to Group** | Add this event to one or more custom groups for quick access from the left sidebar |
 | **Root Cause Analysis** | Open a root cause analysis view for this event |
 | **Analysis Workbench** |  Add to Analysis Workbench for the event's time range on its associated element |
-| **Resend** | Manually resend a notification for this event to its configured contact points |
+| **Resend** | Manually re-dispatch notifications for this event — one resend task is created for each of the event's alert instances; an explicit error is shown when the event has been acknowledged, has been closed, or has no resendable notification instances |
 
 ### 6.4.1.2 Fields
 
@@ -79,7 +79,9 @@ The Annotations tab lets operators add text annotations related to the event —
 
 ### 6.4.2.4 Notification Record
 
-The Notification Record shows a complete log of all notifications sent for this event. Each entry shows the contact point name, the delivery timestamp, and the delivery status.
+The Notification Record shows a complete audit log of all notifications for this event, one row per actual delivery. Each entry shows the rule name snapshot and its source at notification time, the contact point actually used and its role (primary / escalation), the notification time, the delivery type (Alert / Resend / Recovery), the result, and the error message. Records suppressed by rules without being sent are marked **Suppressed** with the reason; pending records show the planned time. When the same event matches multiple notification rules, or a rule resends multiple times, each occupies its own row without merging; each row can be expanded to view the details of individual technical attempts.
+
+See [Alerts and Notifications — Notification Records](./05-alerts-and-notifications.md#6536-notification-records) for details.
 
 ### 6.4.2.5 Child Events
 

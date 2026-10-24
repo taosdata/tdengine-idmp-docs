@@ -34,7 +34,7 @@ The following fields define the basic properties and behavioral rules of the eve
 | **Allow Acknowledgment** | If enabled, events created from this template require human acknowledgment. Unacknowledged active events will continue to trigger re-notifications according to the element's notification rule |
 | **Reason Code** | An optional enumeration set that classifies the cause of the event. Must be defined in advance under **Libraries → Enumerations** |
 | **Reason Code Value** | A specific value within the reason code enumeration, providing a more detailed cause description |
-| **Minimum Notification Interval** | The minimum time between consecutive notifications for events from the same RT analysis. Prevents notification overload when an RT analysis fires events frequently — for example, if set to 20 minutes, only one notification is sent per 20-minute window regardless of how many events trigger |
+| **Minimum Notification Interval** | A legacy field retained for compatibility only. Cross-event notification suppression is now controlled by each notification rule's **Non-Repetition Interval** — see [Alerts and Notifications](./05-alerts-and-notifications.md#6533-non-repetition-window) |
 | **Description** | Free-text description of the template's purpose |
 
 ### 6.1.2.2 Event Naming Pattern
