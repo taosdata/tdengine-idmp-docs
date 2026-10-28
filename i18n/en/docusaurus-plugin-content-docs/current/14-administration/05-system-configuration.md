@@ -22,6 +22,7 @@ Basic Configuration contains system-level global settings:
 | **Week Start** | Whether the first day of the week is Sunday or Monday |
 | **Element Sort Rule** | The global default element sort rule: System Default, Element Name, or Creation Time |
 | **System Color** | Configuration of the default system color |
+| **Quality Bit Config** | Global mapping from quality codes to quality categories (Good/Questionable/Bad); see details below |
 
 ### Element Sort Rule Specification
 
@@ -38,6 +39,76 @@ This setting only serves as the **global default**. In the element tree, users c
 :::
 
 Click the edit (pencil) icon to modify these settings.
+
+### Quality Bit Config Specification
+
+The Quality Bit Config defines the global mapping from quality codes to quality categories: using **range rules** (start code - end code → category), it classifies the integer quality codes carried by data into three quality categories — **Good**, **Questionable**, and **Bad** — and specifies a default category for codes that match no rule. Once an element attribute is bound to quality data, the system automatically reads this configuration to evaluate data quality: panels such as trend, bar, scatter, pie, table, stat, and gauge, as well as the attribute list, render data points by quality category, helping users quickly identify untrustworthy data.
+
+Quality codes come from the quality column configured in an attribute's data reference, in the format `connection/database/table/column:quality_column`. The quality column must be of type `INT`. Data ingested via OPC UA or CSV import can also carry quality bits. See [Attributes](../03-data-modeling/02-attributes.md).
+
+**Viewing the Configuration**
+
+The Quality Bit Config item is displayed in read-only mode by default, showing a summary of the ranges (for example, `1 good / 1 questionable / 1 bad ranges`), the unmatched default category, and each range's name, category, and range.
+
+Click the edit (pencil) icon to enter edit mode. This requires permission to manage system configuration.
+
+**Editing the Configuration**
+
+Each range rule contains the following fields:
+
+| Field | Description |
+| --- | --- |
+| **Name** | Optional display name of the range or quality code (e.g., `I/O Timeout`), up to 100 characters. When a name is configured, panels and tooltips display the quality by name; otherwise the raw code is shown |
+| **Category** | The quality category assigned to quality codes within the range: `Good`, `Questionable`, or `Bad` |
+| **Range** | A closed interval from the start code to the end code, both non-negative integers. A single code can be expressed as `246 - 246` |
+
+Actions at the top of the editor:
+
+| Action | Description |
+| --- | --- |
+| **Unmatched default category** | The category applied to quality codes that fall outside all ranges. Defaults to `Bad` |
+| **Add Range** (+ icon) | Appends a row to the table, defaulting to range `0 - 0` and category `Bad` |
+| **Restore Defaults** (restore icon) | Resets the editor content to the built-in default configuration. You still need to click save for it to take effect |
+| **Delete** (trash icon in each row) | Deletes the corresponding range row |
+
+**Validation Rules**
+
+The following rules are validated on save. Violations highlight the offending rows in red and show a message below the table, and saving is blocked:
+
+- The start code must not be greater than the end code
+- Ranges must not overlap. To express "a large range with a few exceptional codes", split it into multiple ranges
+
+**Default Configuration**
+
+| Range | Category |
+| --- | --- |
+| 0 - 0 | Good |
+| 1 - 1 | Questionable |
+| 2 - 2 | Bad |
+
+The unmatched default category is `Bad`, meaning any unconfigured quality code is treated as bad quality. If your site uses the native quality code system of PI, OPC, or a similar system (for example, `246` for I/O Timeout or `308` for Doubtful), you can add those codes as named range rules as needed.
+
+If the System Log is enabled, a confirmation dialog appears when you click save, where you can enter an operation reason. After the save succeeds, the change is recorded in the system log.
+
+**Display Effects**
+
+The configuration takes effect for all online users immediately after saving. Open panels and the attribute list re-render automatically within seconds according to the new configuration — no page refresh needed.
+
+| Quality Category | Chart Panels (Trend/Bar/Scatter/Pie) | Stat/Gauge | Table and Attribute List |
+| --- | --- | --- | --- |
+| Good | Drawn normally in the original series color | No marker | No marker |
+| Questionable | Marked in orange but still drawn | Orange `!` appended to the value | Orange `!` next to the value |
+| Bad | Greyed out | Red `*` appended to the value | Red `*` next to the value |
+
+Additional notes:
+
+- Chart panels hide bad-quality data points by default. Click the **Show Abnormal Points** button to display them greyed out. Questionable points are always shown.
+- The quality column in table panels and the attribute history dialog displays `code name` (for example, `308 Doubtful`); if no name is configured, only the code is shown.
+- Hovering over the quality marker next to the latest value in the attribute list shows a tooltip with `Quality: code name`.
+
+**Permissions**
+
+The Quality Bit Config is readable by all logged-in users for quality rendering in panels and the attribute list; only administrators can modify it.
 
 ## 14.5.2 Notification Channel
 

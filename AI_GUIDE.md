@@ -4,13 +4,14 @@
 
 ## 配置目录
 
-- `.agent/` - 通用 AI Agent 配置（兼容 GPT、Cursor 等）
+- 仓库根目录 `.skills/` - 项目技能的唯一维护位置
+- 仓库根目录 `.agents/skills`、`.claude/skills` - 指向 `.skills/` 的技能入口
 
 ## 可用 Skills
 
-### 文档编写 (doc-writing)
+### 用户手册编写 (idmp-doc-writing)
 
-**位置：** `.agent/skills/idmp-doc-writing/`
+**位置：** 仓库根目录 `.skills/idmp-doc-writing/`（从本文档目录访问为 `../.skills/idmp-doc-writing/`）
 
 **用途：** 编写符合项目规范的 Markdown 文档
 
@@ -28,7 +29,7 @@
 **本地检查：**
 
 ```bash
-bash .agent/skills/idmp-doc-writing/scripts/check-local.sh
+rtk proxy bash ../.skills/idmp-doc-writing/scripts/check-local.sh
 ```
 
 ## 文档质量检查
@@ -50,24 +51,22 @@ bash .agent/skills/idmp-doc-writing/scripts/check-local.sh
 
 如果你是 AI Agent，在编写或修改文档时：
 
-1. 先读取 `.agent/skills/idmp-doc-writing/SKILL.md` 了解用户手册工作流
-2. 参考 `.agent/skills/idmp-doc-writing/CHEATSHEET.md` 快速查阅常见场景
+1. 先读取 `../.skills/idmp-doc-writing/SKILL.md` 了解用户手册工作流
+2. 参考 `../.skills/idmp-doc-writing/CHEATSHEET.md` 快速查阅常见场景
 3. 遵循项目的文档编写规范
 4. 完成后简要说明修改内容
 
 ## 目录结构
 
 ```text
-.
-├── .agent/                 # 通用 AI 配置（主目录）
-│   ├── README.md
-│   └── skills/
-│       └── doc-writing/    # 文档编写 skill（实际文件）
-├── .claude/                # Claude Code 配置
-│   └── skills/             # 软链接到 .agent/skills
-└── .github/
-    └── workflows/
-        ├── check_docs.yaml # CI 检查流程
-        ├── build_docs.yaml # CI 构建流程
-        └── ...
+IDMP 仓库根目录/
+├── .skills/
+│   ├── idmp-doc-writing/   # 用户手册 skill（实际文件）
+│   └── doc/                # RS、FS 和技术方案 skill（idmp-doc-fs）
+├── .agents/skills         # 软链接到 ../.skills
+├── .claude/skills         # 软链接到 ../.skills
+└── tdengine-idmp-docs/
+    └── .github/workflows/
+        ├── check_docs.yaml
+        └── build_docs.yaml
 ```

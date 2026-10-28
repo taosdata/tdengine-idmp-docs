@@ -179,7 +179,7 @@ These rules are enforced by CI (markdownlint, AutoCorrect, typos).
 - ATX style (`#`) only — no underline-style headings
 - Space after `#`: `## Title` not `##Title`
 - No indentation before `#`
-- Do not number headings manually (e.g., avoid `## 4.1.1 Title` in `index.md`)
+- Follow `AGENTS.md`: use dot-separated section numbers matching the page's position, with at most four segments. Set `sidebar_label` without the number to avoid duplication in the sidebar.
 
 ### Code Blocks
 
@@ -273,7 +273,7 @@ idmp-v{SDK_VERSION}.tar.gz      ← no escaping needed inside code blocks
 Before pushing, run the local check script:
 
 ```bash
-.agent/skills/idmp-doc-writing/scripts/check-local.sh
+rtk proxy bash ../.skills/idmp-doc-writing/scripts/check-local.sh
 ```
 
 This runs markdownlint, typos, and AutoCorrect locally. Fix all issues before opening a PR.
@@ -339,7 +339,7 @@ Once terminology is verified, ask Claude to draft the page:
 ```text
 Based on what you just saw in the UI, write a Chinese documentation page
 for the Analyses tab. Follow the doc-writing skill rules: ATX headings,
-no numbered headings, bold+colon+space, Chinese-English spacing.
+section numbers matching AGENTS.md, bold+colon+space, Chinese-English spacing.
 Save it to docs/07-real-time-analysis/08-new-feature.md
 ```
 
@@ -351,7 +351,7 @@ Claude will write the page, apply all format rules, and save it directly to the 
 2. **Verify terminology:** Confirm any terms you are unsure about against the live UI in both Chinese and English.
 3. **Draft the page:** Ask Claude to write the documentation page based on the UI exploration. Specify the target file path.
 4. **Review and refine:** Read the draft and ask Claude to adjust tone, add examples, or expand sections.
-5. **Run CI checks:** Ask Claude to run `.agent/skills/idmp-doc-writing/scripts/check-local.sh` and fix any issues.
+5. **Run CI checks:** Ask Claude to run `rtk proxy bash ../.skills/idmp-doc-writing/scripts/check-local.sh` from the documentation root and fix any issues.
 
 ### Useful Prompts
 

@@ -36,4 +36,7 @@ exclude = [
   # DingTalk open platform rejects lychee's HTTP/2 handshake
   # ("HTTP/2 protocol error") while the page loads in browsers.
   'open\.dingtalk\.com',
+  # openapi-generator.tech is hosted on GitHub Pages, which the CI runner
+  # network cannot reach ("Connection failed") while the site loads in browsers.
+  'openapi-generator\.tech',
 ]
