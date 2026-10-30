@@ -61,12 +61,12 @@ Example: `TDengine/idmp_sample_utility/em-17/location`
 
 - **Row selection**: **Unique row** requires exactly one result row. **Latest row by timestamp** also requires a **Timestamp column**; validation fails if multiple rows share the latest timestamp.
 - **Filters**: Click **Add condition** and enter the column name, value type, and value. Up to 16 equality conditions are supported, joined with AND or OR. AND takes precedence over OR.
-- **Automatic synchronization**: Enabled by default. IDMP periodically reads the external value and updates the local tag in TDengine. Turning it off stops periodic updates. If a read fails, returns no rows, or returns NULL, the last successful value is retained.
+- **Automatic synchronization**: Enabled by default. IDMP periodically reads the external value and updates the local tag in TDengine. Turning it off stops periodic updates. If a query returns no rows or returns NULL, IDMP updates the local tag with the attribute's configured default value. If no default is configured, the last successful value is retained. Connection or query execution failures also retain the last successful value without falling back to the default.
 
 Click **Check** to validate the value before saving. For connection setup, see [External Data Source Connections](../12-data-ingestion/01-connections.md#1212-external-data-source-connections).
 
 :::note
-Existing SQL tag configurations remain supported, including common read-only expressions such as `IN`, `BETWEEN`, `CASE`, and `EXISTS`. The result must be one row and one column with a non-NULL value. The current UI does not provide a SQL editor; selecting a table and column in Data Reference Setting and confirming replaces the SQL configuration with the form-based configuration described above.
+Select the **SQL** query mode in the external tag's Data Reference Setting to edit a read-only query. Common expressions such as `IN`, `BETWEEN`, `CASE`, and `EXISTS` are supported. The result must be one row and one column with a non-NULL value. If the query returns no rows or returns NULL, a configured default can be used instead. The default must satisfy the attribute's data type and value constraints; otherwise, validation or synchronization fails. WHERE conditions can reference static attributes of the same element, as illustrated in the attribute template example below.
 :::
 
 ### 3.2.2.3 Formula
@@ -409,6 +409,39 @@ TDengine/<database>/${KEYWORD1}/<column>
 Click **Check** to verify the binding resolves correctly for a test input.
 
 Attribute templates also support MySQL, PostgreSQL, and InfluxDB connections, using the same value selection options as regular attributes. Table and column names can contain substitution strings, which resolve to the specific element's reference when the template is instantiated.
+
+**Referencing static attributes or TDengine TAGs in external TAG SQL**
+
+For example, an element template has a string attribute named `deviceCode` with no data reference, and a `region` attribute that reads an external tag. Save `deviceCode` and its default value (for example, `PUMP-001`) first. Then select the external connection and the **SQL** query mode for `region`:
+
+1. In the SQL editor, enter `WHERE device_code =`, then add a space and leave the cursor after it.
+2. Open **Insert attribute** in the editor toolbar, search for `deviceCode`, and select it.
+3. The editor inserts `${attributes['deviceCode']#value}` automatically. If SQL text is selected, the placeholder replaces that selection. Use the editor's undo command to restore the previous text.
+4. Complete the ordering and row limit, then click **Check**. The complete example is:
+
+```sql
+SELECT region
+FROM device_history
+WHERE device_code = ${attributes['deviceCode']#value}
+ORDER BY updated_at DESC, id DESC
+LIMIT 1
+```
+
+The picker is available in external TAG SQL editors for both elements and element templates. It refreshes saved attributes each time you open it and lists top-level string, numeric, and boolean static attributes and TAG attributes from native TDengine connections. It excludes the attribute being edited, third-party query TAGs, and formulas. Static attributes with empty values, duplicate names, or names that cannot be used in placeholders are disabled and show the reason. TDengine TAGs do not require a default value: their actual values are read during checking or execution. If the list is empty, save a supported attribute, then reopen the picker.
+
+The attribute name must exactly match a top-level attribute of the same element. For SQL Server, use `SELECT TOP (1) region ... ORDER BY updated_at DESC, id DESC` without `LIMIT 1`. Choose a timestamp and a unique tie-breaking column from your source table so that the latest record is selected deterministically and the query returns one value.
+
+This notation follows IDMP attribute path syntax: `${...}` marks a reference to resolve, `attributes['deviceCode']` selects an attribute by name, and `#value` selects its value. It is not native database SQL; IDMP converts the reference into a value parameter before execution. External TAG SQL currently requires `#value` and does not support other fields or cross-element paths from the general path expression syntax.
+
+- **Do not quote the placeholder**, even for strings. IDMP binds values using their attribute types, so quotes within attribute values are treated as data. Numeric and boolean static attributes use the same syntax.
+- **Checking an attribute template** uses saved static attribute template defaults. **Checking an element**, the initial read, and periodic synchronization use that element's current static values, including overrides of template defaults. After a static value is saved, the next automatic synchronization reads it again. Disabling automatic synchronization stops periodic refreshes.
+- `deviceCode` can also be a TDengine TAG, with the same SQL syntax. For a published TAG, IDMP reads the current value from the element's actual table before querying. Both Tag-Ref and literal TAGs are supported; old JSON defaults do not replace the actual value. Tag-Ref follows its source TAG, while a literal TAG retains its own value and does not automatically follow changes to the original source table.
+- Template checks have no element table, so they read the referenced TDengine source TAG. Initial publication or an unpublished dependency also reads the source TAG. An unpublished, automatically generated local static TAG uses its configured value. Source table placeholders must resolve to concrete names or checking fails. Each synchronization round reads TDengine TAGs again before executing the third-party SQL.
+- The SQL configuration retains its placeholders. Two elements with `deviceCode` values of `PUMP-001` and `PUMP-002` share the same SQL configuration but query their respective device records.
+- Only top-level string, numeric, and boolean static attributes and native TDengine TAGs of the same element are supported. Resolution is limited to one level and never executes a referenced attribute's SQL or formula. Metrics, third-party query TAGs, formulas, other elements, child attributes, traits, lists, and objects are not supported. References cannot be used as table or column names, or in the SELECT list, ORDER BY, or LIMIT.
+- Missing attributes, empty values, unsupported types, and TDengine read failures cause checking or the initial read to fail. Periodic synchronization retains the last successful value. SQL NULL is not converted into the text `null` or replaced with an old default. If an attribute is renamed, update its name in the SQL reference as well. Self-references and mutual references between external SQL TAGs are rejected before recursive queries can occur.
+
+These placeholders are value parameters in **SQL** query mode. They serve a different purpose from table-name substitution strings in **Table / column** mode. Click **Check** again after changing the SQL or a static attribute.
 
 ### 3.2.11.4 Child Attribute Templates
 
