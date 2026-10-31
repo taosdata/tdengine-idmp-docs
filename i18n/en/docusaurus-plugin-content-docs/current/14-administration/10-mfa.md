@@ -5,6 +5,8 @@ sidebar_label: Multi-Factor Authentication (MFA)
 
 # 14.10 Multi-Factor Authentication (MFA)
 
+MFA in TDengine IDMP covers two scenarios: **login MFA** (admin-configurable; an email verification code as a second factor during sign-in, see [14.10.4](#14104-login-mfa)) and **step-up verification for sensitive operations** (identity re-confirmation before protected operations). This chapter focuses on the latter; 14.10.4 describes the configuration and flow of the former.
+
 To prevent accidental operations and account takeover, TDengine IDMP enforces multi-factor authentication (MFA / step-up verification) for certain **sensitive operations**. When you perform a protected operation, the system asks you to confirm your identity again via a **passkey** or an **email verification code** before the operation proceeds. The operation continues only after verification succeeds.
 
 ## 14.10.1 Protected Operations and Verification Flow
@@ -87,7 +89,35 @@ To modify the window or mode of an existing exemption, simply change the mode/du
 A temporary exemption automatically resumes enforcement when it expires; a **permanent exemption never resumes automatically**. Use permanent exemptions only when truly necessary, and manually change them back to **Enforce MFA** when no longer needed.
 :::
 
-## 14.10.4 Optional Deployment Configuration
+## 14.10.4 Login MFA
+
+Login MFA is an **admin-configurable** sign-in protection toggle, located under **Management Console → System Configuration → User Security Configuration → Login MFA** (see [Section 14.5.5](./05-system-configuration.md)). When enabled, a successful password check does **not** sign the user in immediately: instead of issuing login tokens, the server redirects to a dedicated **MFA verification page** where the user must enter a verification code sent to the account email to complete the second confirmation.
+
+### 14.10.4.1 Verification Flow
+
+1. After the password check passes on the sign-in page, the user is taken to the MFA verification page, which indicates that a verification code has been sent to the account email.
+2. Enter the MFA code received by email and click **Verify and Sign In**.
+3. If the email does not arrive, click **Resend code** to send it again; **Back to sign in** abandons the attempt.
+
+Brute-force protection rules for the code:
+
+- The same code **can be retried within its validity period** — a wrong entry does not invalidate it, and no new email is sent.
+- When the code **expires** or is **entered incorrectly 5 times in a row**, the system automatically sends a new code to the email (automatic reissues are not subject to the resend cooldown).
+- Wrong codes **share the account-lock policy with password failures**: once cumulative wrong codes reach the lock threshold (at least 6, the larger of the login-failure-protection max attempts and 6), the account is temporarily locked per that policy; while locked the page shows the remaining lock duration.
+- After **15 cumulative wrong attempts** for a single pending login, the verification channel is closed and the user must return to the sign-in page and re-authenticate with the password.
+- Clicking **Resend code** manually has a 60-second cooldown (button countdown) to prevent bursts of emails.
+- If the pending verification itself times out, the page shows "The verification session has expired. Please sign in again." and the user must restart the password sign-in flow.
+
+:::note
+
+- **Scope**: login MFA applies to **local password sign-in only**. Users signing in via OAuth/SSO are not affected by this toggle — for those logins MFA is the identity provider's (IdP's) responsibility, following the common "trust the IdP" model.
+- Login MFA codes are delivered through the system's **transactional mail channel**: by default they are sent preferentially via the shared **Capability Gateway**, while the mail server configured by the administrator acts as the primary or fallback channel depending on the deployment's mail routing mode. Only when no delivery channel is available at all does the code fail to send (sign-in then reports a send failure).
+- Login MFA and the step-up verification in 14.10.1 are independent: enabling login MFA does not change the single-use credential semantics of sensitive-operation MFA.
+- The related setting **Session Lifetime (hours)** (validity of login tokens) is described in [Section 14.5.5](./05-system-configuration.md).
+
+:::
+
+## 14.10.5 Optional Deployment Configuration
 
 The following configuration options adjust step-up verification behavior (all are optional; the defaults work out of the box):
 

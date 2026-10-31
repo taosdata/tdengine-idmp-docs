@@ -3,13 +3,6 @@ title: 图元
 sidebar_label: 图元
 ---
 
-import LoopVideo from '@site/src/components/LoopVideo';
-import progressUrl from './images/canvas-progress.mp4';
-import eventUrl from './images/canvas-event.mp4';
-import triggerUrl from './images/canvas-event-trigger.mp4';
-import stateUrl from './images/canvas-combine-state.mp4';
-import databindUrl from './images/canvas-databind.mp4';
-
 # 5.2 图元
 
 图元是构成监控画面的基本元素，就像乐高积木一样，每个设备图标、封闭图形都是一个图元。通过组合不同的图元，您可以构建出完整的工业监控系统。
@@ -24,7 +17,7 @@ import databindUrl from './images/canvas-databind.mp4';
 
 进度：任意封闭图形，都可以当进度条：矩形、圆、svg、封闭连线、或其他任意封闭图形，值的范围：0~1
 
-<LoopVideo src={progressUrl} label="图元进度属性" />
+![图元进度属性](./images/canvas-progress.gif)
 
 ### 5.2.1.2 图片外观样式
 
@@ -48,7 +41,7 @@ import databindUrl from './images/canvas-databind.mp4';
 
 如下图，为画布中图元设置了两个事件：当鼠标移入时，将背景色设置为绿色，当鼠标移出时，恢复背景色。
 
-<LoopVideo src={eventUrl} label="图元事件" />
+![图元事件](./images/canvas-event.gif)
 
 ### 5.2.2.2 条件触发器
 
@@ -56,7 +49,7 @@ import databindUrl from './images/canvas-databind.mp4';
 
 如下图，设置当图元文本大于 30 时鼠标移入才会触发事件。图中演示，文本为 40 的图元满足条件，会触发背景变绿，而文本为 20 的图元不满足，鼠标移入时并不触发背景变绿。
 
-<LoopVideo src={triggerUrl} label="条件触发器" />
+![条件触发器](./images/canvas-event-trigger.gif)
 
 #### 5.2.2.2.1 触发条件数据结构
 
@@ -168,7 +161,7 @@ IDMP 内置很多种图元动画效果，也容许逐帧自定义动画。
 
 两个或更多图元组合为状态，是极为有效的表现方式。例如开和关，风机的转动与停止就可以组合为一个状态。不同颜色的报警灯，比如红、黄、绿，可以组合为一个状态。可以通过事件或绑定 IDMP 元素属性来驱动状态的修改，实现动效。
 
-<LoopVideo src={stateUrl} label="状态" />
+![状态](./images/canvas-combine-state.gif)
 
 ## 5.2.5 图元属性
 
@@ -180,7 +173,7 @@ IDMP 内置很多种图元动画效果，也容许逐帧自定义动画。
 
 绑定变量，能快速实现实时数据动态展示。如下图所示，添加属性绑定，将图元的"文本"绑定到元素"em-1"的电压。当元素电压采集值变化时，图元的文本在刷新数据时，也会跟着实时变化。
 
-<LoopVideo src={databindUrl} label="绑定元素属性" />
+![绑定元素属性](./images/canvas-databind.gif)
 
 :::tip
 绑定变量之前，建议选择合适的输入方式，手动输入属性值，测试自己想要的效果，比如进度条的变化，状态的改变，事件的触发等。等测试达到自己想要的效果后，再将属性绑定到 IDMP 某个元素的属性。投入生产运营的组态，图元的属性一定是与元素的属性进行绑定了的。

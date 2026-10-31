@@ -3,9 +3,6 @@ title: Canvas
 sidebar_label: Canvas
 ---
 
-import LoopVideo from '@site/src/components/LoopVideo';
-import combineUrl from './images/canvas-combine.mp4';
-
 # 5.5 Canvas
 
 ## 5.5.1 Setting Canvas Properties
@@ -19,7 +16,7 @@ import combineUrl from './images/canvas-combine.mp4';
 
 When multiple elements are selected, you can set the canvas layout and perform alignment operations: align left, align right, align top, align bottom, vertical center, horizontal center, distribute evenly left-right, distribute evenly top-bottom, same size, format painter.
 
-<LoopVideo src={combineUrl} label="Layout" />
+![Layout](./images/canvas-combine.gif)
 
 ## 5.5.3 Viewing Element List
 

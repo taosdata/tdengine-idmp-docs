@@ -39,7 +39,7 @@ TDengine IAR 是一个功能完整的 AI Agent 运行时，包括 AI 智能体�
 
 - **智能体扩展框架**：TDengine IAR 内置了技能 Skills、知识管理以及工具 Tools 等智能体能力扩展模块，大幅增强了智能体的复杂任务执行能力，让智能体更懂工业场景。
 
-在 AI 智能体运行时基础上，TDengine 预置了数十项系统级 Skills，构建了 13 个开箱即用的 AI 助手，支持用户基于智能体能力扩展框架自定义个性化的智能体助手。TDengine 还在应用层围绕最常见的工业数据分析场景，打造了无问智推、智能问数、面板解读、根因分析等典型 AI 场景应用。
+在 AI 智能体运行时基础上，TDengine 预置了数十项系统级 Skills，构建了 [13 个开箱即用的 AI 助手](./13-expert-mode.md)，支持用户基于智能体能力扩展框架自定义个性化的智能体助手。TDengine 还在应用层围绕最常见的工业数据分析场景，打造了无问智推、智能问数、面板解读、根因分析等典型 AI 场景应用。
 
 贯穿以上所有组件，TDengine 构建了完整的企业级 AI 安全管控，覆盖可控、可信、可审计、稳健四个维度和上下文治理。在工业场景中，AI 安全不是一个可有可无的功能选项——它直接关系到产线能不能开、事故能不能避免、合规审计能不能通过。
 
@@ -58,6 +58,9 @@ TDengine IAR 是一个功能完整的 AI Agent 运行时，包括 AI 智能体�
 - **[缺失数据填补](./09-missing-data-imputation.md)** — 由 TDgpt 驱动的时序数据缺口填充
 - **[根因分析](./10-root-cause-analysis.md)** — AI 生成的事件根因调查报告
 - **[AI Functions](./11-ai-functions.md)** — 分布在各页面的统一 AI 入口，结合当前页面上下文执行分析
+- **[AI Agent 消息通道](./12-im-channels.md)** — 将 AI 问答接入飞书、微信、Telegram 等 IM 渠道
+- **[专家模式](./13-expert-mode.md)** — 为 AI 问答挑选领域专家，以专属人设与能力作答
+- **[AI 定时任务](./13-scheduled-tasks.md)** — 使用自然语言创建并确认计划，在后台执行只读分析并保存结果历史
 
 import DocCardList from '@theme/DocCardList';
 

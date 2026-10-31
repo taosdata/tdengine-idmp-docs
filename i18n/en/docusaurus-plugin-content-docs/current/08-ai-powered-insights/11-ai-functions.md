@@ -23,6 +23,10 @@ After a function runs, an execution panel opens on the right and streams the AI 
 
 Clicking a function item in the dropdown pins it to the top of the list for quick access next time. The pin setting is saved per page and persists across refreshes.
 
+When **Confirm before execution** is enabled under **Personal Settings → Agent**, write operations that require confirmation pause and display a confirmation card in the execution panel. Review the operation and arguments, then choose **Execute**, **Edit parameters**, **Skip**, or **Cancel task**. Read-only analysis does not require confirmation. The actions work as described in [Confirming Tool Operations in AI Chat](./06-natural-language-queries.md#867-confirming-tool-operations). Preference changes apply to the next task. IM does not currently support confirmation before execution.
+
+Parameter editing uses the same field allowlist: only the name for panel creation, and the name and description for analysis creation. Each field must already exist and contain a string. Editing is unavailable for other tools, including panel updates. SQL, thresholds, intervals, and target elements cannot be changed in a confirmation card. See the linked section for field length limits and the editing policy and same-connection validator requirements for external MCP tools. To change protected arguments, cancel the task and send a revised request.
+
 ## 8.11.3 Managing Custom AI Functions
 
 In addition to the built-in functions, space administrators can upload custom AI Functions to extend the analysis capabilities available to their team.

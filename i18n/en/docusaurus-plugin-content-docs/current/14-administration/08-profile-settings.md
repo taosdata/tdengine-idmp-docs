@@ -16,7 +16,7 @@ The personal settings dialog contains the following tabs:
 | **Profile** | View and edit your name, email, phone number, position, and description |
 | **API Key** | Create, copy, update the expiration time of, and delete user API keys |
 | **Passkey** | Register and manage passkeys used for multi-factor authentication (MFA). See [Section 14.10](10-mfa.md). |
-| **Agent** | Configure personal MCP server connections based on MCP templates |
+| **Agent** | Set tool execution confirmation preferences and configure personal MCP server connections based on MCP templates |
 
 ## 14.8.2 Profile
 
@@ -88,7 +88,16 @@ The **Passkey** tab is where you register and manage passkeys used for multi-fac
 
 ## 14.8.5 Agent
 
-The **Agent** tab is used to configure personal MCP server connections based on MCP templates. After an administrator defines templates in [Libraries → Agentic AI → MCP Templates](../13-libraries/05-agentic-ai.md#1352-mcp-templates), users fill in variable values here for each template to complete their personal MCP connection configuration.
+The **Agent** tab provides personal AI execution preferences and MCP server connection settings. After an administrator defines templates in [Libraries → Agentic AI → MCP Templates](../13-libraries/05-agentic-ai.md#1352-mcp-templates), users fill in variable values here for each template to complete their personal MCP connection configuration.
+
+The **Confirm before execution** toggle at the top of this tab applies only to the current user:
+
+- The toggle is off when no preference has been saved. When off, AI Chat and AI Function execute operations under the existing permissions and tool rules without asking for confirmation each time.
+- When on, write operations that require confirmation, such as creating panels, updating panels, and creating analyses, display a confirmation card and wait for a decision. Read-only queries do not require confirmation.
+- Changes are saved automatically, without a separate Save action. If saving fails, the toggle returns to its last saved state. Toggle it again to retry.
+- Changes apply to the next task. They do not execute or cancel an operation that is already waiting for confirmation.
+
+For confirmation card actions, see [Section 8.6.7](../08-ai-powered-insights/06-natural-language-queries.md#867-confirming-tool-operations). IM does not currently support confirmation before execution; enabling this personal preference does not enable IM confirmation.
 
 ### 14.8.5.1 Template List
 

@@ -3,10 +3,6 @@ title: Toolbox
 sidebar_label: Toolbox
 ---
 
-import LoopVideo from '@site/src/components/LoopVideo';
-import zoomoutUrl from './images/canvas-zoomout.mp4';
-import mapUrl from './images/canvas-map.mp4';
-
 # 5.6 Toolbox
 
 ## 5.6.1 Pen
@@ -27,13 +23,13 @@ import mapUrl from './images/canvas-map.mp4';
 
 Used to observe details in the image.
 
-<LoopVideo src={zoomoutUrl} label="Magnifier" />
+![Magnifier](./images/canvas-zoomout.gif)
 
 ## 5.6.4 Overview Map (Thumbnail)
 
 The global view of the configuration diagram. Clicking on the overview map allows you to quickly switch the center position on the canvas.
 
-<LoopVideo src={mapUrl} label="Overview Map" />
+![Overview Map](./images/canvas-map.gif)
 
 ## 5.6.5 Line Start Arrow
 

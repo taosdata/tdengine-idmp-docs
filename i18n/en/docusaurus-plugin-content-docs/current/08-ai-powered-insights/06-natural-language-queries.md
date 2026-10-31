@@ -22,12 +22,15 @@ The AI Chat page has two areas:
 **Chat area (center/right).** The main interaction area containing:
 
 - The greeting message: *"Hi, I'm Teddy. How can I help you?"*
+- An **expert tag row** above the input field — click a tag to pick a domain expert for this conversation (see [8.13 Expert Mode](./13-expert-mode.md))
 - The text input field with the placeholder: *"Ask me anything about your data, press Enter to send, press Shift+Enter to wrap"*
-- A **Deep Thinking** toggle button at the bottom left of the input field
+- An **Expert** button and a **Deep Thinking** toggle button at the bottom left of the input field
 - A **microphone button** at the right of the input field for voice input
 - A **Suggested Questions** section with a refresh icon, below the input field
 
 ## 8.6.3 Asking a Question
+
+To run read-only analysis later or repeat it daily or weekly, create an [AI scheduled task](./13-scheduled-tasks.md) in chat. Scheduled tasks require separate background authorization and confirmation of the schedule and time zone when created or edited.
 
 Type your question in the input field. Press **Enter** to send, or **Shift+Enter** to add a line break without sending.
 
@@ -50,3 +53,119 @@ Click any suggestion to use it directly — the question is placed in the input 
 When you submit a question, Teddy queries your TDengine data using the appropriate SQL, retrieves the results, and returns a natural language answer. For data questions, the response includes the computed values. For analytical questions, it may include charts, tables, or a narrative explanation.
 
 All answers are grounded in your actual data — Teddy does not fabricate values.
+
+## 8.6.7 Confirming Tool Operations
+
+AI Chat can also use tools to create panels, update panels, or create analyses. Enable **Confirm before execution** under **Personal Settings → Agent** to pause write operations that require confirmation and display a card in the conversation. Read-only queries do not require confirmation. The toggle is off by default, saves changes automatically, and applies to the next task. See [Profile Settings](../14-administration/08-profile-settings.md#1485-agent).
+
+### 8.6.7.1 Using a Confirmation Card
+
+The card shows the operation, tool name, and argument details. Expand **Details** to review the target resource and arguments, then choose an action:
+
+| Action | Behavior |
+|---|---|
+| **Execute** | Execute this operation with the current arguments, then continue the task |
+| **Edit parameters** | Open the editable fields, change the values, and click **Execute** to use the updated arguments. Closing the editor does not execute the operation. |
+| **Skip** | Do not execute this operation. Return the skipped result to the AI so it can continue the task. |
+| **Cancel task** | Reject this operation and stop the current task. Operations already completed are not rolled back. |
+
+When a confirmation expires, its actions become unavailable. Send a new request to proceed. Changing the personal preference does not resolve an existing card. After refreshing or reopening the conversation, a pending confirmation can still be handled once restored, provided it has not expired.
+
+Token statistics show usage actually reported by the model. Missing usage is not replaced with zero. Explicitly reported zero usage is preserved as zero. Usage reported before a failure or pause is retained. A confirmation receipt without an additional model call does not generate additional token usage.
+
+### 8.6.7.2 Calling User-Configured MCP Services from AI Chat
+
+A user-configured MCP service is a service connected to IDMP for AI Chat to use. For example, after connecting a company work-order system, AI Chat can call its tools to look up or create work orders. **IDMP is the MCP client, and the work-order system is the MCP server.** The confirmation preference applies to calls made by AI Chat through IDMP. It does not affect other clients that connect directly to that MCP server. **IM temporarily does not support confirmation before execution.**
+
+To configure this behavior:
+
+1. An administrator configures and enables a service template under [Libraries → Agentic AI → MCP Templates](../13-libraries/05-agentic-ai.md#1352-mcp-templates). The current user supplies the required connection variables under [Personal Settings → Agent](../14-administration/08-profile-settings.md#1485-agent), making the tools available to AI Chat.
+2. The MCP server sets `annotations.readOnlyHint` and `annotations.destructiveHint` in each tool definition. IDMP reads these declarations through `tools/list`. They are tool metadata, not input arguments or instructions for the AI to interpret.
+3. Enable **Confirm before execution** under **Personal Settings → Agent**, then start a new AI Chat task.
+4. When the AI selects a tool, IDMP uses the table below to decide whether to pause. If confirmation is required, IDMP displays a card before sending the tool execution request to the MCP server. Clicking **Execute** sends `tools/call`.
+
+The following table covers all combinations **with confirmation enabled**. “Omitted” means that the field is absent from the tool definition.
+
+| `readOnlyHint` | `destructiveHint` | AI Chat behavior |
+|---|---|---|
+| `true` | `false` | Call directly without a confirmation card |
+| `true` | Omitted | Call directly without a confirmation card |
+| `true` | `true` | Show a confirmation card; these declarations conflict and the server definition should be corrected |
+| `false` | `false` | Show a confirmation card; additive operations also require confirmation |
+| `false` | `true` | Show a confirmation card |
+| `false` | Omitted | Show a confirmation card |
+| Omitted | `false` | Show a confirmation card |
+| Omitted | `true` | Show a confirmation card |
+| Omitted | Omitted | Show a confirmation card |
+
+**With confirmation disabled, all the tools above are called directly in new tasks.** The preference controls whether to wait for approval; existing permission and argument checks still apply.
+
+For example, a work-order server can return the following tool definitions in its `tools/list` response. When registering tools with an SDK, set `annotations` on the tool definition, at the same level as `inputSchema`.
+
+```json
+{
+  "jsonrpc": "2.0",
+  "id": 1,
+  "result": {
+    "tools": [
+      {
+        "name": "create_work_order",
+        "description": "Create a work order",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "title": { "type": "string" }
+          },
+          "required": ["title"]
+        },
+        "annotations": {
+          "readOnlyHint": false,
+          "destructiveHint": false
+        }
+      },
+      {
+        "name": "get_work_order",
+        "description": "Look up a work order",
+        "inputSchema": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "string" }
+          },
+          "required": ["id"]
+        },
+        "annotations": {
+          "readOnlyHint": true,
+          "destructiveHint": false
+        }
+      }
+    ]
+  }
+}
+```
+
+With confirmation enabled, ask “Create a work order titled ‘Check em-3 voltage’.” When the AI selects `create_work_order`, IDMP displays a confirmation card and creates the work order only after **Execute** is clicked. Ask “Look up work order WO-123.” When the AI selects `get_work_order`, IDMP calls it directly and returns the result without a confirmation card.
+
+`readOnlyHint: false` declares that a tool may modify data. It requires confirmation even when `destructiveHint: false` declares only additive changes. A genuinely read-only query should declare `readOnlyHint: true` and `destructiveHint: false`. These fields are [standard MCP tool annotations](https://modelcontextprotocol.io/specification/2025-06-18/schema#toolannotations). The confirmation behavior is an IDMP rule enforced by code; the AI cannot bypass it. The server should declare these hints according to the tool's actual behavior.
+
+“Read-only” here is **declared by the MCP server**. IDMP uses that declaration to decide whether confirmation is required; it does not independently verify that the implementation performs no writes. Connect only trusted MCP servers, and have their maintainers declare tool behavior truthfully. For example, `get_work_order` should be declared read-only only if it actually queries work orders without modifying them. If it also updates a work order's status, declare `readOnlyHint: false` so that enabling confirmation displays a card first.
+
+**Basic confirmation requires no additional confirmation endpoint, `validate_*` tool, or `x-idmp-confirmation-policy`.** Those extra conventions apply only to parameter editing, described below.
+
+### 8.6.7.3 Editing Parameters in a Confirmation Card
+
+Only the fields in the following table can currently be edited. The field must already exist in the original tool arguments and contain a string. Editing cannot add missing fields or modify arbitrary objects or arrays.
+
+| Tool | Editable field | Limits |
+|---|---|---|
+| Create panel (`create_panel`) | Panel name (`config.name`) | 1–250 Unicode characters; cannot consist entirely of whitespace |
+| Create analysis (`create_analysis`) | Analysis name (`config.name`) | 1–250 Unicode characters; cannot consist entirely of whitespace |
+| Create analysis (`create_analysis`) | Description (`config.description`) | Up to 2048 Unicode characters; an empty string is allowed |
+| Other tools, including panel updates | Editing is unavailable | Review the arguments, then execute, skip, or cancel the task |
+
+SQL, expressions, alert thresholds, calculation intervals, target elements, and resource IDs are protected and cannot be changed in a confirmation card. To change these arguments, cancel the current task and send a revised request. Sensitive fields are not exposed for editing in plain text, and invalid values prevent submission. A message is shown if the tool has no editable parameters or the parameters cannot be loaded.
+
+A confirmation card for a user-configured MCP tool does not automatically support parameter editing. For example, the `create_work_order` tool above can be executed, skipped, or cancelled, but its title cannot be edited in the card.
+
+To enable editing for a custom MCP panel or analysis creation tool, the server must also implement IDMP's editing contract: declare `x-idmp-confirmation-policy` in the tool's `inputSchema` (`idmp-create-panel-v1` for panels, or `idmp-create-analysis-v1` for analyses), use the argument structure in the table above, and provide the corresponding read-only validator in the same MCP connection (`validate_panel` for `create_panel`, or `validate_analysis` for `create_analysis`). Both tools must be available, the edited arguments must pass validation, and protected arguments must remain unchanged. These are **IDMP-specific editing conventions, not part of the MCP standard**. A matching tool name or argument schema alone does not enable editing, and these extra requirements do not affect basic confirmation.
+
+For example, ask: "For em-3, create an analysis that calculates the maximum voltage every five minutes and raises an alert above 240." With confirmation enabled, a card appears before the AI calls the analysis creation tool. Review the interval and threshold, and edit the name or description within the limits above before executing. With confirmation disabled, the tool executes under the existing rules. After successful creation, open the analysis using the link in the reply.

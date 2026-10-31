@@ -18,7 +18,7 @@ Personal settings are accessed from the top account item in the avatar menu. The
 | **Installation** | Detailed guides for Docker and installer package deployment. For Excel Add-In installation, see [Chapter 10](../10-excel-add-in/01-installation.md). For All-in-One deployment, see [section 14.13](./40-all-in-one-deploy/index.md). |
 | **User Management** | Users, roles, permissions, and single sign-on (SSO) via OAuth 2.0 |
 | **Profile Settings and API Keys** | Manage your own profile, avatar, password, and user-level API keys |
-| **Multi-Factor Authentication (MFA)** | Step-up verification for sensitive operations, passkey management, and MFA exemption configuration |
+| **Multi-Factor Authentication (MFA)** | Login MFA (email verification code as a second sign-in factor), step-up verification for sensitive operations, passkey management, and MFA exemption configuration |
 | **System Configuration** | Basic settings, notification contact points, notification templates, and email server |
 | **Backup and Restore** | Configuring automated backups and restoring data from a backup |
 | **System Log** | Tamper-proof operation logs with filtering, querying, and export for compliance and security traceability |

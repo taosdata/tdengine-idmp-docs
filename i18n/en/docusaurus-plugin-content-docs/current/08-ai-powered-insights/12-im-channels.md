@@ -7,6 +7,12 @@ sidebar_label: AI Agent IM Channels
 
 AI Agent supports interaction through instant messaging tools. After configuring message channels, you can converse with AI Agent on Feishu (Lark), Telegram, or WeChat without always needing to open the IDMP Web interface. The system administrator configures the channels, then each user binds their IM account to their IDMP user account to establish a secure conversation channel.
 
+:::info Tool execution confirmation
+
+IM does not currently support confirmation before execution. Enabling **Confirm before execution** under **Personal Settings → Agent** applies only to AI Chat and AI Function in the Web UI; it does not enable IM confirmation. Tools in IM continue to execute under the existing permissions and tool rules, without confirmation cards or parameter editing. To review or edit arguments before execution, enable confirmation and start the task in the Web UI.
+
+:::
+
 ## 8.12.1 Channel Overview
 
 Message channels involve three layers:

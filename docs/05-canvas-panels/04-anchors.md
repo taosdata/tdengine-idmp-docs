@@ -3,10 +3,6 @@ title: 锚点
 sidebar_label: 锚点
 ---
 
-import LoopVideo from '@site/src/components/LoopVideo';
-import anchorUrl from './images/canvas-anchor.mp4';
-import handlerUrl from './images/canvas-handler.mp4';
-
 # 5.4 锚点
 
 锚点是保持设备连接的"魔术扣"，确保当您移动设备图元时，连接的管线会自动跟随调整，保持画面整洁。
@@ -19,7 +15,7 @@ import handlerUrl from './images/canvas-handler.mp4';
 
 键盘按下快捷键"A"，鼠标移入锚点，呈现如下状态，点击鼠标左键，可以删除锚点。
 
-<LoopVideo src={anchorUrl} label="删除锚点" />
+![删除锚点](./images/canvas-anchor.gif)
 
 ## 5.4.2 移动锚点（G）
 
@@ -35,7 +31,7 @@ import handlerUrl from './images/canvas-handler.mp4';
 2. **调节曲线弧度与曲率**：拖动手柄改变长度与角度，可直接调整曲线的弯曲程度：手柄越长，曲率越平缓；手柄越短，曲率越陡峭。
 3. **实现平滑过渡与尖角切换**：双侧对称手柄：可制作连续、流畅的平滑曲线；单侧独立调节：可在同一锚点处实现折线 + 曲线的混合效果，满足复杂造型需求。
 
-<LoopVideo src={handlerUrl} label="手柄" />
+![手柄](./images/canvas-handler.gif)
 
 ### 5.4.3.2 添加手柄（H）/ 删除手柄（D）
 

@@ -46,11 +46,33 @@ To add an annotation: expand **Annotation** and click **+ New Annotation**. See 
 
 Shows all parent elements in the asset hierarchy. An element can appear in multiple hierarchies simultaneously (for example, a pump may belong to both a geographic hierarchy and a functional equipment hierarchy). The Parents section lists each parent with its full path.
 
-### 3.1.1.4 Security *(coming soon)*
+### 3.1.1.4 Root Element General Page Introduction
+
+The **General** tab of the asset tree root element (the top-level **Elements** node) shows the TDengine IDMP system introduction instead of the standard element field form. The introduction covers the product positioning and asset-tree/industrial-ontology concepts, along with core capabilities such as data ingestion, visualization and configuration, real-time analysis, event management, process analysis, AI insights, base libraries, and collaboration and sharing.
+
+![Root element general page system introduction](../images/03-root-element-general-intro-en.png)
+
+The introduction follows the UI language (Simplified Chinese, English, Spanish, Korean, and German). **Only administrators can edit it**: roles with the system-introduction editing permission (Super Admin by default) see a pencil icon at the far right of the **About TDengine IDMP** title row; other users have read-only access.
+
+Editing steps:
+
+1. Sign in as an administrator and go to **Explorer → root element Elements → General**.
+2. Click the edit icon at the far right of the **About TDengine IDMP** title row.
+3. Modify the content in the rich-text editor. Headings, bold text, lists, links, and images are supported.
+4. Click **Save** to publish the content to all users, **Discard** to abandon the current changes, or **Restore default** to remove the customized content for the current language and restore the built-in copy.
+
+:::note
+
+- Customized content is stored per UI language. Switching the interface language edits the corresponding language version; languages without customization keep showing their built-in copy.
+- The introduction is a global setting and takes effect for all users after saving. Restore default only affects the current language and does not overwrite content saved for other languages.
+
+:::
+
+### 3.1.1.5 Security *(coming soon)*
 
 Role-based access control for this element. This feature is not yet implemented.
 
-### 3.1.1.5 Version *(coming soon)*
+### 3.1.1.6 Version *(coming soon)*
 
 Version history and audit trail for changes to this element's configuration. This feature is not yet implemented.
 

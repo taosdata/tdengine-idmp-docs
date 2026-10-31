@@ -511,6 +511,8 @@ After enabling user security policy management, you can configure account protec
 | **Password Expiration** | Set the validity period (in days) for account passwords, and the number of days in advance to warn users before expiration. When enabled, users must change their passwords within the specified time range |
 | **Password History Restriction** | Set the number of previous passwords that cannot be reused — the current password must differ from the specified number of previous passwords |
 | **Session Security** | When enabled, a new login for the same account automatically invalidates all other online sessions, ensuring only one active session per account |
+| **Login MFA** | Toggle. When enabled, sign-in requires entering an email verification code on the MFA verification page after the password check passes before the user can enter the system. Verification flow and brute-force rules: see [Section 14.10.4](./10-mfa.md) |
+| **Session Lifetime (hours)** | Validity of login tokens (1–8760 hours); once expired, users must sign in again. Applies to all web login sessions; when not configured, the system default is used |
 
 ![User Security Configuration](./images/user-security-02.png)
 

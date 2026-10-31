@@ -39,7 +39,7 @@ TDengine IAR is a fully-featured AI Agent runtime that includes an agent executi
 
 - **Agent Extension Framework**: TDengine IAR includes built-in capability extension modules such as Skills, Knowledge Management, and Tools, significantly enhancing agents' complex task execution capabilities and making agents more attuned to industrial scenarios.
 
-On top of the IAR, TDengine provides dozens of system-level Skills, builds 13 out-of-the-box AI assistants, and supports users in customizing personalized agent assistants based on the agent capability extension framework. At the application layer, TDengine has built typical AI application scenarios around the most common industrial data analytics use cases, including Zero-Query Intelligence, AI Q&A, Panel Insights, and Root Cause Analysis.
+On top of the IAR, TDengine provides dozens of system-level Skills, builds [13 out-of-the-box AI assistants](./13-expert-mode.md), and supports users in customizing personalized agent assistants based on the agent capability extension framework. At the application layer, TDengine has built typical AI application scenarios around the most common industrial data analytics use cases, including Zero-Query Intelligence, AI Q&A, Panel Insights, and Root Cause Analysis.
 
 Across all these components, TDengine has constructed a complete enterprise-grade AI security and governance framework covering four dimensions — controllable, trustworthy, auditable, and robust — along with context governance. In industrial scenarios, AI security is not an optional feature — it directly affects whether production lines can run, whether accidents can be avoided, and whether compliance audits can be passed.
 
@@ -56,6 +56,9 @@ Across all these components, TDengine has constructed a complete enterprise-grad
 - **[Missing Data Imputation](./09-missing-data-imputation.md)** — TDgpt-powered gap filling for time-series data
 - **[Root Cause Analysis](./10-root-cause-analysis.md)** — AI-generated root cause investigation reports for events
 - **[AI Functions](./11-ai-functions.md)** — A unified AI entry point across pages that runs analysis using the current page context
+- **[AI Agent IM Channels](./12-im-channels.md)** — Connect AI chat to IM channels such as Feishu, WeChat and Telegram
+- **[Expert Mode](./13-expert-mode.md)** — Pick a domain expert for AI chat and answer with a dedicated persona and capabilities
+- **[AI Scheduled Tasks](./13-scheduled-tasks.md)** — Create and confirm schedules in chat, run read-only analysis in the background, and retain result conversations
 
 import DocCardList from '@theme/DocCardList';
 

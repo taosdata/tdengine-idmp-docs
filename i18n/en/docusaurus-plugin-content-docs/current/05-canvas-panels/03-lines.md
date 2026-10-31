@@ -3,9 +3,6 @@ title: Line
 sidebar_label: Line
 ---
 
-import LoopVideo from '@site/src/components/LoopVideo';
-import animationUrl from './images/canvas-animation.mp4';
-
 # 5.3 Line
 
 Lines are used to represent the flow of materials, signal transmission, or logical relationships between devices. For example:
@@ -87,4 +84,4 @@ IDMP has built-in three animation effects for lines, making the visuals more dyn
 - Animation line width (≥0), animation color, animation speed, reverse flow, number of loops.
 - Next animation: tag, autoplay, maintain animation state, linear playback: yes/no.
 
-<LoopVideo src={animationUrl} label="Line Animations" />
+![Line Animations](./images/canvas-animation.gif)
