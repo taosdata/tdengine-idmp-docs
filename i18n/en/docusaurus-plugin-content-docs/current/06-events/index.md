@@ -67,6 +67,7 @@ This chapter covers the complete event management workflow, from template defini
 - **[Acknowledgment](./06-acknowledgment.md)** — Acknowledging events and the acknowledgment workflow
 - **[Analysis Workbench](./07-trend-analysis.md)** — Analyzing events with the analysis workbench
 - **[Root Cause Analysis](./08-root-cause-analysis.md)** — Root cause analysis based on events
+- **[Batch Analysis Workbench](./09-batch-analysis.md)** — Configure process recipes, import recipe-based events, and compare process metrics across batches
 
 import DocCardList from '@theme/DocCardList';
 

@@ -67,6 +67,7 @@ TDengine IDMP 中的事件始终由与元素关联的实时分析规则自动生
 - **[确认](./06-acknowledgment.md)** — 确认事件与确认工作流
 - **[分析工作台](./07-trend-analysis.md)** — 通过分析工作台分析事件
 - **[根因分析](./08-root-cause-analysis.md)** — 基于事件展开的根因分析
+- **[批次分析工作台](./09-batch-analysis.md)** — 配置工艺配方、按配方导入事件并对比多个批次的工艺指标
 
 import DocCardList from '@theme/DocCardList';
 
