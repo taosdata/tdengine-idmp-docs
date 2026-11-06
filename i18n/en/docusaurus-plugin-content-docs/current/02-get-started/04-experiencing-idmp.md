@@ -17,13 +17,14 @@ The interface is organized into the following areas:
 
 **1. Top Navigation Bar**
 
-The top navigation bar spans the full width of the page. On the left is the TDengine logo. In the center are the five main modules:
+The top navigation bar spans the full width of the page. On the left is the TDengine logo. In the center are the main modules:
 
-- **AI Chat** — Ask questions about your industrial data in natural language.
 - **Explorer** — Browse and manage your asset hierarchy, attributes, panels, analyses, and events.
 - **Dashboards** — View and manage dashboards across all elements.
 - **Events** — Browse, filter, and analyze events across the system.
 - **Libraries** — Manage shared resources such as element templates, event templates, enumerations, units of measure, and more.
+
+The AI Assistant is not a separate top-level module. It is integrated on the right side of the Explorer workspace; see [Section 8.6](../08-ai-powered-insights/06-natural-language-queries.md).
 
 On the far right is your **avatar menu**. Open it and select the top account item to open the personal settings dialog, where you can manage **Profile**, **API Key**, and **MFA**-related settings. Users with permission can also open the **Admin Console** or launch the Tour Guide from the same menu. For details, see [Section 14.8](../14-administration/08-profile-settings.md).
 
@@ -37,7 +38,7 @@ The left panel shows the tree structure for the active module. In the **Explorer
 
 **3. Context Tab Bar**
 
-The context tab bar appears to the right of the left panel. It shows the name of the currently selected object, followed by a set of tabs representing the available views for that object. When an element is selected, the tabs are: **General**, **Attributes**, **Panels**, **Analyses**, **Events**, **Dashboards**, and **Child Elements**. Click a tab to switch views. On the far left of the context tab bar is a collapse icon to hide the left panel and maximize the workspace.
+The context tab bar appears to the right of the left panel. It shows the name of the currently selected object, followed by a set of tabs representing the available views for that object. When an element is selected, the tabs are: **General**, **Attributes**, **Panels**, **Analyses**, **Events**, **Dashboards**, and **Child Elements**. Click a tab to switch views. On the far left of the context tab bar is a collapse icon to hide the left panel and maximize the workspace. On the far right is an AI Assistant toggle that expands or collapses the AI Assistant panel.
 
 :::note
 The built-in Tour Guide refers to this area as the "Path Bar".
@@ -45,7 +46,7 @@ The built-in Tour Guide refers to this area as the "Path Bar".
 
 **4. Action Bar**
 
-Below the context tab bar is a row of controls. The left side typically shows filter dropdowns (such as **Categories**) and view toggle buttons (such as the **AI** suggestions button or grid/list view). The right side shows action icons including **+** to add a new item and a refresh button.
+Below the context tab bar is a row of controls. The left side typically shows filter dropdowns (such as **Categories**) and view toggle buttons (such as the **AI** suggestions button or grid/list view). The right side shows action icons including **+** to add a new item and a refresh button. When the workspace is narrow (for example, with the AI Assistant open), some secondary actions move into the **More actions** menu in their original order.
 
 **5. Main Workspace**
 
@@ -70,11 +71,11 @@ The following steps use the **Utilities** scenario as an example. If you did not
 
 1. Select the element **Utilities** > **California** > **San Diego County** > **Chula Vista** > **em-10**.
 2. In the context tab bar, select **Panels**. Five AI-recommended panels are displayed. Click **+ More Suggestions** to generate additional options.
-3. You can also request a panel in natural language using the input box below the recommendations. For example:
+3. You can also request a panel in natural language in the AI Assistant on the right side of the Explorer. For example:
 
    *"Show a line chart of the voltage and current changes every minute for electricity meter em-10 over the past 24 hours."*
 
-   Click **Ask AI** to generate the panel.
+   The AI generates the panel with tools; when **Confirm before execution** is enabled, it shows a confirmation card first. See [8.6 AI Assistant](../08-ai-powered-insights/06-natural-language-queries.md).
 
 ![AI-generated panels](../assets/get-started-02.png)
 
@@ -83,11 +84,11 @@ The following steps use the **Utilities** scenario as an example. If you did not
 1. Select the element **Utilities** > **California** > **San Diego County** > **Chula Vista** > **em-10**.
 2. In the context tab bar, select **RT Analysis**. Three AI-recommended questions are displayed.
 3. Click a suggestion link to open the analysis creation page, where you can review and adjust the AI-generated configuration. Click **Save** to complete the setup.
-4. You can also describe an RT analysis in natural language using the input box next to the recommendations. For example:
+4. You can also describe an RT analysis in natural language in the AI Assistant on the right side of the Explorer. For example:
 
    *"If power fluctuation for electricity meter em-10 exceeds plus or minus 20% for 30 minutes, generate a 'warning' level alert and calculate the fluctuation range."*
 
-   Press **Enter** to generate the RT analysis.
+   The AI creates the RT analysis with tools; when **Confirm before execution** is enabled, it shows a confirmation card first. After creation, open the analysis from the link in the reply.
 
 ![AI-powered analysis](../assets/get-started-03.png)
 

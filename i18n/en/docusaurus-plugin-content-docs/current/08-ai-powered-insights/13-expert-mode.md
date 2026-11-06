@@ -5,7 +5,7 @@ sidebar_label: Expert Mode
 
 # 8.13 Expert Mode
 
-**Expert mode** turns the AI chat from a single general assistant into a team of specialized experts. You pick the expert best suited to each task, and that expert answers with a fixed persona, methodology and capability set — for example, have the **Root Cause Analysis** expert investigate a device fault, or the **Report Generation** expert assemble an analysis report.
+**Expert mode** turns the AI Assistant from a single general assistant into a team of specialized experts. You pick the expert best suited to each task, and that expert answers with a fixed persona, methodology and capability set — for example, have the **Root Cause Analysis** expert investigate a device fault, or the **Report Generation** expert assemble an analysis report.
 
 The platform ships with 13 built-in experts covering common industrial data-analysis scenarios such as data querying, panel building, anomaly detection, root cause analysis and forecasting. You can also create your own experts in the Expert Center, bind specific skills, and build a dedicated assistant for your team.
 
@@ -17,7 +17,7 @@ An **expert** is a declarative bundle of persona, methodology and toolchain:
 - **Methodology**: the workflow and domain knowledge the expert follows, expressed as the set of skills it binds.
 - **Toolchain**: the tools the expert can use.
 
-Once you bind an expert to an AI chat conversation, every turn in that conversation is answered from that expert's perspective and with its capabilities.
+Once you bind an expert to an AI Assistant conversation, every turn in that conversation is answered from that expert's perspective and with its capabilities.
 
 ## 8.13.2 Expert Center
 
@@ -30,30 +30,29 @@ The **Expert Center** is the page for managing and configuring experts, at **Lib
 
 ### 8.13.2.2 Viewing expert details
 
-Click **View** on a card to open the detail page, where you can **Edit**, **Clone**, **Delete**, or **Summon** the expert. The detail page shows the expert's **Bound skills** and **Toolchain**, plus metadata such as model and default mode.
+Click **View** on a card to open the detail page, where you can **Edit**, **Clone**, **Delete**, or **Summon** the expert. The detail page shows the expert's **Bound skills** and **Toolchain**, plus metadata such as model and default mode. Clicking **Summon** opens the full-page AI chat with that expert bound.
 
 ### 8.13.2.3 Creating a custom expert
 
 Click **New** in the Expert Center toolbar and fill in:
 
 - **Name**: the expert's English identifier, immutable after creation (must match `^[a-z0-9]([a-z0-9-]*[a-z0-9])?$`).
-- **Display name**: the name shown on cards, in the tag row and in the conversation history.
+- **Display name**: the name shown on cards, in the expert picker and in the conversation history.
 - **Domain**: the expertise tag.
 - **Description**: a one-line capability summary.
 - **Bound skills**: pick the methodology set from the platform skill catalog.
 - **Toolchain**: pick the tools available to the expert.
 - **Persona**: write the expert's identity, responsibility and answer style in natural language.
 
-Once saved, the expert appears in the **User** source list and can be summoned in AI chat. Update and delete are also done in the Expert Center; deleting a user expert does not affect the history of existing conversations.
+Once saved, the expert appears in the **User** source list and can be summoned in the AI Assistant. Update and delete are also done in the Expert Center; deleting a user expert does not affect the history of existing conversations.
 
-## 8.13.3 Using experts in AI chat
+## 8.13.3 Using experts in the AI Assistant
 
-On the **AI chat** page (8.6), a row of **expert tags** appears above the input box — one tag per expert. Click a tag to bind that expert to the current conversation; click another tag to switch.
+In the **AI Assistant** (8.6), a compact **Expert** button appears at the bottom left of the input box. Clicking it opens a picker (with search) where you can choose an expert, and at the bottom of the picker you can **Exit expert** to return to the general assistant.
 
-- Below the input there is also a compact **Expert** button. Clicking it opens a picker (with search) where you can choose an expert, and at the bottom of the picker you can **Exit expert** to return to the general assistant.
-- Once an expert is bound, its tag is highlighted and the **Expert** button shows the expert's name.
-- **Switching experts starts a new conversation** — the previous conversation already carries the old expert's identity, so the switch starts a fresh thread that answers as the new expert from its first turn; the previous conversation stays in the left-hand history.
-- Refreshing the page keeps both the conversation and its expert binding.
+- Once an expert is bound, the **Expert** button shows the expert's name, and subsequent questions are answered from that expert's perspective and with its capabilities.
+- **Switching experts starts a new conversation** — the previous conversation already carries the old expert's identity, so the switch starts a fresh thread that answers as the new expert from its first turn; the previous conversation stays in the History pane.
+- Refreshing the page returns the AI Assistant to a blank conversation. Conversations in the History pane keep their expert binding and continue with that expert when reopened.
 
 **Recommended questions, regeneration and edit-and-resend** all inherit the expert bound to the current conversation.
 

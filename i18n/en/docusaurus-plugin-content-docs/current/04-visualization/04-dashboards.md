@@ -62,7 +62,6 @@ The dashboard editor has three areas: a left panel library, a center canvas, and
 | **Discard** | Discard changes |
 | **+ (Create New Panel and Insert)** | Open the panel editor to create a new panel and add it to this dashboard |
 | **Time picker** | Set the time range for all panels in the dashboard |
-| **Zoom out** | Expand the time range to the next level |
 | **Refresh** | Reload all panel data |
 | **Auto-refresh** | Set an automatic refresh interval (Off, 5s, 10s, 30s, 1m, etc.) |
 | **Full Screen** | Expand the dashboard to fill the browser window |
@@ -118,7 +117,6 @@ Click **View** on a dashboard card to open the dashboard in full view mode.
 | **Edit** | Open the dashboard editor |
 | **Favorite** | Mark this dashboard as a favorite for quick access |
 | **Time picker** | Set the time range for all panels in the dashboard |
-| **Zoom out** | Expand the time range to the next level |
 | **Refresh** | Reload all panel data |
 | **Auto-refresh** | Set an automatic refresh interval |
 | **Share** | Generate a time-limited shareable link to this dashboard view |
@@ -126,6 +124,10 @@ Click **View** on a dashboard card to open the dashboard in full view mode.
 | **Full Screen** | Expand the dashboard to fill the browser window |
 | **Annotations** | Open the annotations panel to add text annotations to this dashboard |
 | **Filter Conditions** | Open the filter conditions dialog to filter panel data by the declared filter fields (shown only when the dashboard declares filter conditions; see [4.4.6 Custom Filter Conditions](#446-custom-filter-conditions)) |
+
+:::note
+When the workspace is narrow (for example, with the AI Assistant open), some secondary actions move into the **More actions** menu in their original order. Collapse the AI Assistant or widen the browser window to restore those actions.
+:::
 
 ### Annotations
 

@@ -11,7 +11,7 @@ Powered by **Zero Query Intelligence**, IDMP can automatically generate visualiz
 
 AI-generated panels appear in the **Panels** tab of any element in the Explorer. When you open this tab, the AI has already produced a set of suggested panels based on the element's data context.
 
-The toolbar above the panel list includes an **AI** filter button. Click it to view only AI-generated panels and hide manually created ones.
+The toolbar above the panel list includes an **AI** button. Click it to turn AI suggestions on or off and to expand or collapse the suggestion area; it does not filter or hide saved panels. When the element already has saved panels, the suggestion area is collapsed by default.
 
 ## 8.2.2 Using AI-Generated Panels
 
@@ -27,7 +27,7 @@ At the end of the AI panel list, a **+ More Recommendations** card is shown. Cli
 
 ## 8.2.4 Describing a Panel in Natural Language
 
-If the system suggestions do not include what you need, you can describe the panel you want in plain language. Type your request in the AI input field — for example, "show me hourly average voltage as a line chart for the past 7 days" or "create a gauge showing the current power factor". The AI interprets your description, selects the appropriate chart type and attributes, and generates the panel for you. You do not need to know which chart type to use or how to configure it — as long as you know what you want to see, the AI handles the rest.
+If the system suggestions do not include what you need, you can describe the panel you want in plain language. Type your request in the AI Assistant on the right side of the Explorer — for example, "show me hourly average voltage as a line chart for the past 7 days" or "create a gauge showing the current power factor". The AI interprets your description, selects the appropriate chart type and attributes, and generates the panel with tools; when **Confirm before execution** is enabled, it shows a confirmation card first. You do not need to know which chart type to use or how to configure it — as long as you know what you want to see, the AI handles the rest.
 
 ## 8.2.5 Saving Panels
 

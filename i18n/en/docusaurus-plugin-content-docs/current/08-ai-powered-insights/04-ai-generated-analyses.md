@@ -21,12 +21,12 @@ For an electricity meter element, the system might suggest:
 
 **Use a system suggestion.** Click any item in the Suggested Analyses list. The AI generates a fully configured analysis form pre-filled with a name, trigger type, calculation expression, and output attribute. Review and click **Save**.
 
-**Describe what you want.** If the suggestions do not cover what you need, type a natural language description in the text input at the top of the AI panel — for example, "calculate the average current over 1-hour windows" or "alert me when voltage exceeds the normal range for more than 5 minutes". Press Enter. The AI interprets your intent, selects the appropriate trigger type, writes the calculation expression, and maps the output to a new attribute — all pre-filled in the creation form. You do not need to know how to configure triggers or write expressions; as long as you know what you want the analysis to do, the AI handles the rest.
+**Describe what you want.** If the suggestions do not cover what you need, describe the request in natural language in the AI Assistant on the right side of the Explorer — for example, "calculate the average current over 1-hour windows" or "alert me when voltage exceeds the normal range for more than 5 minutes". The AI creates the analysis with tools; when **Confirm before execution** is enabled, it shows a confirmation card first (see [8.6.10 Confirming Tool Operations](./06-natural-language-queries.md#8610-confirming-tool-operations)). After creation, open the analysis from the link in the reply.
 
-A microphone button is also available for voice input.
+The AI Assistant input also supports voice input.
 
 ## 8.4.3 After AI Generation
 
-Regardless of which method you used, the result is the same: the analysis creation form opens pre-filled. You can review every field and adjust any value before saving. Click **Save** to create the RT analysis. If **Enable analysis upon creation** is checked, the RT analysis starts running immediately.
+With a system suggestion, the analysis creation form opens pre-filled. You can review every field and adjust any value before saving. Click **Save** to create the RT analysis. If **Enable analysis upon creation** is checked, the RT analysis starts running immediately. When you create the analysis through the AI Assistant, it is created directly; open it from the link in the reply.
 
 For a full reference on the analysis form, trigger types, and calculation options, see [Chapter 7: Real-Time Intelligent Analysis and Response](../07-real-time-analysis/index.md).

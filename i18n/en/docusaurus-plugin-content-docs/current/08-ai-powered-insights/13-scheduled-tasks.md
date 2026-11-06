@@ -5,7 +5,7 @@ sidebar_label: AI Scheduled Tasks
 
 # 8.13 AI Scheduled Tasks
 
-AI scheduled tasks run read-only AI queries and analysis in the background at an agreed time. Each execution is saved in AI Chat history. Typical uses include daily equipment summaries, weekly energy analysis, and a check after a delay. The browser does not need to stay open.
+AI scheduled tasks run read-only AI queries and analysis in the background at an agreed time. Each execution is saved in the AI Assistant history. Typical uses include daily equipment summaries, weekly energy analysis, and a check after a delay. The browser does not need to stay open.
 
 This differs from [Scheduled Reports](../04-visualization/06-scheduled-reports.md): scheduled reports export visualization content, while AI scheduled tasks perform queries and analysis described in natural language.
 
@@ -25,11 +25,11 @@ Administrators should stop the AI scheduled task service before backing up the A
 
 Background execution uses your own IDMP API key with your current permissions and data access. It does not use the browser login token.
 
-1. Open **AI Chat** from the navigation bar and click the small alarm clock in the history toolbar on the left. The dialog has **Scheduled tasks**, **All execution records**, and **Background authorization** tabs. Select **Background authorization**.
+1. Open the AI Assistant on the right side of the Explorer and click the small alarm clock in its header. The floating pane has **Tasks**, **All runs**, and **Authorization** tabs. Select **Authorization**.
 2. Select an existing key from **Your IDMP API key**. The list shows its title, masked value, and expiration; expired keys cannot be selected.
 3. If needed, click **Add API Key** to create one in the existing [Profile Settings](../14-administration/08-profile-settings.md), then close Profile Settings and select the new key. No copying or pasting is required.
 4. Click **Save authorization**. Creating a key does not automatically authorize background execution.
-5. Verify the key name, expiration time, and valid authorization status in the persistent notice, then close the dialog.
+5. Verify the key name, expiration time, and valid authorization status in the persistent notice, then close the floating pane.
 
 The browser submits only the selected key ID. The server verifies ownership and validity before encrypting the stored credential; another user's key cannot be selected. All scheduled tasks owned by the account share this authorization. The shared-task count includes only enabled tasks and tasks awaiting authorization, excluding paused or completed tasks. It does not indicate how many tasks are executing at that moment. Updating authorization does not resume tasks or replay previous runs, and a failed save preserves the previous authorization.
 
@@ -37,7 +37,7 @@ When auditing is enabled and the resource requires a reason, saving authorizatio
 
 ## 8.13.2 Create and Confirm in Natural Language
 
-In an ordinary AI Chat conversation, describe what to execute, when to execute it, the time zone, and the delivery channel. Include specific equipment, attributes, query periods, and output requirements. Put essential context in the task instruction; do not rely on the complete source conversation being loaded at execution time.
+In an ordinary AI Assistant conversation, describe what to execute, when to execute it, the time zone, and the delivery channel. Include specific equipment, attributes, query periods, and output requirements. Put essential context in the task instruction; do not rely on the complete source conversation being loaded at execution time.
 
 For example, after saving background authorization, send:
 
@@ -54,7 +54,7 @@ Show the configuration for my confirmation; do not execute the analysis now.
 2. Expand **Details** and review the title, full instruction, schedule, time, time zone, and channel.
 3. Select **I confirm the time zone: Asia/Shanghai**. Use the intended IANA time zone, such as `Asia/Shanghai` or `Europe/Berlin`, rather than an ambiguous abbreviation or `UTC+8`.
 4. Click **Execute**. The task is created only after successful confirmation. Receiving a confirmation card does not activate the schedule.
-5. Open **Scheduled tasks**, click the task title, and verify the schedule and **Next execution** on the **General** tab.
+5. Open the **Tasks** tab, click the task title, and verify the schedule and **Next execution** on the **General** tab.
 
 If the configuration is incorrect, cancel the operation, describe the changes in chat, and review a new confirmation. When no time zone is specified, Web requests use the browser-provided IANA time zone, which still requires confirmation on the card. If the browser time zone is unavailable, provide one first. Creating or editing a scheduled task always requires confirmation, even when the personal confirmation preference is off. Use Web chat for creation in this version; this confirmation flow cannot be completed in IM.
 
@@ -94,11 +94,11 @@ This version sends only to the task owner. Other users, groups, and arbitrary re
 
 While signed in and connected, the Web displays a summary notification for successful, failed, or interrupted executions in the lower-right corner, using the same card style as system alerts. Only one card is visible there at a time. The latest ordinary event or scheduled task notification replaces the previous card; closing it does not reveal older cards.
 
-The scheduled task card shows the latest task, execution status, time, and the current batch's new-result and failure counts. Timeout notifications identify the timeout reason. Click **View result** or **View failure details** to open the result conversation, or **View execution history** when no history result is available. **View all execution records** is always available to inspect recent results across your tasks. The new-result count includes failed results; the failure count covers failed or interrupted executions within that batch. These temporary counts reset when you close the card or use it to open a result, execution records, or authorization. They are not persistent unread counts.
+The scheduled task card shows the latest task, execution status, time, and the current batch's new-result and failure counts. Timeout notifications identify the timeout reason. Click **View result** or **View failure details** to open the full-page AI chat and locate the result, or **View execution history** when no history result is available. **View all execution records** is always available to inspect recent results across your tasks. The new-result count includes failed results; the failure count covers failed or interrupted executions within that batch. These temporary counts reset when you close the card or use it to open a result, execution records, or authorization. They are not persistent unread counts.
 
-The history list and any open task or execution record list refresh automatically. Receiving a notification does not switch conversations or clear draft input. User cancellations only refresh the status without displaying a result notification.
+The history pane and any open task or execution record list refresh automatically. Receiving a notification does not switch conversations or clear draft input. User cancellations only refresh the status without displaying a result notification.
 
-Web notifications require an active browser connection and are not operating-system notifications. Delivery while the page is closed, offline, or disconnected is not guaranteed. Signing in, reconnecting, or opening Background authorization checks authorization and summaries of executions awaiting history synchronization. You can also view history or execution records after returning. Authorization is not polled periodically. Web and IM notifications are independent; Web notifications also work when no IM channel is selected.
+Web notifications require an active browser connection and are not operating-system notifications. Delivery while the page is closed, offline, or disconnected is not guaranteed. Signing in, reconnecting, or opening Authorization checks authorization and summaries of executions awaiting history synchronization. You can also view history or execution records after returning. Authorization is not polled periodically. Web and IM notifications are independent; Web notifications also work when no IM channel is selected.
 
 Administrators can set `SCHEDULED_TASK_TIMEOUT_SECONDS` on the Agent configuration page (seconds, default 180, range 1–86400). Changes apply to the next execution. An execution that times out is recorded as failed, saved to Web history, and sent through the selected IM channel. User cancellations do not send a result notification.
 
@@ -106,14 +106,14 @@ Administrators can set `SCHEDULED_TASK_TIMEOUT_SECONDS` on the Agent configurati
 
 The task list shows the title, status, next execution, time zone, and delivery channel, with 10 tasks per page by default. Use the footer controls to change pages or page size. Task and execution tables scroll within a fixed area; the top tabs and footer pagination remain visible and do not move as the record count changes. The more menu at the end of each row provides a delete action. Execution times in the list and details use the task time zone.
 
-The history list groups conversations by date and shows a small alarm clock beside source conversations associated with scheduled tasks. Use the **History** selector to switch between **All conversations** and **Conversations with scheduled tasks**. Changing the filter returns to page 1. The footer provides previous page, current page number, and next page controls, with up to 30 conversations per page. Unavailable navigation buttons are disabled. The small **Refresh** icon beside the selector preserves the filter and returns to page 1. Only summaries load initially; full content loads when you select a conversation. Viewing your history, badges, and filter requires AI Chat viewing access without additional scheduled task management permissions.
+The conversation list in the History pane groups conversations by date and shows a small alarm clock beside source conversations associated with scheduled tasks. Use the **History** selector to switch between **All conversations** and **Conversations with scheduled tasks**. Changing the filter returns to page 1. The footer provides previous page, current page number, and next page controls, with up to 30 conversations per page. Unavailable navigation buttons are disabled. The small **Refresh** icon beside the selector preserves the filter and returns to page 1. Only summaries load initially; full content loads when you select a conversation. Viewing your history, badges, and filter requires AI Chat viewing access without additional scheduled task management permissions.
 
 Each result is appended to the conversation where its task was created, without creating a separate conversation. A conversation can contain several scheduled tasks and continue to accept ordinary questions. Scheduled result messages retain their original content and cannot be edited or regenerated. The alarm clock identifies the source conversation. After all associated tasks have been stopped and deleted, refresh the list to remove its badge.
 
-1. Open **AI Chat → Scheduled tasks → All execution records** to view currently retained records across your tasks. Use **Task name** to select **All tasks** or a specific task; changing the task filter returns to page 1. Alternatively, select a task title on the **Scheduled tasks** tab and open its **Execution history** tab to view that task alone.
-2. The table lists executions newest first, with 10 records per page by default. **All execution records** also shows the task name and time zone; times use each task's time zone. Use the controls below the table to change pages or page size. Changing page size returns to page 1; the **Refresh** icon at the top of the dialog preserves the current page.
+1. Open the AI Assistant, open **Scheduled tasks**, and select the **All runs** tab to view currently retained records across your tasks. Use **Task name** to select **All tasks** or a specific task; changing the task filter returns to page 1. Alternatively, select a task title on the **Tasks** tab and open its **Execution history** tab to view that task alone.
+2. The table lists executions newest first, with 10 records per page by default. **All runs** also shows the task name and time zone; times use each task's time zone. Use the controls below the table to change pages or page size. Changing page size returns to page 1; the **Refresh** icon at the top of the floating pane preserves the current page.
 3. Expand a row to read the full result or error.
-4. Once the history is published, click **Open result conversation** to open the original conversation and scroll to that execution's result message. Result links in notifications also locate the corresponding message. The same conversation is available in the history list on the left.
+4. Once the history is published, click **Open result conversation** to open the full-page AI chat and locate that execution's result message. Result links in notifications also locate the corresponding message. The same conversation is available in the History pane.
 5. Continue asking questions or creating other tasks in the original conversation. Sending an ordinary question calls AI without changing previously saved scheduled result messages.
 
 An execution record is saved before AI starts. Successful, failed, canceled, and interrupted runs are recorded. If history synchronization is pending, inspect **Execution history** and refresh later. A temporary service failure can prevent the conversation from opening without implying that the task never ran.
@@ -134,7 +134,7 @@ Task actions are available on the **General** tab. Editing and pausing are separ
 
 ### 8.13.4.1 Edit a Task
 
-1. Click **Copy edit request**, then **Open source conversation**, or close the dialog and start an ordinary conversation.
+1. Click **Copy edit request**, then **Open source conversation**, or close the floating pane and start an ordinary conversation.
 2. Paste the request, append the desired changes, and send it. For example: “Run once 2 minutes after confirmation. Keep Asia/Shanghai, the instruction, and Web history only.”
 3. Wait for `edit_scheduled_task`, review the target and full replacement configuration, confirm the time zone, and click **Execute**.
 4. Refresh the task detail and verify the updated schedule. Copying the request alone does not change the task.
@@ -151,11 +151,11 @@ If cancellation is still finishing, wait and refresh before resuming. A one-time
 
 ### 8.13.4.3 Renew Authorization
 
-An expired or deleted API key, or invalid user permissions, can fail an execution and change the task to **Authorization required**. Prepare a new key in Profile Settings, save it under **Scheduled tasks → Background authorization**, then open the affected task and click **Resume**. The updated credential applies to all tasks owned by the account but does not automatically resume them or repeat failed AI calls.
+An expired or deleted API key, or invalid user permissions, can fail an execution and change the task to **Authorization required**. Prepare a new key in Profile Settings, save it under **Scheduled tasks → Authorization**, then open the affected task and click **Resume**. The updated credential applies to all tasks owned by the account but does not automatically resume them or repeat failed AI calls.
 
 When execution detects invalid authorization, it keeps a failed record and notifies the connected owner. The failure reason, current key name, expiration, and **Authorize again** action appear in the same failure card without stacking another authorization card. A standalone authorization reminder can appear when no execution card is visible. Click **Authorize again** to open the configuration page. A persistent tip shows the current key, expiration, authorization status, and affected task count. If the invalid key prevents saving the result conversation in history, execution records remain available; history synchronization resumes after authorization is restored without repeating the AI execution. Network or temporary service failures indicate that the check is unavailable and do not require replacing the key or permanently pausing future scheduling.
 
-Invalid authorization is discovered during execution or existing checks such as signing in, reconnecting, or opening Background authorization. There is no periodic authorization poll or guarantee of advance detection before a key expires. Select a valid key owned by the account, save it, and explicitly resume each affected task.
+Invalid authorization is discovered during execution or existing checks such as signing in, reconnecting, or opening Authorization. There is no periodic authorization poll or guarantee of advance detection before a key expires. Select a valid key owned by the account, save it, and explicitly resume each affected task.
 
 ## 8.13.5 Stop Tasks and Delete History
 

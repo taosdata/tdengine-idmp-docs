@@ -29,7 +29,7 @@ On the right side of the toolbar:
 
 ### 4.1.1.2 AI-Suggested Panels
 
-When the AI toggle is active, powered by **Zero Query Intelligence**, the system generates panel suggestions alongside your saved panels. Each suggestion card shows a preview and a panel title. You can:
+When the AI toggle is active, powered by **Zero Query Intelligence**, the system generates panel suggestions alongside your saved panels. When the element already has saved panels, the suggestion area is collapsed by default; click the **AI** button in the toolbar to show the suggestions. Each suggestion card shows a preview and a panel title. You can:
 
 - Click **👍** to mark a suggestion as useful — this does not save it.
 - Click **👎** to dismiss the suggestion.
@@ -38,7 +38,7 @@ When the AI toggle is active, powered by **Zero Query Intelligence**, the system
 
 A **+ More Suggestions** card at the end of the list requests additional AI-generated suggestions.
 
-At the bottom of the panel list, a text input lets you describe a panel in natural language: "Tell me what panel you want and I'll build it for you." Click **Ask AI** to generate the described panel.
+To generate a panel in natural language, describe the request in the AI Assistant on the right side of the Explorer and let the AI create the panel with tools; see [8.6 AI Assistant](../08-ai-powered-insights/06-natural-language-queries.md). The suggestion area displays, accepts, or requests more suggestions, but does not provide free-text input.
 
 ### 4.1.1.3 Saved Panels
 
@@ -88,10 +88,14 @@ The following controls appear in the view mode toolbar for every panel type:
 | **Share** | Generate a time-limited shareable link to this panel view |
 | **Full Screen** | Expand the panel to fill the browser window |
 | **Open in New Window** | Open this panel in a separate browser window |
-| **Panel Insights** | Open the AI-generated insight report for this panel |
+| **Panel Insights** | Generate the panel insight report in the AI Assistant on the right |
 | **Annotations** | Open the annotations panel to add text annotations to this panel |
 
 Additional toolbar controls that are specific to a panel type are documented in each panel type's section.
+
+:::note
+When the workspace is narrow (for example, with the AI Assistant open), some secondary actions move into the **More actions** menu in their original order, and the compact time picker hides **Zoom out** and **Auto-refresh**. Collapse the AI Assistant or widen the browser window to restore all controls.
+:::
 
 ## 4.1.4 Panel Edit Mode
 

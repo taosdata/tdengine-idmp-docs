@@ -1,40 +1,48 @@
 ---
-title: Natural Language Queries
-sidebar_label: Natural Language Queries
+title: AI Assistant
+sidebar_label: AI Assistant
 ---
 
-# 8.6 Natural Language Queries
+# 8.6 AI Assistant
 
-The **AI Chat** feature lets you query your operational data using plain language. Instead of writing TDengine SQL or navigating the asset hierarchy to find a value, you can ask questions like "what was the peak voltage for em-1 yesterday?" and receive an answer grounded in your actual data.
+The **AI Assistant** (named **Teddy**) is a natural-language conversation panel docked on the right side of the Explorer browse and detail pages. It answers questions about the current element and page without writing TDengine SQL or navigating the asset hierarchy, for example, "What was the peak voltage for em-1 yesterday?"
 
-## 8.6.1 Opening AI Chat
+## 8.6.1 Opening the AI Assistant
 
-Click **AI Chat** in the top navigation bar. This opens the AI Chat page at `/ai`.
+After selecting an element in the Explorer, the AI Assistant is displayed on the right side of the workspace by default. If it has been collapsed, click the **AI Assistant toggle** at the far right of the context tab bar to reopen it. The button to the left of the AI Assistant header collapses or expands the middle workspace. The AI Assistant's open or collapsed state is remembered across refreshes.
 
-The AI assistant is named **Teddy**.
+- The AI Assistant appears only when the AI service is running. If the AI connection is unavailable, an administrator must configure a valid [AI connection](./01-connecting-to-llm.md); if the AI license has expired or permissions are insufficient, contact an administrator as well.
+- Drag the left edge of the AI Assistant to resize it between 320 pixels and 60% of the browser window. The width is remembered for the next visit.
+- The top navigation bar does not provide a separate AI Assistant entry; the AI Assistant loads with the Explorer.
+- Full-screen panel, element, and dashboard editor pages do not show the AI Assistant.
+- Using **Summon** in the Expert Center, or opening a result from a scheduled-task notification, opens the standalone full-page AI chat; that page has a left-hand history sidebar and a different layout from the right-side AI Assistant.
 
 ## 8.6.2 Interface Layout
 
-The AI Chat page has two areas:
+The AI Assistant panel consists of a header, a conversation area, and an input area.
 
-**Conversation history (left panel).** A list of previous chat sessions. Click any session to revisit its conversation. New sessions start with an empty history.
+**Header.** Shows **AI Assistant**. When a conversation is active, its name is appended to the title and truncated when necessary. Two controls are available at the right of the header: **Scheduled tasks** (alarm clock icon) and **History** (list icon).
 
-**Chat area (center/right).** The main interaction area containing:
+**Conversation area.** Shows the greeting, previous messages, and streamed answers. The greeting is *"Hi, I'm Teddy. How can I help you?"*.
 
-- The greeting message: *"Hi, I'm Teddy. How can I help you?"*
-- An **expert tag row** above the input field — click a tag to pick a domain expert for this conversation (see [8.13 Expert Mode](./13-expert-mode.md))
-- The text input field with the placeholder: *"Ask me anything about your data, press Enter to send, press Shift+Enter to wrap"*
-- An **Expert** button and a **Deep Thinking** toggle button at the bottom left of the input field
-- A **microphone button** at the right of the input field for voice input
-- A **Suggested Questions** section with a refresh icon, below the input field
+**Input area.** It contains:
+
+- **Context tags** for the current element, manually added elements, and the current page; each tag can be closed individually (see [8.6.6 Context and Multi-Element Analysis](#866-context-and-multi-element-analysis)).
+- A text input. Panel, real-time analysis, event, attribute, dashboard, and related element pages show page-specific placeholder text.
+- The **Expert** button, **Skill** entry (type `/` to open the skill list), and **Deep Thinking** toggle at the bottom left of the input.
+- A **microphone** button at the right of the input for voice input.
+- A **Start New Talk** button when a conversation exists, which starts a blank conversation.
+- The **Suggested Questions** area, shown for a new conversation above the input.
+
+**Floating panes.** History and scheduled tasks open as floating panes over the right side of the conversation area. Their left edge can be dragged, and their bottom edge stops at the top of the input. The two panes are mutually exclusive: only one can be open at a time. AI Function execution sessions and panel insight sessions also share the conversation area; opening one closes the other.
 
 ## 8.6.3 Asking a Question
 
-To run read-only analysis later or repeat it daily or weekly, create an [AI scheduled task](./13-scheduled-tasks.md) in chat. Scheduled tasks require separate background authorization and confirmation of the schedule and time zone when created or edited.
+To run read-only analysis later or repeat it daily or weekly, create an [AI scheduled task](./13-scheduled-tasks.md) in the conversation. Scheduled tasks require separate background authorization and confirmation of the schedule and time zone when created or edited.
 
 Type your question in the input field. Press **Enter** to send, or **Shift+Enter** to add a line break without sending.
 
-You can also press the **microphone button** to use voice input. Speak your question and the system transcribes it into the input field.
+You can also press the **microphone** button to use voice input. Speak your question and the system transcribes it into the input field.
 
 ## 8.6.4 Deep Thinking Mode
 
@@ -42,23 +50,57 @@ The **Deep Thinking** toggle switches the query to the Deep Thinking Model (conf
 
 ## 8.6.5 Suggested Questions
 
-Below the input field, the **Suggested Questions** section displays pre-generated questions relevant to your data context. These suggestions are generated by the system based on your asset hierarchy and collected data.
+The **Suggested Questions** area generates questions by page type and uses the current element and element template as context. The panel, real-time analysis, event, and dashboard pages each recommend their corresponding question types.
 
-Click the **refresh icon** next to "Suggested Questions" to load a new set of suggestions.
+- Switching the selected element in the left tree does not refresh the suggestions automatically; the current list stays unchanged.
+- Suggestions regenerate automatically only when the recommendation type changes (for example, from a panel page to a real-time analysis page); switching between pages that share a recommendation type keeps the current list.
+- Click the **refresh** icon (tooltip "Refresh") next to "Suggested Questions" to request a new set for the current element and page. An explicit refresh bypasses the cache so the result matches the current context.
+- Click any suggestion to use it directly — the question is placed in the input field and sent automatically.
 
-Click any suggestion to use it directly — the question is placed in the input field and sent automatically.
+## 8.6.6 Context and Multi-Element Analysis
 
-## 8.6.6 How Teddy Answers
+The AI Assistant sends the active context together with each question. The context tags above the input show what is active:
+
+- **Element tag**: the element selected in the left tree.
+- **Manually added element tags**: other elements added from the tree for multi-element comparison or correlation analysis.
+- **Page tag**: the current page name, such as "Attributes", "Panels", or "Dashboards".
+
+Click the close icon on an element tag or the page tag to exclude that part of the context from subsequent questions on the current element or page; closed tags are restored when the selected element or page changes. Closing a manually added element tag removes that element from the context; to use it again, add it back from the tree.
+
+To add another element, hover over an element, a favorite element, or an element in a group in the left tree, and click the **Add to AI Assistant context** button at the left of the row actions. The AI Assistant opens automatically and shows a tag for the element above the input. Click the same button again to remove it. Up to five elements can be added; at most three context tags are displayed above the input at a time, and the remaining elements are still sent with each request. Tags that are not displayed cannot be closed from the input; remove those elements with the tree button.
+
+Manually added elements persist across page navigation within the current browser session and are cleared when the page is refreshed.
+
+## 8.6.7 History
+
+Click the **History** button (list icon) at the right of the AI Assistant header to open the history floating pane. The pane contains:
+
+- A conversation filter (**All conversations** / **Conversations with scheduled tasks**) and a refresh button.
+- A search box that filters the currently loaded conversation summaries by title or first question.
+- A conversation list grouped by date. Click an entry to open that conversation in the conversation area.
+- Pagination controls at the bottom.
+
+Click the History button again, click outside the pane, or press **Esc** to close it. Opening History closes any active AI Functions or Panel Insights session. History and Scheduled tasks are mutually exclusive.
+
+When a confirmation card appears in the conversation, the History pane collapses temporarily so it does not cover the confirmation buttons, and then reopens automatically after the card is resolved.
+
+## 8.6.8 Scheduled Tasks
+
+Click the **Scheduled tasks** button (alarm clock icon) at the right of the AI Assistant header to open the scheduled task floating pane. The pane provides three tabs: **Tasks**, **All runs**, and **Authorization**. Use them to create and manage scheduled tasks, view execution records, and configure background authorization.
+
+Opening the scheduled task pane closes any active AI Functions or Panel Insights session. Selecting a run result closes the pane and opens the result in the conversation area. Click the Scheduled tasks button again, click outside the pane, or press **Esc** to close it. Unlike History, the Scheduled tasks pane does not collapse automatically when a confirmation card appears; close it manually. For details about creating, confirming, and running scheduled tasks, see [AI Scheduled Tasks](./13-scheduled-tasks.md).
+
+## 8.6.9 How Teddy Answers
 
 When you submit a question, Teddy queries your TDengine data using the appropriate SQL, retrieves the results, and returns a natural language answer. For data questions, the response includes the computed values. For analytical questions, it may include charts, tables, or a narrative explanation.
 
 All answers are grounded in your actual data — Teddy does not fabricate values.
 
-## 8.6.7 Confirming Tool Operations
+## 8.6.10 Confirming Tool Operations
 
-AI Chat can also use tools to create panels, update panels, or create analyses. Enable **Confirm before execution** under **Personal Settings → Agent** to pause write operations that require confirmation and display a card in the conversation. Read-only queries do not require confirmation. The toggle is off by default, saves changes automatically, and applies to the next task. See [Profile Settings](../14-administration/08-profile-settings.md#1485-agent).
+The AI Assistant can also use tools to create panels, update panels, or create analyses. Enable **Confirm before execution** under **Personal Settings → Agent** to pause write operations that require confirmation and display a card in the conversation. Read-only queries do not require confirmation. The toggle is off by default, saves changes automatically, and applies to the next task. See [Profile Settings](../14-administration/08-profile-settings.md#1485-agent).
 
-### 8.6.7.1 Using a Confirmation Card
+### 8.6.10.1 Using a Confirmation Card
 
 The card shows the operation, tool name, and argument details. Expand **Details** to review the target resource and arguments, then choose an action:
 
@@ -73,20 +115,20 @@ When a confirmation expires, its actions become unavailable. Send a new request 
 
 Token statistics show usage actually reported by the model. Missing usage is not replaced with zero. Explicitly reported zero usage is preserved as zero. Usage reported before a failure or pause is retained. A confirmation receipt without an additional model call does not generate additional token usage.
 
-### 8.6.7.2 Calling User-Configured MCP Services from AI Chat
+### 8.6.10.2 Calling User-Configured MCP Services from the AI Assistant
 
-A user-configured MCP service is a service connected to IDMP for AI Chat to use. For example, after connecting a company work-order system, AI Chat can call its tools to look up or create work orders. **IDMP is the MCP client, and the work-order system is the MCP server.** The confirmation preference applies to calls made by AI Chat through IDMP. It does not affect other clients that connect directly to that MCP server. **IM temporarily does not support confirmation before execution.**
+A user-configured MCP service is a service connected to IDMP for the AI Assistant to use. For example, after connecting a company work-order system, the AI Assistant can call its tools to look up or create work orders. **IDMP is the MCP client, and the work-order system is the MCP server.** The confirmation preference applies to calls made by the AI Assistant through IDMP. It does not affect other clients that connect directly to that MCP server. **IM temporarily does not support confirmation before execution.**
 
 To configure this behavior:
 
-1. An administrator configures and enables a service template under [Libraries → Agentic AI → MCP Templates](../13-libraries/05-agentic-ai.md#1352-mcp-templates). The current user supplies the required connection variables under [Personal Settings → Agent](../14-administration/08-profile-settings.md#1485-agent), making the tools available to AI Chat.
+1. An administrator configures and enables a service template under [Libraries → Agentic AI → MCP Templates](../13-libraries/05-agentic-ai.md#1352-mcp-templates). The current user supplies the required connection variables under [Personal Settings → Agent](../14-administration/08-profile-settings.md#1485-agent), making the tools available to the AI Assistant.
 2. The MCP server sets `annotations.readOnlyHint` and `annotations.destructiveHint` in each tool definition. IDMP reads these declarations through `tools/list`. They are tool metadata, not input arguments or instructions for the AI to interpret.
-3. Enable **Confirm before execution** under **Personal Settings → Agent**, then start a new AI Chat task.
+3. Enable **Confirm before execution** under **Personal Settings → Agent**, then start a new AI Assistant task.
 4. When the AI selects a tool, IDMP uses the table below to decide whether to pause. If confirmation is required, IDMP displays a card before sending the tool execution request to the MCP server. Clicking **Execute** sends `tools/call`.
 
 The following table covers all combinations **with confirmation enabled**. “Omitted” means that the field is absent from the tool definition.
 
-| `readOnlyHint` | `destructiveHint` | AI Chat behavior |
+| `readOnlyHint` | `destructiveHint` | AI Assistant behavior |
 |---|---|---|
 | `true` | `false` | Call directly without a confirmation card |
 | `true` | Omitted | Call directly without a confirmation card |
@@ -151,7 +193,7 @@ With confirmation enabled, ask “Create a work order titled ‘Check em-3 volta
 
 **Basic confirmation requires no additional confirmation endpoint, `validate_*` tool, or `x-idmp-confirmation-policy`.** Those extra conventions apply only to parameter editing, described below.
 
-### 8.6.7.3 Editing Parameters in a Confirmation Card
+### 8.6.10.3 Editing Parameters in a Confirmation Card
 
 Only the fields in the following table can currently be edited. The field must already exist in the original tool arguments and contain a string. Editing cannot add missing fields or modify arbitrary objects or arrays.
 

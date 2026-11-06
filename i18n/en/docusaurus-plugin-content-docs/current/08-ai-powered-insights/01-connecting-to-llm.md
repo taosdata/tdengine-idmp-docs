@@ -5,7 +5,7 @@ sidebar_label: Connecting to LLM
 
 # 8.1 Connecting to LLM
 
-Most AI features in IDMP — panel generation, analysis suggestions, AI Chat, root cause analysis — require a connection to an external Large Language Model (LLM). IDMP uses an OpenAI-compatible interface, so any LLM provider or self-hosted model that exposes an OpenAI-compatible API can be used.
+Most AI features in IDMP — panel generation, analysis suggestions, the AI Assistant, root cause analysis — require a connection to an external Large Language Model (LLM). IDMP uses an OpenAI-compatible interface, so any LLM provider or self-hosted model that exposes an OpenAI-compatible API can be used.
 
 ## 8.1.1 Built-In Trial Connection
 
@@ -41,7 +41,7 @@ IDMP uses two separate models from the same AI connection:
 - **Q&A Model** — handles everyday interactions: answering natural language queries, generating panel suggestions, creating analysis configurations, and narrating panel insights. This model should be fast and cost-effective.
 - **Deep Thinking Model** — handles computationally intensive tasks that benefit from extended reasoning chains, most notably Root Cause Analysis. This model can be slower and more expensive; it is only invoked when deep analysis is explicitly requested.
 
-In the AI Chat interface, users can toggle **Deep Thinking** mode to route their query to the Deep Thinking Model instead of the Q&A Model.
+In the AI Assistant, users can toggle **Deep Thinking** mode to route their query to the Deep Thinking Model instead of the Q&A Model.
 
 ## 8.1.4 Local Deployment
 

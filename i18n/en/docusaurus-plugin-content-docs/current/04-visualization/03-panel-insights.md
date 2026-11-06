@@ -9,12 +9,11 @@ Panel Insights is the AI analysis feature built directly into every panel. With 
 
 ## 4.3.1 Accessing Panel Insights
 
-Panel Insights is available in both view mode and edit mode:
+Panel Insights is available on the panel view page:
 
-- **View mode:** Click the **Panel Insights** button at the right end of the toolbar. The button is labeled "Panel Insights" and appears as the last control in the toolbar row.
-- **Edit mode:** Click the **Panel Insights** button in the edit mode toolbar to analyze the current preview data before saving.
+- Click the **Panel Insights** button at the right end of the toolbar.
 
-The insight report opens in a slide-out panel to the right of the chart.
+The insight report opens as chat messages in the AI Assistant on the right side of the Explorer, where follow-up questions can be entered in the input box. Pages without an embedded AI Assistant, such as some pages in Libraries, use the in-page insight sidebar.
 
 ## 4.3.2 What Panel Insights Analyzes
 
@@ -49,4 +48,4 @@ Panel Insights is most useful when:
 - **Attribute limits are configured.** Without defined limits, the AI cannot distinguish normal from abnormal — it can only describe the data statistically. With limits, the insight becomes operationally meaningful.
 - **The attribute has a clear engineering context.** An attribute named `Temperature_Bearing_A` with a unit of °C and a Hi limit of 85 yields a better insight than an unnamed raw sensor with no metadata.
 
-Insights are generated on demand and are not stored. Each click of the Panel Insights button regenerates the analysis against the current data and time range. If you change the time range or add a metric, click Panel Insights again to refresh the report.
+Insights are generated on demand and are not stored. The first click of the Panel Insights button generates the analysis for the current data and time range; clicking the same button again closes the current insight session, and clicking it once more regenerates the insight from the latest data. After changing the time range or adding a metric, close and start the insight again.

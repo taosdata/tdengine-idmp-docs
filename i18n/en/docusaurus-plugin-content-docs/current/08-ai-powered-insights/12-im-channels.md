@@ -9,7 +9,7 @@ AI Agent supports interaction through instant messaging tools. After configuring
 
 :::info Tool execution confirmation
 
-IM does not currently support confirmation before execution. Enabling **Confirm before execution** under **Personal Settings → Agent** applies only to AI Chat and AI Function in the Web UI; it does not enable IM confirmation. Tools in IM continue to execute under the existing permissions and tool rules, without confirmation cards or parameter editing. To review or edit arguments before execution, enable confirmation and start the task in the Web UI.
+IM does not currently support confirmation before execution. Enabling **Confirm before execution** under **Personal Settings → Agent** applies only to the AI Assistant and AI Function in the Web UI; it does not enable IM confirmation. Tools in IM continue to execute under the existing permissions and tool rules, without confirmation cards or parameter editing. To review or edit arguments before execution, enable confirmation and start the task in the Web UI.
 
 :::
 

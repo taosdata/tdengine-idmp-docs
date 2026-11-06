@@ -92,12 +92,12 @@ The **Agent** tab provides personal AI execution preferences and MCP server conn
 
 The **Confirm before execution** toggle at the top of this tab applies only to the current user:
 
-- The toggle is off when no preference has been saved. When off, AI Chat and AI Function execute operations under the existing permissions and tool rules without asking for confirmation each time.
+- The toggle is off when no preference has been saved. When off, the AI Assistant and AI Function execute operations under the existing permissions and tool rules without asking for confirmation each time.
 - When on, write operations that require confirmation, such as creating panels, updating panels, and creating analyses, display a confirmation card and wait for a decision. Read-only queries do not require confirmation.
 - Changes are saved automatically, without a separate Save action. If saving fails, the toggle returns to its last saved state. Toggle it again to retry.
 - Changes apply to the next task. They do not execute or cancel an operation that is already waiting for confirmation.
 
-For confirmation card actions, see [Section 8.6.7](../08-ai-powered-insights/06-natural-language-queries.md#867-confirming-tool-operations). IM does not currently support confirmation before execution; enabling this personal preference does not enable IM confirmation.
+For confirmation card actions, see [Section 8.6.10](../08-ai-powered-insights/06-natural-language-queries.md#8610-confirming-tool-operations). IM does not currently support confirmation before execution; enabling this personal preference does not enable IM confirmation.
 
 ### 14.8.5.1 Template List
 
