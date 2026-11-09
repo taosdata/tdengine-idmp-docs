@@ -213,6 +213,10 @@ After importing events, you can group them by recipe in the event list and add o
    - Comparison charts for element attributes referenced by events associated with each stage.
 6. Return to the event list and add other batches from the same recipe in the same way. The existing workbench is reused and brought into focus, and the new batch is added to the current charts.
 
+The following figure shows an example of the event list based on a steel production recipe.
+
+![Recipe-grouped event list for a steel production recipe](../images/06-batch-list.png)
+
 Note:
 
 - **Add to Batch Analysis Workbench** is available only on **batch rows** in recipe grouping mode. It is not available on ordinary event rows or other levels.
@@ -222,7 +226,9 @@ Note:
 
 ## 6.9.6 Using the Batch Analysis Workbench
 
-The workbench organizes comparison charts by process stage and provides stage splitting, attribute management, detail views, and panel saving.
+The workbench organizes comparison charts by process stage and provides stage splitting, attribute management, detail views, and panel saving. The following figure shows an example of the Batch Analysis Workbench for a steel production scenario.
+
+![Batch Analysis Workbench](../images/06-batch-workbench.png)
 
 ### 6.9.6.1 Page Layout
 
