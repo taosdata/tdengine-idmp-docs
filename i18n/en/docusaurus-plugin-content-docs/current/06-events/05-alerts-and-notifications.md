@@ -275,9 +275,9 @@ Multiple rules matched by the same event, different contact points of the same r
 
 ### 6.5.3.7 Manual Resend
 
-The **Resend** button in the event detail toolbar and the **Send Notification** item in the event list row menu manually re-dispatch notifications: the system creates one resend task for each alert instance of the event and sends them using each instance's content snapshot from its first send. Manual resend is not limited by the **Max Resend Count**.
+The **Resend** button in the event detail toolbar and the **Send Notification** item in the event list row menu manually re-dispatch notifications: the system creates one resend task for each alert instance of the event and sends them using each instance's content snapshot from its first send. Manual resend is not limited by the **Max Resend Count**, and ended events can be resent manually as well.
 
-The following cases fail with an explicit error instead of sending empty content: the event has been acknowledged, the event has been closed, or the event has no resendable notification instances (for example, events with no rule match at evaluation time). When an instance's rule has been deleted or disabled, or its contact point is missing, only that instance is skipped and the rest are still sent.
+The following cases fail with an explicit error instead of sending empty content: the event has been acknowledged, the event has been marked invalid, or the event has no resendable notification instances (for example, events with no rule match at evaluation time). When an instance's rule has been deleted or disabled, or its contact point is missing, only that instance is skipped and the rest are still sent.
 
 ## 6.5.4 Notification Rule Template
 
