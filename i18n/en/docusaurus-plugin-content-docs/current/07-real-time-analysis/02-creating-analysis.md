@@ -32,6 +32,11 @@ All trigger types share two common optional fields:
   - **Fill History First** — When checked, the analysis processes all historical data before it begins processing new real-time data.
   - **Start Time** — The date and time from which to start the historical backfill.
 
+In addition, some trigger types offer extra window-level options in the trigger settings:
+
+- **Trigger timing** — shown only for window-aggregation triggers (Count, State, Event, Session, Sliding): choose whether computation and notification happen when the window opens, closes, or both. Defaults to on window close. See [7.3.11 Common Trigger Options](./03-trigger-types.md#7311-common-trigger-options).
+- **Window filter (True For) and open/close confirmation** — the Event Window provides a True For filter over the entire event window, plus open confirmation (START) and close confirmation (END) for debouncing. See [7.3.6 Event Window](./03-trigger-types.md#736-event-window).
+
 ## 7.2.3 Event
 
 The Event section controls whether the RT analysis generates an event each time it fires, along with the event's structure, severity, and delivery policy. Leaving the **Event Template** field empty means no event is generated; selecting an event template enables event generation. See [Generating Events](./05-generating-events.md) for full details.

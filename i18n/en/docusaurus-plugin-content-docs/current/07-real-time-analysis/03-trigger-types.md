@@ -142,7 +142,7 @@ Fires when the value of one or more states changes, computing over the previous 
 | **Extend (EXTEND)** (optional) | Window-boundary extension strategy: 0 = default (window start/end are the timestamps of the first/last rows of the state), 1 = extend backward, 2 = extend forward. Extend must be set whenever zeroth state is configured. |
 | **Zeroth State (ZEROTH_STATE)** (optional) | Designates a "zeroth state"; windows whose state value equals the zeroth state are filtered out and not computed or output. One constant value per state; use `NO_ZEROTH` for a state that does not participate in the zeroth-state check. |
 
-> Max Delay (MAX_DELAY) is common to all trigger types — see "7.3.9 Common Trigger Options" below.
+> Max Delay (MAX_DELAY) is common to all trigger types — see "7.3.11 Common Trigger Options" below.
 
 ### 7.3.5.3 Examples
 
@@ -182,11 +182,16 @@ Each row contains the following fields:
 | --- | --- |
 | **Trigger Name** | The row's identifier name. In the multi-row case, it is used as the suffix when generating child event names; see [6.2.5 Naming of Child Events](../06-events/02-child-events.md#625-naming-of-child-events). |
 | **Expression** (required) | The condition expression. A positive result counts as a match. |
+| **Sub-expression** | Checking this converts the row into a group: the original expression automatically becomes the first child condition, and the group can keep adding and nesting child conditions without depth limit; the group itself holds no expression or fields — only leaf conditions are evaluated. Version requirements are described below under "Nested Sub-expressions". |
 | **Duration** | The "True For" value — the minimum duration the expression must remain true to count as a match. Used to filter out momentary noise. |
 | **Severity Level** | The severity of the event (or child event) produced by a match on this row. |
 | **Allow Ack** | Whether the event (or child event) produced by a match on this row requires operator acknowledgment. |
 
 Row order is priority order — **higher-priority (more severe) rules must be placed earlier**. See [6.2.2 Trigger Order Is the Priority](../06-events/02-child-events.md#622-trigger-order-is-the-priority). Added sub-expressions can be removed with the delete icon at the end of each row; the first row cannot be deleted.
+
+**Nested sub-expressions.** Checking **Has Children** on a row converts it into a group: the original expression automatically becomes the first child condition, the **Add Sub-expression** button inside the group appends more child conditions, and a child condition can be converted into a group again — nesting depth is unlimited. When you create a 6th or deeper level, the system prompts you to watch readability and performance. A group row no longer shows the expression, duration, severity, or allow-ack fields — only leaf rows can carry these fields. Ungrouping asks for confirmation; confirming discards the group and all its child conditions and restores the row as an ordinary leaf.
+
+Nested sub-expressions require specific TDengine TSDB versions: a basic one-level child event (a root group containing only leaf conditions) requires TSDB `3.4.2.7` or later; nesting groups inside groups (multi-level nesting) requires TSDB `3.4.3.0` or later. When the version is insufficient, the UI hides the corresponding entry points automatically, and the backend blocks saving with the minimum version requirement.
 
 #### Stop Trigger
 
@@ -195,6 +200,17 @@ The Stop Trigger is a single condition editor that defines when the event window
 | Field | Description |
 | --- | --- |
 | **Expression** (required) | The condition expression. When it evaluates to a positive value, the event window closes and the event is emitted. |
+| **Close confirmation (END)** (optional) | The stop condition must hold for the configured duration or count before the event window actually closes, preventing transient recovery from closing the window too early; confirmation rows are not included in the window. Four modes: Duration, Count, Duration AND Count, Duration OR Count; clearable. Requires TDengine TSDB `3.4.3.0` or later. |
+
+#### True For (Window Filter and Open/Close Confirmation)
+
+The event window provides True For settings at three independent layers:
+
+- **Window filter (True For)** — in the trigger settings, on the same row as **Pre-filter**: applies True For filtering to the entire event window — the window is emitted only when its duration or row count meets the configured value. Four modes (Duration, Count, Duration AND Count, Duration OR Count), clearable; leaving it empty disables filtering.
+- **Open confirmation (START)** — the **True For** block at the bottom of the Start Trigger table, providing overall open confirmation: the start condition must hold continuously for the configured duration or count before the window opens; an interruption restarts the accumulation, and duration accumulates by data timestamps rather than wall-clock waiting. Enabled by default ("Duration 10s") and clearable to disable confirmation. Shown only when the effective start condition is a single, non-nested condition. Requires TDengine TSDB `3.4.3.0` or later.
+- **Close confirmation (END)** — see the **Close confirmation (END)** field of the Stop Trigger above.
+
+The row-level **Duration** (True For) applies only to that row's own condition and is independent of the settings above.
 
 #### Evaluation and Validation
 
@@ -208,6 +224,8 @@ The Stop Trigger is a single condition editor that defines when the event window
 **Voltage exceedance with severity tiers (child events).** Click **+ Add Sub-expression** beneath the start trigger to add a second row, and configure two rows in highest-priority-first order: `severe` / `voltage > 240` / Critical, and `moderate` / `voltage > 230` / Major. The Stop Trigger is `voltage < 215`. During the window, every time the voltage crosses a higher threshold, a child event of the corresponding severity is produced; when two or more child events accumulate, a parent event is automatically created to summarize the whole exceedance episode. For the complete timeline, see the [6.2.9 example](../06-events/02-child-events.md#629-example-two-tier-severity-for-voltage-exceedance).
 
 **Compressor surge detection (single event).** Start Trigger is `discharge_pressure > surge_limit AND flow < min_flow`; "Duration" is set to 5 seconds to filter out transient noise. When a genuine surge condition is confirmed the window opens, and the Stop Trigger closes it when pressure returns to normal. Each surge event is recorded with its duration and pressure profile.
+
+**Temperature exceedance debouncing (open/close confirmation).** Start Trigger is `temperature > 80`, with the **True For** open confirmation set to "Duration 1m" — the window opens only after the temperature stays above 80 °C for a full minute, so momentary spikes no longer open windows. Stop Trigger is `temperature < 80`, with **Close confirmation (END)** set to "Count 2" — the window closes only after two consecutive readings fall below 80, so single-point jitter cannot close it early. Combined with trigger timing "Open and close", an alert is pushed the moment the window opens, and complete statistics are delivered when it closes.
 
 ---
 
@@ -342,10 +360,11 @@ The eight selectable anomaly rules:
 
 ## 7.3.11 Common Trigger Options
 
-The following options apply to all of the trigger types (windows) above and are offered uniformly in the trigger settings.
+The following options are offered uniformly in the trigger settings. **Max Delay** applies to all trigger types; **Trigger timing** applies only to window-aggregation triggers (Count, State, Event, Session, Sliding).
 
 ### 7.3.11.1 Parameters
 
 | Parameter | Description |
 | --- | --- |
 | **Max Delay (MAX_DELAY)** (optional) | The maximum delay before a window fires. After a window opens, once this time is reached the window is computed even if it has not yet closed, reducing output latency for long windows. A time value, e.g. `5s`, `1m`. Leave empty to disable. |
+| **Trigger timing** | Shown only for window-aggregation triggers (Count, State, Event, Session, Sliding): choose whether computation and notification happen when the window opens, closes, or both. Defaults to **on window close**. Output at window open is a partial aggregation (an intermediate value); with "Open and close", the open result is eventually overwritten by the close result so the output converges to the final value; with "On window open" only, nothing is emitted when the window closes and events are closed by the existing convergence mechanisms. "On window open" and "Open and close" require TDengine TSDB `3.4.3.0` or later; when the version is insufficient, the UI hides those options automatically. |

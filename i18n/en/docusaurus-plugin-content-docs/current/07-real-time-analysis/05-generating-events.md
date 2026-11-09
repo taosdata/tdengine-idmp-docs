@@ -27,6 +27,7 @@ Once an event template is selected, the following fields are available to furthe
 | **Reason Code Value** | An optional sub-value within the selected Reason Code. Available after a Reason Code is selected. |
 | **Event Filter** | An optional condition expression that determines whether the current trigger should create an event. An event is generated only when the filter condition is satisfied. Useful for suppressing routine results and emitting events only for abnormal conditions, limit violations, or state transitions. |
 | **Min Send Interval** | A legacy field retained for compatibility only; it no longer limits notification frequency. Cross-event notification suppression is now controlled by each notification rule's **Non-Repetition Interval** — see [Alerts and Notifications](../06-events/05-alerts-and-notifications.md#6533-non-repetition-window). This setting does not determine whether the event itself is created. |
+| **Notify timing** | Shown only for non-event-window, window-aggregation triggers (Count, State, Session, Sliding): choose whether notifications are sent when the window opens, closes, or both. The value must be a subset of the trigger timing. Defaults to on window close. The Event Window does not offer this option — its notifications follow the event notification mechanism. |
 
 ## 7.5.3 Capturing Calculated Values in Events
 
