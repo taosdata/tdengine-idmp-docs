@@ -22,7 +22,7 @@ The General Information toolbar provides the following action controls.
 | **Add to Group** | Add this event to one or more custom groups for quick access from the left sidebar |
 | **Root Cause Analysis** | Open a root cause analysis view for this event |
 | **Analysis Workbench** |  Add to Analysis Workbench for the event's time range on its associated element |
-| **Resend** | Manually re-dispatch notifications for this event — one resend task is created for each of the event's alert instances, and ended events can be resent too; an explicit error is shown when the event has been acknowledged, has been marked invalid, or has no resendable notification instances |
+| **Resend** | Manually re-dispatch notifications for this event — one resend task is created for each of the event's alert instances; ended events can be resent too, and events that never sent a notification are force-dispatched with content freshly rendered from the currently effective rules; an explicit error is shown when the event has been acknowledged, has been marked invalid, or no resendable content can be produced at all |
 
 ### 6.4.1.2 Fields
 

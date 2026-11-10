@@ -70,7 +70,7 @@ Each event row provides a context menu with actions for viewing details, sending
 | Action | Description |
 |---|---|
 | **View** | Open the event detail page |
-| **Send Notification** | Manually re-dispatch notifications for this event (resent using each notification instance's content snapshot); ended events can be resent too, while an explicit error is shown when the event has been acknowledged, has been marked invalid, or has no resendable notification instances |
+| **Send Notification** | Manually re-dispatch notifications for this event (resent using each notification instance's content snapshot); ended events can be resent too, events that never sent a notification are force-dispatched with content freshly rendered from the currently effective rules, and an explicit error is shown when the event has been acknowledged, has been marked invalid, or no resendable content can be produced at all |
 | **Ack** | Acknowledge the event |
 | **Trend Chart Analysis** | Open a trend chart for the event's time range on its associated element |
 | **Delete** | Delete the event record |
