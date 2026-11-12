@@ -8,7 +8,7 @@ sidebar_label: Connections
 A **connection** tells IDMP how to reach an external system. Connections are configured in **Admin Console → Connections** and are referenced by data ingestion tasks and asset model imports.
 
 :::note
-Supported connection types include TDengine TSDB, MySQL, PostgreSQL, SQL Server, and InfluxDB. TDengine connections manage business data; MySQL, PostgreSQL, SQL Server, and InfluxDB connections provide external metrics and tags.
+Supported connection types include TDengine TSDB, MySQL, PostgreSQL, SQL Server, InfluxDB, and Oracle. TDengine connections manage business data. The other connection types provide external metrics and tags.
 :::
 
 The connection list shows all configured connections with the following columns:
@@ -48,20 +48,21 @@ In the URL, `localhost` refers to the host or container running the IDMP service
 
 ## 12.1.2 External Data Source Connections
 
-MySQL, PostgreSQL, SQL Server, and InfluxDB connections can supply [attribute data references](../03-data-modeling/02-attributes.md#322-data-reference-types). Before creating one, prepare an enabled TDengine connection with the corresponding external data source connector.
+MySQL, PostgreSQL, SQL Server, InfluxDB, and Oracle connections can supply [attribute data references](../03-data-modeling/02-attributes.md#322-data-reference-types). Before creating one, prepare an enabled TDengine connection with the corresponding external data source connector.
 
 1. Click **+**, enter a name, and select the external data source type.
-2. Enter the **URL**, **Database**, and authentication details using the parameter table for the selected type below.
-3. Select the **Parent TDengine connection**. IDMP automatically creates and manages the corresponding external data source in that TDengine instance.
-4. Click **Check**, then **Save** after validation succeeds.
+2. Enter the **URL**, **Database** or **Service name**, and authentication details for the selected type.
+3. Select the **Parent TDengine connection**.
+4. Click **Check** to verify direct access from IDMP and federated access from TDengine. Form validation errors appear by their fields. If the connection check request fails, the error appears in a notification. A successful check hides the status and error from any previous failed save.
+5. Click **Save** to create or update the external data source in the parent TDengine instance. If applying the configuration fails, the error appears below **Additional Properties**.
 
-The following rules apply to all four external data source types:
+The following rules apply to all external data source types:
 
 - **URL format**: Use `http://host:port` or `https://host:port`. An explicit port from `1` to `65535` is required. Enter the database and credentials in their own fields. The URL must not contain a username, password, query, fragment, or path other than `/`. Do not use a `jdbc:` prefix.
-- **Scheme and port**: For MySQL, PostgreSQL, and SQL Server, use the database service port. `http://` disables TLS and `https://` enables TLS. This URL format does not require the database to expose an HTTP service. For InfluxDB, enter its service endpoint.
+- **Scheme and port**. For relational databases, use the database listener port. For MySQL, PostgreSQL, and SQL Server, `http://` disables TLS by default and `https://` enables it by default. Additional properties can override the TLS settings. Oracle uses TCP only and requires the `http://` scheme. For InfluxDB, enter its HTTP or HTTPS service endpoint.
 - **Network and permissions**: Both the IDMP service and the parent TDengine instance must be able to reach the external source. The account or token must have read access to the target database, Schema, and tables, together with permission to list the required metadata.
-- **Length limits**: Database names are limited to 64 UTF-8 bytes, hostnames to 256 UTF-8 bytes, and relational database usernames to 128 UTF-8 bytes. SQL Server Schema names are limited to 64 UTF-8 bytes.
-- **Editing**: Leave passwords or tokens blank to keep their current values. The connection type and parent TDengine connection cannot be changed directly after creation.
+- **Length limits**. Database names and Oracle service names are limited to 64 UTF-8 bytes, hostnames to 256 UTF-8 bytes, and relational database usernames to 128 UTF-8 bytes. SQL Server and Oracle Schema names are limited to 64 UTF-8 bytes.
+- **Editing**. Re-enter the password or token when changing the host, port, or username. For other edits, leave the password or token blank to keep its current value. The connection type and parent TDengine connection cannot be changed directly after creation.
 
 ### 12.1.2.1 MySQL Connections
 
@@ -81,7 +82,7 @@ A MySQL connection reads external metrics and tags from a specified database usi
 
 For example, set URL to `http://mysql-host:3306`, Database to `factory`, and Username to `idmp_reader`. Enter the account password and select `production-tsdb` as the parent. Leave additional properties empty to use the default timeouts.
 
-Using `https://` enables TLS with server certificate and hostname verification. Use a hostname matching the certificate and ensure that both the IDMP and TDengine connection environments trust the certificate.
+With `https://`, `sslMode` defaults to `VERIFY_IDENTITY`, which enables TLS with server certificate and hostname verification. Use a hostname matching the certificate and ensure that both IDMP and TDengine trust it. To override the URL default, set `sslMode` under Additional Properties. The alias `ssl_mode` is also accepted.
 
 ### 12.1.2.2 PostgreSQL Connections
 
@@ -101,7 +102,7 @@ A PostgreSQL connection specifies the database to access. Select its Schema and 
 
 For example, set URL to `http://pg-host:5432` and Database to `factory`, enter the credentials for `idmp_reader`, and select `production-tsdb` as the parent. After saving, select this connection in the attribute data reference, followed by the target Schema, such as `public`, and table.
 
-Using `https://` enables TLS with certificate chain and hostname verification. Use a hostname that matches the certificate.
+With `https://`, `sslmode` defaults to `verify-full`, which enables TLS with certificate chain and hostname verification. Use a hostname that matches the certificate. To override the URL default, set `sslmode` under Additional Properties.
 
 ### 12.1.2.3 SQL Server Connections
 
@@ -116,15 +117,16 @@ A SQL Server connection can specify a default database and Schema. The target da
 | **Username** | Yes | A SQL Server database account, such as `idmp_reader`. |
 | **Password** | On creation | The password for this SQL Server account. Leave blank when editing to retain the existing password. |
 | **Database** | No | The connection's default database, such as `FactoryDB`. Leave blank to keep the connection default unset, then explicitly select a database in the attribute reference. |
-| **Schema** | No | The connection's default Schema, such as `dbo`. Use the dedicated input field instead of adding a property of the same name. Leave blank to keep the connection default unset. |
 | **Parent TDengine connection** | Yes | An enabled TDengine connection with the SQL Server external source connector, such as `production-tsdb`. |
-| **Additional Properties** | No | Supports `connect_timeout_ms`, `read_timeout_ms`, and `trust_server_certificate`, described in the additional properties table below. |
+| **Additional Properties** | No | Set `schema` to the connection's default schema, such as `dbo`. Also supports `connect_timeout_ms`, `read_timeout_ms`, and `trust_server_certificate`. |
 
-For example, set URL to `https://sqlserver-host:1433`, Database to `FactoryDB`, and Schema to `dbo`. Enter the database credentials and select `production-tsdb` as the parent. Leave additional properties empty to use the default timeouts and certificate verification.
+For example, set URL to `https://sqlserver-host:1433` and Database to `FactoryDB`, then add `schema=dbo` under Additional Properties. Enter the database credentials and select `production-tsdb` as the parent.
+
+With `https://`, `encrypt` defaults to `true` and the server certificate is verified by default. To override the URL default, set `encrypt` under Additional Properties. The TDengine federated connector does not support `encrypt=Strict`.
 
 When configuring or editing this connection, also consider the following:
 
-- Blank database and Schema values on creation leave defaults unset. Clearing an existing value removes the corresponding TDengine external source default when the update is successfully applied. An unchanged, already blank field does not issue a clear.
+- When creating a connection, you can leave Database blank and omit `schema`. Clearing an existing database or removing the `schema` row clears the corresponding TDengine external source default once the update is applied.
 - The database selector in an attribute reference offers the connection default and current value. To use another database, enter its name and press Enter, then select its Schema and table. IDMP does not automatically select `dbo`.
 - DATE columns can be explicitly selected as the timeline, but are excluded from automatic timeline selection. Tables must still satisfy the unique timestamp primary-key constraint; views use an explicit selection or a unique candidate.
 
@@ -147,17 +149,36 @@ For example, set URL to `http://influx-host:8181` and Database to `factory`, ent
 
 IDMP uses the InfluxDB 3 HTTP SQL API for metadata access and connection checks, while the parent TDengine accesses data through Flight SQL. Ensure that the interfaces required by both are reachable. Actual ports and service capabilities depend on the InfluxDB deployment.
 
-### 12.1.2.5 External Data Source Additional Properties
+### 12.1.2.5 Oracle Connections
 
-Configure additional properties as name/value pairs. Omitted parameters use the defaults below. Each external connection accepts only the parameters listed for its type.
+An Oracle connection accesses a specified service over TCP. Select the Schema and table within that service when configuring an attribute data reference.
+
+| Parameter | Required | Description and example |
+|---|---|---|
+| **Name** | Yes | A unique connection name, such as `factory-oracle`. |
+| **Type** | Yes | Select **Oracle**. |
+| **URL** | Yes | The Oracle listener host and TCP port, such as `http://oracle-host:1521`. Use the `http://` scheme. |
+| **Auth Type** | Yes | Select **Username Password**. |
+| **Username** | Yes | An Oracle database account, such as `idmp_reader`. |
+| **Password** | On creation | The password for this Oracle account. Re-enter it when changing the host, port, or username. |
+| **Service name** | Yes | The Oracle service name, such as `factory.example.com`. SIDs, TNS aliases, and JDBC URLs are unsupported in this field. |
+| **Parent TDengine connection** | Yes | An enabled TDengine connection with the Oracle external source connector, such as `production-tsdb`. |
+| **Additional Properties** | No | Set `schema` to the connection's default Schema, such as `FACTORY`. You can also set the connection and read timeouts. |
+
+### 12.1.2.6 External Data Source Additional Properties
+
+Configure additional properties as name/value pairs. Omitted parameters use the defaults below. For relational external connections, you can also type JDBC driver property names that IDMP allows. TDengine federated access uses only the options IDMP maps to its external source. Other allowed driver properties, such as MySQL's `allowPublicKeyRetrieval`, apply only to direct access from IDMP.
 
 | Parameter name | Applicable types | Default | Description and allowed values |
 |---|---|---|---|
-| `connect_timeout_ms` | MySQL, PostgreSQL, SQL Server, InfluxDB | `10000` | Connection establishment timeout in milliseconds. Enter an integer from `1` to `2147483647`, without units such as `ms`. For example, `10000` means 10 seconds. |
-| `read_timeout_ms` | MySQL, PostgreSQL, SQL Server, InfluxDB | `30000` | Timeout for waiting for query or read responses, in milliseconds. Enter an integer from `1` to `2147483647`. For example, `30000` means 30 seconds. |
+| `schema` | SQL Server, Oracle | Unset | The connection's default schema, such as `dbo` for SQL Server. |
+| `connect_timeout_ms` | All external sources | `10000` | Connection establishment timeout in milliseconds. Enter an integer in the range below without a unit suffix. |
+| `read_timeout_ms` | All external sources | `30000` | Timeout for query or read responses in milliseconds. Enter an integer in the range below without a unit suffix. |
 | `trust_server_certificate` | SQL Server only | `false` | Whether to trust the server certificate without verification. Accepts only lowercase `true` or `false`. With `https://`, the default `false` verifies the certificate; `true` keeps encryption but skips certificate verification and should be used only where that risk is explicitly accepted. This option does not enable TLS by itself. |
 
-Completely blank rows are omitted. A row with a value requires a parameter name, and a named parameter requires a valid value. To use a default, remove the parameter row instead of leaving its value empty.
+For Oracle, both timeouts accept `0` or values from `100` to `600000`. TDengine passes `0` to the Oracle connector. Direct access from IDMP still uses the default timeouts in the table. For other external sources, both timeouts accept values from `1` to `2147483647`.
+
+Completely blank rows are omitted. Each parameter requires a name and a valid value. Remove the parameter row to use its default.
 
 :::note
 Attributes can only select external connections created and managed in IDMP. External data sources created directly in TDengine do not automatically appear in the IDMP connection list.
