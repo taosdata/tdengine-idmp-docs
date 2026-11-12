@@ -3,6 +3,13 @@ title: Symbol
 sidebar_label: Symbol
 ---
 
+import LoopVideo from '@site/src/components/LoopVideo';
+import progressUrl from './images/canvas-progress.mp4';
+import eventUrl from './images/canvas-event.mp4';
+import triggerUrl from './images/canvas-event-trigger.mp4';
+import stateUrl from './images/canvas-combine-state.mp4';
+import databindUrl from './images/canvas-databind.mp4';
+
 # 5.2 Symbol
 
 Symbols are the basic units that make up the monitoring screen, just like Lego blocks. Each device icon and closed shape is a symbol. By combining different symbols, you can build a complete industrial monitoring system.
@@ -17,7 +24,7 @@ Rotation: Set the rotation angle of the symbol
 
 Progress: Any closed shape can be used as a progress bar: rectangle, circle, SVG, closed polyline, or any other closed shape. The value range is 0~1.
 
-![Symbol Progress Property](./images/canvas-progress.gif)
+<LoopVideo src={progressUrl} label="Symbol Progress Property" />
 
 ### 5.2.1.2 Image Appearance Style
 
@@ -41,7 +48,7 @@ Event actions: open link, set symbol attributes, execute animation, pause animat
 
 The following figure shows two events set for the symbols on the canvas: when the mouse enters, the background color is set to green, and when the mouse leaves, the background color is restored.
 
-![Symbol Events](./images/canvas-event.gif)
+<LoopVideo src={eventUrl} label="Symbol Events" />
 
 ### 5.2.2.2 Conditional Triggers
 
@@ -49,7 +56,7 @@ You can add trigger conditions to events. The most commonly used trigger conditi
 
 The following figure shows that the event is triggered only when the symbol text is greater than 30 upon mouse enter. In the figure, the symbol with text 40 meets the condition and triggers the background to turn green, while the symbol with text 20 does not meet the condition and does not trigger the background to turn green upon mouse enter.
 
-![Conditional Triggers](./images/canvas-event-trigger.gif)
+<LoopVideo src={triggerUrl} label="Conditional Triggers" />
 
 #### 5.2.2.2.1 Trigger Condition Data Structure
 
@@ -161,7 +168,7 @@ You can select multiple shapes on the canvas, then right-click and choose Group/
 
 Two or more symbols grouped as a state is a very effective way of representation. For example, on and off, the rotation and stop of a fan can be combined into one state. Alarm lights of different colors, such as red, yellow, and green, can be combined into one state. The modification of states can be driven by events or by binding IDMP element attributes to achieve animation effects.
 
-![States](./images/canvas-combine-state.gif)
+<LoopVideo src={stateUrl} label="States" />
 
 ## 5.2.5 Symbol Attributes
 
@@ -173,7 +180,7 @@ In event configuration, you can automatically control symbol attributes by selec
 
 Binding variables allows for quick real-time dynamic data display. As shown in the figure below, add attribute binding to bind the "text" of the symbol to the voltage of the element "em-1". When the element voltage acquisition value changes, the text of the symbol will also change in real time when the data is refreshed.
 
-![Binding Element Attributes](./images/canvas-databind.gif)
+<LoopVideo src={databindUrl} label="Binding Element Attributes" />
 
 :::tip
 Before binding variables, it is recommended to choose the appropriate input method, manually enter attribute values, and test the desired effects, such as progress bar changes, state changes, event triggers, etc. After testing achieves the desired effect, bind the attributes to the attributes of an IDMP element. In production operation configurations, the attributes of symbols must be bound to the attributes of elements.

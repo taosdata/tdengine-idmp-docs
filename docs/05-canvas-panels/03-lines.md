@@ -3,6 +3,9 @@ title: 连线
 sidebar_label: 连线
 ---
 
+import LoopVideo from '@site/src/components/LoopVideo';
+import animationUrl from './images/canvas-animation.mp4';
+
 # 5.3 连线
 
 连线用于表示设备之间的物料流动、信号传递或逻辑关系。例如：
@@ -84,4 +87,4 @@ IDMP 为连线内置了三种动画效果，让画面更有动效。
 - 动画线宽（≥0），动画颜色，动画速度，反向流动，循环次数。
 - 下个动画：tag，自动播放，保持动画状态，线性播放：是/否。
 
-![连线动画](./images/canvas-animation.gif)
+<LoopVideo src={animationUrl} label="连线动画" />

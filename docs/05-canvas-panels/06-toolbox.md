@@ -3,6 +3,10 @@ title: 工具箱
 sidebar_label: 工具箱
 ---
 
+import LoopVideo from '@site/src/components/LoopVideo';
+import zoomoutUrl from './images/canvas-zoomout.mp4';
+import mapUrl from './images/canvas-map.mp4';
+
 # 5.6 工具箱
 
 ## 5.6.1 钢笔
@@ -23,13 +27,13 @@ sidebar_label: 工具箱
 
 用来观察图中细节。
 
-![放大镜](./images/canvas-zoomout.gif)
+<LoopVideo src={zoomoutUrl} label="放大镜" />
 
 ## 5.6.4 鹰眼地图（缩略图）
 
 组态图的全局视图，鼠标点击鹰眼地图，可以在画布中快速切换中心位置。
 
-![鹰眼地图](./images/canvas-map.gif)
+<LoopVideo src={mapUrl} label="鹰眼地图" />
 
 ## 5.6.5 连线起点
 
