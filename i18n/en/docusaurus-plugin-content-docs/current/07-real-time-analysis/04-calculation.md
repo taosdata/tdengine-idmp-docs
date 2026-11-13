@@ -44,10 +44,11 @@ The **Output Timestamp** dropdown specifies which timestamp is written to the ou
 | **Window Start** | The timestamp of the beginning of the window |
 | **Window End** | The timestamp of the end of the window (default) |
 | **Timestamp** | The raw timestamp (`_c0`), i.e. the data ingestion time. Suited to row-wise streaming output scenarios such as period triggers and anomaly detection, preserving the true ingestion time of each result row |
+| **Expression** | The output timestamp is computed by an expression. When selected, an expression input appears on the right; click it to open the Formula Editor. The expression can reference source attributes, `${attributes[...]}` placeholders and [stream pseudo columns](#745-stream-pseudo-columns), and must evaluate to TIMESTAMP — e.g. `_twstart`, `_c0 + 1s` or `cast(_tlocaltime / 1000000 timestamp)`. The offset does not apply in expression mode. Anomaly detection and forecast provide no timestamp configuration |
 
 When **Timestamp** (`_c0`) is selected, the system automatically decides the output form based on the trigger type: data-window aggregations (sliding window with interval, count window, session window, etc.) output the aggregated moment `last(_c0)`; row-wise streaming calculations (period triggers, anomaly detection, sliding without interval, etc.) output the raw `_c0` directly.
 
-The **Offset** field adds a time offset (number + unit, default 0 seconds) to the selected window boundary. This can be useful to shift the output timestamp for display alignment.
+The **Offset** field adds a time offset (number + unit, default 0 seconds) to the selected window boundary; it does not apply in expression mode. This can be useful to shift the output timestamp for display alignment.
 
 ## 7.4.4 Output Attributes
 
@@ -70,17 +71,30 @@ Expressions throughout the analysis (output attribute expressions, trigger pre-f
 When a KPI sub-attribute that has finished building is referenced, the computation follows the KPI data in real time; when a building-state or derived monthly/quarterly KPI sub-attribute is referenced, the stream reads the tag snapshot value (not the precise derived aggregate) — for precise derived aggregation values, use a KPI panel or query the sub-attribute directly. When an expression references a KPI sub-attribute, the UI shows a data-access semantics hint next to the expression. When a **formula-type child attribute** is referenced, its formula is inlined into the generated SQL (same behavior as panels) — no materialized column is required.
 :::
 
-## 7.4.5 Trigger Window Pseudo Columns
+## 7.4.5 Stream Pseudo Columns
 
-The stream trigger window pseudo columns are only effective during stream computation. They are not evaluated during expression evaluation and return empty values:
+Stream pseudo columns are only effective during stream computation. They are not evaluated during expression evaluation and return empty values. Both the output attribute expressions and the output timestamp expression may reference them; at save time they are validated against the trigger type and trigger timing, and referencing an unavailable pseudo column returns a 400 error:
 
-| Pseudo Column | Meaning |
-|---|---|
-| `_twstart` | Start time of the trigger window |
-| `_twend` | End time of the trigger window |
-| `_twduration` | Duration of the trigger window |
+| Pseudo Column | Type | Applicable Triggers | Close-Only | Meaning |
+|---|---|---|---|---|
+| `_twstart` | TIMESTAMP | Window-aggregation triggers | No | Start time of the trigger window |
+| `_twend` | TIMESTAMP | Window-aggregation triggers | Yes | End time of the trigger window |
+| `_twduration` | BIGINT | Window-aggregation triggers | Yes | Duration of the trigger window (ms) |
+| `_twrownum` | BIGINT | Window-aggregation triggers | Yes | Number of rows within the trigger window |
+| `_tprev_ts` | TIMESTAMP | Row-by-row sliding | No | Timestamp of the previous row |
+| `_tcurrent_ts` | TIMESTAMP | Row-by-row sliding | No | Timestamp of the current row |
+| `_tnext_ts` | TIMESTAMP | Row-by-row sliding | No | Timestamp of the next row |
+| `_tprev_localtime` | BIGINT | Period, Forecast | No | Local time of the previous period (ns) |
+| `_tnext_localtime` | BIGINT | Period, Forecast | No | Local time of the next period (ns) |
+| `_tgrpid` | BIGINT | All | No | Group ID; 0 when unpartitioned |
+| `_tlocaltime` | BIGINT | All | No | Current local time (ns; cast recommended) |
+| `tbname` | VARCHAR | All | No | Name of the source child table |
 
-In the Expression Editor for **Output Attributes**, the left tree provides a **Window Pseudo Columns** category (above **Substitution Parameters**): expand it and click a pseudo column node to insert it. Typing in the expression input also shows matching completion suggestions.
+"Window-aggregation triggers" covers Count, State, Event, Session, DataInput, SPC and a sliding window trigger configured with a window interval; "row-by-row sliding" covers a sliding window trigger without an interval window and anomaly detection.
+
+**Close-only restriction**: pseudo columns marked "Yes" only output final values at window close. An analysis with an explicit on-window-open-only trigger timing is rejected at save time. In addition, `_tlocaltime` and `_tprev_localtime`/`_tnext_localtime` are nanosecond values; for timestamp output use `cast(_tlocaltime / 1000000 timestamp)` to convert them.
+
+In the Formula Editor for **Output Attributes**, the left tree provides a **Stream Pseudo Columns** category (above **Substitution Parameters**). The list is filtered automatically by trigger type and trigger timing and shows only the pseudo columns available for the current trigger; typing in the expression input also shows matching completion suggestions. System-reserved pseudo columns (e.g. `_event_condition_path`) and query-phase pseudo columns (`_qstart`/`_qend`/`_qduration`) do not appear in the editor list; hand-written references are rejected at save time.
 
 ## 7.4.6 Output Filter
 

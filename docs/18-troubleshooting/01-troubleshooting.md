@@ -39,7 +39,7 @@ import TabItem from '@theme/TabItem';
 
 ## 18.1.3 收集后端日志
 
-排查问题时，应同时收集故障时间段的应用日志、服务启动日志和安装日志。错误日志仅包含部分错误事件，不能替代主日志中的上下文。以下为安装包的默认位置；实际位置以安装后的配置和服务启动参数为准。日志按需生成，文件不存在不一定表示日志被删除。
+排查问题时，应同时收集故障时间段的应用日志、服务启动日志和安装日志。错误日志仅包含部分错误事件，不能替代主日志中的上下文。以下为安装包的默认位置；实际位置以安装后的配置和服务启动参数为准。日志按需生成，文件不存在不一定表示日志被删除。如果问题涉及数据库连接、写入、查询或节点状态，还应收集 TDengine TSDB 的日志，参见 [18.1.3.5](#18135-采集-tdengine-tsdb-日志)。
 
 ### 18.1.3.1 本地安装方式
 
@@ -53,12 +53,12 @@ import TabItem from '@theme/TabItem';
 | 组件 | 默认日志文件 | 排查用途 |
 | --- | --- | --- |
 | TDengine IDMP | `/var/log/taos/tda.log`、`tda-error.log` | 后端请求、业务处理及错误上下文 |
-| TDengine IDMP AI | `/var/log/taos/ai-agent.log`、`ai-agent-error.log` | AI 请求、工具执行及错误上下文 |
+| TDengine IDMP AI | `/var/log/taos/ai-agent.log` | AI 请求、工具执行及错误信息 |
 | TDengine IDMP UI（Nginx） | `/var/log/taos/nginx-access.log`、`nginx-error.log` | HTTP 访问、反向代理及 Nginx 启动错误 |
 | TDengine IDMP MCP | `/var/log/taos/mcp-tdengine-idmp_YYYYMMDD.log*` | MCP 进程请求及运行信息，后缀随轮转变化 |
 | TDengine IDMP CLS（Linux） | `/var/log/taoscls/taoscls.log` | 授权服务运行信息；以 `cls/config/taoscls.toml` 的 `[log].file` 为准 |
 | TDengine IDMP 服务输出（macOS） | `/var/log/taos/tdengine-idmp-<服务>-out.log`、`tdengine-idmp-<服务>-error.log` | 后端、AI、UI、H2 服务的标准输出和标准错误 |
-| TDengine TSDB-Enterprise | `/var/log/taos/taosdlog.*` 等 | 关联数据库故障；由 TSDB 独立管理 |
+| TDengine TSDB-Enterprise | `/var/log/taos/taosdlog.*` 等 | 关联数据库故障；日志由 TDengine TSDB 管理，采集方法见 18.1.3.5 |
 
 Linux 使用 systemd 时，可查看服务状态和近期启动输出。例如 CLS 启动失败：
 
@@ -77,13 +77,13 @@ journalctl -u tdengine-idmp-cls --since '30 minutes ago' --no-pager
 | 组件 | 默认日志文件 | 排查用途 |
 | --- | --- | --- |
 | TDengine IDMP | `C:\TDengine\log\tda.log`、`tda-error.log` | 后端主日志及错误日志 |
-| TDengine IDMP AI | `C:\TDengine\log\ai-agent.log`、`ai-agent-error.log` | AI 主日志及错误日志 |
+| TDengine IDMP AI | `C:\TDengine\log\ai-agent.log` | AI 主日志及错误信息 |
 | TDengine IDMP UI（Nginx） | `C:\TDengine\log\nginx-access.log`、`nginx-error.log` | HTTP 访问、代理及启动错误 |
 | TDengine IDMP MCP | `C:\TDengine\log\mcp-tdengine-idmp_YYYYMMDD.log*` | MCP 进程日志，后缀随轮转变化 |
 | TDengine IDMP CLS | `C:\TDengine\log\taoscls.log` | IDMP 安装包配置的授权服务日志 |
 | TDengine IDMP 服务包装器（WinSW） | `C:\TDengine\log\tdengine-idmp-<服务>-srv.wrapper.log` | 服务启动、停止、进程退出及包装器错误 |
-| TDengine IDMP 服务进程输出 | `C:\TDengine\log\tdengine-idmp-<服务>-srv.out.log`、`*.err.log` | 服务进程的标准输出和标准错误 |
-| TDengine TSDB-Enterprise | `C:\TDengine\log\taosdlog.*` 等 | 关联数据库故障；由 TSDB 独立管理 |
+| TDengine IDMP 服务进程输出 | `C:\TDengine\log\tdengine-idmp-<服务>-srv.out.log`、`tdengine-idmp-<服务>-srv.err.log` | 服务进程的标准输出和标准错误 |
+| TDengine TSDB-Enterprise | `C:\TDengine\log\taosdlog.*` 等 | 关联数据库故障；日志由 TDengine TSDB 管理，采集方法见 18.1.3.5 |
 
 文件名中的 `<服务>` 为 `backend`、`chat`、`cls`、`ui` 或 `h2`。例如 CLS 报错 `1067` 时，应同时收集 `taoscls.log`、`tdengine-idmp-cls-srv.wrapper.log` 以及存在的对应 `out.log`、`err.log` 和轮转文件。仅有退出码不能确定失败原因。
 
@@ -104,13 +104,15 @@ Get-Content 'C:\TDengine\log\tdengine-idmp-cls-srv.wrapper.log' -Tail 100
 | 组件 | 配置依据 |
 | --- | --- |
 | TDengine IDMP | 安装后配置中的 `tda.log-dir`；直接从源码运行时默认值为相对工作目录的 `./logs` |
-| TDengine IDMP AI | 服务进程的 `IDMP_LOG_PATH`，指定目录后生成 `ai-agent.log` 和 `ai-agent-error.log`；目录不可写时会警告并降级到控制台输出 |
+| TDengine IDMP AI | 服务进程的 `IDMP_LOG_PATH`（必须为绝对路径）；日志文件固定为 `ai-agent.log`。目录不可写或无法创建日志文件时，AI 服务会启动失败 |
 | TDengine IDMP MCP | `--log_path` / `IDMP_LOG_PATH`；由 TDengine IDMP 后端管理的 MCP 启动命令会传入后端日志目录 |
 | TDengine IDMP UI（Nginx） | 实际加载的 Nginx 配置中的 `access_log`、`error_log`，以及启动参数 `-e` |
 | TDengine IDMP CLS | 实际加载的 `cls/config/taoscls.toml` 中的 `[log].file` |
 | TDengine IDMP 服务包装器（Windows） | 实际服务 XML 中的 `<logpath>` |
 
-Linux / macOS 使用自定义安装目录时，安装脚本可将常规日志放到安装目录的 `log` 子目录；CLS 仍应单独检查配置。收集故障前后的主日志、错误日志和相关轮转文件，例如 TDengine IDMP 的 `tda.log.*` 和 TDengine IDMP AI 的 `ai-agent-*.log.gz`。保留压缩文件原样，不仅收集当前文件；MCP 的 `*_lock`、Nginx 的 `nginx.pid` 不是日志。
+各组件默认轮转策略不同：TDengine IDMP 主日志达到 300 MB 时轮转，保留 3 个压缩备份；TDengine IDMP AI 的 `ai-agent.log` 按 1 GB 轮转，最多保留 3 个备份，最长保留 30 天；MCP 日志按天或按大小轮转。实际以运行配置为准。
+
+通过 `-q <taos_dir>,<idmp_url>` 指定自定义 taos 目录时，安装脚本会把日志目录改为安装目录下的 `log` 子目录；未指定时，日志仍写入 `/var/log/taos`，安装目录下的 `log` 只是指向该目录的符号链接。CLS 仍应单独检查配置。收集故障前后的主日志、错误日志和相关轮转文件，例如 TDengine IDMP 的 `tda.log.*` 和 TDengine IDMP AI 的 `ai-agent-*.log.gz`。保留压缩文件原样，不仅收集当前文件；MCP 的 `*_lock`、Nginx 的 `nginx.pid` 不是日志。
 
 ### 18.1.3.3 安装日志
 
@@ -124,20 +126,66 @@ Linux / macOS 使用自定义安装目录时，安装脚本可将常规日志放
 
 ```bash
 docker ps -a
-docker logs --timestamps --tail 500 tdengine-idmp-backend > backend-container.log 2>&1
+docker compose logs --timestamps --tail 500 > compose-container.log 2>&1
 docker cp tdengine-idmp-backend:/var/log/taos/tda.log ./
 docker cp tdengine-idmp-backend:/var/log/taos/tda-error.log ./
 docker cp tdengine-idmp-ai:/var/log/taos/ai-agent.log ./
-docker cp tdengine-idmp-ai:/var/log/taos/ai-agent-error.log ./
+docker cp tdengine-idmp-cls:/var/log/taoscls/taoscls.log ./
+docker cp tdengine-tsdb:/var/log/taos ./tsdb-logs
 ```
 
-以上容器名称仅为示例。其他组件、CLS 和轮转文件应按实际部署复制；自定义配置可能改变容器内目录。
+使用 All-in-One（Apex）或项目提供的 Docker Compose 部署时，Compose 文件通常位于 `~/.apex/docker`（Linux/macOS）或 `C:\ProgramData\TDengine\Apex\docker`（Windows），应在包含 Compose 文件的目录执行 `docker compose logs`。实际容器名可能带 Compose 项目前缀。该部署中，后端、UI 和 AI 共享日志卷并挂载到 `/var/log/taos`；TSDB 和 CLS 分别使用独立的日志卷。卷名和挂载点以 `docker inspect` 和 Compose 文件为准。其他组件、CLS 和轮转文件应按实际部署复制；自定义配置可能改变容器内目录。
 
 :::warning
 
 分享日志前，应检查并脱敏密码、Token、验证码和业务敏感信息，同时保留故障时间、时区、组件版本及前后文。
 
 :::
+
+### 18.1.3.5 采集 TDengine TSDB 日志
+
+TDengine IDMP 使用 TDengine TSDB 存储时序数据。TSDB 的日志由 TSDB 自身管理，默认路径和采集方式与 IDMP 组件不同。排查连接失败、写入失败、查询异常或节点状态异常时，应同时收集 TSDB 日志。
+
+TSDB 的默认日志目录和配置目录如下：
+
+| 操作系统 | 默认日志目录 | 默认配置目录 |
+| --- | --- | --- |
+| Linux | `/var/log/taos` | `/etc/taos` |
+| macOS | `/var/log/taos` | `/etc/taos` |
+| Windows | `C:\TDengine\log` | `C:\TDengine\cfg` |
+
+常见日志文件包括：
+
+- `taosdlog.0`、`taosdlog.1`：`taosd` 服务端日志，日志目录由 `taos.cfg` 中的 `logDir` 决定。
+- `taoslogX.Y`、`taosslowlog.<日期>`：客户端日志和慢查询日志。
+- `taosadapter_<实例 ID>_<日期>.log`：taosAdapter 日志。
+
+可执行以下 SQL 确认 `taosd` 的实际日志目录（将 `<dnode_id>` 替换为实际节点 ID）：
+
+```sql
+SHOW DNODES;
+SHOW DNODE <dnode_id> VARIABLES LIKE 'logDir';
+```
+
+也可以查看 `/etc/taos/taos.cfg` 中的 `logDir`。taosAdapter 等组件的日志目录以其 TOML 配置中的 `[log].path` 或对应环境变量为准。
+
+问题复现后，按默认路径安装时，可打包日志目录和配置目录：
+
+```bash
+tar czf tdengine-$(hostname)-$(date +%Y%m%d%H%M).tar.gz /var/log/taos /etc/taos
+```
+
+Windows 上应压缩 `C:\TDengine\log` 和 `C:\TDengine\cfg`。如果日志目录很大，可只保留问题发生前后的文件。分享前应删除配置文件中的用户名、密码等敏感信息。
+
+如需更详细的日志，可临时提高日志级别，复现问题后再恢复：
+
+```sql
+ALTER ALL DNODES 'debugFlag' '135';
+-- 复现问题后恢复为默认级别
+ALTER ALL DNODES 'debugFlag' '131';
+```
+
+`135` 会产生大量日志并影响性能，不宜长期开启。容器部署时，TSDB 日志通常位于 `tdengine-tsdb` 容器的 `/var/log/taos`，可按 18.1.3.4 的方法复制。TSDB 日志的完整说明、各组件日志文件和容器部署的日志位置，参见 [日志文件位置与获取](https://docs.taosdata.com/operations-and-tooling/operations/logs/)。
 
 ## 18.1.4 Windows 环境路径过长问题
 
@@ -176,10 +224,10 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name
 - `Sending register verify code for`：触发发送注册邮件时
 - `Generated register verify code for debug`：断网或默认 SMTP 不可用时（最常见）
 
-Docker 示例（容器名常见 `tdengine-idmp`）：
+Docker 示例（后端容器名通常为 `tdengine-idmp-backend`，以实际部署为准）：
 
 ```bash
-docker exec -it tdengine-idmp sh -c \
+docker exec -it tdengine-idmp-backend sh -c \
   'grep -n "register verify code for" /var/log/taos/tda.log | tail -10'
 ```
 
@@ -191,4 +239,4 @@ docker exec -it tdengine-idmp sh -c \
 
 ## 18.1.6 提交问题
 
-我们使用 [GitHub Issues](https://github.com/taosdata/tdengine-idmp-docs/issues/new/choose) 来跟踪和管理问题。请按照 GitHub Issues 的模板，提交以上收集到的信息，我们的支持团队会尽快回复并帮助您解决问题。
+我们使用 [GitHub Issues](https://github.com/taosdata/tdengine-idmp-docs/issues/new/choose) 来跟踪和管理问题。请按照 GitHub Issues 的模板，提交以上收集到的信息，我们的支持团队会尽快回复并帮助您解决问题。如果问题涉及数据库，请同时附上按 18.1.3.5 收集的 TDengine TSDB 日志。

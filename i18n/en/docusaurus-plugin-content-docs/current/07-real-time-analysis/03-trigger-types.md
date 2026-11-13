@@ -360,11 +360,12 @@ The eight selectable anomaly rules:
 
 ## 7.3.11 Common Trigger Options
 
-The following options are offered uniformly in the trigger settings. **Max Delay** applies to all trigger types; **Trigger timing** applies only to window-aggregation triggers (Count, State, Event, Session, Sliding).
+The following options are offered uniformly in the trigger settings. **Max Delay** applies to all trigger types; **Watermark** applies to all trigger types except period windows and forecast; **Trigger timing** applies only to window-aggregation triggers (Count, State, Event, Session, Sliding).
 
 ### 7.3.11.1 Parameters
 
 | Parameter | Description |
 | --- | --- |
 | **Max Delay (MAX_DELAY)** (optional) | The maximum delay before a window fires. After a window opens, once this time is reached the window is computed even if it has not yet closed, reducing output latency for long windows. A time value, e.g. `5s`, `1m`. Leave empty to disable. |
+| **Watermark (WATERMARK)** (optional) | Event-time tolerance for out-of-order data, e.g. `5s`. If late data arrives within the watermark after a window closes, the window result is corrected and recomputed. A positive integer duration with a lowercase unit, e.g. `5s`, `1m`; leave empty to disable. Period windows (Period) and forecast do not support watermarks and the UI does not show the option for these trigger types. Note: TDengine evaluates the watermark before max delay; when a window has not truly opened, the computation may not fire even if max delay is configured. |
 | **Trigger timing** | Shown only for window-aggregation triggers (Count, State, Event, Session, Sliding): choose whether computation and notification happen when the window opens, closes, or both. Defaults to **on window close**. Output at window open is a partial aggregation (an intermediate value); with "Open and close", the open result is eventually overwritten by the close result so the output converges to the final value; with "On window open" only, nothing is emitted when the window closes and events are closed by the existing convergence mechanisms. "On window open" and "Open and close" require TDengine TSDB `3.4.3.0` or later; when the version is insufficient, the UI hides those options automatically. |

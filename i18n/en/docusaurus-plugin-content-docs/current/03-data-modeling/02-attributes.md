@@ -323,7 +323,7 @@ The left panel is titled **Attributes**. By default, it lists the attributes of 
 
 A **Filter** field at the top lets you search by name. Click an attribute or parameter to insert it at the cursor position in the expression.
 
-**Window pseudo column nodes** — In the Expression Editor for **Analysis — Output Attributes**, the tree additionally shows a **Window Pseudo Columns** category above **Substitution Parameters** (`_twstart`, `_twend`, `_twduration`), inserted the same way as attributes. See [Section 7.4.5](../07-real-time-analysis/04-calculation.md#745-trigger-window-pseudo-columns).
+**Stream pseudo column nodes** — In the Formula Editor for **Analysis — Output Attributes** (and the output timestamp expression), the tree additionally shows a **Stream Pseudo Columns** category above **Substitution Parameters** (12 entries: `_twstart`/`_twend`/`_twduration`/`_twrownum` and more). The list is filtered automatically by trigger type and trigger timing, inserted the same way as attributes. See [Section 7.4.5](../07-real-time-analysis/04-calculation.md#745-stream-pseudo-columns).
 
 **Child attribute and KPI nodes** — Attributes that carry child attributes can be expanded in the tree: regular child attributes (both general and data-reference child attributes) appear as leaves under their parent attribute node, while a KPI attribute acts purely as a group node that expands to show its sub-attributes. Clicking a child attribute node inserts a reference of the form `${attributes['ParentName']|childAttributes['ChildName']}`. Two restrictions apply:
 
