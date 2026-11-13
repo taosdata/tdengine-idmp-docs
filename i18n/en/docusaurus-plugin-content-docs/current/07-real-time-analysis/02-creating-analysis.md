@@ -35,6 +35,7 @@ All trigger types share two common optional fields:
 In addition, some trigger types offer extra window-level options in the trigger settings:
 
 - **Watermark** — shown for all trigger types except period windows and forecast: event-time tolerance for out-of-order data, e.g. `5s`; leave empty to disable. See [7.3.11 Common Trigger Options](./03-trigger-types.md#7311-common-trigger-options).
+- **Force Output** — shown for all trigger types except forecast: when checked, a trigger that produces no computation result still emits one output row, with all columns except constant columns filled with `NULL`. See [7.3.11 Common Trigger Options](./03-trigger-types.md#7311-common-trigger-options).
 - **Trigger timing** — shown only for window-aggregation triggers (Count, State, Event, Session, Sliding): choose whether computation and notification happen when the window opens, closes, or both. Defaults to on window close. See [7.3.11 Common Trigger Options](./03-trigger-types.md#7311-common-trigger-options).
 - **Window filter (True For) and open/close confirmation** — the Event Window provides a True For filter over the entire event window, plus open confirmation (START) and close confirmation (END) for debouncing. See [7.3.6 Event Window](./03-trigger-types.md#736-event-window).
 
