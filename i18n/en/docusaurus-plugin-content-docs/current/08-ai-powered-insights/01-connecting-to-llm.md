@@ -128,3 +128,27 @@ IDMP uses a **Composite TrustManager** strategy: it first attempts verification 
 To disable AI features system-wide, click the avatar icon in the top-right corner of the browser, navigate to **Admin Console**, and pause or delete the AI connection.
 
 You can also turn off AI suggestions directly from the analysis list or dashboard list page.
+
+## 8.1.7 Default Vision Model
+
+When the Q&A model or the deep thinking model does not accept image input, designate an image-capable AI connection as the **Default vision model**. When a user attaches an image in the AI assistant, this connection first describes the image content, and the main model answers from the extracted text. PDF files still use document conversion and are unaffected by this setting.
+
+:::note
+The default vision model is an explicit image-processing channel: whenever one is configured and it is not the same connection as the current main model, attached images are transcribed first and the original images are no longer sent to the main model. If the main model accepts images and you want it to read them directly, do not set a default vision model.
+:::
+
+### Configuration
+
+1. Go to **Settings** → **Connection Management**.
+2. Edit an image-capable AI connection, or create a new AI connection.
+3. Turn on **Default vision model** and save.
+
+The **Default vision model** column in the connection list marks the active connection with a **Vision** tag. Only one connection can be the default vision model at a time; setting another connection as default clears the previous one.
+
+### Behavior
+
+- Whenever a default vision model is configured and it is not the same connection as the current main model, attached images are transcribed first and the main model receives the text instead of the original images; without a default vision model, or when the vision call fails, the original images still go to the main model.
+- When the fallback runs, the answer footer shows a **Vision model** tag. Hover over the tag to see the vision model name, input and output token counts, and parsing duration.
+- AI metrics record the vision model calls and token usage for capacity and cost analysis.
+- Each image description adds one model call and additional latency. For image-heavy work, choose a connection with strong vision capability.
+- With a default vision model configured, the AI assistant parses screenshots in overlapping high-resolution tiles to improve the recognition of small tags.

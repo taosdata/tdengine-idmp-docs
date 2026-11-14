@@ -61,6 +61,8 @@ TDengine IAR 是一个功能完整的 AI Agent 运行时，包括 AI 智能体�
 - **[AI Agent 消息通道](./12-im-channels.md)** — 将 AI Agent 接入飞书、微信、Telegram 等 IM 渠道
 - **[专家模式](./13-expert-mode.md)** — 为 AI 助手挑选领域专家，以专属人设与能力作答
 - **[AI 定时任务](./13-scheduled-tasks.md)** — 使用自然语言创建并确认计划，在后台执行只读分析并保存结果历史
+- **[AI 资产建模](./14-ai-modeling.md)** — 从 DCS/SCADA 组态截图或资产层级草稿创建元素树，并绑定 TDengine 实时数据
+- **[工艺参数优化](./15-process-parameter-optimization.md)** — 基于历史数据评估影响 KPI 的工艺变量，给出有安全边界的设定值建议
 
 import DocCardList from '@theme/DocCardList';
 

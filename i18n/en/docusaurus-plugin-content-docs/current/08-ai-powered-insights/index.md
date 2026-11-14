@@ -59,6 +59,8 @@ Across all these components, TDengine has constructed a complete enterprise-grad
 - **[AI Agent IM Channels](./12-im-channels.md)** — Connect AI Agent to IM channels such as Feishu, WeChat and Telegram
 - **[Expert Mode](./13-expert-mode.md)** — Pick a domain expert for the AI Assistant and answer with a dedicated persona and capabilities
 - **[AI Scheduled Tasks](./13-scheduled-tasks.md)** — Create and confirm schedules in chat, run read-only analysis in the background, and retain result conversations
+- **[AI Asset Modeling](./14-ai-modeling.md)** — Build an element tree from a DCS/SCADA screenshot or an asset hierarchy draft, and bind attributes to live TDengine data
+- **[Process Parameter Optimization](./15-process-parameter-optimization.md)** — Rank the process variables that affect a KPI and recommend safe, bounded setpoints from historical data
 
 import DocCardList from '@theme/DocCardList';
 
