@@ -22,4 +22,10 @@ trustPolicy: no-downgrade
 trustPolicyExclude:
   - "detect-port@1.6.1"
   - "semver@6.3.1"
+
+# CVE-2026-104848 / CVE-2026-104849: @docusaurus/core declares tinypool ^1.0.2,
+# whose newest 1.x (1.1.1) is vulnerable; the fix only exists in 2.x.
+overrides:
+  tinypool: "2.1.2"
+
 packages: ["."]
