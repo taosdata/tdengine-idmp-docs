@@ -22,10 +22,40 @@ trustPolicy: no-downgrade
 trustPolicyExclude:
   - "detect-port@1.6.1"
   - "semver@6.3.1"
+  # 2026-11-15: 7.4.6 is the manual v7 backport of the publicPath path-traversal
+  # fix (CVE-2026-76844); 8.3.0 was released via trusted publisher earlier the
+  # same day, so pnpm flags the manual backport as a trust downgrade. Diff
+  # against 7.4.5 contains only the containment check in getFilenameFromUrl.js.
+  - "webpack-dev-middleware@7.4.6"
+  # 2026-11-15: 7.0.3 is the manual fix release for GHSA-5c6j-r48x-rmvq
+  # (serialize-javascript RCE via RegExp.flags / toISOString); 7.0.4 was
+  # published via trusted publisher three days later. Diff against 7.0.2
+  # contains only the RegExp/Date sanitization.
+  - "serialize-javascript@7.0.3"
 
 # CVE-2026-104848 / CVE-2026-104849: @docusaurus/core declares tinypool ^1.0.2,
 # whose newest 1.x (1.1.1) is vulnerable; the fix only exists in 2.x.
+# 2026-11-15 security batch (vg-local-20261115-04-4): transitive dependencies
+# pinned to their patched versions. js-yaml is pinned per major line because
+# gray-matter (used by @docusaurus/mdx-loader) requires the 3.x API
+# (safeLoad, removed in 4.x), while the 4.x advisories are patched in 4.3.2.
 overrides:
   tinypool: "2.1.2"
+  body-parser: "1.20.9"
+  browserslist: "4.28.7"
+  compression: "1.8.2"
+  dompurify: "3.4.17"
+  fast-uri: "3.1.7"
+  follow-redirects: "1.16.2"
+  image-size: "2.0.3"
+  joi: "17.13.9"
+  js-yaml@3: "3.15.2"
+  js-yaml@4: "4.3.2"
+  launch-editor: "2.14.2"
+  nanoid: "3.3.18"
+  postcss: "8.5.18"
+  serialize-javascript: "7.0.3"
+  svgo: "3.3.5"
+  webpack-dev-middleware: "7.4.6"
 
 packages: ["."]
