@@ -101,3 +101,17 @@ In the Formula Editor for **Output Attributes**, the left tree provides a **Stre
 The **Output Filter** is an optional condition expression that is evaluated after the RT analysis completes its calculation and before the result is written to the output attributes. The calculated result is written to the configured element attributes only when the filter evaluates to true.
 
 Use this when you want to persist only results that satisfy a business condition, such as windows with valid samples, values outside an acceptable range, or outputs produced under a specific state. If the filter condition is not met, the trigger is still considered processed, but no value is written to the output attributes.
+
+## 7.4.7 Notification-Only (No Output Table)
+
+The **Do not generate output table** option appears above the output attributes configuration. When selected, the RT analysis no longer creates an output table and does not write calculation results to any element attribute; results enter the event, alert and action pipeline only as event attributes.
+
+The following validations apply at save time when this option is selected:
+
+- All output columns must be mapped to event attributes; element attribute binding is not allowed.
+- Event generation must be enabled in the Event section with a valid event template selected.
+- The event attribute mapping of each calculation row must be valid and unique; output aliases must not duplicate each other or conflict with the output timestamp.
+
+:::info
+This option is available only when the TSDB version is 3.4.3.0 or later; Forecast and SPC analyses do not support it. When the version is not supported, existing analyses that already enable this mode still show the switch so it can be turned off and re-saved with regular outputs.
+:::
