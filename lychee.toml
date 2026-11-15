@@ -39,4 +39,7 @@ exclude = [
   # openapi-generator.tech is hosted on GitHub Pages, which the CI runner
   # network cannot reach ("Connection failed") while the site loads in browsers.
   'openapi-generator\.tech',
+  # api.slack.com is valid for browsers, but the pinned docs runner cannot
+  # reach it ("Connection failed") while other external sites are reachable.
+  'api\.slack\.com',
 ]
