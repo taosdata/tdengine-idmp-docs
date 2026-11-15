@@ -359,6 +359,10 @@ Browse and insert functions by category. In addition to the built-in function ca
 
 Where supported (Formula and String Builder attribute definitions), the editor includes an **Evaluate** button and an **Evaluate Result** display at the bottom of the center panel. Click **Evaluate** to run the expression against the element's current data and verify the result before saving.
 
+The **Evaluate** button provides a duration dropdown with options of 5 seconds, 1 minute, 15 minutes, 1 hour, 1 week, and **No Limit**. Selecting a duration triggers evaluation immediately: the expression is evaluated over a time window that spans the selected duration back from the current time, while **No Limit** places no restriction on the time range. In scenarios where evaluation runs against a specified time range (for example, when inspecting a historical interval), the expression is evaluated over that range and the duration dropdown is not offered.
+
+When you save the attribute, the expression is validated once more before saving: if you have run a manual evaluation, the duration you last selected is reused (including **No Limit**); if no manual evaluation has been run, validation defaults to a time window of the most recent 1 hour to avoid an unbounded scan over the data table. Errors encountered during evaluation or validation are shown in the **Evaluate Result** area.
+
 Click **Save** in the dialog to apply the expression, or **Cancel** to discard changes.
 
 ## 3.2.11 Attribute Templates {#attribute-templates}
