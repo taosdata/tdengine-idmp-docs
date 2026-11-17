@@ -17,6 +17,8 @@ datas = "datas"
 [default.extend-words]
 # Python CA certificate bundle; the typos checker suggests "certify".
 certifi = "certifi"
+# Eclipse Vert.x package name, for example io.quarkus:quarkus-vertx-http.
+vertx = "vertx"
 OT = "OT"
 MAPE = "MAPE"
 mosquitto = "mosquitto"
