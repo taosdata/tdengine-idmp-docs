@@ -26,3 +26,7 @@ sidebar_label: 创建组态
 ![画布属性](./images/canvas-process.png)
 
 这些步骤不是需要固定按照顺序执行，可以打乱。
+
+:::tip
+除手工拖拽创建外，还可以让 AI 根据自然语言描述 [自动生成组态](./08-ai-generate.md)，或将已有组态画面、其他平台大屏的截图 [复刻](./09-ai-replicate.md) 为可编辑的组态。
+:::

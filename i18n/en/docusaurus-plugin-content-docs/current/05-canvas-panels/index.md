@@ -28,6 +28,8 @@ The entire editing screen consists of several major parts:
 
 This document only provides a brief introduction to the basic concepts and basic operations. More details need to be discovered through extensive use.
 
+Besides building screens by hand, AI can generate a canvas panel from a natural language description, or replicate an existing canvas screen or a screenshot of another platform's dashboard into an editable canvas. See [5.8 AI-Generated Canvas Panel](./08-ai-generate.md) and [5.9 Replicating a Canvas Screen](./09-ai-replicate.md).
+
 import DocCardList from '@theme/DocCardList';
 
 <DocCardList />

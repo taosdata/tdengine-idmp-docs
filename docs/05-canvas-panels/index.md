@@ -28,6 +28,8 @@ TDengine IDMP 支持 Grafana 风格的面板之外，还支持工业场景流行
 
 本文档仅对基本概念以及基本操作做一简单介绍，更多的细节需要自己多用才能发现。
 
+除手工拖拽创建外，也可以让 AI 根据自然语言描述自动生成组态画面，或将已有组态画面、其他平台大屏的截图复刻为可编辑的组态。详见 [5.8 自动生成组态](./08-ai-generate.md) 与 [5.9 复刻组态画面](./09-ai-replicate.md)。
+
 import DocCardList from '@theme/DocCardList';
 
 <DocCardList />

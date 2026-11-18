@@ -26,3 +26,7 @@ Designing the canvas involves the following steps:
 ![Canvas Properties](./images/canvas-process.png)
 
 These steps do not need to be performed in a fixed order and can be rearranged.
+
+:::tip
+Instead of assembling a screen by hand, AI can [generate a canvas panel](./08-ai-generate.md) from a natural language description, or [replicate](./09-ai-replicate.md) an existing canvas screen or a screenshot of another platform's dashboard into an editable canvas.
+:::
