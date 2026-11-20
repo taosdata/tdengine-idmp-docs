@@ -15,20 +15,20 @@ The global events view provides a system-level event management interface with s
 
 The toolbar provides search, filtering, and data export functions for the event list.
 
-| Control | Description |
-|---|---|
-| **Filter** | Add multiple filter conditions and combine them with AND/OR logic to filter the event list |
-| **Group** | Add event attributes as grouping conditions to display the event list in groups |
-| **Search** | Search events by name or other text |
-| **AI Function** | Open the AI function panel to run AI functions based on the current event list |
-| **Batch Ack** | Appears when the selection contains unacknowledged events; acknowledge all selected events at once |
-| **Add to Analysis Workbench** | Available after selecting events; add the selected events to the analysis workbench |
-| **Column selector** | Show or hide optional columns, and **add attribute columns** — event attributes added to the table as dynamic columns. The **Path** column (element hierarchy path) is hidden by default |
-| **Refresh** | Reload the events list |
-| **Import Events** | Import manually created events via CSV |
-| **Export CSV** | Export the current filtered event list as a CSV file |
-| **Batch Delete** | Available after selecting events; batch-delete the selected events |
-| **Save as Panel** | Save the current event list as a panel so it can be added to a dashboard |
+| Control                       | Description                                                                                                                                                                              |
+| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Filter**                    | Add multiple filter conditions and combine them with AND/OR logic to filter the event list                                                                                               |
+| **Group**                     | Add event attributes as grouping conditions to display the event list in groups                                                                                                          |
+| **Search**                    | Search events by name or other text                                                                                                                                                      |
+| **AI Function**               | Open the AI function panel to run AI functions based on the current event list                                                                                                           |
+| **Batch Ack**                 | Appears when the selection contains unacknowledged events; acknowledge all selected events at once                                                                                       |
+| **Add to Analysis Workbench** | Available after selecting events; add the selected events to the analysis workbench                                                                                                      |
+| **Column selector**           | Show or hide optional columns, and **add attribute columns** — event attributes added to the table as dynamic columns. The **Path** column (element hierarchy path) is hidden by default |
+| **Refresh**                   | Reload the events list                                                                                                                                                                   |
+| **Import Events**             | Import manually created events via CSV                                                                                                                                                   |
+| **Export CSV**                | Export the current filtered event list as a CSV file                                                                                                                                     |
+| **Batch Delete**              | Available after selecting events; batch-delete the selected events                                                                                                                       |
+| **Save as Panel**             | Save the current event list as a panel so it can be added to a dashboard                                                                                                                 |
 
 ### 6.3.1.2 Filters
 
@@ -36,7 +36,7 @@ The following filter controls support narrowing the event list by acknowledgment
 
 - **Show Unacknowledged only:** Toggle to show only events that have not been acknowledged
 - **Categories:** Filter by event category tag
-- **Template:** Filter by event template
+- **Template:** Filter by event template. After selecting a specific template, its attributes become available as fields when adding filter conditions (no attributes are added when "All" is selected). If you switch templates, conditions on the previous template's attributes are marked as invalid and removed when you click **Confirm**
 
 ### 6.3.1.3 Left Sidebar
 
@@ -49,31 +49,31 @@ The left sidebar provides quick access to event groups and saved event filters.
 
 The event list displays key information for each event in a table format. The columns are described below.
 
-| Column | Description |
-|---|---|
-| **S** | Severity level indicator icon |
-| **A** | Acknowledgment status icon |
-| **Name** | Event name — click to open the event detail page |
-| **Duration** | Elapsed time from start to end |
-| **Start Time** | Event start timestamp |
-| **End Time** | Event end timestamp (blank if the event is still active) |
-| **Categories** | Category tags |
-| **Template** | Event template name |
-| **Severity Level** | Severity label |
-| **Reason Code** | Reason code if set |
-| **Description** | Description text |
+| Column             | Description                                              |
+| ------------------ | -------------------------------------------------------- |
+| **S**              | Severity level indicator icon                            |
+| **A**              | Acknowledgment status icon                               |
+| **Name**           | Event name — click to open the event detail page         |
+| **Duration**       | Elapsed time from start to end                           |
+| **Start Time**     | Event start timestamp                                    |
+| **End Time**       | Event end timestamp (blank if the event is still active) |
+| **Categories**     | Category tags                                            |
+| **Template**       | Event template name                                      |
+| **Severity Level** | Severity label                                           |
+| **Reason Code**    | Reason code if set                                       |
+| **Description**    | Description text                                         |
 
 ### 6.3.1.5 Row Actions
 
 Each event row provides a context menu with actions for viewing details, sending notifications, acknowledging events, trend analysis, and deletion. Hover over any event row to reveal the **⋮** (more) menu on the right. Click it to expand the following options:
 
-| Action | Description |
-|---|---|
-| **View** | Open the event detail page |
-| **Send Notification** | Manually re-dispatch notifications for this event (resent using each notification instance's content snapshot); ended events can be resent too, events that never sent a notification are force-dispatched with content freshly rendered from the currently effective rules, and an explicit error is shown when the event has been acknowledged, has been marked invalid, or no resendable content can be produced at all |
-| **Ack** | Acknowledge the event |
-| **Trend Chart Analysis** | Open a trend chart for the event's time range on its associated element |
-| **Delete** | Delete the event record |
+| Action                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **View**                 | Open the event detail page                                                                                                                                                                                                                                                                                                                                                                                                 |
+| **Send Notification**    | Manually re-dispatch notifications for this event (resent using each notification instance's content snapshot); ended events can be resent too, events that never sent a notification are force-dispatched with content freshly rendered from the currently effective rules, and an explicit error is shown when the event has been acknowledged, has been marked invalid, or no resendable content can be produced at all |
+| **Ack**                  | Acknowledge the event                                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Trend Chart Analysis** | Open a trend chart for the event's time range on its associated element                                                                                                                                                                                                                                                                                                                                                    |
+| **Delete**               | Delete the event record                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 ## 6.3.2 Element-Level Events
 
@@ -88,11 +88,11 @@ The include-child-elements option makes it convenient to review all operational 
 
 The element-level events tab has the same filters, columns, and row actions as the global events view. Its toolbar includes all the same controls plus three additional ones specific to this context:
 
-| Control | Description |
-|---|---|
-| **Include Child Elements** | Toggle, located to the right of **Show Unacknowledged only**. When enabled, the event list expands to include events from all descendant child elements of the current element, making it convenient to comprehensively review events across an entire production line or site |
-| **Generate test event data** | Create a test event on this element for development and validation purposes |
-| **Notification Rule** | Open this element's notification rule panel on the right side of the page to manage the element's multiple notification rules — see [Alerts and Notifications](./05-alerts-and-notifications.md) |
+| Control                      | Description                                                                                                                                                                                                                                                                    |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Include Child Elements**   | Toggle, located to the right of **Show Unacknowledged only**. When enabled, the event list expands to include events from all descendant child elements of the current element, making it convenient to comprehensively review events across an entire production line or site |
+| **Generate test event data** | Create a test event on this element for development and validation purposes                                                                                                                                                                                                    |
+| **Notification Rule**        | Open this element's notification rule panel on the right side of the page to manage the element's multiple notification rules — see [Alerts and Notifications](./05-alerts-and-notifications.md)                                                                               |
 
 ## 6.3.3 Saved Event Filters
 
