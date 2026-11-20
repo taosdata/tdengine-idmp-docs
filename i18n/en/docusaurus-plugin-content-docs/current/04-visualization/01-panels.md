@@ -57,13 +57,15 @@ Saved panels appear as cards with a live thumbnail preview. Hover over a card to
 
 To create a new panel manually:
 
-1. Click the **+ Add New Panel** card at the end of the panel grid.
-2. A dialog appears asking you to select the panel type: **Standard** or **Canvas**.
-   - **Standard:** A regular data-driven panel (Trend Chart, Bar Chart, Gauge, etc.).
-   - **Canvas:** A free-layout canvas panel for building custom visual displays.
-3. Select a type and the panel editor opens immediately in edit mode.
+1. Click **+ (New Panel)** in the toolbar, or the **+ Add New Panel** card at the end of the panel grid.
+2. The panel editor opens immediately in edit mode.
+3. Choose a chart type in the **panel type selector** at the top of the visualization settings on the right.
 4. Configure the data source, metrics, and visualization settings.
 5. Click **Save** to save the panel.
+
+:::note
+A canvas (canvas dashboard) is created from the **Dashboards** tab. See [4.4.2 Creating a Dashboard](./04-dashboards.md#442-creating-a-dashboard).
+:::
 
 To create a panel from an AI suggestion, click **⋮** → **Generate** on any suggestion card.
 

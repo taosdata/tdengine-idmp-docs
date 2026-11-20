@@ -5,7 +5,7 @@ sidebar_label: Dashboards
 
 # 4.4 Dashboards
 
-Dashboards in TDengine IDMP are free-form canvases that combine multiple panels into a single view. Where a panel shows one chart for one element, a dashboard brings together panels from across an element's hierarchy — multiple charts, gauges, tables, and stat panels arranged in a grid — to give operators and engineers a comprehensive, at-a-glance picture of an asset or a process.
+TDengine IDMP provides two types of dashboards: the **standard dashboard**, a free-layout grid that combines multiple panels into a single view, and the **canvas** (canvas dashboard), a free-layout drawing area where process screens are assembled from symbols. See [Chapter 5](../05-canvas/index.md). This chapter covers the standard dashboard: where a panel shows one chart for one element, a standard dashboard brings together panels from across an element's hierarchy — multiple charts, gauges, tables, and stat panels arranged in a grid — to give operators and engineers a comprehensive, at-a-glance picture of an asset or a process.
 
 ## 4.4.1 The Dashboards Tab
 
@@ -42,10 +42,13 @@ If a dashboard was created from a **Dashboard Template** and includes panels bas
 To create a new dashboard:
 
 1. Click the **+** button in the Dashboards tab toolbar.
-2. The dashboard editor opens with an empty grid canvas.
-3. Add panels to the canvas by dragging from the left panel library or creating new panels.
-4. Configure the dashboard name and settings in the right panel.
-5. Click **Save** to save the dashboard.
+2. In the dialog that appears, choose the dashboard type: **Standard** or **Canvas**.
+   - **Standard:** a grid-layout dashboard assembled from panels.
+   - **Canvas:** a canvas dashboard whose process screens are built from symbols. Choosing it enters the canvas editing interface. See [5.1 Creating a Canvas](../05-canvas/01-create.md).
+3. After choosing **Standard**, the dashboard editor opens with an empty grid canvas.
+4. Add panels to the canvas by dragging from the left panel library or creating new panels.
+5. Configure the dashboard name and settings in the right panel.
+6. Click **Save** to save the dashboard.
 
 Dashboards can also be created from a panel's view mode: use **Save to Dashboard** in the panel toolbar to add that panel to a new or existing dashboard.
 
