@@ -76,6 +76,7 @@ The generated dashboard appears in the **Dashboards** tab of the selected elemen
 2. Click **View** to open the canvas, or click **Edit** to open the 2D canvas editor.
 3. Adjust symbol position, size, style, animation, connections, and bindings in the editor. The generated content carries the full set of editable fields, so saving behaves exactly like a manual canvas.
 4. To share or reuse it, follow the standard dashboard operations. Canvas dashboards are not converted into dashboard templates.
+5. To bind attributes on an existing canvas or make a small adjustment, describe the target dashboard and the change in the element explorer's AI assistant. The assistant reads the pen inventory, shows a change summary, and updates the same dashboard in place after confirmation; it never creates a replacement dashboard.
 
 ## 5.9.6 Limitations
 
@@ -83,7 +84,9 @@ Keep the following limitations in mind:
 
 - Generation quality depends on the reasoning capability of the configured model and on how completely the element attributes are modeled.
 - Complex process screens with many devices and dense piping take longer to generate; keep the conversation open while it runs.
-- Generation only creates a new dashboard. It never modifies, overwrites, or deletes existing resources.
+- Generation only creates a new dashboard. In-place edits are handled by the AI edit workflow, which never creates or deletes a replacement dashboard.
 - Canvas dashboards do not embed chart panels; trends are provided by the double-click trend card on bound symbols.
-- The current version does not support conversational editing of a generated canvas. Adjust layout and bindings in the 2D canvas editor.
+- The AI assistant can modify an existing canvas in place: bind or unbind attributes, change text, and move or resize standalone pens that have no connected lines, no follower pens, no external references, no combined parent or children, and are not locked. Adding or deleting pens, changing text or layout on combined pens, changing layout on connected pens, changing locked pens, and binding geometry keys are done in the 2D canvas editor.
+- An in-place AI edit saves the whole dashboard; a manual list ordering (make-top order) may be reset, matching a save from the 2D editor.
+- The AI addresses top-level pens and children inside a combined shape (with `parent_id`); both accept data bindings. Change the text or layout of combined pens in the 2D canvas editor.
 - Plan for manual fine-tuning instead of expecting a single generation to be the final deliverable.
