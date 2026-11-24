@@ -73,15 +73,15 @@ The level table specifies the grouping attribute, batch anchor, and optional eve
 |---|---|
 | Level | The level order, starting from 1. Event grouping and stage splitting in the workbench follow this order |
 | Batch | Identifies the single batch level. It can only be set on the first or second row |
-| Attribute | Select an attribute from the base event template as the grouping key for the level, such as Order No. or Batch No. |
-| Template | Optional. Select the event template for the level. This is available only for the batch level and levels below it |
+| Base Event Attribute | Select an attribute from the base event template as the grouping key for the level, such as Order No. or Batch No. |
+| Event Template | Optional. Select the event template for the level. Available on every level |
 | Actions | Move a level up or down, or delete it |
 
 Configure the rows in the order of the actual process. For example:
 
-| Level | Batch | Attribute | Template | Derived Level Type |
+| Level | Batch | Base Event Attribute | Event Template | Derived Level Type |
 |---|---|---|---|---|
-| 1 | Not selected | Order No. | Not available | Order |
+| 1 | Not selected | Order No. | Optional | Order |
 | 2 | Selected | Batch No. | Batch Event | Batch |
 | 3 | Not selected | Unit | Unit Event | Unit |
 | 4 | Not selected | Operation | Operation Event | Operation |
@@ -324,7 +324,7 @@ The following questions cover common issues encountered during recipe configurat
 
 ### 6.9.8.1 Why does saving a recipe report an invalid level configuration?
 
-Confirm that every row has an attribute, exactly one batch level is selected, Batch is in the first or second row, at least one level exists below Batch, no template is set above Batch, and the selected templates are not used by another recipe.
+Confirm that every row has an attribute, exactly one batch level is selected, Batch is in the first or second row, at least one level exists below Batch, and the selected templates are not used by another recipe.
 
 ### 6.9.8.2 Why does import report an invalid event template?
 
