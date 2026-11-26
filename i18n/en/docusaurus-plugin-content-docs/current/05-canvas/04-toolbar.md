@@ -168,6 +168,12 @@ Toggles the canvas lock state, cycling through three states:
 2. **Preview**: Symbols cannot be edited, but interactions such as click events and animations remain active. Useful for previewing the runtime behavior.
 3. **Lock**: Symbols cannot be edited or moved; the canvas is read-only.
 
+:::note
+Interactions configured on a symbol (events, animations, and so on) run in the **Preview** and **Lock** states. In Edit mode, clicking a symbol selects and edits it and does not trigger interactions — this is expected behavior.
+
+The double-click trend dialog, the right-click menu, and **Open Link** navigation **take effect only on the canvas preview page**; neither the Preview nor the Lock state inside the editor triggers them. Inside the editor, the hover value tooltip is shown only in the **Preview** state. See [5.8.8 Preview Mode Function](./08-function-points/08-view-mode.md).
+:::
+
 ## 5.4.20 Default Config
 
 Default Config consolidates drawing conventions — default styles for the canvas, symbols, text, and lines, plus editor behavior — into one place: after a single setup, new screens, new symbols, and new lines automatically carry the conventions, while existing screens are not affected. For example, a team convention of "blue strokes, 14px text, 2px solid lines with end arrows" only needs to be configured once.

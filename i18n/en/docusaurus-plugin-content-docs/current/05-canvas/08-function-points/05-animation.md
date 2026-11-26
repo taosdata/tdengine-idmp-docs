@@ -1,9 +1,9 @@
 ---
-title: Setting Attribute Animations
-sidebar_label: Setting Attribute Animations
+title: Setting Symbol Animations
+sidebar_label: Setting Symbol Animations
 ---
 
-# 5.8.5 Setting Attribute Animations
+# 5.8.5 Setting Symbol Animations
 
 IDMP has many built-in symbol animation effects and also allows frame-by-frame custom animations, making the monitoring screen vivid and intuitive.
 

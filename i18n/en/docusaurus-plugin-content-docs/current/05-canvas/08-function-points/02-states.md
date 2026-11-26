@@ -37,9 +37,26 @@ Select two or more symbols, right-click, and choose **Group as State** to combin
 
 States of a combined symbol are also maintained in the state configuration module under **Appearance**, with the dialog titled "Configure State - Combined Pen": the drive attribute defaults to "State", and each state's name, condition, and animation can be configured, but there is no color target or state color (the appearance switch is presented by the child symbols). States correspond one-to-one to child symbols and cannot be added or removed individually.
 
-## 5.8.2.3 Driving State Switching
+## 5.8.2.3 Appending Child Symbols (Append Status)
+
+After creating a "Group as State" combined symbol, you can continue to append child symbols to it; each appended child symbol adds one corresponding state. The procedure is as follows:
+
+1. Place a new symbol to be embedded on the canvas.
+2. Select both the "Group as State" combined symbol and the new symbol, by box selection or by clicking them one by one while holding `Ctrl`.
+3. Right-click and choose **Append Status** from the context menu.
+4. The new symbol becomes a child symbol of the combined symbol, moves and scales with it as a whole, and a corresponding state is added to the state list.
+
+:::note
+**Append Status** takes effect only on "Group as State" combined symbols; regular "Group" symbols do not have this entry, so ungroup and regroup first to add content.
+:::
+
+## 5.8.2.4 Driving State Switching
 
 State conditions are automatically evaluated against the latest bound value of the selected symbol attribute:
 
 1. **Attribute binding**: bind the drive attribute (such as "Value") to an IDMP element attribute, and the state switches automatically as the collected value changes. See [5.8.3 Setting Symbol Values](./03-property-values.md) for the binding method.
 2. **Event-driven**: use the "set symbol attributes" event action to change the state attribute of the symbol. See [5.8.6 Setting Symbol Events](./06-events.md).
+
+## 5.8.2.5 Manual State Preview
+
+While configuring states, you can manually force a preview of a state in the state list to verify its colors and animation without waiting for the collected value to cross a threshold. Check the manual preview switch on a state row and the symbol switches to that state's appearance; uncheck it to restore. During setup and acceptance, this helps quickly distinguish a styling issue from a value that has not yet matched.

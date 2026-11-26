@@ -14,6 +14,13 @@ import combineUrl from './images/canvas-combine.mp4';
 2. **Background**: Background image, background color
 3. **Grid**: Background grid, grid color, grid size, grid angle
 4. **Ruler**: Enable ruler, ruler color
+5. **Auto Fit PC**: Controls how the screen is scaled when it opens and when the window size changes. The switch is saved with the screen.
+   - On: The screen scales with the window so that it fits the visible area as much as possible.
+   - Off: The screen is displayed at 100% of its original size. Along each dimension where the screen does not exceed the window it is centered; where it does, it starts from the top-left corner and the rest can be viewed by dragging the canvas. When the window is resized with the switch off, a screen opened for viewing is re-aligned, while the editor keeps the current zoom and position.
+
+:::tip
+Auto Fit PC is off by default, and screens created before the upgrade are also displayed at 100%. To make a screen scale with the window, turn on the switch in the canvas properties on the right side of the editor and save. To have new screens start with it on, set it on the **Canvas** tab of [Default Config](./04-toolbar.md#5420-default-config).
+:::
 
 ## 5.3.2 Setting Canvas Layout
 

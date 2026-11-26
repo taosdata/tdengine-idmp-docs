@@ -119,4 +119,4 @@ Events are the common mechanism that drives the other function points. The "set 
 - Changing symbol states: see [5.8.2 Setting Symbol States](./02-states.md)
 - Changing symbol values: see [5.8.3 Setting Symbol Values](./03-property-values.md)
 - Changing progress value and progress color: see [5.8.4 Setting Progress](./04-progress.md)
-- Playing, pausing, and stopping animations: see [5.8.5 Setting Attribute Animations](./05-animation.md)
+- Playing, pausing, and stopping animations: see [5.8.5 Setting Symbol Animations](./05-animation.md)

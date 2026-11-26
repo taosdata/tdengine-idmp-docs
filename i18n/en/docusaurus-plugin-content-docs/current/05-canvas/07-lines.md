@@ -30,7 +30,7 @@ End: esc.
 
 #### Curves, Line Segments, Straight Lines, Mind Map Curves
 
-You can use the pen to draw different types of curves, or select a line and modify its line type.
+You can use the pen to draw curves, line segments, straight lines, and mind map curves. After selecting a drawn line, you can also change its line type to curve, line segment, or straight line in the properties panel on the right.
 
 #### Horizontal Line
 
@@ -64,27 +64,42 @@ Merging lines: When connecting lines, drag the connection end of the currently s
 
 ## 5.7.3 Line Styles
 
-After selecting a line, you can set the appearance style of the line in the property configuration area on the right:
+After selecting a line, you can set the appearance style of the line in the property configuration area on the right. The options are as follows:
 
-- Line style: solid, dashed
-- Line type: curve, polyline, straight line
-- Connection style: bevel, round, default
-- Line gradient: none, linear gradient
-- Line color, hover color, selected color
-- Line width
-- Background: solid color background, linear gradient, radial gradient
-- Background color, hover background color, selected background color
-- Opacity: 0-1
-- Anchor point color, anchor point radius (≥0)
-- Shadow color, shadow blur, shadow X offset, shadow Y offset
-- Border color, border width (≥0)
+| Option | Description |
+| --- | --- |
+| Line style | Whether the line is solid or dashed |
+| Line type | The line shape: curve, line segment, or straight line |
+| Connection style | How the corners of a polyline join: bevel, round, or default |
+| Line cap | The shape of the line ends: default, round, or square |
+| Line gradient | Whether the line color uses a linear gradient |
+| Line color | The main color of the line, plus hover and selected colors |
+| Line width | The thickness of the line |
+| Background | The background fill type: solid, linear gradient, or radial gradient |
+| Background color | The background color, plus hover and selected background colors |
+| Opacity | The line opacity, from 0 to 1 |
+| Anchor | The anchor point color and radius (≥0) |
+| Shadow | The shadow color, blur, and X/Y offset |
+| Border | The border color and width (≥0) |
 
 ## 5.7.4 Line Animations
 
-IDMP has built-in three animation effects for lines, making the visuals more dynamic.
+IDMP has built-in multiple animation effects for lines, making the visuals more dynamic. After selecting a line, configure the following animation parameters in the Animation tab:
 
-- Animation effects: water flow, water droplet flow, dots.
-- Animation line width (≥0), animation color, animation speed, reverse flow, number of loops.
-- Next animation: tag, autoplay, maintain animation state, linear playback: yes/no.
+| Option | Description |
+| --- | --- |
+| Animation effect | The line animation type: water flow, water droplet flow, or dots; line and line segment also support arrow and waterdrop |
+| Animation line width | The width of the animation line (≥0) |
+| Animation color | The color of the animation |
+| Animation shadow | Toggle; when on, the animation has a shadow with configurable shadow color and blur |
+| Animation speed | The animation playback speed, adjustable from 1 to 5 |
+| Reverse flow | Toggle; when on, the animation flows in the reverse direction |
+| Number of loops | How many times the animation loops, infinite by default |
+| Next animation | Specifies the next animation to play via a tag after the current one finishes |
+| Autoplay | Toggle; whether to play the animation automatically |
+| Maintain animation state | Toggle; whether to keep the final state after the animation ends |
+| Linear playback | Yes/no; whether the animation plays at a linear speed |
+
+Selecting different animation effects reveals corresponding sub-options: water droplet flow lets you set the animation dash, dots let you set the dot size, and arrow lets you set the animation interval.
 
 <LoopVideo src={animationUrl} label="Line Animations" />
